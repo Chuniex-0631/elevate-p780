@@ -104,3 +104,9 @@ _早前至少 57 条历史文件记录已保留；本轮新增文件按原始名
 - p780-framework-audit.zip：机主上传 18,141,023 B，CRC 通过；含 services.jar/framework.jar 与五份文本。原始 ZIP/JAR 仍保留在上传文件，未将原始字节迁入 Git。
 - [输入 SHA/原件存放状态](../evidence/framework/2026-10-10/input-manifest.json)；[目标方法原始字节](../evidence/framework/2026-10-10/journey-bytecode.json)、反汇编、调用点 JSON、五份 UTF-8 清单已入 Git。反汇编和阅读视图不冒充原始 JAR/UTF-16 原件。
 - [Journey 实机代码专题](2026-10-10-journey-config-audit.md) 与 [OTA 日志深入审计](2026-10-10-ota-log-audit.md) 已补齐，旧“下一阶段审阅引擎日志”的说明已修订。
+
+## Journey 配置与运行状态（已完成核对）
+
+机主 p780-journey-config.zip 共 3,940 B、3 条目、CRC 通过；[完整原始字节的 Base64 存档](../evidence/journey/2026-10-10/p780-journey-config.zip.b64) 与 [SHA/还原说明](../evidence/journey/2026-10-10/input-manifest.json) 已入仓。vendor XML/version 提供原件文本，TCS 提供 UTF-8 阅读视图；UTF-16 原始字节包含在编码 ZIP 中，避免重复归档。
+
+[64 键对照](../evidence/journey/2026-10-10/comparison.json) 与 [复核工具](../tools/compare_journey_config.py) 已保存；专题、README、STATUS、NEXT_STEPS 同步修订，关闭上一轮等待采集项。原始 framework ZIP/JAR 的未迁入状态仍保持明确。
