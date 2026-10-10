@@ -5,6 +5,7 @@
 - [完整性工作流](../.github/workflows/p780-final-audit.yml)
 - [第一次验收 #38055450831](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38055450831)：原件 SHA 与 ZIP CRC，全库当时 Markdown 内部相对链接 58 条、无失效。
 - [交叉核验 #38055530285](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38055530285)：再检查四份 ZIP 包各自自带的设备配置与 Tracefs 副本，均与仓库现存两份原始证据**字节完全一致**；内置 CHECKSUMS.sha256 中找到的匹配条目未发现不一致。
+- [正式文档封存验收 #38056019230](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38056019230)：最终结构改动后，**138 个 Markdown 相对链接、0 个失效**；GZIP/ZIP/Tracefs 检查、四套内嵌证据和哈希再次通过。今后 README / docs / archive / 关键 evidence 发生改动时，CI 将自动再次检查，并对损坏的相对链接报告失败。
 
 ## 原始文件检验清单
 
