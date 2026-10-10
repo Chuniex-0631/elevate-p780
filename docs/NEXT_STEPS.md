@@ -8,12 +8,19 @@
 - Clang11 与 Clang14 的真实 GitHub Actions 构建日志、原始/求解配置、对象文件和配置差异 JSON。
 - 历史脚本与已保存的 Markdown 分析报告。
 
-## 尚缺的原始材料
+## 已补齐的原件与真正仍缺的材料
 
-- `p780-cpu4.raw`：4,096 字节 Tracefs 实机原始数据，当前仅保存在用户原始文件库。建议上传到私有仓库 `evidence/device/p780-cpu4.raw`。
+- **Tracefs 数据已归档**：[原始 `p780-cpu4.raw`](../evidence/device/p780-cpu4.raw)，4,096 字节；字节级校验和 SHA-256 见 [完整性报告](EVIDENCE_INTEGRITY.md)。
 - `hand5g_getprop.txt`、`hand5g_fastboot_all.txt`、`hand5g_bugreport.zip`、OTA 日志：源文件仍在个人文件库，可能带设备/账户敏感数据；仓库目前只保存脱敏摘要和索引。
-- `P780-GhostLock-port-v0.1...v0.4.zip` 历史研究工作包：原件已定位，但完整 ZIP 尚未迁入 Git。
+- **四代 GhostLock 包已归档**：v0.1–v0.4 ZIP 全部进入 [evidence/ghostlock](../evidence/ghostlock)，通过 CRC 与内嵌证据交叉校验；详见 [版本索引](GHOSTLOCK_PORT_VERSIONS.md)。
 - 对应设备 `P780AE_11.0_RMN_JP_162` 的可信 `boot.img`、`vmlinux` 或完整官方 OTA：尚未取得。
+
+## 可持续研究的主要阻断点
+
+1. 官方 `P780AE_11.0_RMN_JP_162` 版本完全匹配的 `boot.img` / `vendor_boot.img` / `vmlinux` 或可信完整 OTA、内核私有补丁仍未取得。
+2. 来自真实 P780 的内核对象布局和所有 GhostLock 所需逐构建参数仍未验证；旧版预检 31 项中只有 2 项基础元数据确定。
+3. PFM 许可证路径与 OEM Unlock 状态修改之间仍无已知调用链。2026 年 9 月厂商固件认证漏洞具体触发环节仍需独立证据。
+4. 仍在 ChatGPT 文件库中的私有系统日志、APK、Bugreport 等原件需按隐私规则逐项清理后决定是否迁移，不要为追求文件数量而直接整包上传。
 
 ## 研究边界
 
