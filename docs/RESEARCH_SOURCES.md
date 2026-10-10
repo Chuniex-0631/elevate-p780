@@ -17,6 +17,13 @@
 - `archive/reports/P780_GhostLock_source_audit_2026-10-10.md`：实机配置+tracefs 原始数据+旧源码交叉核对。
 - 已迁移原件的 CRC、哈希及内嵌副本校验见 [证据完整性](EVIDENCE_INTEGRITY.md)；**其它**尚未迁移的文件详见 [文件清单](EVIDENCE_MANIFEST.md)。
 
+## 本次新增真实资料来源（2026-10-10）
+
+- [ADB 去预装与综合审计两份完整原件](../evidence/restricted/adb)：其中 ZIP 原始数据与此前上传的展开目录逐文件 SHA-256 相同，去重删除了展开的 31 份重复文件。
+- [TEE 白名单和 JNI 受限路径回显](../evidence/tee)、[三份 Android APK](../evidence/apk)：只作为设备采集资料，不等于 APK 动态行为和权限安全性已完成验证。
+- [OTA/Activity/Logcat 和完整 Bugreport](../evidence/restricted)：原始字节已入 Git，但因潜在隐私信息未经发布级脱敏；具体内容与结论见 [OTA/Bugreport 专题](OTA_LOGS_AND_BUGREPORT.md)。
+- 本轮分类规则、同名 ZIP 版本大小差异见 [接收与去重记录](NEW_UPLOADS_AND_DEDUP.md)。
+
 ## 上游项目源码（只作版本参考）
 
 - [TINNO P780 内核源码](https://github.com/TinnoOSS/P780) `master/msm-5.4`，Makefile `5.4.61`。
