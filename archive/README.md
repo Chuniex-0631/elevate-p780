@@ -6,4 +6,4 @@
 
 `tools/` 保存历史只读检查程序；`scripts/` 保存历史 PowerShell 去预装脚本。后者能改变设备状态，请不要将其当作只读命令执行。
 
-原始 APK、完整 bugreport、Tracefs 4,096B 二进制和大型 ZIP 尚未全部迁移；详细原件清单及状态见 [文件清单](../docs/EVIDENCE_MANIFEST.md)。
+原始 Tracefs 4,096B 二进制和四份 GhostLock ZIP 已存于 [evidence](../evidence)，并通过 CRC/SHA 校验；APK、完整 bugreport 和其他大型 ZIP 仍未全部迁移；详细原件清单及状态见 [文件清单](../docs/EVIDENCE_MANIFEST.md)。
