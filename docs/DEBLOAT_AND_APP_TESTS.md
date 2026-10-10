@@ -9,6 +9,15 @@
 - 已记录默认 HOME：`com.android.launcher3/...SearchLauncher`；早期 WebView：`com.google.android.webview` 93.0.4577.62。
 - 这些包数反映不同时间点的**系统状态**，并不证明清理过程没有功能回归，也不能直接作为 GhostLock/bootloader 实验的前提。
 
+## 新归档的实机审计原件
+
+- [首次审计原件](../evidence/restricted/adb/hand5g_debloat_audit.zip)：376,662 B，22 个原始文件；包含当次 `getprop`、302 行 user0 包清单、服务、存储、内存、完整 `dumpsys package`。
+- [后续综合审计原件](../evidence/restricted/adb/hand5g_final_audit.zip)：419,387 B，9 个文件，涉及包/进程/内存/服务；其中有 UTF-16 记录。
+- 两套 ZIP 内文件与机主额外上传的两个同名展开目录**逐字节相同**；仓库只保留压缩版，删除共 31 个重复展开文件，参见 [去重报告](NEW_UPLOADS_AND_DEDUP.md)。
+- [phase3 已安装包清单](../evidence/restricted/adb/phase3/hand5g_packages_installed_phase3.txt)（210 个包名）与 [phase3 全清单](../evidence/restricted/adb/phase3/hand5g_packages_all_phase3.txt)（271 个包名）采用**不同筛选范围**。不能凭 271→210 推断发生了 61 次卸载，也不能将其强行并入较早的 302→242→157 时间线。
+
+这些原始系统快照可能含敏感信息，仍是**未脱敏历史材料**；完整内容保留在 Private 仓库，不应直接公开。
+
 ## 历史脚本
 
 - [hand5g_debloat_p780.ps1](../archive/scripts/hand5g_debloat_p780.ps1)：为彻底精简制定的旧脚本，含 `adb shell pm uninstall --user 0`，会变更手机状态。
