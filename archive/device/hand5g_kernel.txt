@@ -1,0 +1,3 @@
+# Historical user-supplied device observation. Identifiers redacted where detected.
+Linux version 5.4.233-qgki-gea5245e94afe-dirty (android@HTSVR18) (Android (6877366 based on r383902b1) clang version 11.0.2 (https://android.googlesource.com/toolchain/llvm-project b397f81060ce6d701042b782172ed13bee898b79), LLD 11.0.2 (https://android.googlesource.com/toolchain/llvm-project b397f81060ce6d701042b782172ed13bee898b79)) #1 SMP PREEMPT Tue Feb 20 18:01:03 CST 2024
+Linux localhost 5.4.233-qgki-gea5245e94afe-dirty #1 SMP PREEMPT Tue Feb 20 18:01:03 CST 2024 aarch64
