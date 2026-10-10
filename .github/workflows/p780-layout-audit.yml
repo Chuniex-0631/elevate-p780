@@ -1,0 +1,120 @@
+name: P780 candidate structure layout audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/p780-layout-audit.yml
+      - tools/p780-layout-probe.c
+      - tools/derive_candidate_layout.py
+
+permissions:
+  contents: read
+
+jobs:
+  measure:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        source: [tinno-5.4.61, a52s-5.4.233]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            git make gcc python3 bc bison flex libssl-dev libelf-dev rsync cpio \
+            gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu
+      - name: Fetch recorded source and toolchain revisions
+        env:
+          SOURCE: ${{ matrix.source }}
+        run: |
+          set -euo pipefail
+          mkdir -p reports out
+          if test "$SOURCE" = tinno-5.4.61; then
+            git clone --depth 1 https://github.com/TinnoOSS/P780.git source
+            expected=20c26c7658cb5273cc71b10c3704b445b0efbe6b
+            echo "$GITHUB_WORKSPACE/source/msm-5.4" >> reports/source-dir.txt
+          else
+            git clone --depth 1 --single-branch --branch droidian \
+              https://github.com/arminask/linux-android-samsung-a52sxq.git source
+            expected=1f58b196e0dc8de740eb45b51261ea9c5741a30e
+            echo "$GITHUB_WORKSPACE/source" >> reports/source-dir.txt
+          fi
+          git -C source rev-parse HEAD > reports/source-commit.txt
+          test "$(cat reports/source-commit.txt)" = "$expected"
+          git clone --depth 1 --filter=blob:none --sparse --branch android11-qpr2-release \
+            https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 clang-prebuilts
+          git -C clang-prebuilts sparse-checkout set clang-r383902b1
+          git -C clang-prebuilts rev-parse HEAD > reports/toolchain-commit.txt
+          test "$(cat reports/toolchain-commit.txt)" = 659f7cadd7ec920e470bffbb799b031d4344c8d9
+          clang-prebuilts/clang-r383902b1/bin/clang --version > reports/clang-version.txt
+          grep -q 'clang version 11.0.2' reports/clang-version.txt
+          echo "$GITHUB_WORKSPACE/clang-prebuilts/clang-r383902b1/bin" >> "$GITHUB_PATH"
+          gzip -dc p780-config.gz > out/.config
+          cp out/.config reports/original.config
+          printf '%s\n' 'OFFLINE CANDIDATE ONLY: not certified P780 ABI, symbol addresses or flashable output.' > reports/IMPORTANT.txt
+      - name: Resolve configuration and prepare Kbuild headers
+        run: |
+          set -euo pipefail
+          kdir=$(cat reports/source-dir.txt)
+          args=(make -C "$kdir" O="$GITHUB_WORKSPACE/out" ARCH=arm64 HOSTCC=gcc \
+            CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy \
+            OBJDUMP=llvm-objdump STRIP=llvm-strip CLANG_TRIPLE=aarch64-linux-gnu- \
+            CROSS_COMPILE=aarch64-linux-gnu-)
+          "${args[@]}" olddefconfig 2>&1 | tee reports/olddefconfig.log
+          cp out/.config reports/resolved.config
+          "${args[@]}" V=1 prepare 2>&1 | tee reports/prepare.log
+      - name: Extract source-derived structure measurements
+        run: |
+          set -euo pipefail
+          python3 tools/derive_candidate_layout.py --out out --probe tools/p780-layout-probe.c \
+            --reports reports --source-commit "$(cat reports/source-commit.txt)"
+      - name: Record configuration drift
+        if: always()
+        run: |
+          if test -f reports/resolved.config; then
+            cp out/.config reports/post-prepare.config
+            python3 tools/summarize_config.py reports/original.config reports/resolved.config \
+              reports/post-prepare.config reports
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: p780-layout-${{ matrix.source }}
+          path: reports/
+          retention-days: 30
+
+  archive:
+    needs: measure
+    if: always()
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: p780-layout-*
+          path: evidence/actions/2026-10-10-layout-audit/builds
+      - name: Summarize and permanently preserve results
+        env:
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          root=evidence/actions/2026-10-10-layout-audit
+          python3 tools/compare_candidate_layouts.py "$root" "$RUN_URL"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$root"
+          if ! git diff --cached --quiet; then
+            git commit -m "evidence: archive candidate layout audit $GITHUB_RUN_ID"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          cat "$root/layout-comparison.md" >> "$GITHUB_STEP_SUMMARY"
