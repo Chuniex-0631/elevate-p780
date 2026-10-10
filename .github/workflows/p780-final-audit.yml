@@ -11,6 +11,10 @@ on:
       - archive/**
       - evidence/device/**
       - evidence/ghostlock/**
+      - evidence/restricted/**
+      - evidence/apk/**
+      - evidence/tee/**
+      - evidence/README.md
 
 concurrency:
   group: p780-final-archive-audit
@@ -153,6 +157,58 @@ jobs:
                 s=z.read(r).decode('utf-8','replace')
                 print('\n'.join(s.splitlines()[:90])[:6800])
           PY
+      - name: Verify new raw audit ZIPs, APKs and device snapshots
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' | tee reports/new-intake-validity.txt
+          from pathlib import Path
+          import hashlib, zipfile, re
+          required={
+              "evidence/restricted/adb/hand5g_debloat_audit.zip":22,
+              "evidence/restricted/adb/hand5g_final_audit.zip":9,
+              "evidence/restricted/bugreport/hand5g_bugreport.zip":402,
+              "evidence/apk/ApeHighLights.apk":265,
+              "evidence/apk/com.qualcomm.qti.services.secureui.apk":6,
+              "evidence/apk/com.qualcomm.qti.services.systemhelper.apk":6,
+          }
+          for name,count in required.items():
+              p=Path(name)
+              assert p.is_file(),f"Missing evidence: {name}"
+              with zipfile.ZipFile(p) as z:
+                  assert z.testzip() is None,f"Damaged ZIP: {name}"
+                  entries=[x for x in z.namelist() if not x.endswith('/')]
+                  assert len(entries)==count,f"Unexpected ZIP entry count: {name}"
+                  assert not any(x.startswith('/') or '..' in Path(x).parts for x in entries)
+                  if name.endswith('.apk'):
+                      assert any(x.endswith('.dex') for x in entries)
+              print(name, "bytes=",p.stat().st_size,
+                    "sha256=",hashlib.sha256(p.read_bytes()).hexdigest(),
+                    "verified_entries=",count)
+          assert not Path('hand5g_debloat_audit').exists()
+          assert not Path('hand5g_final_audit').exists()
+          assert not Path('hand5g_debloat_audit.zip').exists()
+          assert not Path('hand5g_final_audit.zip').exists()
+          for name,n in [
+            ("evidence/restricted/adb/phase3/hand5g_packages_installed_phase3.txt",210),
+            ("evidence/restricted/adb/phase3/hand5g_packages_all_phase3.txt",271)]:
+              p=Path(name)
+              txt=p.read_text(encoding="utf-16")
+              lines=[s for s in txt.splitlines() if s.startswith("package:")]
+              assert len(lines)==n,(name,len(lines))
+              print(name,"package_count=",len(lines))
+          p=Path("evidence/tee/hand5g_tz_whitelist.txt")
+          txt=p.read_text(encoding="utf-16")
+          assert '"classId":"119"' in txt
+          print("TEE class 119 white-list recorded")
+          for name in ["hand5g_update_activity.txt","hand5g_update_log.txt"]:
+              p=Path("evidence/restricted/ota")/name
+              assert p.is_file()
+              assert p.read_bytes().startswith((b'\xff\xfe',b'\xfe\xff'))
+              print(name,"utf16_bytes=",p.stat().st_size)
+          print("Raw evidence validation PASSED; no exploit or bootloader claims.")
+          PY
+
       - name: Preserve audit report
         if: always()
         uses: actions/upload-artifact@v4
