@@ -39,7 +39,14 @@
 
 **尚未完成：** Firehose 加载器成功授权与分区读取、匹配 `_162` 的原厂 `boot.img`/完整 OTA/`vmlinux`、原厂二进制的漏洞补丁状态与符号偏移、真实 GhostLock root、任意可复现的 Bootloader 解锁。
 
-## 5. 完整性的严格定义
+## 5. 新增原件再次接收与去重验收
+
+- 本轮收到两个完整 ADB 审计 ZIP、对应 31 个逐字节一致的展开文件、完整 Android Bugreport、一组 phase3 包列表、两个更新日志、两份 TZ/JNI 采集记录和三份 APK。
+- 保留原始审计 ZIP，删除相同的 22+9 个展开文件；压缩包 CRC、逐文件 SHA 匹配结果详见 [新增原件审计](NEW_UPLOADS_AND_DEDUP.md)。
+- APK/TEE 证据见 [TEE_AND_SYSTEM_APKS](TEE_AND_SYSTEM_APKS.md)，系统更新日志与 Bugreport 见 [OTA_LOGS_AND_BUGREPORT](OTA_LOGS_AND_BUGREPORT.md)。仍无实机 Root、Bootloader 解锁或可信完整原厂 OTA 成功提取。
+- 清理前仓库全量 Git 快照保留于 [archive/pre-cleanup-20261010](https://github.com/Chuniex-0631/p780-kernel-research/tree/archive/pre-cleanup-20261010)。所有 `evidence/restricted/` 文件仍可能含个人数据，Private 不是去身份化保证。
+
+## 6. 完整性的严格定义
 
 - 当前的目录、原始报告和 Git 提交已经覆盖**可取得的主要研究结论与设备证据**。
 - 早期文件库中至少 **57 份相关历史文件记录**已经索引，但其内容并未全部复制 GitHub：例如完整 Bugreport、部分 APK、私有 ADB/OTA 日志、其他几份源码对照 ZIP，需先脱敏或另作整理。
@@ -47,7 +54,7 @@
 - 如果未来迁移这些敏感原件，应创建数据来源/哈希记录，避免将私有账号、设备唯一标识或未经过审查的二进制公开。
 - 将仓库由 Private 改为 Public 前，必须检查完整提交历史，而不只是当前版本。
 
-## 6. 今后继续研究的固定入口
+## 7. 今后继续研究的固定入口
 
 1. 从 [README](../README.md) 进入。
 2. 以 [STATUS](STATUS.md) 为当前事实基准，以 [HISTORY](HISTORY.md) 和专题报告追溯旧结论。
