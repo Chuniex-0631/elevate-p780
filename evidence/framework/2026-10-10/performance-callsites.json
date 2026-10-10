@@ -1,0 +1,6143 @@
+[
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/SystemServer;",
+    "method": "startOtherServices(Lcom/android/server/utils/TimingsTraceAndSlog;)V",
+    "code_item_offset": 2552368,
+    "target": {
+      "offset": 2552,
+      "op": "new-instance",
+      "args": "v7, Lcom/android/server/am/JourneyPerformanceService;"
+    },
+    "context": [
+      {
+        "offset": 2526,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 2530,
+        "op": "if-eqz",
+        "args": "v0, +025h"
+      },
+      {
+        "offset": 2534,
+        "op": "const-string",
+        "args": "v0, \"SystemServer\""
+      },
+      {
+        "offset": 2538,
+        "op": "const-string",
+        "args": "v7, \"JourneyPerformanceService\""
+      },
+      {
+        "offset": 2542,
+        "op": "invoke-static",
+        "args": "v0, v7, Landroid/util/Slog;->i(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 2548,
+        "op": "const-string",
+        "args": "v0, \"TPS\""
+      },
+      {
+        "offset": 2552,
+        "op": "new-instance",
+        "args": "v7, Lcom/android/server/am/JourneyPerformanceService;"
+      },
+      {
+        "offset": 2556,
+        "op": "move/from16",
+        "args": "v44, v5"
+      },
+      {
+        "offset": 2560,
+        "op": "iget-object",
+        "args": "v5, v6, Lcom/android/server/SystemServer;->mActivityManagerService Lcom/android/server/am/ActivityManagerService;"
+      },
+      {
+        "offset": 2564,
+        "op": "invoke-direct",
+        "args": "v7, v3, v5, Lcom/android/server/am/JourneyPerformanceService;-><init>(Landroid/content/Context; Lcom/android/server/am/ActivityManagerService;)V"
+      },
+      {
+        "offset": 2570,
+        "op": "invoke-static",
+        "args": "v0, v7, Landroid/os/ServiceManager;->addService(Ljava/lang/String; Landroid/os/IBinder;)V"
+      },
+      {
+        "offset": 2576,
+        "op": "goto",
+        "args": "+10h"
+      },
+      {
+        "offset": 2578,
+        "op": "move-exception",
+        "args": "v0"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/SystemServer;",
+    "method": "startOtherServices(Lcom/android/server/utils/TimingsTraceAndSlog;)V",
+    "code_item_offset": 2552368,
+    "target": {
+      "offset": 2564,
+      "op": "invoke-direct",
+      "args": "v7, v3, v5, Lcom/android/server/am/JourneyPerformanceService;-><init>(Landroid/content/Context; Lcom/android/server/am/ActivityManagerService;)V"
+    },
+    "context": [
+      {
+        "offset": 2538,
+        "op": "const-string",
+        "args": "v7, \"JourneyPerformanceService\""
+      },
+      {
+        "offset": 2542,
+        "op": "invoke-static",
+        "args": "v0, v7, Landroid/util/Slog;->i(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 2548,
+        "op": "const-string",
+        "args": "v0, \"TPS\""
+      },
+      {
+        "offset": 2552,
+        "op": "new-instance",
+        "args": "v7, Lcom/android/server/am/JourneyPerformanceService;"
+      },
+      {
+        "offset": 2556,
+        "op": "move/from16",
+        "args": "v44, v5"
+      },
+      {
+        "offset": 2560,
+        "op": "iget-object",
+        "args": "v5, v6, Lcom/android/server/SystemServer;->mActivityManagerService Lcom/android/server/am/ActivityManagerService;"
+      },
+      {
+        "offset": 2564,
+        "op": "invoke-direct",
+        "args": "v7, v3, v5, Lcom/android/server/am/JourneyPerformanceService;-><init>(Landroid/content/Context; Lcom/android/server/am/ActivityManagerService;)V"
+      },
+      {
+        "offset": 2570,
+        "op": "invoke-static",
+        "args": "v0, v7, Landroid/os/ServiceManager;->addService(Ljava/lang/String; Landroid/os/IBinder;)V"
+      },
+      {
+        "offset": 2576,
+        "op": "goto",
+        "args": "+10h"
+      },
+      {
+        "offset": 2578,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2580,
+        "op": "goto",
+        "args": "+4h"
+      },
+      {
+        "offset": 2582,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2584,
+        "op": "move/from16",
+        "args": "v44, v5"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActiveServices;",
+    "method": "bringUpServiceLocked(Lcom/android/server/am/ServiceRecord; I Z Z Z)Ljava/lang/String;",
+    "code_item_offset": 2887756,
+    "target": {
+      "offset": 76,
+      "op": "sget-boolean",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE Z"
+    },
+    "context": [
+      {
+        "offset": 52,
+        "op": "iget-object",
+        "args": "v0, v1, Lcom/android/server/am/ActiveServices;->mRestartingServices Ljava/util/ArrayList;"
+      },
+      {
+        "offset": 56,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z"
+      },
+      {
+        "offset": 62,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 64,
+        "op": "if-eqz",
+        "args": "v0, +02fh"
+      },
+      {
+        "offset": 68,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 72,
+        "op": "if-eqz",
+        "args": "v0, +02ah"
+      },
+      {
+        "offset": 76,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE Z"
+      },
+      {
+        "offset": 80,
+        "op": "if-eqz",
+        "args": "v0, +026h"
+      },
+      {
+        "offset": 84,
+        "op": "invoke-virtual/range",
+        "args": "v23 ... v24, Lcom/android/server/am/ActiveServices;->ShouldDelayTheService(Lcom/android/server/am/ServiceRecord;)Z"
+      },
+      {
+        "offset": 90,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 92,
+        "op": "if-nez",
+        "args": "v0, +020h"
+      },
+      {
+        "offset": 96,
+        "op": "iget-object",
+        "args": "v0, v1, Lcom/android/server/am/ActiveServices;->mAm Lcom/android/server/am/ActivityManagerService;"
+      },
+      {
+        "offset": 100,
+        "op": "iget-object",
+        "args": "v0, v0, Lcom/android/server/am/ActivityManagerService;->mHandler Lcom/android/server/am/ActivityManagerService$MainHandler;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActiveServices;",
+    "method": "bringUpServiceLocked(Lcom/android/server/am/ServiceRecord; I Z Z Z)Ljava/lang/String;",
+    "code_item_offset": 2887756,
+    "target": {
+      "offset": 270,
+      "op": "sget-boolean",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE Z"
+    },
+    "context": [
+      {
+        "offset": 246,
+        "op": "iget-object",
+        "args": "v0, v1, Lcom/android/server/am/ActiveServices;->mRestartingServices Ljava/util/ArrayList;"
+      },
+      {
+        "offset": 250,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z"
+      },
+      {
+        "offset": 256,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 258,
+        "op": "if-eqz",
+        "args": "v0, +011h"
+      },
+      {
+        "offset": 262,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 266,
+        "op": "if-eqz",
+        "args": "v0, +00ah"
+      },
+      {
+        "offset": 270,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE Z"
+      },
+      {
+        "offset": 274,
+        "op": "if-eqz",
+        "args": "v0, +006h"
+      },
+      {
+        "offset": 278,
+        "op": "const-wide/16",
+        "args": "v7, 0"
+      },
+      {
+        "offset": 282,
+        "op": "iput-wide",
+        "args": "v7, v2, Lcom/android/server/am/ServiceRecord;->addToRestartTime J"
+      },
+      {
+        "offset": 286,
+        "op": "invoke-direct/range",
+        "args": "v23 ... v24, Lcom/android/server/am/ActiveServices;->clearRestartingIfNeededLocked(Lcom/android/server/am/ServiceRecord;)V"
+      },
+      {
+        "offset": 292,
+        "op": "iget-boolean",
+        "args": "v0, v2, Lcom/android/server/am/ServiceRecord;->delayed Z"
+      },
+      {
+        "offset": 296,
+        "op": "if-eqz",
+        "args": "v0, +027h"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActiveServices;",
+    "method": "retrieveServiceLocked(Landroid/content/Intent; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; I I I Z Z Z Z)Lcom/android/server/am/ActiveServices$ServiceLookupResult;",
+    "code_item_offset": 2879328,
+    "target": {
+      "offset": 3324,
+      "op": "sget-boolean",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE_ENHANCED Z"
+    },
+    "context": [
+      {
+        "offset": 3302,
+        "op": "const-string",
+        "args": "v3, \"ActivityManager\""
+      },
+      {
+        "offset": 3306,
+        "op": "invoke-static",
+        "args": "v3, v2, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 3312,
+        "op": "const/4",
+        "args": "v2, 0"
+      },
+      {
+        "offset": 3314,
+        "op": "return-object",
+        "args": "v2"
+      },
+      {
+        "offset": 3316,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 3320,
+        "op": "if-eqz",
+        "args": "v0, +05fh"
+      },
+      {
+        "offset": 3324,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE_ENHANCED Z"
+      },
+      {
+        "offset": 3328,
+        "op": "if-eqz",
+        "args": "v0, +05bh"
+      },
+      {
+        "offset": 3332,
+        "op": "iget-object",
+        "args": "v0, v14, Lcom/android/server/am/ServiceRecord;->appInfo Landroid/content/pm/ApplicationInfo;"
+      },
+      {
+        "offset": 3336,
+        "op": "if-eqz",
+        "args": "v0, +057h"
+      },
+      {
+        "offset": 3340,
+        "op": "iget-object",
+        "args": "v0, v14, Lcom/android/server/am/ServiceRecord;->appInfo Landroid/content/pm/ApplicationInfo;"
+      },
+      {
+        "offset": 3344,
+        "op": "iget",
+        "args": "v0, v0, Landroid/content/pm/ApplicationInfo;->flags I"
+      },
+      {
+        "offset": 3348,
+        "op": "and-int/lit16",
+        "args": "v0, v0, 129"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActiveServices;",
+    "method": "retrieveServiceLocked(Landroid/content/Intent; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; I I I Z Z Z Z)Lcom/android/server/am/ActiveServices$ServiceLookupResult;",
+    "code_item_offset": 2879328,
+    "target": {
+      "offset": 3368,
+      "op": "invoke-static",
+      "args": "v15, v0, v11, v2, Lcom/android/server/am/JourneyPerformanceService;->IsBlackCallerAllowed(I I Ljava/lang/String; Ljava/lang/String;)Z"
+    },
+    "context": [
+      {
+        "offset": 3344,
+        "op": "iget",
+        "args": "v0, v0, Landroid/content/pm/ApplicationInfo;->flags I"
+      },
+      {
+        "offset": 3348,
+        "op": "and-int/lit16",
+        "args": "v0, v0, 129"
+      },
+      {
+        "offset": 3352,
+        "op": "if-nez",
+        "args": "v0, +04fh"
+      },
+      {
+        "offset": 3356,
+        "op": "iget-object",
+        "args": "v0, v14, Lcom/android/server/am/ServiceRecord;->appInfo Landroid/content/pm/ApplicationInfo;"
+      },
+      {
+        "offset": 3360,
+        "op": "iget",
+        "args": "v0, v0, Landroid/content/pm/ApplicationInfo;->uid I"
+      },
+      {
+        "offset": 3364,
+        "op": "iget-object",
+        "args": "v2, v14, Lcom/android/server/am/ServiceRecord;->packageName Ljava/lang/String;"
+      },
+      {
+        "offset": 3368,
+        "op": "invoke-static",
+        "args": "v15, v0, v11, v2, Lcom/android/server/am/JourneyPerformanceService;->IsBlackCallerAllowed(I I Ljava/lang/String; Ljava/lang/String;)Z"
+      },
+      {
+        "offset": 3374,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 3376,
+        "op": "if-nez",
+        "args": "v0, +043h"
+      },
+      {
+        "offset": 3380,
+        "op": "new-instance",
+        "args": "v0, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3384,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 3390,
+        "op": "const-string",
+        "args": "v2, \"Background bind not allowed: service \""
+      },
+      {
+        "offset": 3394,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActiveServices;",
+    "method": "scheduleServiceRestartLocked(Lcom/android/server/am/ServiceRecord; Z)Z",
+    "code_item_offset": 2874760,
+    "target": {
+      "offset": 1208,
+      "op": "sget-boolean",
+      "args": "v1, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE Z"
+    },
+    "context": [
+      {
+        "offset": 1184,
+        "op": "iget-wide",
+        "args": "v1, v0, Lcom/android/server/am/ServiceRecord;->restartDelay J"
+      },
+      {
+        "offset": 1188,
+        "op": "cmp-long",
+        "args": "v1, v1, v13"
+      },
+      {
+        "offset": 1192,
+        "op": "if-gez",
+        "args": "v1, +004h"
+      },
+      {
+        "offset": 1196,
+        "op": "iput-wide",
+        "args": "v13, v0, Lcom/android/server/am/ServiceRecord;->restartDelay J"
+      },
+      {
+        "offset": 1200,
+        "op": "sget-boolean",
+        "args": "v1, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 1204,
+        "op": "if-eqz",
+        "args": "v1, +053h"
+      },
+      {
+        "offset": 1208,
+        "op": "sget-boolean",
+        "args": "v1, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE Z"
+      },
+      {
+        "offset": 1212,
+        "op": "if-eqz",
+        "args": "v1, +04fh"
+      },
+      {
+        "offset": 1216,
+        "op": "invoke-virtual/range",
+        "args": "v31 ... v32, Lcom/android/server/am/ActiveServices;->ShouldDelayTheService(Lcom/android/server/am/ServiceRecord;)Z"
+      },
+      {
+        "offset": 1222,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 1224,
+        "op": "if-eqz",
+        "args": "v1, +047h"
+      },
+      {
+        "offset": 1228,
+        "op": "sget-boolean",
+        "args": "v1, Lcom/android/server/am/ActiveServices;->mlowMem Z"
+      },
+      {
+        "offset": 1232,
+        "op": "if-eqz",
+        "args": "v1, +043h"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActiveServices;",
+    "method": "scheduleServiceRestartLocked(Lcom/android/server/am/ServiceRecord; Z)Z",
+    "code_item_offset": 2874760,
+    "target": {
+      "offset": 1872,
+      "op": "sget-boolean",
+      "args": "v4, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE Z"
+    },
+    "context": [
+      {
+        "offset": 1848,
+        "op": "const/4",
+        "args": "v4, 0"
+      },
+      {
+        "offset": 1850,
+        "op": "iput-boolean",
+        "args": "v4, v0, Lcom/android/server/am/ServiceRecord;->createdFromFg Z"
+      },
+      {
+        "offset": 1854,
+        "op": "iget-object",
+        "args": "v4, v7, Lcom/android/server/am/ActiveServices;->mRestartingServices Ljava/util/ArrayList;"
+      },
+      {
+        "offset": 1858,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z"
+      },
+      {
+        "offset": 1864,
+        "op": "sget-boolean",
+        "args": "v4, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 1868,
+        "op": "if-eqz",
+        "args": "v4, +00ch"
+      },
+      {
+        "offset": 1872,
+        "op": "sget-boolean",
+        "args": "v4, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE Z"
+      },
+      {
+        "offset": 1876,
+        "op": "if-eqz",
+        "args": "v4, +008h"
+      },
+      {
+        "offset": 1880,
+        "op": "invoke-static",
+        "args": "Landroid/os/SystemClock;->uptimeMillis()J"
+      },
+      {
+        "offset": 1886,
+        "op": "move-result-wide",
+        "args": "v4"
+      },
+      {
+        "offset": 1888,
+        "op": "iput-wide",
+        "args": "v4, v0, Lcom/android/server/am/ServiceRecord;->addToRestartTime J"
+      },
+      {
+        "offset": 1892,
+        "op": "iget-object",
+        "args": "v4, v7, Lcom/android/server/am/ActiveServices;->mAm Lcom/android/server/am/ActivityManagerService;"
+      },
+      {
+        "offset": 1896,
+        "op": "iget-object",
+        "args": "v4, v4, Lcom/android/server/am/ActivityManagerService;->mProcessStats Lcom/android/server/am/ProcessStatsService;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActiveServices;",
+    "method": "setServiceForegroundInnerLocked(Lcom/android/server/am/ServiceRecord; I Landroid/app/Notification; I I)V",
+    "code_item_offset": 2904264,
+    "target": {
+      "offset": 1462,
+      "op": "sget-boolean",
+      "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->NOTIFICATION_FOR_FGSERVICE_OPTIMIZATION Z"
+    },
+    "context": [
+      {
+        "offset": 1436,
+        "op": "invoke-virtual",
+        "args": "v2, v3, v1, Landroid/util/ArrayMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;"
+      },
+      {
+        "offset": 1442,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/journey/system/JourneyDebugFeature;->DEBUG_DUMP_FG_SER_PKG Z"
+      },
+      {
+        "offset": 1446,
+        "op": "const-wide/16",
+        "args": "v3, 0"
+      },
+      {
+        "offset": 1450,
+        "op": "if-nez",
+        "args": "v2, +00ah"
+      },
+      {
+        "offset": 1454,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 1458,
+        "op": "if-eqz",
+        "args": "v2, +010h"
+      },
+      {
+        "offset": 1462,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->NOTIFICATION_FOR_FGSERVICE_OPTIMIZATION Z"
+      },
+      {
+        "offset": 1466,
+        "op": "if-eqz",
+        "args": "v2, +00ch"
+      },
+      {
+        "offset": 1470,
+        "op": "iget-object",
+        "args": "v2, v8, Lcom/android/server/am/ServiceRecord;->appInfo Landroid/content/pm/ApplicationInfo;"
+      },
+      {
+        "offset": 1474,
+        "op": "invoke-virtual",
+        "args": "v2, Landroid/content/pm/ApplicationInfo;->isSystemApp()Z"
+      },
+      {
+        "offset": 1480,
+        "op": "move-result",
+        "args": "v2"
+      },
+      {
+        "offset": 1482,
+        "op": "iput-boolean",
+        "args": "v2, v1, Lcom/android/server/am/ActiveServices$ActiveForegroundApp;->isSystemApp Z"
+      },
+      {
+        "offset": 1486,
+        "op": "iput-wide",
+        "args": "v3, v1, Lcom/android/server/am/ActiveServices$ActiveForegroundApp;->mfgWaringTime J"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActiveServices;",
+    "method": "unscheduleServiceRestartLocked(Lcom/android/server/am/ServiceRecord; I Z)Z",
+    "code_item_offset": 2878824,
+    "target": {
+      "offset": 60,
+      "op": "sget-boolean",
+      "args": "v3, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE Z"
+    },
+    "context": [
+      {
+        "offset": 36,
+        "op": "if-nez",
+        "args": "v2, +008h"
+      },
+      {
+        "offset": 40,
+        "op": "iget-object",
+        "args": "v3, v5, Lcom/android/server/am/ServiceRecord;->appInfo Landroid/content/pm/ApplicationInfo;"
+      },
+      {
+        "offset": 44,
+        "op": "iget",
+        "args": "v3, v3, Landroid/content/pm/ApplicationInfo;->uid I"
+      },
+      {
+        "offset": 48,
+        "op": "if-eq",
+        "args": "v6, v3, +00fh"
+      },
+      {
+        "offset": 52,
+        "op": "sget-boolean",
+        "args": "v3, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 56,
+        "op": "if-eqz",
+        "args": "v3, +008h"
+      },
+      {
+        "offset": 60,
+        "op": "sget-boolean",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE Z"
+      },
+      {
+        "offset": 64,
+        "op": "if-eqz",
+        "args": "v3, +004h"
+      },
+      {
+        "offset": 68,
+        "op": "iput-wide",
+        "args": "v0, v5, Lcom/android/server/am/ServiceRecord;->addToRestartTime J"
+      },
+      {
+        "offset": 72,
+        "op": "invoke-virtual",
+        "args": "v5, Lcom/android/server/am/ServiceRecord;->resetRestartCounter()V"
+      },
+      {
+        "offset": 78,
+        "op": "if-eqz",
+        "args": "v2, +005h"
+      },
+      {
+        "offset": 82,
+        "op": "invoke-direct",
+        "args": "v4, v5, Lcom/android/server/am/ActiveServices;->clearRestartingIfNeededLocked(Lcom/android/server/am/ServiceRecord;)V"
+      },
+      {
+        "offset": 88,
+        "op": "iget-object",
+        "args": "v0, v4, Lcom/android/server/am/ActiveServices;->mAm Lcom/android/server/am/ActivityManagerService;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActiveServices;",
+    "method": "killServicesLocked(Lcom/android/server/am/ProcessRecord; Z)V",
+    "code_item_offset": 2895000,
+    "target": {
+      "offset": 1206,
+      "op": "sget-boolean",
+      "args": "v6, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE Z"
+    },
+    "context": [
+      {
+        "offset": 1180,
+        "op": "iget",
+        "args": "v7, v7, Landroid/content/pm/ApplicationInfo;->uid I"
+      },
+      {
+        "offset": 1184,
+        "op": "if-ne",
+        "args": "v6, v7, +016h"
+      },
+      {
+        "offset": 1188,
+        "op": "iget-object",
+        "args": "v6, v1, Lcom/android/server/am/ActiveServices;->mRestartingServices Ljava/util/ArrayList;"
+      },
+      {
+        "offset": 1192,
+        "op": "invoke-virtual",
+        "args": "v6, v0, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;"
+      },
+      {
+        "offset": 1198,
+        "op": "sget-boolean",
+        "args": "v6, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 1202,
+        "op": "if-eqz",
+        "args": "v6, +00ah"
+      },
+      {
+        "offset": 1206,
+        "op": "sget-boolean",
+        "args": "v6, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE Z"
+      },
+      {
+        "offset": 1210,
+        "op": "if-eqz",
+        "args": "v6, +006h"
+      },
+      {
+        "offset": 1214,
+        "op": "const-wide/16",
+        "args": "v6, 0"
+      },
+      {
+        "offset": 1218,
+        "op": "iput-wide",
+        "args": "v6, v5, Lcom/android/server/am/ServiceRecord;->addToRestartTime J"
+      },
+      {
+        "offset": 1222,
+        "op": "invoke-direct",
+        "args": "v1, v5, Lcom/android/server/am/ActiveServices;->clearRestartingIfNeededLocked(Lcom/android/server/am/ServiceRecord;)V"
+      },
+      {
+        "offset": 1228,
+        "op": "add-int/lit8",
+        "args": "v0, v0, -1"
+      },
+      {
+        "offset": 1232,
+        "op": "goto",
+        "args": "-36h"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActiveServices;",
+    "method": "performServiceRestartLocked(Lcom/android/server/am/ServiceRecord;)V",
+    "code_item_offset": 2896612,
+    "target": {
+      "offset": 306,
+      "op": "sget-boolean",
+      "args": "v1, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE Z"
+    },
+    "context": [
+      {
+        "offset": 276,
+        "op": "invoke-static",
+        "args": "v2, v3, Landroid/util/Slog;->v(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 282,
+        "op": "invoke-virtual",
+        "args": "v13, Lcom/android/server/am/ServiceRecord;->resetRestartCounter()V"
+      },
+      {
+        "offset": 288,
+        "op": "invoke-direct",
+        "args": "v12, v13, v4, Lcom/android/server/am/ActiveServices;->scheduleServiceRestartLocked(Lcom/android/server/am/ServiceRecord; Z)Z"
+      },
+      {
+        "offset": 294,
+        "op": "goto/16",
+        "args": "+160h"
+      },
+      {
+        "offset": 298,
+        "op": "sget-boolean",
+        "args": "v1, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 302,
+        "op": "if-eqz",
+        "args": "v1, +149h"
+      },
+      {
+        "offset": 306,
+        "op": "sget-boolean",
+        "args": "v1, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_SERVICE_RESCHEDULE Z"
+      },
+      {
+        "offset": 310,
+        "op": "if-eqz",
+        "args": "v1, +145h"
+      },
+      {
+        "offset": 314,
+        "op": "invoke-virtual",
+        "args": "v12, v13, Lcom/android/server/am/ActiveServices;->ShouldDelayTheService(Lcom/android/server/am/ServiceRecord;)Z"
+      },
+      {
+        "offset": 320,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 322,
+        "op": "sget-boolean",
+        "args": "v5, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_SERVICE Z"
+      },
+      {
+        "offset": 326,
+        "op": "if-eqz",
+        "args": "v5, +02dh"
+      },
+      {
+        "offset": 330,
+        "op": "iget-object",
+        "args": "v5, v12, Lcom/android/server/am/ActiveServices;->mAm Lcom/android/server/am/ActivityManagerService;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/OomAdjuster;",
+    "method": "updateAndTrimProcessLocked(J J J Lcom/android/server/am/ActiveUids;)Z",
+    "code_item_offset": 3311416,
+    "target": {
+      "offset": 828,
+      "op": "sget-boolean",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION Z"
+    },
+    "context": [
+      {
+        "offset": 800,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 804,
+        "op": "const-string/jumbo",
+        "args": "v6, s"
+      },
+      {
+        "offset": 810,
+        "op": "const-wide/16",
+        "args": "v21, 1000"
+      },
+      {
+        "offset": 814,
+        "op": "const-wide/32",
+        "args": "v26, 1800000"
+      },
+      {
+        "offset": 820,
+        "op": "const-string",
+        "args": "v2, \"empty for \""
+      },
+      {
+        "offset": 824,
+        "op": "if-eqz",
+        "args": "v0, +04ch"
+      },
+      {
+        "offset": 828,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION Z"
+      },
+      {
+        "offset": 832,
+        "op": "if-eqz",
+        "args": "v0, +02fh"
+      },
+      {
+        "offset": 836,
+        "op": "iget",
+        "args": "v0, v9, Lcom/android/server/am/ProcessRecord;->uid I"
+      },
+      {
+        "offset": 840,
+        "op": "iget-object",
+        "args": "v1, v9, Lcom/android/server/am/ProcessRecord;->processName Ljava/lang/String;"
+      },
+      {
+        "offset": 844,
+        "op": "sget-object",
+        "args": "v5, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_MOST_USED Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 848,
+        "op": "invoke-static",
+        "args": "v0, v1, v5, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 854,
+        "op": "move-result",
+        "args": "v0"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/OomAdjuster;",
+    "method": "updateAndTrimProcessLocked(J J J Lcom/android/server/am/ActiveUids;)Z",
+    "code_item_offset": 3311416,
+    "target": {
+      "offset": 844,
+      "op": "sget-object",
+      "args": "v5, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_MOST_USED Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+    },
+    "context": [
+      {
+        "offset": 820,
+        "op": "const-string",
+        "args": "v2, \"empty for \""
+      },
+      {
+        "offset": 824,
+        "op": "if-eqz",
+        "args": "v0, +04ch"
+      },
+      {
+        "offset": 828,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION Z"
+      },
+      {
+        "offset": 832,
+        "op": "if-eqz",
+        "args": "v0, +02fh"
+      },
+      {
+        "offset": 836,
+        "op": "iget",
+        "args": "v0, v9, Lcom/android/server/am/ProcessRecord;->uid I"
+      },
+      {
+        "offset": 840,
+        "op": "iget-object",
+        "args": "v1, v9, Lcom/android/server/am/ProcessRecord;->processName Ljava/lang/String;"
+      },
+      {
+        "offset": 844,
+        "op": "sget-object",
+        "args": "v5, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_MOST_USED Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 848,
+        "op": "invoke-static",
+        "args": "v0, v1, v5, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 854,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 856,
+        "op": "if-nez",
+        "args": "v0, +023h"
+      },
+      {
+        "offset": 860,
+        "op": "new-instance",
+        "args": "v0, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 864,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 870,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/OomAdjuster;",
+    "method": "updateAndTrimProcessLocked(J J J Lcom/android/server/am/ActiveUids;)Z",
+    "code_item_offset": 3311416,
+    "target": {
+      "offset": 848,
+      "op": "invoke-static",
+      "args": "v0, v1, v5, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+    },
+    "context": [
+      {
+        "offset": 824,
+        "op": "if-eqz",
+        "args": "v0, +04ch"
+      },
+      {
+        "offset": 828,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION Z"
+      },
+      {
+        "offset": 832,
+        "op": "if-eqz",
+        "args": "v0, +02fh"
+      },
+      {
+        "offset": 836,
+        "op": "iget",
+        "args": "v0, v9, Lcom/android/server/am/ProcessRecord;->uid I"
+      },
+      {
+        "offset": 840,
+        "op": "iget-object",
+        "args": "v1, v9, Lcom/android/server/am/ProcessRecord;->processName Ljava/lang/String;"
+      },
+      {
+        "offset": 844,
+        "op": "sget-object",
+        "args": "v5, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_MOST_USED Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 848,
+        "op": "invoke-static",
+        "args": "v0, v1, v5, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 854,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 856,
+        "op": "if-nez",
+        "args": "v0, +023h"
+      },
+      {
+        "offset": 860,
+        "op": "new-instance",
+        "args": "v0, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 864,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 870,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 876,
+        "op": "add-long",
+        "args": "v1, v35, v26"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/OomAdjuster;",
+    "method": "updateAndTrimProcessLocked(J J J Lcom/android/server/am/ActiveUids;)Z",
+    "code_item_offset": 3311416,
+    "target": {
+      "offset": 1072,
+      "op": "sget-boolean",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION Z"
+    },
+    "context": [
+      {
+        "offset": 1050,
+        "op": "add-int/lit8",
+        "args": "v5, v8, 1"
+      },
+      {
+        "offset": 1054,
+        "op": "if-le",
+        "args": "v5, v10, +062h"
+      },
+      {
+        "offset": 1058,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 1062,
+        "op": "const/4",
+        "args": "v1, 3"
+      },
+      {
+        "offset": 1064,
+        "op": "const-string",
+        "args": "v2, \"empty #\""
+      },
+      {
+        "offset": 1068,
+        "op": "if-eqz",
+        "args": "v0, +045h"
+      },
+      {
+        "offset": 1072,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION Z"
+      },
+      {
+        "offset": 1076,
+        "op": "if-eqz",
+        "args": "v0, +025h"
+      },
+      {
+        "offset": 1080,
+        "op": "iget",
+        "args": "v0, v9, Lcom/android/server/am/ProcessRecord;->uid I"
+      },
+      {
+        "offset": 1084,
+        "op": "iget-object",
+        "args": "v6, v9, Lcom/android/server/am/ProcessRecord;->processName Ljava/lang/String;"
+      },
+      {
+        "offset": 1088,
+        "op": "sget-object",
+        "args": "v8, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_MOST_USED Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 1092,
+        "op": "invoke-static",
+        "args": "v0, v6, v8, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 1098,
+        "op": "move-result",
+        "args": "v0"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/OomAdjuster;",
+    "method": "updateAndTrimProcessLocked(J J J Lcom/android/server/am/ActiveUids;)Z",
+    "code_item_offset": 3311416,
+    "target": {
+      "offset": 1088,
+      "op": "sget-object",
+      "args": "v8, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_MOST_USED Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+    },
+    "context": [
+      {
+        "offset": 1064,
+        "op": "const-string",
+        "args": "v2, \"empty #\""
+      },
+      {
+        "offset": 1068,
+        "op": "if-eqz",
+        "args": "v0, +045h"
+      },
+      {
+        "offset": 1072,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION Z"
+      },
+      {
+        "offset": 1076,
+        "op": "if-eqz",
+        "args": "v0, +025h"
+      },
+      {
+        "offset": 1080,
+        "op": "iget",
+        "args": "v0, v9, Lcom/android/server/am/ProcessRecord;->uid I"
+      },
+      {
+        "offset": 1084,
+        "op": "iget-object",
+        "args": "v6, v9, Lcom/android/server/am/ProcessRecord;->processName Ljava/lang/String;"
+      },
+      {
+        "offset": 1088,
+        "op": "sget-object",
+        "args": "v8, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_MOST_USED Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 1092,
+        "op": "invoke-static",
+        "args": "v0, v6, v8, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 1098,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1100,
+        "op": "if-nez",
+        "args": "v0, +019h"
+      },
+      {
+        "offset": 1104,
+        "op": "new-instance",
+        "args": "v0, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 1108,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 1114,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/OomAdjuster;",
+    "method": "updateAndTrimProcessLocked(J J J Lcom/android/server/am/ActiveUids;)Z",
+    "code_item_offset": 3311416,
+    "target": {
+      "offset": 1092,
+      "op": "invoke-static",
+      "args": "v0, v6, v8, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+    },
+    "context": [
+      {
+        "offset": 1068,
+        "op": "if-eqz",
+        "args": "v0, +045h"
+      },
+      {
+        "offset": 1072,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION Z"
+      },
+      {
+        "offset": 1076,
+        "op": "if-eqz",
+        "args": "v0, +025h"
+      },
+      {
+        "offset": 1080,
+        "op": "iget",
+        "args": "v0, v9, Lcom/android/server/am/ProcessRecord;->uid I"
+      },
+      {
+        "offset": 1084,
+        "op": "iget-object",
+        "args": "v6, v9, Lcom/android/server/am/ProcessRecord;->processName Ljava/lang/String;"
+      },
+      {
+        "offset": 1088,
+        "op": "sget-object",
+        "args": "v8, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_MOST_USED Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 1092,
+        "op": "invoke-static",
+        "args": "v0, v6, v8, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 1098,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1100,
+        "op": "if-nez",
+        "args": "v0, +019h"
+      },
+      {
+        "offset": 1104,
+        "op": "new-instance",
+        "args": "v0, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 1108,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 1114,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 1120,
+        "op": "invoke-virtual",
+        "args": "v0, v5, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/OomAdjuster;",
+    "method": "updateAndTrimProcessLocked(J J J Lcom/android/server/am/ActiveUids;)Z",
+    "code_item_offset": 3311416,
+    "target": {
+      "offset": 1368,
+      "op": "sget-boolean",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION Z"
+    },
+    "context": [
+      {
+        "offset": 1344,
+        "op": "sub-int",
+        "args": "v0, v14, v15"
+      },
+      {
+        "offset": 1348,
+        "op": "move/from16",
+        "args": "v6, v24"
+      },
+      {
+        "offset": 1352,
+        "op": "if-le",
+        "args": "v0, v6, +065h"
+      },
+      {
+        "offset": 1356,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 1360,
+        "op": "const-string",
+        "args": "v5, \"cached #\""
+      },
+      {
+        "offset": 1364,
+        "op": "if-eqz",
+        "args": "v0, +046h"
+      },
+      {
+        "offset": 1368,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION Z"
+      },
+      {
+        "offset": 1372,
+        "op": "if-eqz",
+        "args": "v0, +027h"
+      },
+      {
+        "offset": 1376,
+        "op": "iget",
+        "args": "v0, v9, Lcom/android/server/am/ProcessRecord;->uid I"
+      },
+      {
+        "offset": 1380,
+        "op": "iget-object",
+        "args": "v2, v9, Lcom/android/server/am/ProcessRecord;->processName Ljava/lang/String;"
+      },
+      {
+        "offset": 1384,
+        "op": "move/from16",
+        "args": "v22, v1"
+      },
+      {
+        "offset": 1388,
+        "op": "sget-object",
+        "args": "v1, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_MOST_USED Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 1392,
+        "op": "invoke-static",
+        "args": "v0, v2, v1, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/OomAdjuster;",
+    "method": "updateAndTrimProcessLocked(J J J Lcom/android/server/am/ActiveUids;)Z",
+    "code_item_offset": 3311416,
+    "target": {
+      "offset": 1388,
+      "op": "sget-object",
+      "args": "v1, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_MOST_USED Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+    },
+    "context": [
+      {
+        "offset": 1364,
+        "op": "if-eqz",
+        "args": "v0, +046h"
+      },
+      {
+        "offset": 1368,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION Z"
+      },
+      {
+        "offset": 1372,
+        "op": "if-eqz",
+        "args": "v0, +027h"
+      },
+      {
+        "offset": 1376,
+        "op": "iget",
+        "args": "v0, v9, Lcom/android/server/am/ProcessRecord;->uid I"
+      },
+      {
+        "offset": 1380,
+        "op": "iget-object",
+        "args": "v2, v9, Lcom/android/server/am/ProcessRecord;->processName Ljava/lang/String;"
+      },
+      {
+        "offset": 1384,
+        "op": "move/from16",
+        "args": "v22, v1"
+      },
+      {
+        "offset": 1388,
+        "op": "sget-object",
+        "args": "v1, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_MOST_USED Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 1392,
+        "op": "invoke-static",
+        "args": "v0, v2, v1, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 1398,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1400,
+        "op": "if-nez",
+        "args": "v0, +01bh"
+      },
+      {
+        "offset": 1404,
+        "op": "new-instance",
+        "args": "v0, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 1408,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 1414,
+        "op": "invoke-virtual",
+        "args": "v0, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/OomAdjuster;",
+    "method": "updateAndTrimProcessLocked(J J J Lcom/android/server/am/ActiveUids;)Z",
+    "code_item_offset": 3311416,
+    "target": {
+      "offset": 1392,
+      "op": "invoke-static",
+      "args": "v0, v2, v1, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+    },
+    "context": [
+      {
+        "offset": 1368,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION Z"
+      },
+      {
+        "offset": 1372,
+        "op": "if-eqz",
+        "args": "v0, +027h"
+      },
+      {
+        "offset": 1376,
+        "op": "iget",
+        "args": "v0, v9, Lcom/android/server/am/ProcessRecord;->uid I"
+      },
+      {
+        "offset": 1380,
+        "op": "iget-object",
+        "args": "v2, v9, Lcom/android/server/am/ProcessRecord;->processName Ljava/lang/String;"
+      },
+      {
+        "offset": 1384,
+        "op": "move/from16",
+        "args": "v22, v1"
+      },
+      {
+        "offset": 1388,
+        "op": "sget-object",
+        "args": "v1, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_MOST_USED Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 1392,
+        "op": "invoke-static",
+        "args": "v0, v2, v1, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 1398,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1400,
+        "op": "if-nez",
+        "args": "v0, +01bh"
+      },
+      {
+        "offset": 1404,
+        "op": "new-instance",
+        "args": "v0, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 1408,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 1414,
+        "op": "invoke-virtual",
+        "args": "v0, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 1420,
+        "op": "invoke-virtual",
+        "args": "v0, v14, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ProcessList;",
+    "method": "newProcessRecordLocked(Landroid/content/pm/ApplicationInfo; Ljava/lang/String; Z I Lcom/android/server/am/HostingRecord;)Lcom/android/server/am/ProcessRecord;",
+    "code_item_offset": 3347892,
+    "target": {
+      "offset": 252,
+      "op": "sget-boolean",
+      "args": "v3, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION_KEEP_TASK Z"
+    },
+    "context": [
+      {
+        "offset": 228,
+        "op": "if-eqz",
+        "args": "v11, +008h"
+      },
+      {
+        "offset": 232,
+        "op": "if-eqz",
+        "args": "v12, +006h"
+      },
+      {
+        "offset": 236,
+        "op": "const/16",
+        "args": "v3, -700"
+      },
+      {
+        "offset": 240,
+        "op": "iput",
+        "args": "v3, v5, Lcom/android/server/am/ProcessRecord;->maxAdj I"
+      },
+      {
+        "offset": 244,
+        "op": "sget-boolean",
+        "args": "v3, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 248,
+        "op": "if-eqz",
+        "args": "v3, +02ch"
+      },
+      {
+        "offset": 252,
+        "op": "sget-boolean",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION_KEEP_TASK Z"
+      },
+      {
+        "offset": 256,
+        "op": "if-eqz",
+        "args": "v3, +028h"
+      },
+      {
+        "offset": 260,
+        "op": "iget",
+        "args": "v3, v5, Lcom/android/server/am/ProcessRecord;->maxAdj I"
+      },
+      {
+        "offset": 264,
+        "op": "const/16",
+        "args": "v6, 900"
+      },
+      {
+        "offset": 268,
+        "op": "if-le",
+        "args": "v3, v6, +022h"
+      },
+      {
+        "offset": 272,
+        "op": "sget-object",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_ADJ Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 276,
+        "op": "invoke-static",
+        "args": "v2, v0, v3, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ProcessList;",
+    "method": "newProcessRecordLocked(Landroid/content/pm/ApplicationInfo; Ljava/lang/String; Z I Lcom/android/server/am/HostingRecord;)Lcom/android/server/am/ProcessRecord;",
+    "code_item_offset": 3347892,
+    "target": {
+      "offset": 272,
+      "op": "sget-object",
+      "args": "v3, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_ADJ Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+    },
+    "context": [
+      {
+        "offset": 248,
+        "op": "if-eqz",
+        "args": "v3, +02ch"
+      },
+      {
+        "offset": 252,
+        "op": "sget-boolean",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION_KEEP_TASK Z"
+      },
+      {
+        "offset": 256,
+        "op": "if-eqz",
+        "args": "v3, +028h"
+      },
+      {
+        "offset": 260,
+        "op": "iget",
+        "args": "v3, v5, Lcom/android/server/am/ProcessRecord;->maxAdj I"
+      },
+      {
+        "offset": 264,
+        "op": "const/16",
+        "args": "v6, 900"
+      },
+      {
+        "offset": 268,
+        "op": "if-le",
+        "args": "v3, v6, +022h"
+      },
+      {
+        "offset": 272,
+        "op": "sget-object",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_ADJ Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 276,
+        "op": "invoke-static",
+        "args": "v2, v0, v3, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 282,
+        "op": "move-result",
+        "args": "v3"
+      },
+      {
+        "offset": 284,
+        "op": "if-eqz",
+        "args": "v3, +01ah"
+      },
+      {
+        "offset": 288,
+        "op": "iput",
+        "args": "v6, v5, Lcom/android/server/am/ProcessRecord;->maxAdj I"
+      },
+      {
+        "offset": 292,
+        "op": "new-instance",
+        "args": "v3, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 296,
+        "op": "invoke-direct",
+        "args": "v3, Ljava/lang/StringBuilder;-><init>()V"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ProcessList;",
+    "method": "newProcessRecordLocked(Landroid/content/pm/ApplicationInfo; Ljava/lang/String; Z I Lcom/android/server/am/HostingRecord;)Lcom/android/server/am/ProcessRecord;",
+    "code_item_offset": 3347892,
+    "target": {
+      "offset": 276,
+      "op": "invoke-static",
+      "args": "v2, v0, v3, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+    },
+    "context": [
+      {
+        "offset": 252,
+        "op": "sget-boolean",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION_KEEP_TASK Z"
+      },
+      {
+        "offset": 256,
+        "op": "if-eqz",
+        "args": "v3, +028h"
+      },
+      {
+        "offset": 260,
+        "op": "iget",
+        "args": "v3, v5, Lcom/android/server/am/ProcessRecord;->maxAdj I"
+      },
+      {
+        "offset": 264,
+        "op": "const/16",
+        "args": "v6, 900"
+      },
+      {
+        "offset": 268,
+        "op": "if-le",
+        "args": "v3, v6, +022h"
+      },
+      {
+        "offset": 272,
+        "op": "sget-object",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_ADJ Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 276,
+        "op": "invoke-static",
+        "args": "v2, v0, v3, v4, Lcom/android/server/am/JourneyPerformanceService;->IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 282,
+        "op": "move-result",
+        "args": "v3"
+      },
+      {
+        "offset": 284,
+        "op": "if-eqz",
+        "args": "v3, +01ah"
+      },
+      {
+        "offset": 288,
+        "op": "iput",
+        "args": "v6, v5, Lcom/android/server/am/ProcessRecord;->maxAdj I"
+      },
+      {
+        "offset": 292,
+        "op": "new-instance",
+        "args": "v3, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 296,
+        "op": "invoke-direct",
+        "args": "v3, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 302,
+        "op": "const-string",
+        "args": "v4, \"Set maxAdj 900  to most used \""
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/appwidget/AppWidgetServiceImpl;",
+    "method": "onWidgetRemovedLocked(Lcom/android/server/appwidget/AppWidgetServiceImpl$Widget;)V",
+    "code_item_offset": 3550016,
+    "target": {
+      "offset": 178,
+      "op": "sget-boolean",
+      "args": "v4, Lcom/android/server/am/JourneyPerformanceService;->WIDGET_OPTIMIZATION Z"
+    },
+    "context": [
+      {
+        "offset": 156,
+        "op": "return-void",
+        "args": ""
+      },
+      {
+        "offset": 158,
+        "op": "add-int/lit8",
+        "args": "v4, v4, 1"
+      },
+      {
+        "offset": 162,
+        "op": "goto",
+        "args": "-2ah"
+      },
+      {
+        "offset": 164,
+        "op": "invoke-virtual",
+        "args": "v2, v1, Landroid/util/ArraySet;->remove(Ljava/lang/Object;)Z"
+      },
+      {
+        "offset": 170,
+        "op": "sget-boolean",
+        "args": "v4, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 174,
+        "op": "if-eqz",
+        "args": "v4, +00ah"
+      },
+      {
+        "offset": 178,
+        "op": "sget-boolean",
+        "args": "v4, Lcom/android/server/am/JourneyPerformanceService;->WIDGET_OPTIMIZATION Z"
+      },
+      {
+        "offset": 182,
+        "op": "if-eqz",
+        "args": "v4, +006h"
+      },
+      {
+        "offset": 186,
+        "op": "const/4",
+        "args": "v4, 0"
+      },
+      {
+        "offset": 188,
+        "op": "invoke-static",
+        "args": "v1, v4, Lcom/android/server/am/JourneyPerformanceService;->NotifyWidgetChange(Ljava/lang/String; Z)V"
+      },
+      {
+        "offset": 194,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/appwidget/AppWidgetServiceImpl;",
+    "method": "onWidgetRemovedLocked(Lcom/android/server/appwidget/AppWidgetServiceImpl$Widget;)V",
+    "code_item_offset": 3550016,
+    "target": {
+      "offset": 188,
+      "op": "invoke-static",
+      "args": "v1, v4, Lcom/android/server/am/JourneyPerformanceService;->NotifyWidgetChange(Ljava/lang/String; Z)V"
+    },
+    "context": [
+      {
+        "offset": 164,
+        "op": "invoke-virtual",
+        "args": "v2, v1, Landroid/util/ArraySet;->remove(Ljava/lang/Object;)Z"
+      },
+      {
+        "offset": 170,
+        "op": "sget-boolean",
+        "args": "v4, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 174,
+        "op": "if-eqz",
+        "args": "v4, +00ah"
+      },
+      {
+        "offset": 178,
+        "op": "sget-boolean",
+        "args": "v4, Lcom/android/server/am/JourneyPerformanceService;->WIDGET_OPTIMIZATION Z"
+      },
+      {
+        "offset": 182,
+        "op": "if-eqz",
+        "args": "v4, +006h"
+      },
+      {
+        "offset": 186,
+        "op": "const/4",
+        "args": "v4, 0"
+      },
+      {
+        "offset": 188,
+        "op": "invoke-static",
+        "args": "v1, v4, Lcom/android/server/am/JourneyPerformanceService;->NotifyWidgetChange(Ljava/lang/String; Z)V"
+      },
+      {
+        "offset": 194,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/appwidget/AppWidgetServiceImpl;",
+    "method": "onWidgetProviderAddedOrChangedLocked(Lcom/android/server/appwidget/AppWidgetServiceImpl$Widget;)V",
+    "code_item_offset": 3549828,
+    "target": {
+      "offset": 132,
+      "op": "sget-boolean",
+      "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->WIDGET_OPTIMIZATION Z"
+    },
+    "context": [
+      {
+        "offset": 106,
+        "op": "iget-object",
+        "args": "v2, v5, Lcom/android/server/appwidget/AppWidgetServiceImpl$Widget;->provider Lcom/android/server/appwidget/AppWidgetServiceImpl$Provider;"
+      },
+      {
+        "offset": 110,
+        "op": "invoke-direct",
+        "args": "v4, v2, v5, Lcom/android/server/appwidget/AppWidgetServiceImpl;->maskWidgetsViewsLocked(Lcom/android/server/appwidget/AppWidgetServiceImpl$Provider; Lcom/android/server/appwidget/AppWidgetServiceImpl$Widget;)V"
+      },
+      {
+        "offset": 116,
+        "op": "goto",
+        "args": "+4h"
+      },
+      {
+        "offset": 118,
+        "op": "invoke-static",
+        "args": "v5, Lcom/android/server/appwidget/AppWidgetServiceImpl$Widget;->access$1000(Lcom/android/server/appwidget/AppWidgetServiceImpl$Widget;)Z"
+      },
+      {
+        "offset": 124,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 128,
+        "op": "if-eqz",
+        "args": "v2, +014h"
+      },
+      {
+        "offset": 132,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->WIDGET_OPTIMIZATION Z"
+      },
+      {
+        "offset": 136,
+        "op": "if-eqz",
+        "args": "v2, +010h"
+      },
+      {
+        "offset": 140,
+        "op": "iget-object",
+        "args": "v2, v5, Lcom/android/server/appwidget/AppWidgetServiceImpl$Widget;->provider Lcom/android/server/appwidget/AppWidgetServiceImpl$Provider;"
+      },
+      {
+        "offset": 144,
+        "op": "iget-object",
+        "args": "v2, v2, Lcom/android/server/appwidget/AppWidgetServiceImpl$Provider;->info Landroid/appwidget/AppWidgetProviderInfo;"
+      },
+      {
+        "offset": 148,
+        "op": "iget-object",
+        "args": "v2, v2, Landroid/appwidget/AppWidgetProviderInfo;->provider Landroid/content/ComponentName;"
+      },
+      {
+        "offset": 152,
+        "op": "invoke-virtual",
+        "args": "v2, Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 158,
+        "op": "move-result-object",
+        "args": "v2"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/appwidget/AppWidgetServiceImpl;",
+    "method": "onWidgetProviderAddedOrChangedLocked(Lcom/android/server/appwidget/AppWidgetServiceImpl$Widget;)V",
+    "code_item_offset": 3549828,
+    "target": {
+      "offset": 162,
+      "op": "invoke-static",
+      "args": "v2, v3, Lcom/android/server/am/JourneyPerformanceService;->NotifyWidgetChange(Ljava/lang/String; Z)V"
+    },
+    "context": [
+      {
+        "offset": 140,
+        "op": "iget-object",
+        "args": "v2, v5, Lcom/android/server/appwidget/AppWidgetServiceImpl$Widget;->provider Lcom/android/server/appwidget/AppWidgetServiceImpl$Provider;"
+      },
+      {
+        "offset": 144,
+        "op": "iget-object",
+        "args": "v2, v2, Lcom/android/server/appwidget/AppWidgetServiceImpl$Provider;->info Landroid/appwidget/AppWidgetProviderInfo;"
+      },
+      {
+        "offset": 148,
+        "op": "iget-object",
+        "args": "v2, v2, Landroid/appwidget/AppWidgetProviderInfo;->provider Landroid/content/ComponentName;"
+      },
+      {
+        "offset": 152,
+        "op": "invoke-virtual",
+        "args": "v2, Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 158,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 160,
+        "op": "const/4",
+        "args": "v3, 1"
+      },
+      {
+        "offset": 162,
+        "op": "invoke-static",
+        "args": "v2, v3, Lcom/android/server/am/JourneyPerformanceService;->NotifyWidgetChange(Ljava/lang/String; Z)V"
+      },
+      {
+        "offset": 168,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/notification/NotificationManagerService$CancelNotificationRunnable;",
+    "method": "<init>(Lcom/android/server/notification/NotificationManagerService; I I Ljava/lang/String; Ljava/lang/String; I I I Z I I I I Lcom/android/server/notification/ManagedServices$ManagedServiceInfo;)V",
+    "code_item_offset": 5516212,
+    "target": {
+      "offset": 48,
+      "op": "sget-boolean",
+      "args": "v4, Lcom/android/server/am/JourneyPerformanceService;->NOTIFICATION_FOR_FGSERVICE_OPTIMIZATION Z"
+    },
+    "context": [
+      {
+        "offset": 26,
+        "op": "move/from16",
+        "args": "v3, v19"
+      },
+      {
+        "offset": 30,
+        "op": "iput",
+        "args": "v3, v0, Lcom/android/server/notification/NotificationManagerService$CancelNotificationRunnable;->mCallingPid I"
+      },
+      {
+        "offset": 34,
+        "op": "const/4",
+        "args": "v4, 0"
+      },
+      {
+        "offset": 36,
+        "op": "iput-boolean",
+        "args": "v4, v0, Lcom/android/server/notification/NotificationManagerService$CancelNotificationRunnable;->mMustHandleNoti Z"
+      },
+      {
+        "offset": 40,
+        "op": "sget-boolean",
+        "args": "v4, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 44,
+        "op": "if-eqz",
+        "args": "v4, +011h"
+      },
+      {
+        "offset": 48,
+        "op": "sget-boolean",
+        "args": "v4, Lcom/android/server/am/JourneyPerformanceService;->NOTIFICATION_FOR_FGSERVICE_OPTIMIZATION Z"
+      },
+      {
+        "offset": 52,
+        "op": "if-eqz",
+        "args": "v4, +00dh"
+      },
+      {
+        "offset": 56,
+        "op": "invoke-static",
+        "args": "Landroid/os/Binder;->getCallingUid()I"
+      },
+      {
+        "offset": 62,
+        "op": "move-result",
+        "args": "v4"
+      },
+      {
+        "offset": 64,
+        "op": "const/16",
+        "args": "v5, 10000"
+      },
+      {
+        "offset": 68,
+        "op": "if-lt",
+        "args": "v4, v5, +005h"
+      },
+      {
+        "offset": 72,
+        "op": "const/4",
+        "args": "v4, 1"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/notification/NotificationManagerService$CancelNotificationRunnable;",
+    "method": "doNotificationCancelLocked()V",
+    "code_item_offset": 5516440,
+    "target": {
+      "offset": 244,
+      "op": "sget-boolean",
+      "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->NOTIFICATION_FOR_FGSERVICE_OPTIMIZATION Z"
+    },
+    "context": [
+      {
+        "offset": 222,
+        "op": "move-object/from16",
+        "args": "v18, v2"
+      },
+      {
+        "offset": 226,
+        "op": "goto",
+        "args": "+5h"
+      },
+      {
+        "offset": 228,
+        "op": "sget-object",
+        "args": "v2, Lcom/android/server/notification/-$$Lambda$NotificationManagerService$CancelNotificationRunnable$XBVTY1rRqCxv8gkX583KsdWKSbE;->INSTANCE Lcom/android/server/notification/-$$Lambda$NotificationManagerService$CancelNotificationRunnable$XBVTY1rRqCxv8gkX583KsdWKSbE;"
+      },
+      {
+        "offset": 232,
+        "op": "move-object/from16",
+        "args": "v18, v2"
+      },
+      {
+        "offset": 236,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 240,
+        "op": "if-eqz",
+        "args": "v2, +02bh"
+      },
+      {
+        "offset": 244,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->NOTIFICATION_FOR_FGSERVICE_OPTIMIZATION Z"
+      },
+      {
+        "offset": 248,
+        "op": "if-eqz",
+        "args": "v2, +027h"
+      },
+      {
+        "offset": 252,
+        "op": "iget-boolean",
+        "args": "v2, v0, Lcom/android/server/notification/NotificationManagerService$CancelNotificationRunnable;->mMustHandleNoti Z"
+      },
+      {
+        "offset": 256,
+        "op": "invoke-virtual",
+        "args": "v1, v2, Lcom/android/server/notification/NotificationRecord;->SetMustHandleTheNotification(Z)V"
+      },
+      {
+        "offset": 262,
+        "op": "new-instance",
+        "args": "v2, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 266,
+        "op": "invoke-direct",
+        "args": "v2, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 272,
+        "op": "const-string",
+        "args": "v3, \"SetMustHandleTheNotification for: \""
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/pm/Settings;",
+    "method": "setPackageStoppedStateLPw(Lcom/android/server/pm/PackageManagerService; Ljava/lang/String; Z Z I I)Z",
+    "code_item_offset": 6207532,
+    "target": {
+      "offset": 154,
+      "op": "sget-boolean",
+      "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PKG_STOP Z"
+    },
+    "context": [
+      {
+        "offset": 132,
+        "op": "invoke-virtual",
+        "args": "v1, v15, Lcom/android/server/pm/PackageSetting;->getStopped(I)Z"
+      },
+      {
+        "offset": 138,
+        "op": "move-result",
+        "args": "v2"
+      },
+      {
+        "offset": 140,
+        "op": "const/4",
+        "args": "v3, 0"
+      },
+      {
+        "offset": 142,
+        "op": "if-eq",
+        "args": "v2, v12, +09fh"
+      },
+      {
+        "offset": 146,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 150,
+        "op": "if-eqz",
+        "args": "v2, +07eh"
+      },
+      {
+        "offset": 154,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PKG_STOP Z"
+      },
+      {
+        "offset": 158,
+        "op": "if-eqz",
+        "args": "v2, +07ah"
+      },
+      {
+        "offset": 162,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PKG_STOP_STACK Z"
+      },
+      {
+        "offset": 166,
+        "op": "const-string",
+        "args": "v4, \":\""
+      },
+      {
+        "offset": 170,
+        "op": "const-string",
+        "args": "v5, \" from \""
+      },
+      {
+        "offset": 174,
+        "op": "const-string/jumbo",
+        "args": "v6, stopped"
+      },
+      {
+        "offset": 180,
+        "op": "const-string",
+        "args": "v7, \"NOT stopped\""
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/pm/Settings;",
+    "method": "setPackageStoppedStateLPw(Lcom/android/server/pm/PackageManagerService; Ljava/lang/String; Z Z I I)Z",
+    "code_item_offset": 6207532,
+    "target": {
+      "offset": 162,
+      "op": "sget-boolean",
+      "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PKG_STOP_STACK Z"
+    },
+    "context": [
+      {
+        "offset": 140,
+        "op": "const/4",
+        "args": "v3, 0"
+      },
+      {
+        "offset": 142,
+        "op": "if-eq",
+        "args": "v2, v12, +09fh"
+      },
+      {
+        "offset": 146,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 150,
+        "op": "if-eqz",
+        "args": "v2, +07eh"
+      },
+      {
+        "offset": 154,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PKG_STOP Z"
+      },
+      {
+        "offset": 158,
+        "op": "if-eqz",
+        "args": "v2, +07ah"
+      },
+      {
+        "offset": 162,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PKG_STOP_STACK Z"
+      },
+      {
+        "offset": 166,
+        "op": "const-string",
+        "args": "v4, \":\""
+      },
+      {
+        "offset": 170,
+        "op": "const-string",
+        "args": "v5, \" from \""
+      },
+      {
+        "offset": 174,
+        "op": "const-string/jumbo",
+        "args": "v6, stopped"
+      },
+      {
+        "offset": 180,
+        "op": "const-string",
+        "args": "v7, \"NOT stopped\""
+      },
+      {
+        "offset": 184,
+        "op": "const-string",
+        "args": "v8, \" change to \""
+      },
+      {
+        "offset": 188,
+        "op": "if-eqz",
+        "args": "v2, +03eh"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/pm/Settings;",
+    "method": "setPackageStoppedStateLPw(Lcom/android/server/pm/PackageManagerService; Ljava/lang/String; Z Z I I)Z",
+    "code_item_offset": 6207532,
+    "target": {
+      "offset": 304,
+      "op": "invoke-static",
+      "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->Log(Ljava/lang/String;)V"
+    },
+    "context": [
+      {
+        "offset": 278,
+        "op": "const/16",
+        "args": "v4, 15"
+      },
+      {
+        "offset": 282,
+        "op": "invoke-static",
+        "args": "v4, Landroid/os/Debug;->getCallers(I)Ljava/lang/String;"
+      },
+      {
+        "offset": 288,
+        "op": "move-result-object",
+        "args": "v4"
+      },
+      {
+        "offset": 290,
+        "op": "invoke-virtual",
+        "args": "v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 296,
+        "op": "invoke-virtual",
+        "args": "v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 302,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 304,
+        "op": "invoke-static",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->Log(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 310,
+        "op": "goto",
+        "args": "+2eh"
+      },
+      {
+        "offset": 312,
+        "op": "new-instance",
+        "args": "v2, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 316,
+        "op": "invoke-direct",
+        "args": "v2, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 322,
+        "op": "invoke-virtual",
+        "args": "v2, v11, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 328,
+        "op": "invoke-virtual",
+        "args": "v2, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 334,
+        "op": "if-eqz",
+        "args": "v12, +003h"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/pm/Settings;",
+    "method": "setPackageStoppedStateLPw(Lcom/android/server/pm/PackageManagerService; Ljava/lang/String; Z Z I I)Z",
+    "code_item_offset": 6207532,
+    "target": {
+      "offset": 396,
+      "op": "invoke-static",
+      "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->Log(Ljava/lang/String;)V"
+    },
+    "context": [
+      {
+        "offset": 368,
+        "op": "invoke-virtual",
+        "args": "v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 374,
+        "op": "invoke-static",
+        "args": "Landroid/os/Binder;->getCallingUid()I"
+      },
+      {
+        "offset": 380,
+        "op": "move-result",
+        "args": "v4"
+      },
+      {
+        "offset": 382,
+        "op": "invoke-virtual",
+        "args": "v2, v4, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 388,
+        "op": "invoke-virtual",
+        "args": "v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 394,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 396,
+        "op": "invoke-static",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->Log(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 402,
+        "op": "invoke-virtual",
+        "args": "v1, v12, v15, Lcom/android/server/pm/PackageSetting;->setStopped(Z I)V"
+      },
+      {
+        "offset": 408,
+        "op": "invoke-virtual",
+        "args": "v1, v15, Lcom/android/server/pm/PackageSetting;->getNotLaunched(I)Z"
+      },
+      {
+        "offset": 414,
+        "op": "move-result",
+        "args": "v2"
+      },
+      {
+        "offset": 416,
+        "op": "if-eqz",
+        "args": "v2, +014h"
+      },
+      {
+        "offset": 420,
+        "op": "iget-object",
+        "args": "v2, v1, Lcom/android/server/pm/PackageSetting;->installSource Lcom/android/server/pm/InstallSource;"
+      },
+      {
+        "offset": 424,
+        "op": "iget-object",
+        "args": "v2, v2, Lcom/android/server/pm/InstallSource;->installerPackageName Ljava/lang/String;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActivityManagerService;",
+    "method": "getContentProviderImpl(Landroid/app/IApplicationThread; Ljava/lang/String; Landroid/os/IBinder; I Ljava/lang/String; Ljava/lang/String; Z I)Landroid/app/ContentProviderHolder;",
+    "code_item_offset": 2943780,
+    "target": {
+      "offset": 3648,
+      "op": "sget-boolean",
+      "args": "v1, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_CONTENT_PROVIDER Z"
+    },
+    "context": [
+      {
+        "offset": 3628,
+        "op": "move-result-object",
+        "args": "v1"
+      },
+      {
+        "offset": 3630,
+        "op": "monitor-exit",
+        "args": "v43"
+      },
+      {
+        "offset": 3632,
+        "op": "invoke-static",
+        "args": "Lcom/android/server/am/ActivityManagerService;->resetPriorityAfterLockedSection()V"
+      },
+      {
+        "offset": 3638,
+        "op": "return-object",
+        "args": "v1"
+      },
+      {
+        "offset": 3640,
+        "op": "sget-boolean",
+        "args": "v1, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 3644,
+        "op": "if-eqz",
+        "args": "v1, +04ch"
+      },
+      {
+        "offset": 3648,
+        "op": "sget-boolean",
+        "args": "v1, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_CONTENT_PROVIDER Z"
+      },
+      {
+        "offset": 3652,
+        "op": "if-eqz",
+        "args": "v1, +048h"
+      },
+      {
+        "offset": 3656,
+        "op": "iget-object",
+        "args": "v1, v9, Lcom/android/server/am/ContentProviderRecord;->appInfo Landroid/content/pm/ApplicationInfo;"
+      },
+      {
+        "offset": 3660,
+        "op": "iget",
+        "args": "v1, v1, Landroid/content/pm/ApplicationInfo;->uid I"
+      },
+      {
+        "offset": 3664,
+        "op": "iget-object",
+        "args": "v2, v9, Lcom/android/server/am/ContentProviderRecord;->info Landroid/content/pm/ProviderInfo;"
+      },
+      {
+        "offset": 3668,
+        "op": "iget-object",
+        "args": "v2, v2, Landroid/content/pm/ProviderInfo;->packageName Ljava/lang/String;"
+      },
+      {
+        "offset": 3672,
+        "op": "invoke-static",
+        "args": "v14, v1, v15, v2, Lcom/android/server/am/JourneyPerformanceService;->IsBlackCallerAllowed(I I Ljava/lang/String; Ljava/lang/String;)Z"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActivityManagerService;",
+    "method": "getContentProviderImpl(Landroid/app/IApplicationThread; Ljava/lang/String; Landroid/os/IBinder; I Ljava/lang/String; Ljava/lang/String; Z I)Landroid/app/ContentProviderHolder;",
+    "code_item_offset": 2943780,
+    "target": {
+      "offset": 3672,
+      "op": "invoke-static",
+      "args": "v14, v1, v15, v2, Lcom/android/server/am/JourneyPerformanceService;->IsBlackCallerAllowed(I I Ljava/lang/String; Ljava/lang/String;)Z"
+    },
+    "context": [
+      {
+        "offset": 3648,
+        "op": "sget-boolean",
+        "args": "v1, Lcom/android/server/am/JourneyPerformanceService;->OPTIMIZE_CONTENT_PROVIDER Z"
+      },
+      {
+        "offset": 3652,
+        "op": "if-eqz",
+        "args": "v1, +048h"
+      },
+      {
+        "offset": 3656,
+        "op": "iget-object",
+        "args": "v1, v9, Lcom/android/server/am/ContentProviderRecord;->appInfo Landroid/content/pm/ApplicationInfo;"
+      },
+      {
+        "offset": 3660,
+        "op": "iget",
+        "args": "v1, v1, Landroid/content/pm/ApplicationInfo;->uid I"
+      },
+      {
+        "offset": 3664,
+        "op": "iget-object",
+        "args": "v2, v9, Lcom/android/server/am/ContentProviderRecord;->info Landroid/content/pm/ProviderInfo;"
+      },
+      {
+        "offset": 3668,
+        "op": "iget-object",
+        "args": "v2, v2, Landroid/content/pm/ProviderInfo;->packageName Ljava/lang/String;"
+      },
+      {
+        "offset": 3672,
+        "op": "invoke-static",
+        "args": "v14, v1, v15, v2, Lcom/android/server/am/JourneyPerformanceService;->IsBlackCallerAllowed(I I Ljava/lang/String; Ljava/lang/String;)Z"
+      },
+      {
+        "offset": 3678,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 3680,
+        "op": "if-nez",
+        "args": "v1, +037h"
+      },
+      {
+        "offset": 3684,
+        "op": "const-string",
+        "args": "v2, \"ActivityManager\""
+      },
+      {
+        "offset": 3688,
+        "op": "new-instance",
+        "args": "v3, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3692,
+        "op": "invoke-direct",
+        "args": "v3, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 3698,
+        "op": "const-string",
+        "args": "v4, \"getContentProviderImpl , reject  start for callerPid = \""
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActivityManagerService;",
+    "method": "KillSomeProc(Z)Z",
+    "code_item_offset": 2961308,
+    "target": {
+      "offset": 48,
+      "op": "sget-boolean",
+      "args": "v6, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_CHECK_ML Z"
+    },
+    "context": [
+      {
+        "offset": 26,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 28,
+        "op": "invoke-virtual",
+        "args": "v0, Landroid/util/ArrayMap;->size()I"
+      },
+      {
+        "offset": 34,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 36,
+        "op": "const-wide/16",
+        "args": "v2, 0"
+      },
+      {
+        "offset": 40,
+        "op": "invoke-static",
+        "args": "Landroid/os/SystemClock;->uptimeMillis()J"
+      },
+      {
+        "offset": 46,
+        "op": "move-result-wide",
+        "args": "v4"
+      },
+      {
+        "offset": 48,
+        "op": "sget-boolean",
+        "args": "v6, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_CHECK_ML Z"
+      },
+      {
+        "offset": 52,
+        "op": "if-eqz",
+        "args": "v6, +018h"
+      },
+      {
+        "offset": 56,
+        "op": "const-string",
+        "args": "v6, \"ActivityManager\""
+      },
+      {
+        "offset": 60,
+        "op": "new-instance",
+        "args": "v7, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 64,
+        "op": "invoke-direct",
+        "args": "v7, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 70,
+        "op": "const-string",
+        "args": "v8, \"Check KillSomeProc start :\""
+      },
+      {
+        "offset": 74,
+        "op": "invoke-virtual",
+        "args": "v7, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActivityManagerService;",
+    "method": "KillSomeProc(Z)Z",
+    "code_item_offset": 2961308,
+    "target": {
+      "offset": 216,
+      "op": "sget-boolean",
+      "args": "v14, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_CHECK_ML Z"
+    },
+    "context": [
+      {
+        "offset": 192,
+        "op": "if-ge",
+        "args": "v10, v9, +154h"
+      },
+      {
+        "offset": 196,
+        "op": "invoke-virtual",
+        "args": "v8, v10, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;"
+      },
+      {
+        "offset": 202,
+        "op": "move-result-object",
+        "args": "v11"
+      },
+      {
+        "offset": 204,
+        "op": "check-cast",
+        "args": "v11, Lcom/android/server/am/ProcessRecord;"
+      },
+      {
+        "offset": 208,
+        "op": "invoke-static",
+        "args": "Landroid/os/SystemClock;->elapsedRealtime()J"
+      },
+      {
+        "offset": 214,
+        "op": "move-result-wide",
+        "args": "v12"
+      },
+      {
+        "offset": 216,
+        "op": "sget-boolean",
+        "args": "v14, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_CHECK_ML Z"
+      },
+      {
+        "offset": 220,
+        "op": "if-nez",
+        "args": "v14, +017h"
+      },
+      {
+        "offset": 224,
+        "op": "iget-wide",
+        "args": "v14, v11, Lcom/android/server/am/ProcessRecord;->startTime J"
+      },
+      {
+        "offset": 228,
+        "op": "cmp-long",
+        "args": "v14, v14, v12"
+      },
+      {
+        "offset": 232,
+        "op": "if-gez",
+        "args": "v14, +011h"
+      },
+      {
+        "offset": 236,
+        "op": "iget-wide",
+        "args": "v14, v11, Lcom/android/server/am/ProcessRecord;->startTime J"
+      },
+      {
+        "offset": 240,
+        "op": "sub-long",
+        "args": "v14, v12, v14"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActivityManagerService;",
+    "method": "KillSomeProc(Z)Z",
+    "code_item_offset": 2961308,
+    "target": {
+      "offset": 360,
+      "op": "sget-boolean",
+      "args": "v14, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_CHECK_ML Z"
+    },
+    "context": [
+      {
+        "offset": 338,
+        "op": "move/from16",
+        "args": "v18, v0"
+      },
+      {
+        "offset": 342,
+        "op": "goto/16",
+        "args": "+103h"
+      },
+      {
+        "offset": 346,
+        "op": "invoke-virtual",
+        "args": "v11, Lcom/android/server/am/ProcessRecord;->getCurProcState()I"
+      },
+      {
+        "offset": 352,
+        "op": "move-result",
+        "args": "v14"
+      },
+      {
+        "offset": 354,
+        "op": "const/4",
+        "args": "v15, 3"
+      },
+      {
+        "offset": 356,
+        "op": "if-lt",
+        "args": "v14, v15, +0f7h"
+      },
+      {
+        "offset": 360,
+        "op": "sget-boolean",
+        "args": "v14, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_CHECK_ML Z"
+      },
+      {
+        "offset": 364,
+        "op": "if-eqz",
+        "args": "v14, +03ah"
+      },
+      {
+        "offset": 368,
+        "op": "const-string",
+        "args": "v14, \"ActivityManager\""
+      },
+      {
+        "offset": 372,
+        "op": "new-instance",
+        "args": "v7, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 376,
+        "op": "invoke-direct",
+        "args": "v7, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 382,
+        "op": "const-string",
+        "args": "v15, \"Check KillSomeProc:\""
+      },
+      {
+        "offset": 386,
+        "op": "invoke-virtual",
+        "args": "v7, v15, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActivityManagerService;",
+    "method": "KillSomeProc(Z)Z",
+    "code_item_offset": 2961308,
+    "target": {
+      "offset": 480,
+      "op": "sget-object",
+      "args": "v7, Lcom/android/server/am/JourneyPerformanceService;->WHITE_LIST_FREE_PACKAGE_ML Ljava/util/List;"
+    },
+    "context": [
+      {
+        "offset": 452,
+        "op": "invoke-static/range",
+        "args": "v18 ... v19, Landroid/util/TimeUtils;->formatDuration(J)Ljava/lang/String;"
+      },
+      {
+        "offset": 458,
+        "op": "move-result-object",
+        "args": "v15"
+      },
+      {
+        "offset": 460,
+        "op": "invoke-virtual",
+        "args": "v7, v15, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 466,
+        "op": "invoke-virtual",
+        "args": "v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 472,
+        "op": "move-result-object",
+        "args": "v7"
+      },
+      {
+        "offset": 474,
+        "op": "invoke-static",
+        "args": "v14, v7, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 480,
+        "op": "sget-object",
+        "args": "v7, Lcom/android/server/am/JourneyPerformanceService;->WHITE_LIST_FREE_PACKAGE_ML Ljava/util/List;"
+      },
+      {
+        "offset": 484,
+        "op": "invoke-interface",
+        "args": "v7, Ljava/util/List;->isEmpty()Z"
+      },
+      {
+        "offset": 490,
+        "op": "move-result",
+        "args": "v7"
+      },
+      {
+        "offset": 492,
+        "op": "if-nez",
+        "args": "v7, +040h"
+      },
+      {
+        "offset": 496,
+        "op": "const/4",
+        "args": "v7, 0"
+      },
+      {
+        "offset": 498,
+        "op": "sget-object",
+        "args": "v14, Lcom/android/server/am/JourneyPerformanceService;->WHITE_LIST_FREE_PACKAGE_ML Ljava/util/List;"
+      },
+      {
+        "offset": 502,
+        "op": "invoke-interface",
+        "args": "v14, Ljava/util/List;->size()I"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActivityManagerService;",
+    "method": "KillSomeProc(Z)Z",
+    "code_item_offset": 2961308,
+    "target": {
+      "offset": 498,
+      "op": "sget-object",
+      "args": "v14, Lcom/android/server/am/JourneyPerformanceService;->WHITE_LIST_FREE_PACKAGE_ML Ljava/util/List;"
+    },
+    "context": [
+      {
+        "offset": 474,
+        "op": "invoke-static",
+        "args": "v14, v7, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 480,
+        "op": "sget-object",
+        "args": "v7, Lcom/android/server/am/JourneyPerformanceService;->WHITE_LIST_FREE_PACKAGE_ML Ljava/util/List;"
+      },
+      {
+        "offset": 484,
+        "op": "invoke-interface",
+        "args": "v7, Ljava/util/List;->isEmpty()Z"
+      },
+      {
+        "offset": 490,
+        "op": "move-result",
+        "args": "v7"
+      },
+      {
+        "offset": 492,
+        "op": "if-nez",
+        "args": "v7, +040h"
+      },
+      {
+        "offset": 496,
+        "op": "const/4",
+        "args": "v7, 0"
+      },
+      {
+        "offset": 498,
+        "op": "sget-object",
+        "args": "v14, Lcom/android/server/am/JourneyPerformanceService;->WHITE_LIST_FREE_PACKAGE_ML Ljava/util/List;"
+      },
+      {
+        "offset": 502,
+        "op": "invoke-interface",
+        "args": "v14, Ljava/util/List;->size()I"
+      },
+      {
+        "offset": 508,
+        "op": "move-result",
+        "args": "v14"
+      },
+      {
+        "offset": 510,
+        "op": "if-ge",
+        "args": "v7, v14, +034h"
+      },
+      {
+        "offset": 514,
+        "op": "sget-object",
+        "args": "v14, Lcom/android/server/am/JourneyPerformanceService;->WHITE_LIST_FREE_PACKAGE_ML Ljava/util/List;"
+      },
+      {
+        "offset": 518,
+        "op": "invoke-interface",
+        "args": "v14, v7, Ljava/util/List;->get(I)Ljava/lang/Object;"
+      },
+      {
+        "offset": 524,
+        "op": "move-result-object",
+        "args": "v14"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActivityManagerService;",
+    "method": "KillSomeProc(Z)Z",
+    "code_item_offset": 2961308,
+    "target": {
+      "offset": 514,
+      "op": "sget-object",
+      "args": "v14, Lcom/android/server/am/JourneyPerformanceService;->WHITE_LIST_FREE_PACKAGE_ML Ljava/util/List;"
+    },
+    "context": [
+      {
+        "offset": 492,
+        "op": "if-nez",
+        "args": "v7, +040h"
+      },
+      {
+        "offset": 496,
+        "op": "const/4",
+        "args": "v7, 0"
+      },
+      {
+        "offset": 498,
+        "op": "sget-object",
+        "args": "v14, Lcom/android/server/am/JourneyPerformanceService;->WHITE_LIST_FREE_PACKAGE_ML Ljava/util/List;"
+      },
+      {
+        "offset": 502,
+        "op": "invoke-interface",
+        "args": "v14, Ljava/util/List;->size()I"
+      },
+      {
+        "offset": 508,
+        "op": "move-result",
+        "args": "v14"
+      },
+      {
+        "offset": 510,
+        "op": "if-ge",
+        "args": "v7, v14, +034h"
+      },
+      {
+        "offset": 514,
+        "op": "sget-object",
+        "args": "v14, Lcom/android/server/am/JourneyPerformanceService;->WHITE_LIST_FREE_PACKAGE_ML Ljava/util/List;"
+      },
+      {
+        "offset": 518,
+        "op": "invoke-interface",
+        "args": "v14, v7, Ljava/util/List;->get(I)Ljava/lang/Object;"
+      },
+      {
+        "offset": 524,
+        "op": "move-result-object",
+        "args": "v14"
+      },
+      {
+        "offset": 526,
+        "op": "check-cast",
+        "args": "v14, Ljava/lang/String;"
+      },
+      {
+        "offset": 530,
+        "op": "iget-object",
+        "args": "v15, v11, Lcom/android/server/am/ProcessRecord;->pkgList Lcom/android/server/am/ProcessRecord$PackageList;"
+      },
+      {
+        "offset": 534,
+        "op": "invoke-virtual",
+        "args": "v15, v14, Lcom/android/server/am/ProcessRecord$PackageList;->containsKey(Ljava/lang/Object;)Z"
+      },
+      {
+        "offset": 540,
+        "op": "move-result",
+        "args": "v15"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActivityManagerService;",
+    "method": "KillSomeProc(Z)Z",
+    "code_item_offset": 2961308,
+    "target": {
+      "offset": 628,
+      "op": "sget-object",
+      "args": "v7, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->AUTO_CLEAN Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+    },
+    "context": [
+      {
+        "offset": 608,
+        "op": "move/from16",
+        "args": "v0, v18"
+      },
+      {
+        "offset": 612,
+        "op": "goto",
+        "args": "-39h"
+      },
+      {
+        "offset": 614,
+        "op": "move/from16",
+        "args": "v18, v0"
+      },
+      {
+        "offset": 618,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 620,
+        "op": "move/from16",
+        "args": "v18, v0"
+      },
+      {
+        "offset": 624,
+        "op": "iget",
+        "args": "v0, v11, Lcom/android/server/am/ProcessRecord;->uid I"
+      },
+      {
+        "offset": 628,
+        "op": "sget-object",
+        "args": "v7, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->AUTO_CLEAN Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 632,
+        "op": "const/4",
+        "args": "v14, 0"
+      },
+      {
+        "offset": 634,
+        "op": "invoke-static",
+        "args": "v0, v7, v14, Lcom/android/server/am/JourneyPerformanceService;->isUidAllow(I Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 640,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 642,
+        "op": "if-nez",
+        "args": "v0, +00ah"
+      },
+      {
+        "offset": 646,
+        "op": "const-string",
+        "args": "v0, \"Not most used\""
+      },
+      {
+        "offset": 650,
+        "op": "const/4",
+        "args": "v14, 3"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActivityManagerService;",
+    "method": "KillSomeProc(Z)Z",
+    "code_item_offset": 2961308,
+    "target": {
+      "offset": 634,
+      "op": "invoke-static",
+      "args": "v0, v7, v14, Lcom/android/server/am/JourneyPerformanceService;->isUidAllow(I Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+    },
+    "context": [
+      {
+        "offset": 614,
+        "op": "move/from16",
+        "args": "v18, v0"
+      },
+      {
+        "offset": 618,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 620,
+        "op": "move/from16",
+        "args": "v18, v0"
+      },
+      {
+        "offset": 624,
+        "op": "iget",
+        "args": "v0, v11, Lcom/android/server/am/ProcessRecord;->uid I"
+      },
+      {
+        "offset": 628,
+        "op": "sget-object",
+        "args": "v7, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->AUTO_CLEAN Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 632,
+        "op": "const/4",
+        "args": "v14, 0"
+      },
+      {
+        "offset": 634,
+        "op": "invoke-static",
+        "args": "v0, v7, v14, Lcom/android/server/am/JourneyPerformanceService;->isUidAllow(I Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 640,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 642,
+        "op": "if-nez",
+        "args": "v0, +00ah"
+      },
+      {
+        "offset": 646,
+        "op": "const-string",
+        "args": "v0, \"Not most used\""
+      },
+      {
+        "offset": 650,
+        "op": "const/4",
+        "args": "v14, 3"
+      },
+      {
+        "offset": 652,
+        "op": "const/4",
+        "args": "v15, 1"
+      },
+      {
+        "offset": 654,
+        "op": "invoke-virtual",
+        "args": "v11, v0, v14, v15, Lcom/android/server/am/ProcessRecord;->kill(Ljava/lang/String; I Z)V"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActivityManagerService;",
+    "method": "KillSomeProc(Z)Z",
+    "code_item_offset": 2961308,
+    "target": {
+      "offset": 666,
+      "op": "sget-boolean",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION_ML_STRICT Z"
+    },
+    "context": [
+      {
+        "offset": 646,
+        "op": "const-string",
+        "args": "v0, \"Not most used\""
+      },
+      {
+        "offset": 650,
+        "op": "const/4",
+        "args": "v14, 3"
+      },
+      {
+        "offset": 652,
+        "op": "const/4",
+        "args": "v15, 1"
+      },
+      {
+        "offset": 654,
+        "op": "invoke-virtual",
+        "args": "v11, v0, v14, v15, Lcom/android/server/am/ProcessRecord;->kill(Ljava/lang/String; I Z)V"
+      },
+      {
+        "offset": 660,
+        "op": "goto",
+        "args": "+32h"
+      },
+      {
+        "offset": 662,
+        "op": "if-eqz",
+        "args": "v23, +031h"
+      },
+      {
+        "offset": 666,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION_ML_STRICT Z"
+      },
+      {
+        "offset": 670,
+        "op": "if-eqz",
+        "args": "v0, +02dh"
+      },
+      {
+        "offset": 674,
+        "op": "iget-object",
+        "args": "v0, v11, Lcom/android/server/am/ProcessRecord;->info Landroid/content/pm/ApplicationInfo;"
+      },
+      {
+        "offset": 678,
+        "op": "iget",
+        "args": "v0, v0, Landroid/content/pm/ApplicationInfo;->flags I"
+      },
+      {
+        "offset": 682,
+        "op": "and-int/lit16",
+        "args": "v0, v0, 129"
+      },
+      {
+        "offset": 686,
+        "op": "if-eqz",
+        "args": "v0, +004h"
+      },
+      {
+        "offset": 690,
+        "op": "const/4",
+        "args": "v0, 1"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActivityManagerService;",
+    "method": "KillSomeProc(Z)Z",
+    "code_item_offset": 2961308,
+    "target": {
+      "offset": 728,
+      "op": "sget-object",
+      "args": "v14, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->CHECK_ML_STRICT Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+    },
+    "context": [
+      {
+        "offset": 704,
+        "op": "iget-object",
+        "args": "v7, v11, Lcom/android/server/am/ProcessRecord;->processName Ljava/lang/String;"
+      },
+      {
+        "offset": 708,
+        "op": "iget",
+        "args": "v14, v11, Lcom/android/server/am/ProcessRecord;->uid I"
+      },
+      {
+        "offset": 712,
+        "op": "invoke-virtual",
+        "args": "v15, v7, v14, Lcom/android/server/wm/ActivityTaskManagerService;->IsCallerUidOfTopActivity(Ljava/lang/String; I)Z"
+      },
+      {
+        "offset": 718,
+        "op": "move-result",
+        "args": "v7"
+      },
+      {
+        "offset": 720,
+        "op": "if-nez",
+        "args": "v7, +014h"
+      },
+      {
+        "offset": 724,
+        "op": "iget",
+        "args": "v7, v11, Lcom/android/server/am/ProcessRecord;->uid I"
+      },
+      {
+        "offset": 728,
+        "op": "sget-object",
+        "args": "v14, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->CHECK_ML_STRICT Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 732,
+        "op": "const/4",
+        "args": "v15, 0"
+      },
+      {
+        "offset": 734,
+        "op": "invoke-static",
+        "args": "v7, v14, v15, Lcom/android/server/am/JourneyPerformanceService;->isUidAllow(I Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 740,
+        "op": "move-result",
+        "args": "v7"
+      },
+      {
+        "offset": 742,
+        "op": "if-nez",
+        "args": "v7, +009h"
+      },
+      {
+        "offset": 746,
+        "op": "const-string",
+        "args": "v7, \"Strict low mem\""
+      },
+      {
+        "offset": 750,
+        "op": "const/4",
+        "args": "v14, 3"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActivityManagerService;",
+    "method": "KillSomeProc(Z)Z",
+    "code_item_offset": 2961308,
+    "target": {
+      "offset": 734,
+      "op": "invoke-static",
+      "args": "v7, v14, v15, Lcom/android/server/am/JourneyPerformanceService;->isUidAllow(I Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+    },
+    "context": [
+      {
+        "offset": 712,
+        "op": "invoke-virtual",
+        "args": "v15, v7, v14, Lcom/android/server/wm/ActivityTaskManagerService;->IsCallerUidOfTopActivity(Ljava/lang/String; I)Z"
+      },
+      {
+        "offset": 718,
+        "op": "move-result",
+        "args": "v7"
+      },
+      {
+        "offset": 720,
+        "op": "if-nez",
+        "args": "v7, +014h"
+      },
+      {
+        "offset": 724,
+        "op": "iget",
+        "args": "v7, v11, Lcom/android/server/am/ProcessRecord;->uid I"
+      },
+      {
+        "offset": 728,
+        "op": "sget-object",
+        "args": "v14, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->CHECK_ML_STRICT Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 732,
+        "op": "const/4",
+        "args": "v15, 0"
+      },
+      {
+        "offset": 734,
+        "op": "invoke-static",
+        "args": "v7, v14, v15, Lcom/android/server/am/JourneyPerformanceService;->isUidAllow(I Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 740,
+        "op": "move-result",
+        "args": "v7"
+      },
+      {
+        "offset": 742,
+        "op": "if-nez",
+        "args": "v7, +009h"
+      },
+      {
+        "offset": 746,
+        "op": "const-string",
+        "args": "v7, \"Strict low mem\""
+      },
+      {
+        "offset": 750,
+        "op": "const/4",
+        "args": "v14, 3"
+      },
+      {
+        "offset": 752,
+        "op": "const/4",
+        "args": "v15, 1"
+      },
+      {
+        "offset": 754,
+        "op": "invoke-virtual",
+        "args": "v11, v7, v14, v15, Lcom/android/server/am/ProcessRecord;->kill(Ljava/lang/String; I Z)V"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActivityManagerService;",
+    "method": "KillSomeProc(Z)Z",
+    "code_item_offset": 2961308,
+    "target": {
+      "offset": 770,
+      "op": "invoke-static",
+      "args": "Lcom/android/server/am/JourneyPerformanceService;->CheckIfSwapFreeLow()Z"
+    },
+    "context": [
+      {
+        "offset": 750,
+        "op": "const/4",
+        "args": "v14, 3"
+      },
+      {
+        "offset": 752,
+        "op": "const/4",
+        "args": "v15, 1"
+      },
+      {
+        "offset": 754,
+        "op": "invoke-virtual",
+        "args": "v11, v7, v14, v15, Lcom/android/server/am/ProcessRecord;->kill(Ljava/lang/String; I Z)V"
+      },
+      {
+        "offset": 760,
+        "op": "iget",
+        "args": "v0, v1, Lcom/android/server/am/ActivityManagerService;->mLastMemoryLevel I"
+      },
+      {
+        "offset": 764,
+        "op": "const/4",
+        "args": "v7, 2"
+      },
+      {
+        "offset": 766,
+        "op": "if-gt",
+        "args": "v0, v7, +008h"
+      },
+      {
+        "offset": 770,
+        "op": "invoke-static",
+        "args": "Lcom/android/server/am/JourneyPerformanceService;->CheckIfSwapFreeLow()Z"
+      },
+      {
+        "offset": 776,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 778,
+        "op": "if-nez",
+        "args": "v0, +029h"
+      },
+      {
+        "offset": 782,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_CHECK_ML Z"
+      },
+      {
+        "offset": 786,
+        "op": "if-eqz",
+        "args": "v0, +01ah"
+      },
+      {
+        "offset": 790,
+        "op": "const-string",
+        "args": "v0, \"ActivityManager\""
+      },
+      {
+        "offset": 794,
+        "op": "new-instance",
+        "args": "v7, Ljava/lang/StringBuilder;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/ActivityManagerService;",
+    "method": "KillSomeProc(Z)Z",
+    "code_item_offset": 2961308,
+    "target": {
+      "offset": 782,
+      "op": "sget-boolean",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_CHECK_ML Z"
+    },
+    "context": [
+      {
+        "offset": 760,
+        "op": "iget",
+        "args": "v0, v1, Lcom/android/server/am/ActivityManagerService;->mLastMemoryLevel I"
+      },
+      {
+        "offset": 764,
+        "op": "const/4",
+        "args": "v7, 2"
+      },
+      {
+        "offset": 766,
+        "op": "if-gt",
+        "args": "v0, v7, +008h"
+      },
+      {
+        "offset": 770,
+        "op": "invoke-static",
+        "args": "Lcom/android/server/am/JourneyPerformanceService;->CheckIfSwapFreeLow()Z"
+      },
+      {
+        "offset": 776,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 778,
+        "op": "if-nez",
+        "args": "v0, +029h"
+      },
+      {
+        "offset": 782,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_CHECK_ML Z"
+      },
+      {
+        "offset": 786,
+        "op": "if-eqz",
+        "args": "v0, +01ah"
+      },
+      {
+        "offset": 790,
+        "op": "const-string",
+        "args": "v0, \"ActivityManager\""
+      },
+      {
+        "offset": 794,
+        "op": "new-instance",
+        "args": "v7, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 798,
+        "op": "invoke-direct",
+        "args": "v7, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 804,
+        "op": "const-string",
+        "args": "v14, \"KillSomeProc return mLastMemoryLevel:\""
+      },
+      {
+        "offset": 808,
+        "op": "invoke-virtual",
+        "args": "v7, v14, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/audio/MediaFocusControl;",
+    "method": "notifyExtPolicyFocusGrant_syncAf(Landroid/media/AudioFocusInfo; I)V",
+    "code_item_offset": 3675036,
+    "target": {
+      "offset": 8,
+      "op": "sget-boolean",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AUDIO_OPTIMIZATION Z"
+    },
+    "context": [
+      {
+        "offset": 0,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 4,
+        "op": "if-eqz",
+        "args": "v0, +00dh"
+      },
+      {
+        "offset": 8,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AUDIO_OPTIMIZATION Z"
+      },
+      {
+        "offset": 12,
+        "op": "if-eqz",
+        "args": "v0, +009h"
+      },
+      {
+        "offset": 16,
+        "op": "invoke-virtual",
+        "args": "v6, Landroid/media/AudioFocusInfo;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 22,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 24,
+        "op": "invoke-static",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->NotifyMediaFocusChange(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 30,
+        "op": "iget-object",
+        "args": "v0, v5, Lcom/android/server/audio/MediaFocusControl;->mFocusFollowers Ljava/util/ArrayList;"
+      },
+      {
+        "offset": 34,
+        "op": "invoke-virtual",
+        "args": "v0, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/audio/MediaFocusControl;",
+    "method": "notifyExtPolicyFocusGrant_syncAf(Landroid/media/AudioFocusInfo; I)V",
+    "code_item_offset": 3675036,
+    "target": {
+      "offset": 24,
+      "op": "invoke-static",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->NotifyMediaFocusChange(Ljava/lang/String;)V"
+    },
+    "context": [
+      {
+        "offset": 0,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 4,
+        "op": "if-eqz",
+        "args": "v0, +00dh"
+      },
+      {
+        "offset": 8,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AUDIO_OPTIMIZATION Z"
+      },
+      {
+        "offset": 12,
+        "op": "if-eqz",
+        "args": "v0, +009h"
+      },
+      {
+        "offset": 16,
+        "op": "invoke-virtual",
+        "args": "v6, Landroid/media/AudioFocusInfo;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 22,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 24,
+        "op": "invoke-static",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->NotifyMediaFocusChange(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 30,
+        "op": "iget-object",
+        "args": "v0, v5, Lcom/android/server/audio/MediaFocusControl;->mFocusFollowers Ljava/util/ArrayList;"
+      },
+      {
+        "offset": 34,
+        "op": "invoke-virtual",
+        "args": "v0, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;"
+      },
+      {
+        "offset": 40,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 42,
+        "op": "invoke-interface",
+        "args": "v0, Ljava/util/Iterator;->hasNext()Z"
+      },
+      {
+        "offset": 48,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 50,
+        "op": "if-eqz",
+        "args": "v1, +028h"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/audio/MediaFocusControl;",
+    "method": "notifyExtPolicyFocusLoss_syncAf(Landroid/media/AudioFocusInfo; Z)V",
+    "code_item_offset": 3675200,
+    "target": {
+      "offset": 8,
+      "op": "sget-boolean",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AUDIO_OPTIMIZATION Z"
+    },
+    "context": [
+      {
+        "offset": 0,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 4,
+        "op": "if-eqz",
+        "args": "v0, +00dh"
+      },
+      {
+        "offset": 8,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AUDIO_OPTIMIZATION Z"
+      },
+      {
+        "offset": 12,
+        "op": "if-eqz",
+        "args": "v0, +009h"
+      },
+      {
+        "offset": 16,
+        "op": "invoke-virtual",
+        "args": "v6, Landroid/media/AudioFocusInfo;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 22,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 24,
+        "op": "invoke-static",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->NotifyMediaFocusChange(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 30,
+        "op": "iget-object",
+        "args": "v0, v5, Lcom/android/server/audio/MediaFocusControl;->mFocusFollowers Ljava/util/ArrayList;"
+      },
+      {
+        "offset": 34,
+        "op": "invoke-virtual",
+        "args": "v0, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/audio/MediaFocusControl;",
+    "method": "notifyExtPolicyFocusLoss_syncAf(Landroid/media/AudioFocusInfo; Z)V",
+    "code_item_offset": 3675200,
+    "target": {
+      "offset": 24,
+      "op": "invoke-static",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->NotifyMediaFocusChange(Ljava/lang/String;)V"
+    },
+    "context": [
+      {
+        "offset": 0,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 4,
+        "op": "if-eqz",
+        "args": "v0, +00dh"
+      },
+      {
+        "offset": 8,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->AUDIO_OPTIMIZATION Z"
+      },
+      {
+        "offset": 12,
+        "op": "if-eqz",
+        "args": "v0, +009h"
+      },
+      {
+        "offset": 16,
+        "op": "invoke-virtual",
+        "args": "v6, Landroid/media/AudioFocusInfo;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 22,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 24,
+        "op": "invoke-static",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->NotifyMediaFocusChange(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 30,
+        "op": "iget-object",
+        "args": "v0, v5, Lcom/android/server/audio/MediaFocusControl;->mFocusFollowers Ljava/util/ArrayList;"
+      },
+      {
+        "offset": 34,
+        "op": "invoke-virtual",
+        "args": "v0, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;"
+      },
+      {
+        "offset": 40,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 42,
+        "op": "invoke-interface",
+        "args": "v0, Ljava/util/Iterator;->hasNext()Z"
+      },
+      {
+        "offset": 48,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 50,
+        "op": "if-eqz",
+        "args": "v1, +028h"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/notification/NotificationManagerService$1;",
+    "method": "onNotificationActionClick(I I Ljava/lang/String; I Landroid/app/Notification$Action; Lcom/android/internal/statusbar/NotificationVisibility; Z)V",
+    "code_item_offset": 5507952,
+    "target": {
+      "offset": 464,
+      "op": "sget-boolean",
+      "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->USAGE_OPTIMIZATION2 Z"
+    },
+    "context": [
+      {
+        "offset": 438,
+        "op": "invoke-virtual",
+        "args": "v0, Lcom/android/server/notification/NotificationRecord;->getSbn()Landroid/service/notification/StatusBarNotification;"
+      },
+      {
+        "offset": 444,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 446,
+        "op": "move-object/from16",
+        "args": "v4, v21"
+      },
+      {
+        "offset": 450,
+        "op": "invoke-virtual",
+        "args": "v2, v3, v10, v4, v12, Lcom/android/server/notification/NotificationManagerService$NotificationAssistants;->notifyAssistantActionClicked(Landroid/service/notification/StatusBarNotification; I Landroid/app/Notification$Action; Z)V"
+      },
+      {
+        "offset": 456,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 460,
+        "op": "if-eqz",
+        "args": "v2, +014h"
+      },
+      {
+        "offset": 464,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->USAGE_OPTIMIZATION2 Z"
+      },
+      {
+        "offset": 468,
+        "op": "if-eqz",
+        "args": "v2, +010h"
+      },
+      {
+        "offset": 472,
+        "op": "nop",
+        "args": ""
+      },
+      {
+        "offset": 474,
+        "op": "invoke-virtual",
+        "args": "v0, Lcom/android/server/notification/NotificationRecord;->getSbn()Landroid/service/notification/StatusBarNotification;"
+      },
+      {
+        "offset": 480,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 482,
+        "op": "invoke-virtual",
+        "args": "v2, Landroid/service/notification/StatusBarNotification;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 488,
+        "op": "move-result-object",
+        "args": "v2"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/notification/NotificationManagerService$1;",
+    "method": "onNotificationActionClick(I I Ljava/lang/String; I Landroid/app/Notification$Action; Lcom/android/internal/statusbar/NotificationVisibility; Z)V",
+    "code_item_offset": 5507952,
+    "target": {
+      "offset": 490,
+      "op": "sget-object",
+      "args": "v3, Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;->USER_CLICK_NOTIFICATION Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;"
+    },
+    "context": [
+      {
+        "offset": 468,
+        "op": "if-eqz",
+        "args": "v2, +010h"
+      },
+      {
+        "offset": 472,
+        "op": "nop",
+        "args": ""
+      },
+      {
+        "offset": 474,
+        "op": "invoke-virtual",
+        "args": "v0, Lcom/android/server/notification/NotificationRecord;->getSbn()Landroid/service/notification/StatusBarNotification;"
+      },
+      {
+        "offset": 480,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 482,
+        "op": "invoke-virtual",
+        "args": "v2, Landroid/service/notification/StatusBarNotification;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 488,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 490,
+        "op": "sget-object",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;->USER_CLICK_NOTIFICATION Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;"
+      },
+      {
+        "offset": 494,
+        "op": "invoke-static",
+        "args": "v2, v3, Lcom/android/server/am/JourneyPerformanceService$TinnoUsageStats;->reportEvent(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;)V"
+      },
+      {
+        "offset": 500,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 504,
+        "op": "if-eqz",
+        "args": "v2, +027h"
+      },
+      {
+        "offset": 508,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_USAGE_CLICK Z"
+      },
+      {
+        "offset": 512,
+        "op": "if-eqz",
+        "args": "v2, +023h"
+      },
+      {
+        "offset": 516,
+        "op": "new-instance",
+        "args": "v2, Ljava/lang/StringBuilder;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/notification/NotificationManagerService$1;",
+    "method": "onNotificationActionClick(I I Ljava/lang/String; I Landroid/app/Notification$Action; Lcom/android/internal/statusbar/NotificationVisibility; Z)V",
+    "code_item_offset": 5507952,
+    "target": {
+      "offset": 494,
+      "op": "invoke-static",
+      "args": "v2, v3, Lcom/android/server/am/JourneyPerformanceService$TinnoUsageStats;->reportEvent(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;)V"
+    },
+    "context": [
+      {
+        "offset": 472,
+        "op": "nop",
+        "args": ""
+      },
+      {
+        "offset": 474,
+        "op": "invoke-virtual",
+        "args": "v0, Lcom/android/server/notification/NotificationRecord;->getSbn()Landroid/service/notification/StatusBarNotification;"
+      },
+      {
+        "offset": 480,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 482,
+        "op": "invoke-virtual",
+        "args": "v2, Landroid/service/notification/StatusBarNotification;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 488,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 490,
+        "op": "sget-object",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;->USER_CLICK_NOTIFICATION Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;"
+      },
+      {
+        "offset": 494,
+        "op": "invoke-static",
+        "args": "v2, v3, Lcom/android/server/am/JourneyPerformanceService$TinnoUsageStats;->reportEvent(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;)V"
+      },
+      {
+        "offset": 500,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 504,
+        "op": "if-eqz",
+        "args": "v2, +027h"
+      },
+      {
+        "offset": 508,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_USAGE_CLICK Z"
+      },
+      {
+        "offset": 512,
+        "op": "if-eqz",
+        "args": "v2, +023h"
+      },
+      {
+        "offset": 516,
+        "op": "new-instance",
+        "args": "v2, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 520,
+        "op": "invoke-direct",
+        "args": "v2, Ljava/lang/StringBuilder;-><init>()V"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/notification/NotificationManagerService$1;",
+    "method": "onNotificationActionClick(I I Ljava/lang/String; I Landroid/app/Notification$Action; Lcom/android/internal/statusbar/NotificationVisibility; Z)V",
+    "code_item_offset": 5507952,
+    "target": {
+      "offset": 508,
+      "op": "sget-boolean",
+      "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_USAGE_CLICK Z"
+    },
+    "context": [
+      {
+        "offset": 482,
+        "op": "invoke-virtual",
+        "args": "v2, Landroid/service/notification/StatusBarNotification;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 488,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 490,
+        "op": "sget-object",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;->USER_CLICK_NOTIFICATION Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;"
+      },
+      {
+        "offset": 494,
+        "op": "invoke-static",
+        "args": "v2, v3, Lcom/android/server/am/JourneyPerformanceService$TinnoUsageStats;->reportEvent(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;)V"
+      },
+      {
+        "offset": 500,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 504,
+        "op": "if-eqz",
+        "args": "v2, +027h"
+      },
+      {
+        "offset": 508,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_USAGE_CLICK Z"
+      },
+      {
+        "offset": 512,
+        "op": "if-eqz",
+        "args": "v2, +023h"
+      },
+      {
+        "offset": 516,
+        "op": "new-instance",
+        "args": "v2, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 520,
+        "op": "invoke-direct",
+        "args": "v2, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 526,
+        "op": "const-string",
+        "args": "v3, \"USAGE:\""
+      },
+      {
+        "offset": 530,
+        "op": "invoke-virtual",
+        "args": "v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 536,
+        "op": "invoke-virtual",
+        "args": "v0, Lcom/android/server/notification/NotificationRecord;->getSbn()Landroid/service/notification/StatusBarNotification;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/notification/NotificationManagerService$1;",
+    "method": "onNotificationActionClick(I I Ljava/lang/String; I Landroid/app/Notification$Action; Lcom/android/internal/statusbar/NotificationVisibility; Z)V",
+    "code_item_offset": 5507952,
+    "target": {
+      "offset": 576,
+      "op": "invoke-static",
+      "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->Log(Ljava/lang/String;)V"
+    },
+    "context": [
+      {
+        "offset": 550,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 552,
+        "op": "invoke-virtual",
+        "args": "v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 558,
+        "op": "const-string",
+        "args": "v3, \" onNotificationActionClick \""
+      },
+      {
+        "offset": 562,
+        "op": "invoke-virtual",
+        "args": "v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 568,
+        "op": "invoke-virtual",
+        "args": "v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 574,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 576,
+        "op": "invoke-static",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->Log(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 582,
+        "op": "monitor-exit",
+        "args": "v13"
+      },
+      {
+        "offset": 584,
+        "op": "return-void",
+        "args": ""
+      },
+      {
+        "offset": 586,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 588,
+        "op": "move-object/from16",
+        "args": "v4, v21"
+      },
+      {
+        "offset": 592,
+        "op": "monitor-exit",
+        "args": "v13"
+      },
+      {
+        "offset": 594,
+        "op": "throw",
+        "args": "v0"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/notification/NotificationManagerService$1;",
+    "method": "onNotificationClick(I I Ljava/lang/String; Lcom/android/internal/statusbar/NotificationVisibility;)V",
+    "code_item_offset": 5509068,
+    "target": {
+      "offset": 272,
+      "op": "sget-boolean",
+      "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->USAGE_OPTIMIZATION2 Z"
+    },
+    "context": [
+      {
+        "offset": 246,
+        "op": "iget",
+        "args": "v6, v9, Lcom/android/internal/statusbar/NotificationVisibility;->rank I"
+      },
+      {
+        "offset": 250,
+        "op": "iget",
+        "args": "v7, v9, Lcom/android/internal/statusbar/NotificationVisibility;->count I"
+      },
+      {
+        "offset": 254,
+        "op": "move-object/from16",
+        "args": "v2, v30"
+      },
+      {
+        "offset": 258,
+        "op": "invoke-static/range",
+        "args": "v2 ... v7, Lcom/android/server/EventLogTags;->writeNotificationClicked(Ljava/lang/String; I I I I I)V"
+      },
+      {
+        "offset": 264,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 268,
+        "op": "if-eqz",
+        "args": "v2, +014h"
+      },
+      {
+        "offset": 272,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->USAGE_OPTIMIZATION2 Z"
+      },
+      {
+        "offset": 276,
+        "op": "if-eqz",
+        "args": "v2, +010h"
+      },
+      {
+        "offset": 280,
+        "op": "nop",
+        "args": ""
+      },
+      {
+        "offset": 282,
+        "op": "invoke-virtual",
+        "args": "v0, Lcom/android/server/notification/NotificationRecord;->getSbn()Landroid/service/notification/StatusBarNotification;"
+      },
+      {
+        "offset": 288,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 290,
+        "op": "invoke-virtual",
+        "args": "v2, Landroid/service/notification/StatusBarNotification;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 296,
+        "op": "move-result-object",
+        "args": "v2"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/notification/NotificationManagerService$1;",
+    "method": "onNotificationClick(I I Ljava/lang/String; Lcom/android/internal/statusbar/NotificationVisibility;)V",
+    "code_item_offset": 5509068,
+    "target": {
+      "offset": 298,
+      "op": "sget-object",
+      "args": "v3, Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;->USER_CLICK_NOTIFICATION Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;"
+    },
+    "context": [
+      {
+        "offset": 276,
+        "op": "if-eqz",
+        "args": "v2, +010h"
+      },
+      {
+        "offset": 280,
+        "op": "nop",
+        "args": ""
+      },
+      {
+        "offset": 282,
+        "op": "invoke-virtual",
+        "args": "v0, Lcom/android/server/notification/NotificationRecord;->getSbn()Landroid/service/notification/StatusBarNotification;"
+      },
+      {
+        "offset": 288,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 290,
+        "op": "invoke-virtual",
+        "args": "v2, Landroid/service/notification/StatusBarNotification;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 296,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 298,
+        "op": "sget-object",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;->USER_CLICK_NOTIFICATION Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;"
+      },
+      {
+        "offset": 302,
+        "op": "invoke-static",
+        "args": "v2, v3, Lcom/android/server/am/JourneyPerformanceService$TinnoUsageStats;->reportEvent(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;)V"
+      },
+      {
+        "offset": 308,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 312,
+        "op": "if-eqz",
+        "args": "v2, +027h"
+      },
+      {
+        "offset": 316,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_USAGE_CLICK Z"
+      },
+      {
+        "offset": 320,
+        "op": "if-eqz",
+        "args": "v2, +023h"
+      },
+      {
+        "offset": 324,
+        "op": "new-instance",
+        "args": "v2, Ljava/lang/StringBuilder;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/notification/NotificationManagerService$1;",
+    "method": "onNotificationClick(I I Ljava/lang/String; Lcom/android/internal/statusbar/NotificationVisibility;)V",
+    "code_item_offset": 5509068,
+    "target": {
+      "offset": 302,
+      "op": "invoke-static",
+      "args": "v2, v3, Lcom/android/server/am/JourneyPerformanceService$TinnoUsageStats;->reportEvent(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;)V"
+    },
+    "context": [
+      {
+        "offset": 280,
+        "op": "nop",
+        "args": ""
+      },
+      {
+        "offset": 282,
+        "op": "invoke-virtual",
+        "args": "v0, Lcom/android/server/notification/NotificationRecord;->getSbn()Landroid/service/notification/StatusBarNotification;"
+      },
+      {
+        "offset": 288,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 290,
+        "op": "invoke-virtual",
+        "args": "v2, Landroid/service/notification/StatusBarNotification;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 296,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 298,
+        "op": "sget-object",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;->USER_CLICK_NOTIFICATION Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;"
+      },
+      {
+        "offset": 302,
+        "op": "invoke-static",
+        "args": "v2, v3, Lcom/android/server/am/JourneyPerformanceService$TinnoUsageStats;->reportEvent(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;)V"
+      },
+      {
+        "offset": 308,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 312,
+        "op": "if-eqz",
+        "args": "v2, +027h"
+      },
+      {
+        "offset": 316,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_USAGE_CLICK Z"
+      },
+      {
+        "offset": 320,
+        "op": "if-eqz",
+        "args": "v2, +023h"
+      },
+      {
+        "offset": 324,
+        "op": "new-instance",
+        "args": "v2, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 328,
+        "op": "invoke-direct",
+        "args": "v2, Ljava/lang/StringBuilder;-><init>()V"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/notification/NotificationManagerService$1;",
+    "method": "onNotificationClick(I I Ljava/lang/String; Lcom/android/internal/statusbar/NotificationVisibility;)V",
+    "code_item_offset": 5509068,
+    "target": {
+      "offset": 316,
+      "op": "sget-boolean",
+      "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_USAGE_CLICK Z"
+    },
+    "context": [
+      {
+        "offset": 290,
+        "op": "invoke-virtual",
+        "args": "v2, Landroid/service/notification/StatusBarNotification;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 296,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 298,
+        "op": "sget-object",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;->USER_CLICK_NOTIFICATION Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;"
+      },
+      {
+        "offset": 302,
+        "op": "invoke-static",
+        "args": "v2, v3, Lcom/android/server/am/JourneyPerformanceService$TinnoUsageStats;->reportEvent(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;)V"
+      },
+      {
+        "offset": 308,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 312,
+        "op": "if-eqz",
+        "args": "v2, +027h"
+      },
+      {
+        "offset": 316,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_USAGE_CLICK Z"
+      },
+      {
+        "offset": 320,
+        "op": "if-eqz",
+        "args": "v2, +023h"
+      },
+      {
+        "offset": 324,
+        "op": "new-instance",
+        "args": "v2, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 328,
+        "op": "invoke-direct",
+        "args": "v2, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 334,
+        "op": "const-string",
+        "args": "v3, \"USAGE:\""
+      },
+      {
+        "offset": 338,
+        "op": "invoke-virtual",
+        "args": "v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 344,
+        "op": "invoke-virtual",
+        "args": "v0, Lcom/android/server/notification/NotificationRecord;->getSbn()Landroid/service/notification/StatusBarNotification;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/notification/NotificationManagerService$1;",
+    "method": "onNotificationClick(I I Ljava/lang/String; Lcom/android/internal/statusbar/NotificationVisibility;)V",
+    "code_item_offset": 5509068,
+    "target": {
+      "offset": 384,
+      "op": "invoke-static",
+      "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->Log(Ljava/lang/String;)V"
+    },
+    "context": [
+      {
+        "offset": 358,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 360,
+        "op": "invoke-virtual",
+        "args": "v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 366,
+        "op": "const-string",
+        "args": "v3, \" onNotificationClick \""
+      },
+      {
+        "offset": 370,
+        "op": "invoke-virtual",
+        "args": "v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 376,
+        "op": "invoke-virtual",
+        "args": "v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 382,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 384,
+        "op": "invoke-static",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->Log(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 390,
+        "op": "invoke-virtual",
+        "args": "v0, Lcom/android/server/notification/NotificationRecord;->getSbn()Landroid/service/notification/StatusBarNotification;"
+      },
+      {
+        "offset": 396,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 398,
+        "op": "iget-object",
+        "args": "v13, v1, Lcom/android/server/notification/NotificationManagerService$1;->this$0 Lcom/android/server/notification/NotificationManagerService;"
+      },
+      {
+        "offset": 402,
+        "op": "invoke-virtual",
+        "args": "v2, Landroid/service/notification/StatusBarNotification;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 408,
+        "op": "move-result-object",
+        "args": "v16"
+      },
+      {
+        "offset": 410,
+        "op": "invoke-virtual",
+        "args": "v2, Landroid/service/notification/StatusBarNotification;->getTag()Ljava/lang/String;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/notification/NotificationManagerService;",
+    "method": "cancelNotificationLocked(Lcom/android/server/notification/NotificationRecord; Z I I I Z Ljava/lang/String;)V",
+    "code_item_offset": 5551516,
+    "target": {
+      "offset": 28,
+      "op": "sget-boolean",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->NOTIFICATION_FOR_FGSERVICE_OPTIMIZATION Z"
+    },
+    "context": [
+      {
+        "offset": 4,
+        "op": "move-object/from16",
+        "args": "v2, v19"
+      },
+      {
+        "offset": 8,
+        "op": "move/from16",
+        "args": "v11, v21"
+      },
+      {
+        "offset": 12,
+        "op": "invoke-virtual/range",
+        "args": "v19, Lcom/android/server/notification/NotificationRecord;->getKey()Ljava/lang/String;"
+      },
+      {
+        "offset": 18,
+        "op": "move-result-object",
+        "args": "v12"
+      },
+      {
+        "offset": 20,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 24,
+        "op": "if-eqz",
+        "args": "v0, +04bh"
+      },
+      {
+        "offset": 28,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->NOTIFICATION_FOR_FGSERVICE_OPTIMIZATION Z"
+      },
+      {
+        "offset": 32,
+        "op": "if-eqz",
+        "args": "v0, +047h"
+      },
+      {
+        "offset": 36,
+        "op": "invoke-virtual/range",
+        "args": "v19, Lcom/android/server/notification/NotificationRecord;->getNotification()Landroid/app/Notification;"
+      },
+      {
+        "offset": 42,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 44,
+        "op": "if-eqz",
+        "args": "v0, +041h"
+      },
+      {
+        "offset": 48,
+        "op": "invoke-virtual",
+        "args": "v0, Landroid/app/Notification;->isForegroundService()Z"
+      },
+      {
+        "offset": 54,
+        "op": "move-result",
+        "args": "v3"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/notification/NotificationManagerService;",
+    "method": "cancelNotificationLocked(Lcom/android/server/notification/NotificationRecord; Z I I I Z Ljava/lang/String;)V",
+    "code_item_offset": 5551516,
+    "target": {
+      "offset": 122,
+      "op": "invoke-static",
+      "args": "v3, Lcom/android/server/am/JourneyPerformanceService;->Log(Ljava/lang/String;)V"
+    },
+    "context": [
+      {
+        "offset": 92,
+        "op": "invoke-virtual",
+        "args": "v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 98,
+        "op": "const-string",
+        "args": "v4, \" reason:\""
+      },
+      {
+        "offset": 102,
+        "op": "invoke-virtual",
+        "args": "v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 108,
+        "op": "invoke-virtual",
+        "args": "v3, v11, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 114,
+        "op": "invoke-virtual",
+        "args": "v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 120,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 122,
+        "op": "invoke-static",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService;->Log(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 128,
+        "op": "invoke-virtual/range",
+        "args": "v19, Lcom/android/server/notification/NotificationRecord;->getSbn()Landroid/service/notification/StatusBarNotification;"
+      },
+      {
+        "offset": 134,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 136,
+        "op": "invoke-virtual",
+        "args": "v3, Landroid/service/notification/StatusBarNotification;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 142,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 144,
+        "op": "invoke-virtual/range",
+        "args": "v19, Lcom/android/server/notification/NotificationRecord;->getSbn()Landroid/service/notification/StatusBarNotification;"
+      },
+      {
+        "offset": 150,
+        "op": "move-result-object",
+        "args": "v4"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/notification/NotificationManagerService;",
+    "method": "cancelNotificationLocked(Lcom/android/server/notification/NotificationRecord; Z I I I Z Ljava/lang/String;)V",
+    "code_item_offset": 5551516,
+    "target": {
+      "offset": 168,
+      "op": "invoke-static",
+      "args": "v3, v4, v5, Lcom/android/server/am/JourneyPerformanceService;->NotifyCheckFgService(Ljava/lang/String; I I)V"
+    },
+    "context": [
+      {
+        "offset": 144,
+        "op": "invoke-virtual/range",
+        "args": "v19, Lcom/android/server/notification/NotificationRecord;->getSbn()Landroid/service/notification/StatusBarNotification;"
+      },
+      {
+        "offset": 150,
+        "op": "move-result-object",
+        "args": "v4"
+      },
+      {
+        "offset": 152,
+        "op": "invoke-virtual",
+        "args": "v4, Landroid/service/notification/StatusBarNotification;->getId()I"
+      },
+      {
+        "offset": 158,
+        "op": "move-result",
+        "args": "v4"
+      },
+      {
+        "offset": 160,
+        "op": "invoke-static",
+        "args": "Landroid/os/UserHandle;->getCallingUserId()I"
+      },
+      {
+        "offset": 166,
+        "op": "move-result",
+        "args": "v5"
+      },
+      {
+        "offset": 168,
+        "op": "invoke-static",
+        "args": "v3, v4, v5, Lcom/android/server/am/JourneyPerformanceService;->NotifyCheckFgService(Ljava/lang/String; I I)V"
+      },
+      {
+        "offset": 174,
+        "op": "invoke-direct/range",
+        "args": "v18 ... v19, Lcom/android/server/notification/NotificationManagerService;->recordCallerLocked(Lcom/android/server/notification/NotificationRecord;)V"
+      },
+      {
+        "offset": 180,
+        "op": "invoke-virtual/range",
+        "args": "v19, Lcom/android/server/notification/NotificationRecord;->getStats()Landroid/service/notification/NotificationStats;"
+      },
+      {
+        "offset": 186,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 188,
+        "op": "invoke-virtual",
+        "args": "v0, Landroid/service/notification/NotificationStats;->getDismissalSurface()I"
+      },
+      {
+        "offset": 194,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 196,
+        "op": "const/4",
+        "args": "v3, -1"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes2.dex",
+    "class_name": "Lcom/android/server/wm/ActivityStarter;",
+    "method": "executeRequest(Lcom/android/server/wm/ActivityStarter$Request;)I",
+    "code_item_offset": 1355708,
+    "target": {
+      "offset": 740,
+      "op": "sget-boolean",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->USAGE_OPTIMIZATION2 Z"
+    },
+    "context": [
+      {
+        "offset": 718,
+        "op": "move-object/from16",
+        "args": "v52, v13"
+      },
+      {
+        "offset": 722,
+        "op": "move-object/from16",
+        "args": "v23, v14"
+      },
+      {
+        "offset": 726,
+        "op": "move/from16",
+        "args": "v43, v57"
+      },
+      {
+        "offset": 730,
+        "op": "const/4",
+        "args": "v6, 0"
+      },
+      {
+        "offset": 732,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 736,
+        "op": "if-eqz",
+        "args": "v0, +055h"
+      },
+      {
+        "offset": 740,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->USAGE_OPTIMIZATION2 Z"
+      },
+      {
+        "offset": 744,
+        "op": "if-eqz",
+        "args": "v0, +051h"
+      },
+      {
+        "offset": 748,
+        "op": "if-eqz",
+        "args": "v12, +04fh"
+      },
+      {
+        "offset": 752,
+        "op": "invoke-virtual",
+        "args": "v12, Lcom/android/server/wm/WindowProcessController;->isHomeProcess()Z"
+      },
+      {
+        "offset": 758,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 760,
+        "op": "if-eqz",
+        "args": "v0, +049h"
+      },
+      {
+        "offset": 764,
+        "op": "if-eqz",
+        "args": "v11, +007h"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes2.dex",
+    "class_name": "Lcom/android/server/wm/ActivityStarter;",
+    "method": "executeRequest(Lcom/android/server/wm/ActivityStarter$Request;)I",
+    "code_item_offset": 1355708,
+    "target": {
+      "offset": 812,
+      "op": "sget-object",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;->USER_CLICK_OBJ_FROM_LAUNCHER Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;"
+    },
+    "context": [
+      {
+        "offset": 790,
+        "op": "iget-object",
+        "args": "v0, v8, Landroid/content/pm/ActivityInfo;->applicationInfo Landroid/content/pm/ApplicationInfo;"
+      },
+      {
+        "offset": 794,
+        "op": "if-eqz",
+        "args": "v0, +007h"
+      },
+      {
+        "offset": 798,
+        "op": "iget-object",
+        "args": "v0, v8, Landroid/content/pm/ActivityInfo;->applicationInfo Landroid/content/pm/ApplicationInfo;"
+      },
+      {
+        "offset": 802,
+        "op": "iget-object",
+        "args": "v0, v0, Landroid/content/pm/ApplicationInfo;->packageName Ljava/lang/String;"
+      },
+      {
+        "offset": 806,
+        "op": "move-object",
+        "args": "v13, v0"
+      },
+      {
+        "offset": 808,
+        "op": "if-eqz",
+        "args": "v13, +00fh"
+      },
+      {
+        "offset": 812,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;->USER_CLICK_OBJ_FROM_LAUNCHER Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;"
+      },
+      {
+        "offset": 816,
+        "op": "invoke-static",
+        "args": "v13, v0, Lcom/android/server/am/JourneyPerformanceService$TinnoUsageStats;->reportEvent(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;)V"
+      },
+      {
+        "offset": 822,
+        "op": "goto",
+        "args": "+8h"
+      },
+      {
+        "offset": 824,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 826,
+        "op": "const-string",
+        "args": "v14, \"TinnoUsageStats report USER_CLICK_OBJ_FROM_LAUNCHER error \""
+      },
+      {
+        "offset": 830,
+        "op": "invoke-static",
+        "args": "v10, v14, v0, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I"
+      },
+      {
+        "offset": 836,
+        "op": "goto",
+        "args": "+2h"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes2.dex",
+    "class_name": "Lcom/android/server/wm/ActivityStarter;",
+    "method": "executeRequest(Lcom/android/server/wm/ActivityStarter$Request;)I",
+    "code_item_offset": 1355708,
+    "target": {
+      "offset": 816,
+      "op": "invoke-static",
+      "args": "v13, v0, Lcom/android/server/am/JourneyPerformanceService$TinnoUsageStats;->reportEvent(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;)V"
+    },
+    "context": [
+      {
+        "offset": 794,
+        "op": "if-eqz",
+        "args": "v0, +007h"
+      },
+      {
+        "offset": 798,
+        "op": "iget-object",
+        "args": "v0, v8, Landroid/content/pm/ActivityInfo;->applicationInfo Landroid/content/pm/ApplicationInfo;"
+      },
+      {
+        "offset": 802,
+        "op": "iget-object",
+        "args": "v0, v0, Landroid/content/pm/ApplicationInfo;->packageName Ljava/lang/String;"
+      },
+      {
+        "offset": 806,
+        "op": "move-object",
+        "args": "v13, v0"
+      },
+      {
+        "offset": 808,
+        "op": "if-eqz",
+        "args": "v13, +00fh"
+      },
+      {
+        "offset": 812,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;->USER_CLICK_OBJ_FROM_LAUNCHER Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;"
+      },
+      {
+        "offset": 816,
+        "op": "invoke-static",
+        "args": "v13, v0, Lcom/android/server/am/JourneyPerformanceService$TinnoUsageStats;->reportEvent(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;)V"
+      },
+      {
+        "offset": 822,
+        "op": "goto",
+        "args": "+8h"
+      },
+      {
+        "offset": 824,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 826,
+        "op": "const-string",
+        "args": "v14, \"TinnoUsageStats report USER_CLICK_OBJ_FROM_LAUNCHER error \""
+      },
+      {
+        "offset": 830,
+        "op": "invoke-static",
+        "args": "v10, v14, v0, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I"
+      },
+      {
+        "offset": 836,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 838,
+        "op": "nop",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes2.dex",
+    "class_name": "Lcom/android/server/wm/ActivityStarter;",
+    "method": "executeRequest(Lcom/android/server/wm/ActivityStarter$Request;)I",
+    "code_item_offset": 1355708,
+    "target": {
+      "offset": 848,
+      "op": "sget-boolean",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_USAGE_CLICK Z"
+    },
+    "context": [
+      {
+        "offset": 826,
+        "op": "const-string",
+        "args": "v14, \"TinnoUsageStats report USER_CLICK_OBJ_FROM_LAUNCHER error \""
+      },
+      {
+        "offset": 830,
+        "op": "invoke-static",
+        "args": "v10, v14, v0, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I"
+      },
+      {
+        "offset": 836,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 838,
+        "op": "nop",
+        "args": ""
+      },
+      {
+        "offset": 840,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 844,
+        "op": "if-eqz",
+        "args": "v0, +01fh"
+      },
+      {
+        "offset": 848,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_USAGE_CLICK Z"
+      },
+      {
+        "offset": 852,
+        "op": "if-eqz",
+        "args": "v0, +01bh"
+      },
+      {
+        "offset": 856,
+        "op": "new-instance",
+        "args": "v0, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 860,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 866,
+        "op": "const-string",
+        "args": "v14, \"USAGE:\""
+      },
+      {
+        "offset": 870,
+        "op": "invoke-virtual",
+        "args": "v0, v14, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 876,
+        "op": "invoke-virtual",
+        "args": "v0, v13, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes2.dex",
+    "class_name": "Lcom/android/server/wm/ActivityStarter;",
+    "method": "executeRequest(Lcom/android/server/wm/ActivityStarter$Request;)I",
+    "code_item_offset": 1355708,
+    "target": {
+      "offset": 900,
+      "op": "invoke-static",
+      "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->Log(Ljava/lang/String;)V"
+    },
+    "context": [
+      {
+        "offset": 870,
+        "op": "invoke-virtual",
+        "args": "v0, v14, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 876,
+        "op": "invoke-virtual",
+        "args": "v0, v13, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 882,
+        "op": "const-string",
+        "args": "v14, \" USER_CLICK_OBJ_FROM_LAUNCHER ! \""
+      },
+      {
+        "offset": 886,
+        "op": "invoke-virtual",
+        "args": "v0, v14, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 892,
+        "op": "invoke-virtual",
+        "args": "v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 898,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 900,
+        "op": "invoke-static",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->Log(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 906,
+        "op": "const/4",
+        "args": "v0, 0"
+      },
+      {
+        "offset": 908,
+        "op": "const/4",
+        "args": "v13, 0"
+      },
+      {
+        "offset": 910,
+        "op": "if-eqz",
+        "args": "v5, +035h"
+      },
+      {
+        "offset": 914,
+        "op": "iget-object",
+        "args": "v14, v15, Lcom/android/server/wm/ActivityStarter;->mRootWindowContainer Lcom/android/server/wm/RootWindowContainer;"
+      },
+      {
+        "offset": 918,
+        "op": "invoke-virtual",
+        "args": "v14, v5, Lcom/android/server/wm/RootWindowContainer;->isInAnyStack(Landroid/os/IBinder;)Lcom/android/server/wm/ActivityRecord;"
+      },
+      {
+        "offset": 924,
+        "op": "move-result-object",
+        "args": "v0"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes2.dex",
+    "class_name": "Lcom/android/server/wm/ActivityTaskManagerService;",
+    "method": "startActivityFromRecents(I Landroid/os/Bundle;)I",
+    "code_item_offset": 1406760,
+    "target": {
+      "offset": 66,
+      "op": "sget-boolean",
+      "args": "v6, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION Z"
+    },
+    "context": [
+      {
+        "offset": 44,
+        "op": "move-result-wide",
+        "args": "v3"
+      },
+      {
+        "offset": 46,
+        "op": "iget-object",
+        "args": "v5, v11, Lcom/android/server/wm/ActivityTaskManagerService;->mGlobalLock Lcom/android/server/wm/WindowManagerGlobalLock;"
+      },
+      {
+        "offset": 50,
+        "op": "monitor-enter",
+        "args": "v5"
+      },
+      {
+        "offset": 52,
+        "op": "invoke-static",
+        "args": "Lcom/android/server/wm/WindowManagerService;->boostPriorityForLockedSection()V"
+      },
+      {
+        "offset": 58,
+        "op": "sget-boolean",
+        "args": "v6, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 62,
+        "op": "if-eqz",
+        "args": "v6, +05dh"
+      },
+      {
+        "offset": 66,
+        "op": "sget-boolean",
+        "args": "v6, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION Z"
+      },
+      {
+        "offset": 70,
+        "op": "if-eqz",
+        "args": "v6, +059h"
+      },
+      {
+        "offset": 74,
+        "op": "iget-object",
+        "args": "v6, v11, Lcom/android/server/wm/ActivityTaskManagerService;->mRootWindowContainer Lcom/android/server/wm/RootWindowContainer;"
+      },
+      {
+        "offset": 78,
+        "op": "const/4",
+        "args": "v7, 2"
+      },
+      {
+        "offset": 80,
+        "op": "invoke-virtual",
+        "args": "v6, v12, v7, Lcom/android/server/wm/RootWindowContainer;->anyTaskForId(I I)Lcom/android/server/wm/Task;"
+      },
+      {
+        "offset": 86,
+        "op": "move-result-object",
+        "args": "v6"
+      },
+      {
+        "offset": 88,
+        "op": "if-eqz",
+        "args": "v6, +050h"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes2.dex",
+    "class_name": "Lcom/android/server/wm/ActivityTaskManagerService;",
+    "method": "startActivityFromRecents(I Landroid/os/Bundle;)I",
+    "code_item_offset": 1406760,
+    "target": {
+      "offset": 152,
+      "op": "sget-object",
+      "args": "v8, Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;->USER_CLICK_OBJ_FROM_RECENT Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;"
+    },
+    "context": [
+      {
+        "offset": 138,
+        "op": "move-result-object",
+        "args": "v8"
+      },
+      {
+        "offset": 140,
+        "op": "move-object",
+        "args": "v7, v8"
+      },
+      {
+        "offset": 142,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 144,
+        "op": "move-exception",
+        "args": "v8"
+      },
+      {
+        "offset": 146,
+        "op": "goto",
+        "args": "+9h"
+      },
+      {
+        "offset": 148,
+        "op": "if-eqz",
+        "args": "v7, +010h"
+      },
+      {
+        "offset": 152,
+        "op": "sget-object",
+        "args": "v8, Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;->USER_CLICK_OBJ_FROM_RECENT Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;"
+      },
+      {
+        "offset": 156,
+        "op": "invoke-static",
+        "args": "v7, v8, Lcom/android/server/am/JourneyPerformanceService$TinnoUsageStats;->reportEvent(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;)V"
+      },
+      {
+        "offset": 162,
+        "op": "goto",
+        "args": "+9h"
+      },
+      {
+        "offset": 164,
+        "op": "const-string",
+        "args": "v9, \"ActivityTaskManager\""
+      },
+      {
+        "offset": 168,
+        "op": "const-string",
+        "args": "v10, \"TinnoUsageStats report USER_CLICK_OBJ_FROM_RECENT error \""
+      },
+      {
+        "offset": 172,
+        "op": "invoke-static",
+        "args": "v9, v10, v8, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I"
+      },
+      {
+        "offset": 178,
+        "op": "goto",
+        "args": "+2h"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes2.dex",
+    "class_name": "Lcom/android/server/wm/ActivityTaskManagerService;",
+    "method": "startActivityFromRecents(I Landroid/os/Bundle;)I",
+    "code_item_offset": 1406760,
+    "target": {
+      "offset": 156,
+      "op": "invoke-static",
+      "args": "v7, v8, Lcom/android/server/am/JourneyPerformanceService$TinnoUsageStats;->reportEvent(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;)V"
+    },
+    "context": [
+      {
+        "offset": 140,
+        "op": "move-object",
+        "args": "v7, v8"
+      },
+      {
+        "offset": 142,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 144,
+        "op": "move-exception",
+        "args": "v8"
+      },
+      {
+        "offset": 146,
+        "op": "goto",
+        "args": "+9h"
+      },
+      {
+        "offset": 148,
+        "op": "if-eqz",
+        "args": "v7, +010h"
+      },
+      {
+        "offset": 152,
+        "op": "sget-object",
+        "args": "v8, Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;->USER_CLICK_OBJ_FROM_RECENT Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;"
+      },
+      {
+        "offset": 156,
+        "op": "invoke-static",
+        "args": "v7, v8, Lcom/android/server/am/JourneyPerformanceService$TinnoUsageStats;->reportEvent(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$USAGE_EVENT;)V"
+      },
+      {
+        "offset": 162,
+        "op": "goto",
+        "args": "+9h"
+      },
+      {
+        "offset": 164,
+        "op": "const-string",
+        "args": "v9, \"ActivityTaskManager\""
+      },
+      {
+        "offset": 168,
+        "op": "const-string",
+        "args": "v10, \"TinnoUsageStats report USER_CLICK_OBJ_FROM_RECENT error \""
+      },
+      {
+        "offset": 172,
+        "op": "invoke-static",
+        "args": "v9, v10, v8, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I"
+      },
+      {
+        "offset": 178,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 180,
+        "op": "nop",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes2.dex",
+    "class_name": "Lcom/android/server/wm/ActivityTaskManagerService;",
+    "method": "startActivityFromRecents(I Landroid/os/Bundle;)I",
+    "code_item_offset": 1406760,
+    "target": {
+      "offset": 190,
+      "op": "sget-boolean",
+      "args": "v8, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_USAGE_CLICK Z"
+    },
+    "context": [
+      {
+        "offset": 168,
+        "op": "const-string",
+        "args": "v10, \"TinnoUsageStats report USER_CLICK_OBJ_FROM_RECENT error \""
+      },
+      {
+        "offset": 172,
+        "op": "invoke-static",
+        "args": "v9, v10, v8, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I"
+      },
+      {
+        "offset": 178,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 180,
+        "op": "nop",
+        "args": ""
+      },
+      {
+        "offset": 182,
+        "op": "sget-boolean",
+        "args": "v8, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 186,
+        "op": "if-eqz",
+        "args": "v8, +01fh"
+      },
+      {
+        "offset": 190,
+        "op": "sget-boolean",
+        "args": "v8, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_USAGE_CLICK Z"
+      },
+      {
+        "offset": 194,
+        "op": "if-eqz",
+        "args": "v8, +01bh"
+      },
+      {
+        "offset": 198,
+        "op": "new-instance",
+        "args": "v8, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 202,
+        "op": "invoke-direct",
+        "args": "v8, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 208,
+        "op": "const-string",
+        "args": "v9, \"USAGE:\""
+      },
+      {
+        "offset": 212,
+        "op": "invoke-virtual",
+        "args": "v8, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 218,
+        "op": "invoke-virtual",
+        "args": "v8, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes2.dex",
+    "class_name": "Lcom/android/server/wm/ActivityTaskManagerService;",
+    "method": "startActivityFromRecents(I Landroid/os/Bundle;)I",
+    "code_item_offset": 1406760,
+    "target": {
+      "offset": 242,
+      "op": "invoke-static",
+      "args": "v8, Lcom/android/server/am/JourneyPerformanceService;->Log(Ljava/lang/String;)V"
+    },
+    "context": [
+      {
+        "offset": 212,
+        "op": "invoke-virtual",
+        "args": "v8, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 218,
+        "op": "invoke-virtual",
+        "args": "v8, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 224,
+        "op": "const-string",
+        "args": "v9, \" USER_CLICK_OBJ_FROM_RECENT ! \""
+      },
+      {
+        "offset": 228,
+        "op": "invoke-virtual",
+        "args": "v8, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 234,
+        "op": "invoke-virtual",
+        "args": "v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 240,
+        "op": "move-result-object",
+        "args": "v8"
+      },
+      {
+        "offset": 242,
+        "op": "invoke-static",
+        "args": "v8, Lcom/android/server/am/JourneyPerformanceService;->Log(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 248,
+        "op": "iget-object",
+        "args": "v6, v11, Lcom/android/server/wm/ActivityTaskManagerService;->mStackSupervisor Lcom/android/server/wm/ActivityStackSupervisor;"
+      },
+      {
+        "offset": 252,
+        "op": "invoke-virtual",
+        "args": "v6, v0, v1, v12, v2, Lcom/android/server/wm/ActivityStackSupervisor;->startActivityFromRecents(I I I Lcom/android/server/wm/SafeActivityOptions;)I"
+      },
+      {
+        "offset": 258,
+        "op": "move-result",
+        "args": "v6"
+      },
+      {
+        "offset": 260,
+        "op": "monitor-exit",
+        "args": "v5"
+      },
+      {
+        "offset": 262,
+        "op": "invoke-static",
+        "args": "Lcom/android/server/wm/WindowManagerService;->resetPriorityAfterLockedSection()V"
+      },
+      {
+        "offset": 268,
+        "op": "invoke-static",
+        "args": "v3, v4, Landroid/os/Binder;->restoreCallingIdentity(J)V"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes2.dex",
+    "class_name": "Lcom/android/server/wm/DisplayContent;",
+    "method": "updateFocusedWindowLocked(I Z I)Z",
+    "code_item_offset": 1491720,
+    "target": {
+      "offset": 268,
+      "op": "sget-boolean",
+      "args": "v6, Lcom/android/server/am/JourneyPerformanceService;->USAGE_OPTIMIZATION2 Z"
+    },
+    "context": [
+      {
+        "offset": 242,
+        "op": "const/4",
+        "args": "v6, 0"
+      },
+      {
+        "offset": 244,
+        "op": "const/16",
+        "args": "v9, 16"
+      },
+      {
+        "offset": 248,
+        "op": "const",
+        "args": "v12, 1469292670"
+      },
+      {
+        "offset": 254,
+        "op": "invoke-static",
+        "args": "v8, v12, v9, v6, v11, Lcom/android/server/protolog/ProtoLogImpl;->v(Lcom/android/server/protolog/common/IProtoLogGroup; I I Ljava/lang/String; [Ljava/lang/Object;)V"
+      },
+      {
+        "offset": 260,
+        "op": "sget-boolean",
+        "args": "v6, Lcom/journey/system/JourneyCustomFeature;->ENABLE_SYS_PERMFROMANCE_OPT Z"
+      },
+      {
+        "offset": 264,
+        "op": "if-eqz",
+        "args": "v6, +055h"
+      },
+      {
+        "offset": 268,
+        "op": "sget-boolean",
+        "args": "v6, Lcom/android/server/am/JourneyPerformanceService;->USAGE_OPTIMIZATION2 Z"
+      },
+      {
+        "offset": 272,
+        "op": "if-eqz",
+        "args": "v6, +051h"
+      },
+      {
+        "offset": 276,
+        "op": "iget-object",
+        "args": "v6, v0, Lcom/android/server/wm/DisplayContent;->mCurrentFocus Lcom/android/server/wm/WindowState;"
+      },
+      {
+        "offset": 280,
+        "op": "if-eqz",
+        "args": "v6, +00ah"
+      },
+      {
+        "offset": 284,
+        "op": "iget-object",
+        "args": "v6, v6, Lcom/android/server/wm/WindowState;->mAttrs Landroid/view/WindowManager$LayoutParams;"
+      },
+      {
+        "offset": 288,
+        "op": "iget-object",
+        "args": "v6, v6, Landroid/view/WindowManager$LayoutParams;->packageName Ljava/lang/String;"
+      },
+      {
+        "offset": 292,
+        "op": "const/4",
+        "args": "v8, 0"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes2.dex",
+    "class_name": "Lcom/android/server/wm/DisplayContent;",
+    "method": "updateFocusedWindowLocked(I Z I)Z",
+    "code_item_offset": 1491720,
+    "target": {
+      "offset": 294,
+      "op": "invoke-static",
+      "args": "v6, v8, Lcom/android/server/am/JourneyPerformanceService;->NotifyWindowFocusChange(Ljava/lang/String; Z)V"
+    },
+    "context": [
+      {
+        "offset": 272,
+        "op": "if-eqz",
+        "args": "v6, +051h"
+      },
+      {
+        "offset": 276,
+        "op": "iget-object",
+        "args": "v6, v0, Lcom/android/server/wm/DisplayContent;->mCurrentFocus Lcom/android/server/wm/WindowState;"
+      },
+      {
+        "offset": 280,
+        "op": "if-eqz",
+        "args": "v6, +00ah"
+      },
+      {
+        "offset": 284,
+        "op": "iget-object",
+        "args": "v6, v6, Lcom/android/server/wm/WindowState;->mAttrs Landroid/view/WindowManager$LayoutParams;"
+      },
+      {
+        "offset": 288,
+        "op": "iget-object",
+        "args": "v6, v6, Landroid/view/WindowManager$LayoutParams;->packageName Ljava/lang/String;"
+      },
+      {
+        "offset": 292,
+        "op": "const/4",
+        "args": "v8, 0"
+      },
+      {
+        "offset": 294,
+        "op": "invoke-static",
+        "args": "v6, v8, Lcom/android/server/am/JourneyPerformanceService;->NotifyWindowFocusChange(Ljava/lang/String; Z)V"
+      },
+      {
+        "offset": 300,
+        "op": "if-eqz",
+        "args": "v4, +00ah"
+      },
+      {
+        "offset": 304,
+        "op": "iget-object",
+        "args": "v6, v4, Lcom/android/server/wm/WindowState;->mAttrs Landroid/view/WindowManager$LayoutParams;"
+      },
+      {
+        "offset": 308,
+        "op": "iget-object",
+        "args": "v6, v6, Landroid/view/WindowManager$LayoutParams;->packageName Ljava/lang/String;"
+      },
+      {
+        "offset": 312,
+        "op": "const/4",
+        "args": "v8, 1"
+      },
+      {
+        "offset": 314,
+        "op": "invoke-static",
+        "args": "v6, v8, Lcom/android/server/am/JourneyPerformanceService;->NotifyWindowFocusChange(Ljava/lang/String; Z)V"
+      },
+      {
+        "offset": 320,
+        "op": "new-instance",
+        "args": "v6, Ljava/lang/StringBuilder;"
+      }
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes2.dex",
+    "class_name": "Lcom/android/server/wm/DisplayContent;",
+    "method": "updateFocusedWindowLocked(I Z I)Z",
+    "code_item_offset": 1491720,
+    "target": {
+      "offset": 314,
+      "op": "invoke-static",
+      "args": "v6, v8, Lcom/android/server/am/JourneyPerformanceService;->NotifyWindowFocusChange(Ljava/lang/String; Z)V"
+    },
+    "context": [
+      {
+        "offset": 292,
+        "op": "const/4",
+        "args": "v8, 0"
+      },
+      {
+        "offset": 294,
+        "op": "invoke-static",
+        "args": "v6, v8, Lcom/android/server/am/JourneyPerformanceService;->NotifyWindowFocusChange(Ljava/lang/String; Z)V"
+      },
+      {
+        "offset": 300,
+        "op": "if-eqz",
+        "args": "v4, +00ah"
+      },
+      {
+        "offset": 304,
+        "op": "iget-object",
+        "args": "v6, v4, Lcom/android/server/wm/WindowState;->mAttrs Landroid/view/WindowManager$LayoutParams;"
+      },
+      {
+        "offset": 308,
+        "op": "iget-object",
+        "args": "v6, v6, Landroid/view/WindowManager$LayoutParams;->packageName Ljava/lang/String;"
+      },
+      {
+        "offset": 312,
+        "op": "const/4",
+        "args": "v8, 1"
+      },
+      {
+        "offset": 314,
+        "op": "invoke-static",
+        "args": "v6, v8, Lcom/android/server/am/JourneyPerformanceService;->NotifyWindowFocusChange(Ljava/lang/String; Z)V"
+      },
+      {
+        "offset": 320,
+        "op": "new-instance",
+        "args": "v6, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 324,
+        "op": "invoke-direct",
+        "args": "v6, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 330,
+        "op": "const-string",
+        "args": "v8, \"Changing focus from\""
+      },
+      {
+        "offset": 334,
+        "op": "invoke-virtual",
+        "args": "v6, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 340,
+        "op": "iget-object",
+        "args": "v8, v0, Lcom/android/server/wm/DisplayContent;->mCurrentFocus Lcom/android/server/wm/WindowState;"
+      },
+      {
+        "offset": 344,
+        "op": "invoke-virtual",
+        "args": "v6, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+      }
+    ]
+  }
+]
