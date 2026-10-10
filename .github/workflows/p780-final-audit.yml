@@ -6,6 +6,15 @@ on:
     branches: [main]
     paths:
       - .github/workflows/p780-final-audit.yml
+      - README.md
+      - docs/**
+      - archive/**
+      - evidence/device/**
+      - evidence/ghostlock/**
+
+concurrency:
+  group: p780-final-archive-audit
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -95,6 +104,8 @@ jobs:
           for x in missing:
               lines.append(f"- \`{x['source']}\` → \`{x['target']}\`")
           Path("reports/integrity.md").write_text('\n'.join(lines)+'\n')
+          if missing:
+              raise AssertionError("Invalid Markdown relative links: "+str(len(missing)))
           print("\n".join(lines))
           print("ZIP CONTENT TREE")
           for x in objects:
