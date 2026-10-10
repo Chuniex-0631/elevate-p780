@@ -10,6 +10,8 @@
     "resolved.config": "36a7a76f188b8281cc9b9815a0493ebdd80e8998a625bbec26c64a7335324a8b",
     "tools/audit_missing_config.py": "03e5be1076b2be1e0855cbd7c257a4d4d025157feaebc491c0468a79d062b6e2",
     "evidence/actions/2026-10-10-layout-audit/source-audit/missing-config-references.json": "90ff1a0c933e935af251704adcb39508740f0bf17b1cf4b807d05a5a90f1782a",
-    "evidence/actions/2026-10-10-layout-audit/source-audit/missing-config-references.md": "168c4a5dbfbbbcdb2410cdf93c827cf9c437730571635a2daf10819ae5b4f62a"
+    "evidence/actions/2026-10-10-layout-audit/source-audit/missing-config-references.md": "168c4a5dbfbbbcdb2410cdf93c827cf9c437730571635a2daf10819ae5b4f62a",
+    "evidence/actions/2026-10-10-layout-audit/source-audit/core-header-hashes.json": "32d5dbc1488356b08db62fbd47fd640a7e414677a68d0c212543cbdf64d1eb6e",
+    "evidence/actions/2026-10-10-layout-audit/source-audit/core-header-diff.txt": "f3d7538066ffe0bf35645bfbba3568b4ddf9b0052729ae17007f837284d95d95"
   }
 }

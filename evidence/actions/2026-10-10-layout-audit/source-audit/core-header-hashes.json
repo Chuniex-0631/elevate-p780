@@ -1,0 +1,38 @@
+[
+  {
+    "path": "include/linux/sched.h",
+    "byte_identical": false,
+    "tinno_sha256": "019106a35a973cd6f0e1a3a9667bde4f9272cb2ae4f6ae541ec8efd00213bfd2",
+    "a52s_sha256": "3fb340b5ba00f2d430fa51e4a896387932cbd969c58735b511816c13ca8db92d"
+  },
+  {
+    "path": "include/linux/mm_types.h",
+    "byte_identical": true,
+    "tinno_sha256": "ad69d67d48103ce985c6fb7da8093e1f6728d6f43d33f047d8f903f8b2428ee6",
+    "a52s_sha256": "ad69d67d48103ce985c6fb7da8093e1f6728d6f43d33f047d8f903f8b2428ee6"
+  },
+  {
+    "path": "include/linux/cred.h",
+    "byte_identical": false,
+    "tinno_sha256": "adf79f4083c5f0aa0f3b10eaaf693759963e2073001646b7603ce4d1ad133b6d",
+    "a52s_sha256": "753fc3ebeb24f37a121bebe0165df439162d45d5b87df580a59c34c55500635b"
+  },
+  {
+    "path": "include/linux/refcount.h",
+    "byte_identical": false,
+    "tinno_sha256": "3446294886ea61766331ec6438084375140f6990bec321ea660335ec4ff1603a",
+    "a52s_sha256": "dfc0a5ac148c414b54e9dc1930438959f85fe8a56962d4d20126a240ca5d337d"
+  },
+  {
+    "path": "kernel/locking/rtmutex_common.h",
+    "byte_identical": true,
+    "tinno_sha256": "c79353d84625e4d352be7d96193cf162fba7857a85171540996f499679ea3d08",
+    "a52s_sha256": "c79353d84625e4d352be7d96193cf162fba7857a85171540996f499679ea3d08"
+  },
+  {
+    "path": "include/linux/pipe_fs_i.h",
+    "byte_identical": true,
+    "tinno_sha256": "93ee22c10394df2fa3c3734c815d5efee511a11d84470db8407fb8621b2c53ab",
+    "a52s_sha256": "93ee22c10394df2fa3c3734c815d5efee511a11d84470db8407fb8621b2c53ab"
+  }
+]

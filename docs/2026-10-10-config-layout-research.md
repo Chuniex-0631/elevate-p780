@@ -53,13 +53,38 @@
 
 ## 可重复实验与结果
 
-[构建运行 #38060293186](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38060293186) 对两棵固定树分别执行原厂配置的 `olddefconfig`、`prepare` 和 32 个结构大小/成员位置测量。不链接完整内核，不生成或刷写 boot.img。
+[最终完整构建 #38060518994](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38060518994) 对两棵固定树分别执行原厂配置的 `olddefconfig`、`prepare` 和 32 个结构大小/成员位置测量。不链接完整内核，不生成或刷写 boot.img。
 
 结果由 workflow 在运行后保存到 [构建证据目录](../evidence/actions/2026-10-10-layout-audit)，包括原始/求解配置、真实 Kbuild 命令、探针编译日志、汇编、候选 JSON、跨树对比。**具体成功/失败以该目录的实际产物为准，不把已提交流程写成编译成功。**
 
+## 实际完成结果
+
+最终 run **38060518994**：TINNO、A52s 的测量 job 与永久归档 job **全部 success**。两棵树分别提取 **32 / 32** 项，**0 项差异**，配置在 prepare 阶段均无进一步漂移。
+
+| 输入树 | olddefconfig 已有值变化 | 消失 | 新增 | 探针完整性 |
+|---|---:|---:|---:|---|
+| TINNO 5.4.61 | 0 | 46 | 14 | 32 / 32 |
+| A52s 5.4.233 | 0 | 24 | 322 | 32 / 32 |
+
+TINNO 的 46 是本轮原生 Kconfig/Clang11 的结果，不是旧报告中静态源码符号检查的 45；不能把两种口径合并。
+
+[完整对比表](../evidence/actions/2026-10-10-layout-audit/runs/38060518994/layout-comparison.md) 与 [原始 JSON](../evidence/actions/2026-10-10-layout-audit/runs/38060518994/layout-comparison.json) 已永久入 Git。采样包括 task_struct、cred、rt_mutex_waiter、rt_mutex、mm_struct、page、file、file_operations、pipe_inode_info、pipe_buffer、refcount_t 的大小或选定成员。
+
+源文件比对另存 [核心头文件 SHA](../evidence/actions/2026-10-10-layout-audit/source-audit/core-header-hashes.json) 与 [原始 diff](../evidence/actions/2026-10-10-layout-audit/source-audit/core-header-diff.txt)：mm_types.h、rtmutex_common.h、pipe_fs_i.h 在两棵固定树中逐字节一致；sched.h、cred.h、refcount.h 不同。候选 sched.h 的 SEC_PERF_MANAGER 在本次求解配置关闭。
+
+这个结果仅说明**本轮被测字段和大小**一致。即使头文件内容相同也不能代替真实 P780 的类型信息；布局相同不证明函数实现、编译后栈帧、全体字段或符号地址相同，不解除实机适配 BLOCKED。
+
+### 保留的中间轮次
+
+- #38060293186：TINNO 因官方脚本缺执行权限失败；A52s 输出 31 项，首项标签 TASK_SIZE 被内核同名宏展开，未通过后加的 32 项完整性要求。
+- #38060466663：修复脚本执行权限后两棵树均产出 31 项；仍为缺首项的中间结果。
+- #38060518994：首项改为独有名称 P780_TASK_STRUCT_BYTES，并要求 32 项全部提取，完整成功。
+
+只修复构建脚本文件模式，不修改源码字节；模式修复列表在各 run 的 executable-mode-repairs.txt。所有中间原件保留，最终研究结论引用第三轮。
+
 ## 继续研究的关卡
 
-1. 先取得本轮实际结构差异；再定位对应的字段定义和条件编译，必要时设计单变量配置实验。
+1. 本轮 32 项一致；下一步优先核对原厂二进制、函数实现与栈帧。继续扩展布局探针只能扩大采样，不能替代原厂来源证据。
 2. 仍需匹配 `_162` 的原厂 Image/OTA 或可信运行时类型证据；候选布局不得填入实机利用参数。
 3. `vehicle-scan` 需要原厂 Image；`pagetrace` 启用事件需要 root，均不能自动消除目前阻断。
 

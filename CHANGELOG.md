@@ -6,7 +6,8 @@
 - 区分 FORTIFY_SOURCE 的 Clang 依赖限制、REFCOUNT_FULL 的实现替换、不可达 NFC 菜单和未被两棵公开树覆盖的配置。
 - 增加候选结构探针和 Kbuild 编译参数提取流程；固定两棵源码与 Android Clang11，保存每轮成功或失败工件。
 - 首轮 TINNO 构建脚本缺执行权限已记录并修复；探针 TASK_SIZE 名称与内核宏冲突已改名，新增 32 项完整性检查；保留前两轮结果，不冒充完整布局。
-- 专题：[配置与布局研究](docs/2026-10-10-config-layout-research.md)。布局结论以最终实际工件为准；未实现 Root/BL 解锁。
+- 最终 [#38060518994](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38060518994) 全部通过，两棵固定树各 32 项完整提取、0 项差异；永久保存全部原始工件。
+- 专题：[配置与布局研究](docs/2026-10-10-config-layout-research.md)。候选布局不代替原厂二进制，未实现 Root/BL 解锁。
 
 ## 2026-10-10 — 新一轮原始设备资料归档与去重
 

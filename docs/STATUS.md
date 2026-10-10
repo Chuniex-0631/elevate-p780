@@ -59,4 +59,5 @@
 - [24 项配置与候选布局研究](2026-10-10-config-layout-research.md)：24 项完成源码引用核对，15 项原本启用。
 - 5 项在两棵公开源码均未命中（4 项实机启用）；5 项仍有候选 Kconfig 定义；14 项候选无同名定义。
 - FORTIFY_SOURCE 属 Clang 依赖限制；REFCOUNT_FULL 无开关不代表饱和保护消失。
-- 新增离线结构测量流程；成功/失败及测量结果以 evidence/actions/2026-10-10-layout-audit 的实际工件为准。Root/BL 状态不变，GhostLock 仍 BLOCKED。
+- 最终 Actions #38060518994 全部通过：两棵固定树分别提取 32 项布局事实，32 项全部一致，prepare 配置漂移 0。TINNO 原生求解消失 46 / 新增 14；A52s 消失 24 / 新增 322。
+- 原始日志、编译命令、配置和候选 JSON 已永久入 evidence/actions/2026-10-10-layout-audit。仅为候选源码 ABI 采样；Root/BL 状态不变，GhostLock 仍 BLOCKED。
