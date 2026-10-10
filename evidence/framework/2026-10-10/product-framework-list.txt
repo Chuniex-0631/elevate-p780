@@ -1,0 +1,5 @@
+total 172
+-rw-r--r-- 1 root root    723 2009-01-01 08:00 com.google.android.dialer.support.jar
+-rw-r--r-- 1 root root  64430 2009-01-01 08:00 com.qti.snapdragon.sdk.display.jar
+-rw-r--r-- 1 root root 100366 2009-01-01 08:00 ims-ext-common.jar
+drwxr-xr-x 4 root root   4096 2009-01-01 08:00 oat
