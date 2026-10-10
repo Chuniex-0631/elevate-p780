@@ -1,0 +1,31 @@
+make: Entering directory '/home/runner/work/p780-kernel-research/p780-kernel-research/linux'
+make[1]: Entering directory '/home/runner/work/p780-kernel-research/p780-kernel-research/out'
+  GEN     Makefile
+  HOSTCC  scripts/basic/fixdep
+  HOSTCC  scripts/kconfig/conf.o
+  HOSTCC  scripts/kconfig/confdata.o
+  HOSTCC  scripts/kconfig/expr.o
+  LEX     scripts/kconfig/lexer.lex.c
+  YACC    scripts/kconfig/parser.tab.[ch]
+  HOSTCC  scripts/kconfig/lexer.lex.o
+  HOSTCC  scripts/kconfig/parser.tab.o
+  HOSTCC  scripts/kconfig/preprocess.o
+  HOSTCC  scripts/kconfig/symbol.o
+  HOSTLD  scripts/kconfig/conf
+scripts/kconfig/conf  --olddefconfig Kconfig
+drivers/samsung/debug/Kconfig:4:warning: ignoring type redefinition of 'SEC_DEBUG' from 'tristate' to 'bool'
+drivers/sensors/Kconfig:2:warning: ignoring type redefinition of 'SENSORS_SSC' from 'tristate' to 'bool'
+drivers/sensors/Kconfig:193: warning: 'SENSORS_A96T365IF' defined with blank help text
+drivers/usb/common/vbus_notifier/Kconfig:4:warning: ignoring type redefinition of 'VBUS_NOTIFIER' from 'bool' to 'tristate'
+drivers/samsung/debug/Kconfig:30:warning: defaults for choice values not supported
+drivers/samsung/debug/Kconfig:36:warning: defaults for choice values not supported
+
+WARNING: unmet direct dependencies detected for REGMAP
+  Depends on [n]: UML
+  Selected by [y]:
+  - BACKLIGHT_QCOM_SPMI_WLED [=y] && HAS_IOMEM [=y] && BACKLIGHT_CLASS_DEVICE [=y]
+#
+# configuration written to .config
+#
+make[1]: Leaving directory '/home/runner/work/p780-kernel-research/p780-kernel-research/out'
+make: Leaving directory '/home/runner/work/p780-kernel-research/p780-kernel-research/linux'

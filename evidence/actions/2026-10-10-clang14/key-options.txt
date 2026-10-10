@@ -1,0 +1,8 @@
+CONFIG_CC_VERSION_TEXT="Android (6877366 based on r383902b1) clang version 11.0.2 (https://android.googlesource.com/toolchain/llvm-project b397f81060ce6d701042b782172ed13bee898b79)"
+CONFIG_FUTEX_PI=y
+CONFIG_ARCH_HOLI=y
+CONFIG_ARCH_BLAIR=y
+CONFIG_LTO_CLANG=y
+CONFIG_CFI_CLANG=y
+CONFIG_RT_MUTEXES=y
+CONFIG_ASHMEM=y

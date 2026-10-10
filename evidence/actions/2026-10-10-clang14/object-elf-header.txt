@@ -1,0 +1,1 @@
+llvm-readelf: warning: 'out/kernel/locking/rtmutex.o': bitcode files are not supported

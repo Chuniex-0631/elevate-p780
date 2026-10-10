@@ -1,0 +1,31 @@
+
+==== CHANGED (0) ====
+
+==== REMOVED (24) ====
+CONFIG_ABOV_SAR original= y resolved= (missing)
+CONFIG_AW9610X_SAR original= y resolved= (missing)
+CONFIG_BATTERY_PROTECT_LIMIT original= n resolved= (missing)
+CONFIG_EXFAT_FS original= n resolved= (missing)
+CONFIG_F2FS_CHECK_FS original= n resolved= (missing)
+CONFIG_FINGERPRINT_FOCAL_FT9801_QSEE original= n resolved= (missing)
+CONFIG_FINGERPRINT_GOODIX_GF9628_QSEE original= y resolved= (missing)
+CONFIG_FORTIFY_SOURCE original= y resolved= (missing)
+CONFIG_INPUT_FINGERPRINT original= y resolved= (missing)
+CONFIG_IPA_ETH original= n resolved= (missing)
+CONFIG_JEITA_WARM_OV_PROTECT original= y resolved= (missing)
+CONFIG_LOWBATT_PWROFF original= y resolved= (missing)
+CONFIG_NFC_PN533_I2C original= n resolved= (missing)
+CONFIG_NFC_PN533_USB original= n resolved= (missing)
+CONFIG_NFC_QTI_I3C_GPIO original= n resolved= (missing)
+CONFIG_NFC_ST54J original= m resolved= (missing)
+CONFIG_NVM original= n resolved= (missing)
+CONFIG_REFCOUNT_FULL original= y resolved= (missing)
+CONFIG_SCC_SUPPORT original= y resolved= (missing)
+CONFIG_TINNO_DEMOMODECHG_CONTROL original= y resolved= (missing)
+CONFIG_TINNO_LONGCHG_CONTROL original= y resolved= (missing)
+CONFIG_TINNO_PRODUCT_INFO original= y resolved= (missing)
+CONFIG_TINNO_WARM_RECHARGE_CONTROL original= y resolved= (missing)
+CONFIG_USB_SWITCH original= y resolved= (missing)
+
+==== ADDED (322) ====
+Complete added list is preserved in config-changes.json

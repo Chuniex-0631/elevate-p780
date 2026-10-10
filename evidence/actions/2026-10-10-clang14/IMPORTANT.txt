@@ -1,0 +1,1 @@
+This is a reconstructed research build, NOT a P780 firmware binary.
