@@ -1,0 +1,34 @@
+{
+  "source": "机主只读采集上传",
+  "date": "2026-10-10",
+  "zip": {
+    "name": "p780-journey-config.zip",
+    "bytes": 3940,
+    "sha256": "b6767d482067223f9d033987b2be9613b08f5a5deb4e76c73f26d434307765c0",
+    "crc_passed": true,
+    "github_storage": "完整原始 ZIP 字节以 Base64 文本保存于 p780-journey-config.zip.b64；解码后校验本 SHA",
+    "decode_python": "import base64,pathlib; pathlib.Path('p780-journey-config.zip').write_bytes(base64.b64decode(pathlib.Path('p780-journey-config.zip.b64').read_bytes()))"
+  },
+  "entries": [
+    {
+      "path": "p780-journey-config\\config.xml",
+      "bytes": 6440,
+      "sha256": "18c226792cd8044f3bdf0503b8b240510a70664f63dd687064512eed97198181"
+    },
+    {
+      "path": "p780-journey-config\\tcs-state.txt",
+      "bytes": 23286,
+      "sha256": "da7d00c39a9b09a409917002d2caedb61713c57a5d706374fc8a0aad14b98e04"
+    },
+    {
+      "path": "p780-journey-config\\version.txt",
+      "bytes": 2,
+      "sha256": "73475cb40a568e8da8a045ced110137e159f890ac4da883b6b17dc651b3a8049"
+    }
+  ],
+  "views": {
+    "config.xml": "UTF-8 原件内容",
+    "version.txt": "原件内容，无末尾换行",
+    "tcs-state.utf8.txt": "UTF-16 原件转换阅读视图；原始字节保存在编码 ZIP 中"
+  }
+}
