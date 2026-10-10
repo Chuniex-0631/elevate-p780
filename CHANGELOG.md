@@ -15,7 +15,7 @@
 - 新建 [完整性报告](docs/EVIDENCE_INTEGRITY.md)；Actions [#38055450831](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38055450831)、[#38055530285](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38055530285) 验证压缩包 CRC、SHA-256、ZIP 内部 `CHECKSUMS.sha256`、四版内嵌设备证据与主原件的字节一致性。
 - 四个 ZIP 分别包含 **13 / 16 / 17 / 27** 个文件；v0.4 原始 README 首行错误标成 v0.3，已如实在 [版本索引](docs/GHOSTLOCK_PORT_VERSIONS.md) 标记，不修改原件。
 - 消除 README、GhostLock、Next Steps、文件清单、历史时间线与出处文档中“原件仍未上传”的旧描述；重写仓库首页，明确研究结果和未达成事项。
-- 仍未迁入的原始大日志、APK、Bugreport 与旧分析 ZIP **继续按文件名和大小列入清单**；避免将包含个人信息的文件直接上传，保持“已证明”和“已归档”的边界。
+- 当时尚未迁入的材料已在**随后一轮新增上传**中部分补齐（Bugreport、三份 APK、OTA/ADB 日志），其余继续列入清单。新增原件尚未完成发布级脱敏，详见本日志上方的后续整理记录。
 - 已发布 [最终验收报告](docs/FINAL_ARCHIVE_REVIEW.md) 与全套双向证据索引；本轮为**资料验收**，没有在实体机运行漏洞、刷入固件、获得 Root 或解锁 Bootloader。
 
 ## 2026-10-10 — 首次整库整理
