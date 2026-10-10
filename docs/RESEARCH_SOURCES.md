@@ -6,6 +6,8 @@
 
 - `p780-config.gz`（39,170 B，已提交于 repo root），Actions 记录校验 SHA-256：
   `0ff9cbb1844e043e1211b527509f5f435862cace25649bab6641d5d62c7bbce0`。
+- [`evidence/device/p780-cpu4.raw`](../evidence/device/p780-cpu4.raw)：实机 Tracefs 4,096 字节原件；标记和 SHA 校验通过。
+- [`evidence/ghostlock`](../evidence/ghostlock)：v0.1—v0.4 四份原始 ZIP，包含分阶段预检、内部回归测试和同源设备证据。
 - `archive/device/hand5g_kernel.txt`：实机 `/proc/version` / `uname` 输出整理。
 - `archive/device/hand5g_byname.txt`：真实 `/dev/block/by-name` 符号链接记录。
 - `archive/device/P780_EDL_2026-06-12_sanitized.txt`：六月 EDL 及 Fastboot 摘要，去掉设备独有标识。
@@ -13,7 +15,7 @@
 - `archive/reports/P780_TZAccess_2026-10-04.md`：从实际 APK/Dex 得到的服务端凭据传递与白名单分析。
 - `archive/reports/P780_MinkNative_2026-10-04.md`：从用户提取的 JNI 库与应用日志得到的结果。
 - `archive/reports/P780_GhostLock_source_audit_2026-10-10.md`：实机配置+tracefs 原始数据+旧源码交叉核对。
-- 历史原件未完全迁移的项目详见 [文件清单](EVIDENCE_MANIFEST.md)。
+- 已迁移原件的 CRC、哈希及内嵌副本校验见 [证据完整性](EVIDENCE_INTEGRITY.md)；**其它**尚未迁移的文件详见 [文件清单](EVIDENCE_MANIFEST.md)。
 
 ## 上游项目源码（只作版本参考）
 
