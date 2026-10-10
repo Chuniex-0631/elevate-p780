@@ -19,7 +19,8 @@ Linux/5.4.233-qgki-gea5245e94afe-dirty
 
 - **2024-02-20** 是设备镜像与内核编译时间，**2024-03-21** 是官方更新开始发布日；它们不是互相矛盾的日期。
 - **2026-10-10** 未能从已经掌握的用户文件中提取有版本校验的完整 OTA ZIP、`payload.bin`、`boot.img` 或 `vendor_boot.img`。
-- 历史真实上传材料 `hand5g_update_activity.txt`（94,710 B）、`hand5g_update_log.txt`（283,944 B）、`hand5g_bugreport.zip`（5,684,665 B）目前仍在用户文件库，**未入库 GitHub**，原始日志可能包含账户/设备数据；未经逐项脱敏不整体移入。
+- 历史原件已由机主上传并保留至私有 Git 仓库：[Activity 记录](../evidence/restricted/ota/hand5g_update_activity.txt)（94,710 B）、[Logcat](../evidence/restricted/ota/hand5g_update_log.txt)（283,944 B）及 [Bugreport](../evidence/restricted/bugreport/hand5g_bugreport.zip)（5,684,665 B）。**这些是未脱敏原件**，不应公开，亦未从中取得可直接使用的完整 OTA。
+- 更新服务材料的独立审阅见 [OTA 与 Bugreport 归档](OTA_LOGS_AND_BUGREPORT.md)。
 
 ## 官方 2026 年 9 月 28 日安全公告
 
