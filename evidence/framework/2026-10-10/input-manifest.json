@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-10",
+  "source": "owner ADB collection",
+  "raw_zip": {
+    "name": "p780-framework-audit.zip",
+    "bytes": 18141023,
+    "sha256": "69556d28910ff66cf6d708c5edc773c07e3fe72953b27be8a3ac6bc19d5d1056",
+    "crc_ok": true,
+    "library_file_id": "libfile_797a69eb4bd08191ade98d818a0e0a60",
+    "github_raw_bytes_archived": false
+  },
+  "jars": [
+    {
+      "name": "framework.jar",
+      "bytes": 30153054,
+      "sha256": "93944fb3db369e013cd5b744c749567f7e9b691cce226f6e6f1744a04476080c",
+      "dex": [
+        {
+          "name": "classes.dex",
+          "bytes": 9583904,
+          "sha256": "9b0bf8d36a28a6f6e4987082428d3ab40818229e2b779bb66c987e9c53934be5"
+        },
+        {
+          "name": "classes2.dex",
+          "bytes": 9211400,
+          "sha256": "1b737975ba01a4f388119ac9a243787929c96c45d11f123df419a6e8fac5f3da"
+        },
+        {
+          "name": "classes3.dex",
+          "bytes": 10092124,
+          "sha256": "11f3113ca8057a0f121901959b08065d134750fc4722bbfa16cd69806d2cd14d"
+        },
+        {
+          "name": "classes4.dex",
+          "bytes": 1249152,
+          "sha256": "221bc8f3cb67f31d2f208c2ed666dcad5bdfa5b98b525ab1102179ad3e8d74f2"
+        }
+      ]
+    },
+    {
+      "name": "services.jar",
+      "bytes": 15353744,
+      "sha256": "0d93de73a06fca110c2826a92f243ea4afd7d4bf472f27649e0398995adf7345",
+      "dex": [
+        {
+          "name": "classes.dex",
+          "bytes": 11760364,
+          "sha256": "56d789e2ea7232cac744723efeabf6d37504658ff31ab4261b26675ead488d14"
+        },
+        {
+          "name": "classes2.dex",
+          "bytes": 3586452,
+          "sha256": "5621597902a163dd557c99b195dbc973bfc8c397f067009adf70f3e3601f0ea6"
+        }
+      ]
+    }
+  ],
+  "text_views": [
+    {
+      "name": "product-framework-list.txt",
+      "bytes": 600,
+      "sha256": "63df96e755d4751d1f17efc08634082c3b0ecc4c13ed6ae181c9c2422ba287b1"
+    },
+    {
+      "name": "systemserver-classpath.txt",
+      "bytes": 484,
+      "sha256": "0f0f623d29c6ccd107f5648b0e3b0a843c06bf940782513c089d15f76ca021bf"
+    },
+    {
+      "name": "system-ext-framework-list.txt",
+      "bytes": 12428,
+      "sha256": "7b1538ba57a8fabe332fbd0b737c4ead20058740947c57c8b25ebb48f0cc7a01"
+    },
+    {
+      "name": "system-framework-list.txt",
+      "bytes": 8840,
+      "sha256": "8c77026904927228255ae03f2f91e0c83a786ba53f7e1c58f724c5b53fe82988"
+    },
+    {
+      "name": "gms-paths.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
