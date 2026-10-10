@@ -46,6 +46,18 @@ jobs:
           fi
           git -C source rev-parse HEAD > reports/source-commit.txt
           test "$(cat reports/source-commit.txt)" = "$expected"
+          # TINNO's Git import lost executable modes on its build scripts.
+          # Restore only shebang scripts; preserve byte contents and record modes.
+          python3 - <<'PY'
+          from pathlib import Path
+          kdir = Path('reports/source-dir.txt').read_text().strip()
+          changed = []
+          for p in sorted((Path(kdir) / 'scripts').rglob('*')):
+              if p.is_file() and p.read_bytes().startswith(b'#!') and not p.stat().st_mode & 0o111:
+                  p.chmod(p.stat().st_mode | 0o111)
+                  changed.append(str(p.relative_to(kdir)))
+          Path('reports/executable-mode-repairs.txt').write_text('\n'.join(changed) + '\n')
+          PY
           git clone --depth 1 --filter=blob:none --sparse --branch android11-qpr2-release \
             https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 clang-prebuilts
           git -C clang-prebuilts sparse-checkout set clang-r383902b1
@@ -101,14 +113,15 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           pattern: p780-layout-*
-          path: evidence/actions/2026-10-10-layout-audit/builds
+          path: evidence/actions/2026-10-10-layout-audit/runs/${{ github.run_id }}/builds
       - name: Summarize and permanently preserve results
         env:
           RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           set -euo pipefail
           root=evidence/actions/2026-10-10-layout-audit
-          python3 tools/compare_candidate_layouts.py "$root" "$RUN_URL"
+          python3 tools/compare_candidate_layouts.py "$root/runs/$GITHUB_RUN_ID" "$RUN_URL"
+          echo "$GITHUB_RUN_ID" > "$root/LATEST.txt"
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add "$root"
@@ -117,4 +130,4 @@ jobs:
             git pull --rebase origin main
             git push origin HEAD:main
           fi
-          cat "$root/layout-comparison.md" >> "$GITHUB_STEP_SUMMARY"
+          cat "$root/runs/$GITHUB_RUN_ID/layout-comparison.md" >> "$GITHUB_STEP_SUMMARY"
