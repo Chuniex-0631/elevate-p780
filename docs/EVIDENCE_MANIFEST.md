@@ -98,3 +98,9 @@ _早前至少 57 条历史文件记录已保留；本轮新增文件按原始名
 - `evidence/actions/2026-10-10-layout-audit/source-audit/`：两棵固定树扫描得到的原始引用 JSON/Markdown 和实际计算的 provenance 哈希。
 - `evidence/actions/2026-10-10-layout-audit/`：每轮 Actions 原始/求解配置、Kbuild 命令、日志、汇编及候选结构测量 JSON；首轮失败资料亦保留。
 - `tools/audit_missing_config.py`、`tools/derive_candidate_layout.py`、`tools/p780-layout-probe.c`、`tools/compare_candidate_layouts.py` 与 `.github/workflows/p780-layout-audit.yml`：离线研究流程，不连接手机。
+
+## 当前 framework 输入与提取证据
+
+- p780-framework-audit.zip：机主上传 18,141,023 B，CRC 通过；含 services.jar/framework.jar 与五份文本。原始 ZIP/JAR 仍保留在上传文件，未将原始字节迁入 Git。
+- [输入 SHA/原件存放状态](../evidence/framework/2026-10-10/input-manifest.json)；[目标方法原始字节](../evidence/framework/2026-10-10/journey-bytecode.json)、反汇编、调用点 JSON、五份 UTF-8 清单已入 Git。反汇编和阅读视图不冒充原始 JAR/UTF-16 原件。
+- [Journey 实机代码专题](2026-10-10-journey-config-audit.md) 与 [OTA 日志深入审计](2026-10-10-ota-log-audit.md) 已补齐，旧“下一阶段审阅引擎日志”的说明已修订。
