@@ -11,7 +11,7 @@
 ## 已补齐的原件与真正仍缺的材料
 
 - **Tracefs 数据已归档**：[原始 `p780-cpu4.raw`](../evidence/device/p780-cpu4.raw)，4,096 字节；字节级校验和 SHA-256 见 [完整性报告](EVIDENCE_INTEGRITY.md)。
-- `hand5g_getprop.txt`、`hand5g_fastboot_all.txt`、`hand5g_bugreport.zip`、OTA 日志：源文件仍在个人文件库，可能带设备/账户敏感数据；仓库目前只保存脱敏摘要和索引。
+- `hand5g_getprop.txt`、`hand5g_fastboot_all.txt` 等独立历史原件还在个人文件库。**完整 Bugreport 与 OTA 日志现已存于私有 GitHub 的 `evidence/restricted/`，未脱敏**；要公开时必须另做筛查。其它设备文件详见 [来源清单](EVIDENCE_MANIFEST.md)。
 - **四代 GhostLock 包已归档**：v0.1–v0.4 ZIP 全部进入 [evidence/ghostlock](../evidence/ghostlock)，通过 CRC 与内嵌证据交叉校验；详见 [版本索引](GHOSTLOCK_PORT_VERSIONS.md)。
 - 对应设备 `P780AE_11.0_RMN_JP_162` 的可信 `boot.img`、`vmlinux` 或完整官方 OTA：尚未取得。
 
