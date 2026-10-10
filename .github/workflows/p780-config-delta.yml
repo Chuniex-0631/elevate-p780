@@ -1,0 +1,73 @@
+name: P780 exact configuration delta
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/p780-config-delta.yml
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch verified second-run reports
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p previous reports
+          gh run download 38052323798 \
+            --repo Chuniex-0631/p780-kernel-research \
+            --name p780-kernel-audit-reports --dir previous
+          test -s previous/original.config
+          test -s previous/resolved.config
+          test -s previous/config-changes.json
+      - name: Print precisely missing, changed and newly enabled options
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' | tee reports/critical-delta.txt
+          import json,runpy
+          j=json.load(open('previous/config-changes.json'))
+          parse=runpy.run_path('tools/summarize_config.py')['read_config']
+          a=parse('previous/original.config')
+          b=parse('previous/resolved.config')
+          d=j['original_to_resolved']
+          out=[]
+          def put(s):
+              print(s)
+              out.append(s)
+          put('# P780 source-vs-device configuration drift')
+          put('')
+          put(f"Original {len(a)}; resolved {len(b)}")
+          for cat in ('changed','removed','added'):
+              xs=d[cat]
+              put('')
+              put(f'## {cat} ({len(xs)})')
+              if cat == 'added':
+                  items=[k for k in xs if b.get(k) in ('y','m')]
+                  put(f'**Newly enabled:** {len(items)} of {len(xs)}; others recorded in config-changes.json')
+              else:
+                  items=xs
+              for k in items:
+                  put(f'- {k}: {a.get(k, "(absent)")} -> {b.get(k,"(absent)")}')
+          open('reports/critical-delta.md','w').write('\n'.join(out)+'\n')
+          import os
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write('\n'.join(out)+'\n')
+          PY
+          cp previous/config-changes.json reports/config-changes.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: p780-exact-config-delta
+          path: reports/
+          if-no-files-found: warn
