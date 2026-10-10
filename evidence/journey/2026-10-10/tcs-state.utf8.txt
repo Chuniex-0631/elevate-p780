@@ -1,0 +1,464 @@
+JourneyConfigService:
+
+DEBUG:true
+ DEBUG_MORE:false
+ FORCE_SKIP_LOCAL_UPDATE:false
+ FORCE_SKIP_TIME_CHECK:false
+ FORCE_UPDATE_FROM_NETWORK:false
+ NETWORK_FILE_PATH:http://cdn.jstinno.com/journey/system/config/r/
+
+Time:
+ mCurrentVersion:42
+ mLastCheckTime:13:33
+ currentTimeMillis:23:52
+ nextCheckTime:13:33
+
+mPackageInfos for null
+  com.ape.pedometer = 
+  Sports positioning:
+   package:[im.xingzhe,com.bamboo.ibike,com.topgether.sixfoot,cc.iriding.mobile,com.ape.pedometer,com.codoon.gps,com.yuedong.sport,]
+   behavior:[ALLOW_LOCATION,]
+   area:[ALL,]
+
+
+  com.skype.raider = 
+  skype:
+   package:[com.skype.rover,com.skype.raider,com.skype.polaris,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  im.xingzhe = 
+  Sports positioning:
+   package:[im.xingzhe,com.bamboo.ibike,com.topgether.sixfoot,cc.iriding.mobile,com.ape.pedometer,com.codoon.gps,com.yuedong.sport,]
+   behavior:[ALLOW_LOCATION,]
+   area:[ALL,]
+
+
+  com.skype.polaris = 
+  skype:
+   package:[com.skype.rover,com.skype.raider,com.skype.polaris,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.huawei.health = 
+  sport:
+   package:[com.huawei.health,com.huawei.hwid,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  org.telegram.messenger = 
+  telegram:
+   package:[org.telegram.messenger,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.smartviser.demogame = 
+  demogame:
+   package:[com.smartviser.demogame,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.lunarlabs.panda = 
+  lab_test_mode:
+   package:[com.orangelabs*,org.opencv.engine,com.android.cts.verifier,com.tinno.*,com.lunarlabs.panda,com.smartviser.visersettings,]
+   behavior:[NO_LIMIT,]
+   area:[ALL,]
+
+
+  com.ape.ufogames = 
+  appsstore:
+   package:[com.myos.appsstore,com.ape.ufogames,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.viber.voip = 
+  viber:
+   package:[com.viber.voip,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.google.android.apps.enterprise.dmagent = 
+  dmagent:
+   package:[com.google.android.apps.enterprise.dmagent,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.whatsapp = 
+  whatsapp:
+   package:[com.whatsapp,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.iflytek.speechsuite = 
+  speechassist:
+   package:[com.myos.speechassist,com.iflytek.speechsuite,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.bamboo.ibike = 
+  Sports positioning:
+   package:[im.xingzhe,com.bamboo.ibike,com.topgether.sixfoot,cc.iriding.mobile,com.ape.pedometer,com.codoon.gps,com.yuedong.sport,]
+   behavior:[ALLOW_LOCATION,]
+   area:[ALL,]
+
+
+  com.ape.easymode1 = 
+  easymode1:
+   package:[com.ape.easymode1,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  cn.jpush.android.ui.PushActivity = 
+  jpush_activities_reject:
+   package:[cn.jpush.android.ui.PushActivity,cn.jpush.android.ui.PopWinActivity,]
+   behavior:[REJECT_ACTIVITY_WAKEUP,]
+   area:[ALL,]
+
+
+  com.igexin.sdk.PushActivity = 
+  igexin_activities_reject:
+   package:[com.igexin.sdk.PushActivity,com.igexin.sdk.GActivity,com.igexin.getuiext.activity.GetuiExtActivity,]
+   behavior:[REJECT_ACTIVITY_WAKEUP,]
+   area:[ALL,]
+
+
+  cc.iriding.mobile = 
+  Sports positioning:
+   package:[im.xingzhe,com.bamboo.ibike,com.topgether.sixfoot,cc.iriding.mobile,com.ape.pedometer,com.codoon.gps,com.yuedong.sport,]
+   behavior:[ALLOW_LOCATION,]
+   area:[ALL,]
+
+
+  com.android.soundrecorder = 
+  cta:
+   package:[com.android.email.provider,com.android.email,com.android.soundrecorder,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.orangelabs* = 
+  lab_test_mode:
+   package:[com.orangelabs*,org.opencv.engine,com.android.cts.verifier,com.tinno.*,com.lunarlabs.panda,com.smartviser.visersettings,]
+   behavior:[NO_LIMIT,]
+   area:[ALL,]
+
+
+  com.myos.appsstore = 
+  appsstore:
+   package:[com.myos.appsstore,com.ape.ufogames,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.tencent.mm = 
+  webchat:
+   package:[com.tencent.mm,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.myos.myseneschal = 
+  myseneschal:
+   package:[com.ape.myseneschal,com.myos.myseneschal,com.ape.smartassist,com.ape.cleanassist,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.tencent.android.qqdownloader = 
+  black caller:
+   package:[com.tencent.android.qqdownloader,]
+   behavior:[DISALLOW_BLACK_CALLER,]
+   area:[ALL,]
+
+
+  com.yuedong.sport = 
+  Sports positioning:
+   package:[im.xingzhe,com.bamboo.ibike,com.topgether.sixfoot,cc.iriding.mobile,com.ape.pedometer,com.codoon.gps,com.yuedong.sport,]
+   behavior:[ALLOW_LOCATION,]
+   area:[ALL,]
+
+
+  com.huawei.hwid = 
+  sport:
+   package:[com.huawei.health,com.huawei.hwid,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.android.email.provider = 
+  cta:
+   package:[com.android.email.provider,com.android.email,com.android.soundrecorder,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.smartviser.visersettings = 
+  lab_test_mode:
+   package:[com.orangelabs*,org.opencv.engine,com.android.cts.verifier,com.tinno.*,com.lunarlabs.panda,com.smartviser.visersettings,]
+   behavior:[NO_LIMIT,]
+   area:[ALL,]
+
+
+  com.codoon.gps = 
+  Sports positioning:
+   package:[im.xingzhe,com.bamboo.ibike,com.topgether.sixfoot,cc.iriding.mobile,com.ape.pedometer,com.codoon.gps,com.yuedong.sport,]
+   behavior:[ALLOW_LOCATION,]
+   area:[ALL,]
+
+
+  com.sdu.didi.gsui = 
+  didi:
+   package:[com.sdu.didi.gsui,com.funcity.taxi.driver,]
+   behavior:[ALLOW_LOCATION,]
+   area:[ALL,]
+
+
+  com.instagram.android = 
+  instagram:
+   package:[com.instagram.android,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.ape.myseneschal = 
+  myseneschal:
+   package:[com.ape.myseneschal,com.myos.myseneschal,com.ape.smartassist,com.ape.cleanassist,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.ape.cleanassist = 
+  myseneschal:
+   package:[com.ape.myseneschal,com.myos.myseneschal,com.ape.smartassist,com.ape.cleanassist,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.sugar.note = 
+  myos:
+   package:[com.sugar.note,com.ape.weather3,com.ape.weatherlive,com.ape.apetrialfeedback,com.ape.weathergo,com.ape.qhb,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.ape.weathergo = 
+  myos:
+   package:[com.sugar.note,com.ape.weather3,com.ape.weatherlive,com.ape.apetrialfeedback,com.ape.weathergo,com.ape.qhb,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.ape.smartassist = 
+  myseneschal:
+   package:[com.ape.myseneschal,com.myos.myseneschal,com.ape.smartassist,com.ape.cleanassist,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.tinno.* = 
+  lab_test_mode:
+   package:[com.orangelabs*,org.opencv.engine,com.android.cts.verifier,com.tinno.*,com.lunarlabs.panda,com.smartviser.visersettings,]
+   behavior:[NO_LIMIT,]
+   area:[ALL,]
+
+
+  com.google.android.apps.cloudprint = 
+  google app:
+   package:[com.google.android.apps.cloudprint,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.twitter.android = 
+  twitter:
+   package:[com.twitter.android,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.ape.weatherlive = 
+  myos:
+   package:[com.sugar.note,com.ape.weather3,com.ape.weatherlive,com.ape.apetrialfeedback,com.ape.weathergo,com.ape.qhb,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.igexin.sdk.GActivity = 
+  igexin_activities_reject:
+   package:[com.igexin.sdk.PushActivity,com.igexin.sdk.GActivity,com.igexin.getuiext.activity.GetuiExtActivity,]
+   behavior:[REJECT_ACTIVITY_WAKEUP,]
+   area:[ALL,]
+
+
+  org.opencv.engine = 
+  lab_test_mode:
+   package:[com.orangelabs*,org.opencv.engine,com.android.cts.verifier,com.tinno.*,com.lunarlabs.panda,com.smartviser.visersettings,]
+   behavior:[NO_LIMIT,]
+   area:[ALL,]
+
+
+  com.tencent.mobileqq = 
+  qq:
+   package:[com.tencent.mobileqq,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.ape.qhb = 
+  myos:
+   package:[com.sugar.note,com.ape.weather3,com.ape.weatherlive,com.ape.apetrialfeedback,com.ape.weathergo,com.ape.qhb,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.android.cts.verifier = 
+  lab_test_mode:
+   package:[com.orangelabs*,org.opencv.engine,com.android.cts.verifier,com.tinno.*,com.lunarlabs.panda,com.smartviser.visersettings,]
+   behavior:[NO_LIMIT,]
+   area:[ALL,]
+
+
+  com.ape.weather3 = 
+  myos:
+   package:[com.sugar.note,com.ape.weather3,com.ape.weatherlive,com.ape.apetrialfeedback,com.ape.weathergo,com.ape.qhb,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.facebook.katana = 
+  facebook:
+   package:[com.facebook.orca,com.facebook.katana,com.facebook.lite,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.baidu.BaiduMap = 
+  baidu map:
+   package:[com.baidu.BaiduMap,]
+   behavior:[ALLOW_LOCATION,]
+   area:[ALL,]
+
+
+  com.facebook.lite = 
+  facebook:
+   package:[com.facebook.orca,com.facebook.katana,com.facebook.lite,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.facebook.orca = 
+  facebook:
+   package:[com.facebook.orca,com.facebook.katana,com.facebook.lite,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  cn.jpush.android.ui.PopWinActivity = 
+  jpush_activities_reject:
+   package:[cn.jpush.android.ui.PushActivity,cn.jpush.android.ui.PopWinActivity,]
+   behavior:[REJECT_ACTIVITY_WAKEUP,]
+   area:[ALL,]
+
+
+  com.wiko.wiline2 = 
+  wiline2:
+   package:[com.wiko.wiline2,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.myos.speechassist = 
+  speechassist:
+   package:[com.myos.speechassist,com.iflytek.speechsuite,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.autonavi.minimap = 
+  amap:
+   package:[com.amap.android,com.autonavi.minimap,]
+   behavior:[ALLOW_LOCATION,]
+   area:[ALL,]
+
+
+  com.sina.weibo.page.NewCardListActivity = 
+  webo_activities_reject:
+   package:[com.sina.weibo.page.NewCardListActivity,]
+   behavior:[REJECT_ACTIVITY_WAKEUP,]
+   area:[ALL,]
+
+
+  com.funcity.taxi.driver = 
+  didi:
+   package:[com.sdu.didi.gsui,com.funcity.taxi.driver,]
+   behavior:[ALLOW_LOCATION,]
+   area:[ALL,]
+
+
+  com.skype.rover = 
+  skype:
+   package:[com.skype.rover,com.skype.raider,com.skype.polaris,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.google.android.talk = 
+  hangout:
+   package:[com.google.android.talk,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.android.email = 
+  cta:
+   package:[com.android.email.provider,com.android.email,com.android.soundrecorder,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
+  com.topgether.sixfoot = 
+  Sports positioning:
+   package:[im.xingzhe,com.bamboo.ibike,com.topgether.sixfoot,cc.iriding.mobile,com.ape.pedometer,com.codoon.gps,com.yuedong.sport,]
+   behavior:[ALLOW_LOCATION,]
+   area:[ALL,]
+
+
+  com.imo.android.imoim = 
+  imoim:
+   package:[com.imo.android.imoim,]
+   behavior:[ALLOW_PERSIST,]
+   area:[ALL,]
+
+
+  com.igexin.getuiext.activity.GetuiExtActivity = 
+  igexin_activities_reject:
+   package:[com.igexin.sdk.PushActivity,com.igexin.sdk.GActivity,com.igexin.getuiext.activity.GetuiExtActivity,]
+   behavior:[REJECT_ACTIVITY_WAKEUP,]
+   area:[ALL,]
+
+
+  com.amap.android = 
+  amap:
+   package:[com.amap.android,com.autonavi.minimap,]
+   behavior:[ALLOW_LOCATION,]
+   area:[ALL,]
+
+
+  com.ape.apetrialfeedback = 
+  myos:
+   package:[com.sugar.note,com.ape.weather3,com.ape.weatherlive,com.ape.apetrialfeedback,com.ape.weathergo,com.ape.qhb,]
+   behavior:[ASSUMING_IN_SYSTEM,]
+   area:[ALL,]
+
+
