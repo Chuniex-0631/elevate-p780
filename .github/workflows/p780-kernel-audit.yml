@@ -58,6 +58,10 @@ jobs:
           git -C linux remote -v > reports/source-remote.txt
           sed -n '1,7p' linux/Makefile > reports/source-kernel-version.txt
           test "$(sed -n 's/^SUBLEVEL = //p' linux/Makefile | head -1)" = "233"
+          test "$(git -C linux rev-parse HEAD)" = "1f58b196e0dc8de740eb45b51261ea9c5741a30e" || {
+            echo 'Candidate branch moved: inspect source commit and update deliberate pin' >&2
+            exit 3
+          }
 
       - name: Run native ARM64 olddefconfig
         id: kconfig
@@ -66,7 +70,10 @@ jobs:
         run: |
           set -o pipefail
           make -C linux O="$GITHUB_WORKSPACE/out" ARCH=arm64 \
-            HOSTCC=gcc CROSS_COMPILE=aarch64-linux-gnu- olddefconfig \
+            HOSTCC=gcc CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm \
+            OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip \
+            CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-gnu- \
+            olddefconfig \
             2>&1 | tee reports/olddefconfig.log
           rc=${PIPESTATUS[0]}
           echo "$rc" > reports/olddefconfig-exit.txt
@@ -95,6 +102,28 @@ jobs:
             sha256sum out/kernel/locking/rtmutex.o > reports/rtmutex-object-sha256.txt
           fi
           exit "$rc"
+
+      - name: Summarize config drift and inspect object
+        if: steps.kconfig.outcome == 'success'
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp out/.config reports/post-compile.config
+          python3 tools/summarize_config.py \
+            reports/original.config \
+            reports/resolved.config \
+            reports/post-compile.config \
+            reports
+          if test -f out/kernel/locking/rtmutex.o; then
+            cp out/kernel/locking/rtmutex.o reports/rtmutex.o
+            file out/kernel/locking/rtmutex.o | tee reports/object-type.txt
+            (llvm-readelf -h out/kernel/locking/rtmutex.o || true) > reports/object-elf-header.txt 2>&1
+            if test -f out/kernel/locking/.rtmutex.o.cmd; then
+              cp out/kernel/locking/.rtmutex.o.cmd reports/rtmutex-compile-command.txt
+            fi
+          else
+            echo "rtmutex.o not present" | tee reports/object-type.txt
+          fi
 
       - name: Upload diagnostic reports
         if: always()
