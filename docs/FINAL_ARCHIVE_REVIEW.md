@@ -54,7 +54,16 @@
 - 如果未来迁移这些敏感原件，应创建数据来源/哈希记录，避免将私有账号、设备唯一标识或未经过审查的二进制公开。
 - 将仓库由 Private 改为 Public 前，必须检查完整提交历史，而不只是当前版本。
 
-## 7. 今后继续研究的固定入口
+## 7. 2026-10-10 新一批原件整理后的实际验收
+
+- [新增资料比对 #38056324556](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38056324556)：两个 ADB ZIP 的 22 / 9 个内部文件与展开目录逐个 SHA-256 相同。
+- [整理后完整性 #38057165543](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38057165543)：成功。仓库当时 113 个文件、docs 下 18 个专题 Markdown 文件；共 238 个内部相对链接，失效 0 个。
+- 两个审计 ZIP 分别 22 / 9 条目、Bugreport 402 条目、三份 APK 分别 265 / 6 / 6 条目：压缩结构检验全部通过。phase3 的 installed/all 清单分别 210 / 271 个包名，属于不同过滤口径。
+- 从 main 删除 31 个重复展开审计文件（共 7,576,640 字节），保留相同原始内容的两份 ZIP。临时盘点脚本和临时工作流也已移除，完整整理前快照在 [archive/pre-cleanup-20261010](https://github.com/Chuniex-0631/p780-kernel-research/tree/archive/pre-cleanup-20261010)。
+- 仓库根目录最终仅包含 README.md、CHANGELOG.md、SECURITY.md、p780-config.gz，研究资料按 docs、archive、evidence、tools 和 .github 分类。新增原件的 SHA-256 与文件位置见 [证据完整性](EVIDENCE_INTEGRITY.md)。
+- restricted 目录仅为分类标签，不提供独立访问权限。已有 Bugreport、OTA/ADB 日志尚未经发布级隐私审查，Private 及恢复分支均应按敏感数据管理。
+- 本轮材料完善不会改变核心结论：未取得 Root、未解锁 Bootloader，仍无匹配固件的完整 OTA、boot.img 或 vmlinux。
+## 8. 今后继续研究的固定入口
 
 1. 从 [README](../README.md) 进入。
 2. 以 [STATUS](STATUS.md) 为当前事实基准，以 [HISTORY](HISTORY.md) 和专题报告追溯旧结论。
