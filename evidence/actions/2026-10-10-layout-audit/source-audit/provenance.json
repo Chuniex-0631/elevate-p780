@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-10",
+  "evidence_level": "offline source audit",
+  "sources": {
+    "tinno": "20c26c7658cb5273cc71b10c3704b445b0efbe6b",
+    "a52s": "1f58b196e0dc8de740eb45b51261ea9c5741a30e"
+  },
+  "sha256": {
+    "original.config": "58c2ac4383e5e5c5ab7a39ff448a2c712120dc929042d6ebb2d54b55026437a5",
+    "resolved.config": "36a7a76f188b8281cc9b9815a0493ebdd80e8998a625bbec26c64a7335324a8b",
+    "tools/audit_missing_config.py": "03e5be1076b2be1e0855cbd7c257a4d4d025157feaebc491c0468a79d062b6e2",
+    "evidence/actions/2026-10-10-layout-audit/source-audit/missing-config-references.json": "90ff1a0c933e935af251704adcb39508740f0bf17b1cf4b807d05a5a90f1782a",
+    "evidence/actions/2026-10-10-layout-audit/source-audit/missing-config-references.md": "168c4a5dbfbbbcdb2410cdf93c827cf9c437730571635a2daf10819ae5b4f62a"
+  }
+}

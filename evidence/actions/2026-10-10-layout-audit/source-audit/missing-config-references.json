@@ -1,0 +1,1103 @@
+[
+  {
+    "symbol": "CONFIG_ABOV_SAR",
+    "device_value": "y",
+    "tinno": [
+      {
+        "path": "drivers/misc/Makefile",
+        "line": 72,
+        "text": "obj-$(CONFIG_ABOV_SAR)\t\t+= abov/"
+      },
+      {
+        "path": "drivers/misc/abov/Kconfig",
+        "line": 1,
+        "text": "config ABOV_SAR"
+      }
+    ],
+    "candidate": []
+  },
+  {
+    "symbol": "CONFIG_AW9610X_SAR",
+    "device_value": "y",
+    "tinno": [],
+    "candidate": []
+  },
+  {
+    "symbol": "CONFIG_BATTERY_PROTECT_LIMIT",
+    "device_value": "n",
+    "tinno": [],
+    "candidate": []
+  },
+  {
+    "symbol": "CONFIG_EXFAT_FS",
+    "device_value": "n",
+    "tinno": [
+      {
+        "path": "fs/Makefile",
+        "line": 87,
+        "text": "obj-$(CONFIG_EXFAT_FS)\t\t+= exfat/"
+      },
+      {
+        "path": "fs/exfat/Kconfig",
+        "line": 3,
+        "text": "config EXFAT_FS"
+      },
+      {
+        "path": "fs/exfat/Makefile",
+        "line": 5,
+        "text": "obj-$(CONFIG_EXFAT_FS) += exfat.o"
+      }
+    ],
+    "candidate": []
+  },
+  {
+    "symbol": "CONFIG_F2FS_CHECK_FS",
+    "device_value": "n",
+    "tinno": [
+      {
+        "path": "fs/f2fs/Kconfig",
+        "line": 71,
+        "text": "config F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/extent_cache.c",
+        "line": 171,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/f2fs.h",
+        "line": 31,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/f2fs.h",
+        "line": 939,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/gc.c",
+        "line": 393,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/gc.c",
+        "line": 649,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/inode.c",
+        "line": 170,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/inode.c",
+        "line": 642,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/node.c",
+        "line": 1229,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/node.c",
+        "line": 2080,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/node.c",
+        "line": 3120,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/node.c",
+        "line": 3256,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/node.h",
+        "line": 188,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/node.h",
+        "line": 234,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/node.h",
+        "line": 453,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 820,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 1047,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 2133,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 2154,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 2184,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 3937,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 4025,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 4043,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 4076,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 4832,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.h",
+        "line": 183,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.h",
+        "line": 219,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.h",
+        "line": 349,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.h",
+        "line": 481,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.h",
+        "line": 719,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.h",
+        "line": 750,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      }
+    ],
+    "candidate": [
+      {
+        "path": "fs/f2fs/Kconfig",
+        "line": 71,
+        "text": "config F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/extent_cache.c",
+        "line": 171,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/f2fs.h",
+        "line": 973,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/gc.c",
+        "line": 393,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/gc.c",
+        "line": 672,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/inode.c",
+        "line": 173,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/inode.c",
+        "line": 660,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/node.c",
+        "line": 1281,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/node.c",
+        "line": 2187,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/node.c",
+        "line": 3264,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/node.c",
+        "line": 3400,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/node.h",
+        "line": 189,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/node.h",
+        "line": 235,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/node.h",
+        "line": 454,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 838,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 1066,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 2161,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 2182,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 2212,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 4043,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 4131,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 4149,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 4182,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.c",
+        "line": 4958,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.h",
+        "line": 184,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.h",
+        "line": 220,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.h",
+        "line": 353,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.h",
+        "line": 485,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.h",
+        "line": 732,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      },
+      {
+        "path": "fs/f2fs/segment.h",
+        "line": 763,
+        "text": "#ifdef CONFIG_F2FS_CHECK_FS"
+      }
+    ]
+  },
+  {
+    "symbol": "CONFIG_FINGERPRINT_FOCAL_FT9801_QSEE",
+    "device_value": "n",
+    "tinno": [
+      {
+        "path": "drivers/input/fingerprint/Kconfig",
+        "line": 17,
+        "text": "config FINGERPRINT_FOCAL_FT9801_QSEE"
+      },
+      {
+        "path": "drivers/input/fingerprint/Makefile",
+        "line": 9,
+        "text": "obj-$(CONFIG_FINGERPRINT_FOCAL_FT9801_QSEE)\t+= focal_FT9801/"
+      },
+      {
+        "path": "drivers/input/fingerprint/focal_FT9801/Makefile",
+        "line": 46,
+        "text": "obj-$(CONFIG_FINGERPRINT_FOCAL_FT9801_QSEE) := focaltech_fp.o"
+      },
+      {
+        "path": "drivers/input/fingerprint/focal_FT9801/Makefile",
+        "line": 111,
+        "text": "make -C $(KBUILDDIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) M=$(MODULEPWD) CONFIG_FINGERPRINT_FOCAL_FT9801_QSEE=m modules"
+      }
+    ],
+    "candidate": []
+  },
+  {
+    "symbol": "CONFIG_FINGERPRINT_GOODIX_GF9628_QSEE",
+    "device_value": "y",
+    "tinno": [
+      {
+        "path": "drivers/input/fingerprint/Kconfig",
+        "line": 11,
+        "text": "config FINGERPRINT_GOODIX_GF9628_QSEE"
+      },
+      {
+        "path": "drivers/input/fingerprint/Makefile",
+        "line": 7,
+        "text": "obj-$(CONFIG_FINGERPRINT_GOODIX_GF9628_QSEE)\t+= goodix_GF9628/"
+      }
+    ],
+    "candidate": []
+  },
+  {
+    "symbol": "CONFIG_FORTIFY_SOURCE",
+    "device_value": "y",
+    "tinno": [
+      {
+        "path": "arch/Kconfig",
+        "line": 233,
+        "text": "build and run with CONFIG_FORTIFY_SOURCE."
+      },
+      {
+        "path": "arch/s390/include/asm/string.h",
+        "line": 105,
+        "text": "#if !defined(IN_ARCH_STRING_C) && (!defined(CONFIG_FORTIFY_SOURCE) || defined(__NO_FORTIFY))"
+      },
+      {
+        "path": "arch/x86/include/asm/string_32.h",
+        "line": 148,
+        "text": "#ifndef CONFIG_FORTIFY_SOURCE"
+      },
+      {
+        "path": "arch/x86/include/asm/string_32.h",
+        "line": 185,
+        "text": "#endif /* !CONFIG_FORTIFY_SOURCE */"
+      },
+      {
+        "path": "arch/x86/include/asm/string_32.h",
+        "line": 191,
+        "text": "#ifndef CONFIG_FORTIFY_SOURCE"
+      },
+      {
+        "path": "arch/x86/include/asm/string_32.h",
+        "line": 227,
+        "text": "#ifndef CONFIG_FORTIFY_SOURCE"
+      },
+      {
+        "path": "arch/x86/include/asm/string_32.h",
+        "line": 229,
+        "text": "#endif /* !CONFIG_FORTIFY_SOURCE */"
+      },
+      {
+        "path": "arch/x86/lib/memcpy_32.c",
+        "line": 10,
+        "text": "#if defined(CONFIG_X86_USE_3DNOW) && !defined(CONFIG_FORTIFY_SOURCE)"
+      },
+      {
+        "path": "include/linux/string.h",
+        "line": 273,
+        "text": "#if !defined(__NO_FORTIFY) && defined(__OPTIMIZE__) && defined(CONFIG_FORTIFY_SOURCE)"
+      },
+      {
+        "path": "security/Kconfig",
+        "line": 191,
+        "text": "config FORTIFY_SOURCE"
+      }
+    ],
+    "candidate": [
+      {
+        "path": "arch/Kconfig",
+        "line": 249,
+        "text": "build and run with CONFIG_FORTIFY_SOURCE."
+      },
+      {
+        "path": "arch/s390/include/asm/string.h",
+        "line": 105,
+        "text": "#if !defined(IN_ARCH_STRING_C) && (!defined(CONFIG_FORTIFY_SOURCE) || defined(__NO_FORTIFY))"
+      },
+      {
+        "path": "arch/x86/include/asm/string_32.h",
+        "line": 148,
+        "text": "#ifndef CONFIG_FORTIFY_SOURCE"
+      },
+      {
+        "path": "arch/x86/include/asm/string_32.h",
+        "line": 185,
+        "text": "#endif /* !CONFIG_FORTIFY_SOURCE */"
+      },
+      {
+        "path": "arch/x86/include/asm/string_32.h",
+        "line": 191,
+        "text": "#ifndef CONFIG_FORTIFY_SOURCE"
+      },
+      {
+        "path": "arch/x86/include/asm/string_32.h",
+        "line": 227,
+        "text": "#ifndef CONFIG_FORTIFY_SOURCE"
+      },
+      {
+        "path": "arch/x86/include/asm/string_32.h",
+        "line": 229,
+        "text": "#endif /* !CONFIG_FORTIFY_SOURCE */"
+      },
+      {
+        "path": "arch/x86/lib/memcpy_32.c",
+        "line": 10,
+        "text": "#if defined(CONFIG_X86_USE_3DNOW) && !defined(CONFIG_FORTIFY_SOURCE)"
+      },
+      {
+        "path": "include/linux/string.h",
+        "line": 273,
+        "text": "#if !defined(__NO_FORTIFY) && defined(__OPTIMIZE__) && defined(CONFIG_FORTIFY_SOURCE)"
+      },
+      {
+        "path": "security/Kconfig",
+        "line": 191,
+        "text": "config FORTIFY_SOURCE"
+      }
+    ]
+  },
+  {
+    "symbol": "CONFIG_INPUT_FINGERPRINT",
+    "device_value": "y",
+    "tinno": [
+      {
+        "path": "drivers/input/Makefile",
+        "line": 30,
+        "text": "obj-$(CONFIG_INPUT_FINGERPRINT) += fingerprint/"
+      },
+      {
+        "path": "drivers/input/fingerprint/Kconfig",
+        "line": 5,
+        "text": "config INPUT_FINGERPRINT"
+      }
+    ],
+    "candidate": []
+  },
+  {
+    "symbol": "CONFIG_IPA_ETH",
+    "device_value": "n",
+    "tinno": [
+      {
+        "path": "drivers/platform/msm/Kconfig",
+        "line": 198,
+        "text": "config IPA_ETH"
+      },
+      {
+        "path": "drivers/platform/msm/Makefile",
+        "line": 16,
+        "text": "obj-$(CONFIG_IPA_ETH) += ethernet/"
+      },
+      {
+        "path": "drivers/platform/msm/ethernet/Makefile",
+        "line": 7,
+        "text": "obj-$(CONFIG_IPA_ETH) += ipa-eth.o"
+      }
+    ],
+    "candidate": [
+      {
+        "path": "techpack/dataipa/drivers/platform/msm/ipa/ipa_v3/ipa_i.h",
+        "line": 3164,
+        "text": "#ifdef CONFIG_IPA_ETH"
+      },
+      {
+        "path": "techpack/dataipa/drivers/platform/msm/ipa/ipa_v3/ipa_i.h",
+        "line": 3170,
+        "text": "#endif // CONFIG_IPA_ETH"
+      }
+    ]
+  },
+  {
+    "symbol": "CONFIG_JEITA_WARM_OV_PROTECT",
+    "device_value": "y",
+    "tinno": [],
+    "candidate": []
+  },
+  {
+    "symbol": "CONFIG_LOWBATT_PWROFF",
+    "device_value": "y",
+    "tinno": [
+      {
+        "path": "drivers/power/reset/msm-poweroff.c",
+        "line": 531,
+        "text": "#ifdef CONFIG_LOWBATT_PWROFF"
+      },
+      {
+        "path": "drivers/power/supply/qcom/Kconfig",
+        "line": 105,
+        "text": "config LOWBATT_PWROFF"
+      },
+      {
+        "path": "drivers/power/supply/qcom/qpnp-qg.c",
+        "line": 51,
+        "text": "#ifdef CONFIG_LOWBATT_PWROFF"
+      },
+      {
+        "path": "drivers/power/supply/qcom/qpnp-qg.c",
+        "line": 1480,
+        "text": "#ifdef CONFIG_LOWBATT_PWROFF"
+      },
+      {
+        "path": "drivers/power/supply/qcom/qpnp-qg.c",
+        "line": 1560,
+        "text": "#ifdef CONFIG_LOWBATT_PWROFF"
+      }
+    ],
+    "candidate": []
+  },
+  {
+    "symbol": "CONFIG_NFC_PN533_I2C",
+    "device_value": "n",
+    "tinno": [
+      {
+        "path": "drivers/nfc/pn533/Kconfig",
+        "line": 19,
+        "text": "config NFC_PN533_I2C"
+      },
+      {
+        "path": "drivers/nfc/pn533/Makefile",
+        "line": 10,
+        "text": "obj-$(CONFIG_NFC_PN533_I2C) += pn533_i2c.o"
+      }
+    ],
+    "candidate": [
+      {
+        "path": "drivers/nfc/pn533/Kconfig",
+        "line": 19,
+        "text": "config NFC_PN533_I2C"
+      },
+      {
+        "path": "drivers/nfc/pn533/Makefile",
+        "line": 10,
+        "text": "obj-$(CONFIG_NFC_PN533_I2C) += pn533_i2c.o"
+      }
+    ]
+  },
+  {
+    "symbol": "CONFIG_NFC_PN533_USB",
+    "device_value": "n",
+    "tinno": [
+      {
+        "path": "drivers/nfc/pn533/Kconfig",
+        "line": 8,
+        "text": "config NFC_PN533_USB"
+      },
+      {
+        "path": "drivers/nfc/pn533/Makefile",
+        "line": 9,
+        "text": "obj-$(CONFIG_NFC_PN533_USB) += pn533_usb.o"
+      }
+    ],
+    "candidate": [
+      {
+        "path": "drivers/nfc/pn533/Kconfig",
+        "line": 8,
+        "text": "config NFC_PN533_USB"
+      },
+      {
+        "path": "drivers/nfc/pn533/Makefile",
+        "line": 9,
+        "text": "obj-$(CONFIG_NFC_PN533_USB) += pn533_usb.o"
+      }
+    ]
+  },
+  {
+    "symbol": "CONFIG_NFC_QTI_I3C_GPIO",
+    "device_value": "n",
+    "tinno": [
+      {
+        "path": "drivers/nfc/Kconfig",
+        "line": 77,
+        "text": "config NFC_QTI_I3C_GPIO"
+      },
+      {
+        "path": "drivers/nfc/qti/Makefile",
+        "line": 12,
+        "text": "obj-$(CONFIG_NFC_QTI_I3C_GPIO)\t+= nfc_i3c_gpio_cfg.o"
+      }
+    ],
+    "candidate": [
+      {
+        "path": "drivers/nfc/qti/Makefile",
+        "line": 12,
+        "text": "obj-$(CONFIG_NFC_QTI_I3C_GPIO)\t+= nfc_i3c_gpio_cfg.o"
+      }
+    ]
+  },
+  {
+    "symbol": "CONFIG_NFC_ST54J",
+    "device_value": "m",
+    "tinno": [
+      {
+        "path": "drivers/nfc/Makefile",
+        "line": 21,
+        "text": "obj-$(CONFIG_NFC_ST54J)\t+= st54j/"
+      },
+      {
+        "path": "drivers/nfc/st54j/Kconfig",
+        "line": 1,
+        "text": "config NFC_ST54J"
+      },
+      {
+        "path": "drivers/nfc/st54j/Makefile",
+        "line": 14,
+        "text": "obj-$(CONFIG_NFC_ST54J) += st21nfc/"
+      },
+      {
+        "path": "drivers/nfc/st54j/st21nfc/Makefile",
+        "line": 5,
+        "text": "obj-$(CONFIG_NFC_ST54J) +=st21nfc.o"
+      }
+    ],
+    "candidate": []
+  },
+  {
+    "symbol": "CONFIG_NVM",
+    "device_value": "n",
+    "tinno": [
+      {
+        "path": "drivers/Makefile",
+        "line": 71,
+        "text": "obj-$(CONFIG_NVM)\t\t+= lightnvm/"
+      },
+      {
+        "path": "drivers/lightnvm/Kconfig",
+        "line": 6,
+        "text": "menuconfig NVM"
+      },
+      {
+        "path": "drivers/lightnvm/Makefile",
+        "line": 6,
+        "text": "obj-$(CONFIG_NVM)\t\t:= core.o"
+      },
+      {
+        "path": "drivers/nvme/host/Makefile",
+        "line": 15,
+        "text": "nvme-core-$(CONFIG_NVM)\t\t\t+= lightnvm.o"
+      },
+      {
+        "path": "drivers/nvme/host/core.c",
+        "line": 3163,
+        "text": "#ifdef CONFIG_NVM"
+      },
+      {
+        "path": "drivers/nvme/host/nvme.h",
+        "line": 639,
+        "text": "#ifdef CONFIG_NVM"
+      },
+      {
+        "path": "drivers/nvme/host/nvme.h",
+        "line": 657,
+        "text": "#endif /* CONFIG_NVM */"
+      },
+      {
+        "path": "include/linux/lightnvm.h",
+        "line": 113,
+        "text": "#ifdef CONFIG_NVM"
+      },
+      {
+        "path": "include/linux/lightnvm.h",
+        "line": 687,
+        "text": "#else /* CONFIG_NVM */"
+      },
+      {
+        "path": "include/linux/lightnvm.h",
+        "line": 699,
+        "text": "#endif /* CONFIG_NVM */"
+      }
+    ],
+    "candidate": [
+      {
+        "path": "drivers/Makefile",
+        "line": 73,
+        "text": "obj-$(CONFIG_NVM)\t\t+= lightnvm/"
+      },
+      {
+        "path": "drivers/lightnvm/Kconfig",
+        "line": 6,
+        "text": "menuconfig NVM"
+      },
+      {
+        "path": "drivers/lightnvm/Makefile",
+        "line": 6,
+        "text": "obj-$(CONFIG_NVM)\t\t:= core.o"
+      },
+      {
+        "path": "drivers/nvme/host/Makefile",
+        "line": 15,
+        "text": "nvme-core-$(CONFIG_NVM)\t\t\t+= lightnvm.o"
+      },
+      {
+        "path": "drivers/nvme/host/core.c",
+        "line": 3210,
+        "text": "#ifdef CONFIG_NVM"
+      },
+      {
+        "path": "drivers/nvme/host/nvme.h",
+        "line": 686,
+        "text": "#ifdef CONFIG_NVM"
+      },
+      {
+        "path": "drivers/nvme/host/nvme.h",
+        "line": 704,
+        "text": "#endif /* CONFIG_NVM */"
+      },
+      {
+        "path": "include/linux/lightnvm.h",
+        "line": 113,
+        "text": "#ifdef CONFIG_NVM"
+      },
+      {
+        "path": "include/linux/lightnvm.h",
+        "line": 687,
+        "text": "#else /* CONFIG_NVM */"
+      },
+      {
+        "path": "include/linux/lightnvm.h",
+        "line": 699,
+        "text": "#endif /* CONFIG_NVM */"
+      }
+    ]
+  },
+  {
+    "symbol": "CONFIG_REFCOUNT_FULL",
+    "device_value": "y",
+    "tinno": [
+      {
+        "path": "arch/Kconfig",
+        "line": 1007,
+        "text": "refcount state checks of CONFIG_REFCOUNT_FULL=y."
+      },
+      {
+        "path": "arch/Kconfig",
+        "line": 1013,
+        "text": "config REFCOUNT_FULL"
+      },
+      {
+        "path": "drivers/misc/lkdtm/refcount.c",
+        "line": 9,
+        "text": "#ifdef CONFIG_REFCOUNT_FULL"
+      },
+      {
+        "path": "drivers/misc/lkdtm/refcount.c",
+        "line": 130,
+        "text": "* CONFIG_REFCOUNT_FULL refuses to move a refcount at all on an"
+      },
+      {
+        "path": "drivers/misc/lkdtm/refcount.c",
+        "line": 213,
+        "text": "* Only CONFIG_REFCOUNT_FULL provides this protection currently."
+      },
+      {
+        "path": "include/linux/refcount.h",
+        "line": 57,
+        "text": "#ifdef CONFIG_REFCOUNT_FULL"
+      },
+      {
+        "path": "include/linux/refcount.h",
+        "line": 109,
+        "text": "#endif /* CONFIG_REFCOUNT_FULL */"
+      }
+    ],
+    "candidate": [
+      {
+        "path": "drivers/misc/lkdtm/refcount.c",
+        "line": 122,
+        "text": "* CONFIG_REFCOUNT_FULL refuses to move a refcount at all on an"
+      },
+      {
+        "path": "drivers/misc/lkdtm/refcount.c",
+        "line": 205,
+        "text": "* Only CONFIG_REFCOUNT_FULL provides this protection currently."
+      }
+    ]
+  },
+  {
+    "symbol": "CONFIG_SCC_SUPPORT",
+    "device_value": "y",
+    "tinno": [
+      {
+        "path": "drivers/power/supply/qcom/Kconfig",
+        "line": 111,
+        "text": "config SCC_SUPPORT"
+      },
+      {
+        "path": "drivers/power/supply/qcom/qpnp-smb5.c",
+        "line": 421,
+        "text": "#ifdef CONFIG_SCC_SUPPORT"
+      },
+      {
+        "path": "drivers/power/supply/qcom/qpnp-smb5.c",
+        "line": 498,
+        "text": "#ifdef CONFIG_SCC_SUPPORT"
+      },
+      {
+        "path": "drivers/power/supply/qcom/qpnp-smb5.c",
+        "line": 567,
+        "text": "#ifdef CONFIG_SCC_SUPPORT"
+      },
+      {
+        "path": "drivers/power/supply/qcom/qpnp-smb5.c",
+        "line": 1133,
+        "text": "#ifdef CONFIG_SCC_SUPPORT"
+      },
+      {
+        "path": "drivers/power/supply/qcom/smb5-lib.c",
+        "line": 2505,
+        "text": "#ifdef CONFIG_SCC_SUPPORT"
+      },
+      {
+        "path": "drivers/power/supply/qcom/smb5-lib.h",
+        "line": 47,
+        "text": "#ifdef CONFIG_SCC_SUPPORT"
+      },
+      {
+        "path": "drivers/power/supply/qcom/smb5-lib.h",
+        "line": 527,
+        "text": "#ifdef CONFIG_SCC_SUPPORT"
+      },
+      {
+        "path": "drivers/power/supply/qcom/smb5-lib.h",
+        "line": 735,
+        "text": "#ifdef CONFIG_SCC_SUPPORT"
+      }
+    ],
+    "candidate": []
+  },
+  {
+    "symbol": "CONFIG_TINNO_DEMOMODECHG_CONTROL",
+    "device_value": "y",
+    "tinno": [
+      {
+        "path": "drivers/power/supply/qcom/Kconfig",
+        "line": 117,
+        "text": "config TINNO_DEMOMODECHG_CONTROL"
+      },
+      {
+        "path": "drivers/power/supply/qcom/qpnp-smb5.c",
+        "line": 32,
+        "text": "#ifdef CONFIG_TINNO_DEMOMODECHG_CONTROL"
+      },
+      {
+        "path": "drivers/power/supply/qcom/qpnp-smb5.c",
+        "line": 923,
+        "text": "#ifdef CONFIG_TINNO_DEMOMODECHG_CONTROL"
+      },
+      {
+        "path": "drivers/power/supply/qcom/qpnp-smb5.c",
+        "line": 1537,
+        "text": "#ifdef CONFIG_TINNO_DEMOMODECHG_CONTROL"
+      },
+      {
+        "path": "drivers/power/supply/qcom/qpnp-smb5.c",
+        "line": 3521,
+        "text": "#ifdef CONFIG_TINNO_DEMOMODECHG_CONTROL"
+      },
+      {
+        "path": "drivers/power/supply/qcom/smb5-lib.c",
+        "line": 1192,
+        "text": "#ifdef CONFIG_TINNO_DEMOMODECHG_CONTROL"
+      },
+      {
+        "path": "drivers/power/supply/qcom/smb5-lib.c",
+        "line": 1211,
+        "text": "#ifdef CONFIG_TINNO_DEMOMODECHG_CONTROL"
+      },
+      {
+        "path": "drivers/power/supply/qcom/smb5-lib.h",
+        "line": 43,
+        "text": "#ifdef CONFIG_TINNO_DEMOMODECHG_CONTROL"
+      },
+      {
+        "path": "drivers/power/supply/qcom/smb5-lib.h",
+        "line": 651,
+        "text": "#ifdef CONFIG_TINNO_DEMOMODECHG_CONTROL"
+      }
+    ],
+    "candidate": []
+  },
+  {
+    "symbol": "CONFIG_TINNO_LONGCHG_CONTROL",
+    "device_value": "y",
+    "tinno": [],
+    "candidate": []
+  },
+  {
+    "symbol": "CONFIG_TINNO_PRODUCT_INFO",
+    "device_value": "y",
+    "tinno": [
+      {
+        "path": "drivers/input/touchscreen/Makefile",
+        "line": 122,
+        "text": "subdir-ccflags-$(CONFIG_TINNO_PRODUCT_INFO) += -I$(srctree)/tinno/common_features/"
+      },
+      {
+        "path": "drivers/input/touchscreen/goodix/goodix_ts_i2c.c",
+        "line": 653,
+        "text": "#ifdef CONFIG_TINNO_PRODUCT_INFO"
+      },
+      {
+        "path": "drivers/input/touchscreen/goodix/goodix_ts_i2c.c",
+        "line": 787,
+        "text": "#ifdef CONFIG_TINNO_PRODUCT_INFO"
+      },
+      {
+        "path": "drivers/mmc/core/Makefile",
+        "line": 5,
+        "text": "subdir-ccflags-$(CONFIG_TINNO_PRODUCT_INFO) += -I$(srctree)/tinno/common_features/dev_info"
+      },
+      {
+        "path": "drivers/mmc/core/mmc.c",
+        "line": 29,
+        "text": "#ifdef CONFIG_TINNO_PRODUCT_INFO  //yajun.wang"
+      },
+      {
+        "path": "drivers/mmc/core/mmc.c",
+        "line": 2087,
+        "text": "#ifdef CONFIG_TINNO_PRODUCT_INFO         //yajun.wang"
+      },
+      {
+        "path": "drivers/power/supply/qcom/Makefile",
+        "line": 18,
+        "text": "subdir-ccflags-$(CONFIG_TINNO_PRODUCT_INFO) += -I$(srctree)/tinno/common_features/dev_info"
+      },
+      {
+        "path": "drivers/power/supply/qcom/qpnp-qg.c",
+        "line": 1230,
+        "text": "#ifdef CONFIG_TINNO_PRODUCT_INFO"
+      },
+      {
+        "path": "drivers/power/supply/qcom/qpnp-qg.c",
+        "line": 1250,
+        "text": "#ifdef CONFIG_TINNO_PRODUCT_INFO"
+      },
+      {
+        "path": "drivers/power/supply/qcom/qpnp-qg.c",
+        "line": 1279,
+        "text": "#ifdef CONFIG_TINNO_PRODUCT_INFO"
+      },
+      {
+        "path": "tinno/common_features/Kconfig",
+        "line": 1,
+        "text": "config TINNO_PRODUCT_INFO"
+      },
+      {
+        "path": "tinno/common_features/Makefile",
+        "line": 3,
+        "text": "obj-$(CONFIG_TINNO_PRODUCT_INFO)    += dev_info/"
+      },
+      {
+        "path": "tinno/common_features/dev_info/dev_info.c",
+        "line": 23,
+        "text": "#ifdef CONFIG_TINNO_PRODUCT_INFO"
+      },
+      {
+        "path": "tinno/common_features/dev_info/dev_info.h",
+        "line": 25,
+        "text": "#ifdef CONFIG_TINNO_PRODUCT_INFO"
+      },
+      {
+        "path": "tinno/common_features/dev_info/external.c",
+        "line": 3,
+        "text": "#ifdef CONFIG_TINNO_PRODUCT_INFO"
+      },
+      {
+        "path": "tinno/common_features/dev_info/external.h",
+        "line": 25,
+        "text": "#ifdef CONFIG_TINNO_PRODUCT_INFO"
+      }
+    ],
+    "candidate": []
+  },
+  {
+    "symbol": "CONFIG_TINNO_WARM_RECHARGE_CONTROL",
+    "device_value": "y",
+    "tinno": [],
+    "candidate": []
+  },
+  {
+    "symbol": "CONFIG_USB_SWITCH",
+    "device_value": "y",
+    "tinno": [
+      {
+        "path": "drivers/misc/Makefile",
+        "line": 69,
+        "text": "obj-$(CONFIG_USB_SWITCH) += usb_switch/"
+      },
+      {
+        "path": "drivers/misc/usb_switch/Kconfig",
+        "line": 1,
+        "text": "config USB_SWITCH"
+      },
+      {
+        "path": "drivers/misc/usb_switch/Makefile",
+        "line": 2,
+        "text": "obj-$(CONFIG_USB_SWITCH)\t+= usb_switch.o"
+      },
+      {
+        "path": "include/linux/soc/qcom/usb_switch_core.h",
+        "line": 42,
+        "text": "#ifdef CONFIG_USB_SWITCH"
+      }
+    ],
+    "candidate": []
+  }
+]

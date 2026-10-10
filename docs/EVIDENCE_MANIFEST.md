@@ -90,3 +90,11 @@
 原始 Tracefs 与 GhostLock 四代 ZIP 已经入仓，其字节级和内部哈希核对见 [证据完整性](EVIDENCE_INTEGRITY.md)。其它只有文件清单和分析结论的项目不能标为原始文件已入仓；UTF-16/乱码或无可读内容的文件也不作伪造转写。设备唯一标识、IMEI、带密码与登录凭据的记录不应进入可公开仓库，私库也尽可能脱敏。
 
 _早前至少 57 条历史文件记录已保留；本轮新增文件按原始名称另行登记。文件清单中的同名/同大小资料不自动表示 SHA 相同。_
+
+
+## 2026-10-10 配置引用与候选布局实验
+
+- [24 项配置与候选布局研究](2026-10-10-config-layout-research.md)：24 项配置的逐项源级判断。
+- `evidence/actions/2026-10-10-layout-audit/source-audit/`：两棵固定树扫描得到的原始引用 JSON/Markdown 和实际计算的 provenance 哈希。
+- `evidence/actions/2026-10-10-layout-audit/`：每轮 Actions 原始/求解配置、Kbuild 命令、日志、汇编及候选结构测量 JSON；首轮失败资料亦保留。
+- `tools/audit_missing_config.py`、`tools/derive_candidate_layout.py`、`tools/p780-layout-probe.c`、`tools/compare_candidate_layouts.py` 与 `.github/workflows/p780-layout-audit.yml`：离线研究流程，不连接手机。

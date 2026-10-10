@@ -39,6 +39,7 @@
 | [全部历史文件及迁移状态](docs/EVIDENCE_MANIFEST.md) | 至少 57 份相关历史文件记录，逐项区分是否已入 Git |
 | [证据 SHA / CRC / 相对链接验收](docs/EVIDENCE_INTEGRITY.md) | 核验原始配置、4KB Tracefs、四个 ZIP 与其内部副本 |
 | [原始研究来源与出处](docs/RESEARCH_SOURCES.md) | 公开源码与实机、厂商公告、Actions 工件的来源划分 |
+| [24 项配置与候选布局研究](docs/2026-10-10-config-layout-research.md) | 源码引用分类、Kbuild 结构探针与每轮构建证据 |
 | [后续研究的真实阻断点](docs/NEXT_STEPS.md) | 仍需的匹配固件证据、未得到的符号和 29 项逐构建信息 |
 | [归档/更新约定](docs/ARCHIVE_PROTOCOL.md) | 每轮应保存什么、如何避免证据级别混淆 |
 
@@ -102,3 +103,4 @@ tools/                    当前配置差异统计脚本
 ---
 
 **维护规则：每有新的真实实验或分析，先更新 [STATUS](docs/STATUS.md)，同步专题、[文件清单](docs/EVIDENCE_MANIFEST.md) 与 [CHANGELOG](CHANGELOG.md)。保留失败证据，绝不将候选结论写成实机成功。**
+
