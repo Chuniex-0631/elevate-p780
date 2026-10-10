@@ -1,0 +1,57 @@
+name: Archive verified historical P780 Actions evidence
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/p780-archive-build-evidence.yml
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  preserve:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download previously verified results from this repository
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p evidence/actions/2026-10-10-clang11 \
+                   evidence/actions/2026-10-10-clang14 \
+                   evidence/actions/2026-10-10-config-delta
+          gh run download 38053176845 \
+            -R Chuniex-0631/p780-kernel-research \
+            -n p780-android-clang11-audit \
+            -D evidence/actions/2026-10-10-clang11
+          gh run download 38052323798 \
+            -R Chuniex-0631/p780-kernel-research \
+            -n p780-kernel-audit-reports \
+            -D evidence/actions/2026-10-10-clang14
+          gh run download 38053251640 \
+            -R Chuniex-0631/p780-kernel-research \
+            -n p780-exact-config-delta \
+            -D evidence/actions/2026-10-10-config-delta
+          test -s evidence/actions/2026-10-10-clang11/config-changes.json
+          test -s evidence/actions/2026-10-10-clang11/rtmutex.o
+          test -s evidence/actions/2026-10-10-clang14/config-changes.json
+          test -s evidence/actions/2026-10-10-config-delta/critical-delta.md
+      - name: Commit evidence to this private repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/actions/
+          if git diff --cached --quiet; then
+            echo "Historical evidence was already archived."
+          else
+            git commit -m "evidence: preserve verified Clang11, Clang14 and config-delta artifacts"
+            git push origin HEAD:main
+          fi
