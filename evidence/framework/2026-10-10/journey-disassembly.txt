@@ -1,0 +1,2429 @@
+
+CLASS Lcom/journey/server/JourneyConfigService$1;
+
+CLASS Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+FIELD $VALUES [Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+FIELD ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+FIELD SUGAR_CN Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+FIELD SUGAR_HK Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+FIELD SUGAR_TW Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+FIELD WIKO_ASIA Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+FIELD WIKO_FR Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+
+METHOD <clinit>()V
+0000 new-instance v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0004 const-string v1, "SUGAR_CN"
+0008 const/4 v2, 0
+000a invoke-direct v0, v1, v2, Lcom/journey/server/JourneyConfigService$AREA_TYPE;-><init>(Ljava/lang/String; I)V
+0010 sput-object v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->SUGAR_CN Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0014 new-instance v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0018 const-string v1, "SUGAR_TW"
+001c const/4 v3, 1
+001e invoke-direct v0, v1, v3, Lcom/journey/server/JourneyConfigService$AREA_TYPE;-><init>(Ljava/lang/String; I)V
+0024 sput-object v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->SUGAR_TW Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0028 new-instance v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+002c const-string v1, "SUGAR_HK"
+0030 const/4 v4, 2
+0032 invoke-direct v0, v1, v4, Lcom/journey/server/JourneyConfigService$AREA_TYPE;-><init>(Ljava/lang/String; I)V
+0038 sput-object v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->SUGAR_HK Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+003c new-instance v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0040 const-string v1, "WIKO_FR"
+0044 const/4 v5, 3
+0046 invoke-direct v0, v1, v5, Lcom/journey/server/JourneyConfigService$AREA_TYPE;-><init>(Ljava/lang/String; I)V
+004c sput-object v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->WIKO_FR Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0050 new-instance v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0054 const-string v1, "WIKO_ASIA"
+0058 const/4 v6, 4
+005a invoke-direct v0, v1, v6, Lcom/journey/server/JourneyConfigService$AREA_TYPE;-><init>(Ljava/lang/String; I)V
+0060 sput-object v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->WIKO_ASIA Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0064 new-instance v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0068 const-string v1, "ALL"
+006c const/4 v7, 5
+006e invoke-direct v0, v1, v7, Lcom/journey/server/JourneyConfigService$AREA_TYPE;-><init>(Ljava/lang/String; I)V
+0074 sput-object v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0078 const/4 v1, 6
+007a new-array v1, v1, [Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+007e sget-object v8, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->SUGAR_CN Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0082 aput-object v8, v1, v2
+0086 sget-object v2, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->SUGAR_TW Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+008a aput-object v2, v1, v3
+008e sget-object v2, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->SUGAR_HK Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0092 aput-object v2, v1, v4
+0096 sget-object v2, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->WIKO_FR Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+009a aput-object v2, v1, v5
+009e sget-object v2, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->WIKO_ASIA Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00a2 aput-object v2, v1, v6
+00a6 aput-object v0, v1, v7
+00aa sput-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->$VALUES [Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00ae return-void 
+
+METHOD <init>(Ljava/lang/String; I)V
+0000 invoke-direct v0, v1, v2, Ljava/lang/Enum;-><init>(Ljava/lang/String; I)V
+0006 return-void 
+
+METHOD valueOf(Ljava/lang/String;)Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0000 const-class v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0004 invoke-static v0, v1, Ljava/lang/Enum;->valueOf(Ljava/lang/Class; Ljava/lang/String;)Ljava/lang/Enum;
+000a move-result-object v0
+000c check-cast v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0010 return-object v0
+
+METHOD values()[Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0000 sget-object v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->$VALUES [Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0004 invoke-virtual v0, [Lcom/journey/server/JourneyConfigService$AREA_TYPE;->clone()Ljava/lang/Object;
+000a move-result-object v0
+000c check-cast v0, [Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0010 return-object v0
+
+CLASS Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+FIELD $VALUES [Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+FIELD ALL Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+FIELD ALLOW_LOCATION Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+FIELD ALLOW_PERSIST Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+FIELD ASSUMING_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+FIELD ASSUMING_NOT_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+FIELD DISABLED_COMPONENT Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+FIELD DISALLOW_BLACK_CALLER Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+FIELD NO_LIMIT Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+FIELD PRELOAD Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+FIELD REJECT_ACTIVITY_WAKEUP Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+
+METHOD <clinit>()V
+0000 new-instance v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0004 const-string v1, "ALLOW_PERSIST"
+0008 const/4 v2, 0
+000a invoke-direct v0, v1, v2, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;-><init>(Ljava/lang/String; I)V
+0010 sput-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALLOW_PERSIST Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0014 new-instance v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0018 const-string v1, "ALLOW_LOCATION"
+001c const/4 v3, 1
+001e invoke-direct v0, v1, v3, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;-><init>(Ljava/lang/String; I)V
+0024 sput-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALLOW_LOCATION Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0028 new-instance v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+002c const-string v1, "DISALLOW_BLACK_CALLER"
+0030 const/4 v4, 2
+0032 invoke-direct v0, v1, v4, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;-><init>(Ljava/lang/String; I)V
+0038 sput-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->DISALLOW_BLACK_CALLER Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+003c new-instance v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0040 const-string v1, "PRELOAD"
+0044 const/4 v5, 3
+0046 invoke-direct v0, v1, v5, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;-><init>(Ljava/lang/String; I)V
+004c sput-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->PRELOAD Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0050 new-instance v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0054 const-string v1, "DISABLED_COMPONENT"
+0058 const/4 v6, 4
+005a invoke-direct v0, v1, v6, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;-><init>(Ljava/lang/String; I)V
+0060 sput-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->DISABLED_COMPONENT Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0064 new-instance v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0068 const-string v1, "REJECT_ACTIVITY_WAKEUP"
+006c const/4 v7, 5
+006e invoke-direct v0, v1, v7, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;-><init>(Ljava/lang/String; I)V
+0074 sput-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->REJECT_ACTIVITY_WAKEUP Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0078 new-instance v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+007c const-string v1, "ASSUMING_IN_SYSTEM"
+0080 const/4 v8, 6
+0082 invoke-direct v0, v1, v8, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;-><init>(Ljava/lang/String; I)V
+0088 sput-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+008c new-instance v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0090 const-string v1, "ASSUMING_NOT_IN_SYSTEM"
+0094 const/4 v9, 7
+0096 invoke-direct v0, v1, v9, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;-><init>(Ljava/lang/String; I)V
+009c sput-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_NOT_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00a0 new-instance v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00a4 const-string v1, "NO_LIMIT"
+00a8 const/16 v10, 8
+00ac invoke-direct v0, v1, v10, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;-><init>(Ljava/lang/String; I)V
+00b2 sput-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->NO_LIMIT Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00b6 new-instance v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00ba const-string v1, "ALL"
+00be const/16 v11, 9
+00c2 invoke-direct v0, v1, v11, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;-><init>(Ljava/lang/String; I)V
+00c8 sput-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALL Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00cc const/16 v1, 10
+00d0 new-array v1, v1, [Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00d4 sget-object v12, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALLOW_PERSIST Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00d8 aput-object v12, v1, v2
+00dc sget-object v2, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALLOW_LOCATION Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00e0 aput-object v2, v1, v3
+00e4 sget-object v2, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->DISALLOW_BLACK_CALLER Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00e8 aput-object v2, v1, v4
+00ec sget-object v2, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->PRELOAD Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00f0 aput-object v2, v1, v5
+00f4 sget-object v2, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->DISABLED_COMPONENT Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00f8 aput-object v2, v1, v6
+00fc sget-object v2, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->REJECT_ACTIVITY_WAKEUP Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0100 aput-object v2, v1, v7
+0104 sget-object v2, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0108 aput-object v2, v1, v8
+010c sget-object v2, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_NOT_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0110 aput-object v2, v1, v9
+0114 sget-object v2, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->NO_LIMIT Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0118 aput-object v2, v1, v10
+011c aput-object v0, v1, v11
+0120 sput-object v1, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->$VALUES [Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0124 return-void 
+
+METHOD <init>(Ljava/lang/String; I)V
+0000 invoke-direct v0, v1, v2, Ljava/lang/Enum;-><init>(Ljava/lang/String; I)V
+0006 return-void 
+
+METHOD valueOf(Ljava/lang/String;)Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0000 const-class v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0004 invoke-static v0, v1, Ljava/lang/Enum;->valueOf(Ljava/lang/Class; Ljava/lang/String;)Ljava/lang/Enum;
+000a move-result-object v0
+000c check-cast v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0010 return-object v0
+
+METHOD values()[Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0000 sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->$VALUES [Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0004 invoke-virtual v0, [Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->clone()Ljava/lang/Object;
+000a move-result-object v0
+000c check-cast v0, [Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0010 return-object v0
+
+CLASS Lcom/journey/server/JourneyConfigService$PacakgeInfo;
+FIELD area [Z
+FIELD behavior [Z
+FIELD label Ljava/lang/String;
+FIELD names Ljava/lang/String;
+FIELD this$0 Lcom/journey/server/JourneyConfigService;
+
+METHOD <init>(Lcom/journey/server/JourneyConfigService; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)V
+0000 iput-object v11, v10, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->this$0 Lcom/journey/server/JourneyConfigService;
+0004 invoke-direct v10, Ljava/lang/Object;-><init>()V
+000a sget-object v11, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALL Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+000e invoke-virtual v11, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ordinal()I
+0014 move-result v11
+0016 const/4 v0, 1
+0018 add-int/2addr v11, v0
+001a new-array v11, v11, [Z
+001e iput-object v11, v10, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->behavior [Z
+0022 sget-object v11, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0026 invoke-virtual v11, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ordinal()I
+002c move-result v11
+002e add-int/2addr v11, v0
+0030 new-array v11, v11, [Z
+0034 iput-object v11, v10, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->area [Z
+0038 iput-object v12, v10, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->names Ljava/lang/String;
+003c iput-object v13, v10, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->label Ljava/lang/String;
+0040 const-string v11, ","
+0044 const/4 v1, 0
+0046 if-nez v14, +00dh
+004a iget-object v2, v10, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->behavior [Z
+004e sget-object v3, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALL Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0052 invoke-virtual v3, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ordinal()I
+0058 move-result v3
+005a aput-boolean v0, v2, v3
+005e goto +2dh
+0060 invoke-static Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->values()[Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0066 move-result-object v2
+0068 array-length v3, v2
+006a move v4, v1
+006c if-ge v4, v3, +026h
+0070 aget-object v5, v2, v4
+0074 iget-object v6, v10, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->behavior [Z
+0078 invoke-virtual v5, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ordinal()I
+007e move-result v7
+0080 new-instance v8, Ljava/lang/StringBuilder;
+0084 invoke-direct v8, Ljava/lang/StringBuilder;-><init>()V
+008a invoke-virtual v5, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->toString()Ljava/lang/String;
+0090 move-result-object v9
+0092 invoke-virtual v8, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0098 invoke-virtual v8, v11, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+009e invoke-virtual v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+00a4 move-result-object v8
+00a6 invoke-virtual v14, v8, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+00ac move-result v8
+00ae aput-boolean v8, v6, v7
+00b2 add-int/lit8 v4, v4, 1
+00b6 goto -25h
+00b8 if-nez v15, +00dh
+00bc iget-object v11, v10, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->area [Z
+00c0 sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00c4 invoke-virtual v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ordinal()I
+00ca move-result v1
+00cc aput-boolean v0, v11, v1
+00d0 goto +2ch
+00d2 invoke-static Lcom/journey/server/JourneyConfigService$AREA_TYPE;->values()[Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00d8 move-result-object v0
+00da array-length v2, v0
+00dc if-ge v1, v2, +026h
+00e0 aget-object v3, v0, v1
+00e4 iget-object v4, v10, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->area [Z
+00e8 invoke-virtual v3, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ordinal()I
+00ee move-result v5
+00f0 new-instance v6, Ljava/lang/StringBuilder;
+00f4 invoke-direct v6, Ljava/lang/StringBuilder;-><init>()V
+00fa invoke-virtual v3, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->toString()Ljava/lang/String;
+0100 move-result-object v7
+0102 invoke-virtual v6, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0108 invoke-virtual v6, v11, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+010e invoke-virtual v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0114 move-result-object v6
+0116 invoke-virtual v15, v6, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+011c move-result v6
+011e aput-boolean v6, v4, v5
+0122 add-int/lit8 v1, v1, 1
+0126 goto -25h
+0128 return-void 
+
+METHOD toString()Ljava/lang/String;
+0000 const-string v0, ""
+0004 invoke-virtual v1, v0, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->toString(Ljava/lang/String;)Ljava/lang/String;
+000a move-result-object v0
+000c return-object v0
+
+METHOD toString(Ljava/lang/String;)Ljava/lang/String;
+0000 new-instance v0, Ljava/lang/StringBuffer;
+0004 const-string v1, ""
+0008 invoke-direct v0, v1, Ljava/lang/StringBuffer;-><init>(Ljava/lang/String;)V
+000e invoke-virtual v0, v11, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+0014 new-instance v1, Ljava/lang/StringBuilder;
+0018 invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+001e iget-object v2, v10, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->label Ljava/lang/String;
+0022 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0028 const-string v2, ":
+"
+002c invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0032 invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0038 move-result-object v1
+003a invoke-virtual v0, v1, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+0040 invoke-virtual v0, v11, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+0046 new-instance v1, Ljava/lang/StringBuilder;
+004a invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+0050 const-string v2, " package:["
+0054 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+005a iget-object v2, v10, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->names Ljava/lang/String;
+005e invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0064 const-string v2, "]
+"
+0068 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+006e invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0074 move-result-object v1
+0076 invoke-virtual v0, v1, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+007c invoke-virtual v0, v11, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+0082 const-string v1, " behavior:["
+0086 invoke-virtual v0, v1, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+008c invoke-static Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->values()[Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0092 move-result-object v1
+0094 array-length v3, v1
+0096 const/4 v4, 0
+0098 move v5, v4
+009a const-string v6, ","
+009e if-ge v5, v3, +027h
+00a2 aget-object v7, v1, v5
+00a6 iget-object v8, v10, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->behavior [Z
+00aa invoke-virtual v7, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ordinal()I
+00b0 move-result v9
+00b2 aget-boolean v8, v8, v9
+00b6 if-eqz v8, +018h
+00ba new-instance v8, Ljava/lang/StringBuilder;
+00be invoke-direct v8, Ljava/lang/StringBuilder;-><init>()V
+00c4 invoke-virtual v7, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->toString()Ljava/lang/String;
+00ca move-result-object v9
+00cc invoke-virtual v8, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00d2 invoke-virtual v8, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00d8 invoke-virtual v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+00de move-result-object v6
+00e0 invoke-virtual v0, v6, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+00e6 add-int/lit8 v5, v5, 1
+00ea goto -28h
+00ec invoke-virtual v0, v2, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+00f2 invoke-virtual v0, v11, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+00f8 const-string v1, " area:["
+00fc invoke-virtual v0, v1, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+0102 invoke-static Lcom/journey/server/JourneyConfigService$AREA_TYPE;->values()[Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0108 move-result-object v1
+010a array-length v3, v1
+010c if-ge v4, v3, +027h
+0110 aget-object v5, v1, v4
+0114 iget-object v7, v10, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->area [Z
+0118 invoke-virtual v5, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ordinal()I
+011e move-result v8
+0120 aget-boolean v7, v7, v8
+0124 if-eqz v7, +018h
+0128 new-instance v7, Ljava/lang/StringBuilder;
+012c invoke-direct v7, Ljava/lang/StringBuilder;-><init>()V
+0132 invoke-virtual v5, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->toString()Ljava/lang/String;
+0138 move-result-object v8
+013a invoke-virtual v7, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0140 invoke-virtual v7, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0146 invoke-virtual v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+014c move-result-object v7
+014e invoke-virtual v0, v7, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+0154 add-int/lit8 v4, v4, 1
+0158 goto -26h
+015a invoke-virtual v0, v2, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+0160 invoke-virtual v0, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
+0166 move-result-object v1
+0168 return-object v1
+
+CLASS Lcom/journey/server/JourneyConfigService$TCSHandler;
+FIELD MSG_TRY_UPDATE_FROM_NETWORK I
+FIELD this$0 Lcom/journey/server/JourneyConfigService;
+
+METHOD <init>(Lcom/journey/server/JourneyConfigService; Landroid/os/Looper;)V
+0000 iput-object v1, v0, Lcom/journey/server/JourneyConfigService$TCSHandler;->this$0 Lcom/journey/server/JourneyConfigService;
+0004 invoke-direct v0, v2, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+000a return-void 
+
+METHOD handleMessage(Landroid/os/Message;)V
+0000 invoke-static Lcom/journey/server/JourneyConfigService;->access$100()Z
+0006 move-result v0
+0008 const-string v1, "JourneyConfigService"
+000c if-eqz v0, +016h
+0010 new-instance v0, Ljava/lang/StringBuilder;
+0014 invoke-direct v0, Ljava/lang/StringBuilder;-><init>()V
+001a const-string v2, "handleMessage "
+001e invoke-virtual v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0024 invoke-virtual v0, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+002a invoke-virtual v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0030 move-result-object v0
+0032 invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0038 iget v0, v5, Landroid/os/Message;->what I
+003c const/4 v2, 1
+003e if-eq v0, v2, +003h
+0042 goto +39h
+0044 iget-object v0, v4, Lcom/journey/server/JourneyConfigService$TCSHandler;->this$0 Lcom/journey/server/JourneyConfigService;
+0048 invoke-static v0, Lcom/journey/server/JourneyConfigService;->access$200(Lcom/journey/server/JourneyConfigService;)Landroid/net/ConnectivityManager;
+004e move-result-object v0
+0050 invoke-virtual v0, Landroid/net/ConnectivityManager;->isActiveNetworkMetered()Z
+0056 move-result v0
+0058 if-nez v0, +023h
+005c iget-object v0, v4, Lcom/journey/server/JourneyConfigService$TCSHandler;->this$0 Lcom/journey/server/JourneyConfigService;
+0060 const/4 v1, 0
+0062 invoke-virtual v0, v1, Lcom/journey/server/JourneyConfigService;->Update(Z)V
+0068 iget-object v0, v4, Lcom/journey/server/JourneyConfigService$TCSHandler;->this$0 Lcom/journey/server/JourneyConfigService;
+006c iget-object v0, v0, Lcom/journey/server/JourneyConfigService;->mHandler Lcom/journey/server/JourneyConfigService$TCSHandler;
+0070 invoke-virtual v0, v2, Lcom/journey/server/JourneyConfigService$TCSHandler;->removeMessages(I)V
+0076 iget-object v0, v4, Lcom/journey/server/JourneyConfigService$TCSHandler;->this$0 Lcom/journey/server/JourneyConfigService;
+007a iget-object v0, v0, Lcom/journey/server/JourneyConfigService;->mHandler Lcom/journey/server/JourneyConfigService$TCSHandler;
+007e invoke-virtual v0, v2, Lcom/journey/server/JourneyConfigService$TCSHandler;->obtainMessage(I)Landroid/os/Message;
+0084 move-result-object v0
+0086 iget-object v1, v4, Lcom/journey/server/JourneyConfigService$TCSHandler;->this$0 Lcom/journey/server/JourneyConfigService;
+008a iget-object v1, v1, Lcom/journey/server/JourneyConfigService;->mHandler Lcom/journey/server/JourneyConfigService$TCSHandler;
+008e iget-object v2, v4, Lcom/journey/server/JourneyConfigService$TCSHandler;->this$0 Lcom/journey/server/JourneyConfigService;
+0092 iget-wide v2, v2, Lcom/journey/server/JourneyConfigService;->mUpdateFrequency J
+0096 invoke-virtual v1, v0, v2, v3, Lcom/journey/server/JourneyConfigService$TCSHandler;->sendMessageDelayed(Landroid/os/Message; J)Z
+009c goto +ch
+009e invoke-static Lcom/journey/server/JourneyConfigService;->access$100()Z
+00a4 move-result v0
+00a6 if-eqz v0, +007h
+00aa const-string v0, "ActiveNetwork is Metered"
+00ae invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+00b4 return-void 
+
+CLASS Lcom/journey/server/JourneyConfigService$TestNetworkCallback;
+FIELD this$0 Lcom/journey/server/JourneyConfigService;
+
+METHOD <init>(Lcom/journey/server/JourneyConfigService;)V
+0000 iput-object v1, v0, Lcom/journey/server/JourneyConfigService$TestNetworkCallback;->this$0 Lcom/journey/server/JourneyConfigService;
+0004 invoke-direct v0, Landroid/net/ConnectivityManager$NetworkCallback;-><init>()V
+000a return-void 
+
+METHOD <init>(Lcom/journey/server/JourneyConfigService; Lcom/journey/server/JourneyConfigService$1;)V
+0000 invoke-direct v0, v1, Lcom/journey/server/JourneyConfigService$TestNetworkCallback;-><init>(Lcom/journey/server/JourneyConfigService;)V
+0006 return-void 
+
+METHOD onAvailable(Landroid/net/Network;)V
+0000 invoke-static Lcom/journey/server/JourneyConfigService;->access$100()Z
+0006 move-result v0
+0008 if-eqz v0, +022h
+000c new-instance v0, Ljava/lang/StringBuilder;
+0010 invoke-direct v0, Ljava/lang/StringBuilder;-><init>()V
+0016 const-string v1, "onAvailable "
+001a invoke-virtual v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0020 iget-object v1, v4, Lcom/journey/server/JourneyConfigService$TestNetworkCallback;->this$0 Lcom/journey/server/JourneyConfigService;
+0024 invoke-static v1, Lcom/journey/server/JourneyConfigService;->access$200(Lcom/journey/server/JourneyConfigService;)Landroid/net/ConnectivityManager;
+002a move-result-object v1
+002c invoke-virtual v1, v5, Landroid/net/ConnectivityManager;->getNetworkInfo(Landroid/net/Network;)Landroid/net/NetworkInfo;
+0032 move-result-object v1
+0034 invoke-virtual v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+003a invoke-virtual v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0040 move-result-object v0
+0042 const-string v1, "JourneyConfigService"
+0046 invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+004c iget-object v0, v4, Lcom/journey/server/JourneyConfigService$TestNetworkCallback;->this$0 Lcom/journey/server/JourneyConfigService;
+0050 iget-object v0, v0, Lcom/journey/server/JourneyConfigService;->mHandler Lcom/journey/server/JourneyConfigService$TCSHandler;
+0054 const/4 v1, 1
+0056 invoke-virtual v0, v1, Lcom/journey/server/JourneyConfigService$TCSHandler;->removeMessages(I)V
+005c iget-object v0, v4, Lcom/journey/server/JourneyConfigService$TestNetworkCallback;->this$0 Lcom/journey/server/JourneyConfigService;
+0060 iget-object v0, v0, Lcom/journey/server/JourneyConfigService;->mHandler Lcom/journey/server/JourneyConfigService$TCSHandler;
+0064 invoke-virtual v0, v1, Lcom/journey/server/JourneyConfigService$TCSHandler;->obtainMessage(I)Landroid/os/Message;
+006a move-result-object v0
+006c iget-object v1, v4, Lcom/journey/server/JourneyConfigService$TestNetworkCallback;->this$0 Lcom/journey/server/JourneyConfigService;
+0070 iget-object v1, v1, Lcom/journey/server/JourneyConfigService;->mHandler Lcom/journey/server/JourneyConfigService$TCSHandler;
+0074 const-wide/16 v2, 15000
+0078 invoke-virtual v1, v0, v2, v3, Lcom/journey/server/JourneyConfigService$TCSHandler;->sendMessageDelayed(Landroid/os/Message; J)Z
+007e return-void 
+
+METHOD onLosing(Landroid/net/Network; I)V
+0000 invoke-static Lcom/journey/server/JourneyConfigService;->access$100()Z
+0006 move-result v0
+0008 if-eqz v0, +022h
+000c new-instance v0, Ljava/lang/StringBuilder;
+0010 invoke-direct v0, Ljava/lang/StringBuilder;-><init>()V
+0016 const-string v1, "onLosing "
+001a invoke-virtual v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0020 iget-object v1, v2, Lcom/journey/server/JourneyConfigService$TestNetworkCallback;->this$0 Lcom/journey/server/JourneyConfigService;
+0024 invoke-static v1, Lcom/journey/server/JourneyConfigService;->access$200(Lcom/journey/server/JourneyConfigService;)Landroid/net/ConnectivityManager;
+002a move-result-object v1
+002c invoke-virtual v1, v3, Landroid/net/ConnectivityManager;->getNetworkInfo(Landroid/net/Network;)Landroid/net/NetworkInfo;
+0032 move-result-object v1
+0034 invoke-virtual v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+003a invoke-virtual v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0040 move-result-object v0
+0042 const-string v1, "JourneyConfigService"
+0046 invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+004c iget-object v0, v2, Lcom/journey/server/JourneyConfigService$TestNetworkCallback;->this$0 Lcom/journey/server/JourneyConfigService;
+0050 iget-object v0, v0, Lcom/journey/server/JourneyConfigService;->mHandler Lcom/journey/server/JourneyConfigService$TCSHandler;
+0054 const/4 v1, 1
+0056 invoke-virtual v0, v1, Lcom/journey/server/JourneyConfigService$TCSHandler;->removeMessages(I)V
+005c return-void 
+
+METHOD onLost(Landroid/net/Network;)V
+0000 invoke-static Lcom/journey/server/JourneyConfigService;->access$100()Z
+0006 move-result v0
+0008 if-eqz v0, +022h
+000c new-instance v0, Ljava/lang/StringBuilder;
+0010 invoke-direct v0, Ljava/lang/StringBuilder;-><init>()V
+0016 const-string v1, "onLost "
+001a invoke-virtual v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0020 iget-object v1, v2, Lcom/journey/server/JourneyConfigService$TestNetworkCallback;->this$0 Lcom/journey/server/JourneyConfigService;
+0024 invoke-static v1, Lcom/journey/server/JourneyConfigService;->access$200(Lcom/journey/server/JourneyConfigService;)Landroid/net/ConnectivityManager;
+002a move-result-object v1
+002c invoke-virtual v1, v3, Landroid/net/ConnectivityManager;->getNetworkInfo(Landroid/net/Network;)Landroid/net/NetworkInfo;
+0032 move-result-object v1
+0034 invoke-virtual v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+003a invoke-virtual v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0040 move-result-object v0
+0042 const-string v1, "JourneyConfigService"
+0046 invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+004c iget-object v0, v2, Lcom/journey/server/JourneyConfigService$TestNetworkCallback;->this$0 Lcom/journey/server/JourneyConfigService;
+0050 iget-object v0, v0, Lcom/journey/server/JourneyConfigService;->mHandler Lcom/journey/server/JourneyConfigService$TCSHandler;
+0054 const/4 v1, 1
+0056 invoke-virtual v0, v1, Lcom/journey/server/JourneyConfigService$TCSHandler;->removeMessages(I)V
+005c return-void 
+
+CLASS Lcom/journey/server/JourneyConfigService;
+FIELD DEBUG Z
+FIELD DEBUG_BEHAVIOR Z
+FIELD DEBUG_MORE Z
+FIELD DISABLE_UPDATE_FROM_NETWORK Z
+FIELD FORCE_LOCAL_SAVE_FILE Z
+FIELD FORCE_SKIP_LOCAL_UPDATE Z
+FIELD FORCE_SKIP_TIME_CHECK Z
+FIELD FORCE_UPDATE_FROM_LOCAL Z
+FIELD FORCE_UPDATE_FROM_NETWORK Z
+FIELD ServiceName Ljava/lang/String;
+FIELD TAG Ljava/lang/String;
+FIELD mPackageInfos Landroid/util/ArrayMap;
+FIELD sJourneyConfigService Lcom/journey/server/JourneyConfigService;
+FIELD CONFIG_FILE_NAME Ljava/lang/String;
+FIELD DEFAULT_FILE_CONFIG Ljava/io/File;
+FIELD DEFAULT_FILE_PATH Ljava/lang/String;
+FIELD DEFAULT_FILE_VERSION Ljava/io/File;
+FIELD LOCAL_FILE_CONFIG Ljava/io/File;
+FIELD LOCAL_FILE_PATH Ljava/lang/String;
+FIELD LOCAL_FILE_VERSION Ljava/io/File;
+FIELD MIN_UPDATE_FREQUENCY J
+FIELD NETWORK_FILE_PATH Ljava/lang/String;
+FIELD URL_CONFIG Ljava/net/URL;
+FIELD URL_VERSION Ljava/net/URL;
+FIELD VERSION_FILE_NAME Ljava/lang/String;
+FIELD default_behavior [Z
+FIELD genericNetworkCallback Lcom/journey/server/JourneyConfigService$TestNetworkCallback;
+FIELD mAreaFromProp Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+FIELD mConnectivityManager Landroid/net/ConnectivityManager;
+FIELD mContext Landroid/content/Context;
+FIELD mCurrentVersion J
+FIELD mHandler Lcom/journey/server/JourneyConfigService$TCSHandler;
+FIELD mLastCheckTime J
+FIELD mThread Landroid/os/HandlerThread;
+FIELD mUpdateFrequency J
+
+METHOD <clinit>()V
+0000 const-string v0, "persist.j.tcs.d"
+0004 const/4 v1, 1
+0006 invoke-static v0, v1, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String; Z)Z
+000c move-result v0
+000e sput-boolean v0, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+0012 const-string v0, "persist.j.tcs.dd"
+0016 const/4 v1, 0
+0018 invoke-static v0, v1, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String; Z)Z
+001e move-result v0
+0020 sput-boolean v0, Lcom/journey/server/JourneyConfigService;->DEBUG_MORE Z
+0024 const-string v0, "persist.j.tcs.d.behavior"
+0028 invoke-static v0, v1, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String; Z)Z
+002e move-result v0
+0030 sput-boolean v0, Lcom/journey/server/JourneyConfigService;->DEBUG_BEHAVIOR Z
+0034 const-string v0, "persist.j.tcs.skip.local"
+0038 invoke-static v0, v1, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String; Z)Z
+003e move-result v0
+0040 sput-boolean v0, Lcom/journey/server/JourneyConfigService;->FORCE_SKIP_LOCAL_UPDATE Z
+0044 const-string v0, "persist.j.tcs.check"
+0048 invoke-static v0, v1, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String; Z)Z
+004e move-result v0
+0050 sput-boolean v0, Lcom/journey/server/JourneyConfigService;->FORCE_SKIP_TIME_CHECK Z
+0054 const-string v0, "persist.j.tcs.update.net"
+0058 invoke-static v0, v1, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String; Z)Z
+005e move-result v0
+0060 sput-boolean v0, Lcom/journey/server/JourneyConfigService;->FORCE_UPDATE_FROM_NETWORK Z
+0064 const-string v0, "persist.j.tcs.update.local"
+0068 invoke-static v0, v1, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String; Z)Z
+006e move-result v0
+0070 sput-boolean v0, Lcom/journey/server/JourneyConfigService;->FORCE_UPDATE_FROM_LOCAL Z
+0074 const-string v0, "persist.j.tcs.local.save"
+0078 invoke-static v0, v1, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String; Z)Z
+007e move-result v0
+0080 sput-boolean v0, Lcom/journey/server/JourneyConfigService;->FORCE_LOCAL_SAVE_FILE Z
+0084 const-string v0, "persist.j.tcs.disable.net"
+0088 invoke-static v0, v1, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String; Z)Z
+008e move-result v0
+0090 sput-boolean v0, Lcom/journey/server/JourneyConfigService;->DISABLE_UPDATE_FROM_NETWORK Z
+0094 new-instance v0, Landroid/util/ArrayMap;
+0098 invoke-direct v0, Landroid/util/ArrayMap;-><init>()V
+009e sput-object v0, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+00a2 return-void 
+
+METHOD <init>(Landroid/content/Context;)V
+0000 invoke-direct v3, Landroid/os/Binder;-><init>()V
+0006 const/4 v0, 0
+0008 iput-object v0, v3, Lcom/journey/server/JourneyConfigService;->mContext Landroid/content/Context;
+000c const-string v1, "config.xml"
+0010 iput-object v1, v3, Lcom/journey/server/JourneyConfigService;->CONFIG_FILE_NAME Ljava/lang/String;
+0014 const-string v1, "version.txt"
+0018 iput-object v1, v3, Lcom/journey/server/JourneyConfigService;->VERSION_FILE_NAME Ljava/lang/String;
+001c const-string v1, "persist.j.tcs.url"
+0020 const-string v2, "http://cdn.jstinno.com/journey/system/config/r/"
+0024 invoke-static v1, v2, Landroid/os/SystemProperties;->get(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+002a move-result-object v1
+002c iput-object v1, v3, Lcom/journey/server/JourneyConfigService;->NETWORK_FILE_PATH Ljava/lang/String;
+0030 const-string v1, "vendor/etc/journey/system/config/r/"
+0034 iput-object v1, v3, Lcom/journey/server/JourneyConfigService;->DEFAULT_FILE_PATH Ljava/lang/String;
+0038 new-instance v1, Ljava/lang/StringBuilder;
+003c invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+0042 invoke-static Landroid/os/Environment;->getDataSystemDirectory()Ljava/io/File;
+0048 move-result-object v2
+004a invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+0050 const-string v2, "/journey/"
+0054 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+005a invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0060 move-result-object v1
+0062 iput-object v1, v3, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_PATH Ljava/lang/String;
+0066 iput-object v0, v3, Lcom/journey/server/JourneyConfigService;->URL_VERSION Ljava/net/URL;
+006a iput-object v0, v3, Lcom/journey/server/JourneyConfigService;->URL_CONFIG Ljava/net/URL;
+006e iput-object v0, v3, Lcom/journey/server/JourneyConfigService;->DEFAULT_FILE_VERSION Ljava/io/File;
+0072 iput-object v0, v3, Lcom/journey/server/JourneyConfigService;->DEFAULT_FILE_CONFIG Ljava/io/File;
+0076 iput-object v0, v3, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_VERSION Ljava/io/File;
+007a iput-object v0, v3, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_CONFIG Ljava/io/File;
+007e iput-object v0, v3, Lcom/journey/server/JourneyConfigService;->mConnectivityManager Landroid/net/ConnectivityManager;
+0082 new-instance v1, Lcom/journey/server/JourneyConfigService$TestNetworkCallback;
+0086 invoke-direct v1, v3, v0, Lcom/journey/server/JourneyConfigService$TestNetworkCallback;-><init>(Lcom/journey/server/JourneyConfigService; Lcom/journey/server/JourneyConfigService$1;)V
+008c iput-object v1, v3, Lcom/journey/server/JourneyConfigService;->genericNetworkCallback Lcom/journey/server/JourneyConfigService$TestNetworkCallback;
+0090 iput-object v0, v3, Lcom/journey/server/JourneyConfigService;->mThread Landroid/os/HandlerThread;
+0094 iput-object v0, v3, Lcom/journey/server/JourneyConfigService;->mHandler Lcom/journey/server/JourneyConfigService$TCSHandler;
+0098 const-wide/16 v0, 0
+009c iput-wide v0, v3, Lcom/journey/server/JourneyConfigService;->mLastCheckTime J
+00a0 iput-wide v0, v3, Lcom/journey/server/JourneyConfigService;->mCurrentVersion J
+00a4 const-wide/32 v0, 86400000
+00aa iput-wide v0, v3, Lcom/journey/server/JourneyConfigService;->MIN_UPDATE_FREQUENCY J
+00ae iput-wide v0, v3, Lcom/journey/server/JourneyConfigService;->mUpdateFrequency J
+00b2 sget-object v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00b6 iput-object v0, v3, Lcom/journey/server/JourneyConfigService;->mAreaFromProp Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00ba const/16 v0, 10
+00be new-array v0, v0, [Z
+00c2 fill-array-data v0, +000004fh
+00c8 iput-object v0, v3, Lcom/journey/server/JourneyConfigService;->default_behavior [Z
+00cc sput-object v3, Lcom/journey/server/JourneyConfigService;->sJourneyConfigService Lcom/journey/server/JourneyConfigService;
+00d0 iput-object v4, v3, Lcom/journey/server/JourneyConfigService;->mContext Landroid/content/Context;
+00d4 sget-boolean v0, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+00d8 const-string v1, "JourneyConfigService"
+00dc if-eqz v0, +005h
+00e0 invoke-static v1, v1, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+00e6 invoke-direct v3, Lcom/journey/server/JourneyConfigService;->getAreaFormProp()Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00ec move-result-object v0
+00ee iput-object v0, v3, Lcom/journey/server/JourneyConfigService;->mAreaFromProp Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00f2 sget-boolean v0, Lcom/journey/server/JourneyConfigService;->FORCE_SKIP_LOCAL_UPDATE Z
+00f6 if-eqz v0, +007h
+00fa const-string v0, "FORCE_SKIP_LOCAL_UPDATE"
+00fe invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0104 sget-boolean v0, Lcom/journey/server/JourneyConfigService;->FORCE_SKIP_TIME_CHECK Z
+0108 if-eqz v0, +007h
+010c const-string v0, "FORCE_SKIP_TIME_CHECK"
+0110 invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0116 sget-boolean v0, Lcom/journey/server/JourneyConfigService;->FORCE_UPDATE_FROM_NETWORK Z
+011a if-eqz v0, +007h
+011e const-string v0, "FORCE_UPDATE_FROM_NETWORK"
+0122 invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0128 sget-boolean v0, Lcom/journey/server/JourneyConfigService;->FORCE_UPDATE_FROM_LOCAL Z
+012c if-eqz v0, +007h
+0130 const-string v0, "FORCE_UPDATE_FROM_LOCAL"
+0134 invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+013a sget-boolean v0, Lcom/journey/server/JourneyConfigService;->FORCE_LOCAL_SAVE_FILE Z
+013e if-eqz v0, +007h
+0142 const-string v0, "FORCE_LOCAL_SAVE_FILE"
+0146 invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+014c sget-boolean v0, Lcom/journey/server/JourneyConfigService;->DISABLE_UPDATE_FROM_NETWORK Z
+0150 if-eqz v0, +007h
+0154 const-string v0, "DISABLE_UPDATE_FROM_NETWORK"
+0158 invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+015e return-void 
+0160 fill-array-data-payload b'\x01\x01\x01\x00\x00\x00\x00\x00\x01\x00' | \x01\x01\x01\x00\x00\x00\x00\x00\x01\x00
+
+METHOD PackageHasBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z
+0000 const-string v0, "JourneyConfigService"
+0004 const/4 v1, 0
+0006 const/4 v2, 0
+0008 invoke-static v8, v2, Lcom/journey/server/JourneyConfigService;->getPackages(Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)Ljava/util/List;
+000e move-result-object v2
+0010 invoke-interface v2, Ljava/util/List;->iterator()Ljava/util/Iterator;
+0016 move-result-object v3
+0018 invoke-interface v3, Ljava/util/Iterator;->hasNext()Z
+001e move-result v4
+0020 if-eqz v4, +04ah
+0024 invoke-interface v3, Ljava/util/Iterator;->next()Ljava/lang/Object;
+002a move-result-object v4
+002c check-cast v4, Ljava/lang/String;
+0030 const-string v5, "*"
+0034 invoke-virtual v4, v5, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
+003a move-result v5
+003c if-eqz v5, +013h
+0040 const/4 v5, 0
+0042 invoke-virtual v4, Ljava/lang/String;->length()I
+0048 move-result v6
+004a add-int/lit8 v6, v6, -1
+004e invoke-virtual v4, v5, v6, Ljava/lang/String;->substring(I I)Ljava/lang/String;
+0054 move-result-object v5
+0056 invoke-virtual v7, v5, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+005c move-result v5
+005e move v1, v5
+0060 goto +6h
+0062 invoke-virtual v7, v4, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+0068 move-result v5
+006a move v1, v5
+006c if-eqz v1, +023h
+0070 sget-boolean v3, Lcom/journey/server/JourneyConfigService;->DEBUG_BEHAVIOR Z
+0074 if-eqz v3, +020h
+0078 new-instance v3, Ljava/lang/StringBuilder;
+007c invoke-direct v3, Ljava/lang/StringBuilder;-><init>()V
+0082 const-string v5, "PackageHasBehavior "
+0086 invoke-virtual v3, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+008c invoke-virtual v3, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0092 const-string v5, " has "
+0096 invoke-virtual v3, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+009c invoke-virtual v3, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+00a2 invoke-virtual v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+00a8 move-result-object v3
+00aa invoke-static v0, v3, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+00b0 goto +2h
+00b2 goto -4dh
+00b4 goto +16h
+00b6 move-exception v2
+00b8 new-instance v3, Ljava/lang/StringBuilder;
+00bc invoke-direct v3, Ljava/lang/StringBuilder;-><init>()V
+00c2 const-string v4, "PackageHasBehavior error "
+00c6 invoke-virtual v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00cc invoke-virtual v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+00d2 invoke-virtual v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+00d8 move-result-object v3
+00da invoke-static v0, v3, v2, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+00e0 return v1
+
+METHOD access$100()Z
+0000 sget-boolean v0, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+0004 return v0
+
+METHOD access$200(Lcom/journey/server/JourneyConfigService;)Landroid/net/ConnectivityManager;
+0000 iget-object v0, v1, Lcom/journey/server/JourneyConfigService;->mConnectivityManager Landroid/net/ConnectivityManager;
+0004 return-object v0
+
+METHOD getAreaFormProp()Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0000 const-string v0, "ro.tcs.area"
+0004 invoke-static v0, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
+000a move-result-object v0
+000c const-string v1, "persist.tcs.area"
+0010 invoke-static v1, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
+0016 move-result-object v1
+0018 const-string v2, "ro.real.region"
+001c invoke-static v2, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
+0022 move-result-object v2
+0024 const-string v3, "ro.product.brand"
+0028 const-string v4, "trunk"
+002c invoke-static v3, v4, Landroid/os/SystemProperties;->get(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+0032 move-result-object v3
+0034 sget-object v4, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0038 invoke-virtual v1, Ljava/lang/String;->isEmpty()Z
+003e move-result v5
+0040 const-string v6, "JourneyConfigService"
+0044 if-nez v5, +023h
+0048 invoke-static v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->valueOf(Ljava/lang/String;)Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+004e move-result-object v5
+0050 move-object v4, v5
+0052 goto/16 +079h
+0056 move-exception v5
+0058 new-instance v7, Ljava/lang/StringBuilder;
+005c invoke-direct v7, Ljava/lang/StringBuilder;-><init>()V
+0062 const-string v8, "getAreaFormProp persistTcsArea "
+0066 invoke-virtual v7, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+006c invoke-virtual v5, Ljava/lang/IllegalArgumentException;->toString()Ljava/lang/String;
+0072 move-result-object v8
+0074 invoke-virtual v7, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+007a invoke-virtual v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0080 move-result-object v7
+0082 invoke-static v6, v7, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0088 goto -1bh
+008a invoke-virtual v0, Ljava/lang/String;->isEmpty()Z
+0090 move-result v5
+0092 if-nez v5, +022h
+0096 invoke-static v0, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->valueOf(Ljava/lang/String;)Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+009c move-result-object v5
+009e move-object v4, v5
+00a0 goto +52h
+00a2 move-exception v5
+00a4 new-instance v7, Ljava/lang/StringBuilder;
+00a8 invoke-direct v7, Ljava/lang/StringBuilder;-><init>()V
+00ae const-string v8, "getAreaFormProp productTcsArea "
+00b2 invoke-virtual v7, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00b8 invoke-virtual v5, Ljava/lang/IllegalArgumentException;->toString()Ljava/lang/String;
+00be move-result-object v8
+00c0 invoke-virtual v7, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00c6 invoke-virtual v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+00cc move-result-object v7
+00ce invoke-static v6, v7, Landroid/util/Slog;->e(Ljava/lang/String; Ljava/lang/String;)I
+00d4 goto -1ah
+00d6 invoke-virtual v2, Ljava/lang/String;->isEmpty()Z
+00dc move-result v5
+00de if-nez v5, +02bh
+00e2 invoke-static Lcom/journey/system/JourneyCustomFeature;->is_sugar_prj()Z
+00e8 move-result v5
+00ea if-eqz v5, +004h
+00ee sget-object v4, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->SUGAR_CN Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00f2 const-string v5, "CN"
+00f6 invoke-virtual v2, v5, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+00fc move-result v5
+00fe if-eqz v5, +005h
+0102 sget-object v4, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->SUGAR_CN Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0106 goto +1fh
+0108 const-string v5, "TW"
+010c invoke-virtual v2, v5, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+0112 move-result v5
+0114 if-eqz v5, +005h
+0118 sget-object v4, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->SUGAR_TW Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+011c goto +14h
+011e const-string v5, "HK"
+0122 invoke-virtual v2, v5, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+0128 move-result v5
+012a if-eqz v5, +00dh
+012e sget-object v4, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->SUGAR_HK Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0132 goto +9h
+0134 invoke-static Lcom/journey/system/JourneyCustomFeature;->is_wiko_prj()Z
+013a move-result v5
+013c if-eqz v5, +004h
+0140 sget-object v4, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->WIKO_FR Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0144 new-instance v5, Ljava/lang/StringBuilder;
+0148 invoke-direct v5, Ljava/lang/StringBuilder;-><init>()V
+014e const-string v7, "getAreaFormProp  product: "
+0152 invoke-virtual v5, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0158 invoke-virtual v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+015e const-string v7, " persist: "
+0162 invoke-virtual v5, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0168 invoke-virtual v5, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+016e const-string v7, " region "
+0172 invoke-virtual v5, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0178 invoke-virtual v5, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+017e const-string v7, " brand "
+0182 invoke-virtual v5, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0188 invoke-virtual v5, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+018e const-string v7, " return: "
+0192 invoke-virtual v5, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0198 invoke-virtual v5, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+019e invoke-virtual v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+01a4 move-result-object v5
+01a6 invoke-static v6, v5, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+01ac return-object v4
+
+METHOD getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z
+0000 const/4 v0, 0
+0002 invoke-static v1, v2, v0, Lcom/journey/server/JourneyConfigService;->getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)Z
+0008 move-result v0
+000a return v0
+
+METHOD getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)Z
+0000 invoke-static Lcom/journey/server/JourneyConfigService;->getInstance()Lcom/journey/server/JourneyConfigService;
+0006 move-result-object v0
+0008 if-eqz v0, +007h
+000c invoke-virtual v0, v2, v3, v4, Lcom/journey/server/JourneyConfigService;->getPackageBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)Z
+0012 move-result v1
+0014 return v1
+0016 const/4 v1, 0
+0018 return v1
+
+METHOD getConnectivityManager()Landroid/net/ConnectivityManager;
+0000 iget-object v0, v3, Lcom/journey/server/JourneyConfigService;->mContext Landroid/content/Context;
+0004 const-string v1, "connectivity"
+0008 invoke-virtual v0, v1, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+000e move-result-object v0
+0010 check-cast v0, Landroid/net/ConnectivityManager;
+0014 return-object v0
+0016 move-exception v0
+0018 const-string v1, "JourneyConfigService"
+001c const-string v2, "CONNECTIVITY_SERVICE not ready "
+0020 invoke-static v1, v2, v0, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+0026 const/4 v1, 0
+0028 return-object v1
+
+METHOD getInstance()Lcom/journey/server/JourneyConfigService;
+0000 sget-object v0, Lcom/journey/server/JourneyConfigService;->sJourneyConfigService Lcom/journey/server/JourneyConfigService;
+0004 return-object v0
+
+METHOD getPackages(Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Ljava/util/List;
+0000 const/4 v0, 0
+0002 invoke-static v1, v0, Lcom/journey/server/JourneyConfigService;->getPackages(Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)Ljava/util/List;
+0008 move-result-object v0
+000a return-object v0
+
+METHOD getPackages(Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)Ljava/util/List;
+0000 invoke-static Lcom/journey/server/JourneyConfigService;->getInstance()Lcom/journey/server/JourneyConfigService;
+0006 move-result-object v0
+0008 if-eqz v0, +007h
+000c invoke-virtual v0, v2, v3, Lcom/journey/server/JourneyConfigService;->getBehaviorPackage(Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)Ljava/util/List;
+0012 move-result-object v1
+0014 return-object v1
+0016 new-instance v1, Ljava/util/ArrayList;
+001a invoke-direct v1, Ljava/util/ArrayList;-><init>()V
+0020 return-object v1
+
+METHOD isEnable()Z
+0000 sget-boolean v0, Lcom/journey/system/JourneyCustomFeature;->TINNO_CONFIG_SERVICE Z
+0004 return v0
+
+METHOD isReady()Z
+0000 sget-boolean v0, Lcom/journey/system/JourneyCustomFeature;->TINNO_CONFIG_SERVICE Z
+0004 return v0
+
+METHOD ResetConfig()V
+0000 sget-boolean v0, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+0004 const-string v1, "JourneyConfigService"
+0008 if-eqz v0, +007h
+000c const-string v0, "ResetConfig "
+0010 invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0016 iget-object v0, v5, Lcom/journey/server/JourneyConfigService;->DEFAULT_FILE_VERSION Ljava/io/File;
+001a invoke-virtual v5, v0, Lcom/journey/server/JourneyConfigService;->loadFile(Ljava/io/File;)Ljava/lang/String;
+0020 move-result-object v0
+0022 iget-object v2, v5, Lcom/journey/server/JourneyConfigService;->DEFAULT_FILE_CONFIG Ljava/io/File;
+0026 invoke-virtual v5, v2, Lcom/journey/server/JourneyConfigService;->loadFile(Ljava/io/File;)Ljava/lang/String;
+002c move-result-object v2
+002e iget-object v3, v5, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_VERSION Ljava/io/File;
+0032 invoke-virtual v5, v3, v0, Lcom/journey/server/JourneyConfigService;->saveFile(Ljava/io/File; Ljava/lang/String;)V
+0038 iget-object v3, v5, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_CONFIG Ljava/io/File;
+003c invoke-virtual v5, v3, v2, Lcom/journey/server/JourneyConfigService;->saveFile(Ljava/io/File; Ljava/lang/String;)V
+0042 goto +7h
+0044 move-exception v3
+0046 const-string v4, "ResetConfig failed , what can I do ?"
+004a invoke-static v1, v4, v3, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+0050 return-void 
+
+METHOD String2Long(Ljava/lang/String; J)J
+0000 move-wide v0, v7
+0002 invoke-static v6, Ljava/lang/Long;->valueOf(Ljava/lang/String;)Ljava/lang/Long;
+0008 move-result-object v2
+000a invoke-virtual v2, Ljava/lang/Long;->longValue()J
+0010 move-result-wide v2
+0012 move-wide v0, v2
+0014 goto +21h
+0016 move-exception v2
+0018 sget-boolean v3, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+001c if-eqz v3, +01dh
+0020 new-instance v3, Ljava/lang/StringBuilder;
+0024 invoke-direct v3, Ljava/lang/StringBuilder;-><init>()V
+002a const-string v4, "String2Long from "
+002e invoke-virtual v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0034 invoke-virtual v3, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+003a const-string v4, " failed, use defualt 0 "
+003e invoke-virtual v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0044 invoke-virtual v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+004a move-result-object v3
+004c const-string v4, "JourneyConfigService"
+0050 invoke-static v4, v3, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0056 return-wide v0
+
+METHOD Update()V
+0000 const/4 v0, 0
+0002 invoke-virtual v1, v0, v0, Lcom/journey/server/JourneyConfigService;->Update(Z Z)V
+0008 return-void 
+
+METHOD Update(Z)V
+0000 const/4 v0, 0
+0002 invoke-virtual v1, v2, v0, Lcom/journey/server/JourneyConfigService;->Update(Z Z)V
+0008 return-void 
+
+METHOD Update(Z Z)V
+0000 const-string v0, "JourneyConfigService"
+0004 iget-wide v1, v8, Lcom/journey/server/JourneyConfigService;->mUpdateFrequency J
+0008 iget-wide v3, v8, Lcom/journey/server/JourneyConfigService;->MIN_UPDATE_FREQUENCY J
+000c cmp-long v1, v1, v3
+0010 if-gez v1, +00bh
+0014 iget-wide v1, v8, Lcom/journey/server/JourneyConfigService;->MIN_UPDATE_FREQUENCY J
+0018 iput-wide v1, v8, Lcom/journey/server/JourneyConfigService;->mUpdateFrequency J
+001c const-string v1, "some thing wrong happend , change  mUpdateFrequency to default"
+0020 invoke-static v0, v1, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I
+0026 iget-wide v1, v8, Lcom/journey/server/JourneyConfigService;->mLastCheckTime J
+002a const-wide/16 v3, 0
+002e cmp-long v1, v1, v3
+0032 if-eqz v1, +065h
+0036 invoke-static Ljava/lang/System;->currentTimeMillis()J
+003c move-result-wide v1
+003e iget-wide v5, v8, Lcom/journey/server/JourneyConfigService;->mLastCheckTime J
+0042 sub-long/2addr v1, v5
+0044 iget-wide v5, v8, Lcom/journey/server/JourneyConfigService;->mUpdateFrequency J
+0048 cmp-long v1, v1, v5
+004c if-gez v1, +058h
+0050 sget-boolean v1, Lcom/journey/server/JourneyConfigService;->FORCE_SKIP_TIME_CHECK Z
+0054 if-nez v1, +054h
+0058 if-nez v9, +052h
+005c if-nez v10, +050h
+0060 sget-boolean v1, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+0064 if-eqz v1, +124h
+0068 new-instance v1, Ljava/lang/StringBuilder;
+006c invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+0072 const-string v2, " mLastCheckTime "
+0076 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+007c iget-object v2, v8, Lcom/journey/server/JourneyConfigService;->mContext Landroid/content/Context;
+0080 iget-wide v3, v8, Lcom/journey/server/JourneyConfigService;->mLastCheckTime J
+0084 const/16 v5, 129
+0088 invoke-static v2, v3, v4, v5, Landroid/text/format/DateUtils;->formatDateTime(Landroid/content/Context; J I)Ljava/lang/String;
+008e move-result-object v2
+0090 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0096 const-string v2, " currentTimeMillis "
+009a invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00a0 iget-object v2, v8, Lcom/journey/server/JourneyConfigService;->mContext Landroid/content/Context;
+00a4 invoke-static Ljava/lang/System;->currentTimeMillis()J
+00aa move-result-wide v3
+00ac invoke-static v2, v3, v4, v5, Landroid/text/format/DateUtils;->formatDateTime(Landroid/content/Context; J I)Ljava/lang/String;
+00b2 move-result-object v2
+00b4 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00ba const-string v2, " nextCheckTime "
+00be invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00c4 iget-object v2, v8, Lcom/journey/server/JourneyConfigService;->mContext Landroid/content/Context;
+00c8 iget-wide v3, v8, Lcom/journey/server/JourneyConfigService;->mLastCheckTime J
+00cc iget-wide v6, v8, Lcom/journey/server/JourneyConfigService;->mUpdateFrequency J
+00d0 add-long/2addr v3, v6
+00d2 invoke-static v2, v3, v4, v5, Landroid/text/format/DateUtils;->formatDateTime(Landroid/content/Context; J I)Ljava/lang/String;
+00d8 move-result-object v2
+00da invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00e0 const-string v2, " , Distance from the last test time too close."
+00e4 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00ea invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+00f0 move-result-object v1
+00f2 invoke-static v0, v1, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+00f8 goto/16 +0dah
+00fc const-string v1, " : local_version "
+0100 if-eqz v9, +05fh
+0104 iget-object v2, v8, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_VERSION Ljava/io/File;
+0108 invoke-virtual v8, v2, Lcom/journey/server/JourneyConfigService;->loadFile(Ljava/io/File;)Ljava/lang/String;
+010e move-result-object v2
+0110 invoke-virtual v8, v2, v3, v4, Lcom/journey/server/JourneyConfigService;->String2Long(Ljava/lang/String; J)J
+0116 move-result-wide v5
+0118 iget-object v2, v8, Lcom/journey/server/JourneyConfigService;->DEFAULT_FILE_VERSION Ljava/io/File;
+011c invoke-virtual v8, v2, Lcom/journey/server/JourneyConfigService;->loadFile(Ljava/io/File;)Ljava/lang/String;
+0122 move-result-object v2
+0124 invoke-virtual v8, v2, v3, v4, Lcom/journey/server/JourneyConfigService;->String2Long(Ljava/lang/String; J)J
+012a move-result-wide v2
+012c sget-boolean v4, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+0130 if-eqz v4, +01ch
+0134 new-instance v4, Ljava/lang/StringBuilder;
+0138 invoke-direct v4, Ljava/lang/StringBuilder;-><init>()V
+013e const-string v7, "default_version "
+0142 invoke-virtual v4, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0148 invoke-virtual v4, v2, v3, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+014e invoke-virtual v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0154 invoke-virtual v4, v5, v6, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+015a invoke-virtual v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0160 move-result-object v1
+0162 invoke-static v0, v1, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0168 cmp-long v1, v2, v5
+016c if-gtz v1, +01dh
+0170 sget-boolean v1, Lcom/journey/server/JourneyConfigService;->FORCE_UPDATE_FROM_LOCAL Z
+0174 if-nez v1, +019h
+0178 if-eqz v10, +003h
+017c goto +15h
+017e sget-boolean v1, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+0182 if-eqz v1, +007h
+0186 const-string v1, "default_version is not new than local_version, load local config"
+018a invoke-static v0, v1, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0190 iget-object v1, v8, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_CONFIG Ljava/io/File;
+0194 invoke-virtual v8, v1, Lcom/journey/server/JourneyConfigService;->loadFile(Ljava/io/File;)Ljava/lang/String;
+019a move-result-object v1
+019c const/4 v4, 0
+019e invoke-virtual v8, v1, v5, v6, v4, Lcom/journey/server/JourneyConfigService;->loadConfigSettings(Ljava/lang/String; J Z)V
+01a4 goto +bh
+01a6 iget-object v1, v8, Lcom/journey/server/JourneyConfigService;->DEFAULT_FILE_CONFIG Ljava/io/File;
+01aa invoke-virtual v8, v1, Lcom/journey/server/JourneyConfigService;->loadFile(Ljava/io/File;)Ljava/lang/String;
+01b0 move-result-object v1
+01b2 invoke-virtual v8, v1, v2, v3, Lcom/journey/server/JourneyConfigService;->loadConfigSettings(Ljava/lang/String; J)V
+01b8 nop 
+01ba goto/16 +079h
+01be iget-wide v5, v8, Lcom/journey/server/JourneyConfigService;->mCurrentVersion J
+01c2 cmp-long v2, v5, v3
+01c6 if-nez v2, +010h
+01ca const-string v1, "mCurrentVersion is 0 ,something bad happend , unable start network update"
+01ce invoke-static v0, v1, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I
+01d4 if-nez v9, +008h
+01d8 invoke-static Ljava/lang/System;->currentTimeMillis()J
+01de move-result-wide v0
+01e0 iput-wide v0, v8, Lcom/journey/server/JourneyConfigService;->mLastCheckTime J
+01e4 return-void 
+01e6 sget-boolean v2, Lcom/journey/server/JourneyConfigService;->DISABLE_UPDATE_FROM_NETWORK Z
+01ea if-eqz v2, +010h
+01ee const-string v1, "DISABLE_UPDATE_FROM_NETWORK"
+01f2 invoke-static v0, v1, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I
+01f8 if-nez v9, +008h
+01fc invoke-static Ljava/lang/System;->currentTimeMillis()J
+0202 move-result-wide v0
+0204 iput-wide v0, v8, Lcom/journey/server/JourneyConfigService;->mLastCheckTime J
+0208 return-void 
+020a iget-object v2, v8, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_VERSION Ljava/io/File;
+020e invoke-virtual v8, v2, Lcom/journey/server/JourneyConfigService;->loadFile(Ljava/io/File;)Ljava/lang/String;
+0214 move-result-object v2
+0216 invoke-virtual v8, v2, v3, v4, Lcom/journey/server/JourneyConfigService;->String2Long(Ljava/lang/String; J)J
+021c move-result-wide v5
+021e iget-object v2, v8, Lcom/journey/server/JourneyConfigService;->URL_VERSION Ljava/net/URL;
+0222 invoke-virtual v8, v2, Lcom/journey/server/JourneyConfigService;->loadFile(Ljava/net/URL;)Ljava/lang/String;
+0228 move-result-object v2
+022a invoke-virtual v8, v2, v3, v4, Lcom/journey/server/JourneyConfigService;->String2Long(Ljava/lang/String; J)J
+0230 move-result-wide v2
+0232 sget-boolean v4, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+0236 if-eqz v4, +01ch
+023a new-instance v4, Ljava/lang/StringBuilder;
+023e invoke-direct v4, Ljava/lang/StringBuilder;-><init>()V
+0244 const-string v7, "network_version "
+0248 invoke-virtual v4, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+024e invoke-virtual v4, v2, v3, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+0254 invoke-virtual v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+025a invoke-virtual v4, v5, v6, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+0260 invoke-virtual v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0266 move-result-object v1
+0268 invoke-static v0, v1, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+026e cmp-long v1, v2, v5
+0272 if-gtz v1, +013h
+0276 sget-boolean v1, Lcom/journey/server/JourneyConfigService;->FORCE_UPDATE_FROM_NETWORK Z
+027a if-nez v1, +00fh
+027e if-eqz v10, +003h
+0282 goto +bh
+0284 sget-boolean v1, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+0288 if-eqz v1, +012h
+028c const-string v1, "network_version is not new than local_version, nothing need to do"
+0290 invoke-static v0, v1, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0296 goto +bh
+0298 iget-object v1, v8, Lcom/journey/server/JourneyConfigService;->URL_CONFIG Ljava/net/URL;
+029c invoke-virtual v8, v1, Lcom/journey/server/JourneyConfigService;->loadFile(Ljava/net/URL;)Ljava/lang/String;
+02a2 move-result-object v1
+02a4 invoke-virtual v8, v1, v2, v3, Lcom/journey/server/JourneyConfigService;->loadConfigSettings(Ljava/lang/String; J)V
+02aa nop 
+02ac if-nez v9, +014h
+02b0 goto +ch
+02b2 move-exception v0
+02b4 goto +11h
+02b6 move-exception v1
+02b8 const-string v2, "Update failed "
+02bc invoke-static v0, v2, v1, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+02c2 nop 
+02c4 if-nez v9, +008h
+02c8 invoke-static Ljava/lang/System;->currentTimeMillis()J
+02ce move-result-wide v0
+02d0 iput-wide v0, v8, Lcom/journey/server/JourneyConfigService;->mLastCheckTime J
+02d4 return-void 
+02d6 if-nez v9, +008h
+02da invoke-static Ljava/lang/System;->currentTimeMillis()J
+02e0 move-result-wide v1
+02e2 iput-wide v1, v8, Lcom/journey/server/JourneyConfigService;->mLastCheckTime J
+02e6 throw v0
+
+METHOD bootCompleted()V
+0000 invoke-direct v2, Lcom/journey/server/JourneyConfigService;->getConnectivityManager()Landroid/net/ConnectivityManager;
+0006 move-result-object v0
+0008 iput-object v0, v2, Lcom/journey/server/JourneyConfigService;->mConnectivityManager Landroid/net/ConnectivityManager;
+000c if-eqz v0, +018h
+0010 iget-object v0, v2, Lcom/journey/server/JourneyConfigService;->mHandler Lcom/journey/server/JourneyConfigService$TCSHandler;
+0014 if-eqz v0, +014h
+0018 sget-boolean v0, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+001c if-eqz v0, +009h
+0020 const-string v0, "JourneyConfigService"
+0024 const-string v1, "registerDefaultNetworkCallback"
+0028 invoke-static v0, v1, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+002e iget-object v0, v2, Lcom/journey/server/JourneyConfigService;->mConnectivityManager Landroid/net/ConnectivityManager;
+0032 iget-object v1, v2, Lcom/journey/server/JourneyConfigService;->genericNetworkCallback Lcom/journey/server/JourneyConfigService$TestNetworkCallback;
+0036 invoke-virtual v0, v1, Landroid/net/ConnectivityManager;->registerDefaultNetworkCallback(Landroid/net/ConnectivityManager$NetworkCallback;)V
+003c return-void 
+
+METHOD dump(Ljava/io/FileDescriptor; Ljava/io/PrintWriter; [Ljava/lang/String;)V
+0000 const-string v0, "JourneyConfigService:"
+0004 invoke-virtual v10, v0, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+000a const-string v0, ""
+000e invoke-virtual v10, v0, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+0014 array-length v1, v11
+0016 if-lez v1, +0e9h
+001a const/4 v0, 0
+001c aget-object v1, v11, v0
+0020 const-string v2, "help"
+0024 invoke-virtual v1, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+002a move-result v1
+002c if-eqz v1, +01dh
+0030 const-string v0, "help:    this screen"
+0034 invoke-virtual v10, v0, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+003a const-string v0, "test:    self test"
+003e invoke-virtual v10, v0, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+0044 const-string v0, "update:  force update from network now"
+0048 invoke-virtual v10, v0, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+004e const-string v0, "reset:   force update from local now"
+0052 invoke-virtual v10, v0, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+0058 const-string v0, "all:     show some detail info"
+005c invoke-virtual v10, v0, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+0062 goto/16 +1c7h
+0066 aget-object v1, v11, v0
+006a const-string v2, "test"
+006e invoke-virtual v1, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+0074 move-result v1
+0076 if-eqz v1, +089h
+007a sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALLOW_PERSIST Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+007e sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0082 const-string v2, "com.tencent.mm"
+0086 invoke-virtual v8, v10, v2, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_behavior(Ljava/io/PrintWriter; Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+008c sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALLOW_LOCATION Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0090 sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->WIKO_FR Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0094 invoke-virtual v8, v10, v2, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_behavior(Ljava/io/PrintWriter; Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+009a sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALLOW_LOCATION Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+009e sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->WIKO_FR Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00a2 const-string v3, "com.facebook.katana"
+00a6 invoke-virtual v8, v10, v3, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_behavior(Ljava/io/PrintWriter; Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+00ac sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->PRELOAD Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00b0 sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00b4 invoke-virtual v8, v10, v2, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_behavior(Ljava/io/PrintWriter; Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+00ba sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->PRELOAD Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00be sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->SUGAR_CN Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00c2 invoke-virtual v8, v10, v2, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_behavior(Ljava/io/PrintWriter; Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+00c8 sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->PRELOAD Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00cc sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00d0 const-string v2, "com.preload.test"
+00d4 invoke-virtual v8, v10, v2, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_behavior(Ljava/io/PrintWriter; Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+00da sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->PRELOAD Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00de sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->WIKO_ASIA Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00e2 invoke-virtual v8, v10, v2, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_behavior(Ljava/io/PrintWriter; Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+00e8 sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00ec sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00f0 const-string v2, "com.tencent.android.qqdownloader"
+00f4 invoke-virtual v8, v10, v2, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_behavior(Ljava/io/PrintWriter; Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+00fa sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_NOT_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00fe sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0102 invoke-virtual v8, v10, v2, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_behavior(Ljava/io/PrintWriter; Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+0108 sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+010c sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0110 const-string v2, "com.android.email"
+0114 invoke-virtual v8, v10, v2, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_behavior(Ljava/io/PrintWriter; Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+011a sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_NOT_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+011e sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0122 invoke-virtual v8, v10, v2, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_behavior(Ljava/io/PrintWriter; Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+0128 sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+012c sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->SUGAR_CN Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0130 const-string v2, "com.blank.test"
+0134 invoke-virtual v8, v10, v2, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_behavior(Ljava/io/PrintWriter; Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+013a sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_NOT_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+013e sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0142 const-string v2, "com.blank.test_none"
+0146 invoke-virtual v8, v10, v2, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_behavior(Ljava/io/PrintWriter; Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+014c sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->DISABLED_COMPONENT Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0150 sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0154 invoke-virtual v8, v10, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_package(Ljava/io/PrintWriter; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+015a sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->PRELOAD Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+015e sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0162 invoke-virtual v8, v10, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_package(Ljava/io/PrintWriter; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+0168 sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->PRELOAD Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+016c sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->SUGAR_CN Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0170 invoke-virtual v8, v10, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_package(Ljava/io/PrintWriter; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+0176 sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALLOW_PERSIST Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+017a sget-object v1, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+017e invoke-virtual v8, v10, v0, v1, Lcom/journey/server/JourneyConfigService;->selftest_package(Ljava/io/PrintWriter; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+0184 goto/16 +136h
+0188 aget-object v1, v11, v0
+018c const-string v2, "update"
+0190 invoke-virtual v1, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+0196 move-result v1
+0198 const/4 v2, 1
+019a if-eqz v1, +00ch
+019e invoke-virtual v8, v0, v2, Lcom/journey/server/JourneyConfigService;->Update(Z Z)V
+01a4 const-string v0, "force update from network"
+01a8 invoke-virtual v10, v0, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+01ae goto/16 +121h
+01b2 aget-object v1, v11, v0
+01b6 const-string v3, "reset"
+01ba invoke-virtual v1, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+01c0 move-result v1
+01c2 if-eqz v1, +00ch
+01c6 invoke-virtual v8, v2, v2, Lcom/journey/server/JourneyConfigService;->Update(Z Z)V
+01cc const-string v0, "force update from local"
+01d0 invoke-virtual v10, v0, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+01d6 goto/16 +10dh
+01da aget-object v0, v11, v0
+01de invoke-virtual v8, v10, v0, Lcom/journey/server/JourneyConfigService;->dump_mPackageInfos(Ljava/io/PrintWriter; Ljava/lang/String;)V
+01e4 goto/16 +106h
+01e8 new-instance v1, Ljava/lang/StringBuilder;
+01ec invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+01f2 const-string v2, "DEBUG:"
+01f6 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+01fc sget-boolean v2, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+0200 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+0206 invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+020c move-result-object v1
+020e invoke-virtual v10, v1, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+0214 new-instance v1, Ljava/lang/StringBuilder;
+0218 invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+021e const-string v2, " DEBUG_MORE:"
+0222 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0228 sget-boolean v2, Lcom/journey/server/JourneyConfigService;->DEBUG_MORE Z
+022c invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+0232 invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0238 move-result-object v1
+023a invoke-virtual v10, v1, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+0240 new-instance v1, Ljava/lang/StringBuilder;
+0244 invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+024a const-string v2, " FORCE_SKIP_LOCAL_UPDATE:"
+024e invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0254 sget-boolean v2, Lcom/journey/server/JourneyConfigService;->FORCE_SKIP_LOCAL_UPDATE Z
+0258 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+025e invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0264 move-result-object v1
+0266 invoke-virtual v10, v1, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+026c new-instance v1, Ljava/lang/StringBuilder;
+0270 invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+0276 const-string v2, " FORCE_SKIP_TIME_CHECK:"
+027a invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0280 sget-boolean v2, Lcom/journey/server/JourneyConfigService;->FORCE_SKIP_TIME_CHECK Z
+0284 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+028a invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0290 move-result-object v1
+0292 invoke-virtual v10, v1, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+0298 new-instance v1, Ljava/lang/StringBuilder;
+029c invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+02a2 const-string v2, " FORCE_UPDATE_FROM_NETWORK:"
+02a6 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+02ac sget-boolean v2, Lcom/journey/server/JourneyConfigService;->FORCE_UPDATE_FROM_NETWORK Z
+02b0 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+02b6 invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+02bc move-result-object v1
+02be invoke-virtual v10, v1, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+02c4 new-instance v1, Ljava/lang/StringBuilder;
+02c8 invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+02ce const-string v2, " NETWORK_FILE_PATH:"
+02d2 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+02d8 iget-object v2, v8, Lcom/journey/server/JourneyConfigService;->NETWORK_FILE_PATH Ljava/lang/String;
+02dc invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+02e2 invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+02e8 move-result-object v1
+02ea invoke-virtual v10, v1, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+02f0 invoke-virtual v10, v0, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+02f6 const-string v1, "Time:"
+02fa invoke-virtual v10, v1, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+0300 new-instance v1, Ljava/lang/StringBuilder;
+0304 invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+030a const-string v2, " mCurrentVersion:"
+030e invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0314 iget-wide v2, v8, Lcom/journey/server/JourneyConfigService;->mCurrentVersion J
+0318 invoke-virtual v1, v2, v3, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+031e invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0324 move-result-object v1
+0326 invoke-virtual v10, v1, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+032c new-instance v1, Ljava/lang/StringBuilder;
+0330 invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+0336 const-string v2, " mLastCheckTime:"
+033a invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0340 iget-object v2, v8, Lcom/journey/server/JourneyConfigService;->mContext Landroid/content/Context;
+0344 iget-wide v3, v8, Lcom/journey/server/JourneyConfigService;->mLastCheckTime J
+0348 const/16 v5, 129
+034c invoke-static v2, v3, v4, v5, Landroid/text/format/DateUtils;->formatDateTime(Landroid/content/Context; J I)Ljava/lang/String;
+0352 move-result-object v2
+0354 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+035a invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0360 move-result-object v1
+0362 invoke-virtual v10, v1, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+0368 new-instance v1, Ljava/lang/StringBuilder;
+036c invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+0372 const-string v2, " currentTimeMillis:"
+0376 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+037c iget-object v2, v8, Lcom/journey/server/JourneyConfigService;->mContext Landroid/content/Context;
+0380 invoke-static Ljava/lang/System;->currentTimeMillis()J
+0386 move-result-wide v3
+0388 invoke-static v2, v3, v4, v5, Landroid/text/format/DateUtils;->formatDateTime(Landroid/content/Context; J I)Ljava/lang/String;
+038e move-result-object v2
+0390 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0396 invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+039c move-result-object v1
+039e invoke-virtual v10, v1, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+03a4 new-instance v1, Ljava/lang/StringBuilder;
+03a8 invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+03ae const-string v2, " nextCheckTime:"
+03b2 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+03b8 iget-object v2, v8, Lcom/journey/server/JourneyConfigService;->mContext Landroid/content/Context;
+03bc iget-wide v3, v8, Lcom/journey/server/JourneyConfigService;->mLastCheckTime J
+03c0 iget-wide v6, v8, Lcom/journey/server/JourneyConfigService;->mUpdateFrequency J
+03c4 add-long/2addr v3, v6
+03c6 invoke-static v2, v3, v4, v5, Landroid/text/format/DateUtils;->formatDateTime(Landroid/content/Context; J I)Ljava/lang/String;
+03cc move-result-object v2
+03ce invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+03d4 invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+03da move-result-object v1
+03dc invoke-virtual v10, v1, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+03e2 invoke-virtual v10, v0, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+03e8 const/4 v0, 0
+03ea invoke-virtual v8, v10, v0, Lcom/journey/server/JourneyConfigService;->dump_mPackageInfos(Ljava/io/PrintWriter; Ljava/lang/String;)V
+03f0 return-void 
+
+METHOD dump_mPackageInfos(Ljava/io/PrintWriter; Ljava/lang/String;)V
+0000 sget-object v0, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+0004 monitor-enter v0
+0006 sget-object v1, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+000a if-eqz v1, +059h
+000e new-instance v1, Ljava/lang/StringBuilder;
+0012 invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+0018 const-string v2, "mPackageInfos for "
+001c invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0022 invoke-virtual v1, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0028 invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+002e move-result-object v1
+0030 invoke-virtual v6, v1, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+0036 const/4 v1, 0
+0038 sget-object v2, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+003c invoke-virtual v2, Landroid/util/ArrayMap;->size()I
+0042 move-result v2
+0044 if-ge v1, v2, +03ch
+0048 if-eqz v7, +00eh
+004c sget-object v2, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+0050 invoke-virtual v2, v1, Landroid/util/ArrayMap;->keyAt(I)Ljava/lang/Object;
+0056 move-result-object v2
+0058 invoke-virtual v7, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+005e move-result v2
+0060 if-eqz v2, +02bh
+0064 const-string v2, "  "
+0068 invoke-virtual v6, v2, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+006e sget-object v2, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+0072 invoke-virtual v2, v1, Landroid/util/ArrayMap;->keyAt(I)Ljava/lang/Object;
+0078 move-result-object v2
+007a invoke-virtual v6, v2, Ljava/io/PrintWriter;->print(Ljava/lang/Object;)V
+0080 const-string v3, " = "
+0084 invoke-virtual v6, v3, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+008a sget-object v3, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+008e invoke-virtual v3, v1, Landroid/util/ArrayMap;->valueAt(I)Ljava/lang/Object;
+0094 move-result-object v3
+0096 check-cast v3, Lcom/journey/server/JourneyConfigService$PacakgeInfo;
+009a const-string v4, "  "
+009e invoke-virtual v3, v4, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->toString(Ljava/lang/String;)Ljava/lang/String;
+00a4 move-result-object v4
+00a6 invoke-virtual v6, v4, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+00ac const-string v4, ""
+00b0 invoke-virtual v6, v4, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+00b6 add-int/lit8 v1, v1, 1
+00ba goto -41h
+00bc monitor-exit v0
+00be return-void 
+00c0 move-exception v1
+00c2 monitor-exit v0
+00c4 throw v1
+
+METHOD getBehaviorPackage(Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)Ljava/util/List;
+0000 new-instance v0, Ljava/util/ArrayList;
+0004 invoke-direct v0, Ljava/util/ArrayList;-><init>()V
+000a if-nez v9, +004h
+000e iget-object v9, v7, Lcom/journey/server/JourneyConfigService;->mAreaFromProp Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0012 if-nez v8, +004h
+0016 sget-object v8, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALL Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+001a iget-wide v1, v7, Lcom/journey/server/JourneyConfigService;->mCurrentVersion J
+001e const-wide/16 v3, 0
+0022 cmp-long v1, v1, v3
+0026 if-nez v1, +01eh
+002a new-instance v1, Ljava/lang/StringBuilder;
+002e invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+0034 const-string v2, "getBehaviorPackage "
+0038 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+003e invoke-virtual v1, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+0044 const-string v2, " before service ready return noting"
+0048 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+004e invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0054 move-result-object v1
+0056 const-string v2, "JourneyConfigService"
+005a invoke-static v2, v1, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I
+0060 return-object v0
+0062 sget-object v1, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+0066 monitor-enter v1
+0068 sget-object v2, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+006c if-eqz v2, +04dh
+0070 const/4 v2, 0
+0072 sget-object v3, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+0076 invoke-virtual v3, Landroid/util/ArrayMap;->size()I
+007c move-result v3
+007e if-ge v2, v3, +044h
+0082 sget-object v3, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+0086 invoke-virtual v3, v2, Landroid/util/ArrayMap;->valueAt(I)Ljava/lang/Object;
+008c move-result-object v3
+008e check-cast v3, Lcom/journey/server/JourneyConfigService$PacakgeInfo;
+0092 sget-object v4, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+0096 invoke-virtual v4, v2, Landroid/util/ArrayMap;->keyAt(I)Ljava/lang/Object;
+009c move-result-object v4
+009e check-cast v4, Ljava/lang/String;
+00a2 iget-object v5, v3, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->area [Z
+00a6 invoke-virtual v9, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ordinal()I
+00ac move-result v6
+00ae aget-boolean v5, v5, v6
+00b2 if-nez v5, +00eh
+00b6 iget-object v5, v3, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->area [Z
+00ba sget-object v6, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00be invoke-virtual v6, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ordinal()I
+00c4 move-result v6
+00c6 aget-boolean v5, v5, v6
+00ca if-eqz v5, +01bh
+00ce iget-object v5, v3, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->behavior [Z
+00d2 invoke-virtual v8, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ordinal()I
+00d8 move-result v6
+00da aget-boolean v5, v5, v6
+00de if-nez v5, +00eh
+00e2 iget-object v5, v3, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->behavior [Z
+00e6 sget-object v6, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALL Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00ea invoke-virtual v6, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ordinal()I
+00f0 move-result v6
+00f2 aget-boolean v5, v5, v6
+00f6 if-eqz v5, +005h
+00fa invoke-interface v0, v4, Ljava/util/List;->add(Ljava/lang/Object;)Z
+0100 add-int/lit8 v2, v2, 1
+0104 goto -49h
+0106 monitor-exit v1
+0108 sget-boolean v1, Lcom/journey/server/JourneyConfigService;->DEBUG_BEHAVIOR Z
+010c if-eqz v1, +02ch
+0110 new-instance v1, Ljava/lang/StringBuilder;
+0114 invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+011a const-string v2, "getBehaviorPackage  behavior "
+011e invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0124 invoke-virtual v1, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+012a const-string v2, " AREA_TYPE "
+012e invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0134 invoke-virtual v1, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+013a const-string v2, " size "
+013e invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0144 invoke-interface v0, Ljava/util/List;->size()I
+014a move-result v2
+014c invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+0152 invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0158 move-result-object v1
+015a const-string v2, "JourneyConfigService"
+015e invoke-static v2, v1, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0164 return-object v0
+0166 move-exception v2
+0168 monitor-exit v1
+016a throw v2
+
+METHOD getPackageBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)Z
+0000 const/4 v0, 0
+0002 if-nez v8, +004h
+0006 iget-object v8, v5, Lcom/journey/server/JourneyConfigService;->mAreaFromProp Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+000a if-nez v7, +004h
+000e sget-object v7, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALL Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+0012 iget-wide v1, v5, Lcom/journey/server/JourneyConfigService;->mCurrentVersion J
+0016 const-wide/16 v3, 0
+001a cmp-long v1, v1, v3
+001e if-nez v1, +039h
+0022 new-instance v1, Ljava/lang/StringBuilder;
+0026 invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+002c const-string v2, "getPackageBehavior "
+0030 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0036 invoke-virtual v1, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+003c const-string v2, " is "
+0040 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0046 invoke-virtual v1, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+004c const-string v2, " before service ready , return default "
+0050 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0056 iget-object v2, v5, Lcom/journey/server/JourneyConfigService;->default_behavior [Z
+005a invoke-virtual v7, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ordinal()I
+0060 move-result v3
+0062 aget-boolean v2, v2, v3
+0066 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+006c invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0072 move-result-object v1
+0074 const-string v2, "JourneyConfigService"
+0078 invoke-static v2, v1, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I
+007e iget-object v1, v5, Lcom/journey/server/JourneyConfigService;->default_behavior [Z
+0082 invoke-virtual v7, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ordinal()I
+0088 move-result v2
+008a aget-boolean v1, v1, v2
+008e return v1
+0090 sget-object v1, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+0094 monitor-enter v1
+0096 sget-object v2, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+009a if-eqz v2, +03eh
+009e sget-object v2, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+00a2 invoke-virtual v2, v6, Landroid/util/ArrayMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+00a8 move-result-object v2
+00aa check-cast v2, Lcom/journey/server/JourneyConfigService$PacakgeInfo;
+00ae if-eqz v2, +033h
+00b2 iget-object v3, v2, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->area [Z
+00b6 invoke-virtual v8, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ordinal()I
+00bc move-result v4
+00be aget-boolean v3, v3, v4
+00c2 if-nez v3, +00eh
+00c6 iget-object v3, v2, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->area [Z
+00ca sget-object v4, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+00ce invoke-virtual v4, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ordinal()I
+00d4 move-result v4
+00d6 aget-boolean v3, v3, v4
+00da if-eqz v3, +01dh
+00de iget-object v3, v2, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->behavior [Z
+00e2 invoke-virtual v7, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ordinal()I
+00e8 move-result v4
+00ea aget-boolean v3, v3, v4
+00ee if-nez v3, +011h
+00f2 iget-object v3, v2, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->behavior [Z
+00f6 sget-object v4, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALL Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;
+00fa invoke-virtual v4, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ordinal()I
+0100 move-result v4
+0102 aget-boolean v3, v3, v4
+0106 if-eqz v3, +003h
+010a goto +3h
+010c const/4 v3, 0
+010e goto +2h
+0110 const/4 v3, 1
+0112 move v0, v3
+0114 goto +2h
+0116 const/4 v0, 1
+0118 monitor-exit v1
+011a sget-boolean v1, Lcom/journey/server/JourneyConfigService;->DEBUG_BEHAVIOR Z
+011e if-eqz v1, +030h
+0122 new-instance v1, Ljava/lang/StringBuilder;
+0126 invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+012c const-string v2, "getPackageBehavior "
+0130 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0136 invoke-virtual v1, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+013c const-string v2, " behavior "
+0140 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0146 invoke-virtual v1, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+014c const-string v2, " AREA_TYPE "
+0150 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0156 invoke-virtual v1, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+015c const-string v2, " allow "
+0160 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0166 invoke-virtual v1, v0, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+016c invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0172 move-result-object v1
+0174 const-string v2, "JourneyConfigService"
+0178 invoke-static v2, v1, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+017e return v0
+0180 move-exception v2
+0182 monitor-exit v1
+0184 throw v2
+
+METHOD loadConfigSettings(Ljava/lang/String; J)V
+0000 const/4 v0, 1
+0002 invoke-virtual v1, v2, v3, v4, v0, Lcom/journey/server/JourneyConfigService;->loadConfigSettings(Ljava/lang/String; J Z)V
+0008 return-void 
+
+METHOD loadConfigSettings(Ljava/lang/String; J Z)V
+0000 move-object/from16 v7, v22
+0004 move-object/from16 v8, v23
+0008 if-nez v8, +003h
+000c return-void 
+000e const/4 v9, 0
+0010 const/4 v1, 0
+0012 new-instance v0, Ljava/lang/StringBuilder;
+0016 invoke-direct v0, Ljava/lang/StringBuilder;-><init>()V
+001c const-string v2, "loadConfigSettings from length "
+0020 invoke-virtual v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0026 invoke-virtual/range v23, Ljava/lang/String;->length()I
+002c move-result v2
+002e invoke-virtual v0, v2, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+0034 const-string v2, " version "
+0038 invoke-virtual v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+003e move-wide/from16 v2, v24
+0042 invoke-virtual v0, v2, v3, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+0048 invoke-virtual v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+004e move-result-object v0
+0050 const-string v4, "JourneyConfigService"
+0054 invoke-static v4, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+005a new-instance v0, Ljava/io/StringReader;
+005e invoke-direct v0, v8, Ljava/io/StringReader;-><init>(Ljava/lang/String;)V
+0064 move-object v10, v0
+0066 new-instance v0, Landroid/util/ArrayMap;
+006a invoke-direct v0, Landroid/util/ArrayMap;-><init>()V
+0070 move-object v11, v0
+0072 new-instance v0, Ljava/util/ArrayList;
+0076 invoke-direct v0, Ljava/util/ArrayList;-><init>()V
+007c move-object v12, v0
+007e invoke-static Landroid/util/Xml;->newPullParser()Lorg/xmlpull/v1/XmlPullParser;
+0084 move-result-object v0
+0086 move-object v13, v0
+0088 invoke-interface v13, v10, Lorg/xmlpull/v1/XmlPullParser;->setInput(Ljava/io/Reader;)V
+008e const-string v0, "config"
+0092 invoke-static v13, v0, Lcom/android/internal/util/XmlUtils;->beginDocument(Lorg/xmlpull/v1/XmlPullParser; Ljava/lang/String;)V
+0098 move/from16 v16, v1
+009c move-wide v14, v2
+009e invoke-static v13, Lcom/android/internal/util/XmlUtils;->nextElement(Lorg/xmlpull/v1/XmlPullParser;)V
+00a4 invoke-interface v13, Lorg/xmlpull/v1/XmlPullParser;->getName()Ljava/lang/String;
+00aa move-result-object v0
+00ac const-string v1, "package"
+00b0 invoke-virtual v1, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+00b6 move-result v1
+00b8 const/4 v2, 0
+00ba if-eqz v1, +0ffh
+00be const-string v1, "names"
+00c2 invoke-interface v13, v2, v1, Lorg/xmlpull/v1/XmlPullParser;->getAttributeValue(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+00c8 move-result-object v1
+00ca move-object v6, v1
+00cc const-string v1, "label"
+00d0 invoke-interface v13, v2, v1, Lorg/xmlpull/v1/XmlPullParser;->getAttributeValue(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+00d6 move-result-object v1
+00d8 move-object v5, v1
+00da const-string v1, "behavior"
+00de invoke-interface v13, v2, v1, Lorg/xmlpull/v1/XmlPullParser;->getAttributeValue(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+00e4 move-result-object v1
+00e6 move-object v4, v1
+00e8 const-string v1, "area"
+00ec invoke-interface v13, v2, v1, Lorg/xmlpull/v1/XmlPullParser;->getAttributeValue(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+00f2 move-result-object v1
+00f4 move-object v3, v1
+00f6 sget-boolean v1, Lcom/journey/server/JourneyConfigService;->DEBUG_MORE Z
+00fa if-eqz v1, +045h
+00fe const-string v1, "JourneyConfigService"
+0102 new-instance v2, Ljava/lang/StringBuilder;
+0106 invoke-direct v2, Ljava/lang/StringBuilder;-><init>()V
+010c move/from16 v17, v9
+0110 const-string v9, "   **"
+0114 invoke-virtual v2, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+011a invoke-virtual v2, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0120 const-string v9, "** : ["
+0124 invoke-virtual v2, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+012a invoke-virtual v2, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0130 const-string v9, "]  behavior: "
+0134 invoke-virtual v2, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+013a invoke-virtual v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0140 const-string v9, " area: "
+0144 invoke-virtual v2, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+014a invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0150 invoke-virtual v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0156 move-result-object v2
+0158 invoke-static v1, v2, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+015e goto +15h
+0160 move-exception v0
+0162 move-object/from16 v21, v12
+0166 move/from16 v1, v16
+016a move/from16 v9, v17
+016e goto/16 +1aeh
+0172 move-exception v0
+0174 move/from16 v17, v9
+0178 move-object/from16 v21, v12
+017c move/from16 v1, v16
+0180 goto/16 +1a5h
+0184 move/from16 v17, v9
+0188 new-instance v9, Lcom/journey/server/JourneyConfigService$PacakgeInfo;
+018c move-object v1, v9
+018e move-object/from16 v2, v22
+0192 move-object/from16 v18, v3
+0196 move-object v3, v6
+0198 move-object/from16 v19, v4
+019c move-object v4, v5
+019e move-object/from16 v20, v5
+01a2 move-object/from16 v5, v19
+01a6 move-object/from16 v21, v12
+01aa move-object v12, v6
+01ac move-object/from16 v6, v18
+01b0 invoke-direct/range v1 ... v6, Lcom/journey/server/JourneyConfigService$PacakgeInfo;-><init>(Lcom/journey/server/JourneyConfigService; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)V
+01b6 move-object v1, v9
+01b8 sget-boolean v2, Lcom/journey/server/JourneyConfigService;->DEBUG_MORE Z
+01bc if-eqz v2, +014h
+01c0 const-string v2, "JourneyConfigService"
+01c4 const-string v3, "    PacakgeInfo:
+"
+01c8 invoke-static v2, v3, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+01ce const-string v2, "JourneyConfigService"
+01d2 const-string v3, "     "
+01d6 invoke-virtual v1, v3, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->toString(Ljava/lang/String;)Ljava/lang/String;
+01dc move-result-object v3
+01de invoke-static v2, v3, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+01e4 const-string v2, ","
+01e8 invoke-virtual v12, v2, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
+01ee move-result-object v2
+01f0 array-length v3, v2
+01f2 const/4 v4, 0
+01f4 if-ge v4, v3, +053h
+01f8 aget-object v5, v2, v4
+01fc invoke-virtual v11, v5, Landroid/util/ArrayMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+0202 move-result-object v6
+0204 check-cast v6, Lcom/journey/server/JourneyConfigService$PacakgeInfo;
+0208 iget-object v9, v1, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->area [Z
+020c move-object/from16 v24, v2
+0210 iget-object v2, v7, Lcom/journey/server/JourneyConfigService;->mAreaFromProp Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0214 invoke-virtual v2, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ordinal()I
+021a move-result v2
+021c aget-boolean v2, v9, v2
+0220 if-nez v2, +014h
+0224 if-nez v6, +00fh
+0228 iget-object v2, v1, Lcom/journey/server/JourneyConfigService$PacakgeInfo;->area [Z
+022c sget-object v9, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ALL Lcom/journey/server/JourneyConfigService$AREA_TYPE;
+0230 invoke-virtual v9, Lcom/journey/server/JourneyConfigService$AREA_TYPE;->ordinal()I
+0236 move-result v9
+0238 aget-boolean v2, v2, v9
+023c if-eqz v2, +003h
+0240 goto +4h
+0242 move-object/from16 v25, v1
+0246 goto +23h
+0248 invoke-virtual v11, v5, v1, Landroid/util/ArrayMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+024e sget-boolean v2, Lcom/journey/server/JourneyConfigService;->DEBUG_MORE Z
+0252 if-eqz v2, +01bh
+0256 const-string v2, "JourneyConfigService"
+025a new-instance v9, Ljava/lang/StringBuilder;
+025e invoke-direct v9, Ljava/lang/StringBuilder;-><init>()V
+0264 move-object/from16 v25, v1
+0268 const-string v1, "    ---> "
+026c invoke-virtual v9, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0272 invoke-virtual v9, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0278 invoke-virtual v9, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+027e move-result-object v1
+0280 invoke-static v2, v1, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0286 goto +3h
+0288 move-object/from16 v25, v1
+028c add-int/lit8 v4, v4, 1
+0290 move-object/from16 v2, v24
+0294 move-object/from16 v1, v25
+0298 goto -52h
+029a move-object/from16 v25, v1
+029e move-object/from16 v24, v2
+02a2 goto/16 +08fh
+02a6 move-exception v0
+02a8 move-object/from16 v21, v12
+02ac move/from16 v1, v16
+02b0 move/from16 v9, v17
+02b4 goto/16 +10bh
+02b8 move/from16 v17, v9
+02bc move-object/from16 v21, v12
+02c0 const-string v1, "UpdateFrequency"
+02c4 invoke-virtual v1, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+02ca move-result v1
+02cc if-eqz v1, +039h
+02d0 const-string v1, "value"
+02d4 invoke-interface v13, v2, v1, Lorg/xmlpull/v1/XmlPullParser;->getAttributeValue(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+02da move-result-object v1
+02dc const-wide/16 v2, 24
+02e0 invoke-virtual v7, v1, v2, v3, Lcom/journey/server/JourneyConfigService;->String2Long(Ljava/lang/String; J)J
+02e6 move-result-wide v1
+02e8 iput-wide v1, v7, Lcom/journey/server/JourneyConfigService;->mUpdateFrequency J
+02ec const-string v1, "JourneyConfigService"
+02f0 new-instance v2, Ljava/lang/StringBuilder;
+02f4 invoke-direct v2, Ljava/lang/StringBuilder;-><init>()V
+02fa const-string v3, "loadConfigSettings update mUpdateFrequency "
+02fe invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0304 iget-wide v3, v7, Lcom/journey/server/JourneyConfigService;->mUpdateFrequency J
+0308 invoke-virtual v2, v3, v4, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+030e const-string v3, " hours"
+0312 invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0318 invoke-virtual v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+031e move-result-object v2
+0320 invoke-static v1, v2, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0326 iget-wide v1, v7, Lcom/journey/server/JourneyConfigService;->mUpdateFrequency J
+032a const-wide/16 v3, 1000
+032e mul-long/2addr v1, v3
+0330 const-wide/16 v3, 60
+0334 mul-long/2addr v1, v3
+0336 mul-long/2addr v1, v3
+0338 iput-wide v1, v7, Lcom/journey/server/JourneyConfigService;->mUpdateFrequency J
+033c goto +42h
+033e const-string v1, "version"
+0342 invoke-virtual v1, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+0348 move-result v1
+034a if-eqz v1, +041h
+034e const-string v1, "value"
+0352 invoke-interface v13, v2, v1, Lorg/xmlpull/v1/XmlPullParser;->getAttributeValue(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+0358 move-result-object v1
+035a const-wide/16 v2, 0
+035e invoke-virtual v7, v1, v2, v3, Lcom/journey/server/JourneyConfigService;->String2Long(Ljava/lang/String; J)J
+0364 move-result-wide v1
+0366 const-string v3, "JourneyConfigService"
+036a new-instance v4, Ljava/lang/StringBuilder;
+036e invoke-direct v4, Ljava/lang/StringBuilder;-><init>()V
+0374 const-string v5, "loadConfigSettings update version_in_config "
+0378 invoke-virtual v4, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+037e invoke-virtual v4, v1, v2, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+0384 invoke-virtual v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+038a move-result-object v4
+038c invoke-static v3, v4, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0392 cmp-long v3, v1, v14
+0396 if-eqz v3, +015h
+039a const/4 v3, 1
+039c const-string v4, "JourneyConfigService"
+03a0 const-string v5, "loadConfigSettings version_in_config != version "
+03a4 invoke-static v4, v5, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I
+03aa move-wide v4, v1
+03ac move/from16 v16, v3
+03b0 move-wide v14, v4
+03b2 goto +7h
+03b4 move-exception v0
+03b6 move v1, v3
+03b8 move/from16 v9, v17
+03bc goto/16 +087h
+03c0 move/from16 v9, v17
+03c4 move-object/from16 v12, v21
+03c8 goto/16 -195h
+03cc if-nez v16, +061h
+03d0 const/4 v9, 1
+03d2 iget-wide v0, v7, Lcom/journey/server/JourneyConfigService;->mCurrentVersion J
+03d6 cmp-long v0, v14, v0
+03da if-eqz v0, +004h
+03de if-nez v26, +006h
+03e2 sget-boolean v0, Lcom/journey/server/JourneyConfigService;->FORCE_LOCAL_SAVE_FILE Z
+03e6 if-eqz v0, +01bh
+03ea sget-boolean v0, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+03ee if-eqz v0, +009h
+03f2 const-string v0, "JourneyConfigService"
+03f6 const-string v1, "loadConfigSettings save file"
+03fa invoke-static v0, v1, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0400 iget-object v0, v7, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_CONFIG Ljava/io/File;
+0404 invoke-virtual v7, v0, v8, Lcom/journey/server/JourneyConfigService;->saveFile(Ljava/io/File; Ljava/lang/String;)V
+040a iget-object v0, v7, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_VERSION Ljava/io/File;
+040e invoke-static v14, v15, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+0414 move-result-object v1
+0416 invoke-virtual v7, v0, v1, Lcom/journey/server/JourneyConfigService;->saveFile(Ljava/io/File; Ljava/lang/String;)V
+041c sget-boolean v0, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+0420 if-eqz v0, +009h
+0424 const-string v0, "JourneyConfigService"
+0428 const-string v1, "loadConfigSettings update mPackageInfos "
+042c invoke-static v0, v1, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0432 sget-object v1, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+0436 monitor-enter v1
+0438 sget-object v0, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+043c invoke-virtual v0, Landroid/util/ArrayMap;->clear()V
+0442 sget-object v0, Lcom/journey/server/JourneyConfigService;->mPackageInfos Landroid/util/ArrayMap;
+0446 invoke-virtual v0, v11, Landroid/util/ArrayMap;->putAll(Landroid/util/ArrayMap;)V
+044c monitor-exit v1
+044e const-string v0, "JourneyConfigService"
+0452 new-instance v1, Ljava/lang/StringBuilder;
+0456 invoke-direct v1, Ljava/lang/StringBuilder;-><init>()V
+045c const-string v2, "loadConfigSettings succeeded. update mCurrentVersion "
+0460 invoke-virtual v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0466 invoke-virtual v1, v14, v15, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+046c invoke-virtual v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0472 move-result-object v1
+0474 invoke-static v0, v1, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+047a iput-wide v14, v7, Lcom/journey/server/JourneyConfigService;->mCurrentVersion J
+047e goto +11h
+0480 move-exception v0
+0482 monitor-exit v1
+0484 throw v0
+0486 move-exception v0
+0488 move/from16 v1, v16
+048c goto +1fh
+048e const-string v0, "JourneyConfigService"
+0492 const-string v1, "loadConfigSettings got some error. update nothing "
+0496 invoke-static v0, v1, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I
+049c move/from16 v9, v17
+04a0 goto +2ah
+04a2 move-exception v0
+04a4 move/from16 v1, v16
+04a8 move/from16 v9, v17
+04ac goto +fh
+04ae move-exception v0
+04b0 move/from16 v17, v9
+04b4 move-object/from16 v21, v12
+04b8 move/from16 v1, v16
+04bc goto +7h
+04be move-exception v0
+04c0 move/from16 v17, v9
+04c4 move-object/from16 v21, v12
+04c8 move-wide v14, v2
+04ca const-string v2, "JourneyConfigService"
+04ce const-string v3, "Got execption in loadConfigSettings."
+04d2 invoke-static v2, v3, v0, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+04d8 if-eqz v9, +00ch
+04dc const-string v2, "JourneyConfigService"
+04e0 const-string v3, "dirty. reset every thing"
+04e4 invoke-static v2, v3, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I
+04ea invoke-virtual/range v22, Lcom/journey/server/JourneyConfigService;->ResetConfig()V
+04f0 move/from16 v16, v1
+04f4 invoke-virtual v10, Ljava/io/StringReader;->close()V
+04fa return-void 
+
+METHOD loadFile(Ljava/io/File;)Ljava/lang/String;
+0000 const-string v0, " loadFile from "
+0004 const-string v1, "JourneyConfigService"
+0008 const/4 v2, 0
+000a new-instance v3, Ljava/io/FileInputStream;
+000e invoke-direct v3, v8, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
+0014 new-instance v4, Ljava/io/BufferedInputStream;
+0018 invoke-direct v4, v3, Ljava/io/BufferedInputStream;-><init>(Ljava/io/InputStream;)V
+001e invoke-virtual v7, v4, Lcom/journey/server/JourneyConfigService;->readFromSteam(Ljava/io/InputStream;)Ljava/lang/String;
+0024 move-result-object v5
+0026 move-object v2, v5
+0028 sget-boolean v5, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+002c if-eqz v5, +020h
+0030 new-instance v5, Ljava/lang/StringBuilder;
+0034 invoke-direct v5, Ljava/lang/StringBuilder;-><init>()V
+003a invoke-virtual v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0040 invoke-virtual v5, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+0046 const-string v6, " : "
+004a invoke-virtual v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0050 invoke-virtual v2, Ljava/lang/String;->length()I
+0056 move-result v6
+0058 invoke-virtual v5, v6, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+005e invoke-virtual v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0064 move-result-object v5
+0066 invoke-static v1, v5, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+006c sget-boolean v5, Lcom/journey/server/JourneyConfigService;->DEBUG_MORE Z
+0070 if-eqz v5, +016h
+0074 new-instance v5, Ljava/lang/StringBuilder;
+0078 invoke-direct v5, Ljava/lang/StringBuilder;-><init>()V
+007e const-string v6, " content : "
+0082 invoke-virtual v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0088 invoke-virtual v5, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+008e invoke-virtual v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0094 move-result-object v5
+0096 invoke-static v1, v5, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+009c invoke-virtual v4, Ljava/io/InputStream;->close()V
+00a2 invoke-virtual v3, Ljava/io/FileInputStream;->close()V
+00a8 goto +46h
+00aa move-exception v5
+00ac invoke-virtual v4, Ljava/io/InputStream;->close()V
+00b2 goto +5h
+00b4 move-exception v6
+00b6 invoke-virtual v5, v6, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+00bc throw v5
+00be move-exception v4
+00c0 invoke-virtual v3, Ljava/io/FileInputStream;->close()V
+00c6 goto +5h
+00c8 move-exception v5
+00ca invoke-virtual v4, v5, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+00d0 throw v4
+00d2 move-exception v3
+00d4 new-instance v4, Ljava/lang/StringBuilder;
+00d8 invoke-direct v4, Ljava/lang/StringBuilder;-><init>()V
+00de invoke-virtual v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00e4 invoke-virtual v4, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+00ea const-string v0, " got Exception "
+00ee invoke-virtual v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00f4 invoke-virtual v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+00fa move-result-object v0
+00fc invoke-static v1, v0, v3, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+0102 goto +1ah
+0104 move-exception v3
+0106 new-instance v4, Ljava/lang/StringBuilder;
+010a invoke-direct v4, Ljava/lang/StringBuilder;-><init>()V
+0110 invoke-virtual v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0116 invoke-virtual v4, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+011c const-string v0, " got FileNotFoundException "
+0120 invoke-virtual v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0126 invoke-virtual v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+012c move-result-object v0
+012e invoke-static v1, v0, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I
+0134 nop 
+0136 return-object v2
+
+METHOD loadFile(Ljava/net/URL;)Ljava/lang/String;
+0000 const-string v0, " loadFile from "
+0004 const-string v1, "JourneyConfigService"
+0008 const/4 v2, 0
+000a const/4 v3, 0
+000c invoke-virtual v8, Ljava/net/URL;->openConnection()Ljava/net/URLConnection;
+0012 move-result-object v4
+0014 check-cast v4, Ljava/net/HttpURLConnection;
+0018 move-object v2, v4
+001a new-instance v4, Ljava/io/BufferedInputStream;
+001e invoke-virtual v2, Ljava/net/HttpURLConnection;->getInputStream()Ljava/io/InputStream;
+0024 move-result-object v5
+0026 invoke-direct v4, v5, Ljava/io/BufferedInputStream;-><init>(Ljava/io/InputStream;)V
+002c invoke-virtual v8, Ljava/net/URL;->getHost()Ljava/lang/String;
+0032 move-result-object v5
+0034 invoke-virtual v2, Ljava/net/HttpURLConnection;->getURL()Ljava/net/URL;
+003a move-result-object v6
+003c invoke-virtual v6, Ljava/net/URL;->getHost()Ljava/lang/String;
+0042 move-result-object v6
+0044 invoke-virtual v5, v6, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+004a move-result v5
+004c if-nez v5, +021h
+0050 new-instance v5, Ljava/lang/StringBuilder;
+0054 invoke-direct v5, Ljava/lang/StringBuilder;-><init>()V
+005a invoke-virtual v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0060 invoke-virtual v5, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+0066 const-string v6, " redirected to "
+006a invoke-virtual v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0070 invoke-virtual v2, Ljava/net/HttpURLConnection;->getURL()Ljava/net/URL;
+0076 move-result-object v6
+0078 invoke-virtual v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+007e invoke-virtual v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0084 move-result-object v5
+0086 invoke-static v1, v5, Landroid/util/Slog;->i(Ljava/lang/String; Ljava/lang/String;)I
+008c goto +40h
+008e invoke-virtual v7, v4, Lcom/journey/server/JourneyConfigService;->readFromSteam(Ljava/io/InputStream;)Ljava/lang/String;
+0094 move-result-object v5
+0096 move-object v3, v5
+0098 sget-boolean v5, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+009c if-eqz v5, +020h
+00a0 new-instance v5, Ljava/lang/StringBuilder;
+00a4 invoke-direct v5, Ljava/lang/StringBuilder;-><init>()V
+00aa invoke-virtual v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00b0 invoke-virtual v5, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+00b6 const-string v6, " : "
+00ba invoke-virtual v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00c0 invoke-virtual v3, Ljava/lang/String;->length()I
+00c6 move-result v6
+00c8 invoke-virtual v5, v6, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+00ce invoke-virtual v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+00d4 move-result-object v5
+00d6 invoke-static v1, v5, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+00dc sget-boolean v5, Lcom/journey/server/JourneyConfigService;->DEBUG_MORE Z
+00e0 if-eqz v5, +016h
+00e4 new-instance v5, Ljava/lang/StringBuilder;
+00e8 invoke-direct v5, Ljava/lang/StringBuilder;-><init>()V
+00ee const-string v6, " content : "
+00f2 invoke-virtual v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00f8 invoke-virtual v5, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00fe invoke-virtual v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0104 move-result-object v5
+0106 invoke-static v1, v5, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+010c if-eqz v2, +024h
+0110 invoke-virtual v2, Ljava/net/HttpURLConnection;->disconnect()V
+0116 goto +1fh
+0118 move-exception v0
+011a goto +1eh
+011c move-exception v4
+011e new-instance v5, Ljava/lang/StringBuilder;
+0122 invoke-direct v5, Ljava/lang/StringBuilder;-><init>()V
+0128 invoke-virtual v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+012e invoke-virtual v5, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+0134 const-string v0, " got Exception "
+0138 invoke-virtual v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+013e invoke-virtual v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0144 move-result-object v0
+0146 invoke-static v1, v0, v4, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+014c nop 
+014e if-eqz v2, +003h
+0152 goto -21h
+0154 return-object v3
+0156 if-eqz v2, +005h
+015a invoke-virtual v2, Ljava/net/HttpURLConnection;->disconnect()V
+0160 throw v0
+
+METHOD readFromSteam(Ljava/io/InputStream;)Ljava/lang/String;
+0000 new-instance v0, Ljava/lang/StringBuffer;
+0004 invoke-direct v0, Ljava/lang/StringBuffer;-><init>()V
+000a const/16 v1, 4096
+000e new-array v1, v1, [B
+0012 const/4 v2, 0
+0014 invoke-virtual v7, v1, Ljava/io/InputStream;->read([B)I
+001a move-result v3
+001c move v4, v3
+001e const/4 v5, -1
+0020 if-eq v3, v5, +00bh
+0024 new-instance v3, Ljava/lang/String;
+0028 invoke-direct v3, v1, v2, v4, Ljava/lang/String;-><init>([B I I)V
+002e invoke-virtual v0, v3, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+0034 goto -11h
+0036 goto +10h
+0038 move-exception v3
+003a const-string v4, "JourneyConfigService"
+003e const-string v5, "readFromSteam got Exception "
+0042 invoke-static v4, v5, v3, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+0048 invoke-virtual v0, Ljava/lang/StringBuffer;->length()I
+004e move-result v4
+0050 invoke-virtual v0, v2, v4, Ljava/lang/StringBuffer;->delete(I I)Ljava/lang/StringBuffer;
+0056 invoke-virtual v0, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
+005c move-result-object v2
+005e return-object v2
+
+METHOD saveFile(Ljava/io/File; Ljava/lang/String;)V
+0000 const-string v0, " saveFile "
+0004 const-string v1, "JourneyConfigService"
+0008 new-instance v2, Ljava/io/FileWriter;
+000c invoke-virtual v7, Ljava/io/File;->getAbsoluteFile()Ljava/io/File;
+0012 move-result-object v3
+0014 invoke-direct v2, v3, Ljava/io/FileWriter;-><init>(Ljava/io/File;)V
+001a new-instance v3, Ljava/io/BufferedWriter;
+001e invoke-direct v3, v2, Ljava/io/BufferedWriter;-><init>(Ljava/io/Writer;)V
+0024 if-nez v8, +01ch
+0028 new-instance v4, Ljava/lang/StringBuilder;
+002c invoke-direct v4, Ljava/lang/StringBuilder;-><init>()V
+0032 invoke-virtual v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0038 invoke-virtual v4, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+003e const-string v5, " with null filecontent "
+0042 invoke-virtual v4, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0048 invoke-virtual v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+004e move-result-object v4
+0050 invoke-static v1, v4, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0056 const-string v4, ""
+005a move-object v8, v4
+005c invoke-virtual v3, v8, Ljava/io/BufferedWriter;->write(Ljava/lang/String;)V
+0062 invoke-virtual v3, Ljava/io/BufferedWriter;->close()V
+0068 invoke-virtual v2, Ljava/io/FileWriter;->close()V
+006e nop 
+0070 new-instance v2, Ljava/lang/StringBuilder;
+0074 invoke-direct v2, Ljava/lang/StringBuilder;-><init>()V
+007a invoke-virtual v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0080 invoke-virtual v2, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+0086 const-string v0, " writed "
+008a invoke-virtual v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0090 invoke-virtual v8, Ljava/lang/String;->length()I
+0096 move-result v0
+0098 invoke-virtual v2, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+009e invoke-virtual v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+00a4 move-result-object v0
+00a6 invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+00ac return-void 
+00ae move-exception v4
+00b0 invoke-virtual v3, Ljava/io/BufferedWriter;->close()V
+00b6 goto +5h
+00b8 move-exception v5
+00ba invoke-virtual v4, v5, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+00c0 throw v4
+00c2 move-exception v3
+00c4 invoke-virtual v2, Ljava/io/FileWriter;->close()V
+00ca goto +5h
+00cc move-exception v4
+00ce invoke-virtual v3, v4, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+00d4 throw v3
+00d6 move-exception v2
+00d8 new-instance v3, Ljava/lang/StringBuilder;
+00dc invoke-direct v3, Ljava/lang/StringBuilder;-><init>()V
+00e2 invoke-virtual v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00e8 invoke-virtual v3, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+00ee const-string v0, " failed "
+00f2 invoke-virtual v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00f8 invoke-virtual v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+00fe move-result-object v0
+0100 invoke-static v1, v0, v2, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+0106 throw v2
+
+METHOD selftest_behavior(Ljava/io/PrintWriter; Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+0000 invoke-static Lcom/journey/server/JourneyConfigService;->getInstance()Lcom/journey/server/JourneyConfigService;
+0006 move-result-object v0
+0008 invoke-static v6, v7, v8, Lcom/journey/server/JourneyConfigService;->getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)Z
+000e move-result v1
+0010 new-instance v2, Ljava/lang/StringBuilder;
+0014 invoke-direct v2, Ljava/lang/StringBuilder;-><init>()V
+001a invoke-virtual v2, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0020 const-string v3, ": "
+0024 invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+002a invoke-virtual v2, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+0030 const-string v3, " in "
+0034 invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+003a invoke-virtual v2, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+0040 const-string v3, " "
+0044 invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+004a if-eqz v1, +005h
+004e const-string v3, "exitis"
+0052 goto +3h
+0054 const-string v3, "NOT exitis"
+0058 invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+005e invoke-virtual v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0064 move-result-object v2
+0066 invoke-virtual v5, v2, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+006c return-void 
+
+METHOD selftest_package(Ljava/io/PrintWriter; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)V
+0000 new-instance v0, Ljava/lang/StringBuilder;
+0004 invoke-direct v0, Ljava/lang/StringBuilder;-><init>()V
+000a invoke-virtual v0, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+0010 const-string v1, " in "
+0014 invoke-virtual v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+001a invoke-virtual v0, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+0020 const-string v2, ":"
+0024 invoke-virtual v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+002a invoke-virtual v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0030 move-result-object v0
+0032 invoke-virtual v8, v0, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+0038 invoke-static Lcom/journey/server/JourneyConfigService;->getInstance()Lcom/journey/server/JourneyConfigService;
+003e move-result-object v0
+0040 invoke-static v9, v10, Lcom/journey/server/JourneyConfigService;->getPackages(Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE; Lcom/journey/server/JourneyConfigService$AREA_TYPE;)Ljava/util/List;
+0046 move-result-object v2
+0048 invoke-interface v2, Ljava/util/List;->size()I
+004e move-result v3
+0050 if-eqz v3, +036h
+0054 invoke-interface v2, Ljava/util/List;->iterator()Ljava/util/Iterator;
+005a move-result-object v3
+005c invoke-interface v3, Ljava/util/Iterator;->hasNext()Z
+0062 move-result v4
+0064 if-eqz v4, +02bh
+0068 invoke-interface v3, Ljava/util/Iterator;->next()Ljava/lang/Object;
+006e move-result-object v4
+0070 check-cast v4, Ljava/lang/String;
+0074 new-instance v5, Ljava/lang/StringBuilder;
+0078 invoke-direct v5, Ljava/lang/StringBuilder;-><init>()V
+007e invoke-virtual v5, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0084 const-string v6, ": "
+0088 invoke-virtual v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+008e invoke-virtual v5, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+0094 invoke-virtual v5, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+009a invoke-virtual v5, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+00a0 const-string v6, " "
+00a4 invoke-virtual v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00aa invoke-virtual v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+00b0 move-result-object v5
+00b2 invoke-virtual v8, v5, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+00b8 goto -2eh
+00ba goto +6h
+00bc const-string v1, "Nothing"
+00c0 invoke-virtual v8, v1, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+00c6 return-void 
+
+METHOD start()V
+0000 sget-boolean v0, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+0004 const-string v1, "JourneyConfigService"
+0008 if-eqz v0, +007h
+000c const-string v0, "onStart"
+0010 invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0016 new-instance v0, Ljava/net/URL;
+001a new-instance v2, Ljava/lang/StringBuilder;
+001e invoke-direct v2, Ljava/lang/StringBuilder;-><init>()V
+0024 iget-object v3, v4, Lcom/journey/server/JourneyConfigService;->NETWORK_FILE_PATH Ljava/lang/String;
+0028 invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+002e iget-object v3, v4, Lcom/journey/server/JourneyConfigService;->VERSION_FILE_NAME Ljava/lang/String;
+0032 invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0038 invoke-virtual v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+003e move-result-object v2
+0040 invoke-direct v0, v2, Ljava/net/URL;-><init>(Ljava/lang/String;)V
+0046 iput-object v0, v4, Lcom/journey/server/JourneyConfigService;->URL_VERSION Ljava/net/URL;
+004a new-instance v0, Ljava/net/URL;
+004e new-instance v2, Ljava/lang/StringBuilder;
+0052 invoke-direct v2, Ljava/lang/StringBuilder;-><init>()V
+0058 iget-object v3, v4, Lcom/journey/server/JourneyConfigService;->NETWORK_FILE_PATH Ljava/lang/String;
+005c invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0062 iget-object v3, v4, Lcom/journey/server/JourneyConfigService;->CONFIG_FILE_NAME Ljava/lang/String;
+0066 invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+006c invoke-virtual v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0072 move-result-object v2
+0074 invoke-direct v0, v2, Ljava/net/URL;-><init>(Ljava/lang/String;)V
+007a iput-object v0, v4, Lcom/journey/server/JourneyConfigService;->URL_CONFIG Ljava/net/URL;
+007e new-instance v0, Ljava/io/File;
+0082 new-instance v2, Ljava/lang/StringBuilder;
+0086 invoke-direct v2, Ljava/lang/StringBuilder;-><init>()V
+008c iget-object v3, v4, Lcom/journey/server/JourneyConfigService;->DEFAULT_FILE_PATH Ljava/lang/String;
+0090 invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0096 iget-object v3, v4, Lcom/journey/server/JourneyConfigService;->VERSION_FILE_NAME Ljava/lang/String;
+009a invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00a0 invoke-virtual v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+00a6 move-result-object v2
+00a8 invoke-direct v0, v2, Ljava/io/File;-><init>(Ljava/lang/String;)V
+00ae iput-object v0, v4, Lcom/journey/server/JourneyConfigService;->DEFAULT_FILE_VERSION Ljava/io/File;
+00b2 new-instance v0, Ljava/io/File;
+00b6 new-instance v2, Ljava/lang/StringBuilder;
+00ba invoke-direct v2, Ljava/lang/StringBuilder;-><init>()V
+00c0 iget-object v3, v4, Lcom/journey/server/JourneyConfigService;->DEFAULT_FILE_PATH Ljava/lang/String;
+00c4 invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00ca iget-object v3, v4, Lcom/journey/server/JourneyConfigService;->CONFIG_FILE_NAME Ljava/lang/String;
+00ce invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00d4 invoke-virtual v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+00da move-result-object v2
+00dc invoke-direct v0, v2, Ljava/io/File;-><init>(Ljava/lang/String;)V
+00e2 iput-object v0, v4, Lcom/journey/server/JourneyConfigService;->DEFAULT_FILE_CONFIG Ljava/io/File;
+00e6 new-instance v0, Ljava/io/File;
+00ea new-instance v2, Ljava/lang/StringBuilder;
+00ee invoke-direct v2, Ljava/lang/StringBuilder;-><init>()V
+00f4 iget-object v3, v4, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_PATH Ljava/lang/String;
+00f8 invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+00fe iget-object v3, v4, Lcom/journey/server/JourneyConfigService;->VERSION_FILE_NAME Ljava/lang/String;
+0102 invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0108 invoke-virtual v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+010e move-result-object v2
+0110 invoke-direct v0, v2, Ljava/io/File;-><init>(Ljava/lang/String;)V
+0116 iput-object v0, v4, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_VERSION Ljava/io/File;
+011a new-instance v0, Ljava/io/File;
+011e new-instance v2, Ljava/lang/StringBuilder;
+0122 invoke-direct v2, Ljava/lang/StringBuilder;-><init>()V
+0128 iget-object v3, v4, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_PATH Ljava/lang/String;
+012c invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0132 iget-object v3, v4, Lcom/journey/server/JourneyConfigService;->CONFIG_FILE_NAME Ljava/lang/String;
+0136 invoke-virtual v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+013c invoke-virtual v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+0142 move-result-object v2
+0144 invoke-direct v0, v2, Ljava/io/File;-><init>(Ljava/lang/String;)V
+014a iput-object v0, v4, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_CONFIG Ljava/io/File;
+014e iget-object v0, v4, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_VERSION Ljava/io/File;
+0152 invoke-virtual v0, Ljava/io/File;->getParentFile()Ljava/io/File;
+0158 move-result-object v0
+015a invoke-virtual v0, Ljava/io/File;->exists()Z
+0160 move-result v0
+0162 if-nez v0, +029h
+0166 sget-boolean v0, Lcom/journey/server/JourneyConfigService;->DEBUG Z
+016a if-eqz v0, +01ch
+016e new-instance v0, Ljava/lang/StringBuilder;
+0172 invoke-direct v0, Ljava/lang/StringBuilder;-><init>()V
+0178 const-string v2, "mkdirs "
+017c invoke-virtual v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0182 iget-object v2, v4, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_VERSION Ljava/io/File;
+0186 invoke-virtual v2, Ljava/io/File;->getParentFile()Ljava/io/File;
+018c move-result-object v2
+018e invoke-virtual v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+0194 invoke-virtual v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+019a move-result-object v0
+019c invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+01a2 iget-object v0, v4, Lcom/journey/server/JourneyConfigService;->LOCAL_FILE_VERSION Ljava/io/File;
+01a6 invoke-virtual v0, Ljava/io/File;->getParentFile()Ljava/io/File;
+01ac move-result-object v0
+01ae invoke-virtual v0, Ljava/io/File;->mkdirs()Z
+01b4 goto +7h
+01b6 move-exception v0
+01b8 const-string v2, "URL not create successed "
+01bc invoke-static v1, v2, v0, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+01c2 sget-boolean v0, Lcom/journey/server/JourneyConfigService;->FORCE_SKIP_LOCAL_UPDATE Z
+01c6 if-nez v0, +006h
+01ca const/4 v0, 1
+01cc invoke-virtual v4, v0, Lcom/journey/server/JourneyConfigService;->Update(Z)V
+01d2 new-instance v0, Landroid/os/HandlerThread;
+01d6 const/16 v2, 10
+01da invoke-direct v0, v1, v2, Landroid/os/HandlerThread;-><init>(Ljava/lang/String; I)V
+01e0 iput-object v0, v4, Lcom/journey/server/JourneyConfigService;->mThread Landroid/os/HandlerThread;
+01e4 invoke-virtual v0, Landroid/os/HandlerThread;->start()V
+01ea new-instance v0, Lcom/journey/server/JourneyConfigService$TCSHandler;
+01ee iget-object v1, v4, Lcom/journey/server/JourneyConfigService;->mThread Landroid/os/HandlerThread;
+01f2 invoke-virtual v1, Landroid/os/HandlerThread;->getLooper()Landroid/os/Looper;
+01f8 move-result-object v1
+01fa invoke-direct v0, v4, v1, Lcom/journey/server/JourneyConfigService$TCSHandler;-><init>(Lcom/journey/server/JourneyConfigService; Landroid/os/Looper;)V
+0200 iput-object v0, v4, Lcom/journey/server/JourneyConfigService;->mHandler Lcom/journey/server/JourneyConfigService$TCSHandler;
+0204 return-void 
+
+CLASS Lcom/journey/server/JourneyConfigService$Lifecycle;
+FIELD TAG Ljava/lang/String;
+FIELD mJourneyConfigService Lcom/journey/server/JourneyConfigService;
+
+METHOD <init>(Landroid/content/Context;)V
+0000 invoke-direct v0, v1, Lcom/android/server/SystemService;-><init>(Landroid/content/Context;)V
+0006 return-void 
+
+METHOD onBootPhase(I)V
+0000 invoke-static Lcom/journey/server/JourneyConfigService;->access$100()Z
+0006 move-result v0
+0008 if-eqz v0, +018h
+000c new-instance v0, Ljava/lang/StringBuilder;
+0010 invoke-direct v0, Ljava/lang/StringBuilder;-><init>()V
+0016 const-string v1, "onBootPhase "
+001a invoke-virtual v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+0020 invoke-virtual v0, v3, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+0026 invoke-virtual v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+002c move-result-object v0
+002e const-string v1, "JourneyConfigService.Lifecycle"
+0032 invoke-static v1, v0, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+0038 const/16 v0, 550
+003c if-ne v3, v0, +003h
+0040 goto +ah
+0042 const/16 v0, 1000
+0046 if-ne v3, v0, +007h
+004a iget-object v0, v2, Lcom/journey/server/JourneyConfigService$Lifecycle;->mJourneyConfigService Lcom/journey/server/JourneyConfigService;
+004e invoke-virtual v0, Lcom/journey/server/JourneyConfigService;->bootCompleted()V
+0054 return-void 
+
+METHOD onStart()V
+0000 invoke-static Lcom/journey/server/JourneyConfigService;->access$100()Z
+0006 move-result v0
+0008 if-eqz v0, +009h
+000c const-string v0, "JourneyConfigService.Lifecycle"
+0010 const-string v1, "onStart "
+0014 invoke-static v0, v1, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I
+001a new-instance v0, Lcom/journey/server/JourneyConfigService;
+001e invoke-virtual v2, Lcom/journey/server/JourneyConfigService$Lifecycle;->getContext()Landroid/content/Context;
+0024 move-result-object v1
+0026 invoke-direct v0, v1, Lcom/journey/server/JourneyConfigService;-><init>(Landroid/content/Context;)V
+002c iput-object v0, v2, Lcom/journey/server/JourneyConfigService$Lifecycle;->mJourneyConfigService Lcom/journey/server/JourneyConfigService;
+0030 const-string v1, "TCS"
+0034 invoke-virtual v2, v1, v0, Lcom/journey/server/JourneyConfigService$Lifecycle;->publishBinderService(Ljava/lang/String; Landroid/os/IBinder;)V
+003a iget-object v0, v2, Lcom/journey/server/JourneyConfigService$Lifecycle;->mJourneyConfigService Lcom/journey/server/JourneyConfigService;
+003e invoke-virtual v0, Lcom/journey/server/JourneyConfigService;->start()V
+0044 return-void 
