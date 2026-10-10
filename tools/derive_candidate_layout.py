@@ -55,6 +55,8 @@ def main():
     with (reports / 'probe-compile.log').open('w') as log:
         subprocess.run(args, cwd=out, stdout=log, stderr=subprocess.STDOUT, check=True)
     values = parse_assembly(assembly.read_text())
+    if len(values) != 32 or 'P780_TASK_STRUCT_BYTES' not in values:
+        raise ValueError(f'Incomplete probe: expected all 32 facts, extracted {len(values)}')
     data = {'evidence_level': 'offline candidate source; NOT verified device layout',
             'source_commit': a.source_commit,
             'config_sha256': hashlib.sha256((out / '.config').read_bytes()).hexdigest(),

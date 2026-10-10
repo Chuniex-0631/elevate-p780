@@ -12,7 +12,7 @@
 #define FIELD(name, type, member) DEFINE(name, offsetof(type, member))
 int main(void)
 {
- SIZE(TASK_SIZE, struct task_struct);
+ SIZE(P780_TASK_STRUCT_BYTES, struct task_struct);
  FIELD(TASK_PID, struct task_struct, pid);
  FIELD(TASK_COMM, struct task_struct, comm);
  FIELD(TASK_CRED, struct task_struct, cred);
