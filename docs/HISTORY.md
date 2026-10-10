@@ -19,6 +19,9 @@
 | **2026-10-10** | 机主补传 GhostLock v0.1—v0.4 和 Tracefs 原件 | 4 个 ZIP 与 4KB `p780-cpu4.raw` 全部保存；[验收 #38055530285](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38055530285) 检查 CRC、SHA、内嵌证据的字节一致性 |
 | **2026-10-10** | 最终文件与文档收敛 | 整理 `evidence/`、修复早期“待上传”状态、记录 v0.4 README 仍误标 v0.3 的原件瑕疵；Root / BL 解锁仍未达成 |
 
+| **2026-10-10** | 机主追加上传早期 Android/ADB 研究资料 | 收到审计 ZIP、Bugreport、OTA/TEE 日志和三份 APK；完整比对 22+9 个展开文件与原 ZIP 的内容，发现逐文件相同、移除重复副本；保留 [清理前备份分支](https://github.com/Chuniex-0631/p780-kernel-research/tree/archive/pre-cleanup-20261010) |
+| **2026-10-10** | 新证据专题与安全审阅 | [新增资料审计](NEW_UPLOADS_AND_DEDUP.md)、[TEE/APK](TEE_AND_SYSTEM_APKS.md)、[OTA/Bugreport](OTA_LOGS_AND_BUGREPORT.md) 分别记录，有敏感风险的原件分类归档，未据此宣称 Root 或固件获取成功 |
+
 ## 重要警告
 
 - “2026-10-04 去预装实验”会改变 Android 用户 0 的包状态；恢复出厂后数值可能改变。不要将不同日期观察的包数认为同一时间。
