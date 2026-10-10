@@ -1,0 +1,106 @@
+name: P780 kernel configuration and rtmutex audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/p780-kernel-audit.yml
+      - p780-config.gz
+
+permissions:
+  contents: read
+
+concurrency:
+  group: p780-kernel-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 85
+    steps:
+      - name: Checkout P780 research files
+        uses: actions/checkout@v4
+
+      - name: Install Linux kernel build dependencies
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            build-essential git make bc bison flex libssl-dev libelf-dev \
+            python3 rsync cpio clang llvm lld gcc-aarch64-linux-gnu \
+            binutils-aarch64-linux-gnu
+
+      - name: Verify device configuration and record provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports out
+          test -s p780-config.gz
+          gzip -t p780-config.gz
+          sha256sum p780-config.gz | tee reports/config-sha256.txt
+          gzip -dc p780-config.gz > out/.config
+          cp out/.config reports/original.config
+          grep -E '^(CONFIG_(FUTEX_PI|RT_MUTEXES|ASHMEM|LTO_CLANG|CFI_CLANG|ARCH_HOLI|ARCH_BLAIR)=|CONFIG_CC_VERSION_TEXT=)' out/.config | tee reports/key-options.txt || true
+          clang --version | tee reports/host-clang-version.txt
+          uname -a > reports/runner-uname.txt
+          printf 'This is a reconstructed research build, NOT a P780 firmware binary.\n' > reports/IMPORTANT.txt
+
+      - name: Clone Qualcomm 5.4.233 candidate source
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 1500 git clone --depth 1 --single-branch --branch droidian \
+            https://github.com/arminask/linux-android-samsung-a52sxq.git linux \
+            2>&1 | tee reports/clone.log
+          git -C linux rev-parse HEAD | tee reports/source-commit.txt
+          git -C linux remote -v > reports/source-remote.txt
+          sed -n '1,7p' linux/Makefile > reports/source-kernel-version.txt
+          test "$(sed -n 's/^SUBLEVEL = //p' linux/Makefile | head -1)" = "233"
+
+      - name: Run native ARM64 olddefconfig
+        id: kconfig
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          make -C linux O="$GITHUB_WORKSPACE/out" ARCH=arm64 \
+            HOSTCC=gcc CROSS_COMPILE=aarch64-linux-gnu- olddefconfig \
+            2>&1 | tee reports/olddefconfig.log
+          rc=${PIPESTATUS[0]}
+          echo "$rc" > reports/olddefconfig-exit.txt
+          if test -f out/.config; then
+            cp out/.config reports/resolved.config
+            diff -u reports/original.config reports/resolved.config > reports/config.diff || true
+          fi
+          exit "$rc"
+
+      - name: Compile rtmutex.o (diagnostic only)
+        if: steps.kconfig.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          make -C linux O="$GITHUB_WORKSPACE/out" ARCH=arm64 \
+            CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm \
+            OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip \
+            CROSS_COMPILE=aarch64-linux-gnu- CLANG_TRIPLE=aarch64-linux-gnu- \
+            -j2 kernel/locking/rtmutex.o \
+            2>&1 | tee reports/rtmutex-build.log
+          rc=${PIPESTATUS[0]}
+          echo "$rc" > reports/rtmutex-build-exit.txt
+          if test -f out/kernel/locking/rtmutex.o; then
+            file out/kernel/locking/rtmutex.o > reports/rtmutex-object-type.txt
+            sha256sum out/kernel/locking/rtmutex.o > reports/rtmutex-object-sha256.txt
+          fi
+          exit "$rc"
+
+      - name: Upload diagnostic reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p780-kernel-audit-reports
+          path: reports/
+          if-no-files-found: warn
+          retention-days: 30
