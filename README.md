@@ -14,10 +14,11 @@
 | **[研究时间线](docs/HISTORY.md)** | 2026 年 6 月起的 EDL、ADB、QAS、GhostLock 和 Actions |
 | **[设备基线、Bootloader 和 EDL](docs/DEVICE_AND_BOOT.md)** | 型号、固件、内核、AVB、Fastboot 回显、Sahara / HWID、分区发现 |
 | **[GhostLock 专题](docs/GHOSTLOCK.md)** | CVE-2026-43499 旧源码路径、真机配置、Tracefs、偏移阻断 |
-| **[QAS → Mink → PFM → TZAccessService](docs/QAS_TZ_PFM.md)** | eMBMS 许可查询、class 119、功能 700/2100、白名单和 JWT/TEE 混淆边界 |
+| **[QAS → Mink → PFM → TZAccessService](docs/QAS_TZ_PFM.md)** | eMBMS 许可查询、class 119、功能 700/2100、白名单与 TEE 身份验证边界 |
 | **[固件、官方更新与 2026 安全公告](docs/FIRMWARE_OTA_AND_OFFICIAL.md)** | _162 官方版本对应日期、OTA 缺失、固件真实性验证问题 |
 | **[ADB 清理 / 精简系统实验](docs/DEBLOAT_AND_APP_TESTS.md)** | 302→242→157 历史包数及可恢复性提示 |
 | **[全部已定位历史文件清单](docs/EVIDENCE_MANIFEST.md)** | 56 份历史资产逐项标注 GitHub 是否真的归档 |
+| **[GhostLock 历史 v0.1–v0.4 工作包](docs/GHOSTLOCK_PORT_VERSIONS.md)** | 版本、大小、已保存证据与缺失原始 ZIP |
 | **[下一步与仍缺的原始证据](docs/NEXT_STEPS.md)** | 明确差什么、何时才值得碰手机 |
 | **[证据来源及复现标准](docs/RESEARCH_SOURCES.md)** | 厂商、公开源码、实机文件与云端工件的区别 |
 
