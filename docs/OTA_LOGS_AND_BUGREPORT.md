@@ -19,6 +19,10 @@
 
 原件目前仍保存在**Private Git 仓库**，应视为受限研究材料。未来若需要发布去身份化研究成果，先删除/脱敏敏感字段，再复查整个 Git 历史与备份分支。仅在 `main` 中删除并不能从旧 Git 对象中擦除它们。
 
-下一阶段有价值的工作是纯离线筛查 Bugreport 内的 `update_engine_log`，根据具体状态机、下载响应/错误码更新证据矩阵，而不是直接据日志名称推断设备可以通过 OTA 提权。
+本阶段已实际读取全部 6 份历史引擎日志：只记录 CleanupPreviousUpdateAction，没有下载 URL/payload；清理 kSuccess 不等于固件安装成功。Logcat 配置检查成功和 INSTALL_UPDATE/finished-execution 也不证明 OTA 安装。详见 [逐事件审计](2026-10-10-ota-log-audit.md)。
 
 本节不记录未核实的下载 URL、访问令牌、手机号或设备唯一 ID。
+
+## Journey 配置线索已完成初步代码定位
+
+新上传实机 JAR 确认其是应用行为 XML 配置服务，所见消费者为 JourneyPerformanceService；未发现固件下载/安装链。主机/版本检查与密码学验签需区分。当前材料与下一步只读配置采集见 [Journey 审计](2026-10-10-journey-config-audit.md)。
