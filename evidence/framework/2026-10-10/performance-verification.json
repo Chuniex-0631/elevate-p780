@@ -1,0 +1,5 @@
+{
+  "original_config_methods_byte_identical": 54,
+  "selected_performance_methods_byte_sha_checked": 6,
+  "scope": "DEX table reader and original code offsets/bytes cross-check; not device behavior test"
+}
