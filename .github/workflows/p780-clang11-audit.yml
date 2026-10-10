@@ -1,0 +1,155 @@
+name: P780 Android Clang 11 provenance audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/p780-clang11-audit.yml
+
+permissions:
+  contents: read
+
+jobs:
+  clang11-audit:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 35
+    steps:
+      - name: Checkout research repository
+        uses: actions/checkout@v4
+
+      - name: Install host dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            git make gcc python3 bc bison flex libssl-dev libelf-dev \
+            rsync cpio gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu
+
+      - name: Preserve original config and verify gzip
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p out reports
+          gzip -t p780-config.gz
+          sha256sum p780-config.gz > reports/config-sha256.txt
+          gzip -dc p780-config.gz > out/.config
+          cp out/.config reports/original.config
+          printf '%s\n' 'OFFLINE RESEARCH ONLY: never flash these outputs to the P780.' > reports/IMPORTANT.txt
+
+      - name: Retrieve precise Google Android Clang 11 release
+        id: toolchain
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          set -o pipefail
+          echo 'Source: https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86'
+          echo 'Branch: android11-qpr2-release'
+          echo 'Directory: clang-r383902b1'
+          timeout 600 git clone --depth 1 --filter=blob:none --sparse \
+            --branch android11-qpr2-release \
+            https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 \
+            clang-prebuilts 2>&1 | tee reports/toolchain-clone.log
+          timeout 600 git -C clang-prebuilts sparse-checkout set clang-r383902b1 \
+            2>&1 | tee reports/toolchain-sparse.log
+          git -C clang-prebuilts rev-parse HEAD | tee reports/toolchain-commit.txt
+          test -x clang-prebuilts/clang-r383902b1/bin/clang
+          clang-prebuilts/clang-r383902b1/bin/clang --version \
+            | tee reports/android-clang-version.txt
+          grep -Eq 'clang version 11\.0\.2' reports/android-clang-version.txt
+          grep -q 'r383902b1' reports/android-clang-version.txt
+          echo "$GITHUB_WORKSPACE/clang-prebuilts/clang-r383902b1/bin" >> "$GITHUB_PATH"
+          du -sh clang-prebuilts/clang-r383902b1 \
+            | tee reports/toolchain-size.txt
+
+      - name: Fetch Qualcomm candidate at recorded revision
+        if: steps.toolchain.outcome == 'success'
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 450 git clone --depth 1 --single-branch --branch droidian \
+            https://github.com/arminask/linux-android-samsung-a52sxq.git \
+            linux 2>&1 | tee reports/source-clone.log
+          git -C linux rev-parse HEAD | tee reports/source-commit.txt
+          test "$(cat reports/source-commit.txt)" = "1f58b196e0dc8de740eb45b51261ea9c5741a30e"
+
+      - name: Resolve original P780 config with Android Clang 11
+        id: kconfig
+        if: steps.toolchain.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          set -o pipefail
+          make -C linux O="$GITHUB_WORKSPACE/out" ARCH=arm64 \
+            HOSTCC=gcc CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm \
+            OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip \
+            CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-gnu- \
+            olddefconfig 2>&1 | tee reports/olddefconfig-clang11.log
+          rc=$?
+          echo "$rc" > reports/olddefconfig-exit.txt
+          if test -f out/.config; then
+            cp out/.config reports/resolved.config
+            diff -u reports/original.config reports/resolved.config > reports/config.diff || true
+          fi
+          exit "$rc"
+
+      - name: Compile rtmutex with Android Clang 11
+        if: steps.kconfig.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          set -o pipefail
+          make -C linux O="$GITHUB_WORKSPACE/out" ARCH=arm64 \
+            CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm \
+            OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip \
+            CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-gnu- \
+            -j2 kernel/locking/rtmutex.o \
+            2>&1 | tee reports/rtmutex-clang11.log
+          rc=$?
+          echo "$rc" > reports/rtmutex-build-exit.txt
+          if test -f out/kernel/locking/rtmutex.o; then
+            file out/kernel/locking/rtmutex.o > reports/rtmutex-type.txt
+            sha256sum out/kernel/locking/rtmutex.o > reports/rtmutex-sha256.txt
+            cp out/kernel/locking/rtmutex.o reports/rtmutex.o
+          fi
+          exit "$rc"
+
+      - name: Classify exact config differences
+        if: steps.kconfig.outcome == 'success'
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp out/.config reports/post-compile.config
+          python3 tools/summarize_config.py \
+            reports/original.config reports/resolved.config \
+            reports/post-compile.config reports
+          python3 - <<'PY' | tee reports/specific-changes.txt
+          import json, runpy
+          p=json.load(open('reports/config-changes.json'))
+          parse=runpy.run_path('tools/summarize_config.py')['read_config']
+          old=parse('reports/original.config')
+          new=parse('reports/resolved.config')
+          b=p['original_to_resolved']
+          for label in ('changed','removed','added'):
+              print(f'\n==== {label.upper()} ({len(b[label])}) ====')
+              if label in ('changed','removed'):
+                  for key in b[label]:
+                      print(key, 'original=',old.get(key,'(missing)'),
+                            'resolved=',new.get(key,'(missing)'))
+              else:
+                  print('Complete added list is preserved in config-changes.json')
+          PY
+
+      - name: Preserve reports even if a step failed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p780-android-clang11-audit
+          path: reports/
+          retention-days: 30
+          if-no-files-found: warn
