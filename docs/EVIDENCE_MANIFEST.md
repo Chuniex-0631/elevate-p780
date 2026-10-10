@@ -110,3 +110,7 @@ _早前至少 57 条历史文件记录已保留；本轮新增文件按原始名
 机主 p780-journey-config.zip 共 3,940 B、3 条目、CRC 通过；[完整原始字节的 Base64 存档](../evidence/journey/2026-10-10/p780-journey-config.zip.b64) 与 [SHA/还原说明](../evidence/journey/2026-10-10/input-manifest.json) 已入仓。vendor XML/version 提供原件文本，TCS 提供 UTF-8 阅读视图；UTF-16 原始字节包含在编码 ZIP 中，避免重复归档。
 
 [64 键对照](../evidence/journey/2026-10-10/comparison.json) 与 [复核工具](../tools/compare_journey_config.py) 已保存；专题、README、STATUS、NEXT_STEPS 同步修订，关闭上一轮等待采集项。原始 framework ZIP/JAR 的未迁入状态仍保持明确。
+
+## Journey 性能策略消费者（静态核对完成）
+
+同一批 framework 输入复用，不重复上传原始 JAR。新增 [134 方法反汇编](../evidence/framework/2026-10-10/performance-disassembly.txt)、[79 条外部引用](../evidence/framework/2026-10-10/performance-callsites.json)、[6 个决策方法原始指令与解析](../evidence/framework/2026-10-10/performance-decision-methods.json)、逐 DEX SHA 和验证摘要；[提取脚本](../tools/read_performance_dex.py) 直接读取原始表，无 DEX 修补。54 个此前配置方法偏移/字节交叉核验通过。覆盖与运行时限制见既有 [Journey 专题](2026-10-10-journey-config-audit.md)，关闭消费者/星号待研究项。
