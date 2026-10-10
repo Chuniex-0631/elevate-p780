@@ -4,7 +4,7 @@
 
 ## 输入与证据等级
 
-- 原厂配置：仓库 `p780-config.gz`，先前 Clang11 原生 Kconfig 工件为 5,238 项原始、24 项消失、322 项新增、已有值变化 0。
+- 原厂配置：仓库 [evidence/device/p780-config.gz](../../evidence/device/p780-config.gz)，先前 Clang11 原生 Kconfig 工件为 5,238 项原始、24 项消失、322 项新增、已有值变化 0。
 - TINNO 旧源码：`TinnoOSS/P780`，commit `20c26c7658cb5273cc71b10c3704b445b0efbe6b`，`msm-5.4` / 5.4.61。
 - Qualcomm/Samsung 候选：`arminask/linux-android-samsung-a52sxq`，commit `1f58b196e0dc8de740eb45b51261ea9c5741a30e`，5.4.233。
 - 结构测量使用 Android Clang 11.0.2 / r383902b1，prebuilt commit `659f7cadd7ec920e470bffbb799b031d4344c8d9`。
@@ -12,7 +12,7 @@
 
 ## 24 项逐项核对
 
-本轮对两棵固定源码扫描 C/H/S、Kconfig、Makefile 中的准确 `CONFIG_*` 引用及 Kconfig 定义。扫描命中及行号见 [原始引用清单](../evidence/actions/2026-10-10-layout-audit/source-audit/missing-config-references.md)。未命中只适用于上述扫描范围，不推断闭源代码不存在。
+本轮对两棵固定源码扫描 C/H/S、Kconfig、Makefile 中的准确 `CONFIG_*` 引用及 Kconfig 定义。扫描命中及行号见 [原始引用清单](../../evidence/actions/2026-10-10-layout-audit/source-audit/missing-config-references.md)。未命中只适用于上述扫描范围，不推断闭源代码不存在。
 
 | 配置（省略 CONFIG_） | 实机 | 实际源码核对与判断 |
 |---|---|---|
@@ -55,7 +55,7 @@
 
 [最终完整构建 #38060518994](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38060518994) 对两棵固定树分别执行原厂配置的 `olddefconfig`、`prepare` 和 32 个结构大小/成员位置测量。不链接完整内核，不生成或刷写 boot.img。
 
-结果由 workflow 在运行后保存到 [构建证据目录](../evidence/actions/2026-10-10-layout-audit)，包括原始/求解配置、真实 Kbuild 命令、探针编译日志、汇编、候选 JSON、跨树对比。**具体成功/失败以该目录的实际产物为准，不把已提交流程写成编译成功。**
+结果由 workflow 在运行后保存到 [构建证据目录](../../evidence/actions/2026-10-10-layout-audit)，包括原始/求解配置、真实 Kbuild 命令、探针编译日志、汇编、候选 JSON、跨树对比。**具体成功/失败以该目录的实际产物为准，不把已提交流程写成编译成功。**
 
 ## 实际完成结果
 
@@ -68,9 +68,9 @@
 
 TINNO 的 46 是本轮原生 Kconfig/Clang11 的结果，不是旧报告中静态源码符号检查的 45；不能把两种口径合并。
 
-[完整对比表](../evidence/actions/2026-10-10-layout-audit/runs/38060518994/layout-comparison.md) 与 [原始 JSON](../evidence/actions/2026-10-10-layout-audit/runs/38060518994/layout-comparison.json) 已永久入 Git。采样包括 task_struct、cred、rt_mutex_waiter、rt_mutex、mm_struct、page、file、file_operations、pipe_inode_info、pipe_buffer、refcount_t 的大小或选定成员。
+[完整对比表](../../evidence/actions/2026-10-10-layout-audit/runs/38060518994/layout-comparison.md) 与 [原始 JSON](../../evidence/actions/2026-10-10-layout-audit/runs/38060518994/layout-comparison.json) 已永久入 Git。采样包括 task_struct、cred、rt_mutex_waiter、rt_mutex、mm_struct、page、file、file_operations、pipe_inode_info、pipe_buffer、refcount_t 的大小或选定成员。
 
-源文件比对另存 [核心头文件 SHA](../evidence/actions/2026-10-10-layout-audit/source-audit/core-header-hashes.json) 与 [原始 diff](../evidence/actions/2026-10-10-layout-audit/source-audit/core-header-diff.txt)：mm_types.h、rtmutex_common.h、pipe_fs_i.h 在两棵固定树中逐字节一致；sched.h、cred.h、refcount.h 不同。候选 sched.h 的 SEC_PERF_MANAGER 在本次求解配置关闭。
+源文件比对另存 [核心头文件 SHA](../../evidence/actions/2026-10-10-layout-audit/source-audit/core-header-hashes.json) 与 [原始 diff](../../evidence/actions/2026-10-10-layout-audit/source-audit/core-header-diff.txt)：mm_types.h、rtmutex_common.h、pipe_fs_i.h 在两棵固定树中逐字节一致；sched.h、cred.h、refcount.h 不同。候选 sched.h 的 SEC_PERF_MANAGER 在本次求解配置关闭。
 
 这个结果仅说明**本轮被测字段和大小**一致。即使头文件内容相同也不能代替真实 P780 的类型信息；布局相同不证明函数实现、编译后栈帧、全体字段或符号地址相同，不解除实机适配 BLOCKED。
 
@@ -89,3 +89,4 @@ TINNO 的 46 是本轮原生 Kconfig/Clang11 的结果，不是旧报告中静�
 3. `vehicle-scan` 需要原厂 Image；`pagetrace` 启用事件需要 root，均不能自动消除目前阻断。
 
 **Root / BL 解锁均未实现；P780 GhostLock 仍为 BLOCKED。**
+

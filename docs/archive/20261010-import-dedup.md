@@ -17,16 +17,16 @@
 
 | 资料类型 | 位置 | 说明 |
 |---|---|---|
-| 真机内核配置和 Tracefs | [核心证据](../evidence/device) 与 [配置根文件](../p780-config.gz) | 历次研究的重要固定证据 |
-| ADB 系统快照（原始） | [审计 ZIP](../evidence/restricted/adb) | 完整压缩采集包，ZIP 内分别 22 和 9 个原始文件 |
-| 应用清单第三阶段（原始） | [phase3](../evidence/restricted/adb/phase3) | `installed` 210 行包名、`all` 271 行包名；不同过滤条件，不能视为连续两次应用清理 |
-| 完整 Android Bugreport | [受限类别](../evidence/restricted/bugreport) | ZIP 内 402 文件；可能含敏感信息，不推荐公开 |
-| OTA / 更新服务日志 | [原始文本](../evidence/restricted/ota) | Windows UTF-16 文本，保留原始字节；未发现单独 `payload.bin` 文件 |
-| TrustZone 相关只读采集 | [TEE 观察](../evidence/tee) | 白名单原文与 native API 路径访问失败记录 |
-| 三份系统 APK | [APK 原件](../evidence/apk) | `ApeHighLights.apk`、`com.qualcomm.qti.services.secureui.apk`、`com.qualcomm.qti.services.systemhelper.apk` |
-| Clang/Kconfig 构建原件 | [Actions evidence](../evidence/actions) | 保留完整各次运行，不删除相同的 provenance 文件 |
+| 真机内核配置和 Tracefs | [核心证据](../../evidence/device) 与 [配置主原件](../../evidence/device/p780-config.gz) | 历次研究的重要固定证据 |
+| ADB 系统快照（原始） | [审计 ZIP](../../evidence/restricted/adb) | 完整压缩采集包，ZIP 内分别 22 和 9 个原始文件 |
+| 应用清单第三阶段（原始） | [phase3](../../evidence/restricted/adb/phase3) | `installed` 210 行包名、`all` 271 行包名；不同过滤条件，不能视为连续两次应用清理 |
+| 完整 Android Bugreport | [受限类别](../../evidence/restricted/bugreport) | ZIP 内 402 文件；可能含敏感信息，不推荐公开 |
+| OTA / 更新服务日志 | [原始文本](../../evidence/restricted/ota) | Windows UTF-16 文本，保留原始字节；未发现单独 `payload.bin` 文件 |
+| TrustZone 相关只读采集 | [TEE 观察](../../evidence/tee) | 白名单原文与 native API 路径访问失败记录 |
+| 三份系统 APK | [APK 原件](../../evidence/apk) | `ApeHighLights.apk`、`com.qualcomm.qti.services.secureui.apk`、`com.qualcomm.qti.services.systemhelper.apk` |
+| Clang/Kconfig 构建原件 | [Actions evidence](../../evidence/actions) | 保留完整各次运行，不删除相同的 provenance 文件 |
 
-**注意**：`evidence/restricted/` 只是资料类别和隐私警告，不是 GitHub 的访问控制功能！仓库必须继续设为 Private；Git 历史和清理前恢复分支中均可能保存设备敏感原文。参阅 [安全说明](../SECURITY.md)。
+**注意**：`evidence/restricted/` 只是资料类别和隐私警告，不是 GitHub 的访问控制功能！仓库必须继续设为 Private；Git 历史和清理前恢复分支中均可能保存设备敏感原文。参阅 [安全说明](../../SECURITY.md)。
 
 ## 真实内容摘要
 
@@ -50,8 +50,9 @@
 - **保留原状**：既有 `evidence/actions/` 构建运行报告，即使个别文件字节相同，也用于证明各自运行的来源与结果。Git 本身已按 Blob 去重。
 - **不能宣称为原件恢复**：仅在此前私有文件库中存在、这次未上传的其它旧 ZIP/APK/OTA、早期大小 1,742 B 的同名 `hand5g_debloat_audit.zip`。
 
-完整文件接收状态参见 [EVIDENCE_MANIFEST](EVIDENCE_MANIFEST.md)；所有重大已验证研究事实仍以 [STATUS](STATUS.md) 为准。
+完整文件接收状态参见 [EVIDENCE_MANIFEST](../EVIDENCE_MANIFEST.md)；所有重大已验证研究事实仍以 [STATUS](../STATUS.md) 为准。
 
 ## 文件名冲突说明
 
 历史文件库曾登记 `hand5g_debloat_audit.zip` **1,742 B** 与 `hand5g_debloat_audit(1).zip` **376,662 B**。此次 GitHub 上传的原件叫 `hand5g_debloat_audit.zip`，体积 **376,662 B**。因此历史小文件不能凭名字认定已归档；本轮保留大包并明确此差别，待原始小包另行检验再决定是否纯重复。
+

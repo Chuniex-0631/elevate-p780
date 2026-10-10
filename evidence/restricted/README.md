@@ -8,6 +8,6 @@
 - [ota/](ota)：SystemUpdate Activity 与 Logcat 的 UTF-16 原始文本；不是完整 OTA。
 - [bugreport/](bugreport)：Android Bugreport ZIP（402 条目），包含历史 update_engine 日志和其他设备系统数据。
 
-如需面向公众发布结论，请优先引用 [去身份化摘要](../../docs/NEW_UPLOADS_AND_DEDUP.md) 和 [OTA 研究摘要](../../docs/OTA_LOGS_AND_BUGREPORT.md)，而不是引用这里的原始日志。
+如需面向公众发布结论，请优先引用 [去身份化摘要](../../docs/archive/20261010-import-dedup.md) 和 [OTA 研究摘要](../../docs/research/ota-bugreport.md)，而不是引用这里的原始日志。
 
 **重要：** 即使删除 `main` 文件，Git 历史与保留的 [清理前恢复分支](https://github.com/Chuniex-0631/p780-kernel-research/tree/archive/pre-cleanup-20261010) 中仍可含原件。要彻底删除秘密，需要跨所有 Git refs 重写历史及更新可访问的备份。

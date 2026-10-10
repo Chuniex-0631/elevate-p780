@@ -1,11 +1,13 @@
-# Candidate layout audit evidence
+# 候选布局实验：按运行编号阅读
 
-Final complete run: [38060518994](runs/38060518994/layout-comparison.md). Both source trees produced all 32 requested measurements; all 32 matched. This does not certify the ABI of the running P780 or supply runtime addresses.
+当前最终完整结果：[run 38060518994](runs/38060518994/layout-comparison.md)，两棵候选树各 32 / 32 项、0 差异。LATEST.txt 仅指向最近一次运行，未来可能指向失败轮次，不能替代完整性判定。
 
-- `source-audit/`: actual references for 24 removed config symbols and core header differences.
-- `runs/38060518994/`: complete final probe, build logs, configs and comparison.
-- `runs/38060466663/`: intermediate 31-fact probe, missing task_struct size due to TASK_SIZE macro collision.
-- root `builds/` and root `layout-comparison.*`: initial run 38060293186, TINNO mode failure and partial A52s probe. Preserved as historical evidence, not the final result.
-- `LATEST.txt`: last archived run ID; each run remains separate.
+| 运行 | 结果 |
+|---|---|
+| [38060293186](runs/38060293186) | TINNO 脚本模式问题导致失败；A52s 31 项，首项标签宏冲突 |
+| [38060466663](runs/38060466663/layout-comparison.md) | 修复模式后仍只有 31 项；中间结果 |
+| [38060518994](runs/38060518994/layout-comparison.md) | 标签修复与 32 项完整性要求通过；最终完整结果 |
 
-See [research report](../../../docs/2026-10-10-config-layout-research.md) for scope and conclusions.
+初轮原先散落在本目录 builds/ 和顶层 layout-comparison.*，本轮按实际运行编号归位，原文件 Blob SHA 不变。不同运行的配置/日志即使 SHA 相同，仍保留其独立运行上下文。
+
+[source-audit/](source-audit) 保存固定源码引用、核心头文件比对与来源。结论及限制见 [配置/布局专题](../../../docs/research/config-layout.md)。候选样本相等不证明本机原厂 ABI、实现、栈帧或符号一致；Root 未实现。

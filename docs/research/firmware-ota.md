@@ -19,8 +19,8 @@ Linux/5.4.233-qgki-gea5245e94afe-dirty
 
 - **2024-02-20** 是设备镜像与内核编译时间，**2024-03-21** 是官方更新开始发布日；它们不是互相矛盾的日期。
 - **2026-10-10** 未能从已经掌握的用户文件中提取有版本校验的完整 OTA ZIP、`payload.bin`、`boot.img` 或 `vendor_boot.img`。
-- 历史原件已由机主上传并保留至私有 Git 仓库：[Activity 记录](../evidence/restricted/ota/hand5g_update_activity.txt)（94,710 B）、[Logcat](../evidence/restricted/ota/hand5g_update_log.txt)（283,944 B）及 [Bugreport](../evidence/restricted/bugreport/hand5g_bugreport.zip)（5,684,665 B）。**这些是未脱敏原件**，不应公开，亦未从中取得可直接使用的完整 OTA。
-- 更新服务材料的独立审阅见 [OTA 与 Bugreport 归档](OTA_LOGS_AND_BUGREPORT.md)。
+- 历史原件已由机主上传并保留至私有 Git 仓库：[Activity 记录](../../evidence/restricted/ota/hand5g_update_activity.txt)（94,710 B）、[Logcat](../../evidence/restricted/ota/hand5g_update_log.txt)（283,944 B）及 [Bugreport](../../evidence/restricted/bugreport/hand5g_bugreport.zip)（5,684,665 B）。**这些是未脱敏原件**，不应公开，亦未从中取得可直接使用的完整 OTA。
+- 更新服务材料的独立审阅见 [OTA 与 Bugreport 归档](ota-bugreport.md)。
 
 ## 官方 2026 年 9 月 28 日安全公告
 
@@ -30,10 +30,11 @@ Linux/5.4.233-qgki-gea5245e94afe-dirty
 - **2026-09-28** 时已经确认固件真实性验证机制存在缺陷，修改的固件可能被误认为正版。
 - 官方指出具有临时物理访问能力的攻击者可能因此安装修改固件，并导致权限获取/软件执行或设置修改，建议停止继续使用此已退役设备。
 
-**研究判断**：此官方公告不是 `fastboot flashing unlock` 已可用的证据；没有给出此 P780 `_162` 版的签名验证失效阶段、实际安装途径或修复详情。不得自行把它等同于 GhostLock 或可以在锁 BL 状态直接刷写任意 `boot.img`。详细历史记录见 [独立安全公告研究](2026-09-28-rakuten-hand5g-firmware-advisory.md)。
+**研究判断**：此官方公告不是 `fastboot flashing unlock` 已可用的证据；没有给出此 P780 `_162` 版的签名验证失效阶段、实际安装途径或修复详情。不得自行把它等同于 GhostLock 或可以在锁 BL 状态直接刷写任意 `boot.img`。详细历史记录见 [独立安全公告研究](firmware-advisory-20260928.md)。
 
 ## 未解决的 OTA 事项
 
 - 收集官方完整 OTA 的可信来源和具体哈希。
 - 核对更新机制日志中的下载 URL 是否可用以及是否带鉴权/过期参数（仓库内不发布带 token URL）。
 - 如果未来获取 `_162` 官方固件，优先完全离线校验数字签名与哈希，完整备份后再设计任何设备实验。
+

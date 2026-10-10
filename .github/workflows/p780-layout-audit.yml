@@ -2,12 +2,6 @@ name: P780 candidate structure layout audit
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/p780-layout-audit.yml
-      - tools/p780-layout-probe.c
-      - tools/derive_candidate_layout.py
 
 permissions:
   contents: read
@@ -66,7 +60,7 @@ jobs:
           clang-prebuilts/clang-r383902b1/bin/clang --version > reports/clang-version.txt
           grep -q 'clang version 11.0.2' reports/clang-version.txt
           echo "$GITHUB_WORKSPACE/clang-prebuilts/clang-r383902b1/bin" >> "$GITHUB_PATH"
-          gzip -dc p780-config.gz > out/.config
+          gzip -dc evidence/device/p780-config.gz > out/.config
           cp out/.config reports/original.config
           printf '%s\n' 'OFFLINE CANDIDATE ONLY: not certified P780 ABI, symbol addresses or flashable output.' > reports/IMPORTANT.txt
       - name: Resolve configuration and prepare Kbuild headers
@@ -131,3 +125,4 @@ jobs:
             git push origin HEAD:main
           fi
           cat "$root/runs/$GITHUB_RUN_ID/layout-comparison.md" >> "$GITHUB_STEP_SUMMARY"
+

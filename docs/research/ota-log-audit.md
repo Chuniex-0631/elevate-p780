@@ -35,7 +35,7 @@ Bugreport 中另一个带“ota”的 gstatic URL 是 adservices UI strings 资�
 
 ## 原件与可复核性
 
-- [审计结果 JSON](../evidence/analysis/2026-10-10-ota-log-audit.json)：每份引擎日志的 SHA-256、大小、路径和判定。
+- [审计结果 JSON](../../evidence/analysis/2026-10-10-ota-log-audit.json)：每份引擎日志的 SHA-256、大小、路径和判定。
 - Bugreport ZIP：5,684,665 B；SHA-256 `7e662b108af7b1fa33113636ef86178e5e177ce6a1eb7c498fc12daadec159dc`；ZIP CRC 全通过。
 - 本轮下载的 ZIP 按 Git blob 算法得到 `25a379b25a6dcadcaca61e3389cf93dfdd881097`，与仓库原件一致。
 - 两份 UTF-16 OTA 文本经连接器获得的是规范化 UTF-8 视图，行数仍为 607/609。本轮不把这个视图哈希称为原件字节哈希。
@@ -61,3 +61,4 @@ adb pull /system/framework/framework.jar p780-framework-audit/
 不存在的目录可能报错，保留该信息即可；JAR 若无 classes.dex，需结合目录清单再定位对应 ODEX/VDEX。本阶段无需 Root、重启、清数据或刷写，也无需提交整个 Google Play 服务 APK。
 
 Root/BL 状态仍未改变，原厂内核来源仍未解决。
+

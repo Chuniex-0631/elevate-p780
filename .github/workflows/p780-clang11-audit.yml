@@ -2,11 +2,6 @@ name: P780 Android Clang 11 provenance audit
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - .github/workflows/p780-clang11-audit.yml
 
 permissions:
   contents: read
@@ -33,9 +28,9 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p out reports
-          gzip -t p780-config.gz
-          sha256sum p780-config.gz > reports/config-sha256.txt
-          gzip -dc p780-config.gz > out/.config
+          gzip -t evidence/device/p780-config.gz
+          sha256sum evidence/device/p780-config.gz > reports/config-sha256.txt
+          gzip -dc evidence/device/p780-config.gz > out/.config
           cp out/.config reports/original.config
           printf '%s\n' 'OFFLINE RESEARCH ONLY: never flash these outputs to the P780.' > reports/IMPORTANT.txt
 
@@ -153,3 +148,4 @@ jobs:
           path: reports/
           retention-days: 30
           if-no-files-found: warn
+

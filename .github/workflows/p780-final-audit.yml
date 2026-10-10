@@ -14,6 +14,10 @@ on:
       - evidence/restricted/**
       - evidence/apk/**
       - evidence/tee/**
+      - evidence/framework/**
+      - evidence/journey/**
+      - evidence/analysis/**
+      - tools/**
       - evidence/README.md
 
 concurrency:
@@ -40,7 +44,7 @@ jobs:
 
           root=Path('.')
           files=[
-            Path("p780-config.gz"),
+            Path("evidence/device/p780-config.gz"),
             Path("evidence/device/p780-cpu4.raw"),
             *sorted(Path("evidence/ghostlock").glob("P780-GhostLock-port-v*.zip"))
           ]
@@ -120,6 +124,8 @@ jobs:
           with open(__import__('os').environ['GITHUB_STEP_SUMMARY'],'a') as f:
               f.write('\n'.join(lines)+'\n')
           PY
+      - name: Verify full tracked structure and Journey evidence
+        run: python3 tools/verify_repository.py --output reports/repository-audit.json
       - name: Cross-check evidence copies and original package README
         shell: bash
         run: |
@@ -128,7 +134,7 @@ jobs:
           import zipfile,hashlib
           from pathlib import Path
           orig={
-            'p780-config.gz': Path('p780-config.gz').read_bytes(),
+            'p780-config.gz': Path('evidence/device/p780-config.gz').read_bytes(),
             'p780-cpu4.raw': Path('evidence/device/p780-cpu4.raw').read_bytes()
           }
           for p in sorted(Path('evidence/ghostlock').glob('*.zip')):
@@ -217,3 +223,4 @@ jobs:
           path: reports/
           retention-days: 30
           if-no-files-found: warn
+

@@ -11,7 +11,7 @@
 | `hand5g_packages_all_phase3.txt`（新上传） | 22482 | [原始 UTF-16 清单](../evidence/restricted/adb/phase3/hand5g_packages_all_phase3.txt) |
 | `hand5g_packages_installed_phase3.txt`（新上传） | 17724 | [原始 UTF-16 清单](../evidence/restricted/adb/phase3/hand5g_packages_installed_phase3.txt) |
 | `Rakuten_Hand_5G_P780_EDL_重要数据.txt`（2026-06-12 更早文件，单独检索） | 2554 | [已存 GitHub：脱敏版](../archive/device/P780_EDL_2026-06-12_sanitized.txt) |
-| `p780-config(1).gz` | 39170 | 另有仓库根目录版本（未复核本副本 SHA） |
+| `p780-config(1).gz` | 39170 | 另有 evidence/device 主原件（未复核本副本 SHA） |
 | `P780-master.zip` | 242946767 | **原文件库保留，未入 Git 仓库** |
 | `P780-ARM64-Kconfig-reachability-20261010.zip` | 3519382 | **原文件库保留，未入 Git 仓库** |
 | `P780-5.4.233-source-bridge-20261010.zip` | 48277 | **原文件库保留，未入 Git 仓库** |
@@ -31,7 +31,7 @@
 | `p780_ghostlock_audit.py` | 5471 | [已存 GitHub](../archive/tools/p780_ghostlock_audit.py) |
 | `P780_GhostLock_源码核对报告_2026-10-10.md` | 8090 | [已存 GitHub](../archive/reports/P780_GhostLock_source_audit_2026-10-10.md) |
 | `p780-cpu4.raw` | 4096 | [已存 GitHub：原始字节已校验](../evidence/device/p780-cpu4.raw) |
-| `p780-config.gz` | 39170 | [已存 GitHub](../p780-config.gz) |
+| `p780-config.gz` | 39170 | [已存 GitHub](../evidence/device/p780-config.gz) |
 | `hand5g_debloat_daily_phone.ps1` | 13721 | [已存 GitHub](../archive/scripts/hand5g_debloat_daily_phone.ps1) |
 | `hand5g_debloat_p780.ps1` | 14373 | [已存 GitHub](../archive/scripts/hand5g_debloat_p780.ps1) |
 | `hand5g_final_audit.zip` | 419387 | [原始 ZIP 已入私库](../evidence/restricted/adb/hand5g_final_audit.zip) |
@@ -76,25 +76,25 @@
 
 - `p780-cpu4.raw` **已完整入仓**：[原始二进制](../evidence/device/p780-cpu4.raw)，4,096 字节，含实验追踪标记；此前的遗留“等待上传”状态已关闭。
 - `hand5g_getprop.txt` 与 `hand5g_fastboot_all.txt` 的历史独立原件未入仓。Bugreport 和 OTA/Activity 日志**已经进入私库**的 `evidence/restricted/`；它们仍可能含敏感数据，**未脱敏，不适合公开**。
-- GhostLock v0.1–v0.4 的**四份原始 ZIP 已完整入仓并通过 CRC/SHA 检验**；见 [版本与内容索引](GHOSTLOCK_PORT_VERSIONS.md)。
+- GhostLock v0.1–v0.4 的**四份原始 ZIP 已完整入仓并通过 CRC/SHA 检验**；见 [版本与内容索引](archive/ghostlock-package-versions.md)。
 - 大型 `P780-master.zip`、`linux-android-samsung-a52sxq-droidian.zip` 可从上游仓库按指定 commit 再取得，避免将整份第三方源码提交为冗余仓库附件。
 
 ## 最新整理与原件去重
 
-- 2026-10-10 新增 3 份 APK、2 份 TEE 记录、2 份 OTA 日志、1 份 Bugreport，以及两套 ADB 审计 ZIP。新文件另见 [导入与去重报告](NEW_UPLOADS_AND_DEDUP.md)。
+- 2026-10-10 新增 3 份 APK、2 份 TEE 记录、2 份 OTA 日志、1 份 Bugreport，以及两套 ADB 审计 ZIP。新文件另见 [导入与去重报告](archive/20261010-import-dedup.md)。
 - `hand5g_debloat_audit/` 22 个文件与完整 ZIP 内字节相同，`hand5g_final_audit/` 9 个文件亦如此；`main` 已保留两个原始 ZIP、删除 31 个重复展开文件。
 - 清理前完整状态备份于 [archive/pre-cleanup-20261010](https://github.com/Chuniex-0631/p780-kernel-research/tree/archive/pre-cleanup-20261010)。
 
 ## 完整性原则
 
-原始 Tracefs 与 GhostLock 四代 ZIP 已经入仓，其字节级和内部哈希核对见 [证据完整性](EVIDENCE_INTEGRITY.md)。其它只有文件清单和分析结论的项目不能标为原始文件已入仓；UTF-16/乱码或无可读内容的文件也不作伪造转写。设备唯一标识、IMEI、带密码与登录凭据的记录不应进入可公开仓库，私库也尽可能脱敏。
+原始 Tracefs 与 GhostLock 四代 ZIP 已经入仓，其字节级和内部哈希核对见 [证据完整性](reference/evidence-integrity.md)。其它只有文件清单和分析结论的项目不能标为原始文件已入仓；UTF-16/乱码或无可读内容的文件也不作伪造转写。设备唯一标识、IMEI、带密码与登录凭据的记录不应进入可公开仓库，私库也尽可能脱敏。
 
 _早前至少 57 条历史文件记录已保留；本轮新增文件按原始名称另行登记。文件清单中的同名/同大小资料不自动表示 SHA 相同。_
 
 
 ## 2026-10-10 配置引用与候选布局实验
 
-- [24 项配置与候选布局研究](2026-10-10-config-layout-research.md)：24 项配置的逐项源级判断。
+- [24 项配置与候选布局研究](research/config-layout.md)：24 项配置的逐项源级判断。
 - `evidence/actions/2026-10-10-layout-audit/source-audit/`：两棵固定树扫描得到的原始引用 JSON/Markdown 和实际计算的 provenance 哈希。
 - `evidence/actions/2026-10-10-layout-audit/`：每轮 Actions 原始/求解配置、Kbuild 命令、日志、汇编及候选结构测量 JSON；首轮失败资料亦保留。
 - `tools/audit_missing_config.py`、`tools/derive_candidate_layout.py`、`tools/p780-layout-probe.c`、`tools/compare_candidate_layouts.py` 与 `.github/workflows/p780-layout-audit.yml`：离线研究流程，不连接手机。
@@ -103,7 +103,7 @@ _早前至少 57 条历史文件记录已保留；本轮新增文件按原始名
 
 - p780-framework-audit.zip：机主上传 18,141,023 B，CRC 通过；含 services.jar/framework.jar 与五份文本。原始 ZIP/JAR 仍保留在上传文件，未将原始字节迁入 Git。
 - [输入 SHA/原件存放状态](../evidence/framework/2026-10-10/input-manifest.json)；[目标方法原始字节](../evidence/framework/2026-10-10/journey-bytecode.json)、反汇编、调用点 JSON、五份 UTF-8 清单已入 Git。反汇编和阅读视图不冒充原始 JAR/UTF-16 原件。
-- [Journey 实机代码专题](2026-10-10-journey-config-audit.md) 与 [OTA 日志深入审计](2026-10-10-ota-log-audit.md) 已补齐，旧“下一阶段审阅引擎日志”的说明已修订。
+- [Journey 实机代码专题](research/journey-config.md) 与 [OTA 日志深入审计](research/ota-log-audit.md) 已补齐，旧“下一阶段审阅引擎日志”的说明已修订。
 
 ## Journey 配置与运行状态（已完成核对）
 
@@ -113,4 +113,5 @@ _早前至少 57 条历史文件记录已保留；本轮新增文件按原始名
 
 ## Journey 性能策略消费者（静态核对完成）
 
-同一批 framework 输入复用，不重复上传原始 JAR。新增 [134 方法反汇编](../evidence/framework/2026-10-10/performance-disassembly.txt)、[79 条外部引用](../evidence/framework/2026-10-10/performance-callsites.json)、[6 个决策方法原始指令与解析](../evidence/framework/2026-10-10/performance-decision-methods.json)、逐 DEX SHA 和验证摘要；[提取脚本](../tools/read_performance_dex.py) 直接读取原始表，无 DEX 修补。54 个此前配置方法偏移/字节交叉核验通过。覆盖与运行时限制见既有 [Journey 专题](2026-10-10-journey-config-audit.md)，关闭消费者/星号待研究项。
+同一批 framework 输入复用，不重复上传原始 JAR。新增 [134 方法反汇编](../evidence/framework/2026-10-10/performance-disassembly.txt)、[79 条外部引用](../evidence/framework/2026-10-10/performance-callsites.json)、[6 个决策方法原始指令与解析](../evidence/framework/2026-10-10/performance-decision-methods.json)、逐 DEX SHA 和验证摘要；[提取脚本](../tools/read_performance_dex.py) 直接读取原始表，无 DEX 修补。54 个此前配置方法偏移/字节交叉核验通过。覆盖与运行时限制见既有 [Journey 专题](research/journey-config.md)，关闭消费者/星号待研究项。
+

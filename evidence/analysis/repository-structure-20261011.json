@@ -1,0 +1,639 @@
+{
+  "audit_date": "2026-10-11",
+  "timezone": "Asia/Shanghai",
+  "base_commit": "af103577c223c905a26924d623afb220397c34ff",
+  "base_tree": "a8fbe0a7ad6c5e8a3dc1987a0d3c41e4aacf16eb",
+  "backup_branch": "archive/pre-restructure-20261011",
+  "base_tracked_files": 254,
+  "moves": [
+    {
+      "from": "p780-config.gz",
+      "to": "evidence/device/p780-config.gz"
+    },
+    {
+      "from": "docs/DEVICE_AND_BOOT.md",
+      "to": "docs/research/device-and-boot.md"
+    },
+    {
+      "from": "docs/FIRMWARE_OTA_AND_OFFICIAL.md",
+      "to": "docs/research/firmware-ota.md"
+    },
+    {
+      "from": "docs/QAS_TZ_PFM.md",
+      "to": "docs/research/qas-tee-pfm.md"
+    },
+    {
+      "from": "docs/GHOSTLOCK.md",
+      "to": "docs/research/ghostlock.md"
+    },
+    {
+      "from": "docs/DEBLOAT_AND_APP_TESTS.md",
+      "to": "docs/research/apps-and-debloat.md"
+    },
+    {
+      "from": "docs/TEE_AND_SYSTEM_APKS.md",
+      "to": "docs/research/tee-system-apks.md"
+    },
+    {
+      "from": "docs/OTA_LOGS_AND_BUGREPORT.md",
+      "to": "docs/research/ota-bugreport.md"
+    },
+    {
+      "from": "docs/2026-09-28-rakuten-hand5g-firmware-advisory.md",
+      "to": "docs/research/firmware-advisory-20260928.md"
+    },
+    {
+      "from": "docs/2026-10-10-config-layout-research.md",
+      "to": "docs/research/config-layout.md"
+    },
+    {
+      "from": "docs/2026-10-10-journey-config-audit.md",
+      "to": "docs/research/journey-config.md"
+    },
+    {
+      "from": "docs/2026-10-10-ota-log-audit.md",
+      "to": "docs/research/ota-log-audit.md"
+    },
+    {
+      "from": "docs/FINAL_ARCHIVE_REVIEW.md",
+      "to": "docs/archive/20261010-archive-review.md"
+    },
+    {
+      "from": "docs/NEW_UPLOADS_AND_DEDUP.md",
+      "to": "docs/archive/20261010-import-dedup.md"
+    },
+    {
+      "from": "docs/GHOSTLOCK_PORT_VERSIONS.md",
+      "to": "docs/archive/ghostlock-package-versions.md"
+    },
+    {
+      "from": "docs/ARCHIVE_PROTOCOL.md",
+      "to": "docs/reference/archive-protocol.md"
+    },
+    {
+      "from": "docs/EVIDENCE_INTEGRITY.md",
+      "to": "docs/reference/evidence-integrity.md"
+    },
+    {
+      "from": "docs/RESEARCH_SOURCES.md",
+      "to": "docs/reference/sources.md"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/IMPORTANT.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/IMPORTANT.txt"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/candidate-layout.json",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/candidate-layout.json"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/clang-version.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/clang-version.txt"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/config-changes.json",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/config-changes.json"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/config-summary.md",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/config-summary.md"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/kbuild-command.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/kbuild-command.txt"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/layout-probe.s",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/layout-probe.s"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/olddefconfig.log",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/olddefconfig.log"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/original.config",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/original.config"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/post-prepare.config",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/post-prepare.config"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/prepare.log",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/prepare.log"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/probe-command.json",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/probe-command.json"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/probe-compile.log",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/probe-compile.log"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/resolved.config",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/resolved.config"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/source-commit.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/source-commit.txt"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/source-dir.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/source-dir.txt"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/toolchain-commit.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/toolchain-commit.txt"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/IMPORTANT.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/IMPORTANT.txt"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/clang-version.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/clang-version.txt"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/olddefconfig.log",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/olddefconfig.log"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/original.config",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/original.config"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/source-commit.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/source-commit.txt"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/source-dir.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/source-dir.txt"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/toolchain-commit.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/toolchain-commit.txt"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/layout-comparison.json",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/layout-comparison.json"
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/layout-comparison.md",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/layout-comparison.md"
+    }
+  ],
+  "preserved_moves": [
+    {
+      "from": "p780-config.gz",
+      "to": "evidence/device/p780-config.gz",
+      "blob_sha": "b08d67bc9406620778855b4a9a50068d2d2d90e7",
+      "bytes": 39170
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/IMPORTANT.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/IMPORTANT.txt",
+      "blob_sha": "841d01d973aab696adbdd006c46bbbbfd71ca7e9",
+      "bytes": 86
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/candidate-layout.json",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/candidate-layout.json",
+      "blob_sha": "0b936ef037f3a6e8d633c20e1b428b83b1a156fd",
+      "bytes": 1078
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/clang-version.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/clang-version.txt",
+      "blob_sha": "e35ebacd7a452b89af006bac77e14c88735cbf1f",
+      "bytes": 320
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/config-changes.json",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/config-changes.json",
+      "blob_sha": "e07c127799834533bc6080154d40af064ca15666",
+      "bytes": 25946
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/kbuild-command.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/kbuild-command.txt",
+      "blob_sha": "ac6cff6a91a38fbed24cbe8c92828dfd6c7f2ff2",
+      "bytes": 2549
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/layout-probe.s",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/layout-probe.s",
+      "blob_sha": "103b85e3349e8d437fc0a3ba57b0ee459f4f191d",
+      "bytes": 3144
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/olddefconfig.log",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/olddefconfig.log",
+      "blob_sha": "989ab4f37968890d76d06841db5d47a8c5ad4153",
+      "bytes": 1644
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/original.config",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/original.config",
+      "blob_sha": "7e8a7395a920f2d75ceb0249e32b21f5cae61be2",
+      "bytes": 178163
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/post-prepare.config",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/post-prepare.config",
+      "blob_sha": "39a2976abed421b95f6f8a8c196d65099867fb19",
+      "bytes": 190456
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/prepare.log",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/prepare.log",
+      "blob_sha": "556264f92f7863d4faf57355fc8e36afcbc139b6",
+      "bytes": 287932
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/probe-command.json",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/probe-command.json",
+      "blob_sha": "f88d5851d7fadb1c6c12e5bade91d91b591b092e",
+      "bytes": 2981
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/probe-compile.log",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/probe-compile.log",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/resolved.config",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/resolved.config",
+      "blob_sha": "39a2976abed421b95f6f8a8c196d65099867fb19",
+      "bytes": 190456
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/source-commit.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/source-commit.txt",
+      "blob_sha": "d330c0811da7c12b87c4d93329b5dcebaa305d71",
+      "bytes": 41
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/source-dir.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/source-dir.txt",
+      "blob_sha": "6b42ebcc032e65dbe7c7e07aa740ab05eada8d15",
+      "bytes": 67
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/toolchain-commit.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/toolchain-commit.txt",
+      "blob_sha": "8fd98b4c2d1d3da72af528427adfd507a40c857a",
+      "bytes": 41
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/IMPORTANT.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/IMPORTANT.txt",
+      "blob_sha": "841d01d973aab696adbdd006c46bbbbfd71ca7e9",
+      "bytes": 86
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/clang-version.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/clang-version.txt",
+      "blob_sha": "e35ebacd7a452b89af006bac77e14c88735cbf1f",
+      "bytes": 320
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/olddefconfig.log",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/olddefconfig.log",
+      "blob_sha": "253bc6319302cad7826faff1def4fc0d5d237bcd",
+      "bytes": 4055
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/original.config",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/original.config",
+      "blob_sha": "7e8a7395a920f2d75ceb0249e32b21f5cae61be2",
+      "bytes": 178163
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/source-commit.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/source-commit.txt",
+      "blob_sha": "4a14847837d1cac2525c9913a78f6c070b711837",
+      "bytes": 41
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/source-dir.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/source-dir.txt",
+      "blob_sha": "ee9a63aa2cc7a15fdbc638a962a59b3cb209117f",
+      "bytes": 75
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/toolchain-commit.txt",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/toolchain-commit.txt",
+      "blob_sha": "8fd98b4c2d1d3da72af528427adfd507a40c857a",
+      "bytes": 41
+    },
+    {
+      "from": "evidence/actions/2026-10-10-layout-audit/layout-comparison.json",
+      "to": "evidence/actions/2026-10-10-layout-audit/runs/38060293186/layout-comparison.json",
+      "blob_sha": "a0400d95f3aaf13b10370e30d134163bc8cf923f",
+      "bytes": 1393
+    }
+  ],
+  "removed_redundant_files": [
+    {
+      "from": "evidence/actions/2026-10-10-config-delta/critical-delta.txt",
+      "canonical": "evidence/actions/2026-10-10-config-delta/critical-delta.md",
+      "shared_blob_sha": "394b5cfaf20b4713da4495af98720e2616532b58",
+      "bytes": 3321
+    }
+  ],
+  "duplicate_blob_groups_before": [
+    {
+      "blob_sha": "e35ebacd7a452b89af006bac77e14c88735cbf1f",
+      "paths": [
+        "evidence/actions/2026-10-10-clang11/android-clang-version.txt",
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/clang-version.txt",
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/clang-version.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/clang-version.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/clang-version.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/clang-version.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/clang-version.txt"
+      ]
+    },
+    {
+      "blob_sha": "e07c127799834533bc6080154d40af064ca15666",
+      "paths": [
+        "evidence/actions/2026-10-10-clang11/config-changes.json",
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/config-changes.json",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/config-changes.json",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/config-changes.json"
+      ]
+    },
+    {
+      "blob_sha": "b35a4a788573094a9e5dea0ca1c0f11a0b07f4ac",
+      "paths": [
+        "evidence/actions/2026-10-10-clang11/config-sha256.txt",
+        "evidence/actions/2026-10-10-clang14/config-sha256.txt"
+      ]
+    },
+    {
+      "blob_sha": "9c29e3f1156552747defcd2ab961623119e6022d",
+      "paths": [
+        "evidence/actions/2026-10-10-clang11/config-summary.md",
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/config-summary.md",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/config-summary.md",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/config-summary.md"
+      ]
+    },
+    {
+      "blob_sha": "3ae223c96cad28d67779d2db37796748528392e4",
+      "paths": [
+        "evidence/actions/2026-10-10-clang11/olddefconfig-clang11.log",
+        "evidence/actions/2026-10-10-clang14/olddefconfig.log"
+      ]
+    },
+    {
+      "blob_sha": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56",
+      "paths": [
+        "evidence/actions/2026-10-10-clang11/olddefconfig-exit.txt",
+        "evidence/actions/2026-10-10-clang11/rtmutex-build-exit.txt",
+        "evidence/actions/2026-10-10-clang14/olddefconfig-exit.txt",
+        "evidence/actions/2026-10-10-clang14/rtmutex-build-exit.txt"
+      ]
+    },
+    {
+      "blob_sha": "7e8a7395a920f2d75ceb0249e32b21f5cae61be2",
+      "paths": [
+        "evidence/actions/2026-10-10-clang11/original.config",
+        "evidence/actions/2026-10-10-clang14/original.config",
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/original.config",
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/original.config",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/original.config",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/original.config",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/original.config",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/original.config"
+      ]
+    },
+    {
+      "blob_sha": "39a2976abed421b95f6f8a8c196d65099867fb19",
+      "paths": [
+        "evidence/actions/2026-10-10-clang11/post-compile.config",
+        "evidence/actions/2026-10-10-clang11/resolved.config",
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/post-prepare.config",
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/resolved.config",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/post-prepare.config",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/resolved.config",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/post-prepare.config",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/resolved.config"
+      ]
+    },
+    {
+      "blob_sha": "880ae5dcbdf989d20ae4bf7e34ad1f0fae97566e",
+      "paths": [
+        "evidence/actions/2026-10-10-clang11/rtmutex-type.txt",
+        "evidence/actions/2026-10-10-clang14/object-type.txt",
+        "evidence/actions/2026-10-10-clang14/rtmutex-object-type.txt"
+      ]
+    },
+    {
+      "blob_sha": "d330c0811da7c12b87c4d93329b5dcebaa305d71",
+      "paths": [
+        "evidence/actions/2026-10-10-clang11/source-commit.txt",
+        "evidence/actions/2026-10-10-clang14/source-commit.txt",
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/source-commit.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/source-commit.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/source-commit.txt"
+      ]
+    },
+    {
+      "blob_sha": "8fd98b4c2d1d3da72af528427adfd507a40c857a",
+      "paths": [
+        "evidence/actions/2026-10-10-clang11/toolchain-commit.txt",
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/toolchain-commit.txt",
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/toolchain-commit.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/toolchain-commit.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/toolchain-commit.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/toolchain-commit.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/toolchain-commit.txt"
+      ]
+    },
+    {
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "paths": [
+        "evidence/actions/2026-10-10-clang11/toolchain-sparse.log",
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/probe-compile.log",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/probe-compile.log",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/probe-compile.log",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/probe-compile.log",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/probe-compile.log",
+        "evidence/framework/2026-10-10/gms-paths.txt"
+      ]
+    },
+    {
+      "blob_sha": "c144c9aa3c1daf1f0846ba0c3c78cdaee9f23438",
+      "paths": [
+        "evidence/actions/2026-10-10-clang14/config-changes.json",
+        "evidence/actions/2026-10-10-config-delta/config-changes.json"
+      ]
+    },
+    {
+      "blob_sha": "3677400c1e5f7016059144de050a22992f646035",
+      "paths": [
+        "evidence/actions/2026-10-10-clang14/post-compile.config",
+        "evidence/actions/2026-10-10-clang14/resolved.config"
+      ]
+    },
+    {
+      "blob_sha": "394b5cfaf20b4713da4495af98720e2616532b58",
+      "paths": [
+        "evidence/actions/2026-10-10-config-delta/critical-delta.md",
+        "evidence/actions/2026-10-10-config-delta/critical-delta.txt"
+      ]
+    },
+    {
+      "blob_sha": "841d01d973aab696adbdd006c46bbbbfd71ca7e9",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/IMPORTANT.txt",
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/IMPORTANT.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/IMPORTANT.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/IMPORTANT.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/IMPORTANT.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/IMPORTANT.txt"
+      ]
+    },
+    {
+      "blob_sha": "0b936ef037f3a6e8d633c20e1b428b83b1a156fd",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/candidate-layout.json",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/candidate-layout.json"
+      ]
+    },
+    {
+      "blob_sha": "ac6cff6a91a38fbed24cbe8c92828dfd6c7f2ff2",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/kbuild-command.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/kbuild-command.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/kbuild-command.txt"
+      ]
+    },
+    {
+      "blob_sha": "103b85e3349e8d437fc0a3ba57b0ee459f4f191d",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/layout-probe.s",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/layout-probe.s",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/layout-probe.s"
+      ]
+    },
+    {
+      "blob_sha": "989ab4f37968890d76d06841db5d47a8c5ad4153",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/olddefconfig.log",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/olddefconfig.log",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/olddefconfig.log"
+      ]
+    },
+    {
+      "blob_sha": "f88d5851d7fadb1c6c12e5bade91d91b591b092e",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/probe-command.json",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/probe-command.json",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/probe-command.json"
+      ]
+    },
+    {
+      "blob_sha": "6b42ebcc032e65dbe7c7e07aa740ab05eada8d15",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-a52s-5.4.233/source-dir.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/source-dir.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/source-dir.txt"
+      ]
+    },
+    {
+      "blob_sha": "4a14847837d1cac2525c9913a78f6c070b711837",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/source-commit.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/source-commit.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/source-commit.txt"
+      ]
+    },
+    {
+      "blob_sha": "ee9a63aa2cc7a15fdbc638a962a59b3cb209117f",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/builds/p780-layout-tinno-5.4.61/source-dir.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/source-dir.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/source-dir.txt"
+      ]
+    },
+    {
+      "blob_sha": "0dfc6f004c8cfb72d2abfd2cbec1c1ae6a91f965",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/executable-mode-repairs.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/executable-mode-repairs.txt"
+      ]
+    },
+    {
+      "blob_sha": "fb34b17a32cd81bbdc2accc5cb8f7704e8344690",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/prepare.log",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/prepare.log"
+      ]
+    },
+    {
+      "blob_sha": "a689d0deda01ac071ce1bc034858103035dde489",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/config-changes.json",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/config-changes.json"
+      ]
+    },
+    {
+      "blob_sha": "972a30725fd5bd0fb4134ccb1d7b2308b18eac5e",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/config-summary.md",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/config-summary.md"
+      ]
+    },
+    {
+      "blob_sha": "aa697d968367a74deb2f711f03c3df7083d9f885",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/executable-mode-repairs.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/executable-mode-repairs.txt"
+      ]
+    },
+    {
+      "blob_sha": "0ebfb40a8a63d411063fc84be56b933908d23cfd",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/kbuild-command.txt",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/kbuild-command.txt"
+      ]
+    },
+    {
+      "blob_sha": "5f5bedf72568a5c05b3cfc7ac49e2c2876857de3",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/olddefconfig.log",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/olddefconfig.log"
+      ]
+    },
+    {
+      "blob_sha": "2962c4d82424459ff0c10447d6cad97128e01292",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/post-prepare.config",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/resolved.config",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/post-prepare.config",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/resolved.config"
+      ]
+    },
+    {
+      "blob_sha": "f3846b53dbfc57481aa517f473c7386a339eb051",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/probe-command.json",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/probe-command.json"
+      ]
+    },
+    {
+      "blob_sha": "8ea24e87584d8dee34b8d538fb02528128247c37",
+      "paths": [
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/layout-probe.s",
+        "evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/layout-probe.s"
+      ]
+    }
+  ],
+  "duplicate_policy": "Preserve independent run context and original package internals; only redundant same-run text rendering removed.",
+  "missing_originals": "Original framework ZIP/JAR and some older listed inputs are not archived as raw bytes; see EVIDENCE_MANIFEST.",
+  "inventory_scope": "Before-state is a complete recursive Git tree (not truncated); moved data identity is checked with git hash-object. No claim of full privacy audit or unavailable original bytes."
+}

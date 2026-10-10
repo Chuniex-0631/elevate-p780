@@ -2,10 +2,6 @@ name: Archive verified historical P780 Actions evidence
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/p780-archive-build-evidence.yml
 
 permissions:
   contents: write
@@ -38,6 +34,8 @@ jobs:
             -R Chuniex-0631/p780-kernel-research \
             -n p780-exact-config-delta \
             -D evidence/actions/2026-10-10-config-delta
+          # Keep one byte-identical rendering of this historical delta.
+          rm -f evidence/actions/2026-10-10-config-delta/critical-delta.txt
           test -s evidence/actions/2026-10-10-clang11/config-changes.json
           test -s evidence/actions/2026-10-10-clang11/rtmutex.o
           test -s evidence/actions/2026-10-10-clang14/config-changes.json
@@ -55,3 +53,4 @@ jobs:
             git commit -m "evidence: preserve verified Clang11, Clang14 and config-delta artifacts"
             git push origin HEAD:main
           fi
+

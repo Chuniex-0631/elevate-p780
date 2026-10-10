@@ -2,10 +2,6 @@ name: P780 exact configuration delta
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/p780-config-delta.yml
 
 permissions:
   contents: read
@@ -71,3 +67,4 @@ jobs:
           name: p780-exact-config-delta
           path: reports/
           if-no-files-found: warn
+

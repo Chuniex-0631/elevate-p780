@@ -1,4 +1,6 @@
-# Rakuten Hand 5G / P780：最终归档验收记录
+# Rakuten Hand 5G / P780：2026-10-10 阶段归档验收
+
+> 历史阶段记录：其中 113 文件/238 链接等数字是当轮快照。当前完整状态以 [STATUS](../STATUS.md) 与 [2026-10-11 全库验收](../REPOSITORY_AUDIT.md) 为准；后续 OTA/Journey 与结构归位不应从本记录推断缺失。
 
 **验收日期：2026-10-10**  
 **验收对象：私有仓库 `Chuniex-0631/p780-kernel-research` 的 `main` 分支。**  
@@ -8,22 +10,22 @@
 
 | 专题 | 长期成果的存放位置 | 状态 |
 |---|---|---|
-| 型号、Android/内核构建、实际开发选项 | [DEVICE_AND_BOOT](DEVICE_AND_BOOT.md)、[原始配置](../p780-config.gz)、[内核版本](../archive/device/hand5g_kernel.txt) | 有直接设备证据 |
-| Fastboot / Bootloader / AVB / UFS A/B / 早期 EDL | [DEVICE_AND_BOOT](DEVICE_AND_BOOT.md)、[旧 EDL 脱敏版](../archive/device/P780_EDL_2026-06-12_sanitized.txt)、[分区表](../archive/device/hand5g_byname.txt) | 包含成功探测及失败命令 |
-| OTA/更新服务与官方公告 | [FIRMWARE_OTA_AND_OFFICIAL](FIRMWARE_OTA_AND_OFFICIAL.md) 与 [独立安全公告分析](2026-09-28-rakuten-hand5g-firmware-advisory.md) | 官方信息与实机观察分开；原始 OTA 未取得 |
-| QAS、XRVD、Mink/JNI、PFM、TZAccess | [QAS_TZ_PFM](QAS_TZ_PFM.md)、[3 份原始分析报告](../archive/reports) | Java/DEX/JNI 路径有实证，OEM 解锁无已证实连接 |
-| ADB 软件包清理、诊断服务 | [DEBLOAT_AND_APP_TESTS](DEBLOAT_AND_APP_TESTS.md)、[历史脚本](../archive/scripts) | 记录状态改变，不把历史脚本当只读 |
-| GhostLock/CVE 与实机 Tracefs | [GHOSTLOCK](GHOSTLOCK.md)、[实机 4KB 样本](../evidence/device/p780-cpu4.raw)、[v0.1—v0.4 原件](../evidence/ghostlock) | 历史预检全部 `BLOCKED`，不是 Root payload |
-| Linux 5.4.61/5.4.233 版本差异与构建 | [GHOSTLOCK](GHOSTLOCK.md)、[Clang11/14 CI 原件](../evidence/actions) | Kconfig 和锁对象编译成功；不是匹配出厂 `vmlinux` |
-| 资料来源、原始文件与遗漏 | [RESEARCH_SOURCES](RESEARCH_SOURCES.md)、[EVIDENCE_MANIFEST](EVIDENCE_MANIFEST.md) | 逐项保留原件与迁移状态，不能无证据补齐历史 |
+| 型号、Android/内核构建、实际开发选项 | [DEVICE_AND_BOOT](../research/device-and-boot.md)、[原始配置](../../evidence/device/p780-config.gz)、[内核版本](../../archive/device/hand5g_kernel.txt) | 有直接设备证据 |
+| Fastboot / Bootloader / AVB / UFS A/B / 早期 EDL | [DEVICE_AND_BOOT](../research/device-and-boot.md)、[旧 EDL 脱敏版](../../archive/device/P780_EDL_2026-06-12_sanitized.txt)、[分区表](../../archive/device/hand5g_byname.txt) | 包含成功探测及失败命令 |
+| OTA/更新服务与官方公告 | [FIRMWARE_OTA_AND_OFFICIAL](../research/firmware-ota.md) 与 [独立安全公告分析](../research/firmware-advisory-20260928.md) | 官方信息与实机观察分开；原始 OTA 未取得 |
+| QAS、XRVD、Mink/JNI、PFM、TZAccess | [QAS_TZ_PFM](../research/qas-tee-pfm.md)、[3 份原始分析报告](../../archive/reports) | Java/DEX/JNI 路径有实证，OEM 解锁无已证实连接 |
+| ADB 软件包清理、诊断服务 | [DEBLOAT_AND_APP_TESTS](../research/apps-and-debloat.md)、[历史脚本](../../archive/scripts) | 记录状态改变，不把历史脚本当只读 |
+| GhostLock/CVE 与实机 Tracefs | [GHOSTLOCK](../research/ghostlock.md)、[实机 4KB 样本](../../evidence/device/p780-cpu4.raw)、[v0.1—v0.4 原件](../../evidence/ghostlock) | 历史预检全部 `BLOCKED`，不是 Root payload |
+| Linux 5.4.61/5.4.233 版本差异与构建 | [GHOSTLOCK](../research/ghostlock.md)、[Clang11/14 CI 原件](../../evidence/actions) | Kconfig 和锁对象编译成功；不是匹配出厂 `vmlinux` |
+| 资料来源、原始文件与遗漏 | [RESEARCH_SOURCES](../reference/sources.md)、[EVIDENCE_MANIFEST](../EVIDENCE_MANIFEST.md) | 逐项保留原件与迁移状态，不能无证据补齐历史 |
 
 ## 2. 原始文件接收及校验
 
-- `p780-config.gz`：39,170B，GZIP 正常，SHA256 已记入 [完整性报告](EVIDENCE_INTEGRITY.md)。
+- `p780-config.gz`：39,170B，GZIP 正常，SHA256 已记入 [完整性报告](../reference/evidence-integrity.md)。
 - `p780-cpu4.raw`：4,096B、标记存在；原件已迁移至 `evidence/device/`。
 - GhostLock v0.1–v0.4：**四份 ZIP 全部已迁移** `evidence/ghostlock/`；13/16/17/27 条目，CRC 全部通过。
 - 四版内部设备配置与 Tracefs 副本与仓库主证据**一致**，不是四份独立实机采样。
-- v0.4 内 README 第一行误标 v0.3，保留历史原件，已在 [版本索引](GHOSTLOCK_PORT_VERSIONS.md) 标注。
+- v0.4 内 README 第一行误标 v0.3，保留历史原件，已在 [版本索引](ghostlock-package-versions.md) 标注。
 - [第一次完整性运行](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38055450831) 与 [补充内嵌证据核对](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38055530285) 均成功。
 
 ## 3. 真实构建记录已永久入 Git
@@ -42,8 +44,8 @@
 ## 5. 新增原件再次接收与去重验收
 
 - 本轮收到两个完整 ADB 审计 ZIP、对应 31 个逐字节一致的展开文件、完整 Android Bugreport、一组 phase3 包列表、两个更新日志、两份 TZ/JNI 采集记录和三份 APK。
-- 保留原始审计 ZIP，删除相同的 22+9 个展开文件；压缩包 CRC、逐文件 SHA 匹配结果详见 [新增原件审计](NEW_UPLOADS_AND_DEDUP.md)。
-- APK/TEE 证据见 [TEE_AND_SYSTEM_APKS](TEE_AND_SYSTEM_APKS.md)，系统更新日志与 Bugreport 见 [OTA_LOGS_AND_BUGREPORT](OTA_LOGS_AND_BUGREPORT.md)。仍无实机 Root、Bootloader 解锁或可信完整原厂 OTA 成功提取。
+- 保留原始审计 ZIP，删除相同的 22+9 个展开文件；压缩包 CRC、逐文件 SHA 匹配结果详见 [新增原件审计](20261010-import-dedup.md)。
+- APK/TEE 证据见 [TEE_AND_SYSTEM_APKS](../research/tee-system-apks.md)，系统更新日志与 Bugreport 见 [OTA_LOGS_AND_BUGREPORT](../research/ota-bugreport.md)。仍无实机 Root、Bootloader 解锁或可信完整原厂 OTA 成功提取。
 - 清理前仓库全量 Git 快照保留于 [archive/pre-cleanup-20261010](https://github.com/Chuniex-0631/p780-kernel-research/tree/archive/pre-cleanup-20261010)。所有 `evidence/restricted/` 文件仍可能含个人数据，Private 不是去身份化保证。
 
 ## 6. 完整性的严格定义
@@ -60,12 +62,13 @@
 - [整理后完整性 #38057165543](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38057165543)：成功。仓库当时 113 个文件、docs 下 18 个专题 Markdown 文件；共 238 个内部相对链接，失效 0 个。
 - 两个审计 ZIP 分别 22 / 9 条目、Bugreport 402 条目、三份 APK 分别 265 / 6 / 6 条目：压缩结构检验全部通过。phase3 的 installed/all 清单分别 210 / 271 个包名，属于不同过滤口径。
 - 从 main 删除 31 个重复展开审计文件（共 7,576,640 字节），保留相同原始内容的两份 ZIP。临时盘点脚本和临时工作流也已移除，完整整理前快照在 [archive/pre-cleanup-20261010](https://github.com/Chuniex-0631/p780-kernel-research/tree/archive/pre-cleanup-20261010)。
-- 仓库根目录最终仅包含 README.md、CHANGELOG.md、SECURITY.md、p780-config.gz，研究资料按 docs、archive、evidence、tools 和 .github 分类。新增原件的 SHA-256 与文件位置见 [证据完整性](EVIDENCE_INTEGRITY.md)。
+- 仓库根目录最终仅包含 README.md、CHANGELOG.md、SECURITY.md、p780-config.gz，研究资料按 docs、archive、evidence、tools 和 .github 分类。新增原件的 SHA-256 与文件位置见 [证据完整性](../reference/evidence-integrity.md)。
 - restricted 目录仅为分类标签，不提供独立访问权限。已有 Bugreport、OTA/ADB 日志尚未经发布级隐私审查，Private 及恢复分支均应按敏感数据管理。
 - 本轮材料完善不会改变核心结论：未取得 Root、未解锁 Bootloader，仍无匹配固件的完整 OTA、boot.img 或 vmlinux。
 ## 8. 今后继续研究的固定入口
 
-1. 从 [README](../README.md) 进入。
-2. 以 [STATUS](STATUS.md) 为当前事实基准，以 [HISTORY](HISTORY.md) 和专题报告追溯旧结论。
-3. 新发现只写入有证据级别的专题、[EVIDENCE_MANIFEST](EVIDENCE_MANIFEST.md) 与 [CHANGELOG](../CHANGELOG.md)，及时保留必要原始文件。
+1. 从 [README](../../README.md) 进入。
+2. 以 [STATUS](../STATUS.md) 为当前事实基准，以 [HISTORY](../HISTORY.md) 和专题报告追溯旧结论。
+3. 新发现只写入有证据级别的专题、[EVIDENCE_MANIFEST](../EVIDENCE_MANIFEST.md) 与 [CHANGELOG](../../CHANGELOG.md)，及时保留必要原始文件。
 4. 在取得实际匹配固件二进制之前，不改变 GhostLock `BLOCKED` 和“未解锁 Bootloader”的状态。
+

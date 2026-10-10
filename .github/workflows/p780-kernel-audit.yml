@@ -2,12 +2,6 @@ name: P780 kernel configuration and rtmutex audit
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - .github/workflows/p780-kernel-audit.yml
-      - p780-config.gz
 
 permissions:
   contents: read
@@ -37,10 +31,10 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p reports out
-          test -s p780-config.gz
-          gzip -t p780-config.gz
-          sha256sum p780-config.gz | tee reports/config-sha256.txt
-          gzip -dc p780-config.gz > out/.config
+          test -s evidence/device/p780-config.gz
+          gzip -t evidence/device/p780-config.gz
+          sha256sum evidence/device/p780-config.gz | tee reports/config-sha256.txt
+          gzip -dc evidence/device/p780-config.gz > out/.config
           cp out/.config reports/original.config
           grep -E '^(CONFIG_(FUTEX_PI|RT_MUTEXES|ASHMEM|LTO_CLANG|CFI_CLANG|ARCH_HOLI|ARCH_BLAIR)=|CONFIG_CC_VERSION_TEXT=)' out/.config | tee reports/key-options.txt || true
           clang --version | tee reports/host-clang-version.txt
@@ -133,3 +127,4 @@ jobs:
           path: reports/
           if-no-files-found: warn
           retention-days: 30
+

@@ -8,7 +8,7 @@
 | **2026-10-03 ～ 10-04** | ADB `getprop`、`fastboot getvar all`、`by-name`、`mount`、`df`、`lshal`、包清单；未联网/恢复出厂环境下的部分清理 | OEM unlocking 灰色；固件 264 / 安全补丁 2024-02-01；A/B UFS 分区事实归档 |
 | **2026-10-04** | 系统应用与去预装实验；`hand5g_debloat_p780.ps1` 和保留基础电话功能的 `hand5g_debloat_daily_phone.ps1` | 历史记录：第一轮安装包 `302→242`，后来壁纸/屏保与其他清理后复查 `157` 包。数字为不同时间点快照，不能串成单次自动结果 |
 | **2026-10-04** | `QAS_DVC_MSP.apk`、`xrvdservice.apk`、PFM/Mink/TZService APK 和 JNI 库静态分析、相关运行日志 | 识别 eMBMS PFM class 119/feature 700、XRVD 2100；XRVD 创建 IPFM 代理；没有发现 OEM Unlock 路径 |
-| **2026-10-04** | `hand5g_update_activity.txt`、`hand5g_update_log.txt`、`hand5g_bugreport.zip` | OTA/更新服务检查材料已保留在文件库；本归档尚未逐字复核它们；**不声称获取到 OTA 包** |
+| **2026-10-04** | `hand5g_update_activity.txt`、`hand5g_update_log.txt`、`hand5g_bugreport.zip` | 历史采集材料现已入 Git；2026-10-10 后续审计见下方时间线；**不声称获取到 OTA 包** |
 | **2026-10-10** | 实机 `p780-config.gz`、`p780-cpu4.raw`、Tracefs 原始事件与模块读取测试；GhostLock v0.1–v0.4 工作包 | 配置满足 Futex PI/RT Mutex；追踪见候选地址；`/vendor/lib/modules` 可列但 SELinux 下无法读模块内容；GhostLock 未执行成功 |
 | **2026-10-10** | TINNO P780 5.4.61 旧源码；Qualcomm A52s 5.4.233 候选源码；Kconfig 文件比对 | 旧源码存在 CVE 类似代理锁清理模式；不能推出运行中 5.4.233 有漏洞。候选源码含更多 HOLI/BLAIR 平台配置 |
 | **2026-10-10** | GitHub Actions [首次](../.github/workflows/p780-kernel-audit.yml) 编译（#38051600739） | 拉取 Qualcomm 候选、Kconfig 通过、Ubuntu Clang 14 编译 `rtmutex.o` |
@@ -18,12 +18,18 @@
 | **2026-10-10** | [Actions #38054396216](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38054396216) 将编译资料永久入 Git | Clang11、Clang14 配置、日志、对象与差异报告均已保存于 `evidence/actions/` |
 | **2026-10-10** | 机主补传 GhostLock v0.1—v0.4 和 Tracefs 原件 | 4 个 ZIP 与 4KB `p780-cpu4.raw` 全部保存；[验收 #38055530285](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38055530285) 检查 CRC、SHA、内嵌证据的字节一致性 |
 | **2026-10-10** | 最终文件与文档收敛 | 整理 `evidence/`、修复早期“待上传”状态、记录 v0.4 README 仍误标 v0.3 的原件瑕疵；Root / BL 解锁仍未达成 |
-
 | **2026-10-10** | 机主追加上传早期 Android/ADB 研究资料 | 收到审计 ZIP、Bugreport、OTA/TEE 日志和三份 APK；完整比对 22+9 个展开文件与原 ZIP 的内容，发现逐文件相同、移除重复副本；保留 [清理前备份分支](https://github.com/Chuniex-0631/p780-kernel-research/tree/archive/pre-cleanup-20261010) |
-| **2026-10-10** | 新证据专题与安全审阅 | [新增资料审计](NEW_UPLOADS_AND_DEDUP.md)、[TEE/APK](TEE_AND_SYSTEM_APKS.md)、[OTA/Bugreport](OTA_LOGS_AND_BUGREPORT.md) 分别记录，有敏感风险的原件分类归档，未据此宣称 Root 或固件获取成功 |
+| **2026-10-10** | 新证据专题与安全审阅 | [新增资料审计](archive/20261010-import-dedup.md)、[TEE/APK](research/tee-system-apks.md)、[OTA/Bugreport](research/ota-bugreport.md) 分别记录，有敏感风险的原件分类归档，未据此宣称 Root 或固件获取成功 |
+
+| **2026-10-10** | 候选配置/布局最终 run 38060518994 | 两棵固定树各 32 项、0 差异，实机适配仍 BLOCKED |
+| **2026-10-10** | OTA 与 Bugreport 深入审计、实机 framework 采集 | 6 份历史引擎日志只见启动清理；Journey HTTP/XML 应用策略链定位 |
+| **2026-10-10** | vendor 配置与无参数 TCS 状态核对 | 三处版本 42；64 个策略键按 ALL 假设完整匹配，0 差异 |
+| **2026-10-11** | Journey 性能消费者静态核对 | 134 方法、79 条外部引用/25 个调用者方法；进程管理/Service/Provider 策略，无新 Root/OTA 链 |
+| **2026-10-11** | 全库结构整理与研究待机 | 主题/参考/历史分层，证据归位、链接更新；每日有效新线索监测保持启用 |
 
 ## 重要警告
 
 - “2026-10-04 去预装实验”会改变 Android 用户 0 的包状态；恢复出厂后数值可能改变。不要将不同日期观察的包数认为同一时间。
 - “源码已包含旧错误模式”和“实机成功 Root”没有逻辑等价关系。
 - “EDL 已识别”不等于 Firehose Loader 已通过鉴权；“源码已编译”不等于固件镜像已匹配。
+

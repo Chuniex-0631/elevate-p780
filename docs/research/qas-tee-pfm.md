@@ -2,9 +2,9 @@
 
 2026-10-04 对真实 P780 提取的应用、库与日志进行静态分析，详细原始报告已永久提交至：
 
-- [QAS / PFM 完整报告](../archive/reports/P780_PFM_QAS_2026-10-04.md)
-- [MinkNative 完整报告](../archive/reports/P780_MinkNative_2026-10-04.md)
-- [TZAccessService 完整报告](../archive/reports/P780_TZAccess_2026-10-04.md)
+- [QAS / PFM 完整报告](../../archive/reports/P780_PFM_QAS_2026-10-04.md)
+- [MinkNative 完整报告](../../archive/reports/P780_MinkNative_2026-10-04.md)
+- [TZAccessService 完整报告](../../archive/reports/P780_TZAccess_2026-10-04.md)
 
 ## 路径关系（已定位）
 
@@ -22,9 +22,9 @@ QAS_DVC_MSP (com.qti.ltebc)
 
 ## 本轮新增的实机原件
 
-- [TZ 白名单原文](../evidence/tee/hand5g_tz_whitelist.txt) 已归档，含 **10 个 classID 项**，包括 `119 Platform Feature Management`，与此前静态调用链相互印证。列表中 `permissions: []` 不表示无其它身份鉴权。
-- [native-api 路径查询记录](../evidence/tee/hand5g_native_api_paths.txt) 保留 `Permission denied`、路径不存在等阴性结果。
-- 新增的 SecureUI、SystemHelper 和 ApeHighLights APK 见 [TEE 与系统 APK 专题](TEE_AND_SYSTEM_APKS.md)；这三份 APK 只验证了可读性，**未进行新一轮动态越权测试**。
+- [TZ 白名单原文](../../evidence/tee/hand5g_tz_whitelist.txt) 已归档，含 **10 个 classID 项**，包括 `119 Platform Feature Management`，与此前静态调用链相互印证。列表中 `permissions: []` 不表示无其它身份鉴权。
+- [native-api 路径查询记录](../../evidence/tee/hand5g_native_api_paths.txt) 保留 `Permission denied`、路径不存在等阴性结果。
+- 新增的 SecureUI、SystemHelper 和 ApeHighLights APK 见 [TEE 与系统 APK 专题](tee-system-apks.md)；这三份 APK 只验证了可读性，**未进行新一轮动态越权测试**。
 
 ## 服务端进一步查出的条件
 
@@ -41,3 +41,4 @@ QAS_DVC_MSP (com.qti.ltebc)
 ## 后续
 
 离线阅读已上传 TZ APK 和 JNI 样本仍可补充调用链；如真正分析 ROM 启动鉴权，应另行取得匹配 P780 固件的可信二进制，不将 QAS 与 BL 解锁等同。
+

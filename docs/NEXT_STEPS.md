@@ -1,39 +1,33 @@
-# 后续研究与待归档证据
+# 后续关卡与待机监测
 
-当前：研究用途；手机仍处于 Bootloader locked 状态；没有执行 Root 成功或解锁成功。
+更新：2026-10-11。当前暂停主动设备实验，保留公开线索监测。机主暂时无需操作手机。
 
-## 已归档
+## 值得重启研究的新证据
 
-- 详细时间线、硬件/固件、EDL、Fastboot、QAS/PFM/TZ、GhostLock 源码分析。
-- Clang11 与 Clang14 的真实 GitHub Actions 构建日志、原始/求解配置、对象文件和配置差异 JSON。
-- 历史脚本与已保存的 Markdown 分析报告。
+| 新证据 | 先做什么 | 仍需注意的边界 |
+|---|---|---|
+| 可信完整 `_162` OTA / boot.img / Image / vmlinux | 核对来源、构建身份与原件哈希，离线提取内核与更新元数据 | 跨机型镜像不能当成本机原厂输入 |
+| 官方固件认证问题的技术说明、JVN/CVE 或研究文章 | 与 [官方公告专题](research/firmware-advisory-20260928.md) 对照，定位具体触发环节 | 公告、明文配置服务与 GhostLock 三者不能自动关联 |
+| 本机签名/HWID 匹配的 EDL Loader 证据 | 先核对原件身份与实际握手记录 | 同 SoC 不代表签名兼容；EDL 识别不等于分区读取成功 |
+| 可复核的 P780 Root / BL 解锁新成果 | 核对型号、版本、前置状态、原始记录与可重复性 | 传闻、演示名称、其它机型成果不能改写本机状态 |
+| 原厂内核实现、类型或符号证据 | 核对逐构建身份后再评估 GhostLock 阻断项 | 候选树的 32 项一致不能代替实机 ABI/栈帧/符号 |
 
-## 已补齐的原件与真正仍缺的材料
+## 已关闭的本轮待办
 
-- **Tracefs 数据已归档**：[原始 `p780-cpu4.raw`](../evidence/device/p780-cpu4.raw)，4,096 字节；字节级校验和 SHA-256 见 [完整性报告](EVIDENCE_INTEGRITY.md)。
-- `hand5g_getprop.txt`、`hand5g_fastboot_all.txt` 等独立历史原件还在个人文件库。**完整 Bugreport 与 OTA 日志现已存于私有 GitHub 的 `evidence/restricted/`，未脱敏**；要公开时必须另做筛查。其它设备文件详见 [来源清单](EVIDENCE_MANIFEST.md)。
-- **四代 GhostLock 包已归档**：v0.1–v0.4 ZIP 全部进入 [evidence/ghostlock](../evidence/ghostlock)，通过 CRC 与内嵌证据交叉校验；详见 [版本索引](GHOSTLOCK_PORT_VERSIONS.md)。
-- 对应设备 `P780AE_11.0_RMN_JP_162` 的可信 `boot.img`、`vmlinux` 或完整官方 OTA：尚未取得。
+- OTA/Activity 与 Bugreport 内 6 份历史引擎日志已审计：所见为启动清理，未取得固件 URL/payload。
+- 两份实机 JAR 已读取；JourneyConfigService 的 54 方法、8 类和 17 个直接外部引用已存档。
+- vendor XML/version 与 TCS 状态均为 42；64 键按 ALL 区域假设完全一致。
+- JourneyPerformanceService 消费者与末尾星号匹配已核对：134 方法、79 条外部引用/25 个调用者方法，接入应用策略；开关当前是否启用未动态验证。
+- 两棵候选内核最终 run 38060518994 各 32 项提取成功、0 差异；结论仍只适用于被测候选采样。
 
-## 可持续研究的主要阻断点
+详见 [状态](STATUS.md)、[Journey](research/journey-config.md)、[配置/布局](research/config-layout.md)。以上事项不再重复要求机主采集。
 
-1. 官方 `P780AE_11.0_RMN_JP_162` 版本完全匹配的 `boot.img` / `vendor_boot.img` / `vmlinux` 或可信完整 OTA、内核私有补丁仍未取得。
-2. 来自真实 P780 的内核对象布局和所有 GhostLock 所需逐构建参数仍未验证；旧版预检 31 项中只有 2 项基础元数据确定。
-3. PFM 许可证路径与 OEM Unlock 状态修改之间仍无已知调用链。2026 年 9 月厂商固件认证漏洞具体触发环节仍需独立证据。
-4. 新上传的 Bugreport、APK、OTA 与 ADB 全量记录已存 GitHub 私库，**仍需发布前隐私筛查**；另外尚未迁移的历史 APK、设备转储和其它分析 ZIP 按 [原件清单](EVIDENCE_MANIFEST.md) 保持明确状态。
+## 监测和维护约定
 
-## 研究边界
+现有每日监测任务保持启用，仅在出现实质新增时用中文通知，并附原始来源、新增点与本机适配条件。读取仓库当前状态及上次检查为基线；页面无法访问或搜索未命中不等于没有线索。
 
-A52s 源码编译成功不代表 P780 固件二进制一致。TINNO 公共源代码版本是 5.4.61；手机运行内核为 5.4.233。当前没有可信的真实设备符号偏移，也没有可用的设备 Root/解锁成果。
+出现可核验进展时更新对应专题、STATUS、证据来源与 CHANGELOG，修订过时内容并保持结构一致；没有新增不制造例行提交。不自动运行漏洞或刷写手机。
 
-仅在材料可信且与固件完全匹配时继续离线核对。不要把跨机型镜像用于实机刷写。
+## 持续阻断与资料缺口
 
-## 2026-10-10 后续配置与布局核对
-
-[24 项配置与候选布局研究](2026-10-10-config-layout-research.md) 已完成 24 项源级分类，并加入固定源码/Clang11 的结构测量。优先查看实际对比及构建失败记录，再定位差异字段；候选结构数值不作为 P780 实机参数。
-
-最终 run #38060518994 两棵树各 32 项提取成功，所有采样数值一致；下一步阻断重点仍是原厂二进制、函数栈帧与符号身份。参见专题完整对比及中间失败记录。
-
-## 当前配置支线的下一步
-
-OTA 日志与 Bugreport 内全部 6 份历史引擎日志已审计；实机 services.jar/framework.jar 已离线读取，JourneyConfigService 消费者定位到应用性能策略。vendor 默认 XML/version 与无参数 TCS dump 已取得，版本均 42，64 个策略键完整匹配（见 [专题](2026-10-10-journey-config-audit.md)）。无需重复采集；Journey 保留为应用策略支线，消费者静态追踪与星号匹配已完成：接入进程保留/清理、Service/Provider 黑名单判定，受开关与请求类型约束；没有新的 Root/固件入口。暂缓扩大此支线，回到匹配原厂二进制及官方公告技术细节。不再把此前日志的成功状态当成固件下载成果。原厂 `_162` 二进制仍是内核主线的阻断点。
+原厂 `_162` 完整 OTA/boot.img/vmlinux 未取得；GhostLock 仍 BLOCKED；Firehose 分区读取、Root 和 BL 解锁均无成功证据。部分历史 APK/getprop/Fastboot 原件和新上传 framework 原始 ZIP/JAR 未迁入 Git，逐项见 [资产清单](EVIDENCE_MANIFEST.md)。敏感转储仍按 [SECURITY](../SECURITY.md) 管理。

@@ -11,9 +11,9 @@ JourneyConfigService 是 system_server 内的应用行为配置服务。已确�
 ## 原件与证据范围
 
 - 上传 ZIP CRC 通过，services.jar 为 15,353,744 B（2 DEX），framework.jar 为 30,153,054 B（4 DEX）；与目录清单大小相同。
-- [输入清单及 SHA](../evidence/framework/2026-10-10/input-manifest.json) 保留每个 JAR/DEX 与上传 ZIP 的哈希。
-- [54 个方法的原始指令字节](../evidence/framework/2026-10-10/journey-bytecode.json) 与 [全部 8 类反汇编](../evidence/framework/2026-10-10/journey-disassembly.txt)。
-- [跨两份 JAR 的 17 个引用点](../evidence/framework/2026-10-10/journey-callsites.json)：17 是指令引用数，不是 17 个不同调用者。
+- [输入清单及 SHA](../../evidence/framework/2026-10-10/input-manifest.json) 保留每个 JAR/DEX 与上传 ZIP 的哈希。
+- [54 个方法的原始指令字节](../../evidence/framework/2026-10-10/journey-bytecode.json) 与 [全部 8 类反汇编](../../evidence/framework/2026-10-10/journey-disassembly.txt)。
+- [跨两份 JAR 的 17 个引用点](../../evidence/framework/2026-10-10/journey-callsites.json)：17 是指令引用数，不是 17 个不同调用者。
 - 五份采集文本在 evidence/framework/2026-10-10 保留 UTF-8 阅读视图；GMS 路径文本为空，不推断 GMS 已卸载。
 - 原始大 ZIP/JAR 当前保留于机主上传文件，**未将其原始字节上传 GitHub**；仓库归档的是输入身份、方法原始字节与分析结果，不冒称原件完整入 Git。
 
@@ -40,7 +40,7 @@ JourneyPerformanceService.isSystem 的私有策略判断亦不能等同于 Packa
 
 使用 androguard 对实际 DEX 反汇编，并扫描 services.jar/framework.jar 的全部 6 DEX 中直接引用目标类的指令。未扫描未上传的其它厂商 JAR/native 库、反射字符串消费者或运行时配置。
 
-androguard 对 framework hidden-API 域标志存在兼容性错误。调用点扫描仅在内存解析副本中忽略 type 0xf000 的 hidden-API map 项并重算解析副本校验和；原件字节不变，清单 SHA 来自原件。目标 services classes2 的 54 个方法原始指令取自未改动 DEX。[可重复扫描脚本](../tools/scan_journey_framework.py) 明示这个处理。
+androguard 对 framework hidden-API 域标志存在兼容性错误。调用点扫描仅在内存解析副本中忽略 type 0xf000 的 hidden-API map 项并重算解析副本校验和；原件字节不变，清单 SHA 来自原件。目标 services classes2 的 54 个方法原始指令取自未改动 DEX。[可重复扫描脚本](../../tools/scan_journey_framework.py) 明示这个处理。
 
 反汇编偏移为方法内部字节偏移，不是内核地址或可刷写参数。静态未见验签仅限定于本轮审查路径，不扩大为全系统签名绕过结论。
 
@@ -48,7 +48,7 @@ androguard 对 framework hidden-API 域标志存在兼容性错误。调用点�
 
 机主按上一阶段的只读命令上传 p780-journey-config.zip，3,940 B，ZIP CRC 通过。包含 vendor config.xml（6,440 B）、version.txt（2 B）和 UTF-16 TCS dump（23,286 B）。
 
-[输入 SHA 与还原说明](../evidence/journey/2026-10-10/input-manifest.json)；[完整原始 ZIP 的 Base64 编码](../evidence/journey/2026-10-10/p780-journey-config.zip.b64)。编码文本可还原全部原始字节，已在本地验证解码与上传 ZIP 完全一致；不重复存 ZIP 内 UTF-16 原件，另提供 [TCS UTF-8 阅读视图](../evidence/journey/2026-10-10/tcs-state.utf8.txt)。
+[输入 SHA 与还原说明](../../evidence/journey/2026-10-10/input-manifest.json)；[完整原始 ZIP 的 Base64 编码](../../evidence/journey/2026-10-10/p780-journey-config.zip.b64)。编码文本可还原全部原始字节，已在本地验证解码与上传 ZIP 完全一致；不重复存 ZIP 内 UTF-16 原件，另提供 [TCS UTF-8 阅读视图](../../evidence/journey/2026-10-10/tcs-state.utf8.txt)。
 
 | 核对项 | 观察 |
 |---|---|
@@ -60,7 +60,7 @@ androguard 对 framework hidden-API 域标志存在兼容性错误。调用点�
 | 当前映射 | 64 个唯一键；包括包名、活动类名与两个含星号的策略键 |
 | 离线对照 | 按 ALL 区域假设解析，64 键及其 label/names/behavior/area 与 dump 全部一致，0 差异 |
 
-[完整对照 JSON](../evidence/journey/2026-10-10/comparison.json) 保留区域限定记录与覆盖前后内容；[复核脚本](../tools/compare_journey_config.py) 可运行 `python tools/compare_journey_config.py <解压目录>`，目录须包含 config.xml、version.txt、原始 tcs-state.txt。只读本地输入并输出 comparison.json，不连接手机或网络。
+[完整对照 JSON](../../evidence/journey/2026-10-10/comparison.json) 保留区域限定记录与覆盖前后内容；[复核脚本](../../tools/compare_journey_config.py) 可运行 `python tools/compare_journey_config.py <解压目录>`，目录须包含 config.xml、version.txt、原始 tcs-state.txt。只读本地输入并输出 comparison.json，不连接手机或网络。
 
 ### 重复键与含义边界
 
@@ -75,7 +75,7 @@ androguard 对 framework hidden-API 域标志存在兼容性错误。调用点�
 
 目标完整类名为 `com.android.server.am.JourneyPerformanceService`。检查两份 JAR 的全部 6 DEX：4 个 framework DEX 不含目标描述符，两个 services DEX 有直接引用。提取目标及其内部类的 **134 个有代码方法**，找到目标类族之外 **79 条指令引用、25 个不同调用者方法**；引用数包括字段、类型与内部类引用，并非 79 个策略执行入口。
 
-证据：[完整方法反汇编](../evidence/framework/2026-10-10/performance-disassembly.txt)、[外部引用与上下文](../evidence/framework/2026-10-10/performance-callsites.json)、[6 个关键决策方法及原始指令字节](../evidence/framework/2026-10-10/performance-decision-methods.json)、[逐 DEX 输入 SHA](../evidence/framework/2026-10-10/performance-scan-inputs.json)。
+证据：[完整方法反汇编](../../evidence/framework/2026-10-10/performance-disassembly.txt)、[外部引用与上下文](../../evidence/framework/2026-10-10/performance-callsites.json)、[6 个关键决策方法及原始指令字节](../../evidence/framework/2026-10-10/performance-decision-methods.json)、[逐 DEX 输入 SHA](../../evidence/framework/2026-10-10/performance-scan-inputs.json)。
 
 ### 匹配语义
 
@@ -110,9 +110,9 @@ isSystem(ApplicationInfo) 只返回私有策略布尔值：先检查 ASSUMING_NO
 
 ### 方法与复核范围
 
-大型 DEX 的完整对象解析耗时过长，最终使用 [直接读取 DEX 表的脚本](../tools/read_performance_dex.py)：读取原始字符串/类型/原型/字段/方法/class_data/code_item 表，再使用 androguard 指令解码器。原件不修改，无 hidden-API map 修补；目标描述符不存在的 DEX 只作表中描述符缺席检查。脚本检查已解码指令长度等于 code_item 的原始指令长度。
+大型 DEX 的完整对象解析耗时过长，最终使用 [直接读取 DEX 表的脚本](../../tools/read_performance_dex.py)：读取原始字符串/类型/原型/字段/方法/class_data/code_item 表，再使用 androguard 指令解码器。原件不修改，无 hidden-API map 修补；目标描述符不存在的 DEX 只作表中描述符缺席检查。脚本检查已解码指令长度等于 code_item 的原始指令长度。
 
-独立对照上一阶段的 ConfigService 提取记录：**54 个方法的 code_item 偏移及指令字节全部一致**；另核对 6 个性能决策方法的原始指令 SHA。[验证摘要](../evidence/framework/2026-10-10/performance-verification.json)。这验证提取身份与长度，不替代动态行为验证。
+独立对照上一阶段的 ConfigService 提取记录：**54 个方法的 code_item 偏移及指令字节全部一致**；另核对 6 个性能决策方法的原始指令 SHA。[验证摘要](../../evidence/framework/2026-10-10/performance-verification.json)。这验证提取身份与长度，不替代动态行为验证。
 
 脚本使用 UTF-8 容错显示 DEX 字符串，仅用于本批 ASCII 类名与策略字符串；不是通用的完整 MUTF-8 解析器。当前仅扫描上传的两份 JAR 直接引用，未覆盖其它 JAR/native/反射消费者。运行需要 Python/androguard/loguru，输入目录 framework-audit/ 包含原始两份 JAR；输出为离线分析文件，不连接手机。
 
@@ -125,3 +125,4 @@ isSystem(ApplicationInfo) 只返回私有策略布尔值：先检查 ASSUMING_NO
 ## 持续维护规则
 
 机主要求：每个可核验阶段同步研究文件、文档和说明；修订过时结论，统一索引与状态，必要时去重，不采用只追加而不修正文档的方式。维护时明确区分 GitHub 已保存字节与只登记来源的原件。
+
