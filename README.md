@@ -1,73 +1,97 @@
-# Rakuten Hand 5G (TINNO P780) · 技术研究档案
+# Rakuten Hand 5G（TINNO P780）长期研究档案
 
-> **私人设备 / 长期研究档案** · 资料跨度：2026-06-12 — 2026-10-10  
-> 主线：实机 Android/内核信息、Fastboot/EDL、OEM Unlock、QAS/Mink/TZ/PFM、GhostLock 源码核对、A/B 固件与 OTA、GitHub Actions 重建实验。  
-> **结论：未 Root、未解锁 Bootloader、未获得可刷写的原厂固件镜像。**
+> **项目性质：个人实体机的技术研究与历史证据归档。**  
+> 研究时间跨度：**2026 年 6 月—2026 年 10 月 10 日**（基于目前可恢复的资料）。  
+> 重要结果：**没有实现 Root，没有解锁 Bootloader，也没有取得完整匹配的原厂 `boot.img` / `vmlinux`。**
 
-本仓库不是一个刷机工具或 GhostLock 现成利用包。它的目的，是把长期研究中的**已验证事实、原始证据、历史实验、离线分析、构建日志、失败记录和待办问题**集中保存，防止后续重复走过的弯路。
+本仓库保留对一台真实 **Rakuten Hand 5G（P780）** 长期研究的设备信息、测试记录、失败原因、源码核对、离线研究工具、原始取证样本和可重复的 GitHub Actions 编译结果。它是**技术档案**，不是一键 Root 软件或刷机包。
 
-## 最先看这几份文档
+## 一、研究现状一览
 
-| 入口 | 内容 |
-|---|---|
-| **[研究状态与可信度](docs/STATUS.md)** | 哪些实机证实，哪些仅由源码/构建证实，哪些仍失败或未知 |
-| **[研究时间线](docs/HISTORY.md)** | 2026 年 6 月起的 EDL、ADB、QAS、GhostLock 和 Actions |
-| **[设备基线、Bootloader 和 EDL](docs/DEVICE_AND_BOOT.md)** | 型号、固件、内核、AVB、Fastboot 回显、Sahara / HWID、分区发现 |
-| **[GhostLock 专题](docs/GHOSTLOCK.md)** | CVE-2026-43499 旧源码路径、真机配置、Tracefs、偏移阻断 |
-| **[QAS → Mink → PFM → TZAccessService](docs/QAS_TZ_PFM.md)** | eMBMS 许可查询、class 119、功能 700/2100、白名单与 TEE 身份验证边界 |
-| **[固件、官方更新与 2026 安全公告](docs/FIRMWARE_OTA_AND_OFFICIAL.md)** | _162 官方版本对应日期、OTA 缺失、固件真实性验证问题 |
-| **[ADB 清理 / 精简系统实验](docs/DEBLOAT_AND_APP_TESTS.md)** | 302→242→157 历史包数及可恢复性提示 |
-| **[全部已定位历史文件清单](docs/EVIDENCE_MANIFEST.md)** | 56 份历史资产逐项标注 GitHub 是否真的归档 |
-| **[GhostLock 历史 v0.1–v0.4 工作包](docs/GHOSTLOCK_PORT_VERSIONS.md)** | 版本、大小、已保存证据与缺失原始 ZIP |
-| **[下一步与仍缺的原始证据](docs/NEXT_STEPS.md)** | 明确差什么、何时才值得碰手机 |
-| **[证据来源及复现标准](docs/RESEARCH_SOURCES.md)** | 厂商、公开源码、实机文件与云端工件的区别 |
-
-## 核心设备基线（真实 P780）
-
-| 项目 | 证据结果 |
-|---|---|
-| 型号 / 厂商 | Rakuten Hand 5G / TINNO P780 |
-| Android / 编译号 | Android 11，`264` |
-| 固件版本 | **`P780AE_11.0_RMN_JP_162`** |
-| 安全补丁 | 2024-02-01 |
-| 内核 | **`5.4.233-qgki-gea5245e94afe-dirty`** |
-| Clang | Android 11.0.2 / `r383902b1` |
-| BL / AVB | Locked；fastboot 常规解锁指令返回 `unknown command` |
-| EDL | 05C6:9008，Sahara v2，`mannar`，`HWID 0x0016f0e100000780` |
-| 最新源码实验 | 匹配版 Clang11 的 `olddefconfig`、`rtmutex.o` **成功**；并非原厂 `vmlinux` |
-
-## 已永久保存的实机证据与技术报告
-
-- [设备 `p780-config.gz`](p780-config.gz) · 39,170 字节，原始 SHA-256 `0ff9cbb1844e043e1211b527509f5f435862cace25649bab6641d5d62c7bbce0`。
-- [设备内核版本文本](archive/device/hand5g_kernel.txt) · Android Clang 11 / 真机编译日期。
-- [设备 `/dev/block/by-name` 分区链接](archive/device/hand5g_byname.txt)。
-- [44 个实机已加载内核模块名称](archive/device/P780_loaded_module_names.md)（来自原始 UTF-16 输出的名称提取）。
-- [2026 年 6 月 EDL 原始记录的脱敏转写](archive/device/P780_EDL_2026-06-12_sanitized.txt)。
-- [QAS/PFM 全文报告](archive/reports/P780_PFM_QAS_2026-10-04.md)、[TZAccess 服务分析](archive/reports/P780_TZAccess_2026-10-04.md)、[MinkNative 全文报告](archive/reports/P780_MinkNative_2026-10-04.md)。
-- [GhostLock 源码与实机数据报告](archive/reports/P780_GhostLock_source_audit_2026-10-10.md)。
-- 历史工具及脚本：[archive/tools](archive/tools)、[archive/scripts](archive/scripts)，其中去预装脚本能修改系统，**不要直接执行**。
-
-## GitHub Actions：完整研究证据已保存，不再依赖 Artifact 到期时间
-
-| 测试 | 实验结果 | 永久归档 |
+| 研究方向 | 目前可确认的事实 | 结论 |
 |---|---|---|
-| Ubuntu Clang14 + Qualcomm 5.4.233 [#38052323798](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38052323798) | Kconfig + `rtmutex.o` 成功；2 值变 / 24 消失 / 327 新增 | [Clang14 工件](evidence/actions/2026-10-10-clang14) |
-| 配置完整差异 [#38053251640](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38053251640) | 24 项删减、44 项新启用明确列出 | [差异报告](evidence/actions/2026-10-10-config-delta) |
-| **Android Clang11 `r383902b1`** [#38053176845](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38053176845) | **0 值变 / 24 消失 / 322 新增**；`rtmutex.o` 成功 | [Clang11 全部日志和对象文件](evidence/actions/2026-10-10-clang11) |
+| **实体机系统与硬件** | P780 / Android 11 / `P780AE_11.0_RMN_JP_162` / `5.4.233-qgki-gea5245e94afe-dirty` | **实机确认** |
+| **Bootloader / Fastboot** | `unlocked:no`；OEM unlocking 开关灰色；常规解锁命令返回 `unknown command` | **尚未解锁** |
+| **EDL / Sahara** | 05C6:9008、Sahara v2、`mannar`、HWID `0x0016f0e100000780` | **已识别，尚无 Firehose 分区读取成功证据** |
+| **QAS / Mink / PFM / TZAccess** | 识别 eMBMS 许可调用、XRVD 代理建立、服务端凭据与白名单机制 | **部分运行与静态代码证实；没有 OEM Unlock 调用链证据** |
+| **GhostLock CVE-2026-43499** | 旧 TINNO 5.4.61 源码存在相关代码模式；实机配置支持 Futex PI；有 Tracefs 标记样本 | **真实 5.4.233 固件漏洞状态未知，适配仍 `BLOCKED`** |
+| **内核源码重建** | Qualcomm/A52s 5.4.233 候选树与匹配的 Android Clang 11.0.2 可完成 `olddefconfig` 和 `rtmutex.o` | **构建实验成功，但不是 P780 原厂镜像** |
+| **固件 / OTA** | 官方 `_162` 更新始于 2024-03-21；2026-09-28 官方披露固件验证问题 | **公告有据；仍无完整 OTA 和实机成功写入证据** |
+| **系统精简 / 应用调查** | 历史 ADB 包清理、包/服务枚举和部分应用静态审查 | **已存档，清理脚本不是只读工具** |
 
-候选代码是 **Galaxy A52s** 下游 5.4.233 代码，而 P780 公开的 TINNO OSS 源码是 **5.4.61**；构建成功不等于 P780 原厂 5.4.233 编译产物、已验证漏洞或真实内核地址。
+→ [**所有问题的当前状态与证据级别**](docs/STATUS.md)
 
-## 官方核对
+## 二、按专题阅读全部研究
 
-- [Rakuten Hand 5G 更新页面](https://network.mobile.rakuten.co.jp/information/software/rakuten-hand-5g/)：官方 `_162` 更新于 2024-03-21 开始发布。
-- [Rakuten Hand 5G 支持/安全页面](https://network.mobile.rakuten.co.jp/product/smartphone/rakuten-hand-5g/support/index.html)：官方于 2026-09-28 公告固件真实性验证缺陷；这**不是**已经证明任意固件可由 Fastboot 刷写。
+| 文档 | 包含内容 |
+|---|---|
+| [时间线 HISTORY](docs/HISTORY.md) | 从 2026-06-12 的 EDL 到 QAS、GhostLock 和云端源码编译 |
+| [真机与启动链](docs/DEVICE_AND_BOOT.md) | 型号、固件号、AVB / Fastboot、Sahara、A/B 分区、失败命令 |
+| [固件、OTA 与官方公告](docs/FIRMWARE_OTA_AND_OFFICIAL.md) | 官方版本发布顺序、OTA 取证现状、2026 年安全提示 |
+| [QAS / Mink / PFM / TZAccess](docs/QAS_TZ_PFM.md) | Java/DEX/JNI 的身份与许可调用链，已证实和未知的边界 |
+| [GhostLock 主线](docs/GHOSTLOCK.md) | 旧源码 CVE 模式、内核编译配置、Tracefs、未获参数 |
+| [v0.1—v0.4 研究包版本对照](docs/GHOSTLOCK_PORT_VERSIONS.md) | 四代 ZIP 原始资料、每版新增文件、v0.4 README 历史瑕疵 |
+| [设备应用清理历史](docs/DEBLOAT_AND_APP_TESTS.md) | user 0 包数量变化、去预装脚本、可恢复性限制 |
+| [全部历史文件及迁移状态](docs/EVIDENCE_MANIFEST.md) | 至少 57 份相关历史文件记录，逐项区分是否已入 Git |
+| [证据 SHA / CRC / 相对链接验收](docs/EVIDENCE_INTEGRITY.md) | 核验原始配置、4KB Tracefs、四个 ZIP 与其内部副本 |
+| [原始研究来源与出处](docs/RESEARCH_SOURCES.md) | 公开源码与实机、厂商公告、Actions 工件的来源划分 |
+| [后续研究的真实阻断点](docs/NEXT_STEPS.md) | 仍需的匹配固件证据、未得到的符号和 29 项逐构建信息 |
+| [归档/更新约定](docs/ARCHIVE_PROTOCOL.md) | 每轮应保存什么、如何避免证据级别混淆 |
 
-## 归档完整性的声明
+## 三、原始证据和历史成果（均为实际已存在文件）
 
-我们已定位 **至少 57 份历史相关文件（含 1 份更早的 EDL 原件）**并建立清单，但部分只存在于原始 ChatGPT 文件库：旧 ZIP 工作包、APK、Bugreport、OTA 系统日志及 4 KB Tracefs 二进制。**这些原件尚未全部复制到 GitHub**，不能把一张清单当作已经完成的原始字节备份。完整名单见 [EVIDENCE_MANIFEST](docs/EVIDENCE_MANIFEST.md)。
+<details>
+<summary><strong>设备原始文件与四代 GhostLock 包</strong></summary>
 
-本库为 Private，仍应避免存储设备独有标识、个人通信、运营商凭据、手机号及账户痕迹；公开前应独立审查全部 Git 历史。参见 [SECURITY.md](SECURITY.md)。
+- [真实设备 `p780-config.gz`](p780-config.gz) — **39,170 B**；Android 内核配置
+- [真实设备 `p780-cpu4.raw`](evidence/device/p780-cpu4.raw) — **4,096 B**；Tracefs 记录
+- [GhostLock v0.1](evidence/ghostlock/P780-GhostLock-port-v0.1.zip) / [v0.2](evidence/ghostlock/P780-GhostLock-port-v0.2.zip) / [v0.3](evidence/ghostlock/P780-GhostLock-port-v0.3.zip) / [v0.4](evidence/ghostlock/P780-GhostLock-port-v0.4.zip) — 原始离线研究 ZIP
+- [SHA-256、ZIP CRC 与内部副本交叉核验](docs/EVIDENCE_INTEGRITY.md) — 四个 ZIP 均通过完整性测试，且内置的两份设备证据与仓库主原件**字节一致**
+
+</details>
+
+<details>
+<summary><strong>历史实机观察、报告与脚本</strong></summary>
+
+- [实机内核版本](archive/device/hand5g_kernel.txt)、[分区名称映射](archive/device/hand5g_byname.txt)、[44 个已加载模块名称](archive/device/P780_loaded_module_names.md)、[脱敏版早期 EDL 报告](archive/device/P780_EDL_2026-06-12_sanitized.txt)
+- [QAS/PFM 全文](archive/reports/P780_PFM_QAS_2026-10-04.md)、[TZAccessService 全文](archive/reports/P780_TZAccess_2026-10-04.md)、[MinkNative 全文](archive/reports/P780_MinkNative_2026-10-04.md)、[GhostLock 源码核对全文](archive/reports/P780_GhostLock_source_audit_2026-10-10.md)
+- [历史检查工具](archive/tools) 与 [历史系统清理脚本](archive/scripts)：清理脚本会**修改 Android 用户 0 的应用包状态**，不可当作只读程序执行
+
+</details>
+
+## 四、可重复的内核编译证据
+
+| 实际 GitHub Actions | 结果 | 已永久保存的原始工件 |
+|---|---|---|
+| [#38051600739](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38051600739) | 首次原生 ARM64 Kconfig 和 Clang14 锁对象最小构建成功 | 日志保留在 Actions |
+| [#38052323798](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38052323798) | Clang14：已有值变化 2、缺失 24、新增 327 | [Clang14 原件](evidence/actions/2026-10-10-clang14) |
+| [#38053251640](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38053251640) | 明确列出 24 项删除配置以及新启用的 Samsung 功能 | [配置差异文件](evidence/actions/2026-10-10-config-delta) |
+| [#38053176845](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38053176845) | **匹配 Android Clang 11.0.2 (`r383902b1`)**：已有值变化 0，缺失 24，新增 322，`rtmutex.o` 成功 | [Clang11 原件](evidence/actions/2026-10-10-clang11) |
+| [#38054396216](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38054396216) | 以上核心 Actions 工件从短期附件转存 Git 仓库 | [永久构建证据目录](evidence/actions) |
+
+**关键界限：** A52s 的 5.4.233 公开候选内核 != P780 实机 5.4.233 私有内核；编译成功**不能**证明原厂代码一致、漏洞可用、Root 成功或已获得可信内核偏移。
+
+## 五、仍未迁移的原始资料（已索引，不冒充“全量原件入库”）
+
+历史文件库仍有：包含隐私数据风险的完整 Bugreport、APK、OTA 和更新服务日志、Fastboot/getprop 原始转储，以及若干旧源码打包分析 ZIP。我们已整理其结论、出处、原件名和保存状态，但**不会为追求数量将未脱敏的设备日志直接提交 GitHub**。还没有取得匹配 `P780AE_11.0_RMN_JP_162` 的可信原厂 `boot.img`、完整 OTA、`vmlinux` 或 `System.map`。
+
+详细原件清单：[EVIDENCE_MANIFEST](docs/EVIDENCE_MANIFEST.md)。隐私及修改设备的风险：[SECURITY](SECURITY.md)。
+
+## 六、目录导航
+
+```text
+docs/                     最新结论、研究时间线、证据目录、官方资料与待解决问题
+archive/reports/          从历次研究迁入的完整分析报告
+archive/device/           脱敏的旧实机文本记录和模块名称
+archive/tools/            旧离线研究脚本
+archive/scripts/          改动手机配置的历史应用清理脚本（仅存档）
+evidence/device/          实机 Tracefs 二进制原件
+evidence/ghostlock/       GhostLock v0.1–v0.4 原始 ZIP
+evidence/actions/         Clang11/Clang14 配置、日志及编译对象原件
+.github/workflows/        实际已运行的 Linux 构建与完整性检查
+tools/                    当前配置差异统计脚本
+```
 
 ---
 
-**研究规则：证据与结论分层、失败同样存档、不可擅自补出没有实测的成功结果。**
+**维护规则：每有新的真实实验或分析，先更新 [STATUS](docs/STATUS.md)，同步专题、[文件清单](docs/EVIDENCE_MANIFEST.md) 与 [CHANGELOG](CHANGELOG.md)。保留失败证据，绝不将候选结论写成实机成功。**
