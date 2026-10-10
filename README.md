@@ -41,6 +41,7 @@
 - [设备 `p780-config.gz`](p780-config.gz) · 39,170 字节，原始 SHA-256 `0ff9cbb1844e043e1211b527509f5f435862cace25649bab6641d5d62c7bbce0`。
 - [设备内核版本文本](archive/device/hand5g_kernel.txt) · Android Clang 11 / 真机编译日期。
 - [设备 `/dev/block/by-name` 分区链接](archive/device/hand5g_byname.txt)。
+- [44 个实机已加载内核模块名称](archive/device/P780_loaded_module_names.md)（来自原始 UTF-16 输出的名称提取）。
 - [2026 年 6 月 EDL 原始记录的脱敏转写](archive/device/P780_EDL_2026-06-12_sanitized.txt)。
 - [QAS/PFM 全文报告](archive/reports/P780_PFM_QAS_2026-10-04.md)、[TZAccess 服务分析](archive/reports/P780_TZAccess_2026-10-04.md)、[MinkNative 全文报告](archive/reports/P780_MinkNative_2026-10-04.md)。
 - [GhostLock 源码与实机数据报告](archive/reports/P780_GhostLock_source_audit_2026-10-10.md)。
@@ -63,7 +64,7 @@
 
 ## 归档完整性的声明
 
-我们已找到 **56 份历史相关文件**并建立清单，但部分只存在于原始 ChatGPT 文件库：旧 ZIP 工作包、APK、Bugreport、OTA 系统日志及 4 KB Tracefs 二进制。**这些原件尚未全部复制到 GitHub**，不能把一张清单当作已经完成的原始字节备份。完整名单见 [EVIDENCE_MANIFEST](docs/EVIDENCE_MANIFEST.md)。
+我们已定位 **至少 57 份历史相关文件（含 1 份更早的 EDL 原件）**并建立清单，但部分只存在于原始 ChatGPT 文件库：旧 ZIP 工作包、APK、Bugreport、OTA 系统日志及 4 KB Tracefs 二进制。**这些原件尚未全部复制到 GitHub**，不能把一张清单当作已经完成的原始字节备份。完整名单见 [EVIDENCE_MANIFEST](docs/EVIDENCE_MANIFEST.md)。
 
 本库为 Private，仍应避免存储设备独有标识、个人通信、运营商凭据、手机号及账户痕迹；公开前应独立审查全部 Git 历史。参见 [SECURITY.md](SECURITY.md)。
 
