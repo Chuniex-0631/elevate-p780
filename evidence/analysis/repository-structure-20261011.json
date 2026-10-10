@@ -635,5 +635,27 @@
   ],
   "duplicate_policy": "Preserve independent run context and original package internals; only redundant same-run text rendering removed.",
   "missing_originals": "Original framework ZIP/JAR and some older listed inputs are not archived as raw bytes; see EVIDENCE_MANIFEST.",
-  "inventory_scope": "Before-state is a complete recursive Git tree (not truncated); moved data identity is checked with git hash-object. No claim of full privacy audit or unavailable original bytes."
+  "inventory_scope": "Before-state is a complete recursive Git tree (not truncated); moved data identity is checked with git hash-object. No claim of full privacy audit or unavailable original bytes.",
+  "verification": {
+    "structure_commit": "a5212613d8fb784772095a6c2d03170da0dea9ac",
+    "run_id": 38069160978,
+    "job_id": 114262861154,
+    "conclusion": "success",
+    "tracked_files": 258,
+    "markdown_files": 48,
+    "relative_path_links": 337,
+    "missing_path_links": 0,
+    "python_syntax_files": 10,
+    "valid_json_files": 35,
+    "preserved_move_blob_identities": 25,
+    "journey_original_zip_crc_sha_views": "passed",
+    "config_method_instruction_hashes": 54,
+    "performance_decision_instruction_hashes": 6,
+    "original_gzip_zip_apk_and_embedded_evidence": "passed",
+    "limits": [
+      "not heading-anchor/public-URL validation",
+      "not a full-history privacy audit",
+      "not Root or device runtime validation"
+    ]
+  }
 }
