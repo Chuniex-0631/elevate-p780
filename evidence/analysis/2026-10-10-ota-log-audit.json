@@ -1,0 +1,120 @@
+{
+  "date": "2026-10-10",
+  "scope": "offline existing logs and bugreport",
+  "bugreport": {
+    "path": "evidence/restricted/bugreport/hand5g_bugreport.zip",
+    "bytes": 5684665,
+    "sha256": "7e662b108af7b1fa33113636ef86178e5e177ce6a1eb7c498fc12daadec159dc",
+    "git_blob_sha": "25a379b25a6dcadcaca61e3389cf93dfdd881097",
+    "zip_crc_ok": true
+  },
+  "engine_logs": [
+    {
+      "path": "FS/data/misc/update_engine_log/update_engine.20261004-000041",
+      "bytes": 1779,
+      "sha256": "292bf7e6c2becdea6d652e70ef22f9e02ab3e1ba9a949672edd97b6defac829c",
+      "lines": 17,
+      "cleanup_started": true,
+      "cleanup_success": true,
+      "snapshot_absent": true,
+      "url_count": 0,
+      "payload_reference_count": 0
+    },
+    {
+      "path": "FS/data/misc/update_engine_log/update_engine.20261004-004451",
+      "bytes": 1692,
+      "sha256": "4696894552c8a2298f83c056ce528b69d4321cbb6011d511d71cba91da4d6ba2",
+      "lines": 16,
+      "cleanup_started": true,
+      "cleanup_success": true,
+      "snapshot_absent": true,
+      "url_count": 0,
+      "payload_reference_count": 0
+    },
+    {
+      "path": "FS/data/misc/update_engine_log/update_engine.20260614-221013",
+      "bytes": 1779,
+      "sha256": "710c5aacc868905e506acfa292c883bae38e4b26abbf01ab3f90e36415b8a6d3",
+      "lines": 17,
+      "cleanup_started": true,
+      "cleanup_success": true,
+      "snapshot_absent": true,
+      "url_count": 0,
+      "payload_reference_count": 0
+    },
+    {
+      "path": "FS/data/misc/update_engine_log/update_engine.20260614-222249",
+      "bytes": 1779,
+      "sha256": "2d5828143c019494aea342efb71f2482ac00889636a2b462f392e89fd5c7d7ca",
+      "lines": 17,
+      "cleanup_started": true,
+      "cleanup_success": true,
+      "snapshot_absent": true,
+      "url_count": 0,
+      "payload_reference_count": 0
+    },
+    {
+      "path": "FS/data/misc/update_engine_log/update_engine.20260614-223821",
+      "bytes": 1779,
+      "sha256": "55b14ef8d9e160233d3672f3426869f2c5fad037e8b3c9107ec8f38f67ac3685",
+      "lines": 17,
+      "cleanup_started": true,
+      "cleanup_success": true,
+      "snapshot_absent": true,
+      "url_count": 0,
+      "payload_reference_count": 0
+    },
+    {
+      "path": "FS/data/misc/update_engine_log/update_engine.20260812-171854",
+      "bytes": 1779,
+      "sha256": "867469d82e2bf26f84ad9aff1be7580bae7206d078c41c19ad730fa44eeaf262",
+      "lines": 17,
+      "cleanup_started": true,
+      "cleanup_success": true,
+      "snapshot_absent": true,
+      "url_count": 0,
+      "payload_reference_count": 0
+    }
+  ],
+  "logcat": {
+    "original_git_blob_sha": "008f5da8d6e7bc741a2dece59d1b8a8e73d1a08b",
+    "lines": 607,
+    "view": "connector normalized UTF-8; original-byte digest not recomputed",
+    "systemupdate_ui": "com.google.android.gms.update.SystemUpdateActivity",
+    "config_success_lines": [
+      605,
+      606
+    ],
+    "execution_action": "finished-execution",
+    "download_manager_success_lines": [
+      400,
+      402
+    ],
+    "adjacent_download_cache_files": [
+      "05132026-sms-denylist-metadata.txt",
+      "05132026-sms-denylist.txt"
+    ],
+    "ota_download_url_count": 0
+  },
+  "journey_config": {
+    "bugreport_lines": [
+      15016,
+      15017,
+      15018,
+      15019,
+      15020,
+      15021
+    ],
+    "logger": "JourneyConfigService",
+    "handler_class": "com.journey.server.JourneyConfigService$TCSHandler",
+    "process": "system_server",
+    "uid": 1000,
+    "url": "http://cdn.jstinno.com/journey/system/config/r/version.txt",
+    "local_file": "/data/system/journey/version.txt",
+    "observed_request": "exception",
+    "network_version": 0,
+    "local_version": 42,
+    "action": "network version not newer; no update",
+    "interpretation": "configuration service lead; firmware source or advisory linkage unproven"
+  }
+}
