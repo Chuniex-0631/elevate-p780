@@ -20,6 +20,12 @@ QAS_DVC_MSP (com.qti.ltebc)
 
 相同 class 119 的 XRVD 调用 feature 2100（XR 相关）；XRVD 的 `IPFM object created successfully` 运行日志表明代理对象已经创建，但**不代表许可证通过或具备任意类权限**。
 
+## 本轮新增的实机原件
+
+- [TZ 白名单原文](../evidence/tee/hand5g_tz_whitelist.txt) 已归档，含 **10 个 classID 项**，包括 `119 Platform Feature Management`，与此前静态调用链相互印证。列表中 `permissions: []` 不表示无其它身份鉴权。
+- [native-api 路径查询记录](../evidence/tee/hand5g_native_api_paths.txt) 保留 `Permission denied`、路径不存在等阴性结果。
+- 新增的 SecureUI、SystemHelper 和 ApeHighLights APK 见 [TEE 与系统 APK 专题](TEE_AND_SYSTEM_APKS.md)；这三份 APK 只验证了可读性，**未进行新一轮动态越权测试**。
+
 ## 服务端进一步查出的条件
 
 - TZAccessService 从 `/vendor/etc/ssg/tz_whitelist.json` 读取 classId 与 permissions 条目。
