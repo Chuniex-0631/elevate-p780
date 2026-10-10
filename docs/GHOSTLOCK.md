@@ -8,9 +8,9 @@
 - 旧 `kernel/futex.c` 的 PI requeue → `rt_mutex_start_proxy_lock` → 失败清理逻辑，可以进入 `kernel/locking/rtmutex.c` 的 `remove_waiter` 路径；旧源码存在使用 `current` 而非 `waiter->task` 的 CVE 类似调用模式。
 - 即使两份公开源码的 `rtmutex.c` 一样，也不能把它们当作对设备**运行内核二进制**的两份独立证明。
 - 实机 `CONFIG_FUTEX_PI=y`, `CONFIG_RT_MUTEXES=y`, `CONFIG_ASHMEM=y`, `CONFIG_RANDOMIZE_BASE=y`; `CONFIG_CFI_CLANG=y`, `CONFIG_LTO_CLANG=y`, `CONFIG_PANIC_ON_OOPS=y`。
-- `p780-cpu4.raw` 4096B Tracefs 测试标记 `P780_GHOSTLOCK_PROBE`，提取一个候选地址字段。这是测试追踪原始数据、**不是 GhostLock UAF 利用结果**；不能从字段直接得出 `_text`。
+- [原始 `p780-cpu4.raw`](../evidence/device/p780-cpu4.raw) 4096B Tracefs 测试标记 `P780_GHOSTLOCK_PROBE`，提取一个候选地址字段。这是测试追踪原始数据、**不是 GhostLock UAF 利用结果**；不能从字段直接得出 `_text`。
 - JingMatrix `entry.ghostlock@qgki-5.4` 是针对**其他手机**环境的参考实现，包含大量逐内核偏移需求；不应直接为 P780 填三星偏移。
-- v0.1–v0.4 的研究包属于**预检和只读调查工具**，不是已验证 Root 安装包。
+- [v0.1–v0.4 四份原始 ZIP](../evidence/ghostlock) 已完整归档，均通过 ZIP CRC 和 SHA 校验，内嵌两份设备证据与主仓库逐字节一致。它们属于**预检和只读调查工具**，不是已验证 Root 安装包。
 - `/vendor/lib/modules/5.4-gki` 可列出约 190 模块文件名，shell `u:r:shell:s0`/SELinux `Enforcing` 下读取 `modules.load` 和 `tinno_gesture.ko` 等返回 `Permission denied`。不继续重复尝试同一路径。
 - 尚未取得固件 `boot.img`、`vmlinux` 或可信 `System.map`；没有应用 GhostLock 成功提权。
 
@@ -30,6 +30,9 @@
 这是源码可编译性和配置保存率的证据，**不是 P780 出厂二进制、运行漏洞证据或可用 GhostLock 偏移**。
 
 ## 后续关卡
+
+参阅 [四代研究包逐版对照](GHOSTLOCK_PORT_VERSIONS.md) 与 [原始证据校验](EVIDENCE_INTEGRITY.md)。
+
 
 1. 匹配真实 P780 固件的内核二进制或 OTA/镜像；核对厂商私有补丁与具体代码身份。
 2. 核对 A52s 候选源码丢失的 24 个配置，包括 15 个曾启用的 TINNO 驱动/内核保护，并查清所有重要新增选项。
