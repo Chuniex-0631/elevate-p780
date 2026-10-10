@@ -26,3 +26,29 @@
 - `p780-cpu4.raw` 中找到 `P780_GHOSTLOCK_PROBE`，证明追踪标记可复核，**没有**验证 GhostLock 触发、内核基址或 Bootloader 解锁。
 - 四个 ZIP 内只有离线调查/预检工具和历史结果。CRC/哈希正确证明完整存档，**不证明漏洞运行成功或参数可信**。
 - Markdown 链接扫描只覆盖 Git 仓库**相对路径**，不代表外部网址始终有效。后续文档编辑会导致链接计数变化，准确结果以最新 Actions 运行为准。
+
+
+## 2026-10-10 第二批实体机原件（迁移前后字节身份不变）
+
+来源：GitHub Actions [新文件清单 #38056324556](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38056324556) 的自动 SHA-256、ZIP CRC 和同名展开文件逐项对比；归档整理仅改变路径，没有重新压缩或替换二进制内容。下表不是旧本地原件与 GitHub 之间的独立来源认证。
+
+| 当前仓库原件路径 | 字节数 | SHA-256 |
+|---|---:|---|
+| [两阶段审计 ZIP：debloat](../evidence/restricted/adb/hand5g_debloat_audit.zip) | 376662 | `549042553411cc702019a378bc7a21d21f0129e10c0f6014b01a691b8b2bda8e` |
+| [两阶段审计 ZIP：final](../evidence/restricted/adb/hand5g_final_audit.zip) | 419387 | `54ebd6a48c244e86dfea78061f723b5a86acb61d229e9082e9b9233babfa1a3e` |
+| [Android Bugreport](../evidence/restricted/bugreport/hand5g_bugreport.zip) | 5684665 | `7e662b108af7b1fa33113636ef86178e5e177ce6a1eb7c498fc12daadec159dc` |
+| [SystemUpdate Activity](../evidence/restricted/ota/hand5g_update_activity.txt) | 94710 | `7d69799a7b0c06240cb3d04e8cddf27a92d7d9bb5cc79c048b37d8ace3dccba1` |
+| [SystemUpdate Logcat](../evidence/restricted/ota/hand5g_update_log.txt) | 283944 | `c100d7f7c32527f763b3d26dc30f8bd32d72f96e6bc9b83cca2bed20e844f33b` |
+| [native-api 受限路径](../evidence/tee/hand5g_native_api_paths.txt) | 1174 | `ffe7521fd4cd0942b6a04c86b10a5c7bbd2b8d1b500ae179defdf4ce2db561f2` |
+| [TEE 白名单](../evidence/tee/hand5g_tz_whitelist.txt) | 3148 | `56937f268c4363b7314dd00163e0283dfc587eb6a6a738b4c9542cc07de17a00` |
+| [phase3 所有包清单](../evidence/restricted/adb/phase3/hand5g_packages_all_phase3.txt) | 22482 | `8171f6e8db3f66121d7a9b69a9e226bf14eabacf7fc5c7577176f0756aa49613` |
+| [phase3 安装包清单](../evidence/restricted/adb/phase3/hand5g_packages_installed_phase3.txt) | 17724 | `243e0de522382f3f7ab8e1c272231943507b6dbd240ed74d116c5281b3f84530` |
+| [ApeHighLights.apk](../evidence/apk/ApeHighLights.apk) | 1704633 | `e8755aabeae90f6b8b0b00b27eaf87ae8bdda1aac64eed3c06cdd1a20b11fa91` |
+| [Qualcomm SecureUI APK](../evidence/apk/com.qualcomm.qti.services.secureui.apk) | 24990 | `23d1fca23ce3e81d976817c4fd75dc851e4de9e4c8a35a840394518135984144` |
+| [Qualcomm SystemHelper APK](../evidence/apk/com.qualcomm.qti.services.systemhelper.apk) | 16798 | `94f81b017ce0b0ebc11f5b0dbdbad07cc06a871b983b92c8bd4169fb30c91791` |
+
+- ZIP CRC：两个审计包分别 **22 / 9** 条目，Bugreport **402** 条目，三个 APK 均检查通过。
+- 22+9 个审计展开文件在清理前与对应 ZIP 内文件分别 SHA-256 一致；仅在 `main` 中删除重复展开目录，字节未丢失。
+- 本轮在清理前创建恢复分支 [archive/pre-cleanup-20261010](https://github.com/Chuniex-0631/p780-kernel-research/tree/archive/pre-cleanup-20261010)；不能把在 `main` 中删除理解为从所有 Git 历史安全擦除。
+- 自动复验扩展到 Bugreport/ADB ZIP、APK、TEE/OTA 文件：[完整性工作流](../.github/workflows/p780-final-audit.yml)。  
+**重要：** 上述文件存在**未脱敏的用户设备资料**，目录 `restricted` 不是加密容器或独立 ACL。
