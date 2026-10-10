@@ -1,6 +1,6 @@
 # P780 JourneyConfigService 实机 JAR 审计
 
-日期：2026-10-10。输入为机主新采集的 services.jar、framework.jar 与目录清单；纯离线 DEX 反汇编及调用点扫描，没有执行网络替换、服务更新、Root 或固件写入。
+日期：2026-10-10。输入为机主新采集的 services.jar、framework.jar、目录清单及 vendor 配置/TCS 无参数 dump；纯离线 DEX 反汇编及调用点扫描，没有执行网络替换、服务更新、Root 或固件写入。
 
 ## 当前结论
 
@@ -44,19 +44,38 @@ androguard 对 framework hidden-API 域标志存在兼容性错误。调用点�
 
 反汇编偏移为方法内部字节偏移，不是内核地址或可刷写参数。静态未见验签仅限定于本轮审查路径，不扩大为全系统签名绕过结论。
 
-## 下一步：只读确认实机配置
+## 实机配置与运行状态已核对
 
-下列三项已由代码定位；无需再拉取整个 framework 或 GMS APK。Windows PowerShell：
+机主按上一阶段的只读命令上传 p780-journey-config.zip，3,940 B，ZIP CRC 通过。包含 vendor config.xml（6,440 B）、version.txt（2 B）和 UTF-16 TCS dump（23,286 B）。
 
-```powershell
-New-Item -ItemType Directory -Force p780-journey-config | Out-Null
-adb pull /vendor/etc/journey/system/config/r/config.xml p780-journey-config/
-adb pull /vendor/etc/journey/system/config/r/version.txt p780-journey-config/
-adb shell dumpsys TCS > p780-journey-config/tcs-state.txt
-Compress-Archive -Path p780-journey-config -DestinationPath p780-journey-config.zip -Force
-```
+[输入 SHA 与还原说明](../evidence/journey/2026-10-10/input-manifest.json)；[完整原始 ZIP 的 Base64 编码](../evidence/journey/2026-10-10/p780-journey-config.zip.b64)。编码文本可还原全部原始字节，已在本地验证解码与上传 ZIP 完全一致；不重复存 ZIP 内 UTF-16 原件，另提供 [TCS UTF-8 阅读视图](../evidence/journey/2026-10-10/tcs-state.utf8.txt)。
 
-dumpsys 使用无参数的读取分支。若 Permission denied 或文件不存在，保留报错即可；不调用 update/reset/test，不尝试读取受限缓存或修改系统属性。确认默认配置与当前内存状态后，再判断保留为系统策略支线还是终止与固件主线的关联假设。
+| 核对项 | 观察 |
+|---|---|
+| vendor version.txt / XML version / TCS mCurrentVersion | 三者均为 42 |
+| XML UpdateFrequency | 24 小时；dump 未直接打印周期值 |
+| 网络路径 | 实机 dump 确认为 http://cdn.jstinno.com/journey/system/config/r/ |
+| 调试开关 | DEBUG=true；DEBUG_MORE 与三项 FORCE 开关均 false |
+| vendor XML | 39 个 package 记录；6 个记录限定 SUGAR/WIKO 区域 |
+| 当前映射 | 64 个唯一键；包括包名、活动类名与两个含星号的策略键 |
+| 离线对照 | 按 ALL 区域假设解析，64 键及其 label/names/behavior/area 与 dump 全部一致，0 差异 |
+
+[完整对照 JSON](../evidence/journey/2026-10-10/comparison.json) 保留区域限定记录与覆盖前后内容；[复核脚本](../tools/compare_journey_config.py) 可运行 `python tools/compare_journey_config.py <解压目录>`，目录须包含 config.xml、version.txt、原始 tcs-state.txt。只读本地输入并输出 comparison.json，不连接手机或网络。
+
+### 重复键与含义边界
+
+- com.lunarlabs.panda：前面的 ALLOW_PERSIST 记录被后面的 lab_test_mode / NO_LIMIT 记录覆盖；实机 dump 只保留后者。
+- com.tencent.android.qqdownloader：前面的 ASSUMING_NOT_IN_SYSTEM 被后面的 DISALLOW_BLACK_CALLER 覆盖；不能把两条行为自动合并。
+- DEX loadConfigSettings 方法内 0x0208–0x0248 先判断当前区域、已有键和 ALL，再执行 ArrayMap.put。这份默认文件按 ALL 假设可重现全部 dump，不把该假设当成直接读取到的区域属性；dump 的 “mPackageInfos for null” 是无参数筛选标题，不表示区域为 null。
+- dump 是内存策略表，不能据此断言所列应用已安装、星号按何种模式匹配、Android 权限已授予，或获得 system UID。
+- 版本与完整策略表一致仍不能证明本次启动直接采用 vendor 文件；本地缓存或网络也可能含相同内容。本次没有采集受限缓存，也没有网络下载成功的新证据。
+- dump 的检查时间仅 HH:mm，缺少日期，不能精确证明上次联网结果或下一次触发日期。
+
+## 当前研究判断与下一步
+
+只读配置核对已完成，无需重复拉取 framework 或执行 TCS 更新。保留此支线为系统应用策略与网络配置真实性研究，降低其作为固件/Root 主线入口的优先级；现有材料不能证明漏洞可利用或与官方固件认证公告同源。
+
+后续优先取得匹配 _162 的可信原厂二进制/完整 OTA，或官方固件认证问题的技术细节。若继续 Journey 支线，先离线追踪 JourneyPerformanceService 的策略结果如何用于实际进程管理，以及含星号键的匹配语义；不要求机主修改配置、调试属性或运行 update/reset/test。
 
 ## 持续维护规则
 
