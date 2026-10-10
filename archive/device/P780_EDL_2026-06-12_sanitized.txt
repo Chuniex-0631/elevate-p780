@@ -1,0 +1,87 @@
+# Sanitized historical summary. The original source is retained in the user's ChatGPT file library.
+# Device-unique EDL serial and key-hash identifiers are intentionally excluded from this copy.
+Rakuten Hand 5G P780 重要数据记录
+
+设备基础信息
+设备名：Rakuten Hand 5G
+型号：P780
+品牌：Rakuten
+制造商：TINNO
+产品名：P780
+设备代号：P780
+主板：p780
+硬件 SKU：P780
+平台：Qualcomm / qcom
+board.platform：holi
+EDL 识别 CPU：mannar
+Android 版本：11
+
+系统版本信息
+ro.build.display.id：RKQ1.210715.001 release-keys
+ro.build.fingerprint：Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys
+ro.vendor.build.fingerprint：Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys
+ro.build.version.incremental：264
+ro.custom.build.version：P780AE_11.0_RMN_JP_162
+ro.internal.build.version：P780AE_11.0_RMN_JP_162_CFC
+ro.tcustom.build.version：P780AE_11.0_RMN_JP_162
+ro.build.version.security_patch：2024-02-01
+ro.vendor.build.security_patch：2024-02-01
+ro.build.date：Tue Feb 20 16:26:18 CST 2024
+ro.build.date.utc：1708417578
+ro.product.locale：ja-JP
+ro.product.market：Rakuten Hand5G
+ro.project：rakuten
+
+Bootloader / AVB 状态
+Device unlocked：false
+Device critical unlocked：false
+Verity mode：true
+ro.bootloader：unknown
+
+Fastboot 命令结果
+fastboot getvar unlocked：unlocked: no
+fastboot flashing get_unlock_ability：FAILED (remote: 'unknown command')
+fastboot oem device-info：
+  Verity mode: true
+  Device unlocked: false
+  Device critical unlocked: false
+  Charger screen enabled: false
+fastboot flashing unlock：FAILED (remote: 'unknown command')
+fastboot oem unlock：FAILED (remote: 'unknown command')
+fastboot oem edl：FAILED (remote: 'unknown command')
+
+EDL / Sahara 信息
+EDL USB ID：05C6:9008
+EDL 设备显示：QUSB_BULK_CID:0424_SN:[REDACTED]
+Sahara Protocol Version：2
+Sahara Version supported：1
+Mode：sahara
+
+EDL 核心识别数据
+HWID：0x0016f0e100000780
+MSM_ID：0x0016f0e1
+OEM_ID：0x0000
+MODEL_ID：0x0780
+CPU detected：mannar
+Serial：[REDACTED]
+
+PK_HASH
+[HASH PRESERVED IN PRIVATE ORIGINAL; omitted from this curated repository file]
+edl 工具提示的 loader 匹配目标
+0016f0e100000780_[OEM_PK_HASH_PREFIX_REDACTED]_[FHPRG/ENPRG].bin
+
+建议保留的搜索关键词
+0016f0e100000780_[OEM_PK_HASH_PREFIX_REDACTED]
+0016f0e100000780
+[OEM_PK_HASH_REDACTED]
+[OEM_PK_HASH_REDACTED]
+Rakuten Hand 5G P780 firehose
+TINNO P780 firehose
+P780AE_11.0_RMN_JP_162 firmware
+P780AE_11.0_RMN_JP_162 firehose
+P780AE_11.0_RMN_JP_162 QFIL
+Rakuten Hand 5G P780 QFIL
+Rakuten Hand 5G P780 EDL
+TINNO P780 EDL
+mannar P780 firehose
+holi P780 firehose
