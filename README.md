@@ -17,7 +17,7 @@
 | **GhostLock CVE-2026-43499** | 旧 TINNO 5.4.61 源码存在相关代码模式；实机配置支持 Futex PI；有 Tracefs 标记样本 | **真实 5.4.233 固件漏洞状态未知，适配仍 `BLOCKED`** |
 | **内核源码重建** | Qualcomm/A52s 5.4.233 候选树与匹配的 Android Clang 11.0.2 可完成 `olddefconfig` 和 `rtmutex.o` | **构建实验成功，但不是 P780 原厂镜像** |
 | **固件 / OTA** | 官方 `_162` 更新始于 2024-03-21；2026-09-28 官方披露固件验证问题 | **公告有据；仍无完整 OTA 和实机成功写入证据** |
-| **Journey 系统配置服务** | 实机 JAR 已定位 HTTP/XML 应用策略链；vendor 版本 42 与 TCS 的 64 个策略键核对一致 | **独立配置支线；未证实为 OTA/Root 链** |
+| **Journey 系统配置服务** | vendor 版本 42 / TCS 64 键一致；消费者接入进程管理与 Service/Provider 限制，末尾星号匹配已核实 | **独立配置支线；未证实为 OTA/Root 链** |
 | **系统精简 / 应用调查** | 历史 ADB 包清理、包/服务枚举和部分应用静态审查 | **已存档，清理脚本不是只读工具** |
 
 → [**所有问题的当前状态与证据级别**](docs/STATUS.md)
@@ -36,7 +36,7 @@
 | [设备应用清理历史](docs/DEBLOAT_AND_APP_TESTS.md) | user 0 包数量变化、去预装脚本、可恢复性限制 |
 | [新增原件比对与去重结果](docs/NEW_UPLOADS_AND_DEDUP.md) | 新增原始资料、ZIP/目录一致性、清理前恢复分支 |
 | [TrustZone 白名单与 APK 原件](docs/TEE_AND_SYSTEM_APKS.md) | 真机 class-ID 白名单、JNI 受限路径、三份 APK |
-| [JourneyConfigService 实机审计](docs/2026-10-10-journey-config-audit.md) | 真实 DEX、网络配置链、vendor XML 与 64 键实机状态核对 |
+| [JourneyConfigService 实机审计](docs/2026-10-10-journey-config-audit.md) | 真实 DEX、64 键实机核对、进程管理消费者与匹配语义 |
 | [OTA 日志深入审计](docs/2026-10-10-ota-log-audit.md) | 清理任务、配置检查与固件安装的证据区分 |
 | [OTA 日志和 Bugreport 归档](docs/OTA_LOGS_AND_BUGREPORT.md) | 原始系统日志、历史 update_engine 痕迹与隐私限制 |
 | [全部历史文件及迁移状态](docs/EVIDENCE_MANIFEST.md) | 至少 57 份相关历史文件记录，逐项区分是否已入 Git |
@@ -100,7 +100,7 @@ evidence/apk/             新取得的三份 Android APK 原件
 evidence/tee/             TZ 白名单、native 库路径访问记录
 evidence/restricted/      未脱敏 ADB 审计 ZIP、OTA 日志和 Bugreport（无目录级 ACL）
 .github/workflows/        实际已运行的 Linux 构建与完整性检查
-tools/                    当前配置差异统计脚本
+evidence/framework/       实机 JAR 提取身份、反汇编与消费者证据\nevidence/journey/         配置原件的可还原存档、阅读视图与状态核对\ntools/                    当前配置/布局及离线 DEX 复核脚本
 ```
 
 ---
