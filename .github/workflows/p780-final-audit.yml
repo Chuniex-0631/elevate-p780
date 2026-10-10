@@ -105,6 +105,43 @@ jobs:
           with open(__import__('os').environ['GITHUB_STEP_SUMMARY'],'a') as f:
               f.write('\n'.join(lines)+'\n')
           PY
+      - name: Cross-check evidence copies and original package README
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' | tee reports/embedded-evidence-comparison.txt
+          import zipfile,hashlib
+          from pathlib import Path
+          orig={
+            'p780-config.gz': Path('p780-config.gz').read_bytes(),
+            'p780-cpu4.raw': Path('evidence/device/p780-cpu4.raw').read_bytes()
+          }
+          for p in sorted(Path('evidence/ghostlock').glob('*.zip')):
+            print(f'\n## {p.name}')
+            with zipfile.ZipFile(p) as z:
+              for filename,base in [(f'{p.stem}/evidence/{name}',name) for name in orig]:
+                data=z.read(filename)
+                same=data==orig[base]
+                print(f'EMBEDDED {base} equal_to_repo: {same}; bytes: {len(data)}; sha256: {hashlib.sha256(data).hexdigest()}')
+              checks=[x for x in z.namelist() if x.endswith('/CHECKSUMS.sha256')]
+              for ck in checks:
+                cks=z.read(ck).decode('utf-8','replace')
+                mismatch=[]
+                for rawline in cks.splitlines():
+                  line=rawline.strip()
+                  if len(line)<67 or line.startswith('#'): continue
+                  checksum=line[:64].lower()
+                  part=line[64:].strip().lstrip('*')
+                  cand=[x for x in z.namelist() if x.endswith('/'+part) or x==part]
+                  if cand and checksum!=hashlib.sha256(z.read(cand[0])).hexdigest():
+                    mismatch.append(part)
+                print(f'Internal SHA manifest: {len(cks.splitlines())} lines; mismatches: {mismatch}')
+              reads=[x for x in z.namelist() if x.endswith('/README.md')]
+              for r in reads:
+                print(f'--- {r} first 90 lines ---')
+                s=z.read(r).decode('utf-8','replace')
+                print('\n'.join(s.splitlines()[:90])[:6800])
+          PY
       - name: Preserve audit report
         if: always()
         uses: actions/upload-artifact@v4
