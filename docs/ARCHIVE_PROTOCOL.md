@@ -26,10 +26,15 @@ archive/scripts/               曾用于设备维护的历史脚本
 evidence/actions/              实际 Clang 和 Kconfig 编译工件
 evidence/device/               真机 Tracefs 原始字节
 evidence/ghostlock/            四代离线研究 ZIP 原件
+evidence/apk/                  实机提取的 3 份 APK（仅离线研究）
+evidence/tee/                  PFM/TZ 白名单与 JNI 访问证据
+evidence/restricted/           含潜在敏感数据的系统快照、OTA 和 Bugreport（非权限隔离）
 .github/workflows/             GitHub 云端可重复检查
 ```
 
 重要证据验收结论：[EVIDENCE_INTEGRITY.md](EVIDENCE_INTEGRITY.md)。
+
+整理前历史快照：[archive/pre-cleanup-20261010](https://github.com/Chuniex-0631/p780-kernel-research/tree/archive/pre-cleanup-20261010)。新增上传文件的去重过程请参阅 [NEW_UPLOADS_AND_DEDUP](NEW_UPLOADS_AND_DEDUP.md)。原始 ZIP 内部内容不能为了美化目录随意重打包。
 
 ## 版本语义
 
