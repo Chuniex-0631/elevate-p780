@@ -71,3 +71,7 @@
 
 [OTA 原件深入审计](research/ota-log-audit.md)：全部 6 份历史引擎日志仅为启动清理，无固件 URL/payload；此前的配置成功、INSTALL_UPDATE 事件不作 OTA 安装成功。原始新上传 18MB framework ZIP/JAR 仍在机主上传文件，本仓库保存来源 SHA 与提取证据，未冒称原件已入 Git。
 
+
+## 2026-10-11 官方源码申请进展
+
+已向 TINNO `Sales@tinno.com` 发送与 P780 `_162` 固件对应的 GPL kernel 源码请求，要求转交工程/合规团队；Gmail 返回 SENT，待回复。Rakuten 尚未联系成功，因未验证到专用公开邮箱，日文客服转交请求见 [联络记录](official-source-request-log.md)。
