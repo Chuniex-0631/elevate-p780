@@ -22,6 +22,14 @@
 | 还原与出厂 `vmlinux` 一致的内核 | **未完成** | 原厂私有代码与构建身份未满足 |
 | Root / Bootloader 解锁 / 刷机 | **均未达成** | 任何适配包不得宣称 Root 成功 |
 
+## 新增历史原件（2026-10-10）
+
+- 新上传两份 ADB 审计 ZIP（22 和 9 条目），与其展开目录逐字节相同；删除 31 个冗余展开副本，保留原始 ZIP 与清理前备份分支。
+- 新增三份 APK、TEE 白名单和 JNI 访问失败记录、两份 OTA 系统日志及完整 Android Bugreport ZIP。
+- `hand5g_tz_whitelist.txt` 实测含 class-ID 119（Platform Feature Management）；不意味着允许绕过其它身份/签名检查。
+- OTA 日志和 Bugreport 是**原始取证材料**，目前尚未确认下载到完整 OTA / `payload.bin`；原件可能带隐私信息。
+- 这些新增证据和实际移动/去重明细见 [NEW_UPLOADS_AND_DEDUP](NEW_UPLOADS_AND_DEDUP.md)。
+
 ## 最新可靠数字
 
 - 设备真实 `config.gz` 解析：**5,238** 个状态明确的配置项，源文件 6,576 行。
