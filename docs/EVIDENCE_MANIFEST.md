@@ -75,12 +75,18 @@
 ## 已补全原件与仍未迁入的历史证据
 
 - `p780-cpu4.raw` **已完整入仓**：[原始二进制](../evidence/device/p780-cpu4.raw)，4,096 字节，含实验追踪标记；此前的遗留“等待上传”状态已关闭。
-- `hand5g_getprop.txt`, `hand5g_fastboot_all.txt`, `hand5g_bugreport.zip`, OTA/activity 日志：包含或可能包含设备序列、网络、应用日志与账户痕迹；先脱敏，不直接全量提交。
+- `hand5g_getprop.txt` 与 `hand5g_fastboot_all.txt` 的历史独立原件未入仓。Bugreport 和 OTA/Activity 日志**已经进入私库**的 `evidence/restricted/`；它们仍可能含敏感数据，**未脱敏，不适合公开**。
 - GhostLock v0.1–v0.4 的**四份原始 ZIP 已完整入仓并通过 CRC/SHA 检验**；见 [版本与内容索引](GHOSTLOCK_PORT_VERSIONS.md)。
 - 大型 `P780-master.zip`、`linux-android-samsung-a52sxq-droidian.zip` 可从上游仓库按指定 commit 再取得，避免将整份第三方源码提交为冗余仓库附件。
+
+## 最新整理与原件去重
+
+- 2026-10-10 新增 3 份 APK、2 份 TEE 记录、2 份 OTA 日志、1 份 Bugreport，以及两套 ADB 审计 ZIP。新文件另见 [导入与去重报告](NEW_UPLOADS_AND_DEDUP.md)。
+- `hand5g_debloat_audit/` 22 个文件与完整 ZIP 内字节相同，`hand5g_final_audit/` 9 个文件亦如此；`main` 已保留两个原始 ZIP、删除 31 个重复展开文件。
+- 清理前完整状态备份于 [archive/pre-cleanup-20261010](https://github.com/Chuniex-0631/p780-kernel-research/tree/archive/pre-cleanup-20261010)。
 
 ## 完整性原则
 
 原始 Tracefs 与 GhostLock 四代 ZIP 已经入仓，其字节级和内部哈希核对见 [证据完整性](EVIDENCE_INTEGRITY.md)。其它只有文件清单和分析结论的项目不能标为原始文件已入仓；UTF-16/乱码或无可读内容的文件也不作伪造转写。设备唯一标识、IMEI、带密码与登录凭据的记录不应进入可公开仓库，私库也尽可能脱敏。
 
-_已枚举最近历史列表 56 份，并另外补回一份 2026-06-12 EDL 原件，共至少 57 项历史文件记录。本索引同时列出可长期通过 GitHub 获取的原件和仍在个人文件库的原始材料。_
+_早前至少 57 条历史文件记录已保留；本轮新增文件按原始名称另行登记。文件清单中的同名/同大小资料不自动表示 SHA 相同。_
