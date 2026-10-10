@@ -1,0 +1,4 @@
+Android (6877366 based on r383902b1) clang version 11.0.2 (https://android.googlesource.com/toolchain/llvm-project b397f81060ce6d701042b782172ed13bee898b79)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /home/runner/work/p780-kernel-research/p780-kernel-research/clang-prebuilts/clang-r383902b1/bin

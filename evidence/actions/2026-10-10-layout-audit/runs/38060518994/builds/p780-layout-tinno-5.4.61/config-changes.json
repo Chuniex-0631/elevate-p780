@@ -1,0 +1,211 @@
+{
+  "original_to_resolved": {
+    "added": [
+      "CONFIG_DM_VERITY_AVB",
+      "CONFIG_INPUT_HALL_SENSOR",
+      "CONFIG_MSM_BOOT_TIME_MARKER",
+      "CONFIG_NFC_ST54J_SPI",
+      "CONFIG_PGTABLE_MAPPING",
+      "CONFIG_PROJECT_P780",
+      "CONFIG_PROJECT_TINNO",
+      "CONFIG_QCOM_SCM_QCPE",
+      "CONFIG_R8125_IPA_OFFLOAD",
+      "CONFIG_RELR",
+      "CONFIG_TINNO_TP_GESTURE",
+      "CONFIG_TOOLS_SUPPORT_RELR",
+      "CONFIG_TOUCHSCREEN_GOODIX_GTX8",
+      "CONFIG_TOUCHSCREEN_SYNAPTICS_TCM_TOUCH"
+    ],
+    "removed": [
+      "CONFIG_ARCH_BLAIR",
+      "CONFIG_ARCH_SA2150P",
+      "CONFIG_ARCH_SCUBA",
+      "CONFIG_AW9610X_SAR",
+      "CONFIG_BATTERY_PROTECT_LIMIT",
+      "CONFIG_DUMP_XBL_LOG",
+      "CONFIG_GNSS_SIRF",
+      "CONFIG_HID_AKSYS_QRD",
+      "CONFIG_HID_PLAYSTATION",
+      "CONFIG_INTERCONNECT_QCOM_DIREWOLF",
+      "CONFIG_IP_NF_TARGET_TRIGGER_MODULE",
+      "CONFIG_JEITA_WARM_OV_PROTECT",
+      "CONFIG_LEDS_AW2016",
+      "CONFIG_MSM_L2_SPM",
+      "CONFIG_MSM_PM_LEGACY",
+      "CONFIG_MSM_SEB",
+      "CONFIG_MSM_SPM",
+      "CONFIG_PINCTRL_BLAIR",
+      "CONFIG_PLAYSTATION_FF",
+      "CONFIG_PROFILER",
+      "CONFIG_QCOM_AOP_SET_DDR",
+      "CONFIG_QCOM_CX_IPEAK",
+      "CONFIG_QCOM_KGSL_QDSS_STM",
+      "CONFIG_QCOM_PCI_EDMA",
+      "CONFIG_QCOM_SPMI_ADC5_GEN3",
+      "CONFIG_QCOM_SYSMON_SUBSYSTEM_STATS",
+      "CONFIG_QCS_CMN_BLK_PLL",
+      "CONFIG_QGKI_MSM_BOOT_TIME_MARKER",
+      "CONFIG_QGKI_SHOW_S2IDLE_WAKE_IRQ",
+      "CONFIG_QTI_CRYPTO_FDE",
+      "CONFIG_QTI_CX_IPEAK_COOLING_DEVICE",
+      "CONFIG_QTI_LMH_CPU_VDD_COOLING_DEVICE",
+      "CONFIG_QTI_QBG",
+      "CONFIG_REGMAP_WCD_IRQ",
+      "CONFIG_REGULATOR_QPNP",
+      "CONFIG_RPMSG_QCOM_GLINK_SLATECOM",
+      "CONFIG_SA_DEBUGCC_DIREWOLF",
+      "CONFIG_SA_GCC_DIREWOLF",
+      "CONFIG_SDW_DEBUGCC_MONACO",
+      "CONFIG_SDW_GPUCC_MONACO",
+      "CONFIG_SM_DEBUGCC_BLAIR",
+      "CONFIG_SM_DISPCC_BLAIR",
+      "CONFIG_SM_GCC_BLAIR",
+      "CONFIG_SM_GPUCC_BLAIR",
+      "CONFIG_TINNO_LONGCHG_CONTROL",
+      "CONFIG_TINNO_WARM_RECHARGE_CONTROL"
+    ],
+    "changed": [],
+    "unchanged": 5192
+  },
+  "resolved_to_final": {
+    "added": [],
+    "removed": [],
+    "changed": [],
+    "unchanged": 5206
+  },
+  "original_to_final": {
+    "added": [
+      "CONFIG_DM_VERITY_AVB",
+      "CONFIG_INPUT_HALL_SENSOR",
+      "CONFIG_MSM_BOOT_TIME_MARKER",
+      "CONFIG_NFC_ST54J_SPI",
+      "CONFIG_PGTABLE_MAPPING",
+      "CONFIG_PROJECT_P780",
+      "CONFIG_PROJECT_TINNO",
+      "CONFIG_QCOM_SCM_QCPE",
+      "CONFIG_R8125_IPA_OFFLOAD",
+      "CONFIG_RELR",
+      "CONFIG_TINNO_TP_GESTURE",
+      "CONFIG_TOOLS_SUPPORT_RELR",
+      "CONFIG_TOUCHSCREEN_GOODIX_GTX8",
+      "CONFIG_TOUCHSCREEN_SYNAPTICS_TCM_TOUCH"
+    ],
+    "removed": [
+      "CONFIG_ARCH_BLAIR",
+      "CONFIG_ARCH_SA2150P",
+      "CONFIG_ARCH_SCUBA",
+      "CONFIG_AW9610X_SAR",
+      "CONFIG_BATTERY_PROTECT_LIMIT",
+      "CONFIG_DUMP_XBL_LOG",
+      "CONFIG_GNSS_SIRF",
+      "CONFIG_HID_AKSYS_QRD",
+      "CONFIG_HID_PLAYSTATION",
+      "CONFIG_INTERCONNECT_QCOM_DIREWOLF",
+      "CONFIG_IP_NF_TARGET_TRIGGER_MODULE",
+      "CONFIG_JEITA_WARM_OV_PROTECT",
+      "CONFIG_LEDS_AW2016",
+      "CONFIG_MSM_L2_SPM",
+      "CONFIG_MSM_PM_LEGACY",
+      "CONFIG_MSM_SEB",
+      "CONFIG_MSM_SPM",
+      "CONFIG_PINCTRL_BLAIR",
+      "CONFIG_PLAYSTATION_FF",
+      "CONFIG_PROFILER",
+      "CONFIG_QCOM_AOP_SET_DDR",
+      "CONFIG_QCOM_CX_IPEAK",
+      "CONFIG_QCOM_KGSL_QDSS_STM",
+      "CONFIG_QCOM_PCI_EDMA",
+      "CONFIG_QCOM_SPMI_ADC5_GEN3",
+      "CONFIG_QCOM_SYSMON_SUBSYSTEM_STATS",
+      "CONFIG_QCS_CMN_BLK_PLL",
+      "CONFIG_QGKI_MSM_BOOT_TIME_MARKER",
+      "CONFIG_QGKI_SHOW_S2IDLE_WAKE_IRQ",
+      "CONFIG_QTI_CRYPTO_FDE",
+      "CONFIG_QTI_CX_IPEAK_COOLING_DEVICE",
+      "CONFIG_QTI_LMH_CPU_VDD_COOLING_DEVICE",
+      "CONFIG_QTI_QBG",
+      "CONFIG_REGMAP_WCD_IRQ",
+      "CONFIG_REGULATOR_QPNP",
+      "CONFIG_RPMSG_QCOM_GLINK_SLATECOM",
+      "CONFIG_SA_DEBUGCC_DIREWOLF",
+      "CONFIG_SA_GCC_DIREWOLF",
+      "CONFIG_SDW_DEBUGCC_MONACO",
+      "CONFIG_SDW_GPUCC_MONACO",
+      "CONFIG_SM_DEBUGCC_BLAIR",
+      "CONFIG_SM_DISPCC_BLAIR",
+      "CONFIG_SM_GCC_BLAIR",
+      "CONFIG_SM_GPUCC_BLAIR",
+      "CONFIG_TINNO_LONGCHG_CONTROL",
+      "CONFIG_TINNO_WARM_RECHARGE_CONTROL"
+    ],
+    "changed": [],
+    "unchanged": 5192
+  },
+  "critical": {
+    "CONFIG_ARCH_HOLI": {
+      "original": "y",
+      "resolved": "y",
+      "final": "y"
+    },
+    "CONFIG_ARCH_BLAIR": {
+      "original": "y",
+      "resolved": null,
+      "final": null
+    },
+    "CONFIG_FUTEX_PI": {
+      "original": "y",
+      "resolved": "y",
+      "final": "y"
+    },
+    "CONFIG_RT_MUTEXES": {
+      "original": "y",
+      "resolved": "y",
+      "final": "y"
+    },
+    "CONFIG_LTO_CLANG": {
+      "original": "y",
+      "resolved": "y",
+      "final": "y"
+    },
+    "CONFIG_CFI_CLANG": {
+      "original": "y",
+      "resolved": "y",
+      "final": "y"
+    },
+    "CONFIG_MODVERSIONS": {
+      "original": "y",
+      "resolved": "y",
+      "final": "y"
+    },
+    "CONFIG_KALLSYMS": {
+      "original": "y",
+      "resolved": "y",
+      "final": "y"
+    },
+    "CONFIG_IKHEADERS": {
+      "original": "y",
+      "resolved": "y",
+      "final": "y"
+    },
+    "CONFIG_CC_VERSION_TEXT": {
+      "original": "\"Android (6877366 based on r383902b1) clang version 11.0.2 (https://android.googlesource.com/toolchain/llvm-project b397f81060ce6d701042b782172ed13bee898b79)\"",
+      "resolved": "\"Android (6877366 based on r383902b1) clang version 11.0.2 (https://android.googlesource.com/toolchain/llvm-project b397f81060ce6d701042b782172ed13bee898b79)\"",
+      "final": "\"Android (6877366 based on r383902b1) clang version 11.0.2 (https://android.googlesource.com/toolchain/llvm-project b397f81060ce6d701042b782172ed13bee898b79)\""
+    },
+    "CONFIG_LOCALVERSION": {
+      "original": "\"-qgki\"",
+      "resolved": "\"-qgki\"",
+      "final": "\"-qgki\""
+    },
+    "CONFIG_PREEMPT": {
+      "original": "y",
+      "resolved": "y",
+      "final": "y"
+    },
+    "CONFIG_KASLR": {
+      "original": null,
+      "resolved": null,
+      "final": null
+    }
+  }
+}
