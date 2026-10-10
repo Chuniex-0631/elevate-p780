@@ -32,10 +32,10 @@
 | [QAS / Mink / PFM / TZAccess](docs/QAS_TZ_PFM.md) | Java/DEX/JNI 的身份与许可调用链，已证实和未知的边界 |
 | [GhostLock 主线](docs/GHOSTLOCK.md) | 旧源码 CVE 模式、内核编译配置、Tracefs、未获参数 |
 | [v0.1—v0.4 研究包版本对照](docs/GHOSTLOCK_PORT_VERSIONS.md) | 四代 ZIP 原始资料、每版新增文件、v0.4 README 历史瑕疵 |
-| [设备应用清理历史](docs/DEBLOAT_AND_APP_TESTS.md) |
+| [设备应用清理历史](docs/DEBLOAT_AND_APP_TESTS.md) | user 0 包数量变化、去预装脚本、可恢复性限制 |
 | [新增原件比对与去重结果](docs/NEW_UPLOADS_AND_DEDUP.md) | 新增原始资料、ZIP/目录一致性、清理前恢复分支 |
 | [TrustZone 白名单与 APK 原件](docs/TEE_AND_SYSTEM_APKS.md) | 真机 class-ID 白名单、JNI 受限路径、三份 APK |
-| [OTA 日志和 Bugreport 归档](docs/OTA_LOGS_AND_BUGREPORT.md) | 原始系统日志、历史 update_engine 痕迹与隐私限制 | user 0 包数量变化、去预装脚本、可恢复性限制 |
+| [OTA 日志和 Bugreport 归档](docs/OTA_LOGS_AND_BUGREPORT.md) | 原始系统日志、历史 update_engine 痕迹与隐私限制 |
 | [全部历史文件及迁移状态](docs/EVIDENCE_MANIFEST.md) | 至少 57 份相关历史文件记录，逐项区分是否已入 Git |
 | [证据 SHA / CRC / 相对链接验收](docs/EVIDENCE_INTEGRITY.md) | 核验原始配置、4KB Tracefs、四个 ZIP 与其内部副本 |
 | [原始研究来源与出处](docs/RESEARCH_SOURCES.md) | 公开源码与实机、厂商公告、Actions 工件的来源划分 |
