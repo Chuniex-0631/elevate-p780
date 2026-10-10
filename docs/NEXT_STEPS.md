@@ -36,4 +36,4 @@ A52s 源码编译成功不代表 P780 固件二进制一致。TINNO 公共源代
 
 ## 当前配置支线的下一步
 
-OTA 日志与 Bugreport 内全部 6 份历史引擎日志已审计；实机 services.jar/framework.jar 已离线读取，JourneyConfigService 消费者定位到应用性能策略。接下来只读采集 vendor 默认 config.xml/version.txt 与无参数 dumpsys TCS（命令见 [专题](2026-10-10-journey-config-audit.md)），不再把此前日志的成功状态当成固件下载成果。原厂 `_162` 二进制仍是内核主线的阻断点。
+OTA 日志与 Bugreport 内全部 6 份历史引擎日志已审计；实机 services.jar/framework.jar 已离线读取，JourneyConfigService 消费者定位到应用性能策略。vendor 默认 XML/version 与无参数 TCS dump 已取得，版本均 42，64 个策略键完整匹配（见 [专题](2026-10-10-journey-config-audit.md)）。无需重复采集；Journey 保留为应用策略支线，下一步可离线追踪消费者与星号匹配语义。不再把此前日志的成功状态当成固件下载成果。原厂 `_162` 二进制仍是内核主线的阻断点。
