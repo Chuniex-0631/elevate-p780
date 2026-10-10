@@ -1,0 +1,115 @@
+name: P780 final archive integrity audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/p780-final-audit.yml
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check tracefs bytes, source packages and Markdown links
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, json, re, zipfile, struct, gzip, urllib.parse, posixpath
+
+          root=Path('.')
+          files=[
+            Path("p780-config.gz"),
+            Path("evidence/device/p780-cpu4.raw"),
+            *sorted(Path("evidence/ghostlock").glob("P780-GhostLock-port-v*.zip"))
+          ]
+          objects=[]
+          for p in files:
+              assert p.is_file(), f'Missing evidence: {p}'
+              raw=p.read_bytes()
+              item={"path":str(p),"size_bytes":len(raw),"sha256":hashlib.sha256(raw).hexdigest()}
+              if p.suffix == '.gz':
+                  content=gzip.decompress(raw)
+                  item['gzip_valid']=True
+                  item['uncompressed_size']=len(content)
+                  item['config_has_5_4']=b'CONFIG_FUTEX_PI=y' in content and b'CONFIG_RT_MUTEXES=y' in content
+                  assert item['config_has_5_4']
+              if p.suffix == '.raw':
+                  item['trace_marker_found']=b'P780_GHOSTLOCK_PROBE' in raw
+                  item['no_claim_of_exploit']=True
+                  assert len(raw)==4096
+              if p.suffix == '.zip':
+                  with zipfile.ZipFile(p) as z:
+                      damaged=z.testzip()
+                      assert damaged is None, f'Corrupt: {p} -> {damaged}'
+                      entries=z.infolist()
+                      item['zip_ok']=True
+                      item['entry_count']=len(entries)
+                      item['uncompressed_bytes']=sum(e.file_size for e in entries)
+                      item['entries']=[{"name":e.filename,"size_bytes":e.file_size} for e in entries]
+                      item['unsafe_entry_paths']=[e.filename for e in entries if
+                          e.filename.startswith('/') or '..' in Path(e.filename).parts]
+                      assert not item['unsafe_entry_paths'],f'Unsafe zip path: {p}'
+              objects.append(item)
+          assert len(objects)==6, 'Expected config + raw trace + 4 ZIPs'
+
+          missing=[]
+          checked=0
+          refs=[]
+          pattern=re.compile(r'!?\[[^\]]*\]\(([^)]+)\)')
+          for md in root.rglob("*.md"):
+              if ".git" in md.parts: continue
+              text=md.read_text(encoding='utf-8',errors='replace')
+              for v in pattern.findall(text):
+                  url=v.strip().split()[0].strip('<>')
+                  if not url or url.startswith(('#','http://','https://','mailto:','data:')): continue
+                  path=urllib.parse.unquote(url.split('#')[0].split('?')[0])
+                  target=Path(posixpath.normpath(str(md.parent/path)))
+                  checked+=1
+                  refs.append({"source":str(md),"target":path})
+                  if not target.exists():
+                      missing.append({"source":str(md),"target":path})
+          report={"inspection_type":"offline archive integrity","evidence":objects,
+                  "markdown":{"files_scanned":sum(1 for _ in root.rglob("*.md")),
+                              "relative_links_tested":checked,
+                              "missing_links":missing},
+                  "notes":["SHA-256 values are hashes of the copies stored in GitHub, not independent validation against the owner's old local copies.",
+                           "Valid ZIP format is not proof of runtime exploitability.",
+                           "Device trace marker presence does not establish kernel text address."]}
+          Path("reports/integrity.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+          lines=["# P780 归档完整性审计","",
+            "只读扫描 GitHub 当前提交。哈希来自已上传的原件；没有独立对比机主旧文件的 SHA。",
+            "", "| 文件 | 字节 | SHA-256 | 检验 |","|---|---:|---|---|"]
+          for x in objects:
+              status=('ZIP 校验通过，'+str(x['entry_count'])+' 条目') if 'zip_ok' in x else ('gzip 通过' if 'gzip_valid' in x else ('Tracefs 标记存在' if x['trace_marker_found'] else 'Tracefs 无标记'))
+              lines.append(f"| \`{x['path']}\` | {x['size_bytes']} | \`{x['sha256']}\` | {status} |")
+          lines += ["",f"Markdown 内部相对链接核查：{checked} 个；**失效 {len(missing)} 个**。"]
+          for x in missing:
+              lines.append(f"- \`{x['source']}\` → \`{x['target']}\`")
+          Path("reports/integrity.md").write_text('\n'.join(lines)+'\n')
+          print("\n".join(lines))
+          print("ZIP CONTENT TREE")
+          for x in objects:
+              if "entries" in x:
+                  print(x["path"],x["entry_count"],'entries; first 20:')
+                  print("\n".join(" - "+e['name'] for e in x['entries'][:20]))
+          print("END ZIP CONTENT TREE")
+          with open(__import__('os').environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write('\n'.join(lines)+'\n')
+          PY
+      - name: Preserve audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p780-final-integrity
+          path: reports/
+          retention-days: 30
+          if-no-files-found: warn
