@@ -1,0 +1,5 @@
+scripts/atomic/gen-atomics.sh
+scripts/gcc-plugins/gen-random-seed.sh
+scripts/nsdeps
+scripts/spdxcheck-test.sh
+scripts/xen-hypercalls.sh
