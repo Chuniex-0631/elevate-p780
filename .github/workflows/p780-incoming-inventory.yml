@@ -1,0 +1,29 @@
+name: P780 incoming evidence inventory
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/p780-incoming-inventory.yml
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compare uploaded files, extract safe metadata only
+        run: |
+          python3 tools/audit_new_uploads.py
+      - name: Preserve metadata report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p780-incoming-metadata
+          path: intake-metadata.json
+          retention-days: 30
+          if-no-files-found: warn
