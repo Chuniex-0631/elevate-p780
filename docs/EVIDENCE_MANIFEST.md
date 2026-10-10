@@ -4,6 +4,12 @@
 
 | 研究原件 | 字节数 | 保存状态 |
 |---|---:|---|
+| `hand5g_debloat_audit.zip`（新上传） | 376662 | [22 项原件 ZIP，已做字节匹配](../evidence/restricted/adb/hand5g_debloat_audit.zip) |
+| `ApeHighLights.apk`（新上传） | 1704633 | [原始 APK](../evidence/apk/ApeHighLights.apk) |
+| `com.qualcomm.qti.services.secureui.apk`（新上传） | 24990 | [原始 APK](../evidence/apk/com.qualcomm.qti.services.secureui.apk) |
+| `com.qualcomm.qti.services.systemhelper.apk`（新上传） | 16798 | [原始 APK](../evidence/apk/com.qualcomm.qti.services.systemhelper.apk) |
+| `hand5g_packages_all_phase3.txt`（新上传） | 22482 | [原始 UTF-16 清单](../evidence/restricted/adb/phase3/hand5g_packages_all_phase3.txt) |
+| `hand5g_packages_installed_phase3.txt`（新上传） | 17724 | [原始 UTF-16 清单](../evidence/restricted/adb/phase3/hand5g_packages_installed_phase3.txt) |
 | `Rakuten_Hand_5G_P780_EDL_重要数据.txt`（2026-06-12 更早文件，单独检索） | 2554 | [已存 GitHub：脱敏版](../archive/device/P780_EDL_2026-06-12_sanitized.txt) |
 | `p780-config(1).gz` | 39170 | 另有仓库根目录版本（未复核本副本 SHA） |
 | `P780-master.zip` | 242946767 | **原文件库保留，未入 Git 仓库** |
@@ -28,14 +34,14 @@
 | `p780-config.gz` | 39170 | [已存 GitHub](../p780-config.gz) |
 | `hand5g_debloat_daily_phone.ps1` | 13721 | [已存 GitHub](../archive/scripts/hand5g_debloat_daily_phone.ps1) |
 | `hand5g_debloat_p780.ps1` | 14373 | [已存 GitHub](../archive/scripts/hand5g_debloat_p780.ps1) |
-| `hand5g_final_audit.zip` | 419387 | **原文件库保留，未入 Git 仓库** |
-| `hand5g_debloat_audit(1).zip` | 376662 | **原文件库保留，未入 Git 仓库** |
-| `hand5g_debloat_audit.zip` | 1742 | **原文件库保留，未入 Git 仓库** |
-| `hand5g_bugreport.zip` | 5684665 | **原文件库保留，未入 Git 仓库** |
-| `hand5g_update_log.txt` | 283944 | **原文件库保留，未入 Git 仓库** |
-| `hand5g_update_activity.txt` | 94710 | **原文件库保留，未入 Git 仓库** |
-| `hand5g_native_api_paths.txt` | 1174 | **原文件库保留，未入 Git 仓库** |
-| `hand5g_tz_whitelist.txt` | 3148 | **原文件库保留，未入 Git 仓库** |
+| `hand5g_final_audit.zip` | 419387 | [原始 ZIP 已入私库](../evidence/restricted/adb/hand5g_final_audit.zip) |
+| `hand5g_debloat_audit(1).zip` | 376662 | 与新上传 ZIP 大小相同，原件独立 SHA 尚未比对 |
+| `hand5g_debloat_audit.zip`（旧 1742B 小包） | 1742 | **仍在历史文件库，非这次完整审计包** |
+| `hand5g_bugreport.zip` | 5684665 | [已入私库：含敏感数据风险](../evidence/restricted/bugreport/hand5g_bugreport.zip) |
+| `hand5g_update_log.txt` | 283944 | [已入私库：原始 UTF-16 日志](../evidence/restricted/ota/hand5g_update_log.txt) |
+| `hand5g_update_activity.txt` | 94710 | [已入私库：原始 UTF-16 日志](../evidence/restricted/ota/hand5g_update_activity.txt) |
+| `hand5g_native_api_paths.txt` | 1174 | [已入私库：访问失败证据](../evidence/tee/hand5g_native_api_paths.txt) |
+| `hand5g_tz_whitelist.txt` | 3148 | [已入私库：TEE 白名单原文](../evidence/tee/hand5g_tz_whitelist.txt) |
 | `Hand5G_P780_TZAccess_20261004.md` | 4016 | [已存 GitHub](../archive/reports/P780_TZAccess_2026-10-04.md) |
 | `hand5g_TZAccessService.apk` | 49566 | **原文件库保留，未入 Git 仓库** |
 | `Hand5G_P780_MinkNative_20261004.md` | 4915 | [已存 GitHub](../archive/reports/P780_MinkNative_2026-10-04.md) |
