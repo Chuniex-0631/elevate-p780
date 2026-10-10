@@ -48,7 +48,7 @@
 ## 归档范围
 
 - 2026-10-10 最终核查：**四份原始 GhostLock ZIP + 一份原始 Tracefs 数据**已在 `evidence/` 保存，SHA-256/CRC 全部校验通过；工作包的内置配置和 Tracefs 与主原件逐字节一致。
-- 与此不同，Bugreport、APK 和大批设备运行日志仍只在历史私人文件库中；完整记录其存在，但不称其已做原始字节的 GitHub 备份。
+- 此后的新增上传已使 **Bugreport、三份 APK、两轮 ADB 审计 ZIP、OTA 日志和 TEE 文件**进入 GitHub 私有仓库。它们仍是未经发布级隐私审查的原始记录，按 [导入报告](NEW_UPLOADS_AND_DEDUP.md) 分组；另有部分历史文件仍仅在个人文件库。
 
 
 这里汇总了**已能从历次对话、历史文件库和 GitHub 中重新取得的资料**。并不假装取得所有过去的原始终端输出、未上传的 `boot.img` 或缺失的编译产物。细节参见 [证据索引](EVIDENCE_MANIFEST.md)。
