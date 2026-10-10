@@ -1,0 +1,323 @@
+[
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/SystemServer;",
+    "method": "startOtherServices(Lcom/android/server/utils/TimingsTraceAndSlog;)V",
+    "target": "v7, Lcom/journey/server/JourneyConfigService$Lifecycle;",
+    "context": [
+      "if-eqz v0, +019h",
+      "const-string v0, \"SystemServer\"",
+      "const-string v7, \"JourneyConfigService\"",
+      "invoke-static v0, v7, Landroid/util/Slog;->i(Ljava/lang/String; Ljava/lang/String;)I",
+      "iget-object v0, v6, Lcom/android/server/SystemServer;->mSystemServiceManager Lcom/android/server/SystemServiceManager;",
+      "const-class v7, Lcom/journey/server/JourneyConfigService$Lifecycle;",
+      "invoke-virtual v0, v7, Lcom/android/server/SystemServiceManager;->startService(Ljava/lang/Class;)Lcom/android/server/SystemService;",
+      "goto +9h",
+      "move-exception v0",
+      "const-string v7, \"SystemServer\""
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isPackageAllow(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z",
+    "target": "v27, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALL Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+    "context": [
+      "const/16 v22, 0",
+      "const/16 v23, 0",
+      "sget-boolean v24, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION_KEEP_TASK Z",
+      "const/16 v25, 0",
+      "const/16 v26, 0",
+      "sget-object v27, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALL Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+      "sget-object v28, Lcom/android/server/am/JourneyPerformanceService$REASON;->DEFAULT Lcom/android/server/am/JourneyPerformanceService$REASON;",
+      "const/16 v29, 0",
+      "if-eqz v1, +007h",
+      "move-object/from16 v30, v40"
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isPackageAllow(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z",
+    "target": "v27, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALLOW_PERSIST Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+    "context": [
+      "move v5, v0",
+      "move-object/from16 v1, v27",
+      "goto +21h",
+      "const-string/jumbo v5, tinno_performance_auto_clean_app_white_list",
+      "invoke-interface v10, v5, Ljava/util/List;->add(Ljava/lang/Object;)Z",
+      "sget-object v27, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALLOW_PERSIST Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+      "const/4 v0, 1",
+      "const/4 v12, 1",
+      "const/4 v13, 1",
+      "const/4 v14, 1"
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isPackageAllow(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z",
+    "target": "v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->NO_LIMIT Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+    "context": [
+      "const/4 v0, 1",
+      "const/4 v8, 0",
+      "move/from16 v33, v5",
+      "goto/16 +623h",
+      "if-eqz v22, +015h",
+      "sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->NO_LIMIT Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+      "invoke-static v2, v0, Lcom/journey/server/JourneyConfigService;->PackageHasBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+      "move-result v0",
+      "if-eqz v0, +00dh",
+      "sget-object v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->NO_LIMIT_APP Lcom/android/server/am/JourneyPerformanceService$REASON;"
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isPackageAllow(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z",
+    "target": "v2, v0, Lcom/journey/server/JourneyConfigService;->PackageHasBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+    "context": [
+      "const/4 v8, 0",
+      "move/from16 v33, v5",
+      "goto/16 +623h",
+      "if-eqz v22, +015h",
+      "sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->NO_LIMIT Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+      "invoke-static v2, v0, Lcom/journey/server/JourneyConfigService;->PackageHasBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+      "move-result v0",
+      "if-eqz v0, +00dh",
+      "sget-object v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->NO_LIMIT_APP Lcom/android/server/am/JourneyPerformanceService$REASON;",
+      "invoke-virtual v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isPackageAllow(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z",
+    "target": "Lcom/journey/server/JourneyConfigService;->isEnable()Z",
+    "context": [
+      "move-result-object v0",
+      "invoke-virtual v6, v0, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z",
+      "move-result v0",
+      "if-eqz v0, +003h",
+      "goto +17h",
+      "invoke-static Lcom/journey/server/JourneyConfigService;->isEnable()Z",
+      "move-result v0",
+      "if-eqz v0, +012h",
+      "invoke-static v2, v1, Lcom/journey/server/JourneyConfigService;->getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+      "move-result v0"
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isPackageAllow(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z",
+    "target": "v2, v1, Lcom/journey/server/JourneyConfigService;->getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+    "context": [
+      "if-eqz v0, +003h",
+      "goto +17h",
+      "invoke-static Lcom/journey/server/JourneyConfigService;->isEnable()Z",
+      "move-result v0",
+      "if-eqz v0, +012h",
+      "invoke-static v2, v1, Lcom/journey/server/JourneyConfigService;->getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+      "move-result v0",
+      "if-eqz v0, +00ch",
+      "sget-object v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->IN_WHITE_LIST Lcom/android/server/am/JourneyPerformanceService$REASON;",
+      "invoke-virtual v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isPackageAllow(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z",
+    "target": "v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->DISALLOW_BLACK_CALLER Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+    "context": [
+      "if-eqz v23, +006h",
+      "const/4 v0, 0",
+      "invoke-static v2, v0, Lcom/android/server/am/JourneyPerformanceService;->GetRootProcessName(Ljava/lang/String; Z)V",
+      "if-nez v6, +024h",
+      "if-eqz v26, +022h",
+      "sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->DISALLOW_BLACK_CALLER Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+      "invoke-static v2, v0, Lcom/journey/server/JourneyConfigService;->PackageHasBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+      "move-result v0",
+      "if-eqz v0, +013h",
+      "sget-object v0, Lcom/android/server/am/JourneyPerformanceService;->mAms Lcom/android/server/am/ActivityManagerService;"
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isPackageAllow(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z",
+    "target": "v2, v0, Lcom/journey/server/JourneyConfigService;->PackageHasBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+    "context": [
+      "const/4 v0, 0",
+      "invoke-static v2, v0, Lcom/android/server/am/JourneyPerformanceService;->GetRootProcessName(Ljava/lang/String; Z)V",
+      "if-nez v6, +024h",
+      "if-eqz v26, +022h",
+      "sget-object v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->DISALLOW_BLACK_CALLER Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+      "invoke-static v2, v0, Lcom/journey/server/JourneyConfigService;->PackageHasBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+      "move-result v0",
+      "if-eqz v0, +013h",
+      "sget-object v0, Lcom/android/server/am/JourneyPerformanceService;->mAms Lcom/android/server/am/ActivityManagerService;",
+      "invoke-virtual v0, v8, Lcom/android/server/am/ActivityManagerService;->getUidProcStatus(I)I"
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isSystem(Landroid/content/pm/ApplicationInfo;)Z",
+    "target": "Lcom/journey/server/JourneyConfigService;->isEnable()Z",
+    "context": [
+      "const/4 v0, 0",
+      "if-nez v4, +003h",
+      "return v0",
+      "invoke-static Lcom/journey/server/JourneyConfigService;->isEnable()Z",
+      "move-result v1",
+      "if-eqz v1, +00dh",
+      "iget-object v1, v4, Landroid/content/pm/ApplicationInfo;->packageName Ljava/lang/String;",
+      "sget-object v2, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_NOT_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;"
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isSystem(Landroid/content/pm/ApplicationInfo;)Z",
+    "target": "v2, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_NOT_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+    "context": [
+      "return v0",
+      "invoke-static Lcom/journey/server/JourneyConfigService;->isEnable()Z",
+      "move-result v1",
+      "if-eqz v1, +00dh",
+      "iget-object v1, v4, Landroid/content/pm/ApplicationInfo;->packageName Ljava/lang/String;",
+      "sget-object v2, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_NOT_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+      "invoke-static v1, v2, Lcom/journey/server/JourneyConfigService;->getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+      "move-result v1",
+      "if-eqz v1, +003h",
+      "return v0"
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isSystem(Landroid/content/pm/ApplicationInfo;)Z",
+    "target": "v1, v2, Lcom/journey/server/JourneyConfigService;->getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+    "context": [
+      "invoke-static Lcom/journey/server/JourneyConfigService;->isEnable()Z",
+      "move-result v1",
+      "if-eqz v1, +00dh",
+      "iget-object v1, v4, Landroid/content/pm/ApplicationInfo;->packageName Ljava/lang/String;",
+      "sget-object v2, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_NOT_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+      "invoke-static v1, v2, Lcom/journey/server/JourneyConfigService;->getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+      "move-result v1",
+      "if-eqz v1, +003h",
+      "return v0",
+      "iget v1, v4, Landroid/content/pm/ApplicationInfo;->flags I"
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isSystem(Landroid/content/pm/ApplicationInfo;)Z",
+    "target": "Lcom/journey/server/JourneyConfigService;->isEnable()Z",
+    "context": [
+      "if-nez v1, +01bh",
+      "iget v1, v4, Landroid/content/pm/ApplicationInfo;->flags I",
+      "and-int/lit16 v1, v1, 128",
+      "if-eqz v1, +003h",
+      "goto +13h",
+      "invoke-static Lcom/journey/server/JourneyConfigService;->isEnable()Z",
+      "move-result v1",
+      "if-eqz v1, +00dh",
+      "iget-object v1, v4, Landroid/content/pm/ApplicationInfo;->packageName Ljava/lang/String;",
+      "sget-object v3, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;"
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isSystem(Landroid/content/pm/ApplicationInfo;)Z",
+    "target": "v3, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+    "context": [
+      "goto +13h",
+      "invoke-static Lcom/journey/server/JourneyConfigService;->isEnable()Z",
+      "move-result v1",
+      "if-eqz v1, +00dh",
+      "iget-object v1, v4, Landroid/content/pm/ApplicationInfo;->packageName Ljava/lang/String;",
+      "sget-object v3, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+      "invoke-static v1, v3, Lcom/journey/server/JourneyConfigService;->getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+      "move-result v1",
+      "if-eqz v1, +003h",
+      "return v2"
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isSystem(Landroid/content/pm/ApplicationInfo;)Z",
+    "target": "v1, v3, Lcom/journey/server/JourneyConfigService;->getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+    "context": [
+      "invoke-static Lcom/journey/server/JourneyConfigService;->isEnable()Z",
+      "move-result v1",
+      "if-eqz v1, +00dh",
+      "iget-object v1, v4, Landroid/content/pm/ApplicationInfo;->packageName Ljava/lang/String;",
+      "sget-object v3, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+      "invoke-static v1, v3, Lcom/journey/server/JourneyConfigService;->getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+      "move-result v1",
+      "if-eqz v1, +003h",
+      "return v2",
+      "return v0"
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isUidAllow(I Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z",
+    "target": "v7, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->NO_LIMIT Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+    "context": [
+      "move-result-object v6",
+      "invoke-static v1, v6, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I",
+      "sget-object v6, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->NO_LIMIT Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;",
+      "if-ne v9, v6, +00ch",
+      "aget-object v6, v4, v5",
+      "sget-object v7, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->NO_LIMIT Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+      "invoke-static v6, v7, Lcom/journey/server/JourneyConfigService;->PackageHasBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+      "move-result v6",
+      "move v0, v6",
+      "goto +8h"
+    ]
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isUidAllow(I Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z",
+    "target": "v6, v7, Lcom/journey/server/JourneyConfigService;->PackageHasBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+    "context": [
+      "invoke-static v1, v6, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I",
+      "sget-object v6, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->NO_LIMIT Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;",
+      "if-ne v9, v6, +00ch",
+      "aget-object v6, v4, v5",
+      "sget-object v7, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->NO_LIMIT Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;",
+      "invoke-static v6, v7, Lcom/journey/server/JourneyConfigService;->PackageHasBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z",
+      "move-result v6",
+      "move v0, v6",
+      "goto +8h",
+      "aget-object v6, v4, v5"
+    ]
+  }
+]
