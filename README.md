@@ -25,6 +25,7 @@
 
 | 文档 | 包含内容 |
 |---|---|
+| **[最终验收与覆盖范围](docs/FINAL_ARCHIVE_REVIEW.md)** | 最终审核结论、归档覆盖面、已取得/尚未取得的研究成果 |
 | [时间线 HISTORY](docs/HISTORY.md) | 从 2026-06-12 的 EDL 到 QAS、GhostLock 和云端源码编译 |
 | [真机与启动链](docs/DEVICE_AND_BOOT.md) | 型号、固件号、AVB / Fastboot、Sahara、A/B 分区、失败命令 |
 | [固件、OTA 与官方公告](docs/FIRMWARE_OTA_AND_OFFICIAL.md) | 官方版本发布顺序、OTA 取证现状、2026 年安全提示 |
