@@ -15,6 +15,9 @@
 | **2026-10-10** | Actions #38052323798、#38053251640 | 配置差异与 compiler drift 复核；确认候选引入非原厂功能 |
 | **2026-10-10** | Actions [Android Clang11 审计](../.github/workflows/p780-clang11-audit.yml) #38053176845 | **首次使用匹配原厂 Clang 11.0.2** 编译 `rtmutex.o` 成功；原有配置值变化 0，消失24、新增322；仍非原厂 `vmlinux` |
 | **2026-10-10** | 新建本私有仓库，保存所有可归档研究产物 | 从易丢失的聊天记录迁移到可追踪的 Git 历史 |
+| **2026-10-10** | [Actions #38054396216](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38054396216) 将编译资料永久入 Git | Clang11、Clang14 配置、日志、对象与差异报告均已保存于 `evidence/actions/` |
+| **2026-10-10** | 机主补传 GhostLock v0.1—v0.4 和 Tracefs 原件 | 4 个 ZIP 与 4KB `p780-cpu4.raw` 全部保存；[验收 #38055530285](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38055530285) 检查 CRC、SHA、内嵌证据的字节一致性 |
+| **2026-10-10** | 最终文件与文档收敛 | 整理 `evidence/`、修复早期“待上传”状态、记录 v0.4 README 仍误标 v0.3 的原件瑕疵；Root / BL 解锁仍未达成 |
 
 ## 重要警告
 
