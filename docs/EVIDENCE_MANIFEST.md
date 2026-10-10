@@ -14,17 +14,17 @@
 | `P780-offline-kernel-study-20261010.zip` | 52078 | **原文件库保留，未入 Git 仓库** |
 | `P780-WSL-source-prep(1).sh` | 4543 | **原文件库保留，未入 Git 仓库** |
 | `P780-WSL-source-prep.sh` | 4543 | [已存 GitHub](../archive/tools/P780-WSL-source-prep.sh) |
-| `P780-module-inventory.txt` | 8560 | **原文件库保留，未入 Git 仓库** |
+| `P780-module-inventory.txt` | 8560 | [已转存 44 个模块名的脱敏结果](../archive/device/P780_loaded_module_names.md)；原始 UTF-16 未迁入 |
 | `p780_module_audit(1).py` | 6988 | **原文件库保留，未入 Git 仓库** |
 | `p780_module_audit.py` | 6988 | [已存 GitHub](../archive/tools/p780_module_audit.py) |
-| `P780-GhostLock-port-v0.4.zip` | 99662 | **原文件库保留，未入 Git 仓库** |
-| `P780-GhostLock-port-v0.3.zip` | 67667 | **原文件库保留，未入 Git 仓库** |
-| `P780-GhostLock-port-v0.2.zip` | 72599 | **原文件库保留，未入 Git 仓库** |
-| `P780-GhostLock-port-v0.1.zip` | 57818 | **原文件库保留，未入 Git 仓库** |
+| `P780-GhostLock-port-v0.4.zip` | 99662 | [已存 GitHub：原始字节已校验](../evidence/ghostlock/P780-GhostLock-port-v0.4.zip) |
+| `P780-GhostLock-port-v0.3.zip` | 67667 | [已存 GitHub：原始字节已校验](../evidence/ghostlock/P780-GhostLock-port-v0.3.zip) |
+| `P780-GhostLock-port-v0.2.zip` | 72599 | [已存 GitHub：原始字节已校验](../evidence/ghostlock/P780-GhostLock-port-v0.2.zip) |
+| `P780-GhostLock-port-v0.1.zip` | 57818 | [已存 GitHub：原始字节已校验](../evidence/ghostlock/P780-GhostLock-port-v0.1.zip) |
 | `p780_ghostlock_audit(1).py` | 5471 | **原文件库保留，未入 Git 仓库** |
 | `p780_ghostlock_audit.py` | 5471 | [已存 GitHub](../archive/tools/p780_ghostlock_audit.py) |
 | `P780_GhostLock_源码核对报告_2026-10-10.md` | 8090 | [已存 GitHub](../archive/reports/P780_GhostLock_source_audit_2026-10-10.md) |
-| `p780-cpu4.raw` | 4096 | **原文件库保留，未入 Git 仓库** |
+| `p780-cpu4.raw` | 4096 | [已存 GitHub：原始字节已校验](../evidence/device/p780-cpu4.raw) |
 | `p780-config.gz` | 39170 | [已存 GitHub](../p780-config.gz) |
 | `hand5g_debloat_daily_phone.ps1` | 13721 | [已存 GitHub](../archive/scripts/hand5g_debloat_daily_phone.ps1) |
 | `hand5g_debloat_p780.ps1` | 14373 | [已存 GitHub](../archive/scripts/hand5g_debloat_p780.ps1) |
@@ -64,17 +64,17 @@
 
 ## 另外的云端构建原件
 
-- [Clang 11 #38053176845](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38053176845)；[Clang 14 #38052323798](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38052323798)；[Config delta #38053251640](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38053251640)。GitHub Actions Artifact 会过期；仓库另有将工件永久固化进 `evidence/actions/` 的专用工作流，需核实其运行结果。
+- [Clang 11 #38053176845](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38053176845)；[Clang 14 #38052323798](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38052323798)；[Config delta #38053251640](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38053251640)。GitHub Actions Artifact 会过期；**[永久归档运行 #38054396216](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38054396216) 已成功**，原始构建工件保存在仓库 `evidence/actions/` 下。
 
-## 暂未入 Git 的关键历史证据
+## 已补全原件与仍未迁入的历史证据
 
-- `p780-cpu4.raw` 4,096 字节：真正的 Tracefs 二进制，可让设备所有者上传至 `evidence/device/p780-cpu4.raw`。已有离线解释，但尚无 Git 原件。
+- `p780-cpu4.raw` **已完整入仓**：[原始二进制](../evidence/device/p780-cpu4.raw)，4,096 字节，含实验追踪标记；此前的遗留“等待上传”状态已关闭。
 - `hand5g_getprop.txt`, `hand5g_fastboot_all.txt`, `hand5g_bugreport.zip`, OTA/activity 日志：包含或可能包含设备序列、网络、应用日志与账户痕迹；先脱敏，不直接全量提交。
-- `P780-GhostLock-port-v0.1...v0.4.zip`：旧研究包已找到，但尚未逐文件复制进 Git；已在仓库存了可复核工具、源码报告和状态索引。
+- GhostLock v0.1–v0.4 的**四份原始 ZIP 已完整入仓并通过 CRC/SHA 检验**；见 [版本与内容索引](GHOSTLOCK_PORT_VERSIONS.md)。
 - 大型 `P780-master.zip`、`linux-android-samsung-a52sxq-droidian.zip` 可从上游仓库按指定 commit 再取得，避免将整份第三方源码提交为冗余仓库附件。
 
 ## 完整性原则
 
-仅有文件清单和分析结论的项目不能标为原始文件已存 GitHub；UTF-16/乱码或无可读内容的文件也不作伪造转写。设备唯一标识、IMEI、带密码与登录凭据的记录不应进入可公开仓库，私库也尽可能脱敏。
+原始 Tracefs 与 GhostLock 四代 ZIP 已经入仓，其字节级和内部哈希核对见 [证据完整性](EVIDENCE_INTEGRITY.md)。其它只有文件清单和分析结论的项目不能标为原始文件已入仓；UTF-16/乱码或无可读内容的文件也不作伪造转写。设备唯一标识、IMEI、带密码与登录凭据的记录不应进入可公开仓库，私库也尽可能脱敏。
 
-_本轮列表定位 56 份、另补回一份更早的 2026-06-12 EDL 文件；这不是用户所有未上传文件的完整集合。_
+_已枚举最近历史列表 56 份，并另外补回一份 2026-06-12 EDL 原件，共至少 57 项历史文件记录。本索引同时列出可长期通过 GitHub 获取的原件和仍在个人文件库的原始材料。_
