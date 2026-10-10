@@ -1,0 +1,7118 @@
+[
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "IsBlackCallerAllowed(I I Ljava/lang/String; Ljava/lang/String;)Z",
+    "code_item_offset": 3269568,
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "const/4",
+        "args": "v0, 0"
+      },
+      {
+        "offset": 2,
+        "op": "if-eqz",
+        "args": "v4, +011h"
+      },
+      {
+        "offset": 6,
+        "op": "if-eqz",
+        "args": "v5, +00fh"
+      },
+      {
+        "offset": 10,
+        "op": "invoke-virtual",
+        "args": "v4, v5, Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+      },
+      {
+        "offset": 16,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 18,
+        "op": "if-nez",
+        "args": "v1, +009h"
+      },
+      {
+        "offset": 22,
+        "op": "sget-object",
+        "args": "v1, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->CHECK_BLACK_CALLER Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 26,
+        "op": "invoke-static",
+        "args": "v4, v1, v0, Lcom/android/server/am/JourneyPerformanceService;->isPackageAllow(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 32,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 34,
+        "op": "return",
+        "args": "v0"
+      },
+      {
+        "offset": 36,
+        "op": "if-eq",
+        "args": "v2, v3, +009h"
+      },
+      {
+        "offset": 40,
+        "op": "sget-object",
+        "args": "v1, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->CHECK_BLACK_CALLER Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 44,
+        "op": "invoke-static",
+        "args": "v2, v1, v0, Lcom/android/server/am/JourneyPerformanceService;->isUidAllow(I Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 50,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 52,
+        "op": "return",
+        "args": "v0"
+      },
+      {
+        "offset": 54,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 56,
+        "op": "return",
+        "args": "v0"
+      }
+    ],
+    "original_insns_sha256": "d0e9f2066d77c56a0883f95c150d8cfabbd83df833949cbcae95f175418a3e4b",
+    "original_insns_hex": "12003804110038050f006e20c6fa54000a01390109006201c7287130136a14000a000f00323209006201c7287130186a12000a000f0012100f00"
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "IsKeepMostUsedAllow(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z",
+    "code_item_offset": 3269644,
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "const-wide/16",
+        "args": "v0, 64"
+      },
+      {
+        "offset": 4,
+        "op": "invoke-static",
+        "args": "v0, v1, Landroid/os/Trace;->isTagEnabled(J)Z"
+      },
+      {
+        "offset": 10,
+        "op": "move-result",
+        "args": "v2"
+      },
+      {
+        "offset": 12,
+        "op": "if-eqz",
+        "args": "v2, +016h"
+      },
+      {
+        "offset": 16,
+        "op": "new-instance",
+        "args": "v2, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 20,
+        "op": "invoke-direct",
+        "args": "v2, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 26,
+        "op": "const-string",
+        "args": "v3, \"TPS-IsKeepMostUsedAllow \""
+      },
+      {
+        "offset": 30,
+        "op": "invoke-virtual",
+        "args": "v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 36,
+        "op": "invoke-virtual",
+        "args": "v2, v7, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 42,
+        "op": "invoke-virtual",
+        "args": "v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 48,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 50,
+        "op": "invoke-static",
+        "args": "v0, v1, v2, Landroid/os/Trace;->traceBegin(J Ljava/lang/String;)V"
+      },
+      {
+        "offset": 56,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_HANDLE_PKG Z"
+      },
+      {
+        "offset": 60,
+        "op": "const-string",
+        "args": "v3, \"JourneyPerformanceService\""
+      },
+      {
+        "offset": 64,
+        "op": "if-eqz",
+        "args": "v2, +026h"
+      },
+      {
+        "offset": 68,
+        "op": "new-instance",
+        "args": "v2, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 72,
+        "op": "invoke-direct",
+        "args": "v2, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 78,
+        "op": "const-string",
+        "args": "v4, \"IsKeepMostUsedAllow uid:\""
+      },
+      {
+        "offset": 82,
+        "op": "invoke-virtual",
+        "args": "v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 88,
+        "op": "invoke-virtual",
+        "args": "v2, v7, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 94,
+        "op": "const-string",
+        "args": "v4, \" procName:\""
+      },
+      {
+        "offset": 98,
+        "op": "invoke-virtual",
+        "args": "v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 104,
+        "op": "invoke-virtual",
+        "args": "v2, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 110,
+        "op": "const-string",
+        "args": "v4, \" type:\""
+      },
+      {
+        "offset": 114,
+        "op": "invoke-virtual",
+        "args": "v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 120,
+        "op": "invoke-virtual",
+        "args": "v2, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 126,
+        "op": "invoke-virtual",
+        "args": "v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 132,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 134,
+        "op": "invoke-static",
+        "args": "v3, v2, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 140,
+        "op": "const/4",
+        "args": "v2, 0"
+      },
+      {
+        "offset": 142,
+        "op": "invoke-static",
+        "args": "v7, v8, v9, v10, Lcom/android/server/am/JourneyPerformanceService;->isUidKeptAllowForProc(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 148,
+        "op": "move-result",
+        "args": "v3"
+      },
+      {
+        "offset": 150,
+        "op": "if-eqz",
+        "args": "v3, +003h"
+      },
+      {
+        "offset": 154,
+        "op": "const/4",
+        "args": "v2, 1"
+      },
+      {
+        "offset": 156,
+        "op": "goto",
+        "args": "+1eh"
+      },
+      {
+        "offset": 158,
+        "op": "move-exception",
+        "args": "v4"
+      },
+      {
+        "offset": 160,
+        "op": "new-instance",
+        "args": "v5, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 164,
+        "op": "invoke-direct",
+        "args": "v5, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 170,
+        "op": "const-string",
+        "args": "v6, \"IsKeepMostUsedAllow    \""
+      },
+      {
+        "offset": 174,
+        "op": "invoke-virtual",
+        "args": "v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 180,
+        "op": "invoke-virtual",
+        "args": "v5, v7, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 186,
+        "op": "const-string",
+        "args": "v6, \" failed:\""
+      },
+      {
+        "offset": 190,
+        "op": "invoke-virtual",
+        "args": "v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 196,
+        "op": "invoke-virtual",
+        "args": "v5, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 202,
+        "op": "invoke-virtual",
+        "args": "v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 208,
+        "op": "move-result-object",
+        "args": "v5"
+      },
+      {
+        "offset": 210,
+        "op": "invoke-static",
+        "args": "v3, v5, v4, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I"
+      },
+      {
+        "offset": 216,
+        "op": "invoke-static",
+        "args": "v0, v1, Landroid/os/Trace;->traceEnd(J)V"
+      },
+      {
+        "offset": 222,
+        "op": "return",
+        "args": "v2"
+      }
+    ],
+    "original_insns_sha256": "5d1ac0b2262835b39ca6f612e1ba8eb0b265b7d2276e337d4e1b74a5db05c017",
+    "original_insns_hex": "160040007120793510000a02380216002202c321701001fb02001a039a966e200cfb32006e2007fb72006e1015fb02000c0271307a3510026302fe281a033748380226002202c321701001fb02001a049a476e200cfb42006e2007fb72001a04e9116e200cfb42006e200cfb82001a04c0136e200cfb42006e200bfb92006e1015fb02000c0271209e3b230012027140196a87a90a03380303001212281e0d042205c321701001fb05001a0699476e200cfb65006e2007fb75001a06fc0d6e200cfb65006e200bfb45006e1015fb05000c057130a83b530471207c3510000f02"
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isPackageAllow(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z",
+    "code_item_offset": 3270904,
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "move-object/from16",
+        "args": "v0, v38"
+      },
+      {
+        "offset": 4,
+        "op": "move-object/from16",
+        "args": "v1, v40"
+      },
+      {
+        "offset": 8,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->mReady Z"
+      },
+      {
+        "offset": 12,
+        "op": "if-nez",
+        "args": "v2, +02ch"
+      },
+      {
+        "offset": 16,
+        "op": "new-instance",
+        "args": "v2, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 20,
+        "op": "invoke-direct",
+        "args": "v2, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 26,
+        "op": "const-string/jumbo",
+        "args": "v3, isPackageAllow NOT ready for check "
+      },
+      {
+        "offset": 32,
+        "op": "invoke-virtual",
+        "args": "v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 38,
+        "op": "invoke-virtual",
+        "args": "v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 44,
+        "op": "const-string",
+        "args": "v3, \" \""
+      },
+      {
+        "offset": 48,
+        "op": "invoke-virtual",
+        "args": "v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 54,
+        "op": "move-object/from16",
+        "args": "v3, v39"
+      },
+      {
+        "offset": 58,
+        "op": "invoke-virtual",
+        "args": "v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 64,
+        "op": "invoke-virtual",
+        "args": "v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 70,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 72,
+        "op": "const-string",
+        "args": "v4, \"JourneyPerformanceService\""
+      },
+      {
+        "offset": 76,
+        "op": "invoke-static",
+        "args": "v4, v2, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 82,
+        "op": "if-eqz",
+        "args": "v1, +007h"
+      },
+      {
+        "offset": 86,
+        "op": "sget-object",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService$REASON;->NOT_READY Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 90,
+        "op": "invoke-virtual",
+        "args": "v1, v2, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 96,
+        "op": "const/4",
+        "args": "v2, 1"
+      },
+      {
+        "offset": 98,
+        "op": "return",
+        "args": "v2"
+      },
+      {
+        "offset": 100,
+        "op": "move-object/from16",
+        "args": "v3, v39"
+      },
+      {
+        "offset": 104,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 108,
+        "op": "const-wide/16",
+        "args": "v4, 64"
+      },
+      {
+        "offset": 112,
+        "op": "if-eqz",
+        "args": "v2, +01ch"
+      },
+      {
+        "offset": 116,
+        "op": "invoke-static",
+        "args": "v4, v5, Landroid/os/Trace;->isTagEnabled(J)Z"
+      },
+      {
+        "offset": 122,
+        "op": "move-result",
+        "args": "v2"
+      },
+      {
+        "offset": 124,
+        "op": "if-eqz",
+        "args": "v2, +016h"
+      },
+      {
+        "offset": 128,
+        "op": "new-instance",
+        "args": "v2, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 132,
+        "op": "invoke-direct",
+        "args": "v2, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 138,
+        "op": "const-string",
+        "args": "v6, \"TPS-isPackageAllow \""
+      },
+      {
+        "offset": 142,
+        "op": "invoke-virtual",
+        "args": "v2, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 148,
+        "op": "invoke-virtual",
+        "args": "v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 154,
+        "op": "invoke-virtual",
+        "args": "v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 160,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 162,
+        "op": "invoke-static",
+        "args": "v4, v5, v2, Landroid/os/Trace;->traceBegin(J Ljava/lang/String;)V"
+      },
+      {
+        "offset": 168,
+        "op": "if-nez",
+        "args": "v0, +006h"
+      },
+      {
+        "offset": 172,
+        "op": "const-string",
+        "args": "v0, \"\""
+      },
+      {
+        "offset": 176,
+        "op": "move-object",
+        "args": "v2, v0"
+      },
+      {
+        "offset": 178,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 180,
+        "op": "move-object",
+        "args": "v2, v0"
+      },
+      {
+        "offset": 182,
+        "op": "const/4",
+        "args": "v6, 0"
+      },
+      {
+        "offset": 184,
+        "op": "const/4",
+        "args": "v7, 1"
+      },
+      {
+        "offset": 186,
+        "op": "const/4",
+        "args": "v8, 0"
+      },
+      {
+        "offset": 188,
+        "op": "const-string",
+        "args": "v9, \"\""
+      },
+      {
+        "offset": 192,
+        "op": "new-instance",
+        "args": "v0, Ljava/util/ArrayList;"
+      },
+      {
+        "offset": 196,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/util/ArrayList;-><init>()V"
+      },
+      {
+        "offset": 202,
+        "op": "move-object",
+        "args": "v10, v0"
+      },
+      {
+        "offset": 204,
+        "op": "invoke-virtual/range",
+        "args": "v39, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 210,
+        "op": "move-result-object",
+        "args": "v11"
+      },
+      {
+        "offset": 212,
+        "op": "const/4",
+        "args": "v0, 0"
+      },
+      {
+        "offset": 214,
+        "op": "const/4",
+        "args": "v12, 0"
+      },
+      {
+        "offset": 216,
+        "op": "const/4",
+        "args": "v13, 0"
+      },
+      {
+        "offset": 218,
+        "op": "const/4",
+        "args": "v14, 0"
+      },
+      {
+        "offset": 220,
+        "op": "const/4",
+        "args": "v15, 0"
+      },
+      {
+        "offset": 222,
+        "op": "const/16",
+        "args": "v16, 0"
+      },
+      {
+        "offset": 226,
+        "op": "const/16",
+        "args": "v17, 0"
+      },
+      {
+        "offset": 230,
+        "op": "const/16",
+        "args": "v18, 0"
+      },
+      {
+        "offset": 234,
+        "op": "const/16",
+        "args": "v19, 0"
+      },
+      {
+        "offset": 238,
+        "op": "const/16",
+        "args": "v20, 0"
+      },
+      {
+        "offset": 242,
+        "op": "const/16",
+        "args": "v21, 0"
+      },
+      {
+        "offset": 246,
+        "op": "const/16",
+        "args": "v22, 0"
+      },
+      {
+        "offset": 250,
+        "op": "const/16",
+        "args": "v23, 0"
+      },
+      {
+        "offset": 254,
+        "op": "sget-boolean",
+        "args": "v24, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION_KEEP_TASK Z"
+      },
+      {
+        "offset": 258,
+        "op": "const/16",
+        "args": "v25, 0"
+      },
+      {
+        "offset": 262,
+        "op": "const/16",
+        "args": "v26, 0"
+      },
+      {
+        "offset": 266,
+        "op": "sget-object",
+        "args": "v27, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALL Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;"
+      },
+      {
+        "offset": 270,
+        "op": "sget-object",
+        "args": "v28, Lcom/android/server/am/JourneyPerformanceService$REASON;->DEFAULT Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 274,
+        "op": "const/16",
+        "args": "v29, 0"
+      },
+      {
+        "offset": 278,
+        "op": "if-eqz",
+        "args": "v1, +007h"
+      },
+      {
+        "offset": 282,
+        "op": "move-object/from16",
+        "args": "v30, v40"
+      },
+      {
+        "offset": 286,
+        "op": "move-object/from16",
+        "args": "v4, v30"
+      },
+      {
+        "offset": 290,
+        "op": "goto",
+        "args": "+8h"
+      },
+      {
+        "offset": 292,
+        "op": "new-instance",
+        "args": "v30, Lcom/android/server/am/JourneyPerformanceService$Reason;"
+      },
+      {
+        "offset": 296,
+        "op": "invoke-direct/range",
+        "args": "v30, Lcom/android/server/am/JourneyPerformanceService$Reason;-><init>()V"
+      },
+      {
+        "offset": 302,
+        "op": "move-object/from16",
+        "args": "v4, v30"
+      },
+      {
+        "offset": 306,
+        "op": "sget-object",
+        "args": "v5, Lcom/android/server/am/JourneyPerformanceService$2;->$SwitchMap$com$android$server$am$JourneyPerformanceService$TPS_TYPE [I"
+      },
+      {
+        "offset": 310,
+        "op": "invoke-virtual/range",
+        "args": "v39, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->ordinal()I"
+      },
+      {
+        "offset": 316,
+        "op": "move-result",
+        "args": "v30"
+      },
+      {
+        "offset": 318,
+        "op": "aget",
+        "args": "v5, v5, v30"
+      },
+      {
+        "offset": 322,
+        "op": "packed-switch",
+        "args": "v5, +0000729h"
+      },
+      {
+        "offset": 328,
+        "op": "move",
+        "args": "v5, v0"
+      },
+      {
+        "offset": 330,
+        "op": "move-object/from16",
+        "args": "v1, v27"
+      },
+      {
+        "offset": 334,
+        "op": "goto",
+        "args": "+45h"
+      },
+      {
+        "offset": 336,
+        "op": "const/16",
+        "args": "v16, 1"
+      },
+      {
+        "offset": 340,
+        "op": "const/16",
+        "args": "v18, 1"
+      },
+      {
+        "offset": 344,
+        "op": "const/16",
+        "args": "v25, 1"
+      },
+      {
+        "offset": 348,
+        "op": "move",
+        "args": "v5, v0"
+      },
+      {
+        "offset": 350,
+        "op": "move-object/from16",
+        "args": "v1, v27"
+      },
+      {
+        "offset": 354,
+        "op": "goto",
+        "args": "+3bh"
+      },
+      {
+        "offset": 356,
+        "op": "sget-boolean",
+        "args": "v26, Lcom/android/server/am/JourneyPerformanceService;->AMS_OPTIMIZATION_DISALLOW_BLACK_CALLER Z"
+      },
+      {
+        "offset": 360,
+        "op": "move/from16",
+        "args": "v25, v26"
+      },
+      {
+        "offset": 364,
+        "op": "move",
+        "args": "v5, v0"
+      },
+      {
+        "offset": 366,
+        "op": "move-object/from16",
+        "args": "v1, v27"
+      },
+      {
+        "offset": 370,
+        "op": "goto",
+        "args": "+33h"
+      },
+      {
+        "offset": 372,
+        "op": "const/16",
+        "args": "v23, 1"
+      },
+      {
+        "offset": 376,
+        "op": "move",
+        "args": "v5, v0"
+      },
+      {
+        "offset": 378,
+        "op": "move-object/from16",
+        "args": "v1, v27"
+      },
+      {
+        "offset": 382,
+        "op": "goto",
+        "args": "+2dh"
+      },
+      {
+        "offset": 384,
+        "op": "const/4",
+        "args": "v13, 1"
+      },
+      {
+        "offset": 386,
+        "op": "move",
+        "args": "v5, v0"
+      },
+      {
+        "offset": 388,
+        "op": "move-object/from16",
+        "args": "v1, v27"
+      },
+      {
+        "offset": 392,
+        "op": "goto",
+        "args": "+28h"
+      },
+      {
+        "offset": 394,
+        "op": "const/4",
+        "args": "v13, 1"
+      },
+      {
+        "offset": 396,
+        "op": "const/16",
+        "args": "v23, 1"
+      },
+      {
+        "offset": 400,
+        "op": "move",
+        "args": "v5, v0"
+      },
+      {
+        "offset": 402,
+        "op": "move-object/from16",
+        "args": "v1, v27"
+      },
+      {
+        "offset": 406,
+        "op": "goto",
+        "args": "+21h"
+      },
+      {
+        "offset": 408,
+        "op": "const-string/jumbo",
+        "args": "v5, tinno_performance_auto_clean_app_white_list"
+      },
+      {
+        "offset": 414,
+        "op": "invoke-interface",
+        "args": "v10, v5, Ljava/util/List;->add(Ljava/lang/Object;)Z"
+      },
+      {
+        "offset": 420,
+        "op": "sget-object",
+        "args": "v27, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ALLOW_PERSIST Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;"
+      },
+      {
+        "offset": 424,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 426,
+        "op": "const/4",
+        "args": "v12, 1"
+      },
+      {
+        "offset": 428,
+        "op": "const/4",
+        "args": "v13, 1"
+      },
+      {
+        "offset": 430,
+        "op": "const/4",
+        "args": "v14, 1"
+      },
+      {
+        "offset": 432,
+        "op": "const/4",
+        "args": "v15, 1"
+      },
+      {
+        "offset": 434,
+        "op": "const/16",
+        "args": "v16, 1"
+      },
+      {
+        "offset": 438,
+        "op": "const/16",
+        "args": "v17, 1"
+      },
+      {
+        "offset": 442,
+        "op": "const/16",
+        "args": "v18, 1"
+      },
+      {
+        "offset": 446,
+        "op": "const/16",
+        "args": "v19, 1"
+      },
+      {
+        "offset": 450,
+        "op": "const/16",
+        "args": "v20, 1"
+      },
+      {
+        "offset": 454,
+        "op": "const/16",
+        "args": "v21, 1"
+      },
+      {
+        "offset": 458,
+        "op": "const/16",
+        "args": "v22, 1"
+      },
+      {
+        "offset": 462,
+        "op": "const/16",
+        "args": "v25, 1"
+      },
+      {
+        "offset": 466,
+        "op": "move",
+        "args": "v5, v0"
+      },
+      {
+        "offset": 468,
+        "op": "move-object/from16",
+        "args": "v1, v27"
+      },
+      {
+        "offset": 472,
+        "op": "invoke-virtual",
+        "args": "v2, Ljava/lang/String;->length()I"
+      },
+      {
+        "offset": 478,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 480,
+        "op": "if-nez",
+        "args": "v0, +011h"
+      },
+      {
+        "offset": 484,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->UNKNOW_PACKAGE Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 488,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 494,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 496,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 500,
+        "op": "goto/16",
+        "args": "+63fh"
+      },
+      {
+        "offset": 504,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 506,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 510,
+        "op": "goto/16",
+        "args": "+656h"
+      },
+      {
+        "offset": 514,
+        "op": "invoke-virtual",
+        "args": "v9, Ljava/lang/String;->isEmpty()Z"
+      },
+      {
+        "offset": 520,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 522,
+        "op": "if-nez",
+        "args": "v0, +013h"
+      },
+      {
+        "offset": 526,
+        "op": "invoke-static",
+        "args": "v9, Lcom/journey/server/am/JourneySettingProviderTracker;->getSettingsBoolean(Ljava/lang/String;)Z"
+      },
+      {
+        "offset": 532,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 534,
+        "op": "if-nez",
+        "args": "v0, +00dh"
+      },
+      {
+        "offset": 538,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->NOT_ENABLE Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 542,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 548,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 550,
+        "op": "const/4",
+        "args": "v8, 0"
+      },
+      {
+        "offset": 552,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 556,
+        "op": "goto/16",
+        "args": "+623h"
+      },
+      {
+        "offset": 560,
+        "op": "if-eqz",
+        "args": "v22, +015h"
+      },
+      {
+        "offset": 564,
+        "op": "sget-object",
+        "args": "v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->NO_LIMIT Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;"
+      },
+      {
+        "offset": 568,
+        "op": "invoke-static",
+        "args": "v2, v0, Lcom/journey/server/JourneyConfigService;->PackageHasBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z"
+      },
+      {
+        "offset": 574,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 576,
+        "op": "if-eqz",
+        "args": "v0, +00dh"
+      },
+      {
+        "offset": 580,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->NO_LIMIT_APP Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 584,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 590,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 592,
+        "op": "const/4",
+        "args": "v8, 1"
+      },
+      {
+        "offset": 594,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 598,
+        "op": "goto/16",
+        "args": "+60eh"
+      },
+      {
+        "offset": 602,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 606,
+        "op": "if-eqz",
+        "args": "v0, +020h"
+      },
+      {
+        "offset": 610,
+        "op": "const-string",
+        "args": "v0, \"TPS-isPackageAllow getPackageApplicationInfo\""
+      },
+      {
+        "offset": 614,
+        "op": "move/from16",
+        "args": "v38, v7"
+      },
+      {
+        "offset": 618,
+        "op": "move/from16",
+        "args": "v27, v8"
+      },
+      {
+        "offset": 622,
+        "op": "const-wide/16",
+        "args": "v7, 64"
+      },
+      {
+        "offset": 626,
+        "op": "invoke-static",
+        "args": "v7, v8, v0, Landroid/os/Trace;->traceBegin(J Ljava/lang/String;)V"
+      },
+      {
+        "offset": 632,
+        "op": "goto",
+        "args": "+17h"
+      },
+      {
+        "offset": 634,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 636,
+        "op": "move/from16",
+        "args": "v7, v38"
+      },
+      {
+        "offset": 640,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 644,
+        "op": "move/from16",
+        "args": "v8, v27"
+      },
+      {
+        "offset": 648,
+        "op": "goto/16",
+        "args": "+611h"
+      },
+      {
+        "offset": 652,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 654,
+        "op": "move/from16",
+        "args": "v38, v7"
+      },
+      {
+        "offset": 658,
+        "op": "move/from16",
+        "args": "v27, v8"
+      },
+      {
+        "offset": 662,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 666,
+        "op": "goto/16",
+        "args": "+608h"
+      },
+      {
+        "offset": 670,
+        "op": "move/from16",
+        "args": "v38, v7"
+      },
+      {
+        "offset": 674,
+        "op": "move/from16",
+        "args": "v27, v8"
+      },
+      {
+        "offset": 678,
+        "op": "const/4",
+        "args": "v0, 0"
+      },
+      {
+        "offset": 680,
+        "op": "if-nez",
+        "args": "v15, +00dh"
+      },
+      {
+        "offset": 684,
+        "op": "if-nez",
+        "args": "v12, +00bh"
+      },
+      {
+        "offset": 688,
+        "op": "if-nez",
+        "args": "v25, +009h"
+      },
+      {
+        "offset": 692,
+        "op": "if-eqz",
+        "args": "v19, +003h"
+      },
+      {
+        "offset": 696,
+        "op": "goto",
+        "args": "+5h"
+      },
+      {
+        "offset": 698,
+        "op": "move-object",
+        "args": "v7, v0"
+      },
+      {
+        "offset": 700,
+        "op": "move/from16",
+        "args": "v8, v29"
+      },
+      {
+        "offset": 704,
+        "op": "goto",
+        "args": "+13h"
+      },
+      {
+        "offset": 706,
+        "op": "invoke-static",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->getPackageApplicationInfo(Ljava/lang/String;)Landroid/content/pm/ApplicationInfo;"
+      },
+      {
+        "offset": 712,
+        "op": "move-result-object",
+        "args": "v7"
+      },
+      {
+        "offset": 714,
+        "op": "move-object",
+        "args": "v0, v7"
+      },
+      {
+        "offset": 716,
+        "op": "if-eqz",
+        "args": "v0, +00ah"
+      },
+      {
+        "offset": 720,
+        "op": "iget",
+        "args": "v7, v0, Landroid/content/pm/ApplicationInfo;->uid I"
+      },
+      {
+        "offset": 724,
+        "op": "move/from16",
+        "args": "v29, v7"
+      },
+      {
+        "offset": 728,
+        "op": "move-object",
+        "args": "v7, v0"
+      },
+      {
+        "offset": 730,
+        "op": "move/from16",
+        "args": "v8, v29"
+      },
+      {
+        "offset": 734,
+        "op": "goto",
+        "args": "+4h"
+      },
+      {
+        "offset": 736,
+        "op": "move-object",
+        "args": "v7, v0"
+      },
+      {
+        "offset": 738,
+        "op": "move/from16",
+        "args": "v8, v29"
+      },
+      {
+        "offset": 742,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 746,
+        "op": "if-eqz",
+        "args": "v0, +013h"
+      },
+      {
+        "offset": 750,
+        "op": "const-wide/16",
+        "args": "v29, 64"
+      },
+      {
+        "offset": 754,
+        "op": "invoke-static/range",
+        "args": "v29 ... v30, Landroid/os/Trace;->traceEnd(J)V"
+      },
+      {
+        "offset": 760,
+        "op": "goto",
+        "args": "+ch"
+      },
+      {
+        "offset": 762,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 764,
+        "op": "move/from16",
+        "args": "v7, v38"
+      },
+      {
+        "offset": 768,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 772,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 776,
+        "op": "move/from16",
+        "args": "v8, v27"
+      },
+      {
+        "offset": 780,
+        "op": "goto/16",
+        "args": "+5cfh"
+      },
+      {
+        "offset": 784,
+        "op": "if-nez",
+        "args": "v6, +01ah"
+      },
+      {
+        "offset": 788,
+        "op": "if-eqz",
+        "args": "v15, +018h"
+      },
+      {
+        "offset": 792,
+        "op": "if-eqz",
+        "args": "v8, +016h"
+      },
+      {
+        "offset": 796,
+        "op": "invoke-static",
+        "args": "v8, Landroid/os/Process;->isApplicationUid(I)Z"
+      },
+      {
+        "offset": 802,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 804,
+        "op": "if-nez",
+        "args": "v0, +010h"
+      },
+      {
+        "offset": 808,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->NOT_APP_UID Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 812,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 818,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 820,
+        "op": "const/16",
+        "args": "v27, 0"
+      },
+      {
+        "offset": 824,
+        "op": "const/4",
+        "args": "v6, 1"
+      },
+      {
+        "offset": 826,
+        "op": "move/from16",
+        "args": "v29, v27"
+      },
+      {
+        "offset": 830,
+        "op": "move/from16",
+        "args": "v27, v0"
+      },
+      {
+        "offset": 834,
+        "op": "goto",
+        "args": "+5h"
+      },
+      {
+        "offset": 836,
+        "op": "move/from16",
+        "args": "v29, v27"
+      },
+      {
+        "offset": 840,
+        "op": "move/from16",
+        "args": "v27, v38"
+      },
+      {
+        "offset": 844,
+        "op": "if-nez",
+        "args": "v6, +05dh"
+      },
+      {
+        "offset": 848,
+        "op": "if-eqz",
+        "args": "v12, +05bh"
+      },
+      {
+        "offset": 852,
+        "op": "invoke-static",
+        "args": "v7, Lcom/android/server/am/JourneyPerformanceService;->isSystem(Landroid/content/pm/ApplicationInfo;)Z"
+      },
+      {
+        "offset": 858,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 860,
+        "op": "if-eqz",
+        "args": "v0, +055h"
+      },
+      {
+        "offset": 864,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 868,
+        "op": "if-eqz",
+        "args": "v0, +00eh"
+      },
+      {
+        "offset": 872,
+        "op": "const-string",
+        "args": "v0, \"TPS-isPackageAllow checksystem\""
+      },
+      {
+        "offset": 876,
+        "op": "move/from16",
+        "args": "v38, v6"
+      },
+      {
+        "offset": 880,
+        "op": "move-object/from16",
+        "args": "v30, v7"
+      },
+      {
+        "offset": 884,
+        "op": "const-wide/16",
+        "args": "v6, 64"
+      },
+      {
+        "offset": 888,
+        "op": "invoke-static",
+        "args": "v6, v7, v0, Landroid/os/Trace;->traceBegin(J Ljava/lang/String;)V"
+      },
+      {
+        "offset": 894,
+        "op": "goto",
+        "args": "+5h"
+      },
+      {
+        "offset": 896,
+        "op": "move/from16",
+        "args": "v38, v6"
+      },
+      {
+        "offset": 900,
+        "op": "move-object/from16",
+        "args": "v30, v7"
+      },
+      {
+        "offset": 904,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->SYSTEM_APP Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 908,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 914,
+        "op": "const/4",
+        "args": "v7, 1"
+      },
+      {
+        "offset": 916,
+        "op": "const/4",
+        "args": "v6, 0"
+      },
+      {
+        "offset": 918,
+        "op": "const/16",
+        "args": "v27, 1"
+      },
+      {
+        "offset": 922,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 926,
+        "op": "if-eqz",
+        "args": "v0, +007h"
+      },
+      {
+        "offset": 930,
+        "op": "const-wide/16",
+        "args": "v31, 64"
+      },
+      {
+        "offset": 934,
+        "op": "invoke-static/range",
+        "args": "v31 ... v32, Landroid/os/Trace;->traceEnd(J)V"
+      },
+      {
+        "offset": 940,
+        "op": "move/from16",
+        "args": "v29, v6"
+      },
+      {
+        "offset": 944,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 948,
+        "op": "goto",
+        "args": "+31h"
+      },
+      {
+        "offset": 950,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 952,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 956,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 960,
+        "op": "move",
+        "args": "v8, v6"
+      },
+      {
+        "offset": 962,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 966,
+        "op": "goto/16",
+        "args": "+572h"
+      },
+      {
+        "offset": 970,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 972,
+        "op": "move/from16",
+        "args": "v6, v38"
+      },
+      {
+        "offset": 976,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 980,
+        "op": "move/from16",
+        "args": "v7, v27"
+      },
+      {
+        "offset": 984,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 988,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 992,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 996,
+        "op": "goto/16",
+        "args": "+563h"
+      },
+      {
+        "offset": 1000,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 1002,
+        "op": "move/from16",
+        "args": "v38, v6"
+      },
+      {
+        "offset": 1006,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 1010,
+        "op": "move/from16",
+        "args": "v7, v27"
+      },
+      {
+        "offset": 1014,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 1018,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 1022,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 1026,
+        "op": "goto/16",
+        "args": "+554h"
+      },
+      {
+        "offset": 1030,
+        "op": "move/from16",
+        "args": "v38, v6"
+      },
+      {
+        "offset": 1034,
+        "op": "move-object/from16",
+        "args": "v30, v7"
+      },
+      {
+        "offset": 1038,
+        "op": "move/from16",
+        "args": "v6, v38"
+      },
+      {
+        "offset": 1042,
+        "op": "move/from16",
+        "args": "v7, v27"
+      },
+      {
+        "offset": 1046,
+        "op": "if-nez",
+        "args": "v6, +093h"
+      },
+      {
+        "offset": 1050,
+        "op": "if-eqz",
+        "args": "v14, +091h"
+      },
+      {
+        "offset": 1054,
+        "op": "sget-boolean",
+        "args": "v27, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 1058,
+        "op": "if-eqz",
+        "args": "v27, +00eh"
+      },
+      {
+        "offset": 1062,
+        "op": "const-string",
+        "args": "v0, \"TPS-isPackageAllow checktoptask\""
+      },
+      {
+        "offset": 1066,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 1070,
+        "op": "move/from16",
+        "args": "v33, v7"
+      },
+      {
+        "offset": 1074,
+        "op": "const-wide/16",
+        "args": "v6, 64"
+      },
+      {
+        "offset": 1078,
+        "op": "invoke-static",
+        "args": "v6, v7, v0, Landroid/os/Trace;->traceBegin(J Ljava/lang/String;)V"
+      },
+      {
+        "offset": 1084,
+        "op": "goto",
+        "args": "+5h"
+      },
+      {
+        "offset": 1086,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 1090,
+        "op": "move/from16",
+        "args": "v33, v7"
+      },
+      {
+        "offset": 1094,
+        "op": "invoke-static",
+        "args": "Lcom/android/server/am/JourneyPerformanceService;->updateRunningTopTaskList()Ljava/lang/StringBuffer;"
+      },
+      {
+        "offset": 1100,
+        "op": "sget-object",
+        "args": "v6, Lcom/android/server/am/JourneyPerformanceService;->mTopRunningPackage Ljava/lang/StringBuffer;"
+      },
+      {
+        "offset": 1104,
+        "op": "monitor-enter",
+        "args": "v6"
+      },
+      {
+        "offset": 1106,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->mTopRunningPackage Ljava/lang/StringBuffer;"
+      },
+      {
+        "offset": 1110,
+        "op": "new-instance",
+        "args": "v7, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 1114,
+        "op": "invoke-direct",
+        "args": "v7, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 1120,
+        "op": "invoke-virtual",
+        "args": "v7, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 1126,
+        "op": "const-string",
+        "args": "v3, \",\""
+      },
+      {
+        "offset": 1130,
+        "op": "invoke-virtual",
+        "args": "v7, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 1136,
+        "op": "invoke-virtual",
+        "args": "v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 1142,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 1144,
+        "op": "const/4",
+        "args": "v7, 0"
+      },
+      {
+        "offset": 1146,
+        "op": "invoke-virtual",
+        "args": "v0, v3, v7, Ljava/lang/StringBuffer;->indexOf(Ljava/lang/String; I)I"
+      },
+      {
+        "offset": 1152,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1154,
+        "op": "if-ltz",
+        "args": "v0, +00bh"
+      },
+      {
+        "offset": 1158,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->IN_RECENT_TASK Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 1162,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 1168,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 1170,
+        "op": "const/4",
+        "args": "v3, 1"
+      },
+      {
+        "offset": 1172,
+        "op": "move",
+        "args": "v7, v0"
+      },
+      {
+        "offset": 1174,
+        "op": "goto",
+        "args": "+5h"
+      },
+      {
+        "offset": 1176,
+        "op": "move/from16",
+        "args": "v3, v27"
+      },
+      {
+        "offset": 1180,
+        "op": "move/from16",
+        "args": "v7, v33"
+      },
+      {
+        "offset": 1184,
+        "op": "monitor-exit",
+        "args": "v6"
+      },
+      {
+        "offset": 1186,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 1190,
+        "op": "if-eqz",
+        "args": "v0, +007h"
+      },
+      {
+        "offset": 1194,
+        "op": "const-wide/16",
+        "args": "v31, 64"
+      },
+      {
+        "offset": 1198,
+        "op": "invoke-static/range",
+        "args": "v31 ... v32, Landroid/os/Trace;->traceEnd(J)V"
+      },
+      {
+        "offset": 1204,
+        "op": "move",
+        "args": "v6, v3"
+      },
+      {
+        "offset": 1206,
+        "op": "goto",
+        "args": "+4bh"
+      },
+      {
+        "offset": 1208,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 1210,
+        "op": "move",
+        "args": "v6, v3"
+      },
+      {
+        "offset": 1212,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 1216,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 1220,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 1224,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 1228,
+        "op": "goto/16",
+        "args": "+4efh"
+      },
+      {
+        "offset": 1232,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 1234,
+        "op": "move/from16",
+        "args": "v27, v3"
+      },
+      {
+        "offset": 1238,
+        "op": "goto",
+        "args": "+4h"
+      },
+      {
+        "offset": 1240,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 1242,
+        "op": "move/from16",
+        "args": "v7, v33"
+      },
+      {
+        "offset": 1246,
+        "op": "monitor-exit",
+        "args": "v6"
+      },
+      {
+        "offset": 1248,
+        "op": "throw",
+        "args": "v0"
+      },
+      {
+        "offset": 1250,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 1252,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 1256,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 1260,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 1264,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 1268,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 1272,
+        "op": "goto/16",
+        "args": "+4d9h"
+      },
+      {
+        "offset": 1276,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 1278,
+        "op": "goto",
+        "args": "-10h"
+      },
+      {
+        "offset": 1280,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 1282,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 1286,
+        "op": "move/from16",
+        "args": "v7, v33"
+      },
+      {
+        "offset": 1290,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 1294,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 1298,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 1302,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 1306,
+        "op": "goto/16",
+        "args": "+4c8h"
+      },
+      {
+        "offset": 1310,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 1312,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 1316,
+        "op": "move/from16",
+        "args": "v33, v7"
+      },
+      {
+        "offset": 1320,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 1324,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 1328,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 1332,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 1336,
+        "op": "goto/16",
+        "args": "+4b9h"
+      },
+      {
+        "offset": 1340,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 1344,
+        "op": "move/from16",
+        "args": "v33, v7"
+      },
+      {
+        "offset": 1348,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 1352,
+        "op": "move/from16",
+        "args": "v7, v33"
+      },
+      {
+        "offset": 1356,
+        "op": "if-nez",
+        "args": "v6, +066h"
+      },
+      {
+        "offset": 1360,
+        "op": "if-eqz",
+        "args": "v19, +064h"
+      },
+      {
+        "offset": 1364,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 1368,
+        "op": "if-eqz",
+        "args": "v0, +00dh"
+      },
+      {
+        "offset": 1372,
+        "op": "const-string",
+        "args": "v0, \"TPS-isPackageAllow checkprocstatus\""
+      },
+      {
+        "offset": 1376,
+        "op": "move",
+        "args": "v3, v6"
+      },
+      {
+        "offset": 1378,
+        "op": "move/from16",
+        "args": "v27, v7"
+      },
+      {
+        "offset": 1382,
+        "op": "const-wide/16",
+        "args": "v6, 64"
+      },
+      {
+        "offset": 1386,
+        "op": "invoke-static",
+        "args": "v6, v7, v0, Landroid/os/Trace;->traceBegin(J Ljava/lang/String;)V"
+      },
+      {
+        "offset": 1392,
+        "op": "goto",
+        "args": "+4h"
+      },
+      {
+        "offset": 1394,
+        "op": "move",
+        "args": "v3, v6"
+      },
+      {
+        "offset": 1396,
+        "op": "move/from16",
+        "args": "v27, v7"
+      },
+      {
+        "offset": 1400,
+        "op": "const/16",
+        "args": "v0, 8"
+      },
+      {
+        "offset": 1404,
+        "op": "invoke-static",
+        "args": "v8, Lcom/android/server/am/JourneyPerformanceService;->isRealUsed(I)Z"
+      },
+      {
+        "offset": 1410,
+        "op": "move-result",
+        "args": "v6"
+      },
+      {
+        "offset": 1412,
+        "op": "if-nez",
+        "args": "v6, +004h"
+      },
+      {
+        "offset": 1416,
+        "op": "const/16",
+        "args": "v0, 12"
+      },
+      {
+        "offset": 1420,
+        "op": "sget-object",
+        "args": "v6, Lcom/android/server/am/JourneyPerformanceService;->mAms Lcom/android/server/am/ActivityManagerService;"
+      },
+      {
+        "offset": 1424,
+        "op": "invoke-virtual",
+        "args": "v6, v8, Lcom/android/server/am/ActivityManagerService;->getUidProcStatus(I)I"
+      },
+      {
+        "offset": 1430,
+        "op": "move-result",
+        "args": "v6"
+      },
+      {
+        "offset": 1432,
+        "op": "if-gt",
+        "args": "v6, v0, +00ch"
+      },
+      {
+        "offset": 1436,
+        "op": "sget-object",
+        "args": "v6, Lcom/android/server/am/JourneyPerformanceService$REASON;->HIGH_PRIORITY Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 1440,
+        "op": "invoke-virtual",
+        "args": "v4, v6, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 1446,
+        "op": "const/4",
+        "args": "v6, 1"
+      },
+      {
+        "offset": 1448,
+        "op": "const/4",
+        "args": "v3, 1"
+      },
+      {
+        "offset": 1450,
+        "op": "move",
+        "args": "v7, v6"
+      },
+      {
+        "offset": 1452,
+        "op": "move",
+        "args": "v6, v3"
+      },
+      {
+        "offset": 1454,
+        "op": "goto",
+        "args": "+4h"
+      },
+      {
+        "offset": 1456,
+        "op": "move",
+        "args": "v6, v3"
+      },
+      {
+        "offset": 1458,
+        "op": "move/from16",
+        "args": "v7, v27"
+      },
+      {
+        "offset": 1462,
+        "op": "sget-boolean",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 1466,
+        "op": "if-eqz",
+        "args": "v3, +035h"
+      },
+      {
+        "offset": 1470,
+        "op": "const-wide/16",
+        "args": "v31, 64"
+      },
+      {
+        "offset": 1474,
+        "op": "invoke-static/range",
+        "args": "v31 ... v32, Landroid/os/Trace;->traceEnd(J)V"
+      },
+      {
+        "offset": 1480,
+        "op": "goto",
+        "args": "+2eh"
+      },
+      {
+        "offset": 1482,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 1484,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 1488,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 1492,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 1496,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 1500,
+        "op": "goto/16",
+        "args": "+467h"
+      },
+      {
+        "offset": 1504,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 1506,
+        "op": "move",
+        "args": "v6, v3"
+      },
+      {
+        "offset": 1508,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 1512,
+        "op": "move/from16",
+        "args": "v7, v27"
+      },
+      {
+        "offset": 1516,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 1520,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 1524,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 1528,
+        "op": "goto/16",
+        "args": "+459h"
+      },
+      {
+        "offset": 1532,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 1534,
+        "op": "move",
+        "args": "v3, v6"
+      },
+      {
+        "offset": 1536,
+        "op": "move/from16",
+        "args": "v27, v7"
+      },
+      {
+        "offset": 1540,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 1544,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 1548,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 1552,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 1556,
+        "op": "goto/16",
+        "args": "+44bh"
+      },
+      {
+        "offset": 1560,
+        "op": "move",
+        "args": "v3, v6"
+      },
+      {
+        "offset": 1562,
+        "op": "move/from16",
+        "args": "v27, v7"
+      },
+      {
+        "offset": 1566,
+        "op": "move",
+        "args": "v6, v3"
+      },
+      {
+        "offset": 1568,
+        "op": "move/from16",
+        "args": "v7, v27"
+      },
+      {
+        "offset": 1572,
+        "op": "if-nez",
+        "args": "v6, +061h"
+      },
+      {
+        "offset": 1576,
+        "op": "if-eqz",
+        "args": "v5, +05fh"
+      },
+      {
+        "offset": 1580,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 1584,
+        "op": "if-eqz",
+        "args": "v0, +00dh"
+      },
+      {
+        "offset": 1588,
+        "op": "const-string",
+        "args": "v0, \"TPS-isPackageAllow checkime\""
+      },
+      {
+        "offset": 1592,
+        "op": "move",
+        "args": "v3, v5"
+      },
+      {
+        "offset": 1594,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 1598,
+        "op": "const-wide/16",
+        "args": "v5, 64"
+      },
+      {
+        "offset": 1602,
+        "op": "invoke-static",
+        "args": "v5, v6, v0, Landroid/os/Trace;->traceBegin(J Ljava/lang/String;)V"
+      },
+      {
+        "offset": 1608,
+        "op": "goto",
+        "args": "+4h"
+      },
+      {
+        "offset": 1610,
+        "op": "move",
+        "args": "v3, v5"
+      },
+      {
+        "offset": 1612,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 1616,
+        "op": "const-string",
+        "args": "v0, \"default_input_method\""
+      },
+      {
+        "offset": 1620,
+        "op": "invoke-static",
+        "args": "v0, Lcom/journey/server/am/JourneySettingProviderTracker;->getSettingsString(Ljava/lang/String;)Ljava/lang/String;"
+      },
+      {
+        "offset": 1626,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 1628,
+        "op": "const-string",
+        "args": "v5, \"/\""
+      },
+      {
+        "offset": 1632,
+        "op": "invoke-virtual",
+        "args": "v0, v5, Ljava/lang/String;->indexOf(Ljava/lang/String;)I"
+      },
+      {
+        "offset": 1638,
+        "op": "move-result",
+        "args": "v5"
+      },
+      {
+        "offset": 1640,
+        "op": "const/4",
+        "args": "v6, 0"
+      },
+      {
+        "offset": 1642,
+        "op": "invoke-virtual",
+        "args": "v0, v6, v5, Ljava/lang/String;->substring(I I)Ljava/lang/String;"
+      },
+      {
+        "offset": 1648,
+        "op": "move-result-object",
+        "args": "v5"
+      },
+      {
+        "offset": 1650,
+        "op": "move-object",
+        "args": "v0, v5"
+      },
+      {
+        "offset": 1652,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+      },
+      {
+        "offset": 1658,
+        "op": "move-result",
+        "args": "v5"
+      },
+      {
+        "offset": 1660,
+        "op": "if-eqz",
+        "args": "v5, +00fh"
+      },
+      {
+        "offset": 1664,
+        "op": "sget-object",
+        "args": "v5, Lcom/android/server/am/JourneyPerformanceService$REASON;->IME_APP Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 1668,
+        "op": "invoke-virtual",
+        "args": "v4, v5, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 1674,
+        "op": "const/4",
+        "args": "v5, 1"
+      },
+      {
+        "offset": 1676,
+        "op": "const/4",
+        "args": "v6, 0"
+      },
+      {
+        "offset": 1678,
+        "op": "const/4",
+        "args": "v7, 1"
+      },
+      {
+        "offset": 1680,
+        "op": "move/from16",
+        "args": "v29, v6"
+      },
+      {
+        "offset": 1684,
+        "op": "move",
+        "args": "v6, v7"
+      },
+      {
+        "offset": 1686,
+        "op": "move",
+        "args": "v7, v5"
+      },
+      {
+        "offset": 1688,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 1690,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 1694,
+        "op": "sget-boolean",
+        "args": "v5, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 1698,
+        "op": "if-eqz",
+        "args": "v5, +027h"
+      },
+      {
+        "offset": 1702,
+        "op": "const-wide/16",
+        "args": "v31, 64"
+      },
+      {
+        "offset": 1706,
+        "op": "invoke-static/range",
+        "args": "v31 ... v32, Landroid/os/Trace;->traceEnd(J)V"
+      },
+      {
+        "offset": 1712,
+        "op": "goto",
+        "args": "+20h"
+      },
+      {
+        "offset": 1714,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 1716,
+        "op": "move/from16",
+        "args": "v33, v3"
+      },
+      {
+        "offset": 1720,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 1724,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 1728,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 1732,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 1736,
+        "op": "goto/16",
+        "args": "+3f1h"
+      },
+      {
+        "offset": 1740,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 1742,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 1746,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 1750,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 1754,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 1758,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 1762,
+        "op": "goto/16",
+        "args": "+3e4h"
+      },
+      {
+        "offset": 1766,
+        "op": "move",
+        "args": "v3, v5"
+      },
+      {
+        "offset": 1768,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 1772,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 1776,
+        "op": "if-nez",
+        "args": "v6, +047h"
+      },
+      {
+        "offset": 1780,
+        "op": "if-eqz",
+        "args": "v21, +045h"
+      },
+      {
+        "offset": 1784,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 1788,
+        "op": "if-eqz",
+        "args": "v0, +00ch"
+      },
+      {
+        "offset": 1792,
+        "op": "const-string",
+        "args": "v0, \"TPS-isPackageAllow checktts\""
+      },
+      {
+        "offset": 1796,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 1800,
+        "op": "const-wide/16",
+        "args": "v5, 64"
+      },
+      {
+        "offset": 1804,
+        "op": "invoke-static",
+        "args": "v5, v6, v0, Landroid/os/Trace;->traceBegin(J Ljava/lang/String;)V"
+      },
+      {
+        "offset": 1810,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 1812,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 1816,
+        "op": "const-string/jumbo",
+        "args": "v0, tts_default_synth"
+      },
+      {
+        "offset": 1822,
+        "op": "invoke-static",
+        "args": "v0, Lcom/journey/server/am/JourneySettingProviderTracker;->getSettingsString(Ljava/lang/String;)Ljava/lang/String;"
+      },
+      {
+        "offset": 1828,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 1830,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+      },
+      {
+        "offset": 1836,
+        "op": "move-result",
+        "args": "v5"
+      },
+      {
+        "offset": 1838,
+        "op": "if-eqz",
+        "args": "v5, +00fh"
+      },
+      {
+        "offset": 1842,
+        "op": "sget-object",
+        "args": "v5, Lcom/android/server/am/JourneyPerformanceService$REASON;->TTS_APP Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 1846,
+        "op": "invoke-virtual",
+        "args": "v4, v5, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 1852,
+        "op": "const/4",
+        "args": "v5, 1"
+      },
+      {
+        "offset": 1854,
+        "op": "const/4",
+        "args": "v6, 0"
+      },
+      {
+        "offset": 1856,
+        "op": "const/4",
+        "args": "v7, 1"
+      },
+      {
+        "offset": 1858,
+        "op": "move/from16",
+        "args": "v29, v6"
+      },
+      {
+        "offset": 1862,
+        "op": "move",
+        "args": "v6, v7"
+      },
+      {
+        "offset": 1864,
+        "op": "move",
+        "args": "v7, v5"
+      },
+      {
+        "offset": 1866,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 1868,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 1872,
+        "op": "sget-boolean",
+        "args": "v5, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 1876,
+        "op": "if-eqz",
+        "args": "v5, +019h"
+      },
+      {
+        "offset": 1880,
+        "op": "const-wide/16",
+        "args": "v31, 64"
+      },
+      {
+        "offset": 1884,
+        "op": "invoke-static/range",
+        "args": "v31 ... v32, Landroid/os/Trace;->traceEnd(J)V"
+      },
+      {
+        "offset": 1890,
+        "op": "goto",
+        "args": "+12h"
+      },
+      {
+        "offset": 1892,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 1894,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 1898,
+        "op": "move/from16",
+        "args": "v33, v3"
+      },
+      {
+        "offset": 1902,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 1906,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 1910,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 1914,
+        "op": "goto/16",
+        "args": "+398h"
+      },
+      {
+        "offset": 1918,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 1922,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 1926,
+        "op": "if-nez",
+        "args": "v6, +03bh"
+      },
+      {
+        "offset": 1930,
+        "op": "if-eqz",
+        "args": "v18, +039h"
+      },
+      {
+        "offset": 1934,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 1938,
+        "op": "if-eqz",
+        "args": "v0, +00ch"
+      },
+      {
+        "offset": 1942,
+        "op": "const-string",
+        "args": "v0, \"TPS-isPackageAllow checkcts\""
+      },
+      {
+        "offset": 1946,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 1950,
+        "op": "const-wide/16",
+        "args": "v5, 64"
+      },
+      {
+        "offset": 1954,
+        "op": "invoke-static",
+        "args": "v5, v6, v0, Landroid/os/Trace;->traceBegin(J Ljava/lang/String;)V"
+      },
+      {
+        "offset": 1960,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 1962,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 1966,
+        "op": "invoke-static",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->IsTestModeDetected(Ljava/lang/String;)Z"
+      },
+      {
+        "offset": 1972,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1974,
+        "op": "if-eqz",
+        "args": "v0, +00ch"
+      },
+      {
+        "offset": 1978,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->TEST_MODE Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 1982,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 1988,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 1990,
+        "op": "const/4",
+        "args": "v5, 1"
+      },
+      {
+        "offset": 1992,
+        "op": "move",
+        "args": "v7, v0"
+      },
+      {
+        "offset": 1994,
+        "op": "move",
+        "args": "v6, v5"
+      },
+      {
+        "offset": 1996,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 1998,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 2002,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 2006,
+        "op": "if-eqz",
+        "args": "v0, +017h"
+      },
+      {
+        "offset": 2010,
+        "op": "const-wide/16",
+        "args": "v31, 64"
+      },
+      {
+        "offset": 2014,
+        "op": "invoke-static/range",
+        "args": "v31 ... v32, Landroid/os/Trace;->traceEnd(J)V"
+      },
+      {
+        "offset": 2020,
+        "op": "goto",
+        "args": "+10h"
+      },
+      {
+        "offset": 2022,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2024,
+        "op": "move/from16",
+        "args": "v33, v3"
+      },
+      {
+        "offset": 2028,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 2032,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 2036,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 2040,
+        "op": "goto/16",
+        "args": "+359h"
+      },
+      {
+        "offset": 2044,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2048,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 2052,
+        "op": "if-nez",
+        "args": "v6, +0f4h"
+      },
+      {
+        "offset": 2056,
+        "op": "if-eqz",
+        "args": "v20, +0f2h"
+      },
+      {
+        "offset": 2060,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 2064,
+        "op": "if-eqz",
+        "args": "v0, +00ch"
+      },
+      {
+        "offset": 2068,
+        "op": "const-string",
+        "args": "v0, \"TPS-isPackageAllow checkaccessibility\""
+      },
+      {
+        "offset": 2072,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2076,
+        "op": "const-wide/16",
+        "args": "v5, 64"
+      },
+      {
+        "offset": 2080,
+        "op": "invoke-static",
+        "args": "v5, v6, v0, Landroid/os/Trace;->traceBegin(J Ljava/lang/String;)V"
+      },
+      {
+        "offset": 2086,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 2088,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2092,
+        "op": "const-string",
+        "args": "v0, \"enabled_accessibility_services\""
+      },
+      {
+        "offset": 2096,
+        "op": "invoke-static",
+        "args": "v0, Lcom/journey/server/am/JourneySettingProviderTracker;->getSettingsString(Ljava/lang/String;)Ljava/lang/String;"
+      },
+      {
+        "offset": 2102,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 2104,
+        "op": "invoke-static",
+        "args": "v0, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z"
+      },
+      {
+        "offset": 2110,
+        "op": "move-result",
+        "args": "v5"
+      },
+      {
+        "offset": 2112,
+        "op": "if-nez",
+        "args": "v5, +0ach"
+      },
+      {
+        "offset": 2116,
+        "op": "sget-boolean",
+        "args": "v5, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_HANDLE_PKG Z"
+      },
+      {
+        "offset": 2120,
+        "op": "if-eqz",
+        "args": "v5, +029h"
+      },
+      {
+        "offset": 2124,
+        "op": "const-string",
+        "args": "v5, \"JourneyPerformanceService\""
+      },
+      {
+        "offset": 2128,
+        "op": "new-instance",
+        "args": "v6, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2132,
+        "op": "invoke-direct",
+        "args": "v6, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 2138,
+        "op": "move/from16",
+        "args": "v33, v3"
+      },
+      {
+        "offset": 2142,
+        "op": "const-string",
+        "args": "v3, \"check pkg: \""
+      },
+      {
+        "offset": 2146,
+        "op": "invoke-virtual",
+        "args": "v6, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2152,
+        "op": "invoke-virtual",
+        "args": "v6, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2158,
+        "op": "const-string",
+        "args": "v3, \" ? in {\""
+      },
+      {
+        "offset": 2162,
+        "op": "invoke-virtual",
+        "args": "v6, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2168,
+        "op": "invoke-virtual",
+        "args": "v6, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2174,
+        "op": "const-string/jumbo",
+        "args": "v3, }"
+      },
+      {
+        "offset": 2180,
+        "op": "invoke-virtual",
+        "args": "v6, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2186,
+        "op": "invoke-virtual",
+        "args": "v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 2192,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 2194,
+        "op": "invoke-static",
+        "args": "v5, v3, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 2200,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 2202,
+        "op": "move/from16",
+        "args": "v33, v3"
+      },
+      {
+        "offset": 2206,
+        "op": "const-string",
+        "args": "v3, \":\""
+      },
+      {
+        "offset": 2210,
+        "op": "invoke-virtual",
+        "args": "v0, v3, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;"
+      },
+      {
+        "offset": 2216,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 2218,
+        "op": "if-eqz",
+        "args": "v3, +067h"
+      },
+      {
+        "offset": 2222,
+        "op": "const/4",
+        "args": "v5, 0"
+      },
+      {
+        "offset": 2224,
+        "op": "array-length",
+        "args": "v6, v3"
+      },
+      {
+        "offset": 2226,
+        "op": "if-ge",
+        "args": "v5, v6, +05eh"
+      },
+      {
+        "offset": 2230,
+        "op": "aget-object",
+        "args": "v6, v3, v5"
+      },
+      {
+        "offset": 2234,
+        "op": "invoke-static",
+        "args": "v6, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z"
+      },
+      {
+        "offset": 2240,
+        "op": "move-result",
+        "args": "v34"
+      },
+      {
+        "offset": 2242,
+        "op": "if-nez",
+        "args": "v34, +013h"
+      },
+      {
+        "offset": 2246,
+        "op": "move-object/from16",
+        "args": "v34, v0"
+      },
+      {
+        "offset": 2250,
+        "op": "const-string",
+        "args": "v0, \"/\""
+      },
+      {
+        "offset": 2254,
+        "op": "invoke-virtual",
+        "args": "v6, v0, Ljava/lang/String;->indexOf(Ljava/lang/String;)I"
+      },
+      {
+        "offset": 2260,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 2262,
+        "op": "move-object/from16",
+        "args": "v35, v3"
+      },
+      {
+        "offset": 2266,
+        "op": "const/4",
+        "args": "v3, 0"
+      },
+      {
+        "offset": 2268,
+        "op": "invoke-virtual",
+        "args": "v6, v3, v0, Ljava/lang/String;->substring(I I)Ljava/lang/String;"
+      },
+      {
+        "offset": 2274,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 2276,
+        "op": "move-object",
+        "args": "v6, v0"
+      },
+      {
+        "offset": 2278,
+        "op": "goto",
+        "args": "+5h"
+      },
+      {
+        "offset": 2280,
+        "op": "move-object/from16",
+        "args": "v34, v0"
+      },
+      {
+        "offset": 2284,
+        "op": "move-object/from16",
+        "args": "v35, v3"
+      },
+      {
+        "offset": 2288,
+        "op": "invoke-static",
+        "args": "v6, v2, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence; Ljava/lang/CharSequence;)Z"
+      },
+      {
+        "offset": 2294,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 2296,
+        "op": "if-eqz",
+        "args": "v0, +032h"
+      },
+      {
+        "offset": 2300,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->ACCESSIBILITY_SERVICE_APP Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 2304,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 2310,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_HANDLE_PKG Z"
+      },
+      {
+        "offset": 2314,
+        "op": "if-eqz",
+        "args": "v0, +020h"
+      },
+      {
+        "offset": 2318,
+        "op": "const-string",
+        "args": "v0, \"JourneyPerformanceService\""
+      },
+      {
+        "offset": 2322,
+        "op": "new-instance",
+        "args": "v3, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2326,
+        "op": "invoke-direct",
+        "args": "v3, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 2332,
+        "op": "move-object/from16",
+        "args": "v36, v6"
+      },
+      {
+        "offset": 2336,
+        "op": "const-string",
+        "args": "v6, \"=====>   pkg: \""
+      },
+      {
+        "offset": 2340,
+        "op": "invoke-virtual",
+        "args": "v3, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2346,
+        "op": "invoke-virtual",
+        "args": "v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2352,
+        "op": "const-string",
+        "args": "v6, \" in.\""
+      },
+      {
+        "offset": 2356,
+        "op": "invoke-virtual",
+        "args": "v3, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2362,
+        "op": "invoke-virtual",
+        "args": "v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 2368,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 2370,
+        "op": "invoke-static",
+        "args": "v0, v3, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 2376,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 2378,
+        "op": "move-object/from16",
+        "args": "v36, v6"
+      },
+      {
+        "offset": 2382,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 2384,
+        "op": "const/4",
+        "args": "v3, 0"
+      },
+      {
+        "offset": 2386,
+        "op": "const/4",
+        "args": "v6, 1"
+      },
+      {
+        "offset": 2388,
+        "op": "move",
+        "args": "v7, v0"
+      },
+      {
+        "offset": 2390,
+        "op": "move/from16",
+        "args": "v29, v3"
+      },
+      {
+        "offset": 2394,
+        "op": "goto",
+        "args": "+25h"
+      },
+      {
+        "offset": 2396,
+        "op": "move-object/from16",
+        "args": "v36, v6"
+      },
+      {
+        "offset": 2400,
+        "op": "add-int/lit8",
+        "args": "v5, v5, 1"
+      },
+      {
+        "offset": 2404,
+        "op": "move-object/from16",
+        "args": "v0, v34"
+      },
+      {
+        "offset": 2408,
+        "op": "move-object/from16",
+        "args": "v3, v35"
+      },
+      {
+        "offset": 2412,
+        "op": "goto",
+        "args": "-5eh"
+      },
+      {
+        "offset": 2414,
+        "op": "move-object/from16",
+        "args": "v34, v0"
+      },
+      {
+        "offset": 2418,
+        "op": "move-object/from16",
+        "args": "v35, v3"
+      },
+      {
+        "offset": 2422,
+        "op": "goto",
+        "args": "+15h"
+      },
+      {
+        "offset": 2424,
+        "op": "move-object/from16",
+        "args": "v34, v0"
+      },
+      {
+        "offset": 2428,
+        "op": "move-object/from16",
+        "args": "v35, v3"
+      },
+      {
+        "offset": 2432,
+        "op": "goto",
+        "args": "+10h"
+      },
+      {
+        "offset": 2434,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2436,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 2440,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 2444,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 2448,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 2452,
+        "op": "goto/16",
+        "args": "+28bh"
+      },
+      {
+        "offset": 2456,
+        "op": "move-object/from16",
+        "args": "v34, v0"
+      },
+      {
+        "offset": 2460,
+        "op": "move/from16",
+        "args": "v33, v3"
+      },
+      {
+        "offset": 2464,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 2468,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 2472,
+        "op": "if-eqz",
+        "args": "v0, +028h"
+      },
+      {
+        "offset": 2476,
+        "op": "const-wide/16",
+        "args": "v31, 64"
+      },
+      {
+        "offset": 2480,
+        "op": "invoke-static/range",
+        "args": "v31 ... v32, Landroid/os/Trace;->traceEnd(J)V"
+      },
+      {
+        "offset": 2486,
+        "op": "goto",
+        "args": "+21h"
+      },
+      {
+        "offset": 2488,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2490,
+        "op": "move/from16",
+        "args": "v33, v3"
+      },
+      {
+        "offset": 2494,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 2498,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 2502,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 2506,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 2510,
+        "op": "goto/16",
+        "args": "+26eh"
+      },
+      {
+        "offset": 2514,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2516,
+        "op": "move/from16",
+        "args": "v33, v3"
+      },
+      {
+        "offset": 2520,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2524,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 2528,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 2532,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 2536,
+        "op": "goto/16",
+        "args": "+261h"
+      },
+      {
+        "offset": 2540,
+        "op": "move/from16",
+        "args": "v33, v3"
+      },
+      {
+        "offset": 2544,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2548,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 2552,
+        "op": "if-nez",
+        "args": "v6, +045h"
+      },
+      {
+        "offset": 2556,
+        "op": "if-eqz",
+        "args": "v16, +043h"
+      },
+      {
+        "offset": 2560,
+        "op": "sget-object",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService;->mCurrentAudioFocus Ljava/lang/StringBuffer;"
+      },
+      {
+        "offset": 2564,
+        "op": "monitor-enter",
+        "args": "v3"
+      },
+      {
+        "offset": 2566,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->mLastAudioFocus Ljava/lang/StringBuffer;"
+      },
+      {
+        "offset": 2570,
+        "op": "new-instance",
+        "args": "v5, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2574,
+        "op": "invoke-direct",
+        "args": "v5, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 2580,
+        "op": "invoke-virtual",
+        "args": "v5, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2586,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2590,
+        "op": "const-string",
+        "args": "v6, \",\""
+      },
+      {
+        "offset": 2594,
+        "op": "invoke-virtual",
+        "args": "v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2600,
+        "op": "invoke-virtual",
+        "args": "v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 2606,
+        "op": "move-result-object",
+        "args": "v5"
+      },
+      {
+        "offset": 2608,
+        "op": "const/4",
+        "args": "v6, 0"
+      },
+      {
+        "offset": 2610,
+        "op": "invoke-virtual",
+        "args": "v0, v5, v6, Ljava/lang/StringBuffer;->indexOf(Ljava/lang/String; I)I"
+      },
+      {
+        "offset": 2616,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 2618,
+        "op": "if-ltz",
+        "args": "v0, +00ah"
+      },
+      {
+        "offset": 2622,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->AUDIO_FOCUS Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 2626,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 2632,
+        "op": "const/4",
+        "args": "v7, 1"
+      },
+      {
+        "offset": 2634,
+        "op": "const/4",
+        "args": "v6, 1"
+      },
+      {
+        "offset": 2636,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 2638,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 2642,
+        "op": "monitor-exit",
+        "args": "v3"
+      },
+      {
+        "offset": 2644,
+        "op": "goto",
+        "args": "+1bh"
+      },
+      {
+        "offset": 2646,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2648,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 2652,
+        "op": "goto",
+        "args": "+4h"
+      },
+      {
+        "offset": 2654,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2656,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2660,
+        "op": "monitor-exit",
+        "args": "v3"
+      },
+      {
+        "offset": 2662,
+        "op": "throw",
+        "args": "v0"
+      },
+      {
+        "offset": 2664,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2666,
+        "op": "goto",
+        "args": "-3h"
+      },
+      {
+        "offset": 2668,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2670,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2674,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 2678,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 2682,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 2686,
+        "op": "goto/16",
+        "args": "+216h"
+      },
+      {
+        "offset": 2690,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2694,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 2698,
+        "op": "if-nez",
+        "args": "v6, +079h"
+      },
+      {
+        "offset": 2702,
+        "op": "if-eqz",
+        "args": "v13, +077h"
+      },
+      {
+        "offset": 2706,
+        "op": "sget-object",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService;->mTopUsagePackageDay Ljava/lang/StringBuffer;"
+      },
+      {
+        "offset": 2710,
+        "op": "monitor-enter",
+        "args": "v3"
+      },
+      {
+        "offset": 2712,
+        "op": "if-nez",
+        "args": "v6, +02ch"
+      },
+      {
+        "offset": 2716,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->mTopUsagePackageDay Ljava/lang/StringBuffer;"
+      },
+      {
+        "offset": 2720,
+        "op": "new-instance",
+        "args": "v5, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2724,
+        "op": "invoke-direct",
+        "args": "v5, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 2730,
+        "op": "invoke-virtual",
+        "args": "v5, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2736,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2740,
+        "op": "const-string",
+        "args": "v6, \",\""
+      },
+      {
+        "offset": 2744,
+        "op": "invoke-virtual",
+        "args": "v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2750,
+        "op": "invoke-virtual",
+        "args": "v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 2756,
+        "op": "move-result-object",
+        "args": "v5"
+      },
+      {
+        "offset": 2758,
+        "op": "const/4",
+        "args": "v6, 0"
+      },
+      {
+        "offset": 2760,
+        "op": "invoke-virtual",
+        "args": "v0, v5, v6, Ljava/lang/StringBuffer;->indexOf(Ljava/lang/String; I)I"
+      },
+      {
+        "offset": 2766,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 2768,
+        "op": "if-ltz",
+        "args": "v0, +012h"
+      },
+      {
+        "offset": 2772,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->TOP_USEAGE_DAY Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 2776,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 2782,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 2784,
+        "op": "const/4",
+        "args": "v5, 1"
+      },
+      {
+        "offset": 2786,
+        "op": "move",
+        "args": "v7, v0"
+      },
+      {
+        "offset": 2788,
+        "op": "move",
+        "args": "v6, v5"
+      },
+      {
+        "offset": 2790,
+        "op": "goto",
+        "args": "+9h"
+      },
+      {
+        "offset": 2792,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2794,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 2798,
+        "op": "goto",
+        "args": "+43h"
+      },
+      {
+        "offset": 2800,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2804,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 2808,
+        "op": "monitor-exit",
+        "args": "v3"
+      },
+      {
+        "offset": 2810,
+        "op": "sget-object",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService;->mTopUsagePackageWeek Ljava/lang/StringBuffer;"
+      },
+      {
+        "offset": 2814,
+        "op": "monitor-enter",
+        "args": "v3"
+      },
+      {
+        "offset": 2816,
+        "op": "if-nez",
+        "args": "v6, +02eh"
+      },
+      {
+        "offset": 2820,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->mTopUsagePackageWeek Ljava/lang/StringBuffer;"
+      },
+      {
+        "offset": 2824,
+        "op": "new-instance",
+        "args": "v5, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2828,
+        "op": "invoke-direct",
+        "args": "v5, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 2834,
+        "op": "invoke-virtual",
+        "args": "v5, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2840,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2844,
+        "op": "const-string",
+        "args": "v6, \",\""
+      },
+      {
+        "offset": 2848,
+        "op": "invoke-virtual",
+        "args": "v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 2854,
+        "op": "invoke-virtual",
+        "args": "v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 2860,
+        "op": "move-result-object",
+        "args": "v5"
+      },
+      {
+        "offset": 2862,
+        "op": "const/4",
+        "args": "v6, 0"
+      },
+      {
+        "offset": 2864,
+        "op": "invoke-virtual",
+        "args": "v0, v5, v6, Ljava/lang/StringBuffer;->indexOf(Ljava/lang/String; I)I"
+      },
+      {
+        "offset": 2870,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 2872,
+        "op": "if-ltz",
+        "args": "v0, +014h"
+      },
+      {
+        "offset": 2876,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->TOP_USEAGE_WEEK Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 2880,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 2886,
+        "op": "const/4",
+        "args": "v7, 1"
+      },
+      {
+        "offset": 2888,
+        "op": "const/4",
+        "args": "v6, 1"
+      },
+      {
+        "offset": 2890,
+        "op": "goto",
+        "args": "+dh"
+      },
+      {
+        "offset": 2892,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2894,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 2898,
+        "op": "goto",
+        "args": "+ch"
+      },
+      {
+        "offset": 2900,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2902,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2906,
+        "op": "goto",
+        "args": "+8h"
+      },
+      {
+        "offset": 2908,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2912,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 2916,
+        "op": "monitor-exit",
+        "args": "v3"
+      },
+      {
+        "offset": 2918,
+        "op": "goto",
+        "args": "+fh"
+      },
+      {
+        "offset": 2920,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2922,
+        "op": "monitor-exit",
+        "args": "v3"
+      },
+      {
+        "offset": 2924,
+        "op": "throw",
+        "args": "v0"
+      },
+      {
+        "offset": 2926,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2928,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2932,
+        "op": "monitor-exit",
+        "args": "v3"
+      },
+      {
+        "offset": 2934,
+        "op": "throw",
+        "args": "v0"
+      },
+      {
+        "offset": 2936,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2938,
+        "op": "goto",
+        "args": "-3h"
+      },
+      {
+        "offset": 2940,
+        "op": "move/from16",
+        "args": "v27, v6"
+      },
+      {
+        "offset": 2944,
+        "op": "move/from16",
+        "args": "v6, v27"
+      },
+      {
+        "offset": 2948,
+        "op": "if-nez",
+        "args": "v6, +01fh"
+      },
+      {
+        "offset": 2952,
+        "op": "if-eqz",
+        "args": "v24, +01dh"
+      },
+      {
+        "offset": 2956,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->KEEP_RECENT_TASK_LIST Ljava/util/List;"
+      },
+      {
+        "offset": 2960,
+        "op": "invoke-interface",
+        "args": "v0, v2, Ljava/util/List;->contains(Ljava/lang/Object;)Z"
+      },
+      {
+        "offset": 2966,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 2968,
+        "op": "if-eqz",
+        "args": "v0, +015h"
+      },
+      {
+        "offset": 2972,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->KEEP_RECENT Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 2976,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 2982,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 2984,
+        "op": "const/4",
+        "args": "v3, 1"
+      },
+      {
+        "offset": 2986,
+        "op": "move",
+        "args": "v7, v0"
+      },
+      {
+        "offset": 2988,
+        "op": "move",
+        "args": "v6, v3"
+      },
+      {
+        "offset": 2990,
+        "op": "goto",
+        "args": "+ah"
+      },
+      {
+        "offset": 2992,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 2994,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 2998,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 3002,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 3006,
+        "op": "goto/16",
+        "args": "+176h"
+      },
+      {
+        "offset": 3010,
+        "op": "if-nez",
+        "args": "v6, +01bh"
+      },
+      {
+        "offset": 3014,
+        "op": "if-eqz",
+        "args": "v17, +019h"
+      },
+      {
+        "offset": 3018,
+        "op": "sget-object",
+        "args": "v3, Lcom/android/server/am/JourneyPerformanceService;->mWidgetPkgList Ljava/util/ArrayList;"
+      },
+      {
+        "offset": 3022,
+        "op": "monitor-enter",
+        "args": "v3"
+      },
+      {
+        "offset": 3024,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->mWidgetPkgList Ljava/util/ArrayList;"
+      },
+      {
+        "offset": 3028,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z"
+      },
+      {
+        "offset": 3034,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 3036,
+        "op": "if-eqz",
+        "args": "v0, +009h"
+      },
+      {
+        "offset": 3040,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->WIDGET Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 3044,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 3050,
+        "op": "const/4",
+        "args": "v7, 1"
+      },
+      {
+        "offset": 3052,
+        "op": "const/4",
+        "args": "v6, 1"
+      },
+      {
+        "offset": 3054,
+        "op": "monitor-exit",
+        "args": "v3"
+      },
+      {
+        "offset": 3056,
+        "op": "goto",
+        "args": "+4h"
+      },
+      {
+        "offset": 3058,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 3060,
+        "op": "monitor-exit",
+        "args": "v3"
+      },
+      {
+        "offset": 3062,
+        "op": "throw",
+        "args": "v0"
+      },
+      {
+        "offset": 3064,
+        "op": "if-nez",
+        "args": "v6, +0e1h"
+      },
+      {
+        "offset": 3068,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 3072,
+        "op": "if-eqz",
+        "args": "v0, +01fh"
+      },
+      {
+        "offset": 3076,
+        "op": "const-string",
+        "args": "v0, \"TPS-isPackageAllow check config\""
+      },
+      {
+        "offset": 3080,
+        "op": "move",
+        "args": "v3, v6"
+      },
+      {
+        "offset": 3082,
+        "op": "const-wide/16",
+        "args": "v5, 64"
+      },
+      {
+        "offset": 3086,
+        "op": "invoke-static",
+        "args": "v5, v6, v0, Landroid/os/Trace;->traceBegin(J Ljava/lang/String;)V"
+      },
+      {
+        "offset": 3092,
+        "op": "goto",
+        "args": "+16h"
+      },
+      {
+        "offset": 3094,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 3096,
+        "op": "move",
+        "args": "v6, v3"
+      },
+      {
+        "offset": 3098,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 3102,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 3106,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 3110,
+        "op": "goto/16",
+        "args": "+142h"
+      },
+      {
+        "offset": 3114,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 3116,
+        "op": "move",
+        "args": "v3, v6"
+      },
+      {
+        "offset": 3118,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 3122,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 3126,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 3130,
+        "op": "goto/16",
+        "args": "+138h"
+      },
+      {
+        "offset": 3134,
+        "op": "move",
+        "args": "v3, v6"
+      },
+      {
+        "offset": 3136,
+        "op": "invoke-interface",
+        "args": "v10, Ljava/util/List;->iterator()Ljava/util/Iterator;"
+      },
+      {
+        "offset": 3142,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 3144,
+        "op": "invoke-interface",
+        "args": "v0, Ljava/util/Iterator;->hasNext()Z"
+      },
+      {
+        "offset": 3150,
+        "op": "move-result",
+        "args": "v5"
+      },
+      {
+        "offset": 3152,
+        "op": "if-eqz",
+        "args": "v5, +08fh"
+      },
+      {
+        "offset": 3156,
+        "op": "invoke-interface",
+        "args": "v0, Ljava/util/Iterator;->next()Ljava/lang/Object;"
+      },
+      {
+        "offset": 3162,
+        "op": "move-result-object",
+        "args": "v5"
+      },
+      {
+        "offset": 3164,
+        "op": "check-cast",
+        "args": "v5, Ljava/lang/String;"
+      },
+      {
+        "offset": 3168,
+        "op": "invoke-static",
+        "args": "v5, Lcom/journey/server/am/JourneySettingProviderTracker;->getSettingsString(Ljava/lang/String;)Ljava/lang/String;"
+      },
+      {
+        "offset": 3174,
+        "op": "move-result-object",
+        "args": "v6"
+      },
+      {
+        "offset": 3176,
+        "op": "if-eqz",
+        "args": "v6, +03eh"
+      },
+      {
+        "offset": 3180,
+        "op": "move-object/from16",
+        "args": "v27, v0"
+      },
+      {
+        "offset": 3184,
+        "op": "new-instance",
+        "args": "v0, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3188,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 3194,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3200,
+        "op": "move/from16",
+        "args": "v34, v3"
+      },
+      {
+        "offset": 3204,
+        "op": "const-string",
+        "args": "v3, \"+,\""
+      },
+      {
+        "offset": 3208,
+        "op": "invoke-virtual",
+        "args": "v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3214,
+        "op": "invoke-virtual",
+        "args": "v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 3220,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 3222,
+        "op": "invoke-virtual",
+        "args": "v6, v0, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z"
+      },
+      {
+        "offset": 3228,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 3230,
+        "op": "if-nez",
+        "args": "v0, +019h"
+      },
+      {
+        "offset": 3234,
+        "op": "new-instance",
+        "args": "v0, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3238,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 3244,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3250,
+        "op": "const-string",
+        "args": "v3, \",\""
+      },
+      {
+        "offset": 3254,
+        "op": "invoke-virtual",
+        "args": "v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3260,
+        "op": "invoke-virtual",
+        "args": "v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 3266,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 3268,
+        "op": "invoke-virtual",
+        "args": "v6, v0, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z"
+      },
+      {
+        "offset": 3274,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 3276,
+        "op": "if-eqz",
+        "args": "v0, +010h"
+      },
+      {
+        "offset": 3280,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->IN_WHITE_LIST Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 3284,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 3290,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 3292,
+        "op": "const/4",
+        "args": "v3, 1"
+      },
+      {
+        "offset": 3294,
+        "op": "move",
+        "args": "v7, v0"
+      },
+      {
+        "offset": 3296,
+        "op": "move",
+        "args": "v6, v3"
+      },
+      {
+        "offset": 3298,
+        "op": "goto",
+        "args": "+4ah"
+      },
+      {
+        "offset": 3300,
+        "op": "move-object/from16",
+        "args": "v27, v0"
+      },
+      {
+        "offset": 3304,
+        "op": "move/from16",
+        "args": "v34, v3"
+      },
+      {
+        "offset": 3308,
+        "op": "if-eqz",
+        "args": "v6, +01ah"
+      },
+      {
+        "offset": 3312,
+        "op": "new-instance",
+        "args": "v0, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3316,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 3322,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3328,
+        "op": "const-string",
+        "args": "v3, \"-,\""
+      },
+      {
+        "offset": 3332,
+        "op": "invoke-virtual",
+        "args": "v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3338,
+        "op": "invoke-virtual",
+        "args": "v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 3344,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 3346,
+        "op": "invoke-virtual",
+        "args": "v6, v0, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z"
+      },
+      {
+        "offset": 3352,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 3354,
+        "op": "if-eqz",
+        "args": "v0, +003h"
+      },
+      {
+        "offset": 3358,
+        "op": "goto",
+        "args": "+17h"
+      },
+      {
+        "offset": 3360,
+        "op": "invoke-static",
+        "args": "Lcom/journey/server/JourneyConfigService;->isEnable()Z"
+      },
+      {
+        "offset": 3366,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 3368,
+        "op": "if-eqz",
+        "args": "v0, +012h"
+      },
+      {
+        "offset": 3372,
+        "op": "invoke-static",
+        "args": "v2, v1, Lcom/journey/server/JourneyConfigService;->getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z"
+      },
+      {
+        "offset": 3378,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 3380,
+        "op": "if-eqz",
+        "args": "v0, +00ch"
+      },
+      {
+        "offset": 3384,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->IN_WHITE_LIST Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 3388,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 3394,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 3396,
+        "op": "const/4",
+        "args": "v3, 1"
+      },
+      {
+        "offset": 3398,
+        "op": "move",
+        "args": "v7, v0"
+      },
+      {
+        "offset": 3400,
+        "op": "move",
+        "args": "v6, v3"
+      },
+      {
+        "offset": 3402,
+        "op": "goto",
+        "args": "+16h"
+      },
+      {
+        "offset": 3404,
+        "op": "move-object/from16",
+        "args": "v0, v27"
+      },
+      {
+        "offset": 3408,
+        "op": "move/from16",
+        "args": "v3, v34"
+      },
+      {
+        "offset": 3412,
+        "op": "goto/16",
+        "args": "-086h"
+      },
+      {
+        "offset": 3416,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 3418,
+        "op": "move/from16",
+        "args": "v6, v34"
+      },
+      {
+        "offset": 3422,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 3426,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 3430,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 3434,
+        "op": "goto/16",
+        "args": "+0a0h"
+      },
+      {
+        "offset": 3438,
+        "op": "move/from16",
+        "args": "v34, v3"
+      },
+      {
+        "offset": 3442,
+        "op": "move/from16",
+        "args": "v6, v34"
+      },
+      {
+        "offset": 3446,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 3450,
+        "op": "if-eqz",
+        "args": "v0, +022h"
+      },
+      {
+        "offset": 3454,
+        "op": "const-wide/16",
+        "args": "v31, 64"
+      },
+      {
+        "offset": 3458,
+        "op": "invoke-static/range",
+        "args": "v31 ... v32, Landroid/os/Trace;->traceEnd(J)V"
+      },
+      {
+        "offset": 3464,
+        "op": "goto",
+        "args": "+1bh"
+      },
+      {
+        "offset": 3466,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 3468,
+        "op": "move/from16",
+        "args": "v34, v3"
+      },
+      {
+        "offset": 3472,
+        "op": "move/from16",
+        "args": "v6, v34"
+      },
+      {
+        "offset": 3476,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 3480,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 3484,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 3488,
+        "op": "goto/16",
+        "args": "+085h"
+      },
+      {
+        "offset": 3492,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 3494,
+        "op": "move/from16",
+        "args": "v34, v6"
+      },
+      {
+        "offset": 3498,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 3502,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 3506,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 3510,
+        "op": "goto/16",
+        "args": "+07ah"
+      },
+      {
+        "offset": 3514,
+        "op": "move/from16",
+        "args": "v34, v6"
+      },
+      {
+        "offset": 3518,
+        "op": "if-nez",
+        "args": "v6, +019h"
+      },
+      {
+        "offset": 3522,
+        "op": "if-eqz",
+        "args": "v25, +017h"
+      },
+      {
+        "offset": 3526,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->mAms Lcom/android/server/am/ActivityManagerService;"
+      },
+      {
+        "offset": 3530,
+        "op": "invoke-static",
+        "args": "v2, Lcom/android/server/am/JourneyPerformanceService;->GetRootProcNameOfPackage(Ljava/lang/String;)Ljava/lang/String;"
+      },
+      {
+        "offset": 3536,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 3538,
+        "op": "invoke-virtual",
+        "args": "v0, v8, v3, Lcom/android/server/am/ActivityManagerService;->IsRootProcessNewlyStartedForThePkg(I Ljava/lang/String;)Z"
+      },
+      {
+        "offset": 3544,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 3546,
+        "op": "if-eqz",
+        "args": "v0, +00bh"
+      },
+      {
+        "offset": 3550,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->NEWLY_STARTED_APP Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 3554,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 3560,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 3562,
+        "op": "const/4",
+        "args": "v3, 1"
+      },
+      {
+        "offset": 3564,
+        "op": "move",
+        "args": "v7, v0"
+      },
+      {
+        "offset": 3566,
+        "op": "move",
+        "args": "v6, v3"
+      },
+      {
+        "offset": 3568,
+        "op": "if-eqz",
+        "args": "v6, +008h"
+      },
+      {
+        "offset": 3572,
+        "op": "if-eqz",
+        "args": "v23, +006h"
+      },
+      {
+        "offset": 3576,
+        "op": "const/4",
+        "args": "v0, 0"
+      },
+      {
+        "offset": 3578,
+        "op": "invoke-static",
+        "args": "v2, v0, Lcom/android/server/am/JourneyPerformanceService;->GetRootProcessName(Ljava/lang/String; Z)V"
+      },
+      {
+        "offset": 3584,
+        "op": "if-nez",
+        "args": "v6, +024h"
+      },
+      {
+        "offset": 3588,
+        "op": "if-eqz",
+        "args": "v26, +022h"
+      },
+      {
+        "offset": 3592,
+        "op": "sget-object",
+        "args": "v0, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->DISALLOW_BLACK_CALLER Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;"
+      },
+      {
+        "offset": 3596,
+        "op": "invoke-static",
+        "args": "v2, v0, Lcom/journey/server/JourneyConfigService;->PackageHasBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z"
+      },
+      {
+        "offset": 3602,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 3604,
+        "op": "if-eqz",
+        "args": "v0, +013h"
+      },
+      {
+        "offset": 3608,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->mAms Lcom/android/server/am/ActivityManagerService;"
+      },
+      {
+        "offset": 3612,
+        "op": "invoke-virtual",
+        "args": "v0, v8, Lcom/android/server/am/ActivityManagerService;->getUidProcStatus(I)I"
+      },
+      {
+        "offset": 3618,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 3620,
+        "op": "const/4",
+        "args": "v3, 2"
+      },
+      {
+        "offset": 3622,
+        "op": "if-le",
+        "args": "v0, v3, +00ah"
+      },
+      {
+        "offset": 3626,
+        "op": "const/4",
+        "args": "v7, 0"
+      },
+      {
+        "offset": 3628,
+        "op": "const/4",
+        "args": "v6, 1"
+      },
+      {
+        "offset": 3630,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->BLACK_CALLER Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 3634,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 3640,
+        "op": "goto",
+        "args": "+8h"
+      },
+      {
+        "offset": 3642,
+        "op": "const/4",
+        "args": "v7, 1"
+      },
+      {
+        "offset": 3644,
+        "op": "const/4",
+        "args": "v6, 1"
+      },
+      {
+        "offset": 3646,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->BLACK_CALLER Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 3650,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 3656,
+        "op": "if-nez",
+        "args": "v6, +00eh"
+      },
+      {
+        "offset": 3660,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->DEFAULT Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 3664,
+        "op": "invoke-virtual",
+        "args": "v4, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 3670,
+        "op": "const/4",
+        "args": "v0, 0"
+      },
+      {
+        "offset": 3672,
+        "op": "const/4",
+        "args": "v3, 0"
+      },
+      {
+        "offset": 3674,
+        "op": "const/4",
+        "args": "v6, 1"
+      },
+      {
+        "offset": 3676,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 3680,
+        "op": "move",
+        "args": "v8, v3"
+      },
+      {
+        "offset": 3682,
+        "op": "goto",
+        "args": "+8h"
+      },
+      {
+        "offset": 3684,
+        "op": "move",
+        "args": "v0, v7"
+      },
+      {
+        "offset": 3686,
+        "op": "move/from16",
+        "args": "v37, v29"
+      },
+      {
+        "offset": 3690,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 3694,
+        "op": "move/from16",
+        "args": "v8, v37"
+      },
+      {
+        "offset": 3698,
+        "op": "move/from16",
+        "args": "v3, v29"
+      },
+      {
+        "offset": 3702,
+        "op": "goto",
+        "args": "+3ch"
+      },
+      {
+        "offset": 3704,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 3706,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 3710,
+        "op": "move/from16",
+        "args": "v7, v38"
+      },
+      {
+        "offset": 3714,
+        "op": "move/from16",
+        "args": "v29, v8"
+      },
+      {
+        "offset": 3718,
+        "op": "move/from16",
+        "args": "v8, v27"
+      },
+      {
+        "offset": 3722,
+        "op": "goto",
+        "args": "+10h"
+      },
+      {
+        "offset": 3724,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 3726,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 3730,
+        "op": "move/from16",
+        "args": "v7, v38"
+      },
+      {
+        "offset": 3734,
+        "op": "move/from16",
+        "args": "v8, v27"
+      },
+      {
+        "offset": 3738,
+        "op": "goto",
+        "args": "+8h"
+      },
+      {
+        "offset": 3740,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 3742,
+        "op": "move/from16",
+        "args": "v33, v5"
+      },
+      {
+        "offset": 3746,
+        "op": "move/from16",
+        "args": "v38, v7"
+      },
+      {
+        "offset": 3750,
+        "op": "move/from16",
+        "args": "v27, v8"
+      },
+      {
+        "offset": 3754,
+        "op": "new-instance",
+        "args": "v3, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3758,
+        "op": "invoke-direct",
+        "args": "v3, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 3764,
+        "op": "const-string/jumbo",
+        "args": "v5, isPackageAllow  "
+      },
+      {
+        "offset": 3770,
+        "op": "invoke-virtual",
+        "args": "v3, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3776,
+        "op": "invoke-virtual",
+        "args": "v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3782,
+        "op": "const-string",
+        "args": "v5, \" failed:\""
+      },
+      {
+        "offset": 3786,
+        "op": "invoke-virtual",
+        "args": "v3, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3792,
+        "op": "invoke-virtual",
+        "args": "v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3798,
+        "op": "invoke-virtual",
+        "args": "v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 3804,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 3806,
+        "op": "const-string",
+        "args": "v5, \"JourneyPerformanceService\""
+      },
+      {
+        "offset": 3810,
+        "op": "invoke-static",
+        "args": "v5, v3, v0, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I"
+      },
+      {
+        "offset": 3816,
+        "op": "move",
+        "args": "v0, v7"
+      },
+      {
+        "offset": 3818,
+        "op": "move/from16",
+        "args": "v3, v29"
+      },
+      {
+        "offset": 3822,
+        "op": "sget-boolean",
+        "args": "v5, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_HANDLE_PKG_REJECT Z"
+      },
+      {
+        "offset": 3826,
+        "op": "if-eqz",
+        "args": "v5, +005h"
+      },
+      {
+        "offset": 3830,
+        "op": "if-nez",
+        "args": "v0, +003h"
+      },
+      {
+        "offset": 3834,
+        "op": "const/4",
+        "args": "v8, 1"
+      },
+      {
+        "offset": 3836,
+        "op": "sget-boolean",
+        "args": "v5, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_HANDLE_PKG Z"
+      },
+      {
+        "offset": 3840,
+        "op": "if-nez",
+        "args": "v5, +004h"
+      },
+      {
+        "offset": 3844,
+        "op": "if-eqz",
+        "args": "v8, +03eh"
+      },
+      {
+        "offset": 3848,
+        "op": "new-instance",
+        "args": "v5, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3852,
+        "op": "invoke-direct",
+        "args": "v5, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 3858,
+        "op": "const-string/jumbo",
+        "args": "v7, isPackageAllow ["
+      },
+      {
+        "offset": 3864,
+        "op": "invoke-virtual",
+        "args": "v5, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3870,
+        "op": "invoke-virtual",
+        "args": "v5, v0, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3876,
+        "op": "const-string",
+        "args": "v7, \"] pkg name:[\""
+      },
+      {
+        "offset": 3880,
+        "op": "invoke-virtual",
+        "args": "v5, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3886,
+        "op": "invoke-virtual",
+        "args": "v5, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3892,
+        "op": "const-string",
+        "args": "v7, \"(\""
+      },
+      {
+        "offset": 3896,
+        "op": "invoke-virtual",
+        "args": "v5, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3902,
+        "op": "invoke-virtual",
+        "args": "v5, v3, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3908,
+        "op": "const-string",
+        "args": "v7, \")] request type:[\""
+      },
+      {
+        "offset": 3912,
+        "op": "invoke-virtual",
+        "args": "v5, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3918,
+        "op": "invoke-virtual",
+        "args": "v5, v11, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3924,
+        "op": "const-string",
+        "args": "v7, \"] because: [\""
+      },
+      {
+        "offset": 3928,
+        "op": "invoke-virtual",
+        "args": "v5, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3934,
+        "op": "invoke-virtual",
+        "args": "v5, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3940,
+        "op": "const-string",
+        "args": "v7, \"]\""
+      },
+      {
+        "offset": 3944,
+        "op": "invoke-virtual",
+        "args": "v5, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 3950,
+        "op": "invoke-virtual",
+        "args": "v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 3956,
+        "op": "move-result-object",
+        "args": "v5"
+      },
+      {
+        "offset": 3958,
+        "op": "const-string",
+        "args": "v7, \"JourneyPerformanceService\""
+      },
+      {
+        "offset": 3962,
+        "op": "invoke-static",
+        "args": "v7, v5, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 3968,
+        "op": "sget-boolean",
+        "args": "v5, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_PACKAGE_ALLOW_TRACE Z"
+      },
+      {
+        "offset": 3972,
+        "op": "if-eqz",
+        "args": "v5, +007h"
+      },
+      {
+        "offset": 3976,
+        "op": "const-wide/16",
+        "args": "v29, 64"
+      },
+      {
+        "offset": 3980,
+        "op": "invoke-static/range",
+        "args": "v29 ... v30, Landroid/os/Trace;->traceEnd(J)V"
+      },
+      {
+        "offset": 3986,
+        "op": "return",
+        "args": "v0"
+      },
+      {
+        "offset": 3988,
+        "op": "packed-switch-payload",
+        "args": "1 2 3 4 5 6"
+      }
+    ],
+    "original_insns_sha256": "30142368261905e6d9d4cff22cb743aeb93585139ea8f80b2141156f02373b46",
+    "original_insns_hex": "080026000801280063024b2939022c002202c321701001fb02001b03f90701006e200cfb32006e200cfb02001a0357006e200cfb3200080327006e200bfb32006e1015fb02000c021a0437487120a73b2400380107006202a6286e209d69210012120f0208032700630206291604400038021c007120793554000a02380216002202c321701001fb02001a069d966e200cfb62006e200cfb02006e1015fb02000c0271307a355402390006001a0000000702280207021206121712081a09000022004d2270107ffc0000070a7401b46927000c0b1200120c120d120e120f13100000131100001312000013130000131400001315000013160000131700006318e62813190000131a0000621b0977621c9628131d000038010700081e280008041e002808221e4710760198691e0008041e0062058d287401b36927000a1e4405051e2b0529070000010508011b002845131001001312010013190100010508011b00283b631ae52802191a00010508011b00283313170100010508011b00282d121d010508011b002828121d13170100010508011b0028211b0584810100722062fd5a00621b0a771210121c121d121e121f1310010013110100131201001313010013140100131501001316010013190100010508011b006e10d8fa02000a00390011006200b3286e209d69040012100221050029003f060d0002210500290056066e10d3fa09000a00390013007110adf809000a0039000d006200a5286e209d6904001210120802210500290023063816150062000e777120a7f802000a0038000d006200a8286e209d690400121012180221050029000e0663000629380020001a00a69602260700021b08001607400071307a35870028170d00020726000221050002081b00290011060d0002260700021b0800022105002900080602260700021b08001200390f0d00390c0b0039190900381303002805070702081d0028137110106a02000c07077038000a0052076601021d0700070702081d002804070702081d006300062938001300161d400077027c351d00280c0d000207260002210500021d080002081b002900cf0539061a00380f1800380816007110e43408000a00390010006200a4286e209d6904001210131b00001216021d1b00021b00002805021d1b00021b260039065d00380c5b007110176a07000a00380055006300062938000e001a00a39602260600081e07001606400071307a357600280502260600081e07006200ad286e209d69040012171206131b01006300062938000700161f400077027c351f00021d060002061b0028310d0002210500021d0800016802061b00290072050d00020626000221050002071b0002251d00021d080002082500290063050d00022606000221050002071b0002251d00021d0800020825002900540502260600081e07000206260002071b0039069300380e9100631b0629381b0e001a00a496021b0600022107001606400071307a3576002805021b06000221070071001d6a0000620657291d06620057292207c321701001fb07006e200cfb27001a03f1166e200cfb37006e1015fb07000c0312076e30fdfa30070a003a000b0062009c286e209d690400121012130107280502031b00020721001e066300062938000700161f400077027c351f000136284b0d0001360221050002251d00021d0800020825002900ef040d00021b030028040d00020721001e0627000d000221050002061b0002251d00021d0800020825002900d9040d0028f00d0002061b00020721000221050002251d00021d0800020825002900c8040d00021b0600022107000221050002251d00021d0800020825002900b904021b06000221070002061b000207210039066600381364006300062938000d001a00a2960163021b07001606400071307a35760028040163021b0700130008007110146a08000a063906040013000c0062063a296e206f6486000a0636060c00620699286e209d69640012161213016701362804013602071b006303062938033500161f400077027c351f00282e0d000221050002251d00021d080002082500290067040d0001360221050002071b0002251d00021d080002082500290059040d000163021b07000221050002251d00021d08000208250029004b040163021b0700013602071b003906610038055f006300062938000d001a00a1960153021b06001605400071307a35650028040153021b06001a0049cf7110aff800000c001a05801c6e20d0fa50000a0512066e30e3fa60050c0507506e20c6fa20000a0538050f0062059a286e209d695400121512061217021d060001760157280302061b006305062938052700161f400077027c351f0028200d000221030002061b0002251d00021d0800020825002900f1030d00021b06000221050002251d00021d0800020825002900e4030153021b060002061b0039064700381545006300062938000c001a00a596021b06001605400071307a3565002803021b06001b000d8401007110aff800000c006e20c6fa20000a0538050f006205b1286e209d695400121512061217021d060001760157280302061b006305062938051900161f400077027c351f0028120d00021b06000221030002251d00021d08000208250029009803021b060002061b0039063b00381239006300062938000c001a00a096021b06001605400071307a3565002803021b06007110e76902000a0038000c006200ae286e209d6904001210121501070156280302061b006300062938001700161f400077027c351f0028100d000221030002251d00021d08000208250029005903021b060002061b003906f4003814f2006300062938000c001a009f96021b06001605400071307a3565002803021b06001a0002d87110aff800000c007110863a00000a053905ac006305fe28380529001a0537482206c321701001fb0600022103001a03a3c26e200cfb36006e200cfb26001a03710a6e200cfb36006e200cfb06001b03ab9301006e200cfb36006e1015fb06000c0371209e3b35002803022103001a037c1d6e20dffa30000c03380367001205213635655e00460603057110863a06000a2239221300082200001a00801c6e20d0fa06000a000823030012036e30e3fa36000c000706280508220000082303007120833a26000a0038003200620093286e209d6904006300fe28380020001a0037482203c321701001fb0300082406001a06b61e6e200cfb63006e200cfb23001a06220f6e200cfb63006e1015fb03000c0371209e3b30002803082406001210120312160107021d0300282508240600d8050501080022000803230028a208220000082303002815082200000823030028100d0002061b0002251d00021d08000208250029008b02082200000221030002061b006300062938002800161f400077027c351f0028210d000221030002061b0002251d00021d08000208250029006e020d0002210300021b060002251d00021d0800020825002900610202210300021b060002061b00390645003810430062033f291d03620046292205c321701001fb05006e200cfb2500021b06001a06f1166e200cfb65006e1015fb05000c0512066e30fdfa50060a003a000a00620094286e209d69040012171216280302061b001e03281b0d0002061b0028040d00021b06001e0327000d0028fd0d00021b060002251d00021d08000208250029001602021b060002061b0039067900380d7700620358291d0339062c00620058292205c321701001fb05006e200cfb2500021b06001a06f1166e200cfb65006e1015fb05000c0512066e30fdfa50060a003a0012006200af286e209d690400121012150107015628090d0002061b002843021b060002061b001e03620359291d0339062e00620059292205c321701001fb05006e200cfb2500021b06001a06f1166e200cfb65006e1015fb05000c0512066e30fdfa50060a003a0014006200b0286e209d69040012171216280d0d0002061b00280c0d00021b06002808021b060002061b001e03280f0d001e0327000d00021b06001e0327000d0028fd021b060002061b0039061f0038181d0062001829722065fd20000a00380015006200a0286e209d6904001210121301070136280a0d0002251d00021d0800020825002900760139061b0038111900620361291d03620061296e2087fc20000a00380009006200b4286e209d690400121712161e0328040d001e0327003906e1006300062938001f001a009e9601631605400071307a35650028160d00013602251d00021d080002082500290042010d00016302251d00021d08000208250029003801016372106cfd0a000c0072103bfd00000a0538058f0072103cfd00000c051f05c1217110aff805000c0638063e00081b00002200c321701001fb00006e200cfb2000022203001a03ee166e200cfb30006e1015fb00000c006e20c3fa06000a00390019002200c321701001fb00006e200cfb20001a03f1166e200cfb30006e1015fb00000c006e20c3fa06000a003800100062009d286e209d6904001210121301070136284a081b00000222030038061a002200c321701001fb00006e200cfb20001a03da1a6e200cfb30006e1015fb00000c006e20c3fa06000a003800030028177100a9f800000a00380012007120a8f812000a0038000c0062009d286e209d6904001210121301070136281608001b000203220029007aff0d000206220002251d00021d0800020825002900a00002220300020622006300062938002200161f400077027c351f00281b0d00022203000206220002251d00021d080002082500290085000d000222060002251d00021d08000208250029007a0002220600390619003819170062003a297110e26902000c036e30766380030a0038000b006200a3286e209d6904001210121301070136380608003817060012007120e369020039062400381a220062000d777120a7f802000a003800130062003a296e206f6480000a00122337300a0012071216620095286e209d690400280812171216620095286e209d69040039060e00620096286e209d690400120012031216021d080001382808017002251d00021d08000208250002031d00283c0d000221050002072600021d080002081b0028100d00022105000207260002081b0028080d000221050002260700021b08002203c321701001fb03001b05f80701006e200cfb53006e200cfb23001a05fc0d6e200cfb53006e200bfb03006e1015fb03000c031a0537487130a83b3500017002031d006305ff28380505003900030012186305fe283905040038083e002205c321701001fb05001b07fa0701006e200cfb75006e200efb05001a0758a96e200cfb75006e200cfb25001a0764156e200cfb75006e2007fb35001a07a1166e200cfb75006e200cfbb5001a074ba96e200cfb75006e200bfb45001a0730a96e200cfb75006e1015fb05000c051a07374871209e3b57006305062938050700161d400077027c351d000f0000010600010000002b000000240000001f000000190000001100000007000000"
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isSystem(Landroid/content/pm/ApplicationInfo;)Z",
+    "code_item_offset": 3275956,
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "const/4",
+        "args": "v0, 0"
+      },
+      {
+        "offset": 2,
+        "op": "if-nez",
+        "args": "v4, +003h"
+      },
+      {
+        "offset": 6,
+        "op": "return",
+        "args": "v0"
+      },
+      {
+        "offset": 8,
+        "op": "invoke-static",
+        "args": "Lcom/journey/server/JourneyConfigService;->isEnable()Z"
+      },
+      {
+        "offset": 14,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 16,
+        "op": "if-eqz",
+        "args": "v1, +00dh"
+      },
+      {
+        "offset": 20,
+        "op": "iget-object",
+        "args": "v1, v4, Landroid/content/pm/ApplicationInfo;->packageName Ljava/lang/String;"
+      },
+      {
+        "offset": 24,
+        "op": "sget-object",
+        "args": "v2, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_NOT_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;"
+      },
+      {
+        "offset": 28,
+        "op": "invoke-static",
+        "args": "v1, v2, Lcom/journey/server/JourneyConfigService;->getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z"
+      },
+      {
+        "offset": 34,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 36,
+        "op": "if-eqz",
+        "args": "v1, +003h"
+      },
+      {
+        "offset": 40,
+        "op": "return",
+        "args": "v0"
+      },
+      {
+        "offset": 42,
+        "op": "iget",
+        "args": "v1, v4, Landroid/content/pm/ApplicationInfo;->flags I"
+      },
+      {
+        "offset": 46,
+        "op": "const/4",
+        "args": "v2, 1"
+      },
+      {
+        "offset": 48,
+        "op": "and-int/2addr",
+        "args": "v1, v2"
+      },
+      {
+        "offset": 50,
+        "op": "if-nez",
+        "args": "v1, +01bh"
+      },
+      {
+        "offset": 54,
+        "op": "iget",
+        "args": "v1, v4, Landroid/content/pm/ApplicationInfo;->flags I"
+      },
+      {
+        "offset": 58,
+        "op": "and-int/lit16",
+        "args": "v1, v1, 128"
+      },
+      {
+        "offset": 62,
+        "op": "if-eqz",
+        "args": "v1, +003h"
+      },
+      {
+        "offset": 66,
+        "op": "goto",
+        "args": "+13h"
+      },
+      {
+        "offset": 68,
+        "op": "invoke-static",
+        "args": "Lcom/journey/server/JourneyConfigService;->isEnable()Z"
+      },
+      {
+        "offset": 74,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 76,
+        "op": "if-eqz",
+        "args": "v1, +00dh"
+      },
+      {
+        "offset": 80,
+        "op": "iget-object",
+        "args": "v1, v4, Landroid/content/pm/ApplicationInfo;->packageName Ljava/lang/String;"
+      },
+      {
+        "offset": 84,
+        "op": "sget-object",
+        "args": "v3, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->ASSUMING_IN_SYSTEM Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;"
+      },
+      {
+        "offset": 88,
+        "op": "invoke-static",
+        "args": "v1, v3, Lcom/journey/server/JourneyConfigService;->getBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z"
+      },
+      {
+        "offset": 94,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 96,
+        "op": "if-eqz",
+        "args": "v1, +003h"
+      },
+      {
+        "offset": 100,
+        "op": "return",
+        "args": "v2"
+      },
+      {
+        "offset": 102,
+        "op": "return",
+        "args": "v0"
+      },
+      {
+        "offset": 104,
+        "op": "return",
+        "args": "v2"
+      }
+    ],
+    "original_insns_sha256": "7f7404b07e94662d4ead577bf6d0f003f46d291fb949ba9b66d205edc526fea9",
+    "original_insns_hex": "1200390403000f007100a9f800000a0138010d005441550162020c777120a8f821000a01380103000f0052414a011212b52139011b0052414a01d51180003801030028137100a9f800000a0138010d005441550162030b777120a8f831000a01380103000f020f000f02"
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isUidAllow(I Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z",
+    "code_item_offset": 3276080,
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->mReady Z"
+      },
+      {
+        "offset": 4,
+        "op": "const-string",
+        "args": "v1, \"JourneyPerformanceService\""
+      },
+      {
+        "offset": 8,
+        "op": "if-nez",
+        "args": "v0, +028h"
+      },
+      {
+        "offset": 12,
+        "op": "new-instance",
+        "args": "v0, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 16,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 22,
+        "op": "const-string/jumbo",
+        "args": "v2, isUidAllow NOT ready for check "
+      },
+      {
+        "offset": 28,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 34,
+        "op": "invoke-virtual",
+        "args": "v0, v8, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 40,
+        "op": "const-string",
+        "args": "v2, \" \""
+      },
+      {
+        "offset": 44,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 50,
+        "op": "invoke-virtual",
+        "args": "v0, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 56,
+        "op": "invoke-virtual",
+        "args": "v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 62,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 64,
+        "op": "invoke-static",
+        "args": "v1, v0, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 70,
+        "op": "if-eqz",
+        "args": "v10, +007h"
+      },
+      {
+        "offset": 74,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->NOT_READY Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 78,
+        "op": "invoke-virtual",
+        "args": "v10, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 84,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 86,
+        "op": "return",
+        "args": "v0"
+      },
+      {
+        "offset": 88,
+        "op": "const-wide/16",
+        "args": "v2, 64"
+      },
+      {
+        "offset": 92,
+        "op": "invoke-static",
+        "args": "v2, v3, Landroid/os/Trace;->isTagEnabled(J)Z"
+      },
+      {
+        "offset": 98,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 100,
+        "op": "if-eqz",
+        "args": "v0, +016h"
+      },
+      {
+        "offset": 104,
+        "op": "new-instance",
+        "args": "v0, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 108,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 114,
+        "op": "const-string",
+        "args": "v4, \"TPS-isUidAllow \""
+      },
+      {
+        "offset": 118,
+        "op": "invoke-virtual",
+        "args": "v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 124,
+        "op": "invoke-virtual",
+        "args": "v0, v8, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 130,
+        "op": "invoke-virtual",
+        "args": "v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 136,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 138,
+        "op": "invoke-static",
+        "args": "v2, v3, v0, Landroid/os/Trace;->traceBegin(J Ljava/lang/String;)V"
+      },
+      {
+        "offset": 144,
+        "op": "const/4",
+        "args": "v0, 0"
+      },
+      {
+        "offset": 146,
+        "op": "const/4",
+        "args": "v4, 0"
+      },
+      {
+        "offset": 148,
+        "op": "invoke-static",
+        "args": "v8, Lcom/android/server/am/JourneyPerformanceService;->getPackagesForUidCache(I)[Ljava/lang/String;"
+      },
+      {
+        "offset": 154,
+        "op": "move-result-object",
+        "args": "v5"
+      },
+      {
+        "offset": 156,
+        "op": "move-object",
+        "args": "v4, v5"
+      },
+      {
+        "offset": 158,
+        "op": "if-eqz",
+        "args": "v4, +044h"
+      },
+      {
+        "offset": 162,
+        "op": "const/4",
+        "args": "v5, 0"
+      },
+      {
+        "offset": 164,
+        "op": "array-length",
+        "args": "v6, v4"
+      },
+      {
+        "offset": 166,
+        "op": "if-ge",
+        "args": "v5, v6, +03fh"
+      },
+      {
+        "offset": 170,
+        "op": "sget-boolean",
+        "args": "v6, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_HANDLE_UID Z"
+      },
+      {
+        "offset": 174,
+        "op": "if-eqz",
+        "args": "v6, +020h"
+      },
+      {
+        "offset": 178,
+        "op": "new-instance",
+        "args": "v6, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 182,
+        "op": "invoke-direct",
+        "args": "v6, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 188,
+        "op": "const-string",
+        "args": "v7, \"check isPackageAllow for \""
+      },
+      {
+        "offset": 192,
+        "op": "invoke-virtual",
+        "args": "v6, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 198,
+        "op": "aget-object",
+        "args": "v7, v4, v5"
+      },
+      {
+        "offset": 202,
+        "op": "invoke-virtual",
+        "args": "v6, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 208,
+        "op": "const-string",
+        "args": "v7, \" from uid \""
+      },
+      {
+        "offset": 212,
+        "op": "invoke-virtual",
+        "args": "v6, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 218,
+        "op": "invoke-virtual",
+        "args": "v6, v8, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 224,
+        "op": "invoke-virtual",
+        "args": "v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 230,
+        "op": "move-result-object",
+        "args": "v6"
+      },
+      {
+        "offset": 232,
+        "op": "invoke-static",
+        "args": "v1, v6, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 238,
+        "op": "sget-object",
+        "args": "v6, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->NO_LIMIT Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 242,
+        "op": "if-ne",
+        "args": "v9, v6, +00ch"
+      },
+      {
+        "offset": 246,
+        "op": "aget-object",
+        "args": "v6, v4, v5"
+      },
+      {
+        "offset": 250,
+        "op": "sget-object",
+        "args": "v7, Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;->NO_LIMIT Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;"
+      },
+      {
+        "offset": 254,
+        "op": "invoke-static",
+        "args": "v6, v7, Lcom/journey/server/JourneyConfigService;->PackageHasBehavior(Ljava/lang/String; Lcom/journey/server/JourneyConfigService$BEHAVIOR_TYPE;)Z"
+      },
+      {
+        "offset": 260,
+        "op": "move-result",
+        "args": "v6"
+      },
+      {
+        "offset": 262,
+        "op": "move",
+        "args": "v0, v6"
+      },
+      {
+        "offset": 264,
+        "op": "goto",
+        "args": "+8h"
+      },
+      {
+        "offset": 266,
+        "op": "aget-object",
+        "args": "v6, v4, v5"
+      },
+      {
+        "offset": 270,
+        "op": "invoke-static",
+        "args": "v6, v9, v10, Lcom/android/server/am/JourneyPerformanceService;->isPackageAllow(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 276,
+        "op": "move-result",
+        "args": "v6"
+      },
+      {
+        "offset": 278,
+        "op": "move",
+        "args": "v0, v6"
+      },
+      {
+        "offset": 280,
+        "op": "if-eqz",
+        "args": "v0, +003h"
+      },
+      {
+        "offset": 284,
+        "op": "goto",
+        "args": "+4h"
+      },
+      {
+        "offset": 286,
+        "op": "add-int/lit8",
+        "args": "v5, v5, 1"
+      },
+      {
+        "offset": 290,
+        "op": "goto",
+        "args": "-3fh"
+      },
+      {
+        "offset": 292,
+        "op": "goto",
+        "args": "+1bh"
+      },
+      {
+        "offset": 294,
+        "op": "new-instance",
+        "args": "v5, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 298,
+        "op": "invoke-direct",
+        "args": "v5, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 304,
+        "op": "const-string/jumbo",
+        "args": "v6, uid "
+      },
+      {
+        "offset": 310,
+        "op": "invoke-virtual",
+        "args": "v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 316,
+        "op": "invoke-virtual",
+        "args": "v5, v8, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 322,
+        "op": "const-string",
+        "args": "v6, \" not found \""
+      },
+      {
+        "offset": 326,
+        "op": "invoke-virtual",
+        "args": "v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 332,
+        "op": "invoke-virtual",
+        "args": "v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 338,
+        "op": "move-result-object",
+        "args": "v5"
+      },
+      {
+        "offset": 340,
+        "op": "invoke-static",
+        "args": "v1, v5, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 346,
+        "op": "goto",
+        "args": "+1fh"
+      },
+      {
+        "offset": 348,
+        "op": "move-exception",
+        "args": "v4"
+      },
+      {
+        "offset": 350,
+        "op": "new-instance",
+        "args": "v5, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 354,
+        "op": "invoke-direct",
+        "args": "v5, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 360,
+        "op": "const-string/jumbo",
+        "args": "v6, isUidAllow    "
+      },
+      {
+        "offset": 366,
+        "op": "invoke-virtual",
+        "args": "v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 372,
+        "op": "invoke-virtual",
+        "args": "v5, v8, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 378,
+        "op": "const-string",
+        "args": "v6, \" failed:\""
+      },
+      {
+        "offset": 382,
+        "op": "invoke-virtual",
+        "args": "v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 388,
+        "op": "invoke-virtual",
+        "args": "v5, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 394,
+        "op": "invoke-virtual",
+        "args": "v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 400,
+        "op": "move-result-object",
+        "args": "v5"
+      },
+      {
+        "offset": 402,
+        "op": "invoke-static",
+        "args": "v1, v5, v4, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I"
+      },
+      {
+        "offset": 408,
+        "op": "invoke-static",
+        "args": "v2, v3, Landroid/os/Trace;->traceEnd(J)V"
+      },
+      {
+        "offset": 414,
+        "op": "return",
+        "args": "v0"
+      }
+    ],
+    "original_insns_sha256": "57a7283a7e40921399a0ca15308afb4269c77b5f04a9b4ad087f08aa5baf37b0",
+    "original_insns_hex": "63004b291a013748390028002200c321701001fb00001b027c0a01006e200cfb20006e2007fb80001a0257006e200cfb20006e200bfb90006e1015fb00000c007120a73b0100380a07006200a6286e209d690a0012100f00160240007120793532000a00380016002200c321701001fb00001a04a7966e200cfb40006e2007fb80006e1015fb00000c0071307a353200120012047110116a08000c050754380444001205214635653f0063060029380620002206c321701001fb06001a07a1c26e200cfb7600460704056e200cfb76001a077a0e6e200cfb76006e2007fb86006e1015fb06000c0671209e3b61006206cd2833690c004606040562070e777120a7f876000a0601602808460604057130136a960a0a060160380003002804d805050128c1281b2205c321701001fb05001b066d8401006e200cfb65006e2007fb85001a062b116e200cfb65006e1015fb05000c057120a73b5100281f0d042205c321701001fb05001b067b0a01006e200cfb65006e2007fb85001a06fc0d6e200cfb65006e200bfb45006e1015fb05000c057130a83b510471207c3532000f00"
+  },
+  {
+    "jar": "services.jar",
+    "dex": "classes.dex",
+    "class_name": "Lcom/android/server/am/JourneyPerformanceService;",
+    "method": "isUidKeptAllowForProc(I Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z",
+    "code_item_offset": 3276528,
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService;->mReady Z"
+      },
+      {
+        "offset": 4,
+        "op": "const-string",
+        "args": "v1, \" \""
+      },
+      {
+        "offset": 8,
+        "op": "const/4",
+        "args": "v2, 0"
+      },
+      {
+        "offset": 10,
+        "op": "const-string",
+        "args": "v3, \"JourneyPerformanceService\""
+      },
+      {
+        "offset": 14,
+        "op": "if-nez",
+        "args": "v0, +025h"
+      },
+      {
+        "offset": 18,
+        "op": "new-instance",
+        "args": "v0, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 22,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 28,
+        "op": "const-string/jumbo",
+        "args": "v4, isUidKeptAllowForProc NOT ready for check "
+      },
+      {
+        "offset": 34,
+        "op": "invoke-virtual",
+        "args": "v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 40,
+        "op": "invoke-virtual",
+        "args": "v0, v11, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 46,
+        "op": "invoke-virtual",
+        "args": "v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 52,
+        "op": "invoke-virtual",
+        "args": "v0, v13, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 58,
+        "op": "invoke-virtual",
+        "args": "v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 64,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 66,
+        "op": "invoke-static",
+        "args": "v3, v0, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 72,
+        "op": "if-eqz",
+        "args": "v14, +007h"
+      },
+      {
+        "offset": 76,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->NOT_READY Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 80,
+        "op": "invoke-virtual",
+        "args": "v14, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 86,
+        "op": "return",
+        "args": "v2"
+      },
+      {
+        "offset": 88,
+        "op": "if-eqz",
+        "args": "v12, +0efh"
+      },
+      {
+        "offset": 92,
+        "op": "invoke-virtual",
+        "args": "v12, Ljava/lang/String;->isEmpty()Z"
+      },
+      {
+        "offset": 98,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 100,
+        "op": "if-eqz",
+        "args": "v0, +004h"
+      },
+      {
+        "offset": 104,
+        "op": "goto/16",
+        "args": "+0e7h"
+      },
+      {
+        "offset": 108,
+        "op": "const-wide/16",
+        "args": "v0, 64"
+      },
+      {
+        "offset": 112,
+        "op": "invoke-static",
+        "args": "v0, v1, Landroid/os/Trace;->isTagEnabled(J)Z"
+      },
+      {
+        "offset": 118,
+        "op": "move-result",
+        "args": "v4"
+      },
+      {
+        "offset": 120,
+        "op": "if-eqz",
+        "args": "v4, +016h"
+      },
+      {
+        "offset": 124,
+        "op": "new-instance",
+        "args": "v4, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 128,
+        "op": "invoke-direct",
+        "args": "v4, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 134,
+        "op": "const-string",
+        "args": "v5, \"TPS-isUidKeptAllowForProc \""
+      },
+      {
+        "offset": 138,
+        "op": "invoke-virtual",
+        "args": "v4, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 144,
+        "op": "invoke-virtual",
+        "args": "v4, v11, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 150,
+        "op": "invoke-virtual",
+        "args": "v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 156,
+        "op": "move-result-object",
+        "args": "v4"
+      },
+      {
+        "offset": 158,
+        "op": "invoke-static",
+        "args": "v0, v1, v4, Landroid/os/Trace;->traceBegin(J Ljava/lang/String;)V"
+      },
+      {
+        "offset": 164,
+        "op": "const/4",
+        "args": "v4, 0"
+      },
+      {
+        "offset": 166,
+        "op": "const/4",
+        "args": "v5, 0"
+      },
+      {
+        "offset": 168,
+        "op": "const/4",
+        "args": "v6, 0"
+      },
+      {
+        "offset": 170,
+        "op": "const/4",
+        "args": "v7, 1"
+      },
+      {
+        "offset": 172,
+        "op": "invoke-static",
+        "args": "v11, Lcom/android/server/am/JourneyPerformanceService;->getPackagesForUidCache(I)[Ljava/lang/String;"
+      },
+      {
+        "offset": 178,
+        "op": "move-result-object",
+        "args": "v8"
+      },
+      {
+        "offset": 180,
+        "op": "move-object",
+        "args": "v6, v8"
+      },
+      {
+        "offset": 182,
+        "op": "if-eqz",
+        "args": "v6, +046h"
+      },
+      {
+        "offset": 186,
+        "op": "const/4",
+        "args": "v8, 0"
+      },
+      {
+        "offset": 188,
+        "op": "array-length",
+        "args": "v9, v6"
+      },
+      {
+        "offset": 190,
+        "op": "if-ge",
+        "args": "v8, v9, +041h"
+      },
+      {
+        "offset": 194,
+        "op": "sget-boolean",
+        "args": "v9, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_HANDLE_UID Z"
+      },
+      {
+        "offset": 198,
+        "op": "if-eqz",
+        "args": "v9, +020h"
+      },
+      {
+        "offset": 202,
+        "op": "new-instance",
+        "args": "v9, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 206,
+        "op": "invoke-direct",
+        "args": "v9, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 212,
+        "op": "const-string",
+        "args": "v10, \"check isPackageAllow for \""
+      },
+      {
+        "offset": 216,
+        "op": "invoke-virtual",
+        "args": "v9, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 222,
+        "op": "aget-object",
+        "args": "v10, v6, v8"
+      },
+      {
+        "offset": 226,
+        "op": "invoke-virtual",
+        "args": "v9, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 232,
+        "op": "const-string",
+        "args": "v10, \" from uid \""
+      },
+      {
+        "offset": 236,
+        "op": "invoke-virtual",
+        "args": "v9, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 242,
+        "op": "invoke-virtual",
+        "args": "v9, v11, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 248,
+        "op": "invoke-virtual",
+        "args": "v9, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 254,
+        "op": "move-result-object",
+        "args": "v9"
+      },
+      {
+        "offset": 256,
+        "op": "invoke-static",
+        "args": "v3, v9, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 262,
+        "op": "aget-object",
+        "args": "v9, v6, v8"
+      },
+      {
+        "offset": 266,
+        "op": "invoke-static",
+        "args": "v9, v13, v14, Lcom/android/server/am/JourneyPerformanceService;->isPackageAllow(Ljava/lang/String; Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE; Lcom/android/server/am/JourneyPerformanceService$Reason;)Z"
+      },
+      {
+        "offset": 272,
+        "op": "move-result",
+        "args": "v9"
+      },
+      {
+        "offset": 274,
+        "op": "move",
+        "args": "v4, v9"
+      },
+      {
+        "offset": 276,
+        "op": "aget-object",
+        "args": "v9, v6, v8"
+      },
+      {
+        "offset": 280,
+        "op": "sget-object",
+        "args": "v10, Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;->KEEP_ADJ Lcom/android/server/am/JourneyPerformanceService$TPS_TYPE;"
+      },
+      {
+        "offset": 284,
+        "op": "if-ne",
+        "args": "v13, v10, +004h"
+      },
+      {
+        "offset": 288,
+        "op": "move",
+        "args": "v10, v7"
+      },
+      {
+        "offset": 290,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 292,
+        "op": "move",
+        "args": "v10, v2"
+      },
+      {
+        "offset": 294,
+        "op": "invoke-static",
+        "args": "v9, v12, v10, Lcom/android/server/am/JourneyPerformanceService;->IsValidRootProcess(Ljava/lang/String; Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 300,
+        "op": "move-result",
+        "args": "v9"
+      },
+      {
+        "offset": 302,
+        "op": "move",
+        "args": "v5, v9"
+      },
+      {
+        "offset": 304,
+        "op": "if-eqz",
+        "args": "v4, +005h"
+      },
+      {
+        "offset": 308,
+        "op": "if-eqz",
+        "args": "v5, +003h"
+      },
+      {
+        "offset": 312,
+        "op": "goto",
+        "args": "+4h"
+      },
+      {
+        "offset": 314,
+        "op": "add-int/lit8",
+        "args": "v8, v8, 1"
+      },
+      {
+        "offset": 318,
+        "op": "goto",
+        "args": "-41h"
+      },
+      {
+        "offset": 320,
+        "op": "goto",
+        "args": "+1bh"
+      },
+      {
+        "offset": 322,
+        "op": "new-instance",
+        "args": "v8, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 326,
+        "op": "invoke-direct",
+        "args": "v8, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 332,
+        "op": "const-string/jumbo",
+        "args": "v9, uid "
+      },
+      {
+        "offset": 338,
+        "op": "invoke-virtual",
+        "args": "v8, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 344,
+        "op": "invoke-virtual",
+        "args": "v8, v11, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 350,
+        "op": "const-string",
+        "args": "v9, \" not found \""
+      },
+      {
+        "offset": 354,
+        "op": "invoke-virtual",
+        "args": "v8, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 360,
+        "op": "invoke-virtual",
+        "args": "v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 366,
+        "op": "move-result-object",
+        "args": "v8"
+      },
+      {
+        "offset": 368,
+        "op": "invoke-static",
+        "args": "v3, v8, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 374,
+        "op": "goto",
+        "args": "+1fh"
+      },
+      {
+        "offset": 376,
+        "op": "move-exception",
+        "args": "v6"
+      },
+      {
+        "offset": 378,
+        "op": "new-instance",
+        "args": "v8, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 382,
+        "op": "invoke-direct",
+        "args": "v8, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 388,
+        "op": "const-string/jumbo",
+        "args": "v9, isUidKeptAllowForProc    "
+      },
+      {
+        "offset": 394,
+        "op": "invoke-virtual",
+        "args": "v8, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 400,
+        "op": "invoke-virtual",
+        "args": "v8, v11, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 406,
+        "op": "const-string",
+        "args": "v9, \" failed:\""
+      },
+      {
+        "offset": 410,
+        "op": "invoke-virtual",
+        "args": "v8, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 416,
+        "op": "invoke-virtual",
+        "args": "v8, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 422,
+        "op": "invoke-virtual",
+        "args": "v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 428,
+        "op": "move-result-object",
+        "args": "v8"
+      },
+      {
+        "offset": 430,
+        "op": "invoke-static",
+        "args": "v3, v8, v6, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I"
+      },
+      {
+        "offset": 436,
+        "op": "sget-boolean",
+        "args": "v6, Lcom/android/server/am/JourneyPerformanceService;->DEBUG_HANDLE_PKG Z"
+      },
+      {
+        "offset": 440,
+        "op": "if-eqz",
+        "args": "v6, +036h"
+      },
+      {
+        "offset": 444,
+        "op": "new-instance",
+        "args": "v6, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 448,
+        "op": "invoke-direct",
+        "args": "v6, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 454,
+        "op": "const-string/jumbo",
+        "args": "v8, isUidKeptAllowForProc uid:"
+      },
+      {
+        "offset": 460,
+        "op": "invoke-virtual",
+        "args": "v6, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 466,
+        "op": "invoke-virtual",
+        "args": "v6, v11, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 472,
+        "op": "const-string",
+        "args": "v8, \" procName:\""
+      },
+      {
+        "offset": 476,
+        "op": "invoke-virtual",
+        "args": "v6, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 482,
+        "op": "invoke-virtual",
+        "args": "v6, v12, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 488,
+        "op": "const-string",
+        "args": "v8, \" type:\""
+      },
+      {
+        "offset": 492,
+        "op": "invoke-virtual",
+        "args": "v6, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 498,
+        "op": "invoke-virtual",
+        "args": "v6, v13, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 504,
+        "op": "const-string",
+        "args": "v8, \" allow:\""
+      },
+      {
+        "offset": 508,
+        "op": "invoke-virtual",
+        "args": "v6, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 514,
+        "op": "if-eqz",
+        "args": "v4, +006h"
+      },
+      {
+        "offset": 518,
+        "op": "if-eqz",
+        "args": "v5, +004h"
+      },
+      {
+        "offset": 522,
+        "op": "move",
+        "args": "v8, v7"
+      },
+      {
+        "offset": 524,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 526,
+        "op": "move",
+        "args": "v8, v2"
+      },
+      {
+        "offset": 528,
+        "op": "invoke-virtual",
+        "args": "v6, v8, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 534,
+        "op": "invoke-virtual",
+        "args": "v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 540,
+        "op": "move-result-object",
+        "args": "v6"
+      },
+      {
+        "offset": 542,
+        "op": "invoke-static",
+        "args": "v3, v6, Landroid/util/Slog;->d(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 548,
+        "op": "invoke-static",
+        "args": "v0, v1, Landroid/os/Trace;->traceEnd(J)V"
+      },
+      {
+        "offset": 554,
+        "op": "if-eqz",
+        "args": "v4, +005h"
+      },
+      {
+        "offset": 558,
+        "op": "if-eqz",
+        "args": "v5, +003h"
+      },
+      {
+        "offset": 562,
+        "op": "move",
+        "args": "v2, v7"
+      },
+      {
+        "offset": 564,
+        "op": "return",
+        "args": "v2"
+      },
+      {
+        "offset": 566,
+        "op": "new-instance",
+        "args": "v0, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 570,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 576,
+        "op": "const-string",
+        "args": "v4, \"Invalid processName for isUidKeptAllowForProc check \""
+      },
+      {
+        "offset": 580,
+        "op": "invoke-virtual",
+        "args": "v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 586,
+        "op": "invoke-virtual",
+        "args": "v0, v11, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 592,
+        "op": "invoke-virtual",
+        "args": "v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 598,
+        "op": "invoke-virtual",
+        "args": "v0, v13, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 604,
+        "op": "invoke-virtual",
+        "args": "v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 610,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 612,
+        "op": "invoke-static",
+        "args": "v3, v0, Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 618,
+        "op": "if-eqz",
+        "args": "v14, +007h"
+      },
+      {
+        "offset": 622,
+        "op": "sget-object",
+        "args": "v0, Lcom/android/server/am/JourneyPerformanceService$REASON;->UNKNOW_PACKAGE Lcom/android/server/am/JourneyPerformanceService$REASON;"
+      },
+      {
+        "offset": 626,
+        "op": "invoke-virtual",
+        "args": "v14, v0, Lcom/android/server/am/JourneyPerformanceService$Reason;->set(Lcom/android/server/am/JourneyPerformanceService$REASON;)V"
+      },
+      {
+        "offset": 632,
+        "op": "return",
+        "args": "v2"
+      }
+    ],
+    "original_insns_sha256": "c2609c0e68eb1ac070ec3d5078775e3c6642643c5cbefd456ab444f89e11f452",
+    "original_insns_hex": "63004b291a01570012021a033748390025002200c321701001fb00001b04890a01006e200cfb40006e2007fbb0006e200cfb10006e200bfbd0006e1015fb00000c007120a73b0300380e07006200a6286e209d690e000f02380cef006e10d3fa0c000a00380004002900e700160040007120793510000a04380416002204c321701001fb04001a05a8966e200cfb54006e2007fbb4006e1015fb04000c0471307a35100412041205120612177110116a0b000c08078638064600120821693598410063090029380920002209c321701001fb09001a0aa1c26e200cfba900460a06086e200cfba9001a0a7a0e6e200cfba9006e2007fbb9006e1015fb09000c0971209e3b9300460906087130136ad90e0a09019446090608620ac92833ad0400017a2802012a7130e869c90a0a09019538040500380503002804d808080128bf281b2208c321701001fb08001b096d8401006e200cfb98006e2007fbb8001a092b116e200cfb98006e1015fb08000c087120a73b8300281f0d062208c321701001fb08001b09880a01006e200cfb98006e2007fbb8001a09fc0d6e200cfb98006e200bfb68006e1015fb08000c087130a83b83066306fe28380636002206c321701001fb06001b088a0a01006e200cfb86006e2007fbb6001a08e9116e200cfb86006e200cfbc6001a08c0136e200cfb86006e200bfbd6001a088f0b6e200cfb860038040600380504000178280201286e200efb86006e1015fb06000c0671209e3b630071207c351000380405003805030001720f022200c321701001fb00001a0422476e200cfb40006e2007fbb0006e200cfb10006e200bfbd0006e1015fb00000c007120a73b0300380e07006200b3286e209d690e000f02"
+  }
+]
