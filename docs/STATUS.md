@@ -1,0 +1,41 @@
+# 研究状态总表（更新：2026-10-10）
+
+本仓库存档长期围绕 **Rakuten Hand 5G / TINNO P780** 进行的个人设备实验。证据有明确等级：**实机已证实 / 离线源码或文件已证实 / 其他设备参考 / 未验证假设**。不同等级不能互相替代。
+
+| 目标 | 结果 | 依据及边界 |
+|---|---|---|
+| 确认型号、固件、内核版本 | **实机已证实** | Android 11; `P780AE_11.0_RMN_JP_162`; Linux `5.4.233-qgki-gea5245e94afe-dirty` |
+| 获取 ADB Shell / 原厂配置 | **实机已证实** | 非 root shell; 39,170 B `p780-config.gz` 在仓库根目录 |
+| Fastboot OEM 解锁 | **未成功** | Unlock 标志 no；标准 unlock 命令返回 unknown command；灰色 OEM 开关 |
+| EDL / Sahara 识别 | **实机已证实** | 05C6:9008; Sahara v2; `mannar` / HWID `0x0016f0e100000780` |
+| Firehose 握手、分区备份/读写 | **尚无成功证据** | 已识别 loader 匹配需求，不代表已找到可用签名 Loader |
+| 以 EDL 获得 `boot.img` | **未取得** | 从未将未知 loader/跨设备镜像作为成功证据 |
+| QAS → Mink → PFM | **静态 + 部分实机运行已证实** | eMBMS `open(119)`, `CheckInstalledLicense(700)`；XRVD 代理创建日志；没有 OEM Unlock 连接证据 |
+| TZAccessService 白名单/凭据 | **APK 静态已证实** | 调用 Binder UID/PID；白名单 `/vendor/etc/ssg/tz_whitelist.json`；native/backend 未完整审计 |
+| TINNO 5.4.61 `rtmutex` CVE 调用链 | **公开旧源码已证实** | **不等于**设备运行中的 5.4.233 已证实存在漏洞 |
+| Futex PI、RT Mutex、LTO、CFI 等 | **实机配置已证实** | `CONFIG_FUTEX_PI=y`, `CONFIG_RT_MUTEXES=y` |
+| Tracefs 原始数据可读和标记 | **实机已证实** | `p780-cpu4.raw` 4096 B；候选代码指针仅可作历史数据，不代表 `_text` |
+| P780 专用 GhostLock 可执行链 | **BLOCKED** | 缺原厂二进制/逐构建结构及符号偏移；未实现 Root |
+| Qualcomm 5.4.233 候选源码原生 Kconfig | **云端构建成功** | GitHub Actions 2026-10-10 的 5.4.233 *A52s* 源码、非 P780 固件 |
+| Android Clang 11.0.2 `rtmutex.o` | **云端编译成功** | 已匹配实机编译器，非完整 `vmlinux`，非可刷写内核 |
+| 还原与出厂 `vmlinux` 一致的内核 | **未完成** | 原厂私有代码与构建身份未满足 |
+| Root / Bootloader 解锁 / 刷机 | **均未达成** | 任何适配包不得宣称 Root 成功 |
+
+## 最新可靠数字
+
+- 设备真实 `config.gz` 解析：**5,238** 个状态明确的配置项，源文件 6,576 行。
+- Qualcomm 5.4.233 候选 + **匹配的 Android Clang 11.0.2** 的原生 Kconfig：原有值变化 **0**；消失 **24**；新增 **322**。`rtmutex.o` 成功编译；没有完整内核链接。
+- 上述被删除的 24 项里包含 **15 项原本启用**的驱动/防护选项（需要后续逐项核对）。
+- 旧 TINNO 5.4.61 源码包对照的 45 项缺失只是**不同源码树的静态比较**，不可与 Clang11 的 24 项混为一谈。
+
+## 认识论规则
+
+- 现场软件状态来自具体采集时间；去预装、重启、切槽后不得自动延用以前记录。
+- **能 `adb shell` 查看文件名，不代表可 `adb pull` 读取内容。**
+- **构建成功不等于原厂固件、没有证据的 kernel 地址不能进入真实设备写入操作。**
+- 本库已有 `docs/2026-09-28-rakuten-hand5g-firmware-advisory.md`，该官方安全提示涉及固件真实性验证，独立于 GhostLock；公开提示不等于已发现或验证 Bootloader 解锁途径。
+- 历史编译工件采用 Actions Artifact 保存，有过期时间；可永久追溯的状态和关键运行编号应写入文档。
+
+## 归档范围
+
+这里汇总了**已能从历次对话、历史文件库和 GitHub 中重新取得的资料**。并不假装取得所有过去的原始终端输出、未上传的 `boot.img` 或缺失的编译产物。细节参见 [证据索引](EVIDENCE_MANIFEST.md)。
