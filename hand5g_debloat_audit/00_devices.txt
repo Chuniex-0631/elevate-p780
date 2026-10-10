@@ -1,3 +1,0 @@
-﻿List of devices attached
-b940328a               device product:P780 model:P780 device:P780 transport_id:7
-
