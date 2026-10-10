@@ -20,6 +20,7 @@
 | Qualcomm 5.4.233 候选源码原生 Kconfig | **云端构建成功** | GitHub Actions 2026-10-10 的 5.4.233 *A52s* 源码、非 P780 固件 |
 | Android Clang 11.0.2 `rtmutex.o` | **云端编译成功** | 已匹配实机编译器，非完整 `vmlinux`，非可刷写内核 |
 | 还原与出厂 `vmlinux` 一致的内核 | **未完成** | 原厂私有代码与构建身份未满足 |
+| JourneyConfigService | **实机 JAR 静态已证实** | services.jar 的应用行为 XML 配置；消费者 JourneyPerformanceService；未发现 OTA/Root 链 |
 | Root / Bootloader 解锁 / 刷机 | **均未达成** | 任何适配包不得宣称 Root 成功 |
 
 ## 新增历史原件（2026-10-10）
@@ -61,3 +62,9 @@
 - FORTIFY_SOURCE 属 Clang 依赖限制；REFCOUNT_FULL 无开关不代表饱和保护消失。
 - 最终 Actions #38060518994 全部通过：两棵固定树分别提取 32 项布局事实，32 项全部一致，prepare 配置漂移 0。TINNO 原生求解消失 46 / 新增 14；A52s 消失 24 / 新增 322。
 - 原始日志、编译命令、配置和候选 JSON 已永久入 evidence/actions/2026-10-10-layout-audit。仅为候选源码 ABI 采样；Root/BL 状态不变，GhostLock 仍 BLOCKED。
+
+## 当前系统配置支线
+
+[Journey 实机 JAR 审计](2026-10-10-journey-config-audit.md)：54 个目标方法原始指令、8 类反汇编、6 DEX 的 17 个外部引用已保存。HTTP 配置在所审查路径未见密码学验签，仅见主机/版本检查；静态发现不能宣布权限获取。下一步只读确认 vendor 默认 XML 和 TCS 当前状态。
+
+[OTA 原件深入审计](2026-10-10-ota-log-audit.md)：全部 6 份历史引擎日志仅为启动清理，无固件 URL/payload；此前的配置成功、INSTALL_UPDATE 事件不作 OTA 安装成功。原始新上传 18MB framework ZIP/JAR 仍在机主上传文件，本仓库保存来源 SHA 与提取证据，未冒称原件已入 Git。
