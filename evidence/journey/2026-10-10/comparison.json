@@ -1,0 +1,162 @@
+{
+  "xml_version": "42",
+  "vendor_version": "42",
+  "runtime_version": "42",
+  "update_frequency_hours": "24",
+  "xml_package_records": 39,
+  "runtime_mapping_keys": 64,
+  "unique_runtime_keys": 64,
+  "comparison_area_hypothesis": "ALL",
+  "expected_keys": 64,
+  "excluded_region_records": [
+    {
+      "label": "preload",
+      "names": [
+        "com.android.dialer"
+      ],
+      "behaviors": [
+        "PRELOAD"
+      ],
+      "areas": [
+        "SUGAR_CN",
+        "SUGAR_TW",
+        "SUGAR_HK"
+      ]
+    },
+    {
+      "label": "webchat",
+      "names": [
+        "com.tencent.mm"
+      ],
+      "behaviors": [
+        "ALLOW_PERSIST",
+        "PRELOAD"
+      ],
+      "areas": [
+        "SUGAR_CN"
+      ]
+    },
+    {
+      "label": "email",
+      "names": [
+        "me.bluemail.mail",
+        "com.microsoft.office.outlook",
+        "com.tohsoft.mail.email.emailclient"
+      ],
+      "behaviors": [
+        "ALLOW_PERSIST"
+      ],
+      "areas": [
+        "WIKO_FR"
+      ]
+    },
+    {
+      "label": "customer for HK",
+      "names": [
+        "com.smartone.aon",
+        "com.smartone.wificalling"
+      ],
+      "behaviors": [
+        "ASSUMING_IN_SYSTEM"
+      ],
+      "areas": [
+        "SUGAR_HK",
+        "SUGAR_TW"
+      ]
+    },
+    {
+      "label": "customer for Sugar",
+      "names": [
+        "com.redteamobile.global.roaming"
+      ],
+      "behaviors": [
+        "ASSUMING_IN_SYSTEM"
+      ],
+      "areas": [
+        "SUGAR_CN",
+        "SUGAR_HK",
+        "SUGAR_TW"
+      ]
+    },
+    {
+      "label": "igexin_component",
+      "names": [
+        "com.nexstreaming.app.assetstore.tinno.china/com.igexin.sdk.PushReceiver",
+        "com.nexstreaming.app.assetstore.tinno.china/com.igexin.sdk.PushService"
+      ],
+      "behaviors": [
+        "DISABLED_COMPONENT"
+      ],
+      "areas": [
+        "SUGAR_CN"
+      ]
+    }
+  ],
+  "duplicate_overwrites": [
+    {
+      "key": "com.lunarlabs.panda",
+      "previous": {
+        "label": "lunarlabs",
+        "names": [
+          "com.lunarlabs.panda"
+        ],
+        "behaviors": [
+          "ALLOW_PERSIST"
+        ],
+        "areas": [
+          "ALL"
+        ]
+      },
+      "replacement": {
+        "label": "lab_test_mode",
+        "names": [
+          "com.orangelabs*",
+          "org.opencv.engine",
+          "com.android.cts.verifier",
+          "com.tinno.*",
+          "com.lunarlabs.panda",
+          "com.smartviser.visersettings"
+        ],
+        "behaviors": [
+          "NO_LIMIT"
+        ],
+        "areas": [
+          "ALL"
+        ]
+      }
+    },
+    {
+      "key": "com.tencent.android.qqdownloader",
+      "previous": {
+        "label": "qqdownloader",
+        "names": [
+          "com.tencent.android.qqdownloader"
+        ],
+        "behaviors": [
+          "ASSUMING_NOT_IN_SYSTEM"
+        ],
+        "areas": [
+          "ALL"
+        ]
+      },
+      "replacement": {
+        "label": "black caller",
+        "names": [
+          "com.tencent.android.qqdownloader"
+        ],
+        "behaviors": [
+          "DISALLOW_BLACK_CALLER"
+        ],
+        "areas": [
+          "ALL"
+        ]
+      }
+    }
+  ],
+  "mismatches": [],
+  "limitations": [
+    "Matching state does not prove vendor file was the runtime source; cache/network may have same content.",
+    "Dump lists policy keys, not installed applications or permissions.",
+    "Time fields have HH:mm only; dates and precise scheduling cannot be inferred."
+  ]
+}
