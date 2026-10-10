@@ -1,5 +1,7 @@
 # Rakuten Hand 5G / TINNO P780 研究档案
 
+**官方源码请求（2026-10-11）：** 已向 TINNO 官网页面列出的海外销售邮箱发送 P780 `_162` 对应 GPL 源码申请并要求转交专业团队；Rakuten Mobile 的日文请求稿待通过官网客服渠道提交。详见 [联络记录](docs/official-source-request-log.md)。
+
 截至 **2026-10-11**：研究待机，持续监测公开新线索。**未取得 Root、未解锁 Bootloader；匹配原厂 `_162` 的完整 OTA、boot.img、vmlinux 仍未取得。**
 
 这是机主实体机取证、公开源码实验与历史资料的长期档案，不是刷机包或一键 Root 工具。设备基线：Android 11 / `P780AE_11.0_RMN_JP_162` / `5.4.233-qgki-gea5245e94afe-dirty`。
