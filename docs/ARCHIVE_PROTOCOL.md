@@ -24,8 +24,12 @@ archive/device/                已脱敏的真机观测
 archive/tools/                 只读/历史分析工具
 archive/scripts/               曾用于设备维护的历史脚本
 evidence/actions/              实际 Clang 和 Kconfig 编译工件
+evidence/device/               真机 Tracefs 原始字节
+evidence/ghostlock/            四代离线研究 ZIP 原件
 .github/workflows/             GitHub 云端可重复检查
 ```
+
+重要证据验收结论：[EVIDENCE_INTEGRITY.md](EVIDENCE_INTEGRITY.md)。
 
 ## 版本语义
 
