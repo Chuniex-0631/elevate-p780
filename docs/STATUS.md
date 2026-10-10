@@ -20,7 +20,7 @@
 | Qualcomm 5.4.233 候选源码原生 Kconfig | **云端构建成功** | GitHub Actions 2026-10-10 的 5.4.233 *A52s* 源码、非 P780 固件 |
 | Android Clang 11.0.2 `rtmutex.o` | **云端编译成功** | 已匹配实机编译器，非完整 `vmlinux`，非可刷写内核 |
 | 还原与出厂 `vmlinux` 一致的内核 | **未完成** | 原厂私有代码与构建身份未满足 |
-| JourneyConfigService | **静态与运行状态核对已完成** | vendor/XML/TCS 版本均 42；64 个策略键按 ALL 假设完全匹配；未发现 OTA/Root 链 |
+| JourneyConfigService | **静态与运行状态核对已完成** | vendor/XML/TCS 版本均 42；64 键一致；消费者静态定位进程管理与 Service/Provider 限制；未发现 OTA/Root 链 |
 | Root / Bootloader 解锁 / 刷机 | **均未达成** | 任何适配包不得宣称 Root 成功 |
 
 ## 新增历史原件（2026-10-10）
@@ -65,6 +65,6 @@
 
 ## 当前系统配置支线
 
-[Journey 实机 JAR 审计](2026-10-10-journey-config-audit.md)：54 个目标方法原始指令、8 类反汇编、6 DEX 的 17 个外部引用已保存。HTTP 配置在所审查路径未见密码学验签，仅见主机/版本检查；静态发现不能宣布权限获取。vendor 默认 XML 与无参数 TCS dump 已核对：三处版本均 42，64 个映射键按 ALL 假设完全一致；重复键为覆盖而非行为合并。完整原始配置 ZIP 以可还原 Base64 文本及 SHA 入仓，详见专题。
+[Journey 实机 JAR 审计](2026-10-10-journey-config-audit.md)：54 个目标方法原始指令、8 类反汇编、6 DEX 的 17 个外部引用已保存。新增消费者 134 方法、79 条外部引用（25 个调用者方法），核实末尾星号前缀匹配与精确键查询的差别；优化开关是否启用未实测。HTTP 配置在所审查路径未见密码学验签，仅见主机/版本检查；静态发现不能宣布权限获取。vendor 默认 XML 与无参数 TCS dump 已核对：三处版本均 42，64 个映射键按 ALL 假设完全一致；重复键为覆盖而非行为合并。完整原始配置 ZIP 以可还原 Base64 文本及 SHA 入仓，详见专题。
 
 [OTA 原件深入审计](2026-10-10-ota-log-audit.md)：全部 6 份历史引擎日志仅为启动清理，无固件 URL/payload；此前的配置成功、INSTALL_UPDATE 事件不作 OTA 安装成功。原始新上传 18MB framework ZIP/JAR 仍在机主上传文件，本仓库保存来源 SHA 与提取证据，未冒称原件已入 Git。
