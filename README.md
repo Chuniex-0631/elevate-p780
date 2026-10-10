@@ -32,7 +32,10 @@
 | [QAS / Mink / PFM / TZAccess](docs/QAS_TZ_PFM.md) | Java/DEX/JNI 的身份与许可调用链，已证实和未知的边界 |
 | [GhostLock 主线](docs/GHOSTLOCK.md) | 旧源码 CVE 模式、内核编译配置、Tracefs、未获参数 |
 | [v0.1—v0.4 研究包版本对照](docs/GHOSTLOCK_PORT_VERSIONS.md) | 四代 ZIP 原始资料、每版新增文件、v0.4 README 历史瑕疵 |
-| [设备应用清理历史](docs/DEBLOAT_AND_APP_TESTS.md) | user 0 包数量变化、去预装脚本、可恢复性限制 |
+| [设备应用清理历史](docs/DEBLOAT_AND_APP_TESTS.md) |
+| [新增原件比对与去重结果](docs/NEW_UPLOADS_AND_DEDUP.md) | 新增原始资料、ZIP/目录一致性、清理前恢复分支 |
+| [TrustZone 白名单与 APK 原件](docs/TEE_AND_SYSTEM_APKS.md) | 真机 class-ID 白名单、JNI 受限路径、三份 APK |
+| [OTA 日志和 Bugreport 归档](docs/OTA_LOGS_AND_BUGREPORT.md) | 原始系统日志、历史 update_engine 痕迹与隐私限制 | user 0 包数量变化、去预装脚本、可恢复性限制 |
 | [全部历史文件及迁移状态](docs/EVIDENCE_MANIFEST.md) | 至少 57 份相关历史文件记录，逐项区分是否已入 Git |
 | [证据 SHA / CRC / 相对链接验收](docs/EVIDENCE_INTEGRITY.md) | 核验原始配置、4KB Tracefs、四个 ZIP 与其内部副本 |
 | [原始研究来源与出处](docs/RESEARCH_SOURCES.md) | 公开源码与实机、厂商公告、Actions 工件的来源划分 |
@@ -74,7 +77,7 @@
 
 ## 五、仍未迁移的原始资料（已索引，不冒充“全量原件入库”）
 
-历史文件库仍有：包含隐私数据风险的完整 Bugreport、APK、OTA 和更新服务日志、Fastboot/getprop 原始转储，以及若干旧源码打包分析 ZIP。我们已整理其结论、出处、原件名和保存状态，但**不会为追求数量将未脱敏的设备日志直接提交 GitHub**。还没有取得匹配 `P780AE_11.0_RMN_JP_162` 的可信原厂 `boot.img`、完整 OTA、`vmlinux` 或 `System.map`。
+此次已经补入完整 Bugreport、部分 APK、OTA/Activity 日志及 ADB 审计 ZIP，集中存放于 [新增原件目录与审计说明](docs/NEW_UPLOADS_AND_DEDUP.md)。**这些原件尚未完成隐私脱敏，仓库继续保持 Private。** 历史文件库中仍有其它未入 Git 的 Fastboot/getprop 原始转储、APK 和旧分析 ZIP，详见证据清单。还没有取得匹配 `P780AE_11.0_RMN_JP_162` 的可信原厂 `boot.img`、完整 OTA、`vmlinux` 或 `System.map`。
 
 详细原件清单：[EVIDENCE_MANIFEST](docs/EVIDENCE_MANIFEST.md)。隐私及修改设备的风险：[SECURITY](SECURITY.md)。
 
@@ -89,6 +92,9 @@ archive/scripts/          改动手机配置的历史应用清理脚本（仅存
 evidence/device/          实机 Tracefs 二进制原件
 evidence/ghostlock/       GhostLock v0.1–v0.4 原始 ZIP
 evidence/actions/         Clang11/Clang14 配置、日志及编译对象原件
+evidence/apk/             新取得的三份 Android APK 原件
+evidence/tee/             TZ 白名单、native 库路径访问记录
+evidence/restricted/      未脱敏 ADB 审计 ZIP、OTA 日志和 Bugreport（无目录级 ACL）
 .github/workflows/        实际已运行的 Linux 构建与完整性检查
 tools/                    当前配置差异统计脚本
 ```
