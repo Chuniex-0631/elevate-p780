@@ -1,5 +1,14 @@
 # 归档维护日志
 
+## 2026-10-10 — 新一轮原始设备资料归档与去重
+
+- 新收到 2 套 ADB 审计及各自压缩包、完整 Bugreport、三份 APK、两份 OTA 日志、TEE 白名单与 JNI 受限路径记录、phase3 包清单。
+- GitHub Actions 校对证实，`hand5g_debloat_audit.zip` 对应展开的 22 个文件、`hand5g_final_audit.zip` 对应展开的 9 个文件**逐字节相同**；删除 31 个重复展开文件，总计 7,576,640 B，保留两个 ZIP 和完整恢复分支。
+- 将原件重新组织为 `evidence/restricted/`、`evidence/apk/`、`evidence/tee/`。含敏感数据风险的系统日志不再堆放根目录；备份分支 [archive/pre-cleanup-20261010](https://github.com/Chuniex-0631/p780-kernel-research/tree/archive/pre-cleanup-20261010) 保存了清理前所有文件。
+- 对照旧文件清单，特别区分历史 1,742 B 和本次 376,662 B 的同名审计 ZIP，避免误认为同一份字节原件。
+- 新增 [文件去重报告](docs/NEW_UPLOADS_AND_DEDUP.md)、[TEE/APK 资料](docs/TEE_AND_SYSTEM_APKS.md) 和 [OTA/Bugreport 资料](docs/OTA_LOGS_AND_BUGREPORT.md)，并更新 README、状态表、时间线、固件与应用清理专题。
+- 这次整理为只读离线研究档案维护，没有实机 Root/BL 解锁或获取完整 OTA 的新成功证据。
+
 ## 2026-10-10 — 最终封存验收（经 GitHub 实际核查）
 
 - 机主新上传的 **4 份 GhostLock 研究 ZIP** 和 **4,096 B 的 Tracefs 原始文件**已经全部入仓，按来源与用途移动至 `evidence/ghostlock/` 和 `evidence/device/`；使用 Git 已有 Blob 保持字节不变。
