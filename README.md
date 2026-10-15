@@ -2,7 +2,9 @@
 
 **官方源码请求（2026-10-11）：** 已向 TINNO 官网页面列出的海外销售邮箱发送 P780 `_162` 对应 GPL 源码申请并要求转交专业团队；Rakuten Mobile 的日文请求稿待通过官网客服渠道提交。详见 [联络记录](docs/official-source-request-log.md)。
 
-截至 **2026-10-11**：研究待机，持续监测公开新线索。**未取得 Root、未解锁 Bootloader；匹配原厂 `_162` 的完整 OTA、boot.img、vmlinux 仍未取得。**
+截至 **2026-10-15**：研究待机，持续监测公开新线索。**未取得 Root、未解锁 Bootloader；匹配原厂 `_162` 的完整 OTA、boot.img、vmlinux 仍未取得。**
+
+**2026-10-14 新增官方漏洞编号：** JVN 确认 Rakuten Hand 5G **全部版本**的 AVB 使用已知 AOSP 测试钥匙，登记为 [JVN#47427200](https://jvn.jp/jp/JVN47427200/) / [CVE-2026-107153](https://www.cve.org/CVERecord?id=CVE-2026-107153)。这是固件信任链的实证，但公开资料仍未给出 P780 在锁定状态下的具体写入通道，不能改写为已 Root/已解锁。
 
 这是机主实体机取证、公开源码实验与历史资料的长期档案，不是刷机包或一键 Root 工具。设备基线：Android 11 / `P780AE_11.0_RMN_JP_162` / `5.4.233-qgki-gea5245e94afe-dirty`。
 
@@ -23,7 +25,7 @@
 | QAS / Mink / PFM / TEE | 部分许可与凭据调用链已定位，未连接到 OEM Unlock | [QAS/TEE/PFM](docs/research/qas-tee-pfm.md)、[系统 APK](docs/research/tee-system-apks.md) |
 | GhostLock | 旧源码模式与实机配置已核对；运行中漏洞状态未知，适配 BLOCKED | [GhostLock](docs/research/ghostlock.md) |
 | 内核候选构建 | 匹配 Clang11 可编译锁对象；两棵候选树 32 项采样布局一致，不能代替原厂 ABI | [配置与布局](docs/research/config-layout.md) |
-| 固件与 OTA | 有官方认证问题公告；6 份历史 update_engine 日志只见启动清理，未取得 payload | [固件](docs/research/firmware-ota.md)、[OTA 日志审计](docs/research/ota-log-audit.md) |
+| 固件与 OTA | JVN 已确认全版本 AVB 使用 AOSP 测试钥匙；仍缺 P780 专用写入路径与 `_162` 原厂镜像，6 份历史日志未取得 payload | [安全公告](docs/research/firmware-advisory-20260928.md)、[固件](docs/research/firmware-ota.md)、[OTA 日志审计](docs/research/ota-log-audit.md) |
 | Journey 配置 | 版本 42 / 64 个策略键核对一致；静态消费者接入进程管理及 Service/Provider 限制，未发现 Root/OTA 链 | [Journey 审计](docs/research/journey-config.md) |
 | 应用清理 | 历史操作和不同日期包状态已归档，去预装脚本会修改设备 | [应用实验](docs/research/apps-and-debloat.md) |
 

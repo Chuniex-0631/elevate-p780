@@ -22,7 +22,7 @@ Linux/5.4.233-qgki-gea5245e94afe-dirty
 - 历史原件已由机主上传并保留至私有 Git 仓库：[Activity 记录](../../evidence/restricted/ota/hand5g_update_activity.txt)（94,710 B）、[Logcat](../../evidence/restricted/ota/hand5g_update_log.txt)（283,944 B）及 [Bugreport](../../evidence/restricted/bugreport/hand5g_bugreport.zip)（5,684,665 B）。**这些是未脱敏原件**，不应公开，亦未从中取得可直接使用的完整 OTA。
 - 更新服务材料的独立审阅见 [OTA 与 Bugreport 归档](ota-bugreport.md)。
 
-## 官方 2026 年 9 月 28 日安全公告
+## 官方安全公告与 2026-10-14 JVN 技术归因
 
 [Rakuten Hand 5G 设备官方支持页面](https://network.mobile.rakuten.co.jp/product/smartphone/rakuten-hand-5g/support/index.html) 确认：
 
@@ -30,11 +30,13 @@ Linux/5.4.233-qgki-gea5245e94afe-dirty
 - **2026-09-28** 时已经确认固件真实性验证机制存在缺陷，修改的固件可能被误认为正版。
 - 官方指出具有临时物理访问能力的攻击者可能因此安装修改固件，并导致权限获取/软件执行或设置修改，建议停止继续使用此已退役设备。
 
-**研究判断**：此官方公告不是 `fastboot flashing unlock` 已可用的证据；没有给出此 P780 `_162` 版的签名验证失效阶段、实际安装途径或修复详情。不得自行把它等同于 GhostLock 或可以在锁 BL 状态直接刷写任意 `boot.img`。详细历史记录见 [独立安全公告研究](firmware-advisory-20260928.md)。
+2026-10-14 发布的 [JVN#47427200](https://jvn.jp/jp/JVN47427200/) / [JVNDB-2026-000147](https://jvndb.jvn.jp/ja/contents/2026/JVNDB-2026-000147.html) 新增了可核验的技术归因：Rakuten Hand 5G **全部版本**的 AVB 使用已知 AOSP 测试钥匙，编号为 **CVE-2026-107153**。因此本机 `_162` 属公开受影响范围。
+
+**研究判断**：JVN 证实的是 AVB 信任钥匙缺陷；它仍未给出 P780 在 locked 状态下的实际分区写入途径，也没有提供 `_162` 原厂镜像。不得把 JVN、论文中的其它机型演示或公开 AOSP 钥匙等同于 `fastboot flashing unlock`、匹配 EDL loader 或本机 Root 成果。详细条件见 [独立安全公告研究](firmware-advisory-20260928.md)。
 
 ## 未解决的 OTA 事项
 
 - 收集官方完整 OTA 的可信来源和具体哈希。
 - 核对更新机制日志中的下载 URL 是否可用以及是否带鉴权/过期参数（仓库内不发布带 token URL）。
-- 如果未来获取 `_162` 官方固件，优先完全离线校验数字签名与哈希，完整备份后再设计任何设备实验。
+- 如果未来获取 `_162` 官方固件，优先离线提取 `vbmeta*.img` 的公钥指纹、链式分区描述和回滚索引，并与已知 AOSP 测试钥匙核对；完整备份后再设计任何设备实验。
 

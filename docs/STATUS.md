@@ -1,4 +1,4 @@
-# 研究状态总表（更新：2026-10-11）
+# 研究状态总表（更新：2026-10-15）
 
 当前研究待机，保留每日有效新线索监测；机主暂无设备操作待办。读取入口见 [文档导航](README.md)，结构验收见 [全库整理](REPOSITORY_AUDIT.md)。
 
@@ -10,6 +10,7 @@
 | 获取 ADB Shell / 原厂配置 | **实机已证实** | 非 root shell; 39,170 B `p780-config.gz` 在 evidence/device/ |
 | Fastboot OEM 解锁 | **未成功** | Unlock 标志 no；标准 unlock 命令返回 unknown command；灰色 OEM 开关 |
 | EDL / Sahara 识别 | **实机已证实** | 05C6:9008; Sahara v2; `mannar` / HWID `0x0016f0e100000780` |
+| 固件真实性 / AVB 测试钥匙 | **JVN/JPCERT 已证实，影响 Hand 5G 全版本** | [JVN#47427200](https://jvn.jp/jp/JVN47427200/) / CVE-2026-107153；物理访问下可能安装细工镜像。尚未证实 P780 的锁定态写入通道，不能记为 Root/解锁成功 |
 | Firehose 握手、分区备份/读写 | **尚无成功证据** | 已识别 loader 匹配需求，不代表已找到可用签名 Loader |
 | 以 EDL 获得 `boot.img` | **未取得** | 从未将未知 loader/跨设备镜像作为成功证据 |
 | QAS → Mink → PFM | **静态 + 部分实机运行已证实** | eMBMS `open(119)`, `CheckInstalledLicense(700)`；XRVD 代理创建日志；没有 OEM Unlock 连接证据 |
@@ -45,7 +46,7 @@
 - 现场软件状态来自具体采集时间；去预装、重启、切槽后不得自动延用以前记录。
 - **能 `adb shell` 查看文件名，不代表可 `adb pull` 读取内容。**
 - **构建成功不等于原厂固件、没有证据的 kernel 地址不能进入真实设备写入操作。**
-- 本库已有 `docs/research/firmware-advisory-20260928.md`，该官方安全提示涉及固件真实性验证，独立于 GhostLock；公开提示不等于已发现或验证 Bootloader 解锁途径。
+- [固件真实性专题](research/firmware-advisory-20260928.md) 已纳入 2026-10-14 发布的 JVN#47427200 / CVE-2026-107153：Hand 5G 全版本的 AVB 使用已知 AOSP 测试钥匙。该结论独立于 GhostLock；JVN 明确的是信任钥匙缺陷，不是 P780 专用刷写入口或 Bootloader 解锁成果。
 - 重要的 Clang11、Clang14 和配置差异产物现已保存在仓库 [evidence/actions](../evidence/actions)，不再只依赖短期 Actions Artifact；哈希与原始研究包校验见 [完整性报告](reference/evidence-integrity.md)。
 
 ## 归档范围
@@ -75,3 +76,11 @@
 ## 2026-10-11 官方源码申请进展
 
 已向 TINNO `Sales@tinno.com` 发送与 P780 `_162` 固件对应的 GPL kernel 源码请求，要求转交工程/合规团队；Gmail 返回 SENT，待回复。Rakuten 尚未联系成功，因未验证到专用公开邮箱，日文客服转交请求见 [联络记录](official-source-request-log.md)。
+
+
+## 2026-10-14：JVN / CVE 技术归因
+
+- JVN 与 JVN iPedia 将此前 Rakuten 的“固件真实性验证缺陷”具体化为：AVB 使用已知 AOSP 测试钥匙，影响 **Rakuten Hand 5G 全部版本**；编号为 **JVN#47427200 / JVNDB-2026-000147 / CVE-2026-107153 / CWE-1391**。
+- JVN 评分为 CVSS v4 7.0、v3 6.6，攻击向量为物理访问、低权限、无需用户交互；厂商没有修补方案，建议停用并更换后续产品。
+- JVN 引用的 2025 年论文说明通用链路：取得原厂镜像、修改并用公开测试钥匙重签、重建 vbmeta、再通过设备特定通道写入。论文的实机演示机型不是 P780，并明确写入路径依设备而异、公开可用者只占少数。
+- 因此本机状态仍是 **locked / 未 Root**。要把该缺陷转化为 P780 可复核成果，仍至少缺 `_162` 的 boot/vbmeta 等原厂镜像及一个经验证的锁定态写入通道；现有 Fastboot 命令失败、匹配 Firehose 未取得。
