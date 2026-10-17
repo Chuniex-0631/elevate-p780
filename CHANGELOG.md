@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — P780 实机 AVB Green/Locked 基线与只读研究路径
+
+- 用户提供的 ADB 输出：`green`、`locked`、`flash.locked=1`、活动槽 `_b` 与 VBMeta digest `33ee3a6cf5215befd8a4f953382bd746d12efc37f6d4116c0c9b68a7661f95f2`。此为用户提供实机证据，尚非独立重测或镜像提取。
+- 新增 [AVB 基线专题](docs/research/avb-live-baseline-20261018.md) 与 [Windows ADB 只读取证脚本](tools/p780-avb-readonly.ps1)；对照 Android 11 官方 avbtool 的链式 VBMeta digest 定义、NCC Group 测试公钥识别工具，明确只凭 digest 无法反推出签名钥匙。
+- 同步 README、STATUS、NEXT_STEPS、专题索引、工具说明与公告专题。仍缺 `_162` 原厂 `vbmeta/boot`、经验证的 locked 写入通道；未执行刷机或 Root。
+- 审核时 GitHub API 报告 visibility=public，和既有 Private 文案不符；SECURITY/README 已提示敏感原件风险，需机主确认设置并审查 Git 历史。
+
 ## 2026-10-17 — XDA 正文补档与 Recovery 验签边界
 
 - 原样保存用户提供的 XDA 4805241 正文，标注来源链及未独立复核状态；关闭同一正文人工获取提醒，保留既有邮件历史。
