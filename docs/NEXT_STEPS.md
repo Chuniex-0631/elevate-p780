@@ -90,3 +90,10 @@
 - **有工件再核验**：测试 ZIP/哈希、signapk 版本与完整命令（包括 whole-file 签名方式）、证书指纹、Recovery 完整日志、测试设备构建号。未取得这些资料前不重复要求机主运行测试。
 - **暂缓**：以包证书 testkey 直接 sideload 的捷径；`fastboot boot` 仅为作者求助设想，无成功证据；`OPG105` 仅作待验证检索词，不使用其镜像。
 - TINNO 源码申请继续等待原线程回复；本篇未改变厂商联络安排。详见 [归因专题](research/firmware-advisory-20260928.md)。
+
+## 外部 AI 方案核对（2026-10-18）
+
+- 真实旧版 P780 build fingerprint 可能用于 Google Check-in 查 OTA；但绝不能把本机 `264` 任意换成 `151`、`120` 当成真实构建号，厂商 `_161` 与 fingerprint incremental 并非同一套版本。
+- 已读上游 `probe.py` 没有 `--device`、`--source_fingerprint` 或 `--target_fingerprint` 参数，配置是 `config.yml`。所谓 OTA URL 固定小时级过期/服务永久保留固件无足够实证，不能据此继续伪造指纹重试。
+- [楽天社区 2024-07-31 P780 `_161→_162` 帖](https://community.mobile.rakuten.net/questions/x933grdoe6mhntuf) 记录旧版实机出现可用 OTA 提示，却安装失败；未公开完整 Android build fingerprint 或 Google 服务端地址。
+- AOSP `signapk` 签署 APK/JAR/OTA ZIP，并非 `avbtool`；AVB test-key 缺陷也不提供 locked bootloader 写权限；增量 OTA 的 payload 可能依赖旧版分区。详细校对在 [Google OTA Prober 专题](research/google-ota-prober-p780-20261018.md)。
