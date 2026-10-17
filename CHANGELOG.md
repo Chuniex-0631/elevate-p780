@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — 解释 DSU Loader 在线四项镜像与无需恢复出厂
+
+- 机主确认从未主动安装 GSI，愿意必要时恢复原厂。根据 AOSP Android 11 DSU Loader 和 Settings `DSULoader.java`，进入开发者选项后 Settings 从 HTTPS DSU JSON 列表抓取元数据并按 ABI/OS/VNDK/SPL 筛选，显示四个远程候选并**不表示**镜像在本机或已下载。
+- AOSP 默认目录 URL `https://dl.google.com/developers/android/gsi/gsi-src.json`，但 OEM 可通过 `persist.sys.fflag.override.settings_dynamic_system.list` 改写。之前查询的 `persist.sys.fflag.override.settings_dynamic_system` 不带 `.list`，不能用其空值确定目录来源；保留只读 getprop 核验。
+- 标准系统 APK 在 `/system/priv-app/DynamicSystemInstallationService`，但当前 user0 `installed=false`；不需要为了单包恢复而清空整台手机、重装固件或 Root。若后续有必要且机主同意，可 `cmd package install-existing --user 0 com.android.dynsystem` 恢复预装应用，未实际执行；暂不选择或启动新版本 GSI。
+- 已同步 [DSU 解释和只读检验](docs/research/p780-dsu-locked-gsi-20261018.md) 与 NEXT_STEPS；本轮没有新的写入通道、Root 或 Bootloader 解锁证据。
+
 ## 2026-10-18 — DSU 安装服务 user0 确认卸载；Settings 镜像选择界面仍可使用
 
 - 机主提交 DSU Loader 真机截图：`Select DSU Package` 显示 4 个 ARM64 GSI/GMS 选项（BP1A.250405.005.C1 与 CPI1.251209.009.A1），证明开发者选项可加载线上镜像 JSON 目录；并非 GSI 已安装或可启动。
