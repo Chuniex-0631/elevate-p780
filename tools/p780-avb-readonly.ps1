@@ -30,6 +30,8 @@ $properties = @(
     "ro.boot.vbmeta.digest",
     "ro.boot.vbmeta.hash_alg",
     "ro.boot.vbmeta.size",
+    "ro.boot.vbmeta.public_key_digest",
+    "ro.boot.vbmeta.avb_version",
     "ro.boot.avb_version",
     "ro.boot.veritymode"
 )
@@ -62,6 +64,29 @@ if ($LASTEXITCODE -eq 0) {
     }
 } else {
     $lines.Add("<inventory unavailable: " + ($inventory -join " ") + ">")
+}
+
+$lines.Add("")
+$lines.Add("# Selected block-device permissions only (no bytes read)")
+$blockPerms = @(& adb shell ls -l /dev/block/sde31 /dev/block/sda11 2>&1)
+if ($LASTEXITCODE -eq 0) {
+    foreach ($line in $blockPerms) { $lines.Add([string]$line) }
+} else {
+    $lines.Add("<permissions unavailable: " + ($blockPerms -join " ") + ">")
+}
+
+$lines.Add("")
+$lines.Add("# Logical partition symlinks (not contents)")
+$maps = @(& adb shell ls -l /dev/block/mapper 2>&1)
+if ($LASTEXITCODE -eq 0) {
+    $mapFiltered = @($maps | Where-Object { $_ -match "(?i)system|vendor|product|odm|verity" })
+    if ($mapFiltered.Count -eq 0) {
+        $lines.Add("<no matching logical partition entries>")
+    } else {
+        foreach ($line in $mapFiltered) { $lines.Add([string]$line) }
+    }
+} else {
+    $lines.Add("<logical partition inventory unavailable: " + ($maps -join " ") + ">")
 }
 
 $lines | Set-Content -LiteralPath $OutputPath -Encoding UTF8
