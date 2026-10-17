@@ -1,6 +1,6 @@
-# 研究状态总表（更新：2026-10-17）
+# 研究状态总表（更新：2026-10-18）
 
-当前研究待机，保留每日有效新线索监测；机主暂无设备操作待办。读取入口见 [文档导航](README.md)，结构验收见 [全库整理](REPOSITORY_AUDIT.md)。
+当前研究进入 AVB 只读取证阶段，保留公开新线索监测；不涉及刷机、Root 或更改 Bootloader。读取入口见 [文档导航](README.md)，结构验收见 [全库整理](REPOSITORY_AUDIT.md)。
 
 本仓库存档长期围绕 **Rakuten Hand 5G / TINNO P780** 进行的个人设备实验。证据有明确等级：**实机已证实 / 离线源码或文件已证实 / 其他设备参考 / 未验证假设**。不同等级不能互相替代。
 
@@ -25,6 +25,12 @@
 | 还原与出厂 `vmlinux` 一致的内核 | **未完成** | 原厂私有代码与构建身份未满足 |
 | JourneyConfigService | **静态与运行状态核对已完成** | vendor/XML/TCS 版本均 42；64 键一致；消费者静态定位进程管理与 Service/Provider 限制；未发现 OTA/Root 链 |
 | Root / Bootloader 解锁 / 刷机 | **均未达成** | 任何适配包不得宣称 Root 成功 |
+
+## 2026-10-18：AVB 锁定状态下的实机基线（用户提供）
+
+- `ro.boot.verifiedbootstate=green`；`ro.boot.vbmeta.device_state=locked`；`ro.boot.flash.locked=1`；活动槽为 `_b`。
+- `ro.boot.vbmeta.digest=33ee3a6cf5215befd8a4f953382bd746d12efc37f6d4116c0c9b68a7661f95f2`。这是包括链式 VBMeta 的校验基线，**不是**测试公钥的指纹；只据此不能确定具体 AVB 测试密钥。
+- 新增 [AVB 实机取证与离线校验专题](research/avb-live-baseline-20261018.md) 与 [PowerShell ADB 只读采集脚本](../tools/p780-avb-readonly.ps1)。尚未获得 `vbmeta_b` 原始镜像，locked 写入通道仍未知，Root/BL 状态不变。
 
 ## 新增历史原件（2026-10-10）
 
