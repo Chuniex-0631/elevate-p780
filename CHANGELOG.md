@@ -1,5 +1,13 @@
 # 归档维护日志
 
+## 2026-10-18 — 跨 AVB / TEE / Keystore / CTS 发现新取证入口
+
+- 按机主要求对现有 `green/locked`、`ro.boot.vbmeta.digest`、块设备 `0600 root`、TEE/Keymaster 以及双层 VBMeta 信息进行交叉分析。
+- AOSP Key Attestation `RootOfTrust.verifiedBootKey` 可包含启动信任公钥哈希；`verifiedBootHash` 可包含 VBMeta Digest。Android CTS 源码对照 `verifiedBootHash` 与 `ro.boot.vbmeta.digest`。提出不需原厂镜像、Root 的普通 Keystore 证明研究路径；**P780 尚未运行，不宣称能成功**。
+- 核对公开开源 KeyAttestation 应用（vvb2060，官方 latest v1.8.4、minSdk 24、源码 Manifest 无 INTERNET 请求），仅列为机主可选正常安装试验，不自动安装、不要求 Shizuku 和设备标识数据；硬件证明必须验证签发根、TEE 级别和吊销信息，隐私证书链不得直接公开。
+- AOSP fstab 可用 `avb=vbmeta_system` 确认逻辑分区的第一阶段挂载目标，给出可选只读核查；AOSP 默认 RSA4096 测试钥匙成为有出处的候选，仍不可直接认定 P780 使用该密钥。
+- 新增 [AVB 无镜像替代路径专题](docs/research/avb-attestation-alternative-20261018.md)，同步 README、STATUS、NEXT_STEPS；未运行利用、读取 root-only 原始块设备或改动手机，Root/BL 状态不变。
+
 ## 2026-10-18 — AVB 研究资源分配调整
 
 - 机主判断重复邮件咨询难以推进，已有 TINNO 源码邮件暂无可用成果；**停止将 JVN/厂商/研究者主动咨询视为主要工作**（JV N 公告编号不变，联系信息仅作历史记录）。保留原邮件被动等待和可核验回复处理，不发催办邮件。
