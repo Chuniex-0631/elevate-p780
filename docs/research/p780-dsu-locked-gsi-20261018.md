@@ -194,3 +194,25 @@ adb shell dumpsys package com.android.dynsystem | Select-String -Pattern 'codePa
 预期返回 `Package com.android.dynsystem installed for user: 0` 并将 `installed=false` 改为 `true`；**预期不等于本机实际结果**，当前尚未执行。保留原始终端以检验命令支持和 APK 签名/运行限制；无必要先执行 `pm enable`（`enabled=0` 仅默认）。
 
 **风险边界**：该命令修改 Android 用户级应用安装记录，虽然不刷写系统分区、不改变 Bootloader、无需 Root，但可能恢复通知/服务等应用行为。即使恢复成功，也**暂不选择镜像和同意下载**，因为 Google 官方文档提及 DSU 至少预留约 10 GiB 空间、供应商 HAL/AVB 签名与 VNDK 兼容仍不明。优先先检查 `ro.vndk.version`、`ro.product.cpu.abi` 等只读条件，之后再讨论是否对旧 Android 11 vendor 尝试与之匹配的合适 GSI。不要将这视为 Root 研究的永久启动镜像写入通道。
+
+## 2026-10-18 解释机主困惑：四个 GSI 选项从何而来？需要恢复出厂吗？
+
+机主进一步说明：从未主动安装或配置过任何 GSI，但 Settings DSU Loader 弹出四个 ARM64 候选项；为取得“纯净原厂系统”，愿意在必要时恢复出厂。这是用户表述，不是已经执行重置。
+
+**已由 AOSP 官方文档及源码确定的通用机制：**
+
+- Android 11 DSU Loader 是 Settings 自带前端；当用户点击入口时，它通过 HTTPS 取得远端 **DSU JSON descriptor**，再按 ABI、Android OS 版本、VNDK 版本、SPL 等条件过滤候选，显示列表。此时只是**显示镜像元数据**，不是镜像已经在手机中或被安装过。[AOSP 官方 DSU One-click Loader](https://source.android.com/docs/core/ota/dynamic-system-updates#one-click-dsu-loader)、[Settings DSULoader.java](https://android.googlesource.com/platform/packages/apps/Settings/+/286dce6b6ed/src/com/android/settings/development/DSULoader.java)。
+- 在所审 AOSP `DSULoader.java` 中，默认 `DSU_LIST=https://dl.google.com/developers/android/gsi/gsi-src.json`，但如果存在 `persist.sys.fflag.override.settings_dynamic_system.list` 会替换默认 URL，描述符还可以通过 `include` 包含下游列表。所以 **高度可能是标准 Google 官方 GSI 列表，尚未证明此 P780 当前究竟使用哪个 URL**。先前机主检查的 `persist.sys.fflag.override.settings_dynamic_system`（没有 `.list`）只是功能覆盖键，**不是**目录地址覆盖键。下一只读检测应带上精确的 `.list`。
+- 弹出的四项呈两组构建，每组 `GSI ARM64` 不含 GMS，`GSI+GMS ARM64` 带 Google Mobile Services。这些是供选择的远端镜像**目录条目**，不是设备本机储存的四份映像。AOSP Settings 会按 CPU/OS/VNDK/SPL 做**元数据级初筛**，不替代真正的 AVB 公钥验签、HAL 兼容、启动测试。
+- [Android 官方 DSU 文档](https://developer.android.com/topic/dsu) 说明选项出现后还要用户选择、同意条款，此后才会下载并通过 `DynamicSystemInstallationService` 等组件安装。`com.android.dynsystem` 对 user 0 `installed=false`，与 Settings 前端能显示候选是两个层次，不构成矛盾。
+
+**恢复出厂是过度措施**：当前实机已证明只发生系统预装应用的 `pm uninstall --user 0` 用户级移除，原厂 `DynamicSystemInstallationService.apk` 还在只读 `/system/priv-app`。官方 PackageManager `cmd package install-existing --user 0 com.android.dynsystem` 可在得到机主明确同意后，只恢复这个预装包的 user 0 安装登记；无需恢复出厂、不需 Root、不会覆盖原厂镜像。恢复出厂可能清除用户数据、之前安装的 KeyAttestation、USB debugging 授权和部分研究状态/证据，但不会神奇地导出 vbmeta 或 Bootloader 解锁。若未来因深度精简影响设备其它系统依赖，再规划 **先备份/留存当前对照、之后原厂重置**，不作为本轮前提。
+
+**建议仅做两项无状态取证：**
+
+```powershell
+adb shell getprop persist.sys.fflag.override.settings_dynamic_system.list
+adb shell getprop ro.vndk.version
+```
+
+第一个若为空且 Settings 无其它 OEM 自定义，AOSP 默认目录最有可能是上述 Google `gsi-src.json`；第二个供理解 DSU JSON VNDK 过滤。也可查询 `ro.product.cpu.abi` 与 `ro.system.build.version.release`（已有 ARM64/Android 11 基线，不强制重复）。如无安装计划，则连恢复系统包也不是必须。
