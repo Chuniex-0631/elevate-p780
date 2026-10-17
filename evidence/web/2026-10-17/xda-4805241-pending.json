@@ -1,0 +1,17 @@
+{
+  "checked_at": "2026-10-17T03:14:06Z",
+  "url": "https://xdaforums.com/t/p780-rakuten-hand-5g-looking-for-stock-firmware-firehose-loader-edl-reachable-ota-sideload-not-using-aosp-test-key.4805241/",
+  "record": {
+    "library_file_id": "libfile_464b9fd423908191b572224f0dd1ab4f",
+    "filename": "P780-watch-20261017T0314Z.json"
+  },
+  "status": "Unverified search-index lead; full text HTTP 403 site verification. No attachments acquired or confirmed. Manual capture requested.",
+  "assessment": "Title refers to OTA sideload signing; do not conflate package signing with AVB trust. Does not establish a P780 write path or refute JVN. Research conclusions unchanged.",
+  "notification": {
+    "sent": true,
+    "gmail_message_id": "1a147db9474e342d",
+    "subject": "[P780 需人工操作] 请保存 XDA 新线索正文与附件（访问验证受限）",
+    "dedup_key": "xda-4805241-manual-capture"
+  },
+  "next_action": "Await user-supplied full text/attachments or normally accessible original page; do not repeatedly email for same blocker."
+}
