@@ -41,6 +41,13 @@ Linux/5.4.233-qgki-gea5245e94afe-dirty
 - 再次搜索 `P780AE_11.0_RMN_JP_162`、`payload.bin`、`vbmeta.img` 及 P780 stock OTA 组合，**没有取得可独立验证出处和 SHA 的完整镜像**。官方发布页只提供软件版本与更新说明，并非原始固件下载源。
 - [XDA 2026-03-15 固件求助帖子](https://xdaforums.com/t/request-rakuten-hand-5g-p780-stock-ota-or-full-firmware.4782235/) 出现在搜索结果，但网页正文因 403 未能核实，只可作为公开用户找固件的线索，不视为固件工件或者可信解锁证据。
 
+## 2026-10-18：Google OTA 发现线索
+
+- 本机完整 fingerprint 已实测：`Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys`，其中 `264` 为 Android build incremental，并非厂商 `_162` 版本号。
+- [Google OTA Prober 项目审阅](google-ota-prober-p780-20261018.md)：通过 Google Check-in (`fetchSystemUpdates=1`) 请求 Google OTA URL，**是否适用于 P780 尚未验证**。
+- 公共 Google OTA 档案对 **Tinno 制造的 Rakuten Mini C330** 有真实增量 OTA URL 与构建区间；P710 只有 fingerprint，无 P780 索引。仅构成同厂商历史旁证，不能把其他机型更新包作为 P780 固件。
+- 原始 OTA 仍未取得；如果以后获得 P780 URL，必须先核对 OTA metadata、版本和包类型，在本地分析且不在设备上安装。
+
 ## 未解决的 OTA 事项
 
 - 收集官方完整 OTA 的可信来源和具体哈希。
