@@ -1,6 +1,6 @@
 # 后续关卡与待机监测
 
-更新：2026-10-18。继续公开线索监测；可自愿开展无写入的 AVB 信息采集，禁止将只读步骤升级为刷机或 Bootloader 状态修改。
+更新：2026-10-18。**常规 AVB ADB 属性取证已经完成，暂停继续向机主索取重复 getprop 输出**；继续固件/签名/写入通道的公开资料及离线研究，不涉及刷机或 Bootloader 状态修改。
 
 ## 本轮立即可用的只读任务（2026-10-18）
 
@@ -13,8 +13,15 @@
 - `vbmeta.public_key_digest` 空；`vbmeta.avb_version=1.0`（Bootloader）与 `avb_version=1.1`（Android）来自不同组件；`veritymode=enforcing`。
 - `vbmeta_b` 和 `vbmeta_system_b` 原始块设备权限为 `root:root 0600`，当前非 root Shell 无法直接提取；不尝试越权取镜像。
 - B 槽逻辑分区以及五份 dm-verity 映射已经观察到，`system_b-cow` 是 OTA/COW 候选线索，**不要推断更新仍在进行或 AVB 可被绕过**。
-- 下一轮仅核对 `ro.virtual_ab.enabled`、`ro.virtual_ab.compression.enabled`、`ro.boot.dynamic_partitions`、`ro.boot.vbmeta.device`、当前活动槽与 `system_b-cow` 软链接。完整清单见 [AVB 取证专题](research/avb-live-baseline-20261018.md)。
+- **第四轮已核对** `ro.boot.dynamic_partitions=true`；`ro.virtual_ab.enabled`、`ro.virtual_ab.compression.enabled`、`ro.boot.vbmeta.device` 均为空。已确认动态分区，但不能由空值否定 Virtual A/B；`system_b-cow` 仍只是候选快照节点。停止重复属性采集，转入[原厂镜像与写入通道](research/avb-live-baseline-20261018.md)专题。
 - **仍最优先取得匹配 `_162` 的可信原厂 VBMeta/OTA**；此类现场映射不是原厂签名与链式描述符的替代品。
+
+## 第四轮之后的主动优先级
+
+- 第一：继续寻找来源明确的 `P780AE_11.0_RMN_JP_162` 原厂 OTA / `vbmeta_b`、`vbmeta_system_b`，保证固件身份、哈希和离线验证方式。
+- 第二：验证实际的 AVB 公钥、Chain Partition Descriptor、`7744` 字节合计及现有 `sha256` digest；没有镜像就不声称能判断具体密钥。
+- 第三：只接受附 P780 构建身份、完整原始记录与恢复条件的锁定态写入入口成果；同 SoC EDL loader 不可当作可信匹配。
+- 第四：Virtual A/B / kernel COW 维持固件更新架构线索等级，不进行 OTA/COW 有状态操作。
 
 ## 值得重启研究的新证据
 
