@@ -1,6 +1,6 @@
 # 文档导航
 
-当前结论以 [STATUS](STATUS.md) 为准；早期验收和原始报告用于追溯，不覆盖当前状态。研究已待机，Root/BL 解锁未达成。
+当前结论以 [STATUS](STATUS.md) 为准；早期验收和原始报告用于追溯，不覆盖当前状态。目前正推进 DSU/GSI 可信启动与 AVB 签名证据核对；Root/BL 解锁未达成。
 
 ## 核心入口
 
@@ -11,7 +11,7 @@
 
 | 问题 | 文档 |
 |---|---|
-| 手机、启动链、EDL/Fastboot | [设备与启动](research/device-and-boot.md)、[LOCKED DSU/GSI 候选](research/p780-dsu-locked-gsi-20261018.md) |
+| 手机、启动链、EDL/Fastboot | [设备与启动](research/device-and-boot.md)、[LOCKED DSU/GSI 主专题](research/p780-dsu-locked-gsi-20261018.md)、[六份 Google GSI 子目录独立核验（24条全缺 VNDK/pubkey）](research/p780-dsu-gsi-catalog-verified-20261018.md) |
 | 官方固件、OTA 与认证公告 | [固件](research/firmware-ota.md)、[2026-09-28 公告](research/firmware-advisory-20260928.md)、[2026-10-18 AVB 实机基线](research/avb-live-baseline-20261018.md)、[Google OTA Prober 评估](research/google-ota-prober-p780-20261018.md)、[本机 AVB 测试公钥 TEE 实证](research/avb-attestation-confirmed-20261018.md)、[P780 Fstab 与 AVB 挂载实测](research/p780-fstab-avb-20261018.md) |
 | 更新日志到底证明什么 | [OTA 日志审计](research/ota-log-audit.md)、[原始 Bugreport 索引](research/ota-bugreport.md) |
 | QAS、Mink、PFM、TZAccess | [调用链](research/qas-tee-pfm.md)、[TEE 与系统 APK](research/tee-system-apks.md) |
