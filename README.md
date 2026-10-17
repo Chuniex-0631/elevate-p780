@@ -1,5 +1,7 @@
 # Rakuten Hand 5G / TINNO P780 研究档案
 
+**2026-10-18 新一阶段：DSU/GSI 临时启动能力候选研究。** 两份 P780 fstab 中的 `/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey`，与 [AOSP Android 11 DSU](https://source.android.com/docs/core/ota/dynamic-system-updates) 的锁定态可信开发 GSI 设计相容，另有动态分区、F2FS `/data` 和 dm-verity 的实机旁证。**还没有在 P780 确认 DSU 可用，也未安装任何 GSI，更不是 Root 或分区写入成果**。[DSU 专题](docs/research/p780-dsu-locked-gsi-20261018.md)；[已整理的下一步任务](docs/NEXT_STEPS.md)。旧计划已归档，不再重复 Key Attestation。
+
 **2026-10-18 重大实机验证：P780 `_162` 的 Android Key Attestation 由 Google 官方硬件证明根签署，TEE 证明已核验；`verifiedBootKey` 精确匹配 AOSP `testkey_rsa4096_pub.pem` 经 AVB 专用编码得到的 SHA-256。`verifiedBootHash` 同样精确匹配既有本机 VBMeta Digest。** 这将官方已公布的默认测试钥匙漏洞升级为对本机公钥身份的独立密码学证明，但**尚无 Root、Bootloader 解锁或 locked 写入通道**。[脱敏验证与证据](docs/research/avb-attestation-confirmed-20261018.md)。原始 `.p7b` 未上传仓库。
 
 **官方源码请求（2026-10-11）：** 已向 TINNO 官网页面列出的海外销售邮箱发送 P780 `_162` 对应 GPL 源码申请并要求转交专业团队；Rakuten Mobile 的日文请求稿待通过官网客服渠道提交。详见 [联络记录](docs/official-source-request-log.md)。
