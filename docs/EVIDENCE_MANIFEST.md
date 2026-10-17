@@ -1,5 +1,12 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 DSU 第三轮：安装器 user 0 已卸载（直接实机证据）
+
+- 机主确认自己已对现用 P780 做最深度 ADB 精简；开发者选项截图中「Select DSU Package」能显示两组 Google ARM64 GSI/GSI+GMS（`BP1A.250405.005.C1` 与 `CPI1.251209.009.A1`）；**截图只在本聊天出现、未提交 GitHub**。在线列表可见不等于选择后可以成功下载、验签、安装或启动。
+- `adb shell am get-current-user`→`0`，不带 `-u` 的 `pm list packages --user 0 com.android.dynsystem` 空，而 `pm list packages -f -u --user 0`→`package:/system/priv-app/DynamicSystemInstallationService/DynamicSystemInstallationService.apk=com.android.dynsystem`；`dumpsys package com.android.dynsystem`→`User 0: ... installed=false ... enabled=0`。直接证明系统原厂 APK 仍在，但用户 0 的安装状态是 false。`enabled=0` 是 PackageManager DEFAULT，不是 DISABLED。
+- 原仓库两份历史精简脚本均将 `com.android.dynsystem` 列入 `pm uninstall --user 0` 候选，且机主确认曾进行深度精简：合理解释当前卸载状态，但不冒称已找到具体执行成功记录。
+- [详尽取证和官方 AOSP/Google 来源](research/p780-dsu-locked-gsi-20261018.md)。**尚未执行** `cmd package install-existing`、下载、安装或启动 GSI，不更改设备当前状态；如需恢复系统内置安装器，只在机主同意后进行。
+
 ## 2026-10-18 DSU 第二轮实机证据 + 历史 debloat 交叉线索
 
 - 机主确认 **开发者选项中有 DSU Loader**，之前“系统 UI 未找到”的说法已被实机证据纠正。`pm list packages -u | findstr /I "dynsystem gsi"` 得到 `package:com.android.dynsystem`；`/system/etc/init/gsid.rc` 为 `-rw-r--r-- root root`，590 字节；`/metadata/gsi` 和 `/metadata/gsi/dsu` 均报 Permission denied；`getprop | findstr /I "gsid dsu gsi"` 无匹配。
