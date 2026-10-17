@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — 暂停 OTA，聚焦硬件 Key Attestation（实机待测）
+
+- 机主将 Google OTA 探测支线暂缓，研究转向不依赖原厂固件与 OEM 回复的 Android Keystore `RootOfTrust`。
+- 核查 Android 官方 Keystore/Key Attestation、Google ASN.1 `RootOfTrust`、Trusty Keymaster 实现及开源 KeyAttestation app v1.8.4 的默认行为：APP 启动自动做普通 KeyStore 证明，返回的 `verifiedBootKey` 为十六进制，`verifiedBootHash` 可缺失。
+- 新增关键编码限制：Bootloader 若直接提供 ≤32 字节公钥摘要，Keymaster 可原样转发；提供原始 key >32 字节才由 Keymaster SHA-256，因此不能预设 attested hash 与任何单一格式的 AOSP AVB 公钥 blob 哈希直接相等。
+- 已将最小必要采集字段、证书信任根/软件级风险、过时吊销列表与隐私边界加入研究专题和 NEXT_STEPS；尚无 P780 硬件证明实测，Root/BL 状态不变。
+
 ## 2026-10-18 — 纠正外部 AI 的 P780 OTA 与 AVB 签名混淆
 
 - 根据上游真实 CLI，纠正不存在的 `--device`、source/target fingerprint 参数和 `devices.json` 文件；否定毫无来源的 `264→151/120` 字符串改写作为旧构建证据。
