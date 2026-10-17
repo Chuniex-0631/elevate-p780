@@ -8,26 +8,21 @@
 2. **Fstab 两份已读取**：`system/system_ext/product` 使用 `avb=vbmeta_system`；`vendor/odm` 使用默认 `avb`。`system` 额外包含 `/avb/q-gsi.avbpubkey` 等三份 Google 开发 GSI 公钥文件路径候选。[Fstab 实测](research/p780-fstab-avb-20261018.md)。但仍未读取真实 `vbmeta_b`、`vbmeta_system_b` 或 chain descriptors。
 3. **已完成但没有结果的尝试**：Fastboot 常见 OEM 解锁指令均为 unknown command；EDL Sahara 可识别但没有兼容且授权的 Firehose；Google OTA Prober 对当前 `264` fingerprint 无 `update_url`。不再重复这些请求；OTA 支线暂缓。对应 [启动/EDL](research/device-and-boot.md)、[OTA](research/google-ota-prober-p780-20261018.md)。
 
-## 路线 A：Treble 与 Vendor 隔离已通过，转向可选 GSI 原始目录（第六轮）
+## 路线 A：DSU 官方主索引已验证，等待 6 个子 JSON（第七轮）
 
-**已实机确认、不再重复采集：** 开发者选项 DSU Loader 可显示四个 ARM64 GSI/GMS 条目；Android 原厂 `com.android.dynsystem` 已通过 `cmd package install-existing --user 0` 恢复，`installed=true`；`ro.vndk.version=30`、`ro.product.cpu.abi=arm64-v8a`、`ro.treble.enabled=true`，用户数据存储先前报告可用约 103G。特别是 Android 11 `/linkerconfig/ld.config.txt` 中 **`[vendor] namespace.default.isolated = true`** 已由普通 ADB shell 直接读取。`/system/etc/ld.config*` 缺失不是 Vendor 隔离失败；真实 linkerconfig 完整存在（90115B）。第三方 Treble Check 截图另显示 Treble、A/B、ARM64 和 System-as-root 支持，与官方 ADB 相容。
+**此前已完成、无需重复的实机任务**：原厂 DSU 安装器已恢复 `installed=true`；DSU Loader 菜单中确实出现四个 ARM64 GSI/GMS 选项；P780 Android11 的 Treble、`[vendor] namespace.default.isolated=true`、VNDK30、`arm64-v8a` 和 103GB 可用存储报告已取证；尚未下载安装或启动 GSI，Bootloader 仍 LOCKED、无 Root。
 
-**新的证据等级：** [Google GSI 合规指南](https://developer.android.com/topic/generic-system-image#check-device-compliance) 所列 Treble/Vendor VNDK isolation/ABI 检查**在本机通过**。这允许将“Android 11 Vendor 无法尝试较高版本 GSI”的一般怀疑降级；但不保证列表中的 Android 15/16 GSI 签名受信、HAL/Keymaster/Gatekeeper 适配，也不能证明 DSU 已真正启动。AOSP [VNDK 弃用说明](https://source.android.com/docs/core/architecture/vndk) 规定 Android 15 起弃用新的 VNDK，但保留旧版（≤14）的 VNDK APEX 以兼容历史 Vendor；因此需要**具体镜像级验证**，不能仅凭 Android 版本推断。
+**本轮新增独立 PC 工件**：机主从 AOSP 默认目录 `https://dl.google.com/developers/android/gsi/gsi-src.json` 成功下载 **508字节** 的 `p780-dsu-catalog.json` 并上传当前会话；已重新计算 SHA-256 与 PowerShell 输出 **`0A1970ABFCEB6BF3962177881B255E6AF9D4F43903AAC3BA9AEF2C1E5B4A2D09`** 完全一致。文件自身**只有**6项 `include`（`rvc/sc/tm/udc/vic/baklava`），没有任何 `images` 详细字段。未取得六份实际子 JSON，不得宣称截图中 `BP1A.250405.005.C1` / `CPI1.251209.009.A1` 具备 VNDK30 或已通过 DSU AVB 验签。
 
-**第七轮优先事项——公开 DSU 目录元数据，不修改手机：** AOSP 默认 `https://dl.google.com/developers/android/gsi/gsi-src.json`，本机 `.list` 覆盖属性为空。应在 Windows 上下载并存储原始 JSON；如果 `include` 指向下级目录，再提取其中与机主截图 `BP1A.250405.005.C1`、`CPI1.251209.009.A1` 两组构建对应的条目，核对 `cpu_abi`、`os_version`、`vndk` 是否含 30、`spl`、`pubkey`（GSI 签名 key 标识）及 `uri`/文件版本。网页检索接口无法直接读此 JSON，**本轮尚未取得原始目录**，不得冒称 GSI 匹配或已经下载。
-
-Windows PowerShell 可只读抓取**目录元数据（非 GSI 镜像）**：
+**下一行动（PC 只读，禁止下载镜像）：** 用户可在与主 JSON 相同的 Windows 文件夹使用本会话附上的 `p780_dsu_catalog_audit.py`。标准库脚本已通过**离线模拟测试**，尚未在真实 Google 子目录联机实测；它会限制 Google HTTPS JSON 的目标域、单项≤1 MiB、最多20项及3层递归，并输出包含真实响应与 SHA-256 的 `p780-dsu-catalog-detail.zip`，只发送此小 ZIP 即可。目标是确定实际 `cpu_abi/os_version/vndk/spl/pubkey/uri` 字段（URI 仅存字符串，不访问 `.zip`）。
 
 ```powershell
-$url = 'https://dl.google.com/developers/android/gsi/gsi-src.json'
-$catalog = Invoke-RestMethod -Uri $url -TimeoutSec 30
-$catalog | ConvertTo-Json -Depth 20 | Set-Content -Encoding UTF8 .\p780-dsu-catalog.json
-$catalog | Select-Object -Property images,include | Format-List
+# 把聊天提供的 p780_dsu_catalog_audit.py 保存到这个已含 p780-dsu-catalog.json 的文件夹后执行：
+python .\p780_dsu_catalog_audit.py
+# 输出文件：p780-dsu-catalog-detail.zip；上传该 ZIP 和终端摘要
 ```
 
-请优先发送保存的 `p780-dsu-catalog.json` 文本文件；若它只有 `include`/入口而没有实际四项列表，再根据真实 URL 读取相应 Google 子目录，不自动遍历非 Google 域名、不下载 ZIP。不执行设备 GSI 选择、确认、安装、启动、`gsi_tool enable/wipe` 或任何锁定态写入。
-
-**技术边界**：正规 [DSU 临时启动](https://source.android.com/docs/core/ota/dynamic-system-updates) 与需解锁的普通 Fastboot GSI 刷写为不同入口；当前仍没有签名匹配的实际 DSU 镜像验证、厂商 HAL 运行成功证据或永久 Root/Bootloader 解锁。
+**观察限制**：主索引来自机主 PC，而不是 P780 本机抓包；即使 `.list` 属性为空，也不能绝对确定 P780 实际访问目录就是该 URL。官方 [DSU JSON descriptor](https://source.android.com/docs/core/ota/dynamic-system-updates) 允许包含更多目录且 `pubkey`、`vndk` 都为可选字段，不出现某字段不能自行假定验签/兼容通过。研究环境当前无法直接拉取六份子 JSON，不能用其他机型日志代替官方当日原件。[第七轮专项](research/p780-dsu-locked-gsi-20261018.md)。
 ## 主要路线 B：真正阻挡永久 Root / 自定义 Boot 的环节
 
 **B1. 只读离线镜像发现**：仅考虑机型为 P780 且有原始构建编号、文件哈希与可信出处的 `vbmeta[_system]`, `boot`, `vendor_boot`, `dtbo`，包括各官方历史版本，但必须注明与 `_162` 的差异。得到镜像后用 AOSP `avbtool info_image` / `verify_image` 分析主 vbmeta→system chain descriptors、rollback indices、boot 分区是否 AVB hash footer；不能从 fstab 或 `7744` 字节 VBMeta 总大小反推出真实描述符。**暂不继续批量搜/探测 OTA。**
