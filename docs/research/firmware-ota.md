@@ -34,6 +34,13 @@ Linux/5.4.233-qgki-gea5245e94afe-dirty
 
 **研究判断**：JVN 证实的是 AVB 信任钥匙缺陷；它仍未给出 P780 在 locked 状态下的实际分区写入途径，也没有提供 `_162` 原厂镜像。不得把 JVN、论文中的其它机型演示或公开 AOSP 钥匙等同于 `fastboot flashing unlock`、匹配 EDL loader 或本机 Root 成果。详细条件见 [独立安全公告研究](firmware-advisory-20260928.md)。
 
+## 2026-10-18 动态分区 / 快照与镜像检索现状
+
+- 实机 `ro.boot.dynamic_partitions=true`；先前发现 `system_b-cow` / B 槽 dm-verity 节点；`ro.virtual_ab.enabled` 与 `ro.virtual_ab.compression.enabled` 属性为空，不足以定性是否开启 Virtual A/B 或 OTA merge。
+- Android 11 Virtual A/B 使用 kernel COW，压缩快照是后续 Android 12 的功能（[AOSP Virtual A/B](https://source.android.com/docs/core/ota/virtual_ab)）。**COW 设备映射不是可自由写入受 AVB 保护固件的证据。**
+- 再次搜索 `P780AE_11.0_RMN_JP_162`、`payload.bin`、`vbmeta.img` 及 P780 stock OTA 组合，**没有取得可独立验证出处和 SHA 的完整镜像**。官方发布页只提供软件版本与更新说明，并非原始固件下载源。
+- [XDA 2026-03-15 固件求助帖子](https://xdaforums.com/t/request-rakuten-hand-5g-p780-stock-ota-or-full-firmware.4782235/) 出现在搜索结果，但网页正文因 403 未能核实，只可作为公开用户找固件的线索，不视为固件工件或者可信解锁证据。
+
 ## 未解决的 OTA 事项
 
 - 收集官方完整 OTA 的可信来源和具体哈希。
