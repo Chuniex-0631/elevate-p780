@@ -1,6 +1,6 @@
 # 研究状态总表（更新：2026-10-18）
 
-2026-10-18 取得本机 P780 Key Attestation：**TEE / Google 根证书签名链核验通过，证实 AVB 默认测试公钥身份**，不再等待原厂镜像才能确认根钥匙。已开展 P780 实机 DSU/GSI 支线：**开发者选项中 DSU Loader 入口已确认存在**，`gsi_tool`、`gsid.rc` 均存在，`pm list packages -u` 可以找到 `com.android.dynsystem` 包记录；曾实测 user0 `installed=false`；**随后机主通过 `install-existing --user 0` 恢复成功，现已验证 `installed=true` 且 `pm path` 找到原厂 APK**；最新第五轮实机确认 VNDK30、ARM64 和用户数据存储报告可用 103G；Treble/Vendor 隔离、GSI 公钥和实际启动仍未知。[源码交叉报告](research/p780-dsu-locked-gsi-20261018.md)。当前研究进入 AVB 只读取证阶段，保留公开新线索监测；不涉及刷机、Root 或更改 Bootloader。读取入口见 [文档导航](README.md)，结构验收见 [全库整理](REPOSITORY_AUDIT.md)。
+2026-10-18 取得本机 P780 Key Attestation：**TEE / Google 根证书签名链核验通过，证实 AVB 默认测试公钥身份**，不再等待原厂镜像才能确认根钥匙。已开展 P780 实机 DSU/GSI 支线：**开发者选项中 DSU Loader 入口已确认存在**，`gsi_tool`、`gsid.rc` 均存在，`pm list packages -u` 可以找到 `com.android.dynsystem` 包记录；曾实测 user0 `installed=false`；**随后机主通过 `install-existing --user 0` 恢复成功，现已验证 `installed=true` 且 `pm path` 找到原厂 APK**；最新第五轮实机确认 VNDK30、ARM64 和用户数据存储报告可用 103G；**第六轮又实测 `ro.treble.enabled=true`、`[vendor] namespace.default.isolated=true`**，故官方 Treble/VNDK 跨版本前置检查已满足；具体 GSI 公钥和真正启动仍未知。[源码交叉报告](research/p780-dsu-locked-gsi-20261018.md)。当前研究进入 AVB 只读取证阶段，保留公开新线索监测；不涉及刷机、Root 或更改 Bootloader。读取入口见 [文档导航](README.md)，结构验收见 [全库整理](REPOSITORY_AUDIT.md)。
 
 本仓库存档长期围绕 **Rakuten Hand 5G / TINNO P780** 进行的个人设备实验。证据有明确等级：**实机已证实 / 离线源码或文件已证实 / 其他设备参考 / 未验证假设**。不同等级不能互相替代。
 
@@ -24,7 +24,7 @@
 | Android Clang 11.0.2 `rtmutex.o` | **云端编译成功** | 已匹配实机编译器，非完整 `vmlinux`，非可刷写内核 |
 | 还原与出厂 `vmlinux` 一致的内核 | **未完成** | 原厂私有代码与构建身份未满足 |
 | JourneyConfigService | **静态与运行状态核对已完成** | vendor/XML/TCS 版本均 42；64 键一致；消费者静态定位进程管理与 Service/Provider 限制；未发现 OTA/Root 链 |
-| DSU/GSI 临时系统（LOCKED） | **安装器恢复成功；ARM64/VNDK30/可用空间基础预检已完成；尚未安装 GSI** | Settings 提供四个 GSI/GMS ARM64 目录选项（客户端可选字段预筛），`com.android.dynsystem` user0 由 `installed=false` 恢复成 `true`；第五轮实机 `ro.vndk.version=30`、`ro.product.cpu.abi=arm64-v8a`、`df -h /data` 报 `/dev/block/dm-11` 106G/可用 103G（输出挂载点 `/storage/emulated/0/Android/obb`）、DSU JSON override `.list` 为空。Treble/Vendor 隔离、实际 DSU 签名、HAL、启动仍未证实。不是 Root 或 BL 解锁。[第五轮专题](research/p780-dsu-locked-gsi-20261018.md) |
+| DSU/GSI 临时系统（LOCKED） | **官方 Treble 跨版本/ABI 前提已实机验证；尚未安装或启动 GSI** | 原厂 DSU installer 已恢复 `installed=true`，Settings 显示四个远端 ARM64 GSI/GMS 条目。ADB `ro.treble.enabled=true`，运行中 `/linkerconfig/ld.config.txt` 第370行 `[vendor] namespace.default.isolated=true`，VNDK30、ABI ARM64。第三方 Treble Check 报支持 Treble、A/B、System-as-root（仅旁证）；空间报告可用103G。仍缺候选 JSON 的 `vndk/pubkey`、实际 GSI AVB 验签与 Vendor HAL 运行成功；不是 Root/BL 解锁。[第六轮专题](research/p780-dsu-locked-gsi-20261018.md) |
 | Root / Bootloader 解锁 / 刷机 | **均未达成** | 任何适配包不得宣称 Root 成功 |
 
 ## 2026-10-18：AVB 锁定状态下的实机基线（用户提供）
