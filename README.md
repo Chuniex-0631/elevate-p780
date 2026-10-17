@@ -10,6 +10,8 @@
 
 **2026-10-18 AVB 第三轮只读进展：** ADB 确认 Bootloader/Android 侧 libavb `1.0 / 1.1`、`veritymode=enforcing`、主/系统 VBMeta 目标块设备为 `root:root 0600`、五个 dm-verity 映射和 `system_b-cow` COW 候选节点；仍未取得镜像或可验证写入通道。详见 [AVB 专题](docs/research/avb-live-baseline-20261018.md)。
 
+**2026-10-18 第四轮 AVB 取证收束：** `ro.boot.dynamic_partitions=true`；Virtual A/B、压缩快照与 `ro.boot.vbmeta.device` 属性均为空，不能凭空值否定 AVB/Virtual A/B。暂停继续收集普通 getprop，聚焦匹配 `_162` 原厂镜像及有原始日志的 P780 锁定态写入途径。[专项证据与后续计划](docs/research/avb-live-baseline-20261018.md)。
+
 **2026-10-17 XDA 正文补档：** 作者报告测试 ZIP 的 Recovery 验签失败；缺少原始包、签名命令和日志，不能确定信任钥匙或推翻 AVB 公告。已关闭正文获取提醒，见 [专题补充](docs/research/firmware-advisory-20260928.md)。
 
 这是机主实体机取证、公开源码实验与历史资料的长期档案，不是刷机包或一键 Root 工具。设备基线：Android 11 / `P780AE_11.0_RMN_JP_162` / `5.4.233-qgki-gea5245e94afe-dirty`。
