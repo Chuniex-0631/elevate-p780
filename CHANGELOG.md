@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — DSU 卡在 Locked BL 吗？核验公钥信任分歧，调整研究优先级
+
+- 回答机主“未解锁BL是否使DSU无法加载”的关键疑问：AOSP官方 **支持 LOCKED + Verified Boot开启**的 Developer GSI，但需预装对应受信任公钥，并非“DSU一定要解锁”。Locked 设备遇未知GSI AVB签名时，`fs_avb` 拒绝宽松验证；可信公钥是否存在是具体可验证的阻断条件。
+- 将 P780 fstab 引用的**普通** q/r/s-GSI公钥与 Google AOSP **Developer GSI** q/r/s-developer公钥严格区分；结合 Google 2021-12-22 移除普通合规 GSI 公钥打包、只留 VTS 的提交，发现配置层面的强疑点。当前既没有读取P780实际 first-stage ramdisk中的信任keys，也未取得Android15 GSI实际 AVB签名公钥，**拒绝把假说写成AVB签名失败实证**。
+- Android11 `gsi_tool status`源码证实非root只输出 installed/disabled，Root才打印已装GSI签名key SHA1；普通 shell 不可获得，不反复折腾权限。AOSP当前 GSI release makefile 已显式支持30～34旧VNDK snapshot（目标BP1A包未开箱验证）。
+- 新建 [LOCKED/Developer GSI 信任链核验](docs/research/p780-dsu-locked-bl-vs-gsi-trust-20261018.md)，更新NEXT_STEPS/STATUS/证据/README及文档索引。仍认为 first-stage activeDSU、MapAllImages等直接返回原厂逻辑是独立高价值候选。此轮仅源码研究，无用户新ADB，也未Root/解锁/刷分区。
+
 ## 2026-10-18 — 第十三轮：P780 Bugreport 全量审计，LAST KMSG 与 LAST LOGCAT 均无法取得
 
 - 收到机主真实 `adb bugreport` ZIP（362成员，原档SHA256 `64a097d0911e35675c75dff09d68a7e28b5aa15bd342ed796387d12758d5f141`），离线完整读取主TXT 19.7 MB / 约240,297行，未将可能含账号/设备MAC/网络记录的完整原件上传GitHub。
