@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — 第十五轮重大证据：Android15 system公钥确定为Q Developer，generic vbmeta不能证明可启动
+
+- 用户运行PC离线提取后上传五件AVB元数据/公钥文件，官方ZIP SHA256在PC侧报告校验通过。助手本地独立哈希两个真实1032B公钥：Android15 `system.img` SHA1=`1ffb1af796b18ebf40d18faed213f686720f73f2`、SHA256=`e53f344beb2646b49651ea8dd336dbe75117183e96ef34beed4b367a4a0ae925`，**精确匹配Q Developer GSI公钥**。
+- 与P780原厂fstab仅已确认的普通 q/r/s GSI 公钥路径形成锁定态 AVB 信任配置差异的**强疑点**，但目前没有 `_162` ramdisk实际key或 first-stage AVB拒绝日志，所以不能将其登记为已确认root cause，也不能排除image mapping/active slot更早失败。
+- 同ZIP `vbmeta.img` 嵌入 SHA256=`7728e30f...`的AOSP RSA4096测试root，恰好与P780 TEE attested root一致；**但Flags=2为verification_disabled，其system chain descriptor公钥SHA1=`cdbb7717...`属于另外的AOSP RSA2048 testkey，和真实 system q-developer公钥不匹配**。这种generic vbmeta不能当作系统会通过AVB的通行证，也不应刷入手机。
+- 新建 [第十五轮真实公钥与AVB链式元数据审计](docs/research/p780-dsu-android15-avb-key-verified-20261018.md)、更新第十四轮事前协议、Locked信任专项、NEXT_STEPS、STATUS、EVIDENCE/README，后续研究重点是P780 `_162`可信Boot/Ramdisk及签名公钥集合。未对手机执行任何新操作。
+
 ## 2026-10-18 — 第十四轮 DSU 受信密钥取证：准备 Google Android15 GSI ZIP PC 校验与 AVB Key 提取
 
 - 用户同意继续提取 Google Android15 非GMS ARM64 的真实 GSI signing pubkey。由之前已核验的官方 `vic/gsi-dsc.json` 及 Google官方发布说明确认为 `aosp_arm64-exp-BP1A.250405.005.C1-13151952-61d23231.zip`，完整 SHA256 `61d232315ad773bd4820c76c175efe6a61cd8a9a257508db588032be213e15f7`。
