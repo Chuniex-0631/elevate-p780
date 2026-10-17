@@ -56,3 +56,38 @@ adb shell ls -l /avb/q-gsi.avbpubkey /avb/r-gsi.avbpubkey /avb/s-gsi.avbpubkey
 ## 2025 SPICES 论文交叉限制
 
 [AVBTestKeyInTheWild 论文摘要](https://research.jku.at/en/publications/workshop-avbtestkeyinthewild-bypassing-android-verified-boot-usin/) 的关键是区分 AVB 加密验签与设备允许的刷写/修复通路。2026-10-14 [JVN#47427200](https://jvn.jp/en/jp/JVN47427200/) 确认 P780 全版本弱密钥和物理接触威胁，但没有发布该机的具体成功写入/恢复过程。若 DSU 受官方内置公钥限制，它不是“借助主 AVB 弱密钥自然获得写入权限”的证明。
+
+## 2026-10-18 P780 实机第一轮 DSU 只读结果（机主 ADB 终端）
+
+以下信息由机主在 Windows PowerShell 执行前文的六组命令后提供；**尚未执行 gsi_tool status/install、没有修改任何设备状态**。
+
+| 原命令 / 目标 | 实机原样结果 | 可靠的判断范围 |
+|---|---|---|
+| `adb shell pm path com.android.dynsystem` | 空（无 APK 路径） | 当前 PackageManager 未返回标准 DSU Loader 包，可能没有安装/对当前用户不可用；不证明整个 GSID 框架缺失 |
+| `adb shell ls -l /system/bin/gsi_tool /system/bin/gsid` | `gsi_tool` 存在，`-rwxr-xr-x 1 root shell 47016`；`/system/bin/gsid: Permission denied` | CLI 工具已编入当前 `/system`；不能把 SELinux/权限拒绝等同于 `gsid` 文件不存在 |
+| `adb shell getprop init.svc.gsid` | 空 | 没有解析到服务状态；不能仅从空字符串断言服务未安装、运行中或永远被禁用 |
+| `adb shell getprop persist.sys.fflag.override.settings_dynamic_system` | 空 | 没有覆盖功能开关的可见值，不是明确 false |
+| `adb shell getprop ro.gsid.image_running` | 空 | 未提供运行 GSI 的正面证据；不能据此作全部状态结论 |
+| `adb shell ls -l /avb/{q,r,s}-gsi.avbpubkey` | 三项均 `No such file or directory` | **当前用户空间可见的 `/avb` 不存在这些文件**，但早期 boot ramdisk 文件可能在切换根目录时被释放 |
+
+### 与 AOSP Android 11 原码的关键重新解释
+
+- [AOSP Android 11 gsid.rc](https://android.googlesource.com/platform/system/gsid/+/refs/tags/android-11.0.0_r13/gsid.rc) 把 `gsid` 定义为 `/system/bin/gsid`、`interface aidl gsiservice`、`oneshot`、`disabled`。这意味着普通启动下不自动常驻可以是设计要求；`init.svc.gsid` 的空值仍需更多信息才能判断为什么没有状态。
+- [AOSP Android 10/11 Ramdisk 布局](https://source.android.com/docs/core/architecture/partitions/ramdisk-partitions) 说明 first-stage ramdisk 可能在切换 root 后释放，且 [AOSP 公钥构建目标](https://android.googlesource.com/platform/system/core.git/+/979f3d0116ee62b1461c94899ad7d82d2c00cd3e/rootdir/avb/Android.mk) 明确将 q-gsi 文件放入 ramdisk 或 first_stage_ramdisk。因此，常规 Android shell `ls /avb` 找不到与启动时 fstab 中的路径**完全不矛盾**。
+- [Android 官方 DSU 文档](https://developer.android.com/topic/dsu) 明确把 DSU 功能可用性归于设备厂商集成。**`gsi_tool` 存在和 fstab 模板支持均非完整 DSU 运行能力证明**；`com.android.dynsystem` 的无路径结果是一个对标准 UI 集成不利的证据，但未证明不存在 OEM 替代入口。
+- [AOSP gsi_tool.cpp](https://android.googlesource.com/platform/system/gsid/+/refs/tags/android-11.0.0_r13/gsi_tool.cpp) 有按需启动 `gsid` 的调用，故此阶段继续避免执行 `gsi_tool status`，其语义不是绝对零状态变更。
+
+### 新证据下的优先级与可选第二轮微型只读审计
+
+目前将 DSU 标为 **底层工具存在、标准前端缺失证据、启动端实际功能未证实**，研究优先级由 P1 下调为 P2（低至中）；不会以此证明 Root/锁定态写入。
+
+可在机主愿意时执行如下几条完全只读命令进一步核对是否仅保留底层框架：
+
+```powershell
+adb shell pm list packages -u | findstr /I "dynsystem gsi"
+adb shell ls -l /system/etc/init/gsid.rc
+adb shell ls -ld /metadata/gsi /metadata/gsi/dsu
+adb shell getprop | findstr /I "gsid dsu gsi"
+```
+
+其中 `/metadata/gsi` 可能因 Android SELinux 正常限制而显示 Permission denied；文件为空/不存在或用户无权限均应原样保留。可另外在开发者选项中**仅观察**是否出现“DSU Loader”，不点击安装、不下载、不重启。无 UI 和无服务证据后应暂缓，不为了实验强行修改系统属性或安装随机的 DynamicSystem APK。
