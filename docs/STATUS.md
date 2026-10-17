@@ -39,6 +39,13 @@
 - `vbmeta_system_b` 为 **候选链式 VBMeta**，尚未获得真实分区内容/签名描述符。两级链关系、AVB 公钥指纹、rollback index 和锁定态写入路径仍待证实。
 - GitHub API 已再次确认项目 `visibility=private`；继续按 [SECURITY](../SECURITY.md) 约束未脱敏系统日志。
 
+## 2026-10-18：AVB 第三轮只读实测
+
+- 公钥摘要属性为空（**不代表没有公钥**）；`ro.boot.vbmeta.avb_version=1.0` 对应 Bootloader libavb，上轮 `ro.boot.avb_version=1.1` 对应 Android 侧 libavb；AOSP 已解释二者并不矛盾。
+- `ro.boot.veritymode=enforcing`；`vbmeta_b` 与 `vbmeta_system_b` 对应目标块设备分别为 `/dev/block/sde31` 和 `/dev/block/sda11`，权限均为 `brw------- root:root`，当前非 root ADB Shell 无法直接读取这些镜像。
+- `system_b/system_ext_b/product_b/vendor_b/odm_b` 分别映射 dm-0 至 dm-4；`system_b-cow→dm-5`；五个 `*-verity` 分别 dm-6 至 dm-10。COW 线索不等于正在 OTA 或发现绕过途径。
+- 进一步证据边界与下轮查询见 [AVB 专题](research/avb-live-baseline-20261018.md)。`_162` 镜像、公钥指纹和锁定态写入入口仍未取得；Root/BL 状态未变。
+
 ## 新增历史原件（2026-10-10）
 
 - 新上传两份 ADB 审计 ZIP（22 和 9 条目），与其展开目录逐字节相同；删除 31 个冗余展开副本，保留原始 ZIP 与清理前备份分支。
