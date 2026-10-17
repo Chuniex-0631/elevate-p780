@@ -16,6 +16,14 @@
 - **第四轮已核对** `ro.boot.dynamic_partitions=true`；`ro.virtual_ab.enabled`、`ro.virtual_ab.compression.enabled`、`ro.boot.vbmeta.device` 均为空。已确认动态分区，但不能由空值否定 Virtual A/B；`system_b-cow` 仍只是候选快照节点。停止重复属性采集，转入[原厂镜像与写入通道](research/avb-live-baseline-20261018.md)专题。
 - **仍最优先取得匹配 `_162` 的可信原厂 VBMeta/OTA**；此类现场映射不是原厂签名与链式描述符的替代品。
 
+## 2026-10-18：Google OTA Prober 新线索（源码已核验 / 尚未探测 P780）
+
+- [Google OTA Prober × P780 专题](research/google-ota-prober-p780-20261018.md) 证实项目使用 Google Check-in 的 `fetchSystemUpdates=1` 向 `android.googleapis.com/checkin` 请求下一 OTA URL；只有机型通过 Google OTA 服务器分发才可能得到链接。
+- 公开 [Rakuten/Tinno C330](https://github.com/mouseos/ota-archive/blob/main/OTA/Google/rakuten/c330/index.json) 的 2 个增量 OTA 真实索引（`530→620` 和 `620→830`），且 C330 是 Tinno 代工的 Rakuten Mini，构成同 OEM 的历史分发旁证；[P710](https://github.com/mouseos/ota-archive/blob/main/OTA/Google/tinno/p710/index.json) 仅见 fingerprint、无 OTA。P780 当前未出现在该档案的 Rakuten/Tinno 组；**尚未验证 P780 是否使用 Google OTA 服务器**。
+- 本机 fingerprint：`Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys`，`264` 与厂商内部 `_162` 为不同编号。后者已是最终发布版，从当前 fingerprint 查询无更新不构成否定证据；未来应优先找到有出处的旧 P780 fingerprint，不得自行猜造增量号。
+- 若机主自愿，可仅从 Windows PC 使用 `python probe.py --fingerprint "Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys" --model P780` 发起**一次查询**，不使用 `--download`、真实 IMEI/SN 或批量伪造版本。得到 URL 先核实 `pre-build/post-build`，不刷机。
+- Fstab 实机存在 `/vendor/etc/fstab.default`、`fstab.emmc`，不存在 `fstab.qcom`；下一步只读 `cat` 两个存在的文件，核对 `avb=...`，不能从文件名判断实际活动配置。
+
 ## 2026-10-18：新的不依赖原厂镜像的实机取证路径（待用户可选验证）
 
 经 AOSP 官方 Keystore/CTS 与动态分区文档交叉核对，找到之前未测试的两条只读逻辑线索，详细见 [Key Attestation 与 Fstab 专题](research/avb-attestation-alternative-20261018.md)。
