@@ -24,7 +24,7 @@
 | Android Clang 11.0.2 `rtmutex.o` | **云端编译成功** | 已匹配实机编译器，非完整 `vmlinux`，非可刷写内核 |
 | 还原与出厂 `vmlinux` 一致的内核 | **未完成** | 原厂私有代码与构建身份未满足 |
 | JourneyConfigService | **静态与运行状态核对已完成** | vendor/XML/TCS 版本均 42；64 键一致；消费者静态定位进程管理与 Service/Provider 限制；未发现 OTA/Root 链 |
-| DSU/GSI 临时系统（LOCKED） | **新增重要假说：LOCKED 下 GSI Developer 公钥未被P780信任；first-stage 提前回原厂仍不能排除** | AOSP官方允许 LOCKED+有效AVB信任的Developer GSI，非必须解锁BL；P780 Fstab 已实机发现普通 `q/r/s-gsi.avbpubkey` 路径，但未发现/提取 Developer GSI keys（两套公开公钥二进制不同）。2021 AOSP移除普通compliance `gsi_keys.mk` 仅留VTS；Locked 的 unknown AVB pubkey不可忽略，故**受信签名不匹配可构成阻断，但仍无 P780 AVB拒绝日志/具体key**。两次 `reboot,dynsystem` 单次返回原厂，也符合 `GetActiveDsu/MapAllImages` 提前退出。Bugreport无LAST KMSG、当前GSID installed/disabled。下一步需要 `_162` 实际 boot/ramdisk公钥及Android15 system AVB signing key 比对。[LOCKED与信任专项](research/p780-dsu-locked-bl-vs-gsi-trust-20261018.md) |
+| DSU/GSI 临时系统（LOCKED） | **第十五轮：Android15 `system.img` 实际用 Q Developer GSI 公钥（已验证SHA）；P780是否信任仍待Ramdisk实物** | 用户PC报告Google Android15无GMS GSI ZIP SHA匹配官方，上传 `system.img` 和 `vbmeta.img`各1032B AVB pubkey，本轮助手独立重算：system SHA256=`e53f344beb2646b49651ea8dd336dbe75117183e96ef34beed4b367a4a0ae925`，与AOSP **q-developer-gsi** 公钥同；P780实机fstab只见普通 q/r/s GSI `avb_keys`，因而Locked公钥不受信成为高度具体的待证条件。发行 `vbmeta.img` key SHA256=`7728e30f...`与本机TEE AOSP根相同，但 `Flags=2`(verification_disabled)，chain system公钥SHA1=`cdbb7717...`(RSA2048 testkey)，与该system Q Developer key不同，**不能以vbmeta root匹配判断能DSU启动或需要刷入**。机主已两次专用重启直接回原厂、无early log。下一步获取 `_162` ramdisk实际信任key，仍Bootloader LOCKED、无Root。[第十五轮实证](research/p780-dsu-android15-avb-key-verified-20261018.md) |
 | Root / Bootloader 解锁 / 刷机 | **均未达成** | 任何适配包不得宣称 Root 成功 |
 
 ## 2026-10-18：AVB 锁定状态下的实机基线（用户提供）
