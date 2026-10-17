@@ -1,5 +1,10 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 第五轮实机与公共 OTA 索引交叉线索（会话原文，未上传原始 TXT）
+
+- 用户提供 `ro.build.fingerprint=Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys`，`fstab.default` 和 `fstab.emmc` 存在，`fstab.qcom` 不存在。尚未取得真实 fstab 文件内容；与已存 `_162` 属不同版本编号维度。
+- 已通过 GitHub 工具读取 [google-ota-prober](https://github.com/tangalbert919/google-ota-prober) 源码、[Rakuten C330 官方 Google OTA 历史索引](https://github.com/mouseos/ota-archive/blob/main/OTA/Google/rakuten/c330/index.json)、[Tinno P710 构建指纹索引](https://github.com/mouseos/ota-archive/blob/main/OTA/Google/tinno/p710/index.json)。**这些是第三方公共 metadata，不是取得 P780 OTA 原件或完成本机在线探测**，技术细节见 [专题](research/google-ota-prober-p780-20261018.md)。
+
 ## 2026-10-18 AVB 实机取证（聊天原文，未上传附件）
 
 - 用户在本次对话中提交 2 轮 ADB 原始终端输出；已摘录到 [AVB 专题](research/avb-live-baseline-20261018.md)，包括 `green`、`locked`、`_b`、完整 VBMeta digest、`sha256`、`7744`、AVB `1.1` 和 A/B 分区软链接。
