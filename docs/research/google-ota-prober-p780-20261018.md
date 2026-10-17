@@ -1,12 +1,12 @@
 # Google OTA Prober × Rakuten Hand 5G (P780) | 2026-10-18
 
-> Status: upstream source audited, comparative Rakuten/Tinno OTA metadata confirmed; no P780 query has been sent, no P780 OTA URL/image obtained. This is not a root/unlock result.
+> Status: upstream source audited; user **ran one P780 CLI query** using the exact stock fingerprint and received **no OTA URL**. Rakuten/Tinno comparative metadata is confirmed; still **no P780 OTA URL/image**, root or unlock result.
 
 ## P780 evidence (user's console, not a separately attached transcript)
 
 - `ro.build.fingerprint=Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys`.
 - Existing build baseline: `P780AE_11.0_RMN_JP_162`; the fingerprint incremental `264` is NOT the firmware suffix `_162`.
-- `/vendor/etc/fstab.default` and `/vendor/etc/fstab.emmc` exist; `/vendor/etc/fstab.qcom` returned file-not-found. Neither existing file was read in this turn.
+- `/vendor/etc/fstab.default` and `/vendor/etc/fstab.emmc` were subsequently both **read successfully** in the user's attached console transcript; `/vendor/etc/fstab.qcom` returned file-not-found. Both real files agree on AVB grouping. See [P780 fstab AVB evidence](p780-fstab-avb-20261018.md).
 
 ## Upstream implementation
 
@@ -25,7 +25,7 @@
 - A direct listing of the archive's `OTA/Google/rakuten/` and `OTA/Google/tinno/` namespaces shows NO `p780` folder. This is only a coverage gap in that archive, not proof of no P780 Google OTA.
 - Official [Rakuten P780 update notice](https://network.mobile.rakuten.co.jp/information/software/rakuten-hand-5g/) lists `_162` from 2024-03-21. A truthful older build fingerprint (`_161`, etc.) would be more informative for the next-update check than the already-current `264`, but it must be obtained from real evidence, never guessed by editing `264`.
 
-## One optional, PC-only query (user has not performed it)
+## PC-only P780 query (completed; no URL)
 
 ```powershell
 git clone https://github.com/tangalbert919/google-ota-prober.git
@@ -34,21 +34,16 @@ python -m pip install -r requirements.txt
 python probe.py --fingerprint "Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys" --model P780
 ```
 
-Do not provide real device identifiers, enable `--download`, run batch fingerprint guesses, upload `test_data.gz`/full debug logs, or install any returned OTA. A URL requires source validation and offline inspection; a negative response is inconclusive. If an incremental package is found, check whether `vbmeta` and `boot` operations independently provide usable complete partition data; a delta can require the exact older base image.
+**Observed 2026-10-18 result (user-provided):** `No OTA URL found for your build. Either Google does not recognize your build fingerprint, or there are no new updates for your device.` The program did not print HTTP status; this proves only that no `update_url` was reported. As `_162` is the most recent official firmware, the result has low discriminatory power regarding historical Google OTA use. **Do not repeat this exact query without new evidence.** Do not provide real device identifiers, enable `--download`, run batch fingerprint guesses, upload `test_data.gz`/full debug logs, or install any returned OTA. A future URL requires source validation and offline inspection; this negative response is inconclusive. If an incremental package is found, check whether `vbmeta` and `boot` operations independently provide usable complete partition data; a delta can require the exact older base image.
 
-## Correct fstab next step
+## Fstab readings (completed)
 
-```powershell
-adb shell cat /vendor/etc/fstab.default
-adb shell cat /vendor/etc/fstab.emmc
-```
-
-Inspect `avb=...`, `logical`, `first_stage_mount`, and `slotselect` to infer declared AVB mount configuration. Merely existing does not prove either file is the active first-stage fstab; `.emmc` in a filename does not establish eMMC storage (historical device evidence indicates UFS).
+Both files were read from P780 by the user. They agree: `system`, `system_ext`, `product` use `avb=vbmeta_system`; `vendor` and `odm` use plain `avb`. System also lists GSI key paths `/avb/q-gsi.avbpubkey`, `/avb/r-gsi.avbpubkey`, `/avb/s-gsi.avbpubkey`, which are **not confirmed production root keys**. See [detailed live fstab analysis](p780-fstab-avb-20261018.md). They differ in `/data` encryption options; the active first-stage fstab selection is not proven.
 
 ## Priorities / scope
 
-1. One conservative Google check-in query, or passive discovery of a genuine older P780 fingerprint.
-2. Read only the two discovered fstab files; continue independent hardware Key Attestation exploration.
+1. Google check-in with final build is **completed without URL**. Only revisit on discovery of a genuine old P780 fingerprint / new OTA server evidence; no repeated current-build query.
+2. Both discovered fstab files are **read and analyzed**; next meaningful untested path is hardware Key Attestation.
 3. If a verified P780 OTA appears, analyze only offline `metadata`/`payload.bin`/`vbmeta`; distinguish full vs incremental and no-write vs installation.
 4. Original `_162` images and a verified locked-state write channel remain absent. Root and unlock not achieved.
 
