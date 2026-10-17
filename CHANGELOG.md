@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — 实机 DSU Loader 入口确认，回溯发现精简脚本包含安装器
+
+- 机主报告开发者选项真实存在 DSU Loader；`pm list packages -u` 返回 `com.android.dynsystem`，`gsid.rc` 590B 文件真实存在，`/metadata/gsi` 权限拒绝，相关属性无输出。此结果**推翻**先前“可能没有 DSU Loader 入口”的表述，但还未证明可以实际下载安装 GSI。
+- 官方 ADB 文档表明 `-u` 列表含卸载包，原先 `pm path com.android.dynsystem` 无输出因此需进一步鉴别 user0 `installed=` 状态。新回查历史两个 P780 ADB 应用精简脚本均列 `com.android.dynsystem` 为卸载目标，旧 phase3 安装清单亦包含；历史执行成功与否**尚无证据**，只能登记为待验证的用户级卸载假说。
+- AOSP `gsid.rc` 为 `/metadata/gsi` 设置 root:system `0771`，普通 `shell` Permission denied 是合理权限限制；无需 Root、更不能从拒绝访问判断服务不能使用。
+- 已更新 [DSU/GSI 专题](docs/research/p780-dsu-locked-gsi-20261018.md)、STATUS、NEXT_STEPS、EVIDENCE_MANIFEST。下一步限于 user0 软件包状态的只读命令；`install-existing` 需机主明确同意，未执行任何恢复/安装/设备重启。
+
 ## 2026-10-18 — DSU/GSI 第一轮实机只读排查和 AOSP 重新归因
 
 - 机主依次查询标准 `com.android.dynsystem` 安装器（未返回路径）、`gsi_tool`（存在且为 47,016B）、`gsid`（Permission denied）、三项相关 getprop（均空）、三份 `/avb` GSI 公钥（普通系统路径不存在）。没有进行任何安装/重启/镜像写入。
