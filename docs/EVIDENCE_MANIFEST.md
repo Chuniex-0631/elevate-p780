@@ -1,5 +1,12 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 第十轮：GSI 下载完成提示后两次重启仍回原厂系统
+
+- 机主直接观察：下载GSI→完成、提示进入DSU→点击重启→返回原厂系统、通知继续提示进入DSU→再点击重启→仍然原厂。**并非设备自主无限 Bootloop，而是用户每次点击导致相同的启动回退。** 原厂可开机，Android15 GSI未观察到真正运行。
+- 当前仅有用户文字实验报告；**还没有 GSID status、原始安装通知截图、early init/pstore/logcat、真实安装的 GSI build ID**。此时不能把故障定为 q/r/s AVB 公钥不匹配，也不能认定 DSU已完成所有安装和映像验签。
+- 基于 AOSP Android11 first_stage_mount 的 `CanBootIntoGsi`、MapAllImages、MarkSystemAsGsi 等失败分支，可能有启动指示/one-shot、映射、AVB以及后续HAL init等不同因素。用户已被建议停止重复重启、不Discard、先抓 logcat（可能仅当前启动）及 `gsi_tool status`（可能按需启动守护进程）。**还没有新诊断结果，不做推定。**
+- [实机失败记录和只读排查](research/p780-dsu-stock-fallback-20261018.md)。原始手机日志如涉及IMEI/账号，应先脱敏，完整日志不直接上传GitHub。
+
 ## 2026-10-18 DSU 首次实机实验：用户同意尝试，尚未执行
 
 - 用户在对话中明确表示：“我觉得可以继续研究DSU，并且既然是DSU，我觉得可以进行一波尝试，毕竟DSU并不会破坏原系统”。现阶段视为**研究意愿和实验授权**，不是 DSU 已安装、已进入 GSI 或数据已备份的结果。
