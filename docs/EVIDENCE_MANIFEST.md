@@ -2,8 +2,10 @@
 
 ## 2026-10-18 第五轮实机与公共 OTA 索引交叉线索（会话原文，未上传原始 TXT）
 
-- 用户提供 `ro.build.fingerprint=Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys`，`fstab.default` 和 `fstab.emmc` 存在，`fstab.qcom` 不存在。尚未取得真实 fstab 文件内容；与已存 `_162` 属不同版本编号维度。
+- 用户提供 `ro.build.fingerprint=Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys`；随后通过附在聊天中的终端文本**实际读取了** `/vendor/etc/fstab.default` 与 `/vendor/etc/fstab.emmc`，`fstab.qcom` 不存在。两份文件的 AVB 挂载分组和 GSI 额外公钥路径已逐项核对并保存 [技术摘录](research/p780-fstab-avb-20261018.md)；**未将原始两个 fstab 文件作为独立的字节级原件上传 Git**，聊天附件也不是手机原始文件 SHA。
 - 已通过 GitHub 工具读取 [google-ota-prober](https://github.com/tangalbert919/google-ota-prober) 源码、[Rakuten C330 官方 Google OTA 历史索引](https://github.com/mouseos/ota-archive/blob/main/OTA/Google/rakuten/c330/index.json)、[Tinno P710 构建指纹索引](https://github.com/mouseos/ota-archive/blob/main/OTA/Google/tinno/p710/index.json)。**这些是第三方公共 metadata，不是取得 P780 OTA 原件或完成本机在线探测**，技术细节见 [专题](research/google-ota-prober-p780-20261018.md)。
+
+- 用户运行 `google-ota-prober` 的 P780 CLI 查询，得到 `No OTA URL found for your build`（无下载链接）；是**机主 PC 实测终端输出**，不是 Google 接口状态码，也不是明确的固件服务器不支持结论。详见 [Google OTA 专题](research/google-ota-prober-p780-20261018.md)。
 
 ## 2026-10-18 AVB 实机取证（聊天原文，未上传附件）
 
