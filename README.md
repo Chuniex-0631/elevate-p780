@@ -1,5 +1,7 @@
 # Rakuten Hand 5G / TINNO P780 研究档案
 
+**2026-10-18 重大实机验证：P780 `_162` 的 Android Key Attestation 由 Google 官方硬件证明根签署，TEE 证明已核验；`verifiedBootKey` 精确匹配 AOSP `testkey_rsa4096_pub.pem` 经 AVB 专用编码得到的 SHA-256。`verifiedBootHash` 同样精确匹配既有本机 VBMeta Digest。** 这将官方已公布的默认测试钥匙漏洞升级为对本机公钥身份的独立密码学证明，但**尚无 Root、Bootloader 解锁或 locked 写入通道**。[脱敏验证与证据](docs/research/avb-attestation-confirmed-20261018.md)。原始 `.p7b` 未上传仓库。
+
 **官方源码请求（2026-10-11）：** 已向 TINNO 官网页面列出的海外销售邮箱发送 P780 `_162` 对应 GPL 源码申请并要求转交专业团队；Rakuten Mobile 的日文请求稿待通过官网客服渠道提交。详见 [联络记录](docs/official-source-request-log.md)。
 
 截至 **2026-10-18**：已进入 AVB 只读取证，持续监测公开新线索。**未取得 Root、未解锁 Bootloader；匹配原厂 `_162` 的完整 OTA、boot.img、vmlinux 仍未取得。**
