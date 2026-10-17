@@ -8,6 +8,14 @@
 - Windows 用户可以运行 [只读 AVB ADB 采集脚本](../tools/p780-avb-readonly.ps1) 补齐可见的公钥摘要属性、分区软链接、块设备权限及动态分区映射；结果先检查是否有敏感信息再分享。该脚本不会读取 `/dev/block` 内容。
 - 未来获得同版本镜像后，使用 AOSP `avbtool info_image`、`calculate_vbmeta_digest` 校验与实机 digest 是否匹配，并以 NCC Group `test_avb_key` 辅助识别已知测试公钥。**无原始 VBMeta 时不要凭 digest 反推密钥或试刷。**
 
+## 最新只读取证阶段（2026-10-18 第三轮）
+
+- `vbmeta.public_key_digest` 空；`vbmeta.avb_version=1.0`（Bootloader）与 `avb_version=1.1`（Android）来自不同组件；`veritymode=enforcing`。
+- `vbmeta_b` 和 `vbmeta_system_b` 原始块设备权限为 `root:root 0600`，当前非 root Shell 无法直接提取；不尝试越权取镜像。
+- B 槽逻辑分区以及五份 dm-verity 映射已经观察到，`system_b-cow` 是 OTA/COW 候选线索，**不要推断更新仍在进行或 AVB 可被绕过**。
+- 下一轮仅核对 `ro.virtual_ab.enabled`、`ro.virtual_ab.compression.enabled`、`ro.boot.dynamic_partitions`、`ro.boot.vbmeta.device`、当前活动槽与 `system_b-cow` 软链接。完整清单见 [AVB 取证专题](research/avb-live-baseline-20261018.md)。
+- **仍最优先取得匹配 `_162` 的可信原厂 VBMeta/OTA**；此类现场映射不是原厂签名与链式描述符的替代品。
+
 ## 值得重启研究的新证据
 
 | 新证据 | 先做什么 | 仍需注意的边界 |
