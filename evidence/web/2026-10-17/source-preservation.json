@@ -1,0 +1,81 @@
+{
+  "captured_at": "2026-10-17T02:14:02Z",
+  "research_baseline": "035b2fb60103c16fdd3e6fdc2cf405e6bfd79485",
+  "archive": {
+    "filename": "P780-watch-20261017T0214Z.zip",
+    "library_file_id": "libfile_ed266aef5c8c8191a7bc77280c811ae8",
+    "size_bytes": 1124122,
+    "sha256": "a7b0af9b906de870c22867a55f68e293e2a855ca7399030fd8ae8544f1ba8f40",
+    "contents": "Five downloaded primary-source originals, per-file manifest, catalog text extraction and run record."
+  },
+  "resources": [
+    {
+      "filename": "avb-paper.pdf",
+      "url": "https://www.android-device-security.org/publications/2025-leierzopf-spices/Leierzopf_2025_SPICES_AVBTestKeyInTheWild.pdf",
+      "retrieved_at": "2026-10-17T02:14:02.309443+00:00",
+      "status": 200,
+      "content_type": "application/pdf",
+      "final_url": "https://www.android-device-security.org/publications/2025-leierzopf-spices/Leierzopf_2025_SPICES_AVBTestKeyInTheWild.pdf",
+      "size_bytes": 119797,
+      "sha256": "b7dc5c209707c2165f9cf7eb667a411441af4219c75dd9de310e00240e00f42b",
+      "saved": true
+    },
+    {
+      "filename": "jvn-ja.html",
+      "url": "https://jvn.jp/jp/JVN47427200/",
+      "retrieved_at": "2026-10-17T02:14:02.310364+00:00",
+      "status": 200,
+      "content_type": "text/html",
+      "final_url": "https://jvn.jp/jp/JVN47427200/",
+      "size_bytes": 13114,
+      "sha256": "9a3d416256ad638c1008f7f41448af2544ef410a5a1df712794155592703ee9f",
+      "saved": true
+    },
+    {
+      "filename": "jvn-en.html",
+      "url": "https://jvn.jp/en/jp/JVN47427200/",
+      "retrieved_at": "2026-10-17T02:14:02.310917+00:00",
+      "status": 200,
+      "content_type": "text/html",
+      "final_url": "https://jvn.jp/en/jp/JVN47427200/",
+      "size_bytes": 11654,
+      "sha256": "ee6a3a7427a587eba565e07e05580b96c8609de745950a5fc172fad2053af511",
+      "saved": true
+    },
+    {
+      "filename": "rakuten-support.html",
+      "url": "https://network.mobile.rakuten.co.jp/product/smartphone/rakuten-hand-5g/support/index.html",
+      "retrieved_at": "2026-10-17T02:14:02.311423+00:00",
+      "status": 200,
+      "content_type": "text/html;charset=utf-8",
+      "final_url": "https://network.mobile.rakuten.co.jp/product/smartphone/rakuten-hand-5g/support/index.html",
+      "size_bytes": 63430,
+      "sha256": "a6d0bfea8182160367e8a25ea91bcd2edef88ff721d1d77d78a7ded165e82d8f",
+      "saved": true
+    },
+    {
+      "filename": "fomalhaut-catalog-202606.pdf",
+      "url": "https://fomalhaut.co.jp/wp-content/uploads/2026/06/0000-List_Schedule_Master2606.pdf",
+      "retrieved_at": "2026-10-17T02:14:02.312329+00:00",
+      "status": 200,
+      "content_type": "application/pdf",
+      "final_url": "https://fomalhaut.co.jp/wp-content/uploads/2026/06/0000-List_Schedule_Master2606.pdf",
+      "size_bytes": 861373,
+      "sha256": "308de4cb1aeaa0a0b248fd63c552b4fb881798418a042ed226637f3b7faf963e",
+      "saved": true
+    }
+  ],
+  "result": "Original-source preservation only. No new verified _162 firmware, locked-state P780 write path, matching loader or Root/BL result. Research priorities and device status unchanged.",
+  "upstream": {
+    "repository": "TinnoOSS/P780",
+    "branch": "master",
+    "commit": "20c26c7658cb5273cc71b10c3704b445b0efbe6b",
+    "releases": []
+  },
+  "limitations": [
+    "4pda direct open returned HTTP 403; Reddit direct open DisabledError; attachments not verified.",
+    "Search coverage is incomplete; failure to find is not proof of absence."
+  ],
+  "notifications_sent": [],
+  "human_action_required": false
+}
