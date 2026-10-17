@@ -1,9 +1,10 @@
 # 当前离线工具
 
-这些程序在工作目录读取文件，不连接手机。研究输入和边界见 [文档导航](../docs/README.md)。历史设备清理脚本另存 [archive/scripts](../archive/scripts)，会修改手机状态。
+绝大多数程序在工作目录读取文件、不连接手机；**`p780-avb-readonly.ps1` 为例外**，它通过已授权 ADB 执行只读属性查询与分区名称枚举，不读取分区镜像也不更改设备。研究输入和边界见 [文档导航](../docs/README.md)。历史设备清理脚本另存 [archive/scripts](../archive/scripts)，会修改手机状态。
 
 | 文件 | 用途 |
 |---|---|
+| [p780-avb-readonly.ps1](p780-avb-readonly.ps1) | Windows PowerShell / ADB 白名单 AVB 属性与分区软链接只读采集；参见 [2026-10-18 AVB 基线](../docs/research/avb-live-baseline-20261018.md) |
 | [verify_repository.py](verify_repository.py) | 全量相对路径链接、Python/JSON 格式、Journey 原件/视图与保留迁移 Blob 身份检查 |
 | [summarize_config.py](summarize_config.py) | 原始/求解/编译后配置差异 |
 | [audit_missing_config.py](audit_missing_config.py) | 缺失 CONFIG 符号的固定源码引用扫描 |
