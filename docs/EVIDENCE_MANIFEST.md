@@ -1,5 +1,11 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 DSU 第七轮：Google 508B 主索引已完成字节级验证
+
+- 机主 Windows PowerShell 通过 `Invoke-WebRequest` 从 `https://dl.google.com/developers/android/gsi/gsi-src.json` 取得 `p780-dsu-catalog.json`，`Get-Item` 为 **508 bytes**，`Get-FileHash -Algorithm SHA256` 为 `0A1970ABFCEB6BF3962177881B255E6AF9D4F43903AAC3BA9AEF2C1E5B4A2D09`；本聊天实际上传了 508B 文件，助手在运行环境重新读取、解析原始 bytes，并独立 SHA-256 完全一致。主文件**不是本机 P780 HTTP 抓包**。
+- JSON 只有6条 Google `include`：`rvc/sc/tm/udc/vic/baklava` 下各自 `gsi-dsc.json`。主文件不含 `images`，因此无法由此确定截图里两组 GSI 的实际 `vndk`、`pubkey`、`os_version` 或下载 URI。原件当前在用户本机与本聊天附件，**Git 中仅记录 SHA 和公开 URL**，没有保存可能关联设备的日志。
+- 当前工具环境无法直接从 Google 下载六份子目录 JSON，故用户可用当前聊天提供的标准库 Python 脚本在 Windows 上获取**仅公开小 JSON 元数据**；脚本仅通过离线模拟测试，尚未上机联机验证，输出预期为 `p780-dsu-catalog-detail.zip`，不请求实际 GSI ZIP，也不调用 ADB。待用户上传真实元数据后再进一步核验。专题：[DSU 第七轮](research/p780-dsu-locked-gsi-20261018.md)。
+
 ## 2026-10-18 DSU 第六轮：Treble 和 Vendor linker 隔离的直接实机证据
 
 - 机主第三方 Treble Check **截图**显示 Project Treble 支持、VNDK 30、A/B 无缝更新、64-bit ARM、System-as-root。截图只在当前对话内查看，**未保存入 Git 或当作底层源码证据**。
