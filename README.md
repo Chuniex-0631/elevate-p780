@@ -1,6 +1,6 @@
 # Rakuten Hand 5G / TINNO P780 研究档案
 
-**2026-10-18 DSU 第七轮：** P780 已具备实机确认的 Treble、Vendor linker 隔离、VNDK30、ARM64；原厂 DSU 安装器也已恢复。机主在 Windows 下载 Google 官方 DSU 主目录 `gsi-src.json`（508B），助手对上传原件再次计算 SHA-256，匹配 `0A1970ABFCEB6BF3962177881B255E6AF9D4F43903AAC3BA9AEF2C1E5B4A2D09`。文件只有六个 `rvc/sc/tm/udc/vic/baklava` JSON `include`，**没有具体镜像 vndk/pubkey 字段**；下一步 PC 只读取子 JSON，**未下载/安装 GSI、未 Root 或解锁 BL**。[DSU 专项](docs/research/p780-dsu-locked-gsi-20261018.md)、[现行任务](docs/NEXT_STEPS.md)。
+**2026-10-18 DSU 第八轮：** 用户取得 Google DSU 主索引和六个子目录原始 JSON，ZIP 4073B、SHA-256 `ad732d61aa7751aeaa6f2a148e3a1998aeee645beb5fe3f344fff98d9ca74c74`，24条公开镜像记录均已在本地校验。真机 DSU Loader 四项分别来自 Google Android15 `BP1A` 两项及 Android16 **`CP11`** 两项（纠正旧脚本 `CPI1`）。**六份目录所有24条均没有 `vndk` 与 `pubkey` 字段：菜单显示跳过了显式 VNDK30 与 GSI公钥预检查，不能据此宣称 GSI签名受信或系统可启动。** P780 实机 Treble/Vendor linker隔离、ARM64、VNDK30 已确认，DSU安装器已恢复，但**未下载/安装GSI、未Root或解锁**。[第八轮独立报告](docs/research/p780-dsu-gsi-catalog-verified-20261018.md) · [DSU主专题](docs/research/p780-dsu-locked-gsi-20261018.md) · [下一步](docs/NEXT_STEPS.md)。
 
 **2026-10-18 重大实机验证：P780 `_162` 的 Android Key Attestation 由 Google 官方硬件证明根签署，TEE 证明已核验；`verifiedBootKey` 精确匹配 AOSP `testkey_rsa4096_pub.pem` 经 AVB 专用编码得到的 SHA-256。`verifiedBootHash` 同样精确匹配既有本机 VBMeta Digest。** 这将官方已公布的默认测试钥匙漏洞升级为对本机公钥身份的独立密码学证明，但**尚无 Root、Bootloader 解锁或 locked 写入通道**。[脱敏验证与证据](docs/research/avb-attestation-confirmed-20261018.md)。原始 `.p7b` 未上传仓库。
 
