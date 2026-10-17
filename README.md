@@ -6,7 +6,7 @@
 
 **2026-10-14 新增官方漏洞编号：** JVN 确认 Rakuten Hand 5G **全部版本**的 AVB 使用已知 AOSP 测试钥匙，登记为 [JVN#47427200](https://jvn.jp/jp/JVN47427200/) / [CVE-2026-107153](https://www.cve.org/CVERecord?id=CVE-2026-107153)。这是固件信任链的实证，但公开资料仍未给出 P780 在锁定状态下的具体写入通道，不能改写为已 Root/已解锁。
 
-**2026-10-18 新增实机 AVB 基线：** 用户 ADB 确认 `green / locked / _b` 及 `ro.boot.vbmeta.digest`；[只读记录与离线核验方案](docs/research/avb-live-baseline-20261018.md) 已更新，新增 [Windows 只读采集工具](tools/p780-avb-readonly.ps1)，未改变 Root/BL 状态。
+**2026-10-18 新增实机 AVB 基线：** 用户 ADB 确认 `green / locked / _b`、`sha256`、VBMeta 总长度 `7744`、AVB `1.1` 以及 `vbmeta_b` / `vbmeta_system_b` 的双槽分区；[只读记录与离线核验方案](docs/research/avb-live-baseline-20261018.md) 已更新，新增 [Windows 只读采集工具](tools/p780-avb-readonly.ps1)，未改变 Root/BL 状态。
 
 **2026-10-17 XDA 正文补档：** 作者报告测试 ZIP 的 Recovery 验签失败；缺少原始包、签名命令和日志，不能确定信任钥匙或推翻 AVB 公告。已关闭正文获取提醒，见 [专题补充](docs/research/firmware-advisory-20260928.md)。
 
@@ -52,6 +52,6 @@
 
 本仓库保存了可回收的核心研究证据，**未声称所有历史文件均已迁入**。原始 framework ZIP/JAR 仍未入 Git；仓库有其 SHA、方法字节和提取分析。Journey 小配置 ZIP 已以可还原的 Base64 保存。详见 [资产清单](docs/EVIDENCE_MANIFEST.md)。
 
-**仓库可见性风险：2026-10-18 GitHub API 返回 Public，与此前 Private 文案不符；现有原始系统日志未经完整脱敏，应尽快限制仓库访问并审核 Git 历史/所有 refs。** [隐私与安全说明](SECURITY.md)：restricted 是分类标签，不能提供目录级访问控制；原始系统日志和 Git 历史尚未完成发布级脱敏。
+**仓库可见性：2026-10-18 机主已改回 Private，GitHub API 再次确认 `visibility=private`。此前 Public 状态期间的潜在访问无法撤回，须继续审阅 Git 历史/所有 refs 和未经脱敏的系统日志。** [隐私与安全说明](SECURITY.md)：restricted 是分类标签，不能提供目录级访问控制；原始系统日志和 Git 历史尚未完成发布级脱敏。
 
 每个可核验阶段同步专题、状态、证据、说明和 [维护日志](CHANGELOG.md)，修订过时结论、统一索引，必要时归位与去重。例行监测无实质新增时不制造提交。出现有效新线索时通知机主并同步经核验的来源与结论。
