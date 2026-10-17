@@ -1,5 +1,11 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 DSU 第二轮实机证据 + 历史 debloat 交叉线索
+
+- 机主确认 **开发者选项中有 DSU Loader**，之前“系统 UI 未找到”的说法已被实机证据纠正。`pm list packages -u | findstr /I "dynsystem gsi"` 得到 `package:com.android.dynsystem`；`/system/etc/init/gsid.rc` 为 `-rw-r--r-- root root`，590 字节；`/metadata/gsi` 和 `/metadata/gsi/dsu` 均报 Permission denied；`getprop | findstr /I "gsid dsu gsi"` 无匹配。
+- Android 官方文档明确 `pm list packages -u` 会同时列举 **uninstalled packages**；因此上述包记录与以前 `pm path com.android.dynsystem` 返回空不矛盾，本机 user0 安装状态仍待检查。AOSP Android 11 `gsid.rc` 为 root/system `0771` 创建 `/metadata/gsi` 目录，拒绝普通 shell 访问属于权限预期，不能由此证明目录内容。
+- [历史应用精简档案](research/apps-and-debloat.md) 证实机主此前做过 `pm uninstall --user 0`；[完整精简脚本](../archive/scripts/hand5g_debloat_p780.ps1) 和 [日用精简脚本](../archive/scripts/hand5g_debloat_daily_phone.ps1) 均把 `com.android.dynsystem` 列为**拟卸载目标**；[phase3 已安装名单](../evidence/restricted/adb/phase3/hand5g_packages_installed_phase3.txt) 又含该包。脚本出现并不是确切执行日志，故只能评估为“可能曾被卸载”；未改变设备，也未将包恢复。新专题 [DSU 证据与核查](research/p780-dsu-locked-gsi-20261018.md)。
+
 ## 2026-10-18 DSU 第一轮六项实机只读取证
 
 - 机主在本聊天提交 PowerShell 原始输出（无独立 TXT 附件）：`pm path com.android.dynsystem` 空；`/system/bin/gsi_tool` 存在 47,016B、权限 `-rwxr-xr-x root shell`；`/system/bin/gsid` 访问 `Permission denied`；`init.svc.gsid`、`persist.sys.fflag.override.settings_dynamic_system`、`ro.gsid.image_running` 均为空；`/avb/q-gsi.avbpubkey`、`r-gsi`、`s-gsi` 在当前文件系统均不可见（No such file）。
