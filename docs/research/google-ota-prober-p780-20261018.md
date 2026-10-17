@@ -51,3 +51,7 @@ Inspect `avb=...`, `logical`, `first_stage_mount`, and `slotselect` to infer dec
 2. Read only the two discovered fstab files; continue independent hardware Key Attestation exploration.
 3. If a verified P780 OTA appears, analyze only offline `metadata`/`payload.bin`/`vbmeta`; distinguish full vs incremental and no-write vs installation.
 4. Original `_162` images and a verified locked-state write channel remain absent. Root and unlock not achieved.
+
+## GUI calling-convention pitfall (source observation)
+
+The current upstream `gui.py` calls `prober.checkin(fingerprint.value, model.value, serial.value, imei.value, timestamp.value)` positionally, but `probe.py` defines `checkin(fingerprint, model=None, debug=False, serial=..., imei=..., timestamp=0)`. Thus GUI fields are shifted: GUI serial enters `debug`, GUI IMEI enters `serial`, GUI timestamp enters `imei`, and `timestamp` stays at the default. This is an **unverified runtime bug inferred from the directly inspected source**, not a test run. Prefer the documented CLI with a quoted fingerprint for the first P780 query, and leave real identifying values out. Do not infer failure from GUI behavior.
