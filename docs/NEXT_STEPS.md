@@ -8,28 +8,24 @@
 2. **Fstab 两份已读取**：`system/system_ext/product` 使用 `avb=vbmeta_system`；`vendor/odm` 使用默认 `avb`。`system` 额外包含 `/avb/q-gsi.avbpubkey` 等三份 Google 开发 GSI 公钥文件路径候选。[Fstab 实测](research/p780-fstab-avb-20261018.md)。但仍未读取真实 `vbmeta_b`、`vbmeta_system_b` 或 chain descriptors。
 3. **已完成但没有结果的尝试**：Fastboot 常见 OEM 解锁指令均为 unknown command；EDL Sahara 可识别但没有兼容且授权的 Firehose；Google OTA Prober 对当前 `264` fingerprint 无 `update_url`。不再重复这些请求；OTA 支线暂缓。对应 [启动/EDL](research/device-and-boot.md)、[OTA](research/google-ota-prober-p780-20261018.md)。
 
-## 路线 A：首次 DSU 下载后重启返回原厂系统——进入非破坏性诊断
+## 路线 A：DSU 已安装、one-shot 重启后被禁用；下一步只读内核启动缓冲区（第十一轮）
 
-**机主在 P780 实际观察：** GSI 下载完成后 Settings/DSU 通知提示重启进入 DSU。至少两次由机主**手动点击 Restart**触发重启，但每次都返回原厂 Android 11，并保留同一提示。**这不是自主连续重启的 bootloop，也不是 Android 15 已启动成功。** 原厂系统现在仍能开机。镜像下载内容的确切 `BP1A` ID 需由通知/日志确认（此前推荐值不能冒充当轮确认）。
+机主完成第一次 Android15 DSU 试验：下载后通知提示 Restart，但人工点击两次均返回原厂系统；本轮进一步证实 `gsi_tool status`→两行 **`installed`/`disabled`**，当前 `ro.boot.slot_suffix=_b`，`ro.gsid.image_running` 为空，`/sys/fs/pstore` 普通 shell Permission denied。**原厂Android11可正常开机，Android15未观察到运行。**
 
-**下一步停止线**：立即停止重复重启，不点击 Discard（先保留临时镜像/启动证据），不执行任何 `gsi_tool enable/disable/wipe`、Fastboot/EDL 强制刷写或安装其他镜像。目前已有足够实验现象，但**尚未拿到 DSU backend 状态或早期启动日志**，不可直接将原因判为 GSI AVB 签名、VNDK30或 Vendor HAL 错误。
+机主上传 `p780-dsu-after-reboot.log`（~4.1 MB UTF-16LE、15455行，SHA256 `955c9775371658b36d59e749c648149193a05746a72d26807f09a3f97de6e970`）与筛选文件（678B/3行，SHA256 `333d7ac1de09d46f4a77a3611842a38d47c0ec14819d2b2b23d6ebfb2a74cf76`）。**Logcat 实际出现** `DynSystemInstallationService onStartCommand NOTIFY_IF_IN_USE`、`DynamicSystemService: isInstalled(): true` 和通知入队，直接支持安装状态存在；未出现能定位早期 AVB/mapping/HAL 错误的日志。完整原日志**不上传GitHub**。[第十一轮日志证据与精确解释](research/p780-dsu-stock-fallback-20261018.md)。
 
-Windows PowerShell 当前原厂系统状态下先提取日志，再做状态查询：
+**AOSP 源码决定性的语义校正**：Android11 [libgsi::CanBootIntoGsi](https://android.googlesource.com/platform/system/gsid/+/refs/tags/android-platform-11.0.0_r16/libgsi.cpp) 在遇到 one-shot 标志时，**先把安装状态写成disabled（影响下一次引导）然后允许本次启动继续**；Android11 [DynamicSystemInstallationService](https://android.googlesource.com/platform/frameworks/base/+/978ecf991a9a/packages/DynamicSystemInstallationService/src/com/android/dynsystem/DynamicSystemInstallationService.java) 默认 one-shot。故**重启后 status=disabled不能视作通知按钮没启用成功**；它完全符合 first-stage 消费一次启动机会后映像映射/AVB/后续 init 失败并回原系统，但当前没有直接 first-stage 证据，也保留其它状态清除来源可能。
+
+后续若需要，可仅执行以下**无需重启、不修改状态**的查询，失败/权限拒绝原样记录即可：
 
 ```powershell
-adb logcat -b all -d -v threadtime -t 15000 > ".\p780-dsu-after-reboot.log"
-Select-String -Path ".\p780-dsu-after-reboot.log" -Pattern 'dsu|gsid|gsi|DynamicSystem|first_stage_mount|avb|verity|liblp|rollback|ImageManager' | Set-Content ".\p780-dsu-filtered.txt"
-adb shell getprop ro.gsid.image_running
-adb shell getprop ro.boot.slot_suffix
-adb shell ls -l /sys/fs/pstore
-adb shell gsi_tool status
+adb shell logcat -g
+adb shell logcat -b kernel -d -v threadtime | Select-String -Pattern 'DSU|GSI|first_stage|AVB|verity|mapped|rollback|init'
+adb shell getprop ro.boot.bootreason
+adb shell getprop sys.boot.reason
 ```
 
-**隐私和限制**：完整 logcat 可能包含设备标识/隐私，先仅上传 `p780-dsu-filtered.txt` 和最后四条终端输出；避免上传完整证书、bugreport 或没有脱敏的完整日志。重启通常重建 logcat；前次 DSU early init 错误有可能已经不可读。`gsi_tool status` 可按需启动 gsid，所以排在保存日志之后。只读诊断会帮助区分 installed/enabled、installed/disabled、normal、权限错误及从 kernel/pstore 是否存在早期证据。
-
-**AOSP 实现关键路径**：Android11 `gsi_tool.cpp::Status` 查询 `isGsiRunning/isGsiInstalled/isGsiEnabled`；`first_stage_mount.cpp::UseDsuIfPresent()` 若 `CanBootIntoGsi` 条件不足会 “proceeding with normal boot”，映像 MapAllImages 失败也会返回。因此 **DSU 按钮存在与 early boot 能成功切换，是两个独立状态**。后续针对具体日志分析，不为再次试错强制打开 sticky mode。
-
-本轮 [首次返回原厂系统/重复提示诊断专题](research/p780-dsu-stock-fallback-20261018.md) 记录完整分层假说、取证命令与风险边界。
+当前明确**不**建议再次点击Restart、`gsi_tool enable`（默认sticky）、手动编辑 `/metadata/gsi`、`gsi_tool wipe`、安装Android16或重新下载镜像。`/sys/fs/pstore` 已权限拒绝，不能以用户未提供pstore为由要求Root或其他绕权。可能需要额外恢复风险评估后才设计下一次**受控**的启动前后日志采集，不应因单次状态disabled自行断言签名不匹配。
 ## 主要路线 B：真正阻挡永久 Root / 自定义 Boot 的环节
 
 **B1. 只读离线镜像发现**：仅考虑机型为 P780 且有原始构建编号、文件哈希与可信出处的 `vbmeta[_system]`, `boot`, `vendor_boot`, `dtbo`，包括各官方历史版本，但必须注明与 `_162` 的差异。得到镜像后用 AOSP `avbtool info_image` / `verify_image` 分析主 vbmeta→system chain descriptors、rollback indices、boot 分区是否 AVB hash footer；不能从 fstab 或 `7744` 字节 VBMeta 总大小反推出真实描述符。**暂不继续批量搜/探测 OTA。**
