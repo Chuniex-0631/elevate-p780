@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — P780 硬件证明精确确认 AOSP AVB RSA4096 默认测试密钥（关键突破）
+
+- 机主从真实 P780 `_162` 通过 KeyAttestation 导出 3475B `.p7b`；在独立电脑 Python 环境解析 4 张 X.509 证书和 Key Attestation v3 扩展；Google 2019 硬件证明 Root DER 字节完全相同，Root 自签及 Root→CA1→CA2→Leaf 各级签名验证通过，TEE 与 Keymaster 安全级别均 TrustedEnvironment。在线吊销状态尚未做生产级完整校验。
+- 取得 `deviceLocked=true`、`verifiedBootState=Verified`、`verifiedBootHash=33ee3a6cf5215befd8a4f953382bd746d12efc37f6d4116c0c9b68a7661f95f2`，与此前 ADB VBMeta Digest **逐字节一致**。
+- **最重要发现**：`verifiedBootKey=7728e30f50bfa5cea165f473175a08803f6a8346642b5aa10913e9d9e6defef6`，完全等于 AOSP RSA4096 `testkey_rsa4096_pub.pem` 使用官方 `avbtool.py` RSAKey 编码生成的 **1032 字节 AVB 公钥 blob 的 SHA-256**。SPKI DER、PKCS1 DER 和模数格式哈希均不相同；已确定正确编码和本机根公钥身份。
+- 新建 [脱敏验证报告](docs/research/avb-attestation-confirmed-20261018.md)，同步 README、STATUS、NEXT_STEPS、证据清单与早期假说专题。没有将设备证书原件上传 Git；**没有 Root、解锁或已证实 P780 locked 写入渠道**。后续仍需原厂 VBMeta/chain descriptors/rollback index 和有真实证据的写入手段。
+
 ## 2026-10-18 — 暂停 OTA，聚焦硬件 Key Attestation（实机待测）
 
 - 机主将 Google OTA 探测支线暂缓，研究转向不依赖原厂固件与 OEM 回复的 Android Keystore `RootOfTrust`。
