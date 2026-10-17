@@ -1,5 +1,12 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 第十五轮：Google Android15 GSI 内嵌Q Developer AVB公钥、generic vbmeta与实际设备Root区别
+
+- 用户Windows工具报告Google官方ZIP `aosp_arm64-exp-BP1A.250405.005.C1-13151952-61d23231.zip` 完整SHA256校验通过，预期=`61d232315ad773bd4820c76c175efe6a61cd8a9a257508db588032be213e15f7`；机主上传 `p780-gsi15-avb-report.txt`、`system.img.avb-info.txt`、`system.img.avbpubkey`、`vbmeta.img.avb-info.txt`、`vbmeta.img.avbpubkey`，原始文件各自SHA与长度在 [第十五轮核验](research/p780-dsu-android15-avb-key-verified-20261018.md)。**助手独立重算了已上传公钥二进制哈希，但未重复下载多GB ZIP，不将 `info_image` 冒充 `verify_image` 签名完整性验证。**
+- `system.img` SHA256_RSA4096 AVB公钥原件1032B，SHA1=`1ffb1af796b18ebf40d18faed213f686720f73f2`，SHA256=`e53f344beb2646b49651ea8dd336dbe75117183e96ef34beed4b367a4a0ae925`，**与AOSP公开 `q-developer-gsi.avbpubkey`身份一致**；AVB rollback index=1743811200（2025-04-05 UTC），system fingerprint `Android/aosp_arm64/generic_arm64:15/BP1A.250405.005.C1/13151952:user/release-keys`。不同于P780 Fstab普通 `q-gsi`公钥（公开文件SHA256 `07b373...`），但P780第一阶段实际ramdisk是否额外包含developer公钥仍未知。
+- 同ZIP `vbmeta.img` 嵌入公钥SHA256=`7728e30f50bfa5cea165f473175a08803f6a8346642b5aa10913e9d9e6defef6`，与此前P780 TEE attested test RSA4096 boot root key完全一致，**但此generic `vbmeta.img`的 Flags=2，AOSP明确定义 `VERIFICATION_DISABLED`**。链式 `system` 描述符公钥SHA1=`cdbb77177f731920bbe0a0f94f84d9038ae0617d` 是AOSP RSA2048 testkey，**与同ZIP `system.img` Q Developer SHA1=`1ffb...` 不同**。故vbmeta根匹配完全不能说明Android15 system能被Locked P780 DSU接受；也没有证据说明此ZIP generic vbmeta已被手机DSU加载。
+- **结果等级：** 镜像内嵌公钥身份已实证，P780的AVB强制验签拒绝没有日志/匹配ramdisk原件支持，首次DSU单次启动回原厂也可能在GetActiveDsu/MapAllImages提前早退。设备未启动GSI、未Root/解锁，下一步以真实 `_162` boot/ramdisk key收集与离线first-stage配置比较为主。
+
 ## 2026-10-18 DSU 新核验：Locked AVB 的 Developer GSI 公钥信任要求
 
 - 官方 [AOSP DSU Verify Boot](https://source.android.com/docs/core/ota/dynamic-system-updates#verify-boot) 指出厂商可以在 **LOCKED** 状态且 AVB 不禁用时启动 Developer GSI，需要在 first-stage ramdisk 集成 `developer_gsi_keys.mk`。故“DSU无法启动一定是没解锁BL”是错误命题；**Locked设备拒绝未信任GSI签名**却是有源码支持的现实限制。
