@@ -8,17 +8,17 @@
 2. **Fstab 两份已读取**：`system/system_ext/product` 使用 `avb=vbmeta_system`；`vendor/odm` 使用默认 `avb`。`system` 额外包含 `/avb/q-gsi.avbpubkey` 等三份 Google 开发 GSI 公钥文件路径候选。[Fstab 实测](research/p780-fstab-avb-20261018.md)。但仍未读取真实 `vbmeta_b`、`vbmeta_system_b` 或 chain descriptors。
 3. **已完成但没有结果的尝试**：Fastboot 常见 OEM 解锁指令均为 unknown command；EDL Sahara 可识别但没有兼容且授权的 Firehose；Google OTA Prober 对当前 `264` fingerprint 无 `update_url`。不再重复这些请求；OTA 支线暂缓。对应 [启动/EDL](research/device-and-boot.md)、[OTA](research/google-ota-prober-p780-20261018.md)。
 
-## 路线 A：Google DSU 信任链离线源码验证已进展至“实机密钥仍待取证”（第九轮）
+## 路线 A：机主同意 DSU 首次实机试验，先仅测试安装（第十轮待执行）
 
-**已完成**：六份 Google 镜像目录/24条记录已核对，全部未携带 JSON `vndk/pubkey` 预检字段；P780 已实机确认 DSU Loader、安装器恢复、Treble + vendor linker 隔离、ARM64/VNDK30/空间基本条件，但没有安装 GSI。
+用户明确希望开展真正 DSU 尝试，理由是其不覆盖原厂系统。**纠正风险边界**：AOSP DSU 的确用临时逻辑分区与独立 GSI userdata，不直接覆盖原厂 system/boot，但仍会在原设备 userdata 上分配文件、调用 Vendor HAL，Google 官方 Android15 GSI known issues 明确存在启动失败后可能需要 Recovery **恢复出厂**的情形，故不能宣称绝对无风险。
 
-**新结论**：[第九轮 AVB 信任链源码与六份公开钥匙 SHA-256 验证报告](research/p780-dsu-trust-chain-audit-20261018.md) 已将信任过程拆成：Settings JSON 初筛（不可信签名验收）→ 安装时从镜像 AVB Footer 可提取公钥并做撤销检查/可选辅助预检 → first-stage init 对已信任 GSI 公钥的实际验证。缺少 `pubkey` JSON 字段不等于签名缺失或启动时不验证。
+已在 [DSU 第一次实机操作协议](research/p780-dsu-first-trial-protocol-20261018.md) 记录备份要求、推荐镜像、两阶段停止线与恢复风险。**当前仍尚未实际安装或启动任何 GSI**，仅给机主可执行流程；还缺真实安装日志和设备回报。
 
-**必须纠正旧概念：** AOSP 存在 q/r/s **普通** GSI AVB keys 以及 q/r/s **Developer** GSI AVB keys 两套不同预编译文件。P780 fstab 明确引用普通 `q-gsi/r-gsi/s-gsi.avbpubkey`，**不是** `q-developer/r-developer/s-developer`。六份 AOSP 公共源码镜像 AVB keys（1032B RSA4096）已独立做 SHA-256，它们彼此不同且都不等于 P780 hardware attestation 的主根 AVB SHA256 `7728e30f...6defef6`。这些是**公开候选文件**，不是 P780 RAMDISK 直接读取的公钥，不应登记为“机主实机已拿到 q/r/s bytes”。
+**第一候选**：Android 15 QPR2 **GSI ARM64 / 无 GMS**，`arm64-exp-BP1A.250405.005.C1-13151952-61d23231`（用户截图第1项），Google 官方 ZIP SHA256 `61d232315ad773bd4820c76c175efe6a61cd8a9a257508db588032be213e15f7`（仅官方预期值，未下载验证）。选择更低版本差距和不带 GMS 主要为减轻测试依赖，不保证签名/设备兼容。
 
-**真正仍缺的关键证据**：Google Android15 `BP1A.250405.005.C1` / Android16 `CP11.251209.009.A1` 对应具体 `system.img` 中的实际 AVB 公钥标识；设备引导 ramdisk 真正加载的密钥，以及受信匹配、rollback/Weaver/Gatekeeper/HAL 和启动成功记录。目前查阅 Google 官方 GSI 发布页已获得未来校验 ZIP 时可用的官方 SHA256，**并未下载 ZIP**。
+**当前下一步**：机主先备份/确认数据可以清除，保持网络/电量，打开开发者选项 DSU Loader，选择第一项且在条款确认后开始下载/安装。**这是一次写入 /data 的实验，已经不再属于只读取证。** 若报错提供原始错误和脱敏通知；若出现 **Restart / Discard** 通知，**先不点击 Restart**，传回截图/进度再决定是否开启第2阶段 GSI 启动。不要执行 `gsi_tool enable`、刷写 boot/vbmeta、尝试 EDL/fastboot。
 
-**下一步建议**：优先继续离线公开源码与是否有小型 GSI 签名元数据/公开 PKMD，而不是仅为确认签名去下载 GB 级 ZIP 或对 LOCKED 设备启动未知 GSI。Android15/16 Google 官方发布说明警告 GSI 失败可能要求 Recovery 清空数据。因此**在实际验证可恢复方案与获得机主独立授权前，不执行 GSI 下载/安装/重启**。此通道即使将来成功启动，也不能等价于 P780 原厂 `boot/vbmeta` 的写入能力、Root 或 Bootloader 解锁。
+**第二阶段留待另行确认**：只有安装成功、备份完成且机主接受可能 Recovery wipe 的后果后才重启到 GSI；成功时用 DSU 通知返回原系统，失败则可能需要 Recovery/恢复出厂，不能保证自动无损回退。此路线不等于 AVB Root 弱密钥被利用或 Bootloader 解锁。
 ## 主要路线 B：真正阻挡永久 Root / 自定义 Boot 的环节
 
 **B1. 只读离线镜像发现**：仅考虑机型为 P780 且有原始构建编号、文件哈希与可信出处的 `vbmeta[_system]`, `boot`, `vendor_boot`, `dtbo`，包括各官方历史版本，但必须注明与 `_162` 的差异。得到镜像后用 AOSP `avbtool info_image` / `verify_image` 分析主 vbmeta→system chain descriptors、rollback indices、boot 分区是否 AVB hash footer；不能从 fstab 或 `7744` 字节 VBMeta 总大小反推出真实描述符。**暂不继续批量搜/探测 OTA。**
