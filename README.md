@@ -1,6 +1,6 @@
 # Rakuten Hand 5G / TINNO P780 研究档案
 
-**2026-10-18 DSU 第八轮：** 用户取得 Google DSU 主索引和六个子目录原始 JSON，ZIP 4073B、SHA-256 `ad732d61aa7751aeaa6f2a148e3a1998aeee645beb5fe3f344fff98d9ca74c74`，24条公开镜像记录均已在本地校验。真机 DSU Loader 四项分别来自 Google Android15 `BP1A` 两项及 Android16 **`CP11`** 两项（纠正旧脚本 `CPI1`）。**六份目录所有24条均没有 `vndk` 与 `pubkey` 字段：菜单显示跳过了显式 VNDK30 与 GSI公钥预检查，不能据此宣称 GSI签名受信或系统可启动。** P780 实机 Treble/Vendor linker隔离、ARM64、VNDK30 已确认，DSU安装器已恢复，但**未下载/安装GSI、未Root或解锁**。[第八轮独立报告](docs/research/p780-dsu-gsi-catalog-verified-20261018.md) · [DSU主专题](docs/research/p780-dsu-locked-gsi-20261018.md) · [下一步](docs/NEXT_STEPS.md)。
+**2026-10-18 DSU 第九轮：** 已对 Google 六份 DSU 目录24项镜像完成独立核验，全部缺可选 `vndk/pubkey` 元数据；新从公开 AOSP Android11 源码分别获取并计算**普通 GSI q/r/s 与 Developer GSI q/r/s 六把 AVB RSA4096 公钥**（1032B）的 SHA-256，六者互异且均非 P780 已证实的 AVB 测试根公钥。P780 fstab 指向**普通 q/r/s GSI** 路径，而非 Developer-GSI。AOSP 源码确认 JSON 筛选与 first-stage **真实验签**分离；**设备 Ramdisk 原始公钥、Android15/16 镜像实际签名仍缺**。鉴于 Google 公布 GSI 启动失败可能需要擦除 userdata，目前不建议下载/安装。Bootloader 仍 LOCKED、无 Root。[第九轮信任链报告](docs/research/p780-dsu-trust-chain-audit-20261018.md) · [研究计划](docs/NEXT_STEPS.md)。
 
 **2026-10-18 重大实机验证：P780 `_162` 的 Android Key Attestation 由 Google 官方硬件证明根签署，TEE 证明已核验；`verifiedBootKey` 精确匹配 AOSP `testkey_rsa4096_pub.pem` 经 AVB 专用编码得到的 SHA-256。`verifiedBootHash` 同样精确匹配既有本机 VBMeta Digest。** 这将官方已公布的默认测试钥匙漏洞升级为对本机公钥身份的独立密码学证明，但**尚无 Root、Bootloader 解锁或 locked 写入通道**。[脱敏验证与证据](docs/research/avb-attestation-confirmed-20261018.md)。原始 `.p7b` 未上传仓库。
 
