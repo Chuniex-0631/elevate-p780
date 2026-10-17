@@ -18,6 +18,8 @@
 
 **2026-10-18 新的 AVB 取证方向：** 从 AOSP Keystore/CTS 发现普通应用可请求 `verifiedBootKey`（AVB 根公钥哈希）及可选 `verifiedBootHash`（可与已知 digest 核对），不必预先获得 `vbmeta_b.img`；另外可只读审计 fstab 的 `avb=vbmeta_system` 等挂载规则。这些只是**有官方依据但 P780 尚未实测的新路径**，不是已经 Root 或突破刷写权限。[交叉研究方案](docs/research/avb-attestation-alternative-20261018.md)。
 
+**2026-10-18 OTA 新线索：** 已审阅 [Google OTA Prober](https://github.com/tangalbert919/google-ota-prober) 的真实 Check-in 逻辑；发现同 TINNO OEM 的 Rakuten Mini C330 在公开 OTA 索引中存在经记录的 Google OTA 增量包、P710 有指纹记录。**P780 尚未证实使用该服务，也尚未运行实测或取得镜像。** 用户提供当前 P780 指纹 `Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys`，且只找到 `fstab.default` / `fstab.emmc` 而非 `fstab.qcom`。[专题](docs/research/google-ota-prober-p780-20261018.md)。
+
 ## 从哪里开始
 
 1. [当前状态](docs/STATUS.md)：已证实、候选结果与阻断点。
@@ -35,7 +37,7 @@
 | QAS / Mink / PFM / TEE | 部分许可与凭据调用链已定位，未连接到 OEM Unlock | [QAS/TEE/PFM](docs/research/qas-tee-pfm.md)、[系统 APK](docs/research/tee-system-apks.md) |
 | GhostLock | 旧源码模式与实机配置已核对；运行中漏洞状态未知，适配 BLOCKED | [GhostLock](docs/research/ghostlock.md) |
 | 内核候选构建 | 匹配 Clang11 可编译锁对象；两棵候选树 32 项采样布局一致，不能代替原厂 ABI | [配置与布局](docs/research/config-layout.md) |
-| 固件与 OTA | JVN 已确认全版本 AVB 使用 AOSP 测试钥匙；仍缺 P780 专用写入路径与 `_162` 原厂镜像，6 份历史日志未取得 payload | [安全公告](docs/research/firmware-advisory-20260928.md)、[固件](docs/research/firmware-ota.md)、[OTA 日志审计](docs/research/ota-log-audit.md)、[Attestation/fstab 新线索](docs/research/avb-attestation-alternative-20261018.md) |
+| 固件与 OTA | JVN 已确认全版本 AVB 使用 AOSP 测试钥匙；仍缺 P780 专用写入路径与 `_162` 原厂镜像，6 份历史日志未取得 payload | [安全公告](docs/research/firmware-advisory-20260928.md)、[固件](docs/research/firmware-ota.md)、[OTA 日志审计](docs/research/ota-log-audit.md)、[Attestation/fstab 新线索](docs/research/avb-attestation-alternative-20261018.md)、[Google OTA Prober 交叉评估](docs/research/google-ota-prober-p780-20261018.md) |
 | Journey 配置 | 版本 42 / 64 个策略键核对一致；静态消费者接入进程管理及 Service/Provider 限制，未发现 Root/OTA 链 | [Journey 审计](docs/research/journey-config.md) |
 | 应用清理 | 历史操作和不同日期包状态已归档，去预装脚本会修改设备 | [应用实验](docs/research/apps-and-debloat.md) |
 
