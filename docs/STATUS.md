@@ -24,7 +24,7 @@
 | Android Clang 11.0.2 `rtmutex.o` | **云端编译成功** | 已匹配实机编译器，非完整 `vmlinux`，非可刷写内核 |
 | 还原与出厂 `vmlinux` 一致的内核 | **未完成** | 原厂私有代码与构建身份未满足 |
 | JourneyConfigService | **静态与运行状态核对已完成** | vendor/XML/TCS 版本均 42；64 键一致；消费者静态定位进程管理与 Service/Provider 限制；未发现 OTA/Root 链 |
-| DSU/GSI 临时系统（LOCKED） | **GSID 实机确认 installed/disabled，原厂启动；one-shot 状态消耗符合 Android11 源码，早期失败点未明** | 首轮用户点击 Restart 两次均回 Android11。`gsi_tool status`→`installed` / `disabled`；日志 `DynamicSystemService: isInstalled(): true`、`NOTIFY_IF_IN_USE` 和通知入队；原始 logcat UTF-16LE 15455行 SHA `955c9775371658b36d59e749c648149193a05746a72d26807f09a3f97de6e970`（本机私有附件，未上传Git）。Android11 `libgsi::CanBootIntoGsi` 在 one-shot 模式下会提前写 `disabled`，故事后状态不是“未设置enable”证据；缺 first-stage / AVB / 映射日志，不能判定真实失败点。当前 pstore shell Permission denied，停用重复重启与 enable/wipe。[第十一轮诊断](research/p780-dsu-stock-fallback-20261018.md) |
+| DSU/GSI 临时系统（LOCKED） | **第十二轮实测专用重启 reason `reboot,dynsystem`，仅一次正常重启返回原厂；first-stage 回退疑似，根因未明** | 系统原厂 DSU Loader 下载安装后通知可重启，GSID `installed/disabled`，原厂日志 `isInstalled(): true`。机主观察 DSU Restart 只经历一次重启就返回原厂；`ro.boot.bootreason`、`sys.boot.reason` 均 `reboot,dynsystem`，证实 DSU 专用重启请求发出；kernel logcat 2MiB 缓冲区仅0B、查询无消息，pstore权限拒绝。AOSP `UseDsuIfPresent` 可因 active slot/MapAllImages/indicator 等失败直接继续原厂启动；one-shot 可预先禁用下一次启动。未证实 AVB 密钥冲突或具体失败点，无 Android15 启动、Root/解锁。[第十二轮专题](research/p780-dsu-stock-fallback-20261018.md) |
 | Root / Bootloader 解锁 / 刷机 | **均未达成** | 任何适配包不得宣称 Root 成功 |
 
 ## 2026-10-18：AVB 锁定状态下的实机基线（用户提供）
