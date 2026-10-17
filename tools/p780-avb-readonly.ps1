@@ -32,6 +32,10 @@ $properties = @(
     "ro.boot.vbmeta.size",
     "ro.boot.vbmeta.public_key_digest",
     "ro.boot.vbmeta.avb_version",
+    "ro.boot.vbmeta.device",
+    "ro.boot.dynamic_partitions",
+    "ro.virtual_ab.enabled",
+    "ro.virtual_ab.compression.enabled",
     "ro.boot.avb_version",
     "ro.boot.veritymode"
 )
