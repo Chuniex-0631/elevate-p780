@@ -1,6 +1,6 @@
 # 研究状态总表（更新：2026-10-18）
 
-当前研究进入 AVB 只读取证阶段，保留公开新线索监测；不涉及刷机、Root 或更改 Bootloader。读取入口见 [文档导航](README.md)，结构验收见 [全库整理](REPOSITORY_AUDIT.md)。
+2026-10-18 取得本机 P780 Key Attestation：**TEE / Google 根证书签名链核验通过，证实 AVB 默认测试公钥身份**，不再等待原厂镜像才能确认根钥匙。当前研究进入 AVB 只读取证阶段，保留公开新线索监测；不涉及刷机、Root 或更改 Bootloader。读取入口见 [文档导航](README.md)，结构验收见 [全库整理](REPOSITORY_AUDIT.md)。
 
 本仓库存档长期围绕 **Rakuten Hand 5G / TINNO P780** 进行的个人设备实验。证据有明确等级：**实机已证实 / 离线源码或文件已证实 / 其他设备参考 / 未验证假设**。不同等级不能互相替代。
 
@@ -10,7 +10,7 @@
 | 获取 ADB Shell / 原厂配置 | **实机已证实** | 非 root shell; 39,170 B `p780-config.gz` 在 evidence/device/ |
 | Fastboot OEM 解锁 | **未成功** | Unlock 标志 no；标准 unlock 命令返回 unknown command；灰色 OEM 开关 |
 | EDL / Sahara 识别 | **实机已证实** | 05C6:9008; Sahara v2; `mannar` / HWID `0x0016f0e100000780` |
-| 固件真实性 / AVB 测试钥匙 | **JVN/JPCERT 已证实，影响 Hand 5G 全版本** | [JVN#47427200](https://jvn.jp/jp/JVN47427200/) / CVE-2026-107153；物理访问下可能安装细工镜像。尚未证实 P780 的锁定态写入通道，不能记为 Root/解锁成功 |
+| 固件真实性 / AVB 测试钥匙 | **官方公告 + P780 `_162` 可信 TEE 独立密码学验证成功** | [JVN#47427200](https://jvn.jp/jp/JVN47427200/) / CVE-2026-107153；本机 Google 硬件证明 `verifiedBootKey` 精确匹配 AOSP 默认 AVB RSA4096 测试公钥 SHA256(1032B AVB blob)，`verifiedBootHash` 精确匹配旧 ADB VBMeta Digest。仍无 locked 写入通道，未 Root/解锁；[实证报告](research/avb-attestation-confirmed-20261018.md) |
 | Firehose 握手、分区备份/读写 | **尚无成功证据** | 已识别 loader 匹配需求，不代表已找到可用签名 Loader |
 | 以 EDL 获得 `boot.img` | **未取得** | 从未将未知 loader/跨设备镜像作为成功证据 |
 | QAS → Mink → PFM | **静态 + 部分实机运行已证实** | eMBMS `open(119)`, `CheckInstalledLicense(700)`；XRVD 代理创建日志；没有 OEM Unlock 连接证据 |
