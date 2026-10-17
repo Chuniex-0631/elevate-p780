@@ -8,19 +8,15 @@
 2. **Fstab 两份已读取**：`system/system_ext/product` 使用 `avb=vbmeta_system`；`vendor/odm` 使用默认 `avb`。`system` 额外包含 `/avb/q-gsi.avbpubkey` 等三份 Google 开发 GSI 公钥文件路径候选。[Fstab 实测](research/p780-fstab-avb-20261018.md)。但仍未读取真实 `vbmeta_b`、`vbmeta_system_b` 或 chain descriptors。
 3. **已完成但没有结果的尝试**：Fastboot 常见 OEM 解锁指令均为 unknown command；EDL Sahara 可识别但没有兼容且授权的 Firehose；Google OTA Prober 对当前 `264` fingerprint 无 `update_url`。不再重复这些请求；OTA 支线暂缓。对应 [启动/EDL](research/device-and-boot.md)、[OTA](research/google-ota-prober-p780-20261018.md)。
 
-## 路线 A：优先验证 Locked AVB GSI 公钥信任差异 + first-stage 早退（新增高价值方向）
+## 路线 A：准备完毕，等待 Android15 GSI 的真实 AVB 公钥（PC 操作，不刷机）
 
-**机主新问题：** P780 的 BL Locked 会不会阻止 DSU？AOSP [官方 DSU 支持](https://source.android.com/docs/core/ota/dynamic-system-updates#verify-boot) 明确允许在 LOCKED 且 AVB 不关闭的情况下启动**受信任公钥签名**的 Developer GSI，前提是 OEM 在 first-stage ramdisk 预装相应 `developer_gsi_keys.mk` 密钥。因此不是“DSU必须解锁BL”，而是**必须有实际签名与设备可信公钥匹配**。
+用户已确认继续研究 Google Android15 **无GMS ARM64** 的真实签名公钥。助手完成 [第十四轮离线取证方案](research/p780-dsu-android15-avb-extraction-plan-20261018.md) 与当前聊天附带的 PowerShell+Python 脚本；**仅通过离线模拟，尚未下载目标 ZIP，也未取得新的实际GSI Key Hash**。
 
-**新增配置疑点 H1**：机主 P780 Fstab 仅见普通 `q-gsi/r-gsi/s-gsi.avbpubkey`，而 Google 公开 Developer GSI 专用的是 `q/r/s-developer-gsi.avbpubkey`（此前六份公开文件哈希两套均不相同）。Google 2021-12-22 从 AOSP 移除普通 Compliance `gsi_keys.mk` 并声明其公钥只需留在 VTS，突出两者用途不同。**不能**把“fstab有q/r/s”视作“可在locked状态下验签 Google Android15 Developer GSI”。但尚未实际读取 P780 ramdisk 或 Android15 system.img 签名，H1仍是**关键假设，不是实机AVB失败证据**。
-
-**同样不能排除 H2**：早前两次 `reboot,dynsystem` 仅单次正常重启返回原厂，AOSP Android11 的 `UseDsuIfPresent()` 在活动DSU槽、`MapAllImages`、`MarkSystemAsGsi` 等失败可直接退回原厂。可能是在**未进行 AVB 验签前**就退出；我们没有 first-stage pstore/LAST KMSG，不能盲判原因。
-
-**新增工具边界**：AOSP Android11 [`gsi_tool status`](https://android.googlesource.com/platform/system/gsid/+/refs/tags/android-cts-11.0_r16/gsi_tool.cpp) 仅 UID 0 才会额外输出已安装镜像的 `AVB public key (sha1)`；P780 普通ADB shell只有 `installed/disabled`，重新运行也不会出现Key。不要以未知方法获取提权或强行访问GSID映像。
-
-**下一项真正可复核的工作（PC离线优先）**：1) 获取可靠且匹配 P780 `_162` 的 boot/ramdisk 和 first-stage fstab 原件，以查找实际 `/avb/*` 是否包含 Developer GSI key；2) 获取 Google Android15 `BP1A.250405.005.C1` 镜像 AVB **真实** signing key（仅JSON无pubkey无法核验）并与实际可信公钥二进制或相同哈希算法直接比对；3) 若两者不匹配，锁定态AVB是确定阻断条件；若匹配，则优先检查GSID DSU active slot / image-map 早退。具体证据权重见 [LOCKED BL 与DSU签名专项](research/p780-dsu-locked-bl-vs-gsi-trust-20261018.md)。
-
-**降低其它假说权重但不排除**：[当前 AOSP GSI release 规则](https://android.googlesource.com/platform/build/+/HEAD/target/product/gsi_release.mk) 显式包含 `PRODUCT_EXTRA_VNDK_VERSIONS := 30 31 32 33 34`，因此 VNDK30 在Google构建路线中受支持；但未实际解包当前目标ZIP，不可绝对保证其有兼容APEX或 HAL。用户数据/安全仍优先：不要重复 Restart、`gsi_tool enable` sticky、取消AVB、刷写任何分区。新的高风险实机试验需额外同意和可恢复方案。
+- **已核验来源**： Google官方 `vic` GSI目录 + [Android15官方发布页](https://developer.android.com/topic/generic-system-image/releases) 对应 ZIP：`https://dl.google.com/developers/android/vic/images/gsi/aosp_arm64-exp-BP1A.250405.005.C1-13151952-61d23231.zip`，完整发布 SHA-256 `61d232315ad773bd4820c76c175efe6a61cd8a9a257508db588032be213e15f7`。
+- **Windows执行**：把聊天下载的 `p780_gsi_avb_run.ps1` 与 `p780_gsi_avb_extract.py` 放同一文件夹并保证 PC 空间≥12GiB；`powershell.exe -NoProfile -ExecutionPolicy Bypass -File '.\p780_gsi_avb_run.ps1'`。脚本用 `curl.exe`下载/续传，核对整个ZIP SHA256；下载官方AOSP `avbtool.py`，从ZIP只提取 `system.img` 和可能存在的 `vbmeta*.img`，经 `avbtool info_image --output_pubkey` 计算真实 AVB blob SHA1/SHA256。任何错误/无footer须保留原文，不推断是否可信。
+- **下一轮需要用户提供**：`p780-gsi15-avb/p780-gsi15-avb-report.txt`、对应的 `*.avb-info.txt`、若存在则 `*.avbpubkey`，以及终端成功/失败消息；不要上传多GB ZIP 或 `system.img`。PC脚本sha/边界详见专项文档。
+- **比较边界**：六份现有 q/r/s 普通/Developer GSI 公钥只来自公共AOSP源码，**不等于真实P780 ramdisk keys**；提取目标GSI AVB公钥后仍需可靠 `_162` boot/ramdisk文件确认首阶段信任集。结果不是解锁/Root、也不等价于解决 first-stage映射异常。
+- **设备保持不动**：GSI已在P780系统中显示 installed/disabled，曾两次 `reboot,dynsystem` 回原厂。现在不再 Restart/Discard/Sticky enable、不重新下载到手机、不修改 Bootloader/AVB。
 ## 主要路线 B：真正阻挡永久 Root / 自定义 Boot 的环节
 
 **B1. 只读离线镜像发现**：仅考虑机型为 P780 且有原始构建编号、文件哈希与可信出处的 `vbmeta[_system]`, `boot`, `vendor_boot`, `dtbo`，包括各官方历史版本，但必须注明与 `_162` 的差异。得到镜像后用 AOSP `avbtool info_image` / `verify_image` 分析主 vbmeta→system chain descriptors、rollback indices、boot 分区是否 AVB hash footer；不能从 fstab 或 `7744` 字节 VBMeta 总大小反推出真实描述符。**暂不继续批量搜/探测 OTA。**
