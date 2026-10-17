@@ -1,5 +1,12 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 Key Attestation 本机证实（脱敏档案）
+
+- 用户上传 `P780-KeyAttestation.p7b`（PKCS#7，3475 bytes，含 4 张证书），目前**仅在当前私有会话和用户设备/电脑中保留原件，Git 中没有复制或完整证书链**。
+- 本地解析 Android Key Attestation 扩展、TrustedEnvironment 级别与 RootOfTrust；根证书 DER 与 Google 公布的 2019 硬件证明根证书完全一致，4 张证书自签/级联签名均有效；`deviceLocked=true`、`Verified`、补丁 `2024-02`。
+- `verifiedBootKey` 完整为 `7728e30f50bfa5cea165f473175a08803f6a8346642b5aa10913e9d9e6defef6`，等于 SHA256(AOSP RSA4096 testkey 的 1032B AVB public-key blob)；`verifiedBootHash=33ee3a6cf5215befd8a4f953382bd746d12efc37f6d4116c0c9b68a7661f95f2`，与旧本机 ADB digest 完全一致。
+- **证据边界**：签名链和可信根已离线核验，但正式在线吊销完整核验尚未完成；未获得 vbmeta 分区原件、链式描述符、Root、解锁或锁定态写入渠道。分析过程和公开参考见 [脱敏专项](research/avb-attestation-confirmed-20261018.md)。不公开个人证书主体、设备标识或 challenge。
+
 ## 2026-10-18 第五轮实机与公共 OTA 索引交叉线索（会话原文，未上传原始 TXT）
 
 - 用户提供 `ro.build.fingerprint=Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys`；随后通过附在聊天中的终端文本**实际读取了** `/vendor/etc/fstab.default` 与 `/vendor/etc/fstab.emmc`，`fstab.qcom` 不存在。两份文件的 AVB 挂载分组和 GSI 额外公钥路径已逐项核对并保存 [技术摘录](research/p780-fstab-avb-20261018.md)；**未将原始两个 fstab 文件作为独立的字节级原件上传 Git**，聊天附件也不是手机原始文件 SHA。
