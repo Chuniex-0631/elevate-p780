@@ -16,20 +16,20 @@
 - **第四轮已核对** `ro.boot.dynamic_partitions=true`；`ro.virtual_ab.enabled`、`ro.virtual_ab.compression.enabled`、`ro.boot.vbmeta.device` 均为空。已确认动态分区，但不能由空值否定 Virtual A/B；`system_b-cow` 仍只是候选快照节点。停止重复属性采集，转入[原厂镜像与写入通道](research/avb-live-baseline-20261018.md)专题。
 - **仍最优先取得匹配 `_162` 的可信原厂 VBMeta/OTA**；此类现场映射不是原厂签名与链式描述符的替代品。
 
-## 2026-10-18：Google OTA Prober 新线索（源码已核验 / 尚未探测 P780）
+## 2026-10-18：Google OTA Prober 和 Fstab 取证（两项已实测）
 
 - [Google OTA Prober × P780 专题](research/google-ota-prober-p780-20261018.md) 证实项目使用 Google Check-in 的 `fetchSystemUpdates=1` 向 `android.googleapis.com/checkin` 请求下一 OTA URL；只有机型通过 Google OTA 服务器分发才可能得到链接。
 - 公开 [Rakuten/Tinno C330](https://github.com/mouseos/ota-archive/blob/main/OTA/Google/rakuten/c330/index.json) 的 2 个增量 OTA 真实索引（`530→620` 和 `620→830`），且 C330 是 Tinno 代工的 Rakuten Mini，构成同 OEM 的历史分发旁证；[P710](https://github.com/mouseos/ota-archive/blob/main/OTA/Google/tinno/p710/index.json) 仅见 fingerprint、无 OTA。P780 当前未出现在该档案的 Rakuten/Tinno 组；**尚未验证 P780 是否使用 Google OTA 服务器**。
 - 本机 fingerprint：`Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys`，`264` 与厂商内部 `_162` 为不同编号。后者已是最终发布版，从当前 fingerprint 查询无更新不构成否定证据；未来应优先找到有出处的旧 P780 fingerprint，不得自行猜造增量号。
-- 若机主自愿，可仅从 Windows PC 使用 `python probe.py --fingerprint "Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys" --model P780` 发起**一次查询**，不使用 `--download`、真实 IMEI/SN 或批量伪造版本。得到 URL 先核实 `pre-build/post-build`，不刷机。
-- Fstab 实机存在 `/vendor/etc/fstab.default`、`fstab.emmc`，不存在 `fstab.qcom`；下一步只读 `cat` 两个存在的文件，核对 `avb=...`，不能从文件名判断实际活动配置。
+- **已经实测一次**：Windows CLI 按完整构建指纹及 `--model P780` 查询，返回 `No OTA URL found for your build`。这仅表示没有获得 `update_url`，并不证明 P780 不使用 Google OTA，也不能证明 Google 已识别本机；本版本为最终 `_162`，不再重复这一指纹的测试。若发现真实历史 P780 fingerprint 再重新评估。
+- **两份 Fstab 已经读取**：`system/system_ext/product` 声明 `avb=vbmeta_system`；`vendor/odm` 声明 `avb`，`system` 还额外列出 `/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey`。这是挂载配置证据而非 Bootloader 实际密钥/签名 descriptor；详见 [AVB Fstab 专题](research/p780-fstab-avb-20261018.md)。
 
-## 2026-10-18：新的不依赖原厂镜像的实机取证路径（待用户可选验证）
+## 2026-10-18：无原厂镜像的剩余主动验证重点（Key Attestation 尚未测试）
 
 经 AOSP 官方 Keystore/CTS 与动态分区文档交叉核对，找到之前未测试的两条只读逻辑线索，详细见 [Key Attestation 与 Fstab 专题](research/avb-attestation-alternative-20261018.md)。
 
 - **新 P1：Android Keystore Hardware Key Attestation**。普通应用可以在设备支持时取得 `RootOfTrust.verifiedBootKey`（AVB 信任公钥哈希）及可选 `verifiedBootHash`（有机会与已有 `33ee…95f2` 一致），以及 `deviceLocked`/`verifiedBootState`。不需要 Root/原厂镜像。**P780 本机尚未验证能否获得硬件证明**；需要检查证书链来源、TEE 安全级别和隐私，不能把软件自报的哈希当作可信硬件证明。官方 APK 工具来源：开源 [vvb2060/KeyAttestation](https://github.com/vvb2060/KeyAttestation/releases)，使用普通 Keystore，无需 Shizuku。
-- **新 P2：fstab `avb=vbmeta_system` 配置**。可在存在且可读时检查 `/vendor/etc/fstab*`，确认各逻辑分区声明的 AVB 挂载目标。此举不会泄露签名密钥，也不能证明 bootloader chain descriptors。
+- **P2 已完成配置取证**：两份可读的 Fstab 均确认 3 个分区通过 `avb=vbmeta_system`，Vendor/ODM 通过默认 `avb`；仍不可据此声称拿到 chain descriptor 或生产公钥。
 - **新 P3：AOSP 默认测试公钥的离线候选哈希**。AOSP build 系统默认采用 RSA4096 测试钥匙；必须先核对 Attestation 指纹的真实性与哈希输入编码才能对比，不能猜测 P780 确定使用这把钥匙。
 - 不需重复穷举普通 `getprop`、执行 EDL、获取 Root 或刷写。用户可选择是否安装第三方开源测试应用；尚未执行安装或采集。
 
