@@ -7,6 +7,13 @@
 - 同步 README、STATUS、NEXT_STEPS、专题索引、工具说明与公告专题。仍缺 `_162` 原厂 `vbmeta/boot`、经验证的 locked 写入通道；未执行刷机或 Root。
 - 审核时 GitHub API 报告 visibility=public，和既有 Private 文案不符；SECURITY/README 已提示敏感原件风险，需机主确认设置并审查 Git 历史。
 
+## 2026-10-18 — 第二轮 AVB 只读取证与仓库权限复核
+
+- 用户新增 `ro.boot.vbmeta.hash_alg=sha256`、`ro.boot.vbmeta.size=7744`、`ro.boot.avb_version=1.1`，以及 `vbmeta_b→sde31` / `vbmeta_system_b→sda11` 等 A/B 分区映射。AOSP 实现确认 `size` 为启动所载入 VBMeta 结构总长度。
+- 明确 `vbmeta_system_b` 是链式布局的强候选而非实际签名描述符的已确认内容；现仍缺原厂 `_162` 镜像、公钥指纹及可验证写入通道。
+- 更新 AVB 专题、STATUS、NEXT_STEPS、README 与 PowerShell 采集脚本（新增可选公钥摘要属性、mapper 软链接及权限只读查看），未实施 Root 或刷写。
+- 机主将仓库设回 Private，GitHub API 复核 `visibility=private`；SECURITY/README 同步更正，保留先前 Public 状态的潜在暴露说明。
+
 ## 2026-10-17 — XDA 正文补档与 Recovery 验签边界
 
 - 原样保存用户提供的 XDA 4805241 正文，标注来源链及未独立复核状态；关闭同一正文人工获取提醒，保留既有邮件历史。
