@@ -186,3 +186,20 @@ reboot,dynsystem
 **C. 暂停时状态：** 保留当前原厂可启动环境和 GSID 所报告的已安装镜像，不为调试目的擅自 Discard/enable/wipe；若用户决定结束尝试或需要释放空间，可在留存必要证据后使用官方通知的 Discard，**无需永久保持占用**。
 
 **阶段结论：** 当前证据足以证明“DSU 重启请求发出、一次性 GSI 安装状态存在但没启动”，**不足以确认哪个条件失败**。先建立新的可观测量再重试，比第三次同参数 Restart 更有研究价值。
+
+## 新的可观测路径：Bugreport/dumpstate 尝试读取 LAST KMSG（尚未实机执行）
+
+前述“普通 `adb shell ls /sys/fs/pstore` Permission denied”和 Kernel Logcat 0B，并不能保证 Android 的 **dumpstate** 系统采集进程也拿不到 persistent kernel console 记录。
+
+AOSP [frameworks/native/cmds/dumpstate/dumpstate.cpp](https://android.googlesource.com/platform/frameworks/native/+/33bc71ff9524457ad4e0f57523d676b500701370/cmds/dumpstate/dumpstate.cpp) 的 `DoKmsg()` 对 `/sys/fs/pstore/console-ramoops`、`console-ramoops-0` 和回退的 `/proc/last_kmsg` 依次尝试生成 **LAST KMSG**；较老实现也使用 `LAST LOGCAT` (`logcat -L`) 回溯 persistent pmsg。该功能取决于 P780 对应厂商内核实际配置/权限/报告权限，**不能预期一定有内容或保留前次 DSU 启动日志**。无需重新启动 DSU 即可先试。
+
+机主同意采集时，在 Windows 当前 P780 工作目录执行：
+
+```powershell
+adb bugreport ".\P780-DSU-Bugreport.zip"
+Get-Item ".\P780-DSU-Bugreport.zip"
+```
+
+ADB Bugreport 包含应用进程、通知、历史日志、网络配置、账号痕迹、设备 ID 等**敏感内容**，可有多个 MB；用户应只保留私有文件，提交本聊天前可以先脱敏或只分享相关片段，**禁止把未经检查的完整 Bugreport 上传 Github**。机主若不方便分享原件，可在 PC 上展开 zip 后只检索 `LAST KMSG`、`console-ramoops`、`first_stage`、`DSU`、`GSI`、`MapAllImages`、`AVB` 和 `verity` 等精确来源段落、去掉设备标识后分享。报告里 `LAST KMSG` 标题出现但底下无内容不等于第一阶段真的没有失败；可能记录已被覆盖或设备没有实现持久化。
+
+**这是一条比重复 Restart 更有信息增益的只读诊断采集（但会在手机/电脑暂存诊断包），不等于已突破 root 访问限制，不需要尝试任何越权方法。** 如果无法采到有价值的 first-stage 记录，后续仍以可靠 boot/ramdisk 公共镜像证据和离线源码研究为主，暂不进行第三次相同 DSU 重启。
