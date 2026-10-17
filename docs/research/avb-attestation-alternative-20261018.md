@@ -1,6 +1,6 @@
 # P780 AVB 研究：无需原厂镜像的硬件证明替代路径（2026-10-18）
 
-> **新增研究假说，尚无 P780 本机 Attestation 实测。** 先前四轮 ADB 实测与来源见 [AVB 基线](avb-live-baseline-20261018.md)。本专题源于用户要求交叉分析既有证据，并非宣称已经取得 AVB 公钥或 Root。
+> **2026-10-18 已实机完成测试并确认 AOSP 默认 AVB RSA4096 测试公钥！** 先前路线设计保留供研究溯源；实机结论请优先阅读 [确认报告](avb-attestation-confirmed-20261018.md)。 先前四轮 ADB 实测与来源见 [AVB 基线](avb-live-baseline-20261018.md)。本专题源于用户要求交叉分析既有证据，并非宣称已经取得 AVB 公钥或 Root。
 
 ## 为什么这条路径有价值
 
@@ -10,11 +10,11 @@ AOSP [Key/ID Attestation 文档](https://source.android.com/docs/security/featur
 
 | 字段 | 官方语义 | P780 可否取得 |
 |---|---|---|
-| `verifiedBootKey` | Verified Boot 根信任公钥的安全哈希，推荐 SHA-256 | **尚未测试**；它不是私钥、也不是原始 `vbmeta.img` |
-| `verifiedBootHash` | AVB 参考实现通常为完整 VBMeta Digest | **尚未测试**；若存在可与本机 `33ee…95f2` 对照 |
-| `deviceLocked` | Bootloader 是否在证明记录中为锁定 | **尚未测试**；预期与已知 `locked` 相容 |
-| `verifiedBootState` | Verified / SelfSigned / Unverified / Failed | **尚未测试**；预期与 `green` 相容 |
-| `attestationSecurityLevel` | TEE / StrongBox / Software 等证明来源 | **必须记录并核验** |
+| `verifiedBootKey` | Verified Boot 根信任公钥的安全哈希，推荐 SHA-256 | **已实测**，32B 值匹配 SHA256(AOSP testkey RSA4096 的 1032B AVB 公钥 blob)；详见 [确认报告](avb-attestation-confirmed-20261018.md) |
+| `verifiedBootHash` | AVB 参考实现通常为完整 VBMeta Digest | **已实测**，完整等于先前 ADB 的 `33ee…95f2` |
+| `deviceLocked` | Bootloader 是否在证明记录中为锁定 | **已实测**，true |
+| `verifiedBootState` | Verified / SelfSigned / Unverified / Failed | **已实测**，Verified (GREEN) |
+| `attestationSecurityLevel` | TEE / StrongBox / Software 等证明来源 | **已实测**，TrustedEnvironment；Google 根证书签名链验证通过 |
 
 [AOSP Keystore CTS 代码](https://android.googlesource.com/platform/cts/+/master/tests/tests/keystore/src/android/keystore/cts/KeyAttestationTest.java) 在 `checkVerifiedBootHash` 中检验 `rootOfTrust.verifiedBootHash` 和 `ro.boot.vbmeta.digest`；新版环境也比对 `verifiedBootKey` 与公开属性，但 **P780 所属 Android 11 设备未必实现较新属性或全部字段**。
 
