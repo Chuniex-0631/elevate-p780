@@ -119,3 +119,39 @@ adb shell getprop sys.boot.reason
 ### 本轮结论
 
 已成功确认：**GSID已识别到安装的GSI；当前处于disabled、非GSI运行；原厂系统启动后向通知服务报告isInstalled=true，通知正常生成。** AOSP 11 一次性启动规则为 `disabled` 提供了合理的正常解释，因此 **不能把 `disabled` 直接当作启动器未设置 enable 的错误；也不能认定 AVB 签名不匹配已经证实。** 剩余关键分叉为早期流程是否识别/消费 one-shot、映像映射是否成功、实际 AVB/ramdisk信任公钥、后续GSI/Vendor启动能否成功。
+
+## 2026-10-18 第十二轮：Bootreason 精确为 `reboot,dynsystem`，仅一次启动且内核 logcat 空
+
+机主补充说明：**点击 DSU 通知 Restart 后，仅经历一次正常重启，就进入 Android11 原厂系统；没有观察到 Android15 启动画面，也没有中途自动再重启。** 这是由人手动发起的两次独立重启尝试，不是设备自身连续 bootloop。机主当前正常处于原厂系统，并提供以下实机 ADB 原文：
+
+```text
+$ adb shell logcat -g
+main: ring buffer is 2 MiB (1 MiB consumed), max entry is 5120 B, max payload is 4068 B
+system: ring buffer is 2 MiB (388 KiB consumed), max entry is 5120 B, max payload is 4068 B
+crash: ring buffer is 256 KiB (374 B consumed), max entry is 5120 B, max payload is 4068 B
+kernel: ring buffer is 2 MiB (0 B consumed), max entry is 5120 B, max payload is 4068 B
+$ adb shell logcat -b kernel -d -v threadtime | Select-String -Pattern 'DSU|GSI|first_stage|AVB|verity|mapped|rollback|init'
+# 无匹配行
+$ adb shell getprop ro.boot.bootreason
+reboot,dynsystem
+$ adb shell getprop sys.boot.reason
+reboot,dynsystem
+```
+
+### 从这四项能确认什么
+
+1. **真实重启入口已命中 DSU 流程**：Android11 AOSP [DynamicSystemInstallationService.java `executeRebootToDynSystemCommand`](https://android.googlesource.com/platform/frameworks/base/+/978ecf991a9a/packages/DynamicSystemInstallationService/src/com/android/dynsystem/DynamicSystemInstallationService.java) 在 `mDynSystem.setEnable(true, mOneShot)` 成功后调用 `PowerManager.reboot("dynsystem")`。两个 boot reason 属性均显示 `reboot,dynsystem`，**比普通“用户按了通知”更强：上次重启带有 Android DSU 专用重启原因**。不过它只证明请求/重启原因，**不直接证明 first-stage 最终识别、成功映射或通过 AVB**。
+2. **没有额外重启的观察**：机主亲自确认是一轮正常重启直接返回原厂系统。结合 [Android11 `first_stage_mount.cpp::UseDsuIfPresent()`](https://android.googlesource.com/platform/system/core/+/9583e92257ab85075231b014f0999d5a5dab9910/init/first_stage_mount.cpp) 能在 `CanBootIntoGsi`、active DSU slot、`ImageManager::MapAllImages` 或 `MarkSystemAsGsi` 等判断失败时**返回继续原厂 system 启动**，因此“在真正 GSI user-space 出现之前被弃用/回退”值得优先怀疑。**不能**只凭没有肉眼看到第二次重启就完全排除 AVB/挂载、设备定制异常或硬件对某次自动切换不可见。
+3. **早期错误日志仍不可获取**：`logcat -g` 显示 `kernel` logd buffer 容量 2MiB但当前实际记录 **0B**，而第一阶段 `init` 的 kmsg/dmesg 记录未必能通过这一 buffer 读取；`logcat -b kernel` 无任何匹配**不能解读为“内核没发生错误”**。上轮 `/sys/fs/pstore` shell 报 `Permission denied`，现阶段仍无可信 first-stage 错误/堆栈。重复取同样内核 logcat没有价值。
+4. **与已知 GSID 状态结合**：前轮 `gsi_tool status` 为 `installed`+`disabled`，此前 Logcat `DynamicSystemService: isInstalled(): true`；AOSP 的 one-shot `CanBootIntoGsi` 可在随后挂载之前消耗启用标志，并正常在回原厂后看到 disabled，**因而当前最合理的模型是“请求成功→一次性状态可能被消耗→first-stage 可能提前退回原系统”**。但尚无在重启前采集的 enabled 状态或失败分支原始日志，仍是解释模型而非 Root Cause Confirmed。
+
+### 更新后的优先级（防止无证据地试错）
+
+- **第一优先**：有 first-stage 正常回退路径的「DSU 状态/slot/MapAllImages/MarkSystemAsGsi」候选。AOSP 中 `UseDsuIfPresent` 可以直接返回原厂启动，符合机主单次重启的客观观察。
+- **第二优先、仍未证实**：真实 Android15 GSI AVB 签名公钥与 P780 ramdisk 信任公钥不符、rollback/verity/挂载，或启动早期 Vendor/HAL 不兼容。缺少具体 GSI 签名、内核初始日志及设备实际公钥，不应强作等级绝对排序。
+- 不需要再采集 `logcat -b kernel` 或普通 `getprop bootreason`，已经完成。**不要**继续重启，或执行 `gsi_tool enable`（默认 sticky）、`disable`、`wipe` 或厂商 fastboot/EDL 写操作；不要现在为了 DSU 工具恢复系统出厂、改写 AVB、刷入不明镜像。当前原厂系统可用且 GSI 安装材料还在，应保留现场。
+- 如果决定后续再做**受控一次** DSU 启动实验，应先取得机主对数据丢失、Recovery/清除 userdata 风险的再次确认、明确采集办法与停止条件，而不能期待 Android shell 的事后 logcat 会恢复不可见的 first-stage 日志。可转向 Linux/Android AOSP 离线静态分析 `ImageManager`/fstab 转换，或等待可信原厂 boot ramdisk/DSU 原始签名证据。
+
+### 当前实证上限
+
+**证明成功：DSU 服务安装状态存在、UI发出DSU专用重启、系统按 `reboot,dynsystem` 完成单次重启、返回原厂系统。未证明成功：GSI 运行、分区映射、AVB验证、Root/BL解锁。未证明根因：哪一个 first-stage 条件首先失败。**
