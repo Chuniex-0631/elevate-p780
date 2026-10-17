@@ -16,6 +16,18 @@
 - **第四轮已核对** `ro.boot.dynamic_partitions=true`；`ro.virtual_ab.enabled`、`ro.virtual_ab.compression.enabled`、`ro.boot.vbmeta.device` 均为空。已确认动态分区，但不能由空值否定 Virtual A/B；`system_b-cow` 仍只是候选快照节点。停止重复属性采集，转入[原厂镜像与写入通道](research/avb-live-baseline-20261018.md)专题。
 - **仍最优先取得匹配 `_162` 的可信原厂 VBMeta/OTA**；此类现场映射不是原厂签名与链式描述符的替代品。
 
+## 2026-10-18：原厂完整 OTA 稀缺情况下的研究路线调整
+
+**避免把完整 `_162` OTA 当成所有 AVB 工作的唯一前置条件。** 改为两层目标：
+1. **探索性离线密钥识别**：接受任意有可追溯出处的 **P780** 版本 `vbmeta*.img`、`avbtool info_image` 输出、chain descriptors、AVB 公钥指纹/原始测试记录；固件版本必须标注，不能用 Rakuten Hand（非 5G）、其他 Snapdragon 480/同 OEM 机型的镜像代替。JVN 确认受影响范围为 Hand 5G 全版本，**不保证不同版本使用同一把密钥**。
+2. **本机匹配与实证**：要核对 `P780AE_11.0_RMN_JP_162` 的 `sha256` digest / VBMeta `7744` 字节总量、启动内核等，仍需要 `_162` 同源镜像或有充分构建身份、签名链的工件；写入验证还额外需要 P780 专用、可恢复的 locked 写入通道。
+
+可追踪线索与联系：
+- [JVN#47427200](https://jvn.jp/jp/JVN47427200/) 于 2026-10-14 公布并署名报告者 **松原正佳**；尚未发现公开发表的 P780 vbmeta 原件、对应密钥指纹或复现实验详细日志。**不要因署名而断定报告者持有可分享的所有固件/PoC**。
+- [JVN 官方联系页](https://jvn.jp/contact/) 公布 **jvn@jvn.jp** 作为公告咨询邮箱。可由机主决定是否询问：是否有能够公开的 P780 AVB 密钥指纹、所用固件版本、验证方法或相关公开附件/可转介来源。不是索取未公开漏洞细节的保证渠道；**未发出联系、未获回复**。
+- 次级路径：有出处的 P780 其他固件版本 VBMeta、小型只读的原始键/签名描述符提取结果、可信公开 OTA delta；需要记录来源与哈希，谨防维修包或跨机型伪装。完整固件、匹配 Firehose 与 locked 写入通道仍然是最终实机工作的缺口。
+- 2026-10-18 针对 `P780AE_11.0_RMN_JP_162` / AVB / 公钥 / Firehose 的公开检索未找到可校验完整镜像。日本楽天社区能确认有升级到 `_162` 的实机用户，但这不等于存在公开镜像下载：[官方升级页](https://network.mobile.rakuten.co.jp/information/software/rakuten-hand-5g/)；[楽天社群用户反馈](https://community.mobile.rakuten.net/questions/p2kmixnvb71rgs7u)。
+
 ## 第四轮之后的主动优先级
 
 - 第一：继续寻找来源明确的 `P780AE_11.0_RMN_JP_162` 原厂 OTA / `vbmeta_b`、`vbmeta_system_b`，保证固件身份、哈希和离线验证方式。
