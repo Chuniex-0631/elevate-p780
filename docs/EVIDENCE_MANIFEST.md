@@ -1,5 +1,12 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 第十二轮：仅一次重启与 `reboot,dynsystem` 两处启动原因证明
+
+- 机主亲自观察：点击通知「重启进入DSU」后是**一次正常重启直接进入原厂 Android11**，没有 Android15 GSI 桌面，也没有自动重启第二次；不同于设备无限 bootloop。
+- ADB `ro.boot.bootreason` 与 `sys.boot.reason` 均完整输出 `reboot,dynsystem`。在 AOSP Android11 `DynamicSystemInstallationService.executeRebootToDynSystemCommand()` 中调用 `PowerManager.reboot("dynsystem")`，故此输入强力支持真正 DSU 重启请求已传入系统（并非普通重启），**不能因此宣称 first-stage 实际挂载了 GSI**。
+- `logcat -g`：main 2MiB(已用1MiB)、system 2MiB(已用388KiB)、crash 256KiB(已用374B)、**kernel 2MiB(已用0B)**。`adb shell logcat -b kernel -d ...` 加过滤词**无输出**；加上前次 `/sys/fs/pstore` Permission denied，说明本机当前 shell 无法从该路径获得上次 first-stage/内核原始故障日志，不能错误写成「内核没有报错」。
+- [第十二轮专题](research/p780-dsu-stock-fallback-20261018.md) 联合前次 `gsi_tool installed/disabled`、one-shot 状态会提前消费和 AOSP `UseDsuIfPresent` 失败分支：**first-stage 提前返回原系统是有依据的优先假说，但没有直接日志证明是分区映射/AVB/其它环节之一**。此轮没有刷写/重启新尝试、没有Root。
+
 ## 2026-10-18 第十一轮：GSI installed/disabled、私有原始日志 SHA 和 one-shot 源码机制
 
 - 用户终端直接实测：`gsi_tool status` 两行 `installed` / `disabled`；`ro.gsid.image_running` 空、当前槽 `_b`；`/sys/fs/pstore` Permission denied。Android 11 `gsi_tool.cpp::Status` 的 `installed/disabled` 分别来自GSID的已安装/当前启用查询，当前原厂系统启动未发现`running`。
