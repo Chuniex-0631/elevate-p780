@@ -20,6 +20,13 @@
 - `/dev/block/sde31`、`/dev/block/sda11` 权限 `brw------- root root`；非 root Shell 只能列出而不能直接提取该 VBMeta 数据。五个 B 槽逻辑分区 dm-0..4、`system_b-cow` dm-5、五个 dm-verity dm-6..10 被原样记录，COW 仅为 OTA 快照候选而非写入或 Root 成果。
 - 同步 AVB 专题、STATUS、NEXT_STEPS、README、证据索引及 PowerShell 只读取证工具；新工具补充 Virtual A/B 和 VBMeta device 的可选属性查询。设备不刷机不切槽，根本阻断仍是 `_162` 原厂 AVB 镜像与锁定态写入途径。
 
+## 2026-10-18 — AVB 第四轮：动态分区确认、属性取证收束
+
+- 用户实机：`ro.boot.dynamic_partitions=true`；`ro.virtual_ab.enabled`、`ro.virtual_ab.compression.enabled`、`ro.boot.vbmeta.device` 均为空。动态分区已确证，Virtual A/B 和镜像链条不因属性空而获得确认或否认。
+- AOSP 文档：Android 11 Virtual A/B 使用 kernel COW，Android 12 引入压缩快照；`system_b-cow` 仍只有候选证据等级，未表明更新正在运行或出现可利用写入路径。
+- 更新 AVB 专题、STATUS、NEXT_STEPS、固件/OTA 专题、README 及 EVIDENCE_MANIFEST；正式暂停普通 ADB getprop 重复采集，后续转向可信 `_162` OTA/镜像、AVB 公钥和 Descriptor 的离线比对，以及 P780 锁定态写入机制可核验来源。
+- 公开搜索未取得匹配 `_162` 的可信镜像工件；搜索命中的 XDA 固件求助帖子仍未读取到完整网页或附件，不冒充已找到固件。无设备修改，Root/BL 状态不变。
+
 ## 2026-10-17 — XDA 正文补档与 Recovery 验签边界
 
 - 原样保存用户提供的 XDA 4805241 正文，标注来源链及未独立复核状态；关闭同一正文人工获取提醒，保留既有邮件历史。
