@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — 用户决定推进 DSU 首次实机试验，采用分阶段安全方案
+
+- 机主认为 DSU 不覆盖原系统因此愿意实际尝试。已核对 Google [官方 DSU](https://developer.android.com/topic/dsu) 与 [Android15 GSI 已知风险](https://developer.android.com/topic/generic-system-image/releases)：标准 DSU 避免写入原厂 system/boot，但仍修改 userdata，失败有 Recovery factory reset/数据丢失风险，不构成绝对无损保证。
+- 基于实机 ARM64/VNDK30/Treble/空间已满足基础条件，选择 Google Android15 QPR2 `GSI ARM64` 无 GMS `BP1A.250405.005.C1` 作为第一个受控试验候选（仍未证明 AVB/GSI签名信任或 HAL 运行）。不选 GMS/Android16；无 fastboot/EDL 强刷。
+- 新建 [DSU 首次实机分段试验协议](docs/research/p780-dsu-first-trial-protocol-20261018.md)：事先确认可丢失数据/备份与 USB ADB；阶段 A 由 Settings 下载/安装并在通知 Restart/Discard 处暂停；阶段 B 单独确认后才实际重启进 GSI。
+- 当前只是准备文档和用户授权，尚无下载安装或重启实绩，设备仍 LOCKED/未Root。更新 STATUS、NEXT_STEPS 与证据清单；等待机主后续阶段 A 实机反馈再更新结果。
+
 ## 2026-10-18 — 第九轮 DSU 签名信任链：六份公开 GSI AVB 公钥哈希与 AOSP 早期启动核验
 
 - 交叉审核 Android11 `target/product/gsi_keys.mk`、`developer_gsi_keys.mk` 与 `rootdir/avb/Android.mk`，明确两组标准 q/r/s-GSI 与 Developer q/r/s-GSI 公钥分别存在；P780 fstab 只声明**标准** q/r/s-GSI 文件，不可把它们笼统称作 Developer GSI key。
