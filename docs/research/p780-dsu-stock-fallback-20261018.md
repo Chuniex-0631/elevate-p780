@@ -57,3 +57,65 @@ adb shell gsi_tool status
 ## 状态
 
 **这是一个真实、未成功的 DSU 启动尝试，值得记录，但不应记为“启动 GSI 已成功”或“P780 已证实公钥不匹配”。** 先保留现有原厂可正常开机状态和失败证据，不增加有数据擦除风险的操作。收到机主脱敏诊断记录后再缩窄根因。
+
+## 2026-10-18 第十一轮：实际 GSID 状态和两份日志已获得，AOSP 单次启动行为解释
+
+机主新提交 ADB 终端输出及 `p780-dsu-after-reboot.log`、`p780-dsu-filtered.txt`。研究环境直接读取了上传的实际文件原始字节，不使用外部网页搜索代替设备日志。
+
+### 实机命令结果
+
+```text
+$ adb shell getprop ro.gsid.image_running
+# 空
+$ adb shell getprop ro.boot.slot_suffix
+_b
+$ adb shell ls -l /sys/fs/pstore
+ls: /sys/fs/pstore: Permission denied
+$ adb shell gsi_tool status
+installed
+disabled
+```
+
+Android 11 [gsi_tool.cpp::Status](https://android.googlesource.com/platform/system/gsid/+/refs/tags/android-cts-11.0_r16/gsi_tool.cpp) 顺次调用 `isGsiRunning()` / `isGsiInstalled()` / `isGsiEnabled()` 并输出 `running/installed/enabled|disabled`。此处仅输出 `installed` 和 `disabled`，是**当前的非运行、已安装且未启用状态**，与现正运行的原厂 Android11 相容。`ro.gsid.image_running` 在此机 shell 查询为空，不能擅自将空值当作布尔 false；由 GSID status 没有 `running` 更直接地支持当前非 GSI。
+
+### 文件完整性、类型和精确日志证据
+
+| 文件 | 原始大小/格式 | SHA-256（原始文件） | 观察 |
+|---|---|---|---|
+| `p780-dsu-after-reboot.log` | ~4.1MB / UTF-16LE, CRLF / 15455行 | `955c9775371658b36d59e749c648149193a05746a72d26807f09a3f97de6e970` | 10-18 06:31:40.616 至 06:36:36.673；记录的是原厂用户空间日志，并非 first-stage 原始 kmsg |
+| `p780-dsu-filtered.txt` | 678B / ASCII/CRLF / 3条 | `333d7ac1de09d46f4a77a3611842a38d47c0ec14819d2b2b23d6ebfb2a74cf76` | 只包含下列3项与 DSU 包/服务相关的筛选结果 |
+
+筛选日志摘录（删去主机用户名等路径；以下为原始设备日志字段）：
+
+```text
+10-18 06:31:40.743 I am_proc_start: [0,3755,1000,com.android.dynsystem:dynsystem,service,{com.android.dynsystem/com.android.dynsystem.DynamicSystemInstallationService}]
+10-18 06:31:40.743 I ActivityManager: Start proc 3755:com.android.dynsystem:dynsystem/1000 for service {com.android.dynsystem/com.android.dynsystem.DynamicSystemInstallationService}
+10-18 06:31:40.852 I DynamicSystemService: isInstalled(): true
+```
+
+完整日志第418行还有 `DynSystemInstallationService: onStartCommand(): action=android.os.image.action.NOTIFY_IF_IN_USE`。第442行 `notification_enqueue` 对 `com.android.dynsystem` 产生带两项操作的通知；这与重启后仍看到通知一致。**不是**下载/安装或实际 GSI 启动验证通过的日志。Logcat 另出现大量通知显示/隐藏、系统常规进程/通信日志，未找到带 `DSU`, `GSI`, `first_stage`, `AVB`, `verity`, `liblp`, `rollback` 明确关键词的有效早期失败错误；日志开头就是原厂用户空间正常启动后的事件，并未保留上次启动切换中发生的早期内核 init 过程。不能因为搜索无结果就断言 AVB/MapAllImages 没有失败。
+
+**隐私：** 本研究只把上述3条必要的非唯一日志、文件长度和 SHA256 记录到私有仓库；**不将 4.1MB 原始 Logcat 或完整筛选文件的含 Windows 用户路径复制到 Git，避免应用/网络/设备唯一标识泄露**。
+
+### 改变故障解读的 AOSP Android 11 直接源码证据
+
+1. [Android 11 `libgsi.cpp::CanBootIntoGsi`](https://android.googlesource.com/platform/system/gsid/+/refs/tags/android-platform-11.0.0_r16/libgsi.cpp) 第71～117行：`CanBootIntoGsi()` 在验证安装状态/读取 `kDsuInstallStatusFile` 后，若处于 `kDsuOneShotBootFile` **一次性启动模式**，则**先把安装状态写成 `disabled`，仅对之后的启动生效**，再返回 `true` 继续当前引导。因此**回到原厂系统后见 `installed/disabled` 与 first-stage 曾认领一次性启动完全相容，甚至是支持这种过程的间接迹象，但不能作为唯一证据断言已消费**（也可能由别的路径清除/禁用）。
+2. [Android 11 DynamicSystemInstallationService](https://android.googlesource.com/platform/frameworks/base/+/978ecf991a9a/packages/DynamicSystemInstallationService/src/com/android/dynsystem/DynamicSystemInstallationService.java) 默认 `mOneShot = intent.getBooleanExtra(KEY_ONE_SHOT, true)`；点击通知的 `Restart` 在调用 `mDynSystem.setEnable(true, mOneShot)` 成功后 `PowerManager.reboot("dynsystem")`，因此**默认单次启动**并非“不小心禁用了 DSU”的充分证明。P780 OEM 固件具体定制仍需通过真实行为和日志辨认。
+3. [AOSP `first_stage_mount.cpp::UseDsuIfPresent`](https://android.googlesource.com/platform/system/core/+/9583e92257ab85075231b014f0999d5a5dab9910/init/first_stage_mount.cpp) 后续还需读取 active slot、`ImageManager::MapAllImages`、`TransformFstabForDsu`、实际 AVB 验证及挂载。**即使消费了一次性标记，也未必成功完成任意后续步骤**；日志缺少 first-stage 行，暂时无法判断是否发生映射失败、GSI签名公钥拒绝或后续 HAL/加密故障。
+
+### 后续取证步骤（仍不触发重启/写入）
+
+如果设备 shell 支持内核 logd 缓冲区和上一轮 persistent buffer，可仅作以下有限只读尝试：
+
+```powershell
+adb shell logcat -g
+adb shell logcat -b kernel -d -v threadtime | Select-String -Pattern 'DSU|GSI|first_stage|AVB|verity|mapped|rollback|init'
+adb shell getprop ro.boot.bootreason
+adb shell getprop sys.boot.reason
+```
+
+用户不一定有读取 kernel buffer/pstore 的权限，上次 `ls /sys/fs/pstore` 已明确 Permission denied，因此可能拿不到早期失败日志；错误/零行输出是有效实验结果。**不再要求重新安装、恢复出厂、向 `/metadata/gsi` 越权读取、启用 sticky 模式或重复点击 Restart**。必要时可在明确告知风险后另行设计**真正新的一次**启动前后日志观察，但当前不得以证据缺失为由贸然重启。
+
+### 本轮结论
+
+已成功确认：**GSID已识别到安装的GSI；当前处于disabled、非GSI运行；原厂系统启动后向通知服务报告isInstalled=true，通知正常生成。** AOSP 11 一次性启动规则为 `disabled` 提供了合理的正常解释，因此 **不能把 `disabled` 直接当作启动器未设置 enable 的错误；也不能认定 AVB 签名不匹配已经证实。** 剩余关键分叉为早期流程是否识别/消费 one-shot、映像映射是否成功、实际 AVB/ramdisk信任公钥、后续GSI/Vendor启动能否成功。
