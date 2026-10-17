@@ -1,6 +1,6 @@
 # P780 Android 11 DSU / GSI 可信启动支线 — 源码交叉核对（2026-10-18）
 
-> **现阶段只是一条新的有根据的研究假说，P780 尚未执行 DSU/GSI 操作、未安装任何镜像。** 重点不是刷写原有分区，而是核对是否存在官方提供的、在 LOCKED 状态下临时启动受信任 GSI 的 DSU 通道。不能把它误称为 Root/BL 解锁/AVB 漏洞的现成 PoC。
+> **2026-10-18 新实机结果：P780 开发者选项中已确认存在 DSU Loader，`gsid.rc` 存在、包管理器 `-u` 能看到 `com.android.dynsystem`。但尚未验证安装器对当前用户实际已安装/能启动，也没有安装任何 DSU/GSI 镜像。** 重点不是刷写原有分区，而是核对是否存在官方提供的、在 LOCKED 状态下临时启动受信任 GSI 的 DSU 通道。不能把它误称为 Root/BL 解锁/AVB 漏洞的现成 PoC。
 
 ## 发现源头：实际 Fstab 中的 GSI 公钥
 
@@ -16,7 +16,7 @@ avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r
 
 | AOSP DSU 需要 | 当前 P780 证据 | 判定 |
 |---|---|---|
-| Android 11+ DSU Loader 用户界面 | Android 11 | 版本相容；**未证实 OEM 未隐藏/禁用前端** |
+| Android 11+ DSU Loader 用户界面 | Android 11；**机主亲眼确认开发者选项有 DSU Loader** | **入口存在已实机确认**；启动后镜像列表和安装行为尚未验证 |
 | Android 动态分区 | `ro.boot.dynamic_partitions=true` | 满足 |
 | F2FS 或 ext4 `/data` | 两份 fstab 都声明 `f2fs` | 配置符合 |
 | 首阶段 `/metadata` | fstab `/metadata` ext4 `first_stage_mount` | 配置符合；需硬件/运行态佐证 |
@@ -79,7 +79,7 @@ adb shell ls -l /avb/q-gsi.avbpubkey /avb/r-gsi.avbpubkey /avb/s-gsi.avbpubkey
 
 ### 新证据下的优先级与可选第二轮微型只读审计
 
-目前将 DSU 标为 **底层工具存在、标准前端缺失证据、启动端实际功能未证实**，研究优先级由 P1 下调为 P2（低至中）；不会以此证明 Root/锁定态写入。
+该判断已被同日随后采集的新结果修正：**开发者选项确实有 DSU Loader 入口**，且系统安装器包记录可见。请阅读下一节的较新实测，不能继续称“标准前端缺失”。
 
 可在机主愿意时执行如下几条完全只读命令进一步核对是否仅保留底层框架：
 
@@ -91,3 +91,43 @@ adb shell getprop | findstr /I "gsid dsu gsi"
 ```
 
 其中 `/metadata/gsi` 可能因 Android SELinux 正常限制而显示 Permission denied；文件为空/不存在或用户无权限均应原样保留。可另外在开发者选项中**仅观察**是否出现“DSU Loader”，不点击安装、不下载、不重启。无 UI 和无服务证据后应暂缓，不为了实验强行修改系统属性或安装随机的 DynamicSystem APK。
+
+## 2026-10-18 第二轮实机只读结果：DSU Loader 入口存在 + 历史卸载关联
+
+机主明确观察到开发者选项中有 **DSU Loader** 入口，此外在 Windows PowerShell 中执行：
+
+```text
+adb shell pm list packages -u | findstr /I "dynsystem gsi"
+package:com.android.dynsystem
+
+adb shell ls -l /system/etc/init/gsid.rc
+-rw-r--r-- 1 root root 590 2009-01-01 08:00 /system/etc/init/gsid.rc
+
+adb shell ls -ld /metadata/gsi /metadata/gsi/dsu
+ls: /metadata/gsi: Permission denied
+ls: /metadata/gsi/dsu: Permission denied
+
+adb shell getprop | findstr /I "gsid dsu gsi"
+# no matching lines
+```
+
+**提高置信度的事实**：开发者选项 UI 入口已被实机确认；Android 11 风格 `gsid.rc` 文件也确实存在。此前的 `gsi_tool` 存在、动态分区、F2FS `/data`、fstab GSI 额外钥匙配置相互支持。`/metadata/gsi` 权限拒绝与 [AOSP Android 11 gsid.rc](https://android.googlesource.com/platform/system/gsid/+/refs/tags/android-11.0.0_r13/gsid.rc) 对应：它在 `post-fs` 创建 `/metadata/gsi` 为 root/system 组的 `0771` 目录，不允许普通 `shell` 随意列举。这不意味着目录存在或不存在的状态已被证实。没有读取用户隐私数据。
+
+**关键 PackageManager 语义**：Android 官方 [ADB 文档](https://developer.android.com/tools/adb) 把 `pm list packages -u` 定义为 **also include uninstalled packages**；因此 `com.android.dynsystem` 出现在 `-u` 列表不等于它当前对用户 0 已安装。此前 `pm path com.android.dynsystem` 没有输出，需进一步检查具体用户安装状态，不能将两种结果强行合并为“已安装”。
+
+**新关联：仓库历史 user 0 应用精简**。[旧版精简实验](apps-and-debloat.md) 明确记录机主曾进行 `pm uninstall --user 0` 清理；[彻底精简脚本](../../archive/scripts/hand5g_debloat_p780.ps1) 以及 [日常电话精简脚本](../../archive/scripts/hand5g_debloat_daily_phone.ps1) 都把 `com.android.dynsystem` 加入待卸载包清单。另一方面，历史 phase3 [已安装列表](../../evidence/restricted/adb/phase3/hand5g_packages_installed_phase3.txt) 记录过 `com.android.dynsystem`。脚本中出现只是**计划目标**，历史快照也不是当前状态，尚没有充分记录证明这两个脚本在此包上的卸载命令被成功执行。当前新的、可验证的假说是：**安装器可能在某次精简中被对 user 0 移除，但 Settings 的 DSU Loader 菜单仍保留。**
+
+## 下一轮仅查询 user 0 安装状态（暂不还原或启动安装）
+
+```powershell
+adb shell am get-current-user
+adb shell pm list packages --user 0 com.android.dynsystem
+adb shell pm list packages -d --user 0 com.android.dynsystem
+adb shell pm list packages -f -u --user 0 com.android.dynsystem
+adb shell dumpsys package com.android.dynsystem | Select-String -Pattern 'codePath=|User 0:|installed=|enabled='
+```
+
+- `pm list packages --user 0` 若有包，则证明对 user 0 当前已安装；仅 `-u` 有包而普通查询无包，支持系统包被对 user 0 卸载/未安装；`-d` 可核验是否停用。若缺少全部描述，则需讨论权限/包管理器实现差异。`dumpsys` 中 `User 0: ... installed=false` 是最有区分力的只读字段。
+- **不执行** `pm install-existing --user 0 com.android.dynsystem`，除非机主在看到查询证据后明确同意恢复系统包；此命令会更改 user 0 应用安装状态，不是“只读检查”。
+- 若确认包已安装/可用，则下一步可只打开开发者选项中的 DSU Loader **查看可选镜像列表**；按照官方 [Android 11 DSU 说明](https://developer.android.com/topic/dsu) 选择镜像并同意条款后才会触发下载安装。研究阶段不得选择镜像/确认条款/开始下载/重启。
+- DSU 即便有官方可信 GSI 运行入口也**不等于**原厂 Bootloader 已解锁或能永久写入 `boot`/`vbmeta`；可运行性和 HAL 适配必须单独测试，不能由包记录直接推定。
