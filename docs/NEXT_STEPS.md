@@ -1,6 +1,12 @@
 # 后续关卡与待机监测
 
-更新：2026-10-17。当前暂停主动设备实验，保留公开线索监测。机主暂时无需操作手机。
+更新：2026-10-18。继续公开线索监测；可自愿开展无写入的 AVB 信息采集，禁止将只读步骤升级为刷机或 Bootloader 状态修改。
+
+## 本轮立即可用的只读任务（2026-10-18）
+
+- 用户实机确认 `green / locked / flash.locked=1 / _b`，VBMeta 摘要详见 [AVB 基线专题](research/avb-live-baseline-20261018.md)。
+- Windows 用户可以运行 [只读 AVB ADB 采集脚本](../tools/p780-avb-readonly.ps1) 补齐可见的 AVB 属性与分区软链接清单；结果先检查是否有敏感信息再分享。该脚本不会读取 `/dev/block` 内容。
+- 未来获得同版本镜像后，使用 AOSP `avbtool info_image`、`calculate_vbmeta_digest` 校验与实机 digest 是否匹配，并以 NCC Group `test_avb_key` 辅助识别已知测试公钥。**无原始 VBMeta 时不要凭 digest 反推密钥或试刷。**
 
 ## 值得重启研究的新证据
 
