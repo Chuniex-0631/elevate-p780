@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — 第十二轮：DSU reboot reason 已证实，一次重启返回原厂，内核缓冲区空
+
+- 机主明确 DSU Restart 是**单次正常重启直接回 Android11 原厂系统**，没有观察到 GSI 系统桌面或第二次自动重启。`ro.boot.bootreason=reboot,dynsystem`、`sys.boot.reason=reboot,dynsystem`，证明该次重启携带官方 DSU 专用原因；不能再把问题定位在“通知按钮没调用重启”上。
+- `adb shell logcat -g` 显示 kernel buffer 配额 2MiB、当前记录**0B**；筛选 `logcat -b kernel -d` 无任何行，前次 pstore Permission denied。说明无法取得本次失败前的 first-stage 错误，不证明内核无错误。
+- [AOSP Android11 `UseDsuIfPresent()`](https://android.googlesource.com/platform/system/core/+/9583e92257ab85075231b014f0999d5a5dab9910/init/first_stage_mount.cpp) 在启动允许状态、DSU slot、映像映射、indicator 等环节失败均可能返回正常系统，而 one-shot 消费使事后 status=disabled 可能正常。综合机主只重启一次的观察，**优先研究首次启动阶段早退**，AVB/映射失败具体根因尚未证实。
+- 同步 DSU诊断专题、NEXT_STEPS、STATUS、README、证据表；停止重复不产出证据的 `logcat kernel`、普通 getprop 或DSU Restart。当前设备仍可进入原厂 Android11，未Root/解锁。
+
 ## 2026-10-18 — 第十一轮 DSU 日志核验与一次性启动状态消费机制确认
 
 - 机主返回 GSID：`gsi_tool status`= `installed` + `disabled`，当前槽 `_b`，`ro.gsid.image_running` 空，pstore访问被SELinux/权限拒绝。UI重复返回原厂系统这一现象得到了安装backend的独立证据。
