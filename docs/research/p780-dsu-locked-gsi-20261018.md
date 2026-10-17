@@ -1,6 +1,6 @@
 # P780 Android 11 DSU / GSI 可信启动支线 — 源码交叉核对（2026-10-18）
 
-> **2026-10-18 新实机结果：P780 开发者选项中已确认存在 DSU Loader，`gsid.rc` 存在、包管理器 `-u` 能看到 `com.android.dynsystem`。但尚未验证安装器对当前用户实际已安装/能启动，也没有安装任何 DSU/GSI 镜像。** 重点不是刷写原有分区，而是核对是否存在官方提供的、在 LOCKED 状态下临时启动受信任 GSI 的 DSU 通道。不能把它误称为 Root/BL 解锁/AVB 漏洞的现成 PoC。
+> **2026-10-18 最新实机状态：`com.android.dynsystem` 已由机主通过 Android 原生 `install-existing --user 0` 成功恢复，`pm path` 可定位原厂 APK，`dumpsys` 已确认 `installed=true`。开发者选项 DSU Loader 和在线 GSI 选项已见，但尚未执行 GSI 下载、安装、重启或启动验证。** 重点不是刷写原有分区，而是核对是否存在官方提供的、在 LOCKED 状态下临时启动受信任 GSI 的 DSU 通道。不能把它误称为 Root/BL 解锁/AVB 漏洞的现成 PoC。
 
 ## 发现源头：实际 Fstab 中的 GSI 公钥
 
@@ -216,3 +216,40 @@ adb shell getprop ro.vndk.version
 ```
 
 第一个若为空且 Settings 无其它 OEM 自定义，AOSP 默认目录最有可能是上述 Google `gsi-src.json`；第二个供理解 DSU JSON VNDK 过滤。也可查询 `ro.product.cpu.abi` 与 `ro.system.build.version.release`（已有 ARM64/Android 11 基线，不强制重复）。如无安装计划，则连恢复系统包也不是必须。
+
+
+## 2026-10-18 第四轮：机主实际成功恢复原厂 DSU 安装服务（直接验证）
+
+本节是**现行最新状态**，覆盖上方历史阶段的 `installed=false`；先前结论在其采集时有效，不应再作为手机当前状态。
+
+机主在 PowerShell 中执行并提供原样成功回显：
+
+```text
+PS> adb shell cmd package install-existing --user 0 com.android.dynsystem
+Package com.android.dynsystem installed for user: 0
+PS> adb shell pm path com.android.dynsystem
+package:/system/priv-app/DynamicSystemInstallationService/DynamicSystemInstallationService.apk
+PS> adb shell dumpsys package com.android.dynsystem | Select-String -Pattern 'User 0:|installed=|enabled='
+    User 0: ceDataInode=19397 installed=true hidden=false suspended=false distractionFlags=0 stopped=false notLaunched=false enabled=0 instant=false virtual=false
+    User 0:
+    User 0:
+    User 0:
+```
+
+**强证据：** 软件包在用户 0 的安装状态已经从上轮 `false` 变成 `true`；之前无法返回的 `pm path` 此时返回位于预装系统分区的正式 APK。不存在重新下载 APK、替换 `/system` 文件、解除 Bootloader 锁或恢复出厂操作。之前 Settings 已显示在线 GSI 目录，当前又确认安装器已恢复，消除了**用户级卸载**这个直接障碍。
+
+**边界：** `stopped=false`、`notLaunched=false` 是 PackageManager 标志，不证明 GSI 已被安装或启动，也不能由此认定 `gsid` 已成功执行镜像写入。`enabled=0` 是默认值，非禁用。用户仍在原厂 Android 11 `_162`、Bootloader LOCKED、无 Root。没有取得新的 VBMeta 镜像或物理分区写入通道。
+
+### 继续前仅需最小只读兼容性检查
+
+```powershell
+adb shell getprop persist.sys.fflag.override.settings_dynamic_system.list
+adb shell getprop ro.vndk.version
+adb shell getprop ro.product.cpu.abi
+adb shell df -h /data
+```
+
+- 首条确认是否有 DSU 在线 JSON 列表 URL 的系统属性覆盖；即使为空也只是提示更可能使用 AOSP 默认 Google 目录，不是网络抓包证明。
+- `ro.vndk.version` 与 ABI 用于初步比对 GSI 的架构/VNDK 要求；`df -h /data` 只读查询剩余空间。不需要为此重复 Key Attestation、修改属性、访问受限 `/metadata/gsi` 或再次恢复系统包。
+- 官方 [Android DSU](https://developer.android.com/topic/dsu) / [AOSP DSU 设计及内核/分区条件](https://source.android.com/docs/core/ota/dynamic-system-updates)：需要受信任签名、动态分区、dm-verity、vendor HAL 兼容与储存空间；AOSP 建议至少预留约 10GB。即使四个在线 GSI 目录条目可见，旧 Android 11 的厂商组件是否能与 Android 15+ GSI 启动相容还没有实证。
+- 当前**不执行**选择镜像、同意安装条款、下载、启用 sticky 模式或重启。若用户明确希望进行 DSU 实机安装测试，需要另做针对该镜像的适配、可靠退出方式、备份与具体风险评估。不能把 DSU 临时系统误当成永久 Root 或 locked fastboot 分区写权限。
