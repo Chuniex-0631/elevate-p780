@@ -1,5 +1,12 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 第十一轮：GSI installed/disabled、私有原始日志 SHA 和 one-shot 源码机制
+
+- 用户终端直接实测：`gsi_tool status` 两行 `installed` / `disabled`；`ro.gsid.image_running` 空、当前槽 `_b`；`/sys/fs/pstore` Permission denied。Android 11 `gsi_tool.cpp::Status` 的 `installed/disabled` 分别来自GSID的已安装/当前启用查询，当前原厂系统启动未发现`running`。
+- 两个本轮实上传日志已通过本地程序读文件并计算 SHA：完整 `p780-dsu-after-reboot.log` UTF-16LE/CRLF、15455行、SHA256 `955c9775371658b36d59e749c648149193a05746a72d26807f09a3f97de6e970`；`p780-dsu-filtered.txt` 678B、3条、SHA256 `333d7ac1de09d46f4a77a3611842a38d47c0ec14819d2b2b23d6ebfb2a74cf76`。原件保留用户PC和当前聊天，**不提交4.1MB未脱敏Logcat或Windows个人路径**。
+- 真正相关日志：06:31:40.743 DSU应用进程启动；06:31:40.850 `DynSystemInstallationService: onStartCommand(): action=android.os.image.action.NOTIFY_IF_IN_USE`；06:31:40.852 `DynamicSystemService: isInstalled(): true`，随后创建含2个action的通知。文件时间范围06:31:40.616～06:36:36.673，仅有当前原厂用户空间记录，无可判定 first-stage 映射、AVB/受信密钥或后续init是否失败的原始日志。
+- [AOSP Android11 libgsi.cpp](https://android.googlesource.com/platform/system/gsid/+/refs/tags/android-platform-11.0.0_r16/libgsi.cpp) 在 `CanBootIntoGsi` one-shot 路径下**先将后续启动状态写disabled但允许当前尝试继续**，所以重启后 `installed/disabled` 与“已经消费一次性DSU启动机会”相符，**不是必然等于点击前未启用，也不能由此证明具体失败原因为AVB**。详见 [DSU第十一轮证据与诊断](research/p780-dsu-stock-fallback-20261018.md)。
+
 ## 2026-10-18 第十轮：GSI 下载完成提示后两次重启仍回原厂系统
 
 - 机主直接观察：下载GSI→完成、提示进入DSU→点击重启→返回原厂系统、通知继续提示进入DSU→再点击重启→仍然原厂。**并非设备自主无限 Bootloop，而是用户每次点击导致相同的启动回退。** 原厂可开机，Android15 GSI未观察到真正运行。
