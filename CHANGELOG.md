@@ -1,5 +1,11 @@
 # 归档维护日志
 
+## 2026-10-18 — 首次 DSU 安装提示成功，重启两次仍返回原厂系统（诊断待收集）
+
+- 机主实际操作 DSU：GSI 下载完成、系统提示点击 Restart；至少两次手动点击后设备均重启回原厂 Android11，随后仍显示 DSU Restart 通知。**原厂系统正常可用，尚未成功运行 Android15 GSI；并非无外力的自动 bootloop。**
+- 分辨 UI 完成提示和 GSID真实 installed/enabled/early boot验签：现无直接 status、pstore、logcat 和安装 build ID；AVB 公钥不匹配、one-shot状态重置、DSU映像映射失败、init/HAL故障都只是待证假说。
+- 新建 [启动回原厂系统专题](docs/research/p780-dsu-stock-fallback-20261018.md)，更新 STATUS、NEXT_STEPS、EVIDENCE_MANIFEST、早期实验协议与说明；建议暂停重复 Restart、暂缓 Discard以保留证据，先用当前原厂系统保存日志与状态查询，禁止盲目 `gsi_tool enable/disable/wipe` 和其他刷写。
+
 ## 2026-10-18 — 用户决定推进 DSU 首次实机试验，采用分阶段安全方案
 
 - 机主认为 DSU 不覆盖原系统因此愿意实际尝试。已核对 Google [官方 DSU](https://developer.android.com/topic/dsu) 与 [Android15 GSI 已知风险](https://developer.android.com/topic/generic-system-image/releases)：标准 DSU 避免写入原厂 system/boot，但仍修改 userdata，失败有 Recovery factory reset/数据丢失风险，不构成绝对无损保证。
