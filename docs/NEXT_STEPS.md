@@ -97,3 +97,11 @@
 - 已读上游 `probe.py` 没有 `--device`、`--source_fingerprint` 或 `--target_fingerprint` 参数，配置是 `config.yml`。所谓 OTA URL 固定小时级过期/服务永久保留固件无足够实证，不能据此继续伪造指纹重试。
 - [楽天社区 2024-07-31 P780 `_161→_162` 帖](https://community.mobile.rakuten.net/questions/x933grdoe6mhntuf) 记录旧版实机出现可用 OTA 提示，却安装失败；未公开完整 Android build fingerprint 或 Google 服务端地址。
 - AOSP `signapk` 签署 APK/JAR/OTA ZIP，并非 `avbtool`；AVB test-key 缺陷也不提供 locked bootloader 写权限；增量 OTA 的 payload 可能依赖旧版分区。详细校对在 [Google OTA Prober 专题](research/google-ota-prober-p780-20261018.md)。
+
+## 2026-10-18：OTA 暂缓后的唯一实机优先路径
+
+- 机主明确决定将 OTA 研究暂缓，不再要求反复查历史 Google OTA fingerprint，也不把外部 AI 猜造参数视为证据。
+- **P1：Key Attestation**。官方 Android Keystore `RootOfTrust` 含 `verifiedBootKey`、可选 `verifiedBootHash`、`deviceLocked`、`verifiedBootState`，普通应用有机会取得硬件证明。使用 [vvb2060/KeyAttestation](https://github.com/vvb2060/KeyAttestation/releases/tag/v1.8.4) 正常 Android 11 模式，无需 Shizuku、StrongBox、设备 ID 和解锁。实际设备尚未执行。
+- 研究注意：Trusty Keymaster 可直接透传 bootloader 提供的 ≤32 字节 key hash，或对 >32 字节 key 进行 SHA256；**不能预先假定 `verifiedBootKey` 等于 SHA256(AVB public-key blob)**，只有确认具体编码才能与 AOSP test key 比对。
+- 拿到结果仅收集证书可信状态、TEE/Software 级别、`verifiedBootKey`/`verifiedBootHash`、locked 和 boot state；不发布完整证书链/身份标识。验证 `verifiedBootHash` 是否完全等于 `33ee3a6cf5215befd8a4f953382bd746d12efc37f6d4116c0c9b68a7661f95f2`。
+- 详细步骤与 AOSP 来源见 [AVB Key Attestation 专题](research/avb-attestation-alternative-20261018.md)。只有真正取得新证据才升级为已验证，保持既有 locked/未 Root 状态。
