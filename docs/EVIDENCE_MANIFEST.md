@@ -1,5 +1,13 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 DSU 第六轮：Treble 和 Vendor linker 隔离的直接实机证据
+
+- 机主第三方 Treble Check **截图**显示 Project Treble 支持、VNDK 30、A/B 无缝更新、64-bit ARM、System-as-root。截图只在当前对话内查看，**未保存入 Git 或当作底层源码证据**。
+- 同次原始 ADB：`getprop ro.treble.enabled`→`true`；`ls /system/etc/ld.config*`→文件不存在，`ls /linkerconfig/ld.config.txt`→文件存在、90115B（系统给出的时间戳 1971 并非固件构建日期）。
+- **关键实证**：`grep -n -A 20 '^\[vendor\]' /linkerconfig/ld.config.txt` 从第368行找到 `[vendor]`，第369行列出额外 namespaces，第370行明确 `namespace.default.isolated = true`，后续 Search Paths 指向 `/odm/${LIB}`、`/vendor/${LIB}`、`/vendor/${LIB}/hw` 等。Vendor isolation 的断言来自本机系统动态生成的真实链接器配置，而非第三方检测软件推论。
+- [官方 Google GSI 兼容性标准](https://developer.android.com/topic/generic-system-image#check-device-compliance) 的 `ro.treble.enabled`、Vendor namespace 隔离和 CPU ABI 已结合之前 `ro.vndk.version=30`、`arm64-v8a` 实机结果确认，**基础兼容性达标**。并非特定新版 GSI `vndk`/签名公钥或最终启动验证；AOSP 从 Android15 开始弃用新 VNDK、保留旧版（≤14）APEX 兼容包，详见 [专项](research/p780-dsu-locked-gsi-20261018.md)。
+- 当前阶段没有新 GSI 下载/安装、没有获取原始 VBMeta/Boot 镜像、没有获得 Root 或解锁。下一步获取 Google DSU JSON 具体字段，原始镜像 ZIP 仍不下载。
+
 ## 2026-10-18 DSU 第五轮：VNDK / ARM64 / 空间与目录来源查询
 
 - 机主真实执行 `adb shell getprop persist.sys.fflag.override.settings_dynamic_system.list`→空；`adb shell getprop ro.vndk.version`→`30`；`adb shell getprop ro.product.cpu.abi`→`arm64-v8a`。
