@@ -8,17 +8,28 @@
 2. **Fstab 两份已读取**：`system/system_ext/product` 使用 `avb=vbmeta_system`；`vendor/odm` 使用默认 `avb`。`system` 额外包含 `/avb/q-gsi.avbpubkey` 等三份 Google 开发 GSI 公钥文件路径候选。[Fstab 实测](research/p780-fstab-avb-20261018.md)。但仍未读取真实 `vbmeta_b`、`vbmeta_system_b` 或 chain descriptors。
 3. **已完成但没有结果的尝试**：Fastboot 常见 OEM 解锁指令均为 unknown command；EDL Sahara 可识别但没有兼容且授权的 Firehose；Google OTA Prober 对当前 `264` fingerprint 无 `update_url`。不再重复这些请求；OTA 支线暂缓。对应 [启动/EDL](research/device-and-boot.md)、[OTA](research/google-ota-prober-p780-20261018.md)。
 
-## 路线 A：机主同意 DSU 首次实机试验，先仅测试安装（第十轮待执行）
+## 路线 A：首次 DSU 下载后重启返回原厂系统——进入非破坏性诊断
 
-用户明确希望开展真正 DSU 尝试，理由是其不覆盖原厂系统。**纠正风险边界**：AOSP DSU 的确用临时逻辑分区与独立 GSI userdata，不直接覆盖原厂 system/boot，但仍会在原设备 userdata 上分配文件、调用 Vendor HAL，Google 官方 Android15 GSI known issues 明确存在启动失败后可能需要 Recovery **恢复出厂**的情形，故不能宣称绝对无风险。
+**机主在 P780 实际观察：** GSI 下载完成后 Settings/DSU 通知提示重启进入 DSU。至少两次由机主**手动点击 Restart**触发重启，但每次都返回原厂 Android 11，并保留同一提示。**这不是自主连续重启的 bootloop，也不是 Android 15 已启动成功。** 原厂系统现在仍能开机。镜像下载内容的确切 `BP1A` ID 需由通知/日志确认（此前推荐值不能冒充当轮确认）。
 
-已在 [DSU 第一次实机操作协议](research/p780-dsu-first-trial-protocol-20261018.md) 记录备份要求、推荐镜像、两阶段停止线与恢复风险。**当前仍尚未实际安装或启动任何 GSI**，仅给机主可执行流程；还缺真实安装日志和设备回报。
+**下一步停止线**：立即停止重复重启，不点击 Discard（先保留临时镜像/启动证据），不执行任何 `gsi_tool enable/disable/wipe`、Fastboot/EDL 强制刷写或安装其他镜像。目前已有足够实验现象，但**尚未拿到 DSU backend 状态或早期启动日志**，不可直接将原因判为 GSI AVB 签名、VNDK30或 Vendor HAL 错误。
 
-**第一候选**：Android 15 QPR2 **GSI ARM64 / 无 GMS**，`arm64-exp-BP1A.250405.005.C1-13151952-61d23231`（用户截图第1项），Google 官方 ZIP SHA256 `61d232315ad773bd4820c76c175efe6a61cd8a9a257508db588032be213e15f7`（仅官方预期值，未下载验证）。选择更低版本差距和不带 GMS 主要为减轻测试依赖，不保证签名/设备兼容。
+Windows PowerShell 当前原厂系统状态下先提取日志，再做状态查询：
 
-**当前下一步**：机主先备份/确认数据可以清除，保持网络/电量，打开开发者选项 DSU Loader，选择第一项且在条款确认后开始下载/安装。**这是一次写入 /data 的实验，已经不再属于只读取证。** 若报错提供原始错误和脱敏通知；若出现 **Restart / Discard** 通知，**先不点击 Restart**，传回截图/进度再决定是否开启第2阶段 GSI 启动。不要执行 `gsi_tool enable`、刷写 boot/vbmeta、尝试 EDL/fastboot。
+```powershell
+adb logcat -b all -d -v threadtime -t 15000 > ".\p780-dsu-after-reboot.log"
+Select-String -Path ".\p780-dsu-after-reboot.log" -Pattern 'dsu|gsid|gsi|DynamicSystem|first_stage_mount|avb|verity|liblp|rollback|ImageManager' | Set-Content ".\p780-dsu-filtered.txt"
+adb shell getprop ro.gsid.image_running
+adb shell getprop ro.boot.slot_suffix
+adb shell ls -l /sys/fs/pstore
+adb shell gsi_tool status
+```
 
-**第二阶段留待另行确认**：只有安装成功、备份完成且机主接受可能 Recovery wipe 的后果后才重启到 GSI；成功时用 DSU 通知返回原系统，失败则可能需要 Recovery/恢复出厂，不能保证自动无损回退。此路线不等于 AVB Root 弱密钥被利用或 Bootloader 解锁。
+**隐私和限制**：完整 logcat 可能包含设备标识/隐私，先仅上传 `p780-dsu-filtered.txt` 和最后四条终端输出；避免上传完整证书、bugreport 或没有脱敏的完整日志。重启通常重建 logcat；前次 DSU early init 错误有可能已经不可读。`gsi_tool status` 可按需启动 gsid，所以排在保存日志之后。只读诊断会帮助区分 installed/enabled、installed/disabled、normal、权限错误及从 kernel/pstore 是否存在早期证据。
+
+**AOSP 实现关键路径**：Android11 `gsi_tool.cpp::Status` 查询 `isGsiRunning/isGsiInstalled/isGsiEnabled`；`first_stage_mount.cpp::UseDsuIfPresent()` 若 `CanBootIntoGsi` 条件不足会 “proceeding with normal boot”，映像 MapAllImages 失败也会返回。因此 **DSU 按钮存在与 early boot 能成功切换，是两个独立状态**。后续针对具体日志分析，不为再次试错强制打开 sticky mode。
+
+本轮 [首次返回原厂系统/重复提示诊断专题](research/p780-dsu-stock-fallback-20261018.md) 记录完整分层假说、取证命令与风险边界。
 ## 主要路线 B：真正阻挡永久 Root / 自定义 Boot 的环节
 
 **B1. 只读离线镜像发现**：仅考虑机型为 P780 且有原始构建编号、文件哈希与可信出处的 `vbmeta[_system]`, `boot`, `vendor_boot`, `dtbo`，包括各官方历史版本，但必须注明与 `_162` 的差异。得到镜像后用 AOSP `avbtool info_image` / `verify_image` 分析主 vbmeta→system chain descriptors、rollback indices、boot 分区是否 AVB hash footer；不能从 fstab 或 `7744` 字节 VBMeta 总大小反推出真实描述符。**暂不继续批量搜/探测 OTA。**
