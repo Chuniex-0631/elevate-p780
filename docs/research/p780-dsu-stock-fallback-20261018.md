@@ -155,3 +155,34 @@ reboot,dynsystem
 ### 当前实证上限
 
 **证明成功：DSU 服务安装状态存在、UI发出DSU专用重启、系统按 `reboot,dynsystem` 完成单次重启、返回原厂系统。未证明成功：GSI 运行、分区映射、AVB验证、Root/BL解锁。未证明根因：哪一个 first-stage 条件首先失败。**
+
+## 后续决策复核（2026-10-18）：怎样推进，而不重复相同 Restart
+
+**本节属于 AOSP 源码分析，不是新增 P780 ADB 实测。** 前十二轮实测已充分：`installed/disabled` + `reboot,dynsystem` + 仅一次启动返回原厂 Android11 + logcat kernel 0B + pstore shell Permission denied。若下一轮没有新的观测途径，**单纯重复同样 DSU Restart 不能隔离根因**。
+
+### 第一阶段早退分支与可区分的关键日志
+
+| Android 11 关键节点 | AOSP 源码中典型记录 / 行为 | 当前 P780 是否直接见到？ |
+|---|---|---|
+| `CanBootIntoGsi` | 一次性启动允许后先把**下一次**安装状态置为 `disabled`；拒绝时日志形如 `DSU ... proceeding with normal boot` | 事后 `disabled` 相容，但不等于证明已进入该函数的成功路径 |
+| `GetActiveDsu` | `Failed to GetActiveDsu` 则在挂载前返回原厂启动路径 | 没有首阶段日志，未知 |
+| `IImageManager::MapAllImages` | `DSU partition layout could not be instantiated` 则放弃 DSU 镜像映射 | 未见首阶段日志，未知 |
+| `MarkSystemAsGsi` | `DSU indicator file could not be written` 则放弃设置GSI运行标记 | 未见首阶段日志，未知 |
+| `TransformFstabForDsu` + AVB + 真正挂载 | 需要修改临时挂载指向，预加载的 GSI 公钥必须满足真实 AVB 校验和安全补丁规则 | Android15 ZIP 的真实 system AVB signing key 与 P780 ramdisk 真实 q/r/s 密钥都未直接得到，不能判定 |
+
+第一阶段 AOSP 核心：[Android 11 `first_stage_mount.cpp` 的 `UseDsuIfPresent`](https://android.googlesource.com/platform/system/core/+/9583e92257ab85075231b014f0999d5a5dab9910/init/first_stage_mount.cpp)；[libgsi 的 `CanBootIntoGsi`](https://android.googlesource.com/platform/system/gsid/+/refs/heads/android10-dev/libgsi.cpp) 的一次性禁用与 `kMaxBootAttempts=1` 逻辑需与P780真实Android11固件分支区别，不能把不同分支实现完全等价。
+
+### 不推荐的下一步（无新的诊断价值，或风险明显升高）
+
+- 重复 DSU Loader 通知 `Restart`：已经两次出现同样现象；`reboot,dynsystem` 说明发起方式不是主要盲点。
+- `gsi_tool enable` **不带** `-s`：AOSP 默认进入 sticky 持续模式，**不适合尚无法观察 early boot 的锁定手机**。虽然 `enable -s` 支持一次性模式，但它与系统通知默认逻辑本质相同，目前没有独立可观测点就不应作为“解决方法”。[Android 官方 DSU说明](https://developer.android.com/topic/dsu) 明确 sticky 与 one-shot 区别。
+- 直接安装 Android16 / GMS 或手动刷 GSI：增加额外变量，无法更好地区分状态/映射/签名/驱动根因。
+- 恢复出厂或重刷原厂固件：会影响 userdata 和研究环境，但无法保证改变 boot ramdisk 的 GSI 公钥或 first-stage 原厂实现。
+
+### 真正有价值的新观测前提
+
+**A. 优先离线：** 对 P780 具体 `_162` boot/ramdisk/init 代码实现与 Android11 AOSP 上述分支做差异对照，及在能独立验证来源的前提下取得 Android15 GSI AVB 公钥摘要，而非假定公共 q/r/s keys 与 Android15 一定匹配。
+**B. 条件性二次实验：** 只有当存在较前两次明显更强的观测途径（例如可读取/保存真实 early boot 日志、可复现的失败输出或经验证的具体修复变量）、用户重要数据已备份并确认 Recovery/factory reset 后仍可接受、用户再次同意冒险时，才考虑另一次单次启动实验。只看到回原系统不代表这台机已经可安全运行任意GSI。
+**C. 暂停时状态：** 保留当前原厂可启动环境和 GSID 所报告的已安装镜像，不为调试目的擅自 Discard/enable/wipe；若用户决定结束尝试或需要释放空间，可在留存必要证据后使用官方通知的 Discard，**无需永久保持占用**。
+
+**阶段结论：** 当前证据足以证明“DSU 重启请求发出、一次性 GSI 安装状态存在但没启动”，**不足以确认哪个条件失败**。先建立新的可观测量再重试，比第三次同参数 Restart 更有研究价值。
