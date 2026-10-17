@@ -12,7 +12,7 @@
 | 问题 | 文档 |
 |---|---|
 | 手机、启动链、EDL/Fastboot | [设备与启动](research/device-and-boot.md) |
-| 官方固件、OTA 与认证公告 | [固件](research/firmware-ota.md)、[2026-09-28 公告](research/firmware-advisory-20260928.md)、[2026-10-18 AVB 实机基线](research/avb-live-baseline-20261018.md) |
+| 官方固件、OTA 与认证公告 | [固件](research/firmware-ota.md)、[2026-09-28 公告](research/firmware-advisory-20260928.md)、[2026-10-18 AVB 实机基线](research/avb-live-baseline-20261018.md)、[Google OTA Prober 评估](research/google-ota-prober-p780-20261018.md) |
 | 更新日志到底证明什么 | [OTA 日志审计](research/ota-log-audit.md)、[原始 Bugreport 索引](research/ota-bugreport.md) |
 | QAS、Mink、PFM、TZAccess | [调用链](research/qas-tee-pfm.md)、[TEE 与系统 APK](research/tee-system-apks.md) |
 | GhostLock 是否可适配 | [主线](research/ghostlock.md)、[候选配置/布局](research/config-layout.md) |
