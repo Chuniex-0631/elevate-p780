@@ -1,5 +1,7 @@
 # P780 DSU 锁定 Bootloader 与 GSI 签名信任机制专项核验（2026-10-18）
 
+> **第十五轮 PC 已取得实际GSI公钥，原专题中“未取得目标GSI实际公钥”的句子仅是当时阶段记录。** Android15 `BP1A.250405.005.C1` 的 `system.img` AVB 1032B公钥SHA256 **`e53f344beb2646b49651ea8dd336dbe75117183e96ef34beed4b367a4a0ae925`**，与 AOSP **Q Developer GSI** 完全一致（已从用户上传原始bytes独立计算）；其同ZIP `vbmeta.img` 嵌入的AOSP测试根虽然与P780 hardware attestation root匹配，但 `Flags=2`、链式system公钥为另一 RSA2048测试key，不能据此宣称DSU可以加载。**仍缺P780 `_162` 真实ramdisk允许公钥集合，AVB拒绝/早期映射均未直接证实。** 请见[第十五轮实证](p780-dsu-android15-avb-key-verified-20261018.md)。
+
 > **结论：Bootloader LOCKED 并不自动禁止 DSU，AOSP 官方支持在 LOCKED + AVB 验签开启时启动经设备信任的 GSI。** 但在 P780 上，历史证据只见普通 q/r/s GSI AVB 公钥路径，尚未证明设备的第一阶段 Ramdisk 配备能验证当期 Google **Developer GSI** 的公钥。**锁定状态下密钥不受信是高价值待证假设，不是第十轮“重启一次回原厂”的确证根因。** 该单次正常回退同样符合 first-stage 的活动 slot / ImageManager map 等先于 AVB 的失败。
 
 ## 用户提出的问题与具体边界
