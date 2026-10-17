@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — DSU 启动失败后的执行决策：停止重复试错，收敛 first-stage 分支
+
+- 基于已有 `installed/disabled`、`reboot,dynsystem`、单次重启返回原厂、Kernel logcat 0B 和 pstore权限拒绝，认定此时没有能证明具体 root cause 的第一阶段错误日志。
+- 核对 AOSP Android11 `UseDsuIfPresent()` 的 `CanBootIntoGsi`、`GetActiveDsu`、`MapAllImages`、`MarkSystemAsGsi` 等可能早退路径；one-shot 机制在一次尝试中预先将**下一轮**状态置disabled，不能仅依据事后 `disabled` 判断 enable失败。
+- 更新 [DSU first-stage 诊断矩阵](docs/research/p780-dsu-stock-fallback-20261018.md) 和 [NEXT_STEPS](docs/NEXT_STEPS.md)：没有新诊断观测量时不再重复 Restart；不用无 `-s` 的 `gsi_tool enable` sticky mode，不冒险换 Android16/Recovery wipe。优先查找与P780 `_162` 对应的可验证 boot ramdisk与DSU签名证据。
+- 该轮**没有新的用户 ADB 实测、没有镜像下载或手机改动**，属于已收集证据上的源码审计与方案更新。Root、BL 锁和原厂镜像写入状态不变。
+
 ## 2026-10-18 — 第十二轮：DSU reboot reason 已证实，一次重启返回原厂，内核缓冲区空
 
 - 机主明确 DSU Restart 是**单次正常重启直接回 Android11 原厂系统**，没有观察到 GSI 系统桌面或第二次自动重启。`ro.boot.bootreason=reboot,dynsystem`、`sys.boot.reason=reboot,dynsystem`，证明该次重启携带官方 DSU 专用原因；不能再把问题定位在“通知按钮没调用重启”上。
