@@ -24,7 +24,7 @@
 | Android Clang 11.0.2 `rtmutex.o` | **云端编译成功** | 已匹配实机编译器，非完整 `vmlinux`，非可刷写内核 |
 | 还原与出厂 `vmlinux` 一致的内核 | **未完成** | 原厂私有代码与构建身份未满足 |
 | JourneyConfigService | **静态与运行状态核对已完成** | vendor/XML/TCS 版本均 42；64 键一致；消费者静态定位进程管理与 Service/Provider 限制；未发现 OTA/Root 链 |
-| DSU/GSI 临时系统（LOCKED） | **六个公开 GSI AVB keys 已离线哈希核验；实际 Android15/16 镜像签名与 P780 ramdisk 公钥匹配仍未知** | 第八轮6份 Google JSON/24条镜像全部缺少可选 `vndk/pubkey`；第九轮源码确认 Settings目录、安装辅助预检与 first-stage AVB 真实验签为独立阶段。P780 fstab 指向 q/r/s **普通 GSI** 公钥，AOSP 另有 q/r/s-**developer-GSI** 不同文件。六份1032B RSA4096公开公钥已算SHA256，相互不同且均不等于本机TEE已证实的 AVB test根钥匙。P780实际ramdisk文件未直接读取、Android15/16真实镜像公钥未取、没有下载/启动GSI。Google发布说明有需清空userdata恢复的可能性。[第九轮报告](research/p780-dsu-trust-chain-audit-20261018.md) |
+| DSU/GSI 临时系统（LOCKED） | **用户已明确同意首次尝试；分两阶段安装/启动方案已建立，尚未执行** | 已完成 DSU Loader/安装器恢复、Treble/ABI/VNDK30/链接器隔离及24个官方 GSI目录分析；公开6份普通/Developer AVB 公钥与设备主根公钥不同。用户愿意实机试验，首选 Android15 `BP1A.250405.005.C1` ARM64无GMS；**先备份，仅下载安装并停在 Restart/Discard 通知，需另行确认才启动 GSI**。DSU 不覆盖原厂 system/boot 但存在 userdata 清空/Recovery 风险。目前无GSI安装、Root或解锁成果。[首轮协议](research/p780-dsu-first-trial-protocol-20261018.md) |
 | Root / Bootloader 解锁 / 刷机 | **均未达成** | 任何适配包不得宣称 Root 成功 |
 
 ## 2026-10-18：AVB 锁定状态下的实机基线（用户提供）
