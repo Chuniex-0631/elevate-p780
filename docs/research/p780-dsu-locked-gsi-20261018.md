@@ -253,3 +253,39 @@ adb shell df -h /data
 - `ro.vndk.version` 与 ABI 用于初步比对 GSI 的架构/VNDK 要求；`df -h /data` 只读查询剩余空间。不需要为此重复 Key Attestation、修改属性、访问受限 `/metadata/gsi` 或再次恢复系统包。
 - 官方 [Android DSU](https://developer.android.com/topic/dsu) / [AOSP DSU 设计及内核/分区条件](https://source.android.com/docs/core/ota/dynamic-system-updates)：需要受信任签名、动态分区、dm-verity、vendor HAL 兼容与储存空间；AOSP 建议至少预留约 10GB。即使四个在线 GSI 目录条目可见，旧 Android 11 的厂商组件是否能与 Android 15+ GSI 启动相容还没有实证。
 - 当前**不执行**选择镜像、同意安装条款、下载、启用 sticky 模式或重启。若用户明确希望进行 DSU 实机安装测试，需要另做针对该镜像的适配、可靠退出方式、备份与具体风险评估。不能把 DSU 临时系统误当成永久 Root 或 locked fastboot 分区写权限。
+
+## 2026-10-18 第五轮：P780 DSU 只读基础兼容性和空间检查已完成
+
+机主已实际执行第四轮安排的四条无状态查询；下面是**本机原样输出**，不是把 AOSP 通用性质误当作实机结论：
+
+```text
+$ adb shell getprop persist.sys.fflag.override.settings_dynamic_system.list
+# empty
+$ adb shell getprop ro.vndk.version
+30
+$ adb shell getprop ro.product.cpu.abi
+arm64-v8a
+$ adb shell df -h /data
+Filesystem       Size  Used Avail Use% Mounted on
+/dev/block/dm-11 106G  3.2G  103G   4% /storage/emulated/0/Android/obb
+```
+
+### 解读与证据等级
+
+- **确定：** `ro.vndk.version=30`，对应 Android 11 的 vendor ABI 接口版本。Android 11 P780 的 `ro.product.cpu.abi=arm64-v8a`，与截图中 ARM64 GSI 条目架构匹配。**尚未证明 Project Treble 的完整隔离实现或 GSI 实际启动成功**。
+- **确定：** `df -h /data` 显示设备映射 `/dev/block/dm-11`，容量 `106G`，已用 `3.2G`、报告可用 `103G`（约 4%）；显示的 Mount on 却是 `/storage/emulated/0/Android/obb`，可能由 Android 挂载命名空间 / bind mount 导致，**不得强行解释为独立实体挂载路径，更不得直接认为已分配 DSU 空间**。按报告值，空间明显超过 AOSP 的至少约 `10GB` 基础建议，但 quota、F2FS 特殊限制、实际 DSU 分配尚未测试。
+- **确定：** `persist.sys.fflag.override.settings_dynamic_system.list` 返回空；表示本机没有暴露这个属性指定的替换地址，和 [Android AOSP DSU 默认 Google GSI JSON](https://source.android.com/docs/core/ota/dynamic-system-updates#customize-the-one-click-dsu) 设计相容，但未抓取本机实际 HTTPS 流量/编译资源/运营商覆盖，因此不应声称已独立证明其实际 URL。
+- **AOSP 有条件的筛选解释：** 官方 Android 11 [DSULoader.java `isSupported()`](https://android.googlesource.com/platform/packages/apps/Settings/+/286dce6b6ed/src/com/android/settings/development/DSULoader.java) 通过必选 `cpu_abi`，以及 JSON **若出现才检查** `os_version`、`vndk` 列表（必须包含设备版本 30）、`spl` 等条目。机主截图四个候选在 UI 中出现，若厂商使用基本相同的 AOSP 筛选实现则说明这些候选已通过 *实际具备的字段* 的客户端检查；但它也可能因 JSON 缺少可选的 VNDK/SPL 字段而跳过相应检查。**没有拿到实际候选 JSON 原件，不能认定四个包都明确包含 VNDK 30，也不能由此证明旧 Vendor 与新 system 完全兼容。**
+- **官方跨版本边界：** [Android Developers GSI 兼容检查](https://developer.android.com/topic/generic-system-image#check-device-compliance) 对常规 GSI 强调 `ro.treble.enabled=true` 和动态链接器配置中 `[vendor]` 的 `namespace.default.isolated=true`；后者是判断能否跨 Android OS 版本使用 GSI 的重要前提。原官方 GSI 手工刷机流程要求 Bootloader 解锁，与 DSU 的锁定态受信任临时安装**不是同一通道**；不能把两套前置要求机械等同。
+
+### 第六轮建议：仅只读确认 Treble 与 Vendor linker 隔离
+
+```powershell
+adb shell getprop ro.treble.enabled
+adb shell ls -l /system/etc/ld.config* /linkerconfig/ld.config.txt
+adb shell "grep -n -A 20 '^\[vendor\]' /linkerconfig/ld.config.txt"
+```
+
+若 linkerconfig 文件/路径不存在或 shell 无法读取，应按具体 Android 11 文件布局重定向检查，不必引入 Root 或执行 `gsi_tool status`/安装。`[vendor]` 命名和 `namespace.default.isolated` 也可能因版本而不同，不能用命令零输出武断推断“不支持 Treble”。
+
+**阶段结果：** 安装器已恢复、目录 UI 正常、ARM64/VNDK 30 明确、可用存储报告充裕，满足继续离线和只读兼容性分析的条件。仍未取得匹配 JSON、DSU trustkey 实际当前加载情况、HAL/Gatekeeper/Weaver 兼容证据、GSI 安装签名验收和启动日志。因此仍不选择镜像、不下载安装、不重启或尝试 locked 写入原厂分区。
