@@ -44,3 +44,7 @@ adb pull /sdcard/ ".\P780-DSU-Backup\SharedStorage"
 - 是否完成个人数据备份/确认用户数据可丢弃。
 
 官方原理：[AOSP DSU](https://source.android.com/docs/core/ota/dynamic-system-updates)、[Android Developers DSU](https://developer.android.com/topic/dsu)、[Android15 GSI 已知风险](https://developer.android.com/topic/generic-system-image/releases)。**当前没有成功安装或启动 P780 GSI 的证据**，本文件为待执行实验方案，不是试验成功报告。
+
+## 首次实际执行结果更新（2026-10-18）：安装完成提示出现，但启动未进入 DSU
+
+机主随后报告：GSI 下载显示完成，DSU 通知要求 Restart；点击重启后回到原厂 Android 11，并再次提示 Restart，第二次点击仍重复回原系统。**首次试验的第二阶段已经由机主实际触发，但并未进入 GSI**，此前本文件“尚未安装/重启”的说明属于事前协议快照，不再代表现状。具体镜像 ID 仍待日志/通知确认；GSID installed/enabled 状态也未读取。不是设备自发持续重启的 bootloop。请以 [启动返回原系统诊断专题](p780-dsu-stock-fallback-20261018.md) 和 [当前计划](../NEXT_STEPS.md) 为准，勿重复 Restart、enable 或 wipe。
