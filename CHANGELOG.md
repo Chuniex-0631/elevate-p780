@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — 第六轮 DSU Treble/VNDK 隔离：本机三项官方前置检查完成
+
+- 机主 Treble Check 截图显示 Treble、A/B、ARM64、System-as-root 支持；同时普通 ADB `ro.treble.enabled=true`，运行时 `/linkerconfig/ld.config.txt` 存在(90,115B)，`[vendor] namespace.default.isolated=true` 明确位于第370行，且包含真实 Vendor/ODM linker search paths。旧 `/system/etc/ld.config*` 不存在只是路径差异。
+- 联合此前实机 VNDK=30、CPU=`arm64-v8a` 和空闲空间报告，Google 官方 GSI 兼容性指南的 Treble、Vendor 隔离、ABI 基础要求已确认，提升研究信心；**但 DSU 安装 GSI 的可信公钥、镜像内 VNDK 30、HAL、系统启动状态仍未确认**。
+- AOSP 自 Android15 起废弃新的 VNDK，同时保留≤14旧 VNDK APEX 供旧 Vendor 使用：不能仅凭跨 Android 版本宣称不兼容，也不能假设任何 GSI 都能启动。下一轮转向截图中四项 GSI 的 Google DSU 原始 JSON 元数据，优先 PC 只读获取、离线核对 vndk/pubkey 等，不刷机、不下载大镜像。
+- [DSU 专题](docs/research/p780-dsu-locked-gsi-20261018.md)、[NEXT_STEPS](docs/NEXT_STEPS.md)、STATUS、证据清单同步修订；手机仍 Bootloader LOCKED、未 Root。
+
 ## 2026-10-18 — DSU 第五轮基础预检：VNDK30、ARM64、数据空间报告 103G
 
 - 机主四项只读结果：DSU `.list` 覆盖属性空、`ro.vndk.version=30`、`ro.product.cpu.abi=arm64-v8a`、`df -h /data` 报 dm-11 共106G/已用3.2G/可用103G/4%，Mounted on 指向 `/storage/emulated/0/Android/obb`（不武断认为该挂载点就是 `/data` 本身的真实块设备节点）。
