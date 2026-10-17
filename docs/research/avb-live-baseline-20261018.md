@@ -157,3 +157,35 @@ adb shell ls -l /dev/block/mapper/system_b-cow
 
 以上查询不读取 root-only 镜像也不切槽。属性为空表示该设备未导出该属性，不直接代表支持/不支持。若需进一步核对 OTA 快照状态，先查系统所提供**纯读取**接口是否可在非 root shell 执行，并保留错误信息；绝不使用 snapshotctl 的 `merge`、`map`、`unmap`、`delete-snapshots`、`revert-snapshots` 等有状态操作。
 
+
+## 第四轮：动态分区属性与 Virtual A/B 限制（用户实机，2026-10-18）
+
+用户在 Windows PowerShell 中运行以下四条 `adb shell getprop`，提供了终端输出（会话转录，未保存为独立上传原件）：
+
+| 属性 | 值 | 判定 |
+|---|---|---|
+| `ro.virtual_ab.enabled` | **空** | 这一个属性未导出；不能直接确认或否认 Virtual A/B |
+| `ro.virtual_ab.compression.enabled` | **空** | 压缩能力未通过该属性暴露；不意味着不支持非压缩快照 |
+| `ro.boot.dynamic_partitions` | `true` | **设备明确报告启用了动态分区** |
+| `ro.boot.vbmeta.device` | **空** | 未导出顶层 VBMeta 设备属性；与此前 `vbmeta_b` 已存在、root-only 的块设备证据不冲突 |
+
+### 研究结论与置信度
+
+- **已确认**：动态分区、A/B 启动、B 槽已挂载逻辑分区、dm-verity enforcing、`system_b-cow` 存在。
+- **高度相容但未实证**：`system_b-cow` 是 Android 11 Virtual A/B 的 kernel COW / OTA 快照实现。AOSP 官方文档说明 Android 11 用 kernel COW，Android 12 起才支持压缩快照；空压缩属性不是矛盾。**是否启用 Virtual A/B、快照是否正在合并，均不能从本组属性独立断定**。
+- **仍无证据**：COW 可作为 AVB 绕过/锁定态任意分区写入入口；`vbmeta_system_b` 的真实 chain descriptor；`_162` 原厂镜像、Firehose、Root/Bootloader 解锁成果。
+- 无新增危险操作，不尝试读取 `root:root 0600` 原始块设备，不操作 COW、OTA、slot 或 bootloader。
+
+官方依据：[Android Virtual A/B overview](https://source.android.com/docs/core/ota/virtual_ab)（**Android 11 Virtual A/B** 与 **Android 12 Virtual A/B**）、[Implementing Virtual A/B](https://source.android.com/docs/core/ota/virtual_ab/implement)。特别注意 **动态分区支持不是 Virtual A/B 的充分条件**，COW 映射也不能证明存在可利用写入机制。
+
+### 分支结束与后续研究重点
+
+**到此结束重复普通 ADB getprop 采集。** 后续若出现已验证、只读取且确有诊断价值的快照状态接口，再单独评估；不要为满足好奇心运行带状态更改的 `snapshotctl`、重启、刷写或越权块设备读取。
+
+优先顺序：
+1. 可信 `P780AE_11.0_RMN_JP_162` OTA/镜像工件及校验记录；
+2. 离线 `avbtool info_image` / 链式描述符 / AVB 测试公钥匹配 / 本机 `sha256` + `7744` 两项交叉校验；
+3. 具有设备与 build identity、完整日志、恢复方案的 P780 锁定态写入通道证据；
+4. Virtual A/B / COW 仅作为固件获取与 OTA 架构的辅助信息，不提升为高优先级漏洞路线。
+
+本轮公开搜索仍未得到来源可信且可校验的 `_162` OTA 原件。官方 [软件更新公告](https://network.mobile.rakuten.co.jp/information/software/rakuten-hand-5g/) 证明版本和发布时间，但不是镜像下载页；2026-03-15 的 [XDA OTA/固件求助帖](https://xdaforums.com/t/request-rakuten-hand-5g-p780-stock-ota-or-full-firmware.4782235/) 仅说明其他人也在求助，网页正文此轮因 403 无法独立阅读，**不代表能下载到固件，也不等于证明全网不存在镜像**。
