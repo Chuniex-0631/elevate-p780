@@ -1,5 +1,13 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 DSU 新核验：Locked AVB 的 Developer GSI 公钥信任要求
+
+- 官方 [AOSP DSU Verify Boot](https://source.android.com/docs/core/ota/dynamic-system-updates#verify-boot) 指出厂商可以在 **LOCKED** 状态且 AVB 不禁用时启动 Developer GSI，需要在 first-stage ramdisk 集成 `developer_gsi_keys.mk`。故“DSU无法启动一定是没解锁BL”是错误命题；**Locked设备拒绝未信任GSI签名**却是有源码支持的现实限制。
+- P780 原厂 fstab 目前只实机确认普通 `q/r/s-gsi.avbpubkey` 路径；AOSP Developer GSI 对应**不同** `q/r/s-developer-gsi.avbpubkey`，公开原始1032B六钥匙SHA此前已记录。Google在 [2021-12-22提交](https://android.googlesource.com/platform/build/+/5d2cf578d6b64e03d0babac436dfbbb4f9886971) 移除普通Compliance GSI的 `gsi_keys.mk`，指明这些公钥后来只需要在 VTS 而非设备 ramdisk中。P780实机**并未提取ramdisk公钥实体**，因此不能断言“没有dev密钥”是已证事实。
+- [AOSP fs_avb](https://android.googlesource.com/platform/system/core/+/main/fs_mgr/libfs_avb/fs_avb.cpp) 源码在Locked时 `IsAvbPermissive=false`，不允许未知公钥被宽松接受。Android15 Google公共JSON没有可选 `pubkey`，所以 DSU 下载和安装成功**不代表**first-stage已验证该镜像的真实签名。
+- [AOSP gsi_tool Android11](https://android.googlesource.com/platform/system/gsid/+/refs/tags/android-cts-11.0_r16/gsi_tool.cpp) 的 `status` 对非root UID在 `installed/disabled` 后返回，只有root才继续读取已安装镜像 AVB public key SHA1；不得要求用户再次用普通shell重试或尝试绕开服务权限。
+- 已新增 [LOCKED BL vs DSU 信任链专项](research/p780-dsu-locked-bl-vs-gsi-trust-20261018.md)。**锁定状态公钥不匹配是重要假说但并非真实失败证据**；单次正常回原厂仍同样符合 AOSP first-stage 的 GSI active slot / image map 早退；缺少唯一的 `_162` boot ramdisk 和 Android15 system AVB Signing Key 直接对照。
+
 ## 2026-10-18 第十三轮：完整 Bugreport 成功读取，但 LAST KMSG / 持久化内核日志不可用
 
 - 机主上传 `P780-DSU-Bugreport.zip`；Python zipfile 全部 CRC通过，ZIP成员 **362**；原档 SHA256 `64a097d0911e35675c75dff09d68a7e28b5aa15bd342ed796387d12758d5f141`。主TXT **19,721,044B** / 约240,297行，SHA256 `8767fb7c186050240f3203fd65a82ab73b95dbbeeec338654ba439580f984836`。**原 ZIP 与TXT不上传Git，因包含设备/网络/用户隐私**。
