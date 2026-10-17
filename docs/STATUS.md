@@ -24,7 +24,7 @@
 | Android Clang 11.0.2 `rtmutex.o` | **云端编译成功** | 已匹配实机编译器，非完整 `vmlinux`，非可刷写内核 |
 | 还原与出厂 `vmlinux` 一致的内核 | **未完成** | 原厂私有代码与构建身份未满足 |
 | JourneyConfigService | **静态与运行状态核对已完成** | vendor/XML/TCS 版本均 42；64 键一致；消费者静态定位进程管理与 Service/Provider 限制；未发现 OTA/Root 链 |
-| DSU/GSI 临时系统（LOCKED） | **Treble/VNDK/ARM64 实机通过；Google 主索引 508B/SHA 已核验，子目录尚待取得** | 用户恢复 `com.android.dynsystem` 安装服务；Settings 可见四个 ARM64 GSI/GMS 候选。ADB `ro.treble.enabled=true`、`namespace.default.isolated=true`、VNDK30、ABI ARM64、可用空间报告 103G。第七轮 PC 原始 `gsi-src.json` 508B，SHA `0A1970ABFCEB6BF3962177881B255E6AF9D4F43903AAC3BA9AEF2C1E5B4A2D09` 验证通过；仅含6个 Google `include`，没有具体 GSI JSON 字段。仍未取得候选 `vndk/pubkey`/GSID/AVB 实际启动证明；没有 Root/BL 解锁。[DSU 专题](research/p780-dsu-locked-gsi-20261018.md) |
+| DSU/GSI 临时系统（LOCKED） | **24 条 Google GSI 原始 JSON 已验证；缺失 VNDK/pubkey 字段，启动验签仍未知** | 用户恢复原厂安装器、Treble/Vendor linker 隔离、ARM64、VNDK30 与用户存储基础检查通过。第八轮 ZIP 4073B SHA `ad732d61aa7751aeaa6f2a148e3a1998aeee645beb5fe3f344fff98d9ca74c74`；6份原始子 JSON 24 条全无 `vndk`、`pubkey`，4项菜单对应 Android15 BP1A×2 和 Android16 **CP11**×2，旧目录补丁太早被 SPL 初筛过滤。UI 显示不是镜像兼容、受信签名或启动成功。设备仍 LOCKED、无 GSI 安装及 Root。[第八轮报告](research/p780-dsu-gsi-catalog-verified-20261018.md) |
 | Root / Bootloader 解锁 / 刷机 | **均未达成** | 任何适配包不得宣称 Root 成功 |
 
 ## 2026-10-18：AVB 锁定状态下的实机基线（用户提供）
