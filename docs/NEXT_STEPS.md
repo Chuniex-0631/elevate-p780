@@ -8,22 +8,19 @@
 2. **Fstab 两份已读取**：`system/system_ext/product` 使用 `avb=vbmeta_system`；`vendor/odm` 使用默认 `avb`。`system` 额外包含 `/avb/q-gsi.avbpubkey` 等三份 Google 开发 GSI 公钥文件路径候选。[Fstab 实测](research/p780-fstab-avb-20261018.md)。但仍未读取真实 `vbmeta_b`、`vbmeta_system_b` 或 chain descriptors。
 3. **已完成但没有结果的尝试**：Fastboot 常见 OEM 解锁指令均为 unknown command；EDL Sahara 可识别但没有兼容且授权的 Firehose；Google OTA Prober 对当前 `264` fingerprint 无 `update_url`。不再重复这些请求；OTA 支线暂缓。对应 [启动/EDL](research/device-and-boot.md)、[OTA](research/google-ota-prober-p780-20261018.md)。
 
-## 路线 A：Bugreport 取证完成，停止重复相同的软件日志采集（第十三轮）
+## 路线 A：优先验证 Locked AVB GSI 公钥信任差异 + first-stage 早退（新增高价值方向）
 
-**机主真实 Bugreport 已离线读取：** `P780-DSU-Bugreport.zip` ZIP有效，共362成员，SHA-256 `64a097d0911e35675c75dff09d68a7e28b5aa15bd342ed796387d12758d5f141`；主文本19,721,044B / 240,297行。**不将原始敏感档案提交到 GitHub**，只存字段、校验和、结果。[第十三轮独立报告](research/p780-dsu-bugreport-audit-20261018.md)。
+**机主新问题：** P780 的 BL Locked 会不会阻止 DSU？AOSP [官方 DSU 支持](https://source.android.com/docs/core/ota/dynamic-system-updates#verify-boot) 明确允许在 LOCKED 且 AVB 不关闭的情况下启动**受信任公钥签名**的 Developer GSI，前提是 OEM 在 first-stage ramdisk 预装相应 `developer_gsi_keys.mk` 密钥。因此不是“DSU必须解锁BL”，而是**必须有实际签名与设备可信公钥匹配**。
 
-**新增四条硬证据：**
+**新增配置疑点 H1**：机主 P780 Fstab 仅见普通 `q-gsi/r-gsi/s-gsi.avbpubkey`，而 Google 公开 Developer GSI 专用的是 `q/r/s-developer-gsi.avbpubkey`（此前六份公开文件哈希两套均不相同）。Google 2021-12-22 从 AOSP 移除普通 Compliance `gsi_keys.mk` 并声明其公钥只需留在 VTS，突出两者用途不同。**不能**把“fstab有q/r/s”视作“可在locked状态下验签 Google Android15 Developer GSI”。但尚未实际读取 P780 ramdisk 或 Android15 system.img 签名，H1仍是**关键假设，不是实机AVB失败证据**。
 
-1. `persist.sys.boot.reason.history` 中有 `reboot,dynsystem` 两项，分别为UTC+8 **2026-10-18 06:30:31、06:31:30**；是两次真实 DSU 专用重启的持久历史（不是设备自主循环重启）。
-2. `gsid.image_installed=1`、`ro.gsid.image_running=0`、`init.svc.gsid=stopped`，原厂 `/dev/block/dm-*` 设备映射表仅见 B 槽 `system/vendor/product` 等分区，无活跃DSU映射；这些只能描述报告采集时原厂运行状态，**不能倒推早期启动的失败点**。
-3. `dumpstate` 明确报 `Error dumping /proc/last_kmsg (LAST KMSG): No such file or directory`；`incidentd` 同时打不开 `/sys/fs/pstore/console-ramoops`、`console-ramoops-0` 和 `/proc/last_kmsg`；`logcat -L` 返回退出码1。**上一轮 DSU 的 kernel/last logcat未成功采集**。
-4. 当前 `dmesg` 虽有约2635行，最早时间戳已是开机后的 **943秒**，不包含 first-stage 时段，找不到 AVB/DSU/映射错误并不能证明根本不存在这些错误。
+**同样不能排除 H2**：早前两次 `reboot,dynsystem` 仅单次正常重启返回原厂，AOSP Android11 的 `UseDsuIfPresent()` 在活动DSU槽、`MapAllImages`、`MarkSystemAsGsi` 等失败可直接退回原厂。可能是在**未进行 AVB 验签前**就退出；我们没有 first-stage pstore/LAST KMSG，不能盲判原因。
 
-**后续现在不要再重复：** `adb bugreport`、`logcat -b kernel`、`logcat -L`、读取 pstore/last_kmsg、普通状态 getprop 或第三次同参数通知 Restart。这些途径已经实际验证信息有限。仍保持 DSU已安装、原厂Android11可启动且未 Root/解锁。
+**新增工具边界**：AOSP Android11 [`gsi_tool status`](https://android.googlesource.com/platform/system/gsid/+/refs/tags/android-cts-11.0_r16/gsi_tool.cpp) 仅 UID 0 才会额外输出已安装镜像的 `AVB public key (sha1)`；P780 普通ADB shell只有 `installed/disabled`，重新运行也不会出现Key。不要以未知方法获取提权或强行访问GSID映像。
 
-**新的真正优先事项改为离线核对**：寻找**可信且匹配 P780 `_162`** 的 boot/ramdisk、第一阶段fstab和 init 二进制/源码证据，独立获取 Android15 候选GSI的 AVB Signing Key信息，逐项核对AOSP `CanBootIntoGsi/GetActiveDsu/MapAllImages/MarkSystemAsGsi` 失败分支与P780原厂启动配置；不能以未读取的设备公钥作为已确认。若新资料提供了具体根因和可回退的修复变量，再与机主讨论一次**有诊断差异**的复现；之前应确认备份、Recovery最坏结果、得到新的明确同意。
+**下一项真正可复核的工作（PC离线优先）**：1) 获取可靠且匹配 P780 `_162` 的 boot/ramdisk 和 first-stage fstab 原件，以查找实际 `/avb/*` 是否包含 Developer GSI key；2) 获取 Google Android15 `BP1A.250405.005.C1` 镜像 AVB **真实** signing key（仅JSON无pubkey无法核验）并与实际可信公钥二进制或相同哈希算法直接比对；3) 若两者不匹配，锁定态AVB是确定阻断条件；若匹配，则优先检查GSID DSU active slot / image-map 早退。具体证据权重见 [LOCKED BL 与DSU签名专项](research/p780-dsu-locked-bl-vs-gsi-trust-20261018.md)。
 
-**数据保护**：Bugreport原件和此前4.1MB Logcat可能含账号、序列号、MAC、网络SSID、地理/通讯信息，只保留在机主本地或当前私有会话；仓库仅脱敏索引，不上传原文件。若机主日后决定释放数GB临时GSI空间，可在保存所需证据后再经官方 DSU `Discard`，并非必须永久保留以供取证。
+**降低其它假说权重但不排除**：[当前 AOSP GSI release 规则](https://android.googlesource.com/platform/build/+/HEAD/target/product/gsi_release.mk) 显式包含 `PRODUCT_EXTRA_VNDK_VERSIONS := 30 31 32 33 34`，因此 VNDK30 在Google构建路线中受支持；但未实际解包当前目标ZIP，不可绝对保证其有兼容APEX或 HAL。用户数据/安全仍优先：不要重复 Restart、`gsi_tool enable` sticky、取消AVB、刷写任何分区。新的高风险实机试验需额外同意和可恢复方案。
 ## 主要路线 B：真正阻挡永久 Root / 自定义 Boot 的环节
 
 **B1. 只读离线镜像发现**：仅考虑机型为 P780 且有原始构建编号、文件哈希与可信出处的 `vbmeta[_system]`, `boot`, `vendor_boot`, `dtbo`，包括各官方历史版本，但必须注明与 `_162` 的差异。得到镜像后用 AOSP `avbtool info_image` / `verify_image` 分析主 vbmeta→system chain descriptors、rollback indices、boot 分区是否 AVB hash footer；不能从 fstab 或 `7744` 字节 VBMeta 总大小反推出真实描述符。**暂不继续批量搜/探测 OTA。**
