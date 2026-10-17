@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — 第十四轮 DSU 受信密钥取证：准备 Google Android15 GSI ZIP PC 校验与 AVB Key 提取
+
+- 用户同意继续提取 Google Android15 非GMS ARM64 的真实 GSI signing pubkey。由之前已核验的官方 `vic/gsi-dsc.json` 及 Google官方发布说明确认为 `aosp_arm64-exp-BP1A.250405.005.C1-13151952-61d23231.zip`，完整 SHA256 `61d232315ad773bd4820c76c175efe6a61cd8a9a257508db588032be213e15f7`。
+- 生成当前聊天可下载 `p780_gsi_avb_run.ps1` 和 `p780_gsi_avb_extract.py`（源码SHA及说明见 [第十四轮操作协议](docs/research/p780-dsu-android15-avb-extraction-plan-20261018.md)）；工具会验证整包SHA、只提取 `system.img`/`vbmeta*.img`、调用AOSP官方 `avbtool info_image --output_pubkey` 输出真实AVB key字节与SHA1/SHA256。Python语法与模拟数据流程测试通过，**尚未对完整官方GB级ZIP进行联机实测**。
+- 强调即便拿到Android15真实签名公钥，仍**不能证明P780 ramdisk是否信任该密钥**，因为 `_162` 实际ramdisk里可信AVB文件仍缺。六份公共AOSP q/r/s普通/Developer公钥只作为参考；继续排查 first-stage DSU slot/mapping 而不无证据地归咎AVB。
+- 更新 NEXT_STEPS 和研究索引，等待机主PC输出；不操作P780、不刷机、不重复DSU Restart。Root/BL Locked状态无变化。
+
 ## 2026-10-18 — DSU 卡在 Locked BL 吗？核验公钥信任分歧，调整研究优先级
 
 - 回答机主“未解锁BL是否使DSU无法加载”的关键疑问：AOSP官方 **支持 LOCKED + Verified Boot开启**的 Developer GSI，但需预装对应受信任公钥，并非“DSU一定要解锁”。Locked 设备遇未知GSI AVB签名时，`fs_avb` 拒绝宽松验证；可信公钥是否存在是具体可验证的阻断条件。
