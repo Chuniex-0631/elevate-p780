@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — DSU 六子目录镜像元数据已核验：24条全无 VNDK/pubkey；CP11 纠错
+
+- 机主上传 `p780-dsu-catalog-detail.zip`，4073B / SHA-256 `ad732d61aa7751aeaa6f2a148e3a1998aeee645beb5fe3f344fff98d9ca74c74`。离线验证ZIP全部8项、六子目录原始字节SHA与report完整匹配，无读取错误；24条 GSI JSON 记录已经独立解析。
+- 4个 P780 菜单项目确系 Google `vic` Android15（BP1A两项）与 `baklava` Android16（CP11两项），截图上字形与 JSON 对照后确认 **CP11（两数字1）**，而非旧脚本目标 `CPI1`；故自动 report.matches 只列4条 BP1A（含x86），漏掉Android16并非下载失败。保留此错误以供审计，不再要求重复抓取。
+- **核心结论：全部24条 JSON均缺 `vndk` 和 `pubkey`**，客户端会跳过缺失字段对应的预筛；四项菜单出现不能表示 VNDK30明确支持或 GSI签名已被设备信任。R/S/T/U旧镜像的安全补丁早于P780 2024-02，导致SPL过滤仅留下Android15/16的ARM64×2。
+- 新建 [独立分析](docs/research/p780-dsu-gsi-catalog-verified-20261018.md)，更新DSU主专题、计划、状态、证据清单、README。下一步仅公开源码和离线对照 GSI签名公钥及P780 q/r/s-GSI信任链；未下载安装GSI ZIP，未刷分区/重启/Root/解锁。
+
 ## 2026-10-18 — DSU Google 主索引已核验，六子目录待查
 
 - 机主在 Windows 成功取得 `gsi-src.json` 原始文件（508 bytes），SHA-256 `0A1970ABFCEB6BF3962177881B255E6AF9D4F43903AAC3BA9AEF2C1E5B4A2D09`，本聊天附件也已离线二次哈希完全匹配。不是 P780 本机流量抓包。
