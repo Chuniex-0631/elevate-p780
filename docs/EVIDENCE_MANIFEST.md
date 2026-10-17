@@ -1,5 +1,12 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 第九轮：公开 AOSP 六把 GSI 公钥 SHA-256 与可信链修正
+
+- 新的 [DSU 公钥信任链源码审计](research/p780-dsu-trust-chain-audit-20261018.md) 对 AOSP Android11 `gsi_keys.mk`、`developer_gsi_keys.mk` 与 `rootdir/avb/Android.mk` 交叉核对：普通 q/r/s GSI 公钥与 q/r/s **Developer GSI** 公钥是两套不同文件；机主 P780 fstab 的 `avb_keys=` 仅引用普通 `q/r/s-gsi.avbpubkey`。
+- 通过公共 Android11 GitHub 源码镜像读取全部6份原始 AVB RSA4096 公钥二进制（**1032 字节/份**），纯 JavaScript 实现 SHA256 在 `abc` 标准测试向量自检通过。普通 q-gsi/r-gsi/s-gsi 的 SHA256 分别是 `07b37325316fd483765d474aafcaca908b4de4773e16ed87aed415c15f71fb98`、`4706b8d2ffd46c5759d9431b8bf95f5c0544f4f6c87bbe35ff591325eb1783f5`、`ec60e13d92331e2c2d5d1372a5d7f2131861dc602815fd87c0637d14790b4538`；三份 Developer 公钥哈希也在专项逐一保存。**六份均不等于 P780 TEE AVB 根公钥摘要 `7728e30f...`，但本机 ramdisk 密钥实体未直接采集。**
+- AOSP first-stage init 的 `CopyDsuAvbKeys` 和 DSU 设计说明确认：`/avb` 启动钥匙可复制到 `/metadata/gsi/dsu/avb` 用于安装辅助验收（普通 shell 受限），即便辅助复制失败也会在下一次 DSU 启动时做真实钥匙核对。Google DSU JSON 缺少 `pubkey` 不意味着 AVB 验签跳过。
+- Google 官方 Android15/16 对应版本发布说明有四个目标ZIP的官方SHA，可用于未来离线校验；并有 GSI 重启失败需 Recovery/清除 userdata 的风险说明。没有下载ZIP，也没有设备新的ADB采集/刷写/重启/Root。源码和风险资料按链接保存于专项。
+
 ## 2026-10-18 DSU 第八轮：6个子目录与24项 GSI 数据核验完成
 
 - 机主上传的 `p780-dsu-catalog-detail.zip` 为 **4073B**，SHA-256 `ad732d61aa7751aeaa6f2a148e3a1998aeee645beb5fe3f344fff98d9ca74c74`；本地使用 Python 对 ZIP 8 项路径/大小/CRC 均通过、6个子目录的 raw bytes / SHA-256 对照 report.json **6/6一致**；根索引508B仍与原先SHA一致。该ZIP保存在本轮私有会话与机主电脑，仓库存**可复核哈希和研究结论**，未宣称 P780 上实际执行过 HTTPS 抓包。
