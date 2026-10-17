@@ -4,8 +4,8 @@
 
 ## 本轮立即可用的只读任务（2026-10-18）
 
-- 用户实机确认 `green / locked / flash.locked=1 / _b`，VBMeta 摘要详见 [AVB 基线专题](research/avb-live-baseline-20261018.md)。
-- Windows 用户可以运行 [只读 AVB ADB 采集脚本](../tools/p780-avb-readonly.ps1) 补齐可见的 AVB 属性与分区软链接清单；结果先检查是否有敏感信息再分享。该脚本不会读取 `/dev/block` 内容。
+- 用户实机确认 `green / locked / flash.locked=1 / _b`、`sha256`、`7744` 字节 VBMeta 总长度和 AVB `1.1`。B 槽 `vbmeta_b`→`sde31`、`vbmeta_system_b`→`sda11`；**链式描述符未经镜像核验**，细节见 [AVB 基线专题](research/avb-live-baseline-20261018.md)。
+- Windows 用户可以运行 [只读 AVB ADB 采集脚本](../tools/p780-avb-readonly.ps1) 补齐可见的公钥摘要属性、分区软链接、块设备权限及动态分区映射；结果先检查是否有敏感信息再分享。该脚本不会读取 `/dev/block` 内容。
 - 未来获得同版本镜像后，使用 AOSP `avbtool info_image`、`calculate_vbmeta_digest` 校验与实机 digest 是否匹配，并以 NCC Group `test_avb_key` 辅助识别已知测试公钥。**无原始 VBMeta 时不要凭 digest 反推密钥或试刷。**
 
 ## 值得重启研究的新证据
