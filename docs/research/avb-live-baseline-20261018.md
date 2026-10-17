@@ -107,3 +107,53 @@ adb shell ls -l /dev/block/mapper | Select-String "system|vendor|product|odm|ver
 ### GitHub 隐私状态
 
 机主已将仓库调整为 Private；2026-10-18 再次通过 GitHub API 核实 `visibility=private`。此前短暂 Public 可见性不能视为历史访问已撤销，未经脱敏的系统证据仍须按 [SECURITY.md](../../SECURITY.md) 保密。
+
+## 第三轮：AVB 版本、root-only 块设备、dm-verity 与 COW（用户实机，2026-10-18）
+
+`adb shell getprop` 及 `ls -l` 的最新原样取证摘要如下；源输出为用户在会话中提供，尚未提供完整 TXT 原件：
+
+| 条目 | 实测 | 解释及限制 |
+|---|---|---|
+| `ro.boot.vbmeta.public_key_digest` | 空 | 设备**未暴露这一属性**；不能证明不存在公钥、公开密钥或签名漏洞 |
+| `ro.boot.vbmeta.avb_version` | `1.0` | Bootloader 侧 libavb 版本 |
+| `ro.boot.avb_version`（上轮） | `1.1` | Android `init/fs_mgr` 侧 libavb 版本；与上一项不同**不是冲突** |
+| `ro.boot.veritymode` | `enforcing` | 系统报告运行 dm-verity 强制验证 |
+| `/dev/block/sda11` | `brw------- root root 8,11` | `vbmeta_system_b` 目标块设备，仅 root 有读写权限 |
+| `/dev/block/sde31` | `brw------- root root 259,16` | `vbmeta_b` 目标块设备，仅 root 有读写权限 |
+
+版本解释由 [AOSP VINTF AVB 匹配规则](https://android.googlesource.com/platform/docs/source.android.com/+/e55b3193405187e091a4ac7730ef04360ec04504/zh-cn/devices/architecture/vintf/match-rules.html) 确认；`ro.boot.vbmeta.avb_version` 是 Bootloader 内 libavb 支持的版本，**不等于原厂镜像自身的 VBMeta 文件格式版本**。空公钥摘要只表明属性没有返回值。
+
+映射符号链接（本次观察的 B 槽）：
+
+```text
+system_b          -> /dev/block/dm-0
+system_ext_b      -> /dev/block/dm-1
+product_b         -> /dev/block/dm-2
+vendor_b          -> /dev/block/dm-3
+odm_b             -> /dev/block/dm-4
+system_b-cow      -> /dev/block/dm-5
+system-verity     -> /dev/block/dm-6
+system_ext-verity -> /dev/block/dm-7
+product-verity    -> /dev/block/dm-8
+vendor-verity     -> /dev/block/dm-9
+odm-verity        -> /dev/block/dm-10
+```
+
+- 映射的存在证明 Android 系统创建了相应 dm 节点；与 AOSP 的动态分区和 dm-verity 分层设计一致，参阅 [Virtual A/B 概述](https://source.android.com/docs/core/ota/virtual_ab)。**不要把 dm 设备编号当成分区签名描述符或证明谁签署了谁。**
+- `system_b-cow` 是 **Copy-on-Write / 快照相关线索**。可作为判断 Virtual A/B / OTA 状态的下一步调查目标，但其存在单独不能证明 OTA 正在进行、合并未完成，或存在已知写入入口。
+- `brw-------` 对于无 root 的正常 ADB shell 是只读/写权限障碍；**知道路径不等于能提取内容**。不尝试越权读取原始块设备，不把权限拒绝当成成功的镜像提取。
+- 目前仍未获得 `_162` 原厂 VBMeta 或 `Chain Partition Descriptor`；`vbmeta_system_b` 虽存在仍不等于已证实作为上级 VBMeta 的 chain target。
+
+### 下一轮低风险只读核对
+
+```powershell
+adb shell getprop ro.virtual_ab.enabled
+adb shell getprop ro.virtual_ab.compression.enabled
+adb shell getprop ro.boot.dynamic_partitions
+adb shell getprop ro.boot.vbmeta.device
+adb shell getprop ro.boot.slot_suffix
+adb shell ls -l /dev/block/mapper/system_b-cow
+```
+
+以上查询不读取 root-only 镜像也不切槽。属性为空表示该设备未导出该属性，不直接代表支持/不支持。若需进一步核对 OTA 快照状态，先查系统所提供**纯读取**接口是否可在非 root shell 执行，并保留错误信息；绝不使用 snapshotctl 的 `merge`、`map`、`unmap`、`delete-snapshots`、`revert-snapshots` 等有状态操作。
+
