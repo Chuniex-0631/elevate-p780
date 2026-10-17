@@ -1,5 +1,7 @@
 # P780 Android 11 DSU / GSI 可信启动支线 — 源码交叉核对（2026-10-18）
 
+> **第九轮最新：** 已独立取得并计算 AOSP 六种标准/Developer GSI 公钥二进制 SHA-256，确认它们与 P780 先前 TEE 报告的 AVB 测试根密钥不是同一密钥；Settings JSON `pubkey` 缺失不能绕过 first-stage 最终 AVB 验签。当前 fstab 中 q/r/s 普通 GSI 公钥只给出文件路径，尚未读取 ramdisk 实体字节。详见 [DSU/GSI 第九轮信任链核对](p780-dsu-trust-chain-audit-20261018.md)。**未下载/安装 GSI、未 Root/解锁。**
+
 > **第八轮（2026-10-18）最新证据：** 用户已上传 PC 获取的完整 DSU 子目录压缩包，6个 Google JSON / 24个候选经 ZIP CRC、SHA-256、JSON 结构复核通过；截图四项分别为 Android15 `BP1A.250405.005.C1` 两项和 Android16 **`CP11.251209.009.A1`** 两项（先前 `CPI1` 为读图/脚本拼写错误）。**24条全部不含 `vndk` 或 `pubkey` 字段**，因此 DSU Loader 菜单并未显式验证 VNDK30 和 GSI 公钥。详情见 [第八轮官方目录独立核验](p780-dsu-gsi-catalog-verified-20261018.md)。**仍未下载安装/启动任何 GSI，BL LOCKED、无 Root。**
 
 > **2026-10-18 最新实机状态：`com.android.dynsystem` 已由机主通过 Android 原生 `install-existing --user 0` 成功恢复，`pm path` 可定位原厂 APK，`dumpsys` 已确认 `installed=true`。开发者选项 DSU Loader 和在线 GSI 选项已见，但尚未执行 GSI 下载、安装、重启或启动验证。** 重点不是刷写原有分区，而是核对是否存在官方提供的、在 LOCKED 状态下临时启动受信任 GSI 的 DSU 通道。不能把它误称为 Root/BL 解锁/AVB 漏洞的现成 PoC。
