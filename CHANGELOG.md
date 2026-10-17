@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — 第十三轮：P780 Bugreport 全量审计，LAST KMSG 与 LAST LOGCAT 均无法取得
+
+- 收到机主真实 `adb bugreport` ZIP（362成员，原档SHA256 `64a097d0911e35675c75dff09d68a7e28b5aa15bd342ed796387d12758d5f141`），离线完整读取主TXT 19.7 MB / 约240,297行，未将可能含账号/设备MAC/网络记录的完整原件上传GitHub。
+- 找到 `persist.sys.boot.reason.history` 中两次 `reboot,dynsystem`，换算为UTC+8 2026-10-18 06:30:31和06:31:30，确认机主连续两次手动触发DSU专用重启。属性 `gsid.image_installed=1`、`ro.gsid.image_running=0` 与原厂B槽dm映射证明收集报告时GSI不运行。
+- `dumpstate` 不能读取 `/proc/last_kmsg`（文件不存在）；incidentd不能打开两个 `console-ramoops`及last_kmsg；`logcat -L`失败。当前 `dmesg`首行已是开机943秒后，因此没有包含失败的early init时段，无法确认映射/AVB/厂商启动问题。**零匹配不能写成零故障**。
+- 新建 [P780 Bugreport 13轮取证报告](docs/research/p780-dsu-bugreport-audit-20261018.md)，更新 STATUS/NEXT_STEPS与证据表；停止重复同路径bugreport/logcat/kernel和无诊断差异的DSU Restart，转向可信 `_162` boot/ramdisk/first-stage 公钥及镜像签名的离线来源研究。**本轮未重新启动GSI、更改设备、获得Root/BL解锁。**
+
 ## 2026-10-18 — 找到无需再次重启的 DSU early boot 取证途径（Bugreport）
 
 - 研究 AOSP framework/native `dumpstate.cpp::DoKmsg()` 证实官方 Bugreport 会尝试读取 `/sys/fs/pstore/console-ramoops`、`console-ramoops-0` 或 `/proc/last_kmsg` 并加入 `LAST KMSG`。普通 ADB shell pstore Permission denied、kernel logcat 0B **不能自动排除** dumpstate 对持久化 early boot 日志的访问。
