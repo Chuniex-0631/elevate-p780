@@ -1,5 +1,12 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 DSU 第五轮：VNDK / ARM64 / 空间与目录来源查询
+
+- 机主真实执行 `adb shell getprop persist.sys.fflag.override.settings_dynamic_system.list`→空；`adb shell getprop ro.vndk.version`→`30`；`adb shell getprop ro.product.cpu.abi`→`arm64-v8a`。
+- `adb shell df -h /data` 返回 `/dev/block/dm-11 106G 3.2G 103G 4% /storage/emulated/0/Android/obb`。按输出当前可用空间为 103G；最后一列不是 `/data` 但可能是 Android namespace/bind 的显示，不能由此断言真实 DSU 镜像临时分配或挂载状态。
+- AOSP `DSULoader.java` 使用 `cpu_abi` 强制架构匹配，`os_version/vndk/spl` 可选字段若存在则筛选，故先前四个在线 GSI 项出现是**基础客户端筛选**结果，未取得 JSON 原件，不能确认 vndk 数组确实包含 30。仍需 Treble 支持和 linkerconfig 隔离只读确认。
+- 结果已经加入 [DSU 第五轮实证专题](research/p780-dsu-locked-gsi-20261018.md)。本轮未下载安装、启用 GSI 或重启，更未获得 Root/BL 解锁。原始 ADB 输出来自本轮会话，尚无独立可哈希 TXT 原件。
+
 ## 2026-10-18 DSU 第四轮：原厂安装服务由机主恢复成功（当前状态）
 
 - 用户在 Windows PowerShell 实际执行 `adb shell cmd package install-existing --user 0 com.android.dynsystem`，stdout：`Package com.android.dynsystem installed for user: 0`。
