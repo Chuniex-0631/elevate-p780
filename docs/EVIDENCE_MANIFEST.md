@@ -1,5 +1,12 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 DSU 第八轮：6个子目录与24项 GSI 数据核验完成
+
+- 机主上传的 `p780-dsu-catalog-detail.zip` 为 **4073B**，SHA-256 `ad732d61aa7751aeaa6f2a148e3a1998aeee645beb5fe3f344fff98d9ca74c74`；本地使用 Python 对 ZIP 8 项路径/大小/CRC 均通过、6个子目录的 raw bytes / SHA-256 对照 report.json **6/6一致**；根索引508B仍与原先SHA一致。该ZIP保存在本轮私有会话与机主电脑，仓库存**可复核哈希和研究结论**，未宣称 P780 上实际执行过 HTTPS 抓包。
+- `rvc/sc/tm/udc/vic/baklava` 每目录4条，合计 **24个公开镜像条目**；全部有 cpu_abi/os_version/spl/uri，**没有一条包含 vndk 或 pubkey 字段**。这意味着 Android11 Settings 的目录筛选没有实际验证某个镜像的 VNDK30 清单或 GSI AVB 信任公钥。
+- 真机截图四项分别是 `vic` Android15 的 `BP1A.250405.005.C1` ARM64+GMS/non-GMS 两条，以及 `baklava` Android16 的 `CP11.251209.009.A1` ARM64+GMS/non-GMS 两条。**前版助手和脚本目标误写为 `CPI1`（字母I），实际 `CP11`（数字1+数字1）**；原报告 matches 漏两条Android16 ARM64，但**原始 baklava JSON 正常完整**。旧 Android11～14目录的安全补丁 2020～2023 早于P780 2024-02设备，按AOSP SPL检查会排除，恰好只显示上述4项。
+- 校验和、完整镜像详情、源码依据、证据等级和下一步见 [DSU GSI JSON 独立核验](research/p780-dsu-gsi-catalog-verified-20261018.md)。**无 GSI 镜像 ZIP 下载、DSU 安装、BL 解锁或 Root 成果**。
+
 ## 2026-10-18 DSU 第七轮：Google 508B 主索引已完成字节级验证
 
 - 机主 Windows PowerShell 通过 `Invoke-WebRequest` 从 `https://dl.google.com/developers/android/gsi/gsi-src.json` 取得 `p780-dsu-catalog.json`，`Get-Item` 为 **508 bytes**，`Get-FileHash -Algorithm SHA256` 为 `0A1970ABFCEB6BF3962177881B255E6AF9D4F43903AAC3BA9AEF2C1E5B4A2D09`；本聊天实际上传了 508B 文件，助手在运行环境重新读取、解析原始 bytes，并独立 SHA-256 完全一致。主文件**不是本机 P780 HTTP 抓包**。
