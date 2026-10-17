@@ -1,5 +1,13 @@
 # 归档维护日志
 
+## 2026-10-18 — DSU/GSI 锁定态官方受信任启动通路的可行性研究
+
+- 在已实机确认 AVB 默认 RSA4096 测试根公钥后，对仍缺原厂镜像、locked 写入渠道的阻断点重新梳理，避免重复普通 AVB/Key Attestation/OTA 采集。
+- AOSP 官方 Android 11 DSU 文档指出，厂商可预置 Developer GSI 公钥以允许 Bootloader 保持 LOCKED 时临时启动经过验证的 GSI；`fs_mgr_fstab.cpp` 的 `BuildGsiSystemFstabEntry()` 使用与 P780 两份 fstab 完全一致的 `/avb/q-gsi...:/avb/r-gsi...:/avb/s-gsi...` 路径。
+- P780 既有实机 Android 11、动态分区、F2FS `/data`、`/metadata` 首阶段挂载及 dm-verity 与 DSU 基本要求相容，但**尚未确认** DSU 前端/服务、公钥文件运行时可访问、厂商 HAL 或签名 GSI 实际可启动。**没有安装镜像或改变手机状态**，不能推断 Root / BL 解锁 / 物理分区写入。
+- 新增 [LOCKED DSU/GSI 专项研究](docs/research/p780-dsu-locked-gsi-20261018.md) 与纯查询命令；AOSP `gsi_tool status` 在部分版本会按需启动 `gsid`，因此首次仅建议读取 app/二进制/属性/路径，不执行安装、启用、关闭或 setprop。
+- 将原 `docs/NEXT_STEPS.md` 历史整份归档到 [2026-10-18 快照](docs/archive/next-steps-before-dsu-20261018.md)，重写为精简可执行计划，移除仍称硬件证明“未测试”等过时/重复结论；同步 STATUS、README、文档导航和 Fstab 专题。官方公告中的弱密钥与被允许写入分区仍是独立条件；本机仍 LOCKED、未 Root。
+
 ## 2026-10-18 — P780 硬件证明精确确认 AOSP AVB RSA4096 默认测试密钥（关键突破）
 
 - 机主从真实 P780 `_162` 通过 KeyAttestation 导出 3475B `.p7b`；在独立电脑 Python 环境解析 4 张 X.509 证书和 Key Attestation v3 扩展；Google 2019 硬件证明 Root DER 字节完全相同，Root 自签及 Root→CA1→CA2→Leaf 各级签名验证通过，TEE 与 Keymaster 安全级别均 TrustedEnvironment。在线吊销状态尚未做生产级完整校验。
