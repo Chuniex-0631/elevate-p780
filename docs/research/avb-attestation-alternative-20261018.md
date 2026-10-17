@@ -48,12 +48,12 @@ AOSP [Key/ID Attestation 文档](https://source.android.com/docs/security/featur
 
 [AOSP 动态分区实施文档](https://source.android.com/docs/core/ota/dynamic_partitions/implement) 说明：fstab 的 `avb=vbmeta_partition_name` 决定 Android first-stage mount 为指定逻辑分区采用哪一组 AVB 元数据。
 
-以 `adb shell ls /vendor/etc/fstab*` 确认实际存在的文件；如果 `/vendor/etc/fstab.qcom` 可读，再执行 `adb shell cat /vendor/etc/fstab.qcom`。可以检索 `avb`、`logical`、`first_stage_mount` 等 flags，判断 system、vendor、product、odm、system_ext 指向哪一份 vbmeta。**fstab 的声明并不等于取得了 root vbmeta 的签名描述符、完整信任链或 AVB 公钥**。如果文件不存在，无需遍历受限目录和尝试越权。
+用户实机已确认 `/vendor/etc/fstab.qcom` 不存在，并成功读取实际存在的 `/vendor/etc/fstab.default` 与 `/vendor/etc/fstab.emmc`。可以检索 `avb`、`logical`、`first_stage_mount` 等 flags，判断 system、vendor、product、odm、system_ext 指向哪一份 vbmeta。**fstab 的声明并不等于取得了 root vbmeta 的签名描述符、完整信任链或 AVB 公钥**。如果文件不存在，无需遍历受限目录和尝试越权。
 
 ## 路线优先级
 
 1. **P1：Keystore Hardware Key Attestation** —— 最有机会直接获取可独立比对的 AVB 根公钥摘要（条件：P780 TEE 支持且返回可信记录）；不会提供签名私钥/刷写权限。
-2. **P2：fstab 静态映射** —— 最有机会补全从 `vbmeta_system_b` 至受保护逻辑分区的配置关系。
+2. **P2：fstab 静态映射（已完成）** —— 用户成功读取 `fstab.default`、`fstab.emmc`，两者一致声明 `system/system_ext/product` 使用 `avb=vbmeta_system`、`vendor/odm` 使用默认 `avb`；[实机解析](p780-fstab-avb-20261018.md)。
 3. **P3：公开 AOSP 候选钥匙离线编目** —— 在拿到可核验 `verifiedBootKey` 后做字节级证据对照。
 4. **P4：原厂镜像、匹配 EDL Loader、P780 专用 locked 写入成功原始记录** —— 仍是最终 Root/解锁研究的独立阻断；AVB 指纹匹配也不能替代刷写能力。
 
