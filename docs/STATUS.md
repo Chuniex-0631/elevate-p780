@@ -24,7 +24,7 @@
 | Android Clang 11.0.2 `rtmutex.o` | **云端编译成功** | 已匹配实机编译器，非完整 `vmlinux`，非可刷写内核 |
 | 还原与出厂 `vmlinux` 一致的内核 | **未完成** | 原厂私有代码与构建身份未满足 |
 | JourneyConfigService | **静态与运行状态核对已完成** | vendor/XML/TCS 版本均 42；64 键一致；消费者静态定位进程管理与 Service/Provider 限制；未发现 OTA/Root 链 |
-| DSU/GSI 临时系统（LOCKED） | **两次 DSU 专用重启已由系统历史证实；GSI 已安装未运行；Bugreport 无 LAST KMSG；根因仍未查明** | 用户上传完整有效Bugreport ZIP 362成员/主TXT约19.7MB；`persist.sys.boot.reason.history`两项 `reboot,dynsystem` 对应UTC+8 06:30:31/06:31:30；`gsid.image_installed=1`、`ro.gsid.image_running=0`，原厂B槽dm映射。`dumpstate` `/proc/last_kmsg` 不存在、incidentd pstore两路径与last_kmsg均打不开、LAST LOGCAT失败；当前dmesg首记录开机943秒后，不能还原first-stage DSU失败。停止重复重启与无效日志采集；转向 `_162` boot ramdisk/DSU公钥离线证据，**并未证明AVB不匹配、也没成功启动 GSI/获得 Root/解锁**。[第十三轮审计](research/p780-dsu-bugreport-audit-20261018.md) |
+| DSU/GSI 临时系统（LOCKED） | **新增重要假说：LOCKED 下 GSI Developer 公钥未被P780信任；first-stage 提前回原厂仍不能排除** | AOSP官方允许 LOCKED+有效AVB信任的Developer GSI，非必须解锁BL；P780 Fstab 已实机发现普通 `q/r/s-gsi.avbpubkey` 路径，但未发现/提取 Developer GSI keys（两套公开公钥二进制不同）。2021 AOSP移除普通compliance `gsi_keys.mk` 仅留VTS；Locked 的 unknown AVB pubkey不可忽略，故**受信签名不匹配可构成阻断，但仍无 P780 AVB拒绝日志/具体key**。两次 `reboot,dynsystem` 单次返回原厂，也符合 `GetActiveDsu/MapAllImages` 提前退出。Bugreport无LAST KMSG、当前GSID installed/disabled。下一步需要 `_162` 实际 boot/ramdisk公钥及Android15 system AVB signing key 比对。[LOCKED与信任专项](research/p780-dsu-locked-bl-vs-gsi-trust-20261018.md) |
 | Root / Bootloader 解锁 / 刷机 | **均未达成** | 任何适配包不得宣称 Root 成功 |
 
 ## 2026-10-18：AVB 锁定状态下的实机基线（用户提供）
