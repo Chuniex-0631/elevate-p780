@@ -1,5 +1,13 @@
 # 归档维护日志
 
+## 2026-10-18 — DSU 安装服务 user0 确认卸载；Settings 镜像选择界面仍可使用
+
+- 机主提交 DSU Loader 真机截图：`Select DSU Package` 显示 4 个 ARM64 GSI/GMS 选项（BP1A.250405.005.C1 与 CPI1.251209.009.A1），证明开发者选项可加载线上镜像 JSON 目录；并非 GSI 已安装或可启动。
+- ADB 全部判断闭环：当前用户 `0`；常规 pm list packages 找不到 `com.android.dynsystem`；`-u -f` 列表找到系统原 APK `/system/priv-app/DynamicSystemInstallationService/DynamicSystemInstallationService.apk`；`dumpsys` 明确 `installed=false`。**因此此前推测的用户级卸载已获得直接实机确认**。
+- 校正重要字段：`enabled=0` 表示 PackageManager 默认组件启用状态，不是 `disabled`；无需优先执行 `pm enable`。历史两个 debloat 脚本均含目标包，机主确认深度清理，但没有具体卸载时间或单条成功日志。
+- 对照 Android 官方 DSU Loader JSON→Settings 菜单→安装服务机制，解释“已卸载安装服务、但 Settings 仍显示最新 GSI 选项”的现象。BP1A 选项对应 Google 官方 Android 15 QPR2 GSI；本机 Android 11 vendor 的实际运行兼容未知，列表是筛选结果而非安全承诺。
+- 已将 `install-existing --user 0` 作为**仅供机主同意后执行**的系统包恢复选项写入报告及 NEXT_STEPS；没有安装、下载或修改设备。仓库原件 `.p7b` 和 DSU 截图均未上传。
+
 ## 2026-10-18 — 实机 DSU Loader 入口确认，回溯发现精简脚本包含安装器
 
 - 机主报告开发者选项真实存在 DSU Loader；`pm list packages -u` 返回 `com.android.dynsystem`，`gsid.rc` 590B 文件真实存在，`/metadata/gsi` 权限拒绝，相关属性无输出。此结果**推翻**先前“可能没有 DSU Loader 入口”的表述，但还未证明可以实际下载安装 GSI。
