@@ -52,6 +52,12 @@
 - 根据 AOSP，Android 11 Virtual A/B 使用 kernel COW，压缩快照支持出现于 Android 12；`system_b-cow` 与此前观察相符，但**只记录为候选线索，不写成已证明正在 OTA、快照合并或写入漏洞**。
 - 本阶段结束常规 getprop 再采集，后续优先查找可信匹配 `_162` 的 OTA/分区镜像和 P780-specific locked 写入通道。见 [AVB 实机专题](research/avb-live-baseline-20261018.md)。
 
+## 2026-10-18：跨线索研究发现（未实机验证）
+
+- 从 AOSP [Keystore attestation](https://source.android.com/docs/security/features/keystore/attestation) 与 Android CTS 交叉发现：硬件 RootOfTrust 可能含 `verifiedBootKey` 公钥哈希与 `verifiedBootHash` VBMeta 摘要，普通 Android 应用可请求。**用户当前只运行过 getprop、ls；从未获得该 Attestation，不能记为成功。**
+- 从 [AOSP 动态分区规则](https://source.android.com/docs/core/ota/dynamic_partitions/implement) 得知，fstab 的 `avb=<partition>` 可提供系统逻辑分区所使用 VBMeta 的挂载配置线索，未能替代原始签名描述符。
+- 研究方法、可选应用、隐私和强制可信链验证见 [新专项](research/avb-attestation-alternative-20261018.md)。**本机 Root/BL/镜像/匹配 EDL Loader 均无新成功证据**。
+
 ## 新增历史原件（2026-10-10）
 
 - 新上传两份 ADB 审计 ZIP（22 和 9 条目），与其展开目录逐字节相同；删除 31 个冗余展开副本，保留原始 ZIP 与清理前备份分支。
