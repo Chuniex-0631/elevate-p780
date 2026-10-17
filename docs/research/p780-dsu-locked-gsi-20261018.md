@@ -1,5 +1,7 @@
 # P780 Android 11 DSU / GSI 可信启动支线 — 源码交叉核对（2026-10-18）
 
+> **第八轮（2026-10-18）最新证据：** 用户已上传 PC 获取的完整 DSU 子目录压缩包，6个 Google JSON / 24个候选经 ZIP CRC、SHA-256、JSON 结构复核通过；截图四项分别为 Android15 `BP1A.250405.005.C1` 两项和 Android16 **`CP11.251209.009.A1`** 两项（先前 `CPI1` 为读图/脚本拼写错误）。**24条全部不含 `vndk` 或 `pubkey` 字段**，因此 DSU Loader 菜单并未显式验证 VNDK30 和 GSI 公钥。详情见 [第八轮官方目录独立核验](p780-dsu-gsi-catalog-verified-20261018.md)。**仍未下载安装/启动任何 GSI，BL LOCKED、无 Root。**
+
 > **2026-10-18 最新实机状态：`com.android.dynsystem` 已由机主通过 Android 原生 `install-existing --user 0` 成功恢复，`pm path` 可定位原厂 APK，`dumpsys` 已确认 `installed=true`。开发者选项 DSU Loader 和在线 GSI 选项已见，但尚未执行 GSI 下载、安装、重启或启动验证。** 重点不是刷写原有分区，而是核对是否存在官方提供的、在 LOCKED 状态下临时启动受信任 GSI 的 DSU 通道。不能把它误称为 Root/BL 解锁/AVB 漏洞的现成 PoC。
 
 ## 发现源头：实际 Fstab 中的 GSI 公钥
@@ -366,3 +368,8 @@ $ adb shell "grep -n -A 20 '^\[vendor\]' /linkerconfig/ld.config.txt"
 ### 结论
 
 **已核验 Google 主索引内容与哈希；6个子索引 URL 和目录结构已确认；两个目标 GSI 的实际签名及 VNDK 字段仍未知。** 保持 P780 Bootloader LOCKED、无 Root、无 GSI 安装/重启。下一步等待 Windows 只读获取子 JSON 原件，或由机主传回工具生成的含原文与 SHA 的小型 ZIP。
+
+
+## 第八轮摘要（新结论覆盖第七轮“尚未取得子 JSON”）
+
+[第八轮官方目录独立核验](p780-dsu-gsi-catalog-verified-20261018.md) 已核对根索引 508B 及子索引 six-way bundle `p780-dsu-catalog-detail.zip`（4073B，SHA256 `ad732d61aa7751aeaa6f2a148e3a1998aeee645beb5fe3f344fff98d9ca74c74`），六个子目录全部加载，无网络请求错误，24个镜像记录；仅 Android15 与16 ARM64 目录中的4个符合 P780 补丁时间和 ABI 初筛。六份 Google 子 JSON 中**每份4条**，均**没有 `vndk` 或 `pubkey` 字段**；旧 R/S/T/U 安全补丁比设备 2024-02 旧，因此无菜单选项。原审计工具误把 Android16 `CP11` 输入为 `CPI1`，所以 `report.matches` 自动报告漏掉 Android16，本轮已从原始 JSON 与历史截图独立纠正。当前不会因为缺少 JSON 公钥而断言镜像无签名或启动链已接受。后续优先核对 GSI 官方签名信任链以及 Android11 P780 boot ramdisk 中实际 GSI 公钥兼容性；**没有下载镜像或更改分区**。
