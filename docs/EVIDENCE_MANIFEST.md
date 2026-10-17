@@ -1,5 +1,12 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 第十三轮：完整 Bugreport 成功读取，但 LAST KMSG / 持久化内核日志不可用
+
+- 机主上传 `P780-DSU-Bugreport.zip`；Python zipfile 全部 CRC通过，ZIP成员 **362**；原档 SHA256 `64a097d0911e35675c75dff09d68a7e28b5aa15bd342ed796387d12758d5f141`。主TXT **19,721,044B** / 约240,297行，SHA256 `8767fb7c186050240f3203fd65a82ab73b95dbbeeec338654ba439580f984836`。**原 ZIP 与TXT不上传Git，因包含设备/网络/用户隐私**。
+- 系统属性 `persist.sys.boot.reason.history` 明确有两条 `reboot,dynsystem` 对应UTC+08的 **2026-10-18 06:30:31、06:31:30**；`gsid.image_installed=1`、`ro.gsid.image_running=0`、`init.svc.gsid=stopped`、`ro.boot.slot_suffix=_b`。`gsid dump-device-mapper` 只反映报告采集时原厂 `system_b/vendor_b/product_b` 及dm-verity映射，不能判断早期 DSU 映射曾经失败。
+- `LAST KMSG` 明确失败：`Error dumping /proc/last_kmsg: No such file or directory`；incidentd 无法打开 `/sys/fs/pstore/console-ramoops`、`console-ramoops-0`、`/proc/last_kmsg`；`LAST LOGCAT` (`logcat -L`)退出码1。当前启动的 `dmesg` 有约2635行，但最早为开机后 **943秒**，未保留 first-stage DSU 时间窗口，故无法确认DSU切换具体失败原因。
+- [第十三轮去身份分析报告](research/p780-dsu-bugreport-audit-20261018.md) 详细记录精确来源位置、证据级别与后续离线研究路线。当前 **没有 AVB签名拒绝/MapAllImages失败的直接证据，没有GSI成功启动或Root/解锁**。原件仅留在机主本地及当前对话，不把原始系统隐私数据作为普通commit附件。
+
 ## 2026-10-18 第十二轮：仅一次重启与 `reboot,dynsystem` 两处启动原因证明
 
 - 机主亲自观察：点击通知「重启进入DSU」后是**一次正常重启直接进入原厂 Android11**，没有 Android15 GSI 桌面，也没有自动重启第二次；不同于设备无限 bootloop。
