@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — DSU/GSI 第一轮实机只读排查和 AOSP 重新归因
+
+- 机主依次查询标准 `com.android.dynsystem` 安装器（未返回路径）、`gsi_tool`（存在且为 47,016B）、`gsid`（Permission denied）、三项相关 getprop（均空）、三份 `/avb` GSI 公钥（普通系统路径不存在）。没有进行任何安装/重启/镜像写入。
+- AOSP Android 11 `gsid.rc` 把 GSID 设为 `disabled`/`oneshot`，不可由空运行属性断言组件缺失；Android 11 首阶段 Ramdisk 在正常启动切根后可释放，不能根据 shell 目前找不到 `/avb/*` 否认 fstab 所记启动候选钥匙。
+- 现将 DSU 信心调整为：底层工具实机存在，标准 Loader 没有成功解析，完整用户可用性**未知**。只剩一小轮只读核对包和 `gsid.rc` 的价值，若仍无独立安装器或开发者选项入口，则封存 DSU 支线，继续固件/修复通道主阻断。
+- 新结果已按 [DSU 研究报告](docs/research/p780-dsu-locked-gsi-20261018.md) 添加实测矩阵，更新 STATUS/NEXT_STEPS/EVIDENCE_MANIFEST。未把 DSU 当作 Bootloader 解锁或 Root 成功。
+
 ## 2026-10-18 — DSU/GSI 锁定态官方受信任启动通路的可行性研究
 
 - 在已实机确认 AVB 默认 RSA4096 测试根公钥后，对仍缺原厂镜像、locked 写入渠道的阻断点重新梳理，避免重复普通 AVB/Key Attestation/OTA 采集。
