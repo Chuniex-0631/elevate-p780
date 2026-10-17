@@ -23,6 +23,18 @@ adb shell dumpsys package com.android.dynsystem | Select-String -Pattern 'User 0
 ```
 
 上述命令**尚未运行**，不得自动执行。用户明确愿意恢复后才执行。成功恢复只完成“安装器本身存在”，**不代表 GSI 能启动**。当前列表的 `BP1A.250405.005.C1` 属 Google Android 15 QPR2 GSI，比本机 Android 11 系统新四代；另一个 `CPI1.251209.009.A1` 在本轮未取得官方版别核验。暂不选择任何 GSI、不同意条款、不下载安装或重启。后续只读检查 `ro.vndk.version` 和 ABI，并核对 GSI 包内容/签名与供应商 HAL 兼容。
+## DSU 在线目录来源与是否恢复出厂（2026-10-18 源码核验）
+
+- 机主说明从未下载或安装 GSI，愿意在必要时恢复出厂。**目前无需恢复出厂**：已证实 APK 原件在 `/system/priv-app`，只是 `com.android.dynsystem` 对 user0 `installed=false`。若未来要尝试 DSU，获机主许可后 `install-existing` 恢复官方单个系统包即可；出厂重置会擦除用户数据，且不解除 BL 锁。
+- 经 AOSP [DSU Loader 官方说明](https://source.android.com/docs/core/ota/dynamic-system-updates#one-click-dsu-loader) 和 [Settings `DSULoader.java`](https://android.googlesource.com/platform/packages/apps/Settings/+/286dce6b6ed/src/com/android/settings/development/DSULoader.java) 核对：Settings 打开 DSU Loader 会联网读取 JSON 镜像目录、按照 CPU/OS/VNDK/SPL 过滤后显示。四项是两组 ARM64 GSI/GSI+GMS **远端下载候选**，不是预装在手机内的四份系统。按条款确认之后才会下载安装。
+- AOSP 默认目录为 `https://dl.google.com/developers/android/gsi/gsi-src.json`；但 OEM 可经 `persist.sys.fflag.override.settings_dynamic_system.list` 覆写，目前本机**尚未检查这个完整属性名**（前轮 `settings_dynamic_system` 无 `.list` 是不同属性）。仅当需要进一步核验目录来源时执行：
+
+```powershell
+adb shell getprop persist.sys.fflag.override.settings_dynamic_system.list
+adb shell getprop ro.vndk.version
+```
+
+- 这些命令不修改设备。无须在没有运行 GSI 意图时恢复包；不点击任何镜像，不测试新 Android 版本的启动，不对 B 槽 AVB 元数据进行更改。见 [DSU 专项](research/p780-dsu-locked-gsi-20261018.md)。
 ## 主要路线 B：真正阻挡永久 Root / 自定义 Boot 的环节
 
 **B1. 只读离线镜像发现**：仅考虑机型为 P780 且有原始构建编号、文件哈希与可信出处的 `vbmeta[_system]`, `boot`, `vendor_boot`, `dtbo`，包括各官方历史版本，但必须注明与 `_162` 的差异。得到镜像后用 AOSP `avbtool info_image` / `verify_image` 分析主 vbmeta→system chain descriptors、rollback indices、boot 分区是否 AVB hash footer；不能从 fstab 或 `7744` 字节 VBMeta 总大小反推出真实描述符。**暂不继续批量搜/探测 OTA。**
