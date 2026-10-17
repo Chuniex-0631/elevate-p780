@@ -1,5 +1,11 @@
 # 归档维护日志
 
+## 2026-10-18 — DSU 第五轮基础预检：VNDK30、ARM64、数据空间报告 103G
+
+- 机主四项只读结果：DSU `.list` 覆盖属性空、`ro.vndk.version=30`、`ro.product.cpu.abi=arm64-v8a`、`df -h /data` 报 dm-11 共106G/已用3.2G/可用103G/4%，Mounted on 指向 `/storage/emulated/0/Android/obb`（不武断认为该挂载点就是 `/data` 本身的真实块设备节点）。
+- AOSP `DSULoader.java` 对 cpu_abi 必需值筛选；`os_version`/`vndk`/`spl` 只有 JSON 列出时才筛选，因此 DSU Loader 显示四项**不能**自动证明其中每一项都包含 VNDK30、签名验收或 HAL 兼容。官方 GSI 文档另要求先确认 `ro.treble.enabled` 与 vendor linker namespace isolation 以支持跨 Android 版本。
+- DSU 安装器恢复成功已在前轮登记；本轮不再重复其命令。更新第五轮脱敏实测、状态和 NEXT_STEPS，把下轮工作限制为只读 Treble/ld.config 查询；没有选择 GSI、下载安装/启动、尝试 locked 写入或得到 Root。
+
 ## 2026-10-18 — P780 DSU 官方安装服务恢复成功；推进到只读兼容性预检
 
 - 机主正式执行 `cmd package install-existing --user 0 com.android.dynsystem`，设备返回 `Package com.android.dynsystem installed for user: 0`；`pm path` 已恢复显示原厂 `DynamicSystemInstallationService.apk`；`dumpsys` 证明 `installed=true`（由恢复前 `false` 变为 `true`）。`enabled=0` 始终为 PackageManager DEFAULT。
