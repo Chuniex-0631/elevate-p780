@@ -58,6 +58,12 @@
 - 从 [AOSP 动态分区规则](https://source.android.com/docs/core/ota/dynamic_partitions/implement) 得知，fstab 的 `avb=<partition>` 可提供系统逻辑分区所使用 VBMeta 的挂载配置线索，未能替代原始签名描述符。
 - 研究方法、可选应用、隐私和强制可信链验证见 [新专项](research/avb-attestation-alternative-20261018.md)。**本机 Root/BL/镜像/匹配 EDL Loader 均无新成功证据**。
 
+## 2026-10-18：Google OTA Prober 交叉验证线索
+
+- 用户实机：`ro.build.fingerprint=Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys`；`/vendor/etc/fstab.default` 与 `fstab.emmc` 存在，`fstab.qcom` 不存在。前两份配置内容尚未读取。
+- 审阅 [google-ota-prober](https://github.com/tangalbert919/google-ota-prober) `probe.py`：向 Google Check-in 请求 `update_url`。该项目没有 Universal OEM OTA 能力；本机是否采用此 OTA 服务器未知。
+- 公开 archive 中发现 Tinno 制造的 Rakuten Mini C330 两条真实 Google OTA 元数据与 Tinno/Rakuten P710 fingerprint（该型号未归档 OTA），**未找到 P780 OTA 索引**。详见 [专题分析](research/google-ota-prober-p780-20261018.md)。没有实际对 P780 发送 Check-in、没有取得固件或 root。
+
 ## 新增历史原件（2026-10-10）
 
 - 新上传两份 ADB 审计 ZIP（22 和 9 条目），与其展开目录逐字节相同；删除 31 个冗余展开副本，保留原始 ZIP 与清理前备份分支。
