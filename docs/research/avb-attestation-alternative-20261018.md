@@ -58,3 +58,28 @@ AOSP [Key/ID Attestation 文档](https://source.android.com/docs/security/featur
 4. **P4：原厂镜像、匹配 EDL Loader、P780 专用 locked 写入成功原始记录** —— 仍是最终 Root/解锁研究的独立阻断；AVB 指纹匹配也不能替代刷写能力。
 
 不要求继续常规 `getprop` 穷举。不自动安装手机应用、执行漏洞、越权读写、发送第三方邮件。
+
+## 2026-10-18 官方实现交叉复核：可实际执行的 Key Attestation 方案
+
+新阅读来源：[AOSP RootOfTrust 官方定义](https://source.android.com/docs/security/features/keystore/attestation)、[AOSP/Google 硬件证明验证规则](https://developer.android.com/privacy-and-security/security-key-attestation)、[Google RootOfTrust 解码](https://android.googlesource.com/platform/external/android-key-attestation/+/refs/heads/main/server/src/main/java/com/google/android/attestation/RootOfTrust.java)、[Trusty Keymaster 传递/哈希逻辑](https://android.googlesource.com/trusty/app/keymaster/+/afa0a55f37ae314d637174d3fc9dc53172f36ffc/trusty_keymaster_context.cpp)。
+
+**重要更正：不能预先假定 `verifiedBootKey = SHA256(avbtool extract_public_key 生成的 blob)`。** Trusty Keymaster 参考实现中，Bootloader 若传入 ≤32 字节的 verified boot key 摘要，会**原样**写入证明；若传入 >32 字节的原始 key，则计算 SHA-256。实际 P780 bootloader 传入的原始 key/编码目前未知，可能与 AVB binary public-key blob、DER 公钥、证书或其它 key 表示不同。因此匹配 AOSP 测试钥匙时必须对候选输入编码写明依据，不能仅凭某一种哈希不匹配就排除钥匙。TEE 返回 32 字节并不自动证明采用哪种编码。
+
+**工具版本/源码：** [vvb2060 KeyAttestation](https://github.com/vvb2060/KeyAttestation) 官方 Release v1.8.4（发布于 2025-01-16；包名 `io.github.vvb2060.keyattestation`，APK 1,332,815 bytes）。[HomeViewModel.kt](https://github.com/vvb2060/KeyAttestation/blob/master/app/src/main/java/io/github/vvb2060/keyattestation/home/HomeViewModel.kt) 显示页面创建后自动执行普通 Android KeyStore `load()`；[HomeFragment.kt](https://github.com/vvb2060/KeyAttestation/blob/master/app/src/main/java/io/github/vvb2060/keyattestation/home/HomeFragment.kt) 显示有菜单切换 StrongBox、Shizuku、Attest Key、设备 ID 与保存证书等选项；[RootOfTrust.java](https://github.com/vvb2060/KeyAttestation/blob/master/app/src/main/java/io/github/vvb2060/keyattestation/attestation/RootOfTrust.java) 明确把 `verifiedBootKey` 和可选 `verifiedBootHash` 显示为小写十六进制。首次不使用 StrongBox、Shizuku、设备 ID / Unique ID / Keybox 导入/RKP。Android 11 无须额外 ID 访问。
+
+**无 Root 正常安装（仅供机主自愿执行；尚未在 P780 实测）：**
+
+```powershell
+adb shell pm path io.github.vvb2060.keyattestation
+# 如果未安装：从 https://github.com/vvb2060/KeyAttestation/releases/tag/v1.8.4 下载官方 APK 后，在保存目录下运行：
+adb install .\KeyAttestation-v1.8.4.apk
+adb shell am start -n io.github.vvb2060.keyattestation/.home.HomeActivity
+```
+
+此操作在用户设备**安装一个普通应用并创建 Keystore 测试密钥**（并非完全无状态），但不操作分区、不更改 AVB/Bootloader、不触发 OTA。用户也可从 [Google Play 项目页](https://play.google.com/store/apps/details?id=io.github.vvb2060.keyattestation) 安装商店版本，版本可能不同。必须只接受真实来源的安装包；此项目没有 `INTERNET` 权限的源码声明，但预编译 APK 未由研究者自行重现构建。
+
+**最少所需的结果：** (1) 证书链根类型/验证结果（Google/OEM/AOSP/Unknown/Failed）；(2) Attestation Security Level: TrustedEnvironment/StrongBox/Software；(3) `RootOfTrust.verifiedBootKey` 原始 hex；(4) `RootOfTrust.verifiedBootHash` 原始 hex（若存在）；(5) `deviceLocked`、`verifiedBootState`。尽量用裁剪截图或摘录文本，**不要公开上传整条证书链、Device IDs、IMEI、SN、Unique ID 或 Keybox**。
+
+**数据判断：** `verifiedBootHash` 若为 32 字节十六进制，必须与先前记录 `33ee3a6cf5215befd8a4f953382bd746d12efc37f6d4116c0c9b68a7661f95f2` 完整相等才算符合独立证据；否则保留差异并排查认证来源/Android 版本/编码，不能武断说设备被篡改。`verifiedBootKey` 若是 32 字节 hex，则为后续候选公钥比较创造条件，不等于已验证 P780 使用哪一把私钥。Google 根**证明证书**与 AVB **固件根信任公钥**是不同概念，Google 签发的硬件证明链**不意味着** AVB 固件采用 Google 密钥，也不排除 JVN 所述测试密钥风险。
+
+**证明真实性限制：** Android 官方要求签名证书链有效、末端信任 Google 官方证明根、未吊销，并验证 `attestationSecurityLevel` 为 TrustedEnvironment/StrongBox 才能依托硬件声称。App 仓库 README 明确称其吊销资料内置于 APK、不在线更新；本地显示绿色不等价于当前时点的在线吊销核对。若 P780 不支持硬件证明、Keymaster 实现异常或证书无硬件可信根，记录错误，不试图越权或刷机绕过。
