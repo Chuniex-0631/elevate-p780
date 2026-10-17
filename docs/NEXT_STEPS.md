@@ -8,21 +8,22 @@
 2. **Fstab 两份已读取**：`system/system_ext/product` 使用 `avb=vbmeta_system`；`vendor/odm` 使用默认 `avb`。`system` 额外包含 `/avb/q-gsi.avbpubkey` 等三份 Google 开发 GSI 公钥文件路径候选。[Fstab 实测](research/p780-fstab-avb-20261018.md)。但仍未读取真实 `vbmeta_b`、`vbmeta_system_b` 或 chain descriptors。
 3. **已完成但没有结果的尝试**：Fastboot 常见 OEM 解锁指令均为 unknown command；EDL Sahara 可识别但没有兼容且授权的 Firehose；Google OTA Prober 对当前 `264` fingerprint 无 `update_url`。不再重复这些请求；OTA 支线暂缓。对应 [启动/EDL](research/device-and-boot.md)、[OTA](research/google-ota-prober-p780-20261018.md)。
 
-## 路线 A：DSU 官方主索引已验证，等待 6 个子 JSON（第七轮）
+## 路线 A：六个 Google GSI 子目录已完成；转向签名可信性（第八轮）
 
-**此前已完成、无需重复的实机任务**：原厂 DSU 安装器已恢复 `installed=true`；DSU Loader 菜单中确实出现四个 ARM64 GSI/GMS 选项；P780 Android11 的 Treble、`[vendor] namespace.default.isolated=true`、VNDK30、`arm64-v8a` 和 103GB 可用存储报告已取证；尚未下载安装或启动 GSI，Bootloader 仍 LOCKED、无 Root。
+机主上传 `p780-dsu-catalog-detail.zip`（**4073B；SHA-256 `ad732d61aa7751aeaa6f2a148e3a1998aeee645beb5fe3f344fff98d9ca74c74`**），经离线复核：6份 Google 原始 GSI JSON SHA-256 与 `report.json` 一致、6×4=24个镜像记录、无错误。完整 SHA 表与四条截图匹配见 [第八轮独立核验](research/p780-dsu-gsi-catalog-verified-20261018.md)。**已经完成**前一阶段的子 JSON 搜集，不要让机主重跑。
 
-**本轮新增独立 PC 工件**：机主从 AOSP 默认目录 `https://dl.google.com/developers/android/gsi/gsi-src.json` 成功下载 **508字节** 的 `p780-dsu-catalog.json` 并上传当前会话；已重新计算 SHA-256 与 PowerShell 输出 **`0A1970ABFCEB6BF3962177881B255E6AF9D4F43903AAC3BA9AEF2C1E5B4A2D09`** 完全一致。文件自身**只有**6项 `include`（`rvc/sc/tm/udc/vic/baklava`），没有任何 `images` 详细字段。未取得六份实际子 JSON，不得宣称截图中 `BP1A.250405.005.C1` / `CPI1.251209.009.A1` 具备 VNDK30 或已通过 DSU AVB 验签。
+机主 P780 开发者选项四项全部精确找到：
 
-**下一行动（PC 只读，禁止下载镜像）：** 用户可在与主 JSON 相同的 Windows 文件夹使用本会话附上的 `p780_dsu_catalog_audit.py`。标准库脚本已通过**离线模拟测试**，尚未在真实 Google 子目录联机实测；它会限制 Google HTTPS JSON 的目标域、单项≤1 MiB、最多20项及3层递归，并输出包含真实响应与 SHA-256 的 `p780-dsu-catalog-detail.zip`，只发送此小 ZIP 即可。目标是确定实际 `cpu_abi/os_version/vndk/spl/pubkey/uri` 字段（URI 仅存字符串，不访问 `.zip`）。
+| 镜像 | 构建 | DSU JSON 安全补丁 |
+|---|---|---|
+| Android15 GSI ARM64 / +GMS | `BP1A.250405.005.C1`（两条） | 2025-04-05 |
+| Android16 GSI ARM64 / +GMS | `CP11.251209.009.A1`（两条） | 2026-01-05 |
 
-```powershell
-# 把聊天提供的 p780_dsu_catalog_audit.py 保存到这个已含 p780-dsu-catalog.json 的文件夹后执行：
-python .\p780_dsu_catalog_audit.py
-# 输出文件：p780-dsu-catalog-detail.zip；上传该 ZIP 和终端摘要
-```
+**纠错：** 原工具写作 `CPI1`（字母 I），真实是 `CP11`（两位数字1），导致工具的 `report.matches` 只列 Android15 的匹配；源文件中两条 Android16 ARM64 的确完整存在，已对照机主截图复核。不得因此重复 Google 抓取。
 
-**观察限制**：主索引来自机主 PC，而不是 P780 本机抓包；即使 `.list` 属性为空，也不能绝对确定 P780 实际访问目录就是该 URL。官方 [DSU JSON descriptor](https://source.android.com/docs/core/ota/dynamic-system-updates) 允许包含更多目录且 `pubkey`、`vndk` 都为可选字段，不出现某字段不能自行假定验签/兼容通过。研究环境当前无法直接拉取六份子 JSON，不能用其他机型日志代替官方当日原件。[第七轮专项](research/p780-dsu-locked-gsi-20261018.md)。
+**重要新结论：** 6份原始 JSON 的全部24条记录都**没有 `vndk` 和 `pubkey` 字段**；AOSP `DSULoader.isSupported()` 对缺失的 `vndk` 不进行 VNDK列表检查，缺少 `pubkey` 也仅表示无预检查指纹元数据，绝**不**等于镜像未签名。2020–2023 旧 R/S/T/U 的安全补丁比 P780 2024-02 老而被 AOSP SPL 筛选排除；Android15/16 ARM64 各两条留下，说明为何恰好显示四项。**UI 出现并不证明镜像有 VNDK30、实际签名受信或可以在 Android11 Vendor 上启动。**
+
+下一项高价值工作不再是普通 ADB/Getprop 和重新下载同一 JSON，而是 **PC 离线/公开源码核实 Android15/16 GSI 的 AVB 验签钥匙与 P780 Android11 fstab 声明的 q/r/s-GSI AVB 公钥之间的关系、实际镜像包含的 legacy VNDK30、Vendor HAL 运行前置条件**。没有镜像/可信签名资料时不要擅自做兼容性肯定判断。只有在机主明确提出想尝试 DSU 安装、确认数据备份与失败退出恢复计划后才讨论具体 GSI 的 GB 级下载。当前**不执行 DSU ZIP 下载、设备镜像安装、重启、`gsi_tool enable/wipe` 或其它写入操作**。
 ## 主要路线 B：真正阻挡永久 Root / 自定义 Boot 的环节
 
 **B1. 只读离线镜像发现**：仅考虑机型为 P780 且有原始构建编号、文件哈希与可信出处的 `vbmeta[_system]`, `boot`, `vendor_boot`, `dtbo`，包括各官方历史版本，但必须注明与 `_162` 的差异。得到镜像后用 AOSP `avbtool info_image` / `verify_image` 分析主 vbmeta→system chain descriptors、rollback indices、boot 分区是否 AVB hash footer；不能从 fstab 或 `7744` 字节 VBMeta 总大小反推出真实描述符。**暂不继续批量搜/探测 OTA。**
