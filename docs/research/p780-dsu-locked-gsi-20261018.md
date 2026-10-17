@@ -131,3 +131,66 @@ adb shell dumpsys package com.android.dynsystem | Select-String -Pattern 'codePa
 - **不执行** `pm install-existing --user 0 com.android.dynsystem`，除非机主在看到查询证据后明确同意恢复系统包；此命令会更改 user 0 应用安装状态，不是“只读检查”。
 - 若确认包已安装/可用，则下一步可只打开开发者选项中的 DSU Loader **查看可选镜像列表**；按照官方 [Android 11 DSU 说明](https://developer.android.com/topic/dsu) 选择镜像并同意条款后才会触发下载安装。研究阶段不得选择镜像/确认条款/开始下载/重启。
 - DSU 即便有官方可信 GSI 运行入口也**不等于**原厂 Bootloader 已解锁或能永久写入 `boot`/`vbmeta`；可运行性和 HAL 适配必须单独测试，不能由包记录直接推定。
+
+## 2026-10-18 第三轮实机结论：DSU Installer 对 user 0 确认已卸载，但 Settings 选择列表可正常显示
+
+机主提供带截图的当前 P780 开发者选项实测，以及完整 ADB PackageManager 输出。**此轮不再只是推测：`installed=false` 是当前 user 0 的实测状态。** 机主同时明确说明目前手机进行了最深度精简；历史两份脚本均把 `com.android.dynsystem` 列入 user0 的卸载目标。仍应区分历史脚本出现与实际单条执行日志没有归档：能证实当前卸载状态，不能追溯究竟是哪次命令造成。
+
+### 用户终端关键原始结果
+
+```text
+$ adb shell am get-current-user
+0
+$ adb shell pm list packages --user 0 com.android.dynsystem
+# no package returned
+$ adb shell pm list packages -d --user 0 com.android.dynsystem
+# no package returned
+$ adb shell pm list packages -f -u --user 0 com.android.dynsystem
+package:/system/priv-app/DynamicSystemInstallationService/DynamicSystemInstallationService.apk=com.android.dynsystem
+$ adb shell dumpsys package com.android.dynsystem ...
+codePath=/system/priv-app/DynamicSystemInstallationService
+User 0: ceDataInode=0 installed=false hidden=false suspended=false distractionFlags=0 stopped=true notLaunched=true enabled=0 instant=false virtual=false
+```
+
+**精确解释：** 现行用户是 0；`pm list` 无 `-u` 不含这个包，但带 `-u` 能定位系统原厂 APK，包管理器直接报告 `User 0 ... installed=false`。这是 **user 0 已卸载、APK 仍在只读系统分区**，非 APK 文件被物理删除。注意 `enabled=0` 是 [Android PackageManager 常量 `COMPONENT_ENABLED_STATE_DEFAULT=0`](https://developer.android.com/reference/android/content/pm/PackageManager#COMPONENT_ENABLED_STATE_DEFAULT)，**不是禁用状态**；不要误执行 `pm enable` 作为当前问题的第一步。
+
+### 开发者选项截图（会话图片未上传 Git）
+
+进入 DSU Loader 后出现 `Select DSU Package` 弹窗，可见四项：
+
+- `GSI ARM64`: `arm64-exp-BP1A.250405.005.C1-13151952-61d23231`
+- `GSI+GMS ARM64`: `gms_arm64-exp-BP1A.250405.005.C1-13151952-48d6db2a`
+- `GSI ARM64`: `arm64-exp-CPI1.251209.009.A1-14840729-59a822d9`
+- `GSI+GMS ARM64`: `gms_arm64-exp-CPI1.251209.009.A1-14840729-89298580`
+
+其中 `BP1A.250405.005.C1` 与 [Google 官方 Android 15 QPR2 GSI 清单](https://developer.android.com/topic/generic-system-image/releases) 的前缀/短哈希吻合（用于截图 UI 的列表识别；无整包本地下载哈希）。`CPI1.251209.009.A1` 当前只由截图可见，没有在本轮官方 release index 中核实其确切 Android 版本，不能自行认定所有列表项目均兼容 Android 11 vendor。
+
+Android 官方 [DSU Loader 一键功能说明](https://source.android.com/docs/core/ota/dynamic-system-updates) 明确：**Settings 中的 Loader 从在线 JSON descriptor 下载目录、筛选 CPU ABI 等字段后显示浮层菜单；用户选择镜像后才进入安装/下载工作流**。因此 Settings 选择界面**可以在 `com.android.dynsystem` user 0 未安装时仍正常出现**。它证明当前 Settings/UI 能读到镜像目录，但未证明发起实际安装的服务可被当前用户启动、GSID/GSI 签名验证会通过或系统最终能启动。
+
+### 阶段判定（取代先前 P1/P2 的摇摆）
+
+| 问题 | 判定 |
+|---|---|
+| DSU Loader 系统 UI 和在线镜像列表 | **实机已确认**；四项 ARM64 选项显示 |
+| `com.android.dynsystem` 原厂 APK 的物理文件 | **实机已确认存在** `/system/priv-app/...apk` |
+| `com.android.dynsystem` 对用户 0 安装状态 | **实机已确认** `installed=false`（已卸载/未安装） |
+| `enabled=0` | **默认组件开关状态**，不是 `disabled` |
+| 由 Settings 成功选择并启动实际安装流程 | **没有执行，不得声称成功/失败** |
+| Android 15/更新 GSI 与 P780 Android 11 Vendor HAL、Fstab AVB/GSI key 相容 | **未验证**；单靠 UI 目录不够 |
+| DSU 获得永久 Root、解锁 BL 或写入原有 boot/vbmeta | **不存在相关实证** |
+
+### 有明确用户授权时的下一步
+
+现在不需要重装系统、第三方 APK、ADB root 或修改只读系统分区。系统原 APK 存在，Android 常规恢复命令为：
+
+```powershell
+# 仅在机主明确同意恢复此系统软件包时执行：会更改 user0 的安装状态
+adb shell cmd package install-existing --user 0 com.android.dynsystem
+# 完成后再次只读核验
+adb shell pm path com.android.dynsystem
+adb shell dumpsys package com.android.dynsystem | Select-String -Pattern 'codePath=|User 0:|installed=|enabled='
+```
+
+预期返回 `Package com.android.dynsystem installed for user: 0` 并将 `installed=false` 改为 `true`；**预期不等于本机实际结果**，当前尚未执行。保留原始终端以检验命令支持和 APK 签名/运行限制；无必要先执行 `pm enable`（`enabled=0` 仅默认）。
+
+**风险边界**：该命令修改 Android 用户级应用安装记录，虽然不刷写系统分区、不改变 Bootloader、无需 Root，但可能恢复通知/服务等应用行为。即使恢复成功，也**暂不选择镜像和同意下载**，因为 Google 官方文档提及 DSU 至少预留约 10 GiB 空间、供应商 HAL/AVB 签名与 VNDK 兼容仍不明。优先先检查 `ro.vndk.version`、`ro.product.cpu.abi` 等只读条件，之后再讨论是否对旧 Android 11 vendor 尝试与之匹配的合适 GSI。不要将这视为 Root 研究的永久启动镜像写入通道。
