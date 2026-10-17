@@ -1,5 +1,13 @@
 # 归档维护日志
 
+## 2026-10-18 — P780 Google OTA Prober 源码审阅与同 OEM 更新链旁证
+
+- 机主提供 `Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys` 完整 fingerprint；ADB 列出 `/vendor/etc/fstab.default`、`fstab.emmc`，`fstab.qcom` 不存在。改为只读前两份实际文件，暂停假设厂商 fstab 名称。
+- 审阅 [tangalbert919/google-ota-prober](https://github.com/tangalbert919/google-ota-prober) `README/probe.py/config.yml/utils`：通过 Google `android.googleapis.com/checkin` 的 `fetchSystemUpdates=1` 获 OTA URL，只有采用 Google OTA 服务器的机型才适用；不具有通用厂商 OTA 穷举能力，且不能通过当前最终版 `_162` 的查询无结果排除历史 Google OTA。
+- 发现 [mouseos OTA Archive](https://github.com/mouseos/ota-archive) 的 Rakuten/Tinno C330 (Rakuten Mini) 官方 Google OTA 历史 530→620、620→830；TINNO P710 存在 fingerprint 但无 OTA。未发现 P780 条目，且**尚未实机或网络模拟发送 P780 Check-in 请求**。不能将 C330/P710 视为 P780 镜像。
+- 新增 [Google OTA Prober × P780 专题](docs/research/google-ota-prober-p780-20261018.md)，更新 README、STATUS、NEXT_STEPS、固件专题、证据清单与导航。只有在取得可信 P780 OTA URL 时才进一步离线核对 `pre-build`/`post-build`、增量与原厂镜像关系；未安装固件、未解锁、未 Root。
+
+
 ## 2026-10-18 — 跨 AVB / TEE / Keystore / CTS 发现新取证入口
 
 - 按机主要求对现有 `green/locked`、`ro.boot.vbmeta.digest`、块设备 `0600 root`、TEE/Keymaster 以及双层 VBMeta 信息进行交叉分析。
