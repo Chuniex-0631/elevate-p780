@@ -1,5 +1,13 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 DSU 第四轮：原厂安装服务由机主恢复成功（当前状态）
+
+- 用户在 Windows PowerShell 实际执行 `adb shell cmd package install-existing --user 0 com.android.dynsystem`，stdout：`Package com.android.dynsystem installed for user: 0`。
+- `adb shell pm path com.android.dynsystem` 返回 `package:/system/priv-app/DynamicSystemInstallationService/DynamicSystemInstallationService.apk`。
+- `adb shell dumpsys package com.android.dynsystem | Select-String -Pattern 'User 0:|installed=|enabled='` 显示 `User 0: ceDataInode=19397 installed=true hidden=false suspended=false distractionFlags=0 stopped=false notLaunched=false enabled=0 instant=false virtual=false`；这与先前 `installed=false` 的历史快照构成相同设备本轮操作前后闭环，证实用户级恢复成功。
+- 命令没有闪存写入、Root、BL 解锁或出厂重置；**没有下载、安装、启动任何 GSI**。仅表示恢复 DynamicSystemInstallationService APK 对 user0 的安装登记，尚未测试实际 GSID/AVB/GSI 配合。
+- 现行状态由 [DSU 第四轮专题](research/p780-dsu-locked-gsi-20261018.md) 和 [STATUS](STATUS.md) 决定；前面第二、三轮的 `installed=false` 必须当作**恢复前的历史结果**，不得再当作手机当前状态。
+
 ## 2026-10-18 DSU 第三轮：安装器 user 0 已卸载（直接实机证据）
 
 - 机主确认自己已对现用 P780 做最深度 ADB 精简；开发者选项截图中「Select DSU Package」能显示两组 Google ARM64 GSI/GSI+GMS（`BP1A.250405.005.C1` 与 `CPI1.251209.009.A1`）；**截图只在本聊天出现、未提交 GitHub**。在线列表可见不等于选择后可以成功下载、验签、安装或启动。
