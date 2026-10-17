@@ -1,5 +1,12 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 DSU 首次实机实验：用户同意尝试，尚未执行
+
+- 用户在对话中明确表示：“我觉得可以继续研究DSU，并且既然是DSU，我觉得可以进行一波尝试，毕竟DSU并不会破坏原系统”。现阶段视为**研究意愿和实验授权**，不是 DSU 已安装、已进入 GSI 或数据已备份的结果。
+- 官方 [AOSP DSU](https://source.android.com/docs/core/ota/dynamic-system-updates) 设计将临时 GSI 置于动态逻辑分区，保存独立的 GSI userdata，确实旨在避免损坏原厂 system/boot；但仍在主机 `/data` 上分配资源，也有 Vendor HAL/AVB 启动边界。Google [Android15 GSI 发布说明](https://developer.android.com/topic/generic-system-image/releases) 明示部分重启失败可能要 Recovery factory reset，**不能写成无损保证**。
+- [首次试验协议](research/p780-dsu-first-trial-protocol-20261018.md) 确定 Android15 `BP1A.250405.005.C1` ARM64 **无 GMS** 为相对保守候选，Google 官方 ZIP SHA256 `61d232315ad773bd4820c76c175efe6a61cd8a9a257508db588032be213e15f7`，尚非机主下载后的实测 SHA。
+- 计划按备份→Settings DSU Loader 官方下载/安装→**首次停在 Restart/Discard** 收集结果→独立同意后再考虑真正 GSI 启动，记录用户区修改、潜在数据损失和返回原系统风险。当前没有新手机日志、镜像 ZIP、Root 或 Bootloader 解锁。
+
 ## 2026-10-18 第九轮：公开 AOSP 六把 GSI 公钥 SHA-256 与可信链修正
 
 - 新的 [DSU 公钥信任链源码审计](research/p780-dsu-trust-chain-audit-20261018.md) 对 AOSP Android11 `gsi_keys.mk`、`developer_gsi_keys.mk` 与 `rootdir/avb/Android.mk` 交叉核对：普通 q/r/s GSI 公钥与 q/r/s **Developer GSI** 公钥是两套不同文件；机主 P780 fstab 的 `avb_keys=` 仅引用普通 `q/r/s-gsi.avbpubkey`。
