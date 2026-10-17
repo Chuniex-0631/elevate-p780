@@ -50,3 +50,19 @@ Both files were read from P780 by the user. They agree: `system`, `system_ext`, 
 ## GUI calling-convention pitfall (source observation)
 
 The current upstream `gui.py` calls `prober.checkin(fingerprint.value, model.value, serial.value, imei.value, timestamp.value)` positionally, but `probe.py` defines `checkin(fingerprint, model=None, debug=False, serial=..., imei=..., timestamp=0)`. Thus GUI fields are shifted: GUI serial enters `debug`, GUI IMEI enters `serial`, GUI timestamp enters `imei`, and `timestamp` stays at the default. This is an **unverified runtime bug inferred from the directly inspected source**, not a test run. Prefer the documented CLI with a quoted fingerprint for the first P780 query, and leave real identifying values out. Do not infer failure from GUI behavior.
+
+## 2026-10-18 外部 AI 提供的旧指纹探测与签名建议核查
+
+**实用部分：** 取得有来源的旧版 P780 Android 完整 build fingerprint 后，可以用 Google OTA Prober 尝试查询该历史源版本的下一更新；目前掌握的 264 是 `_162` 对应设备的 fingerprint incremental，不代表其它厂商 `_161/_151` 可以代入 161/151。
+
+**源码核验：** 上游 probe.py 支持 --fingerprint、--model、--config、--timestamp 等，不支持 --device、--source_fingerprint 或 --target_fingerprint；配置为 config.yml 而非 devices.json。直接将 264 改为未经验证的 151/120 不是使用真实旧版 fingerprint，也没有指定目标 OTA 的功能。
+
+**Google URL 有效期：** 关于通常几小时过期、使用短期 Token 及固件必然永久保留的断言，本轮既没有可靠 HTTP 样本也没有官方适用规则，不能拿它解释本机无 OTA URL。
+
+**增量 payload 限制：** AOSP [update_engine](https://android.googlesource.com/platform/system/update_engine/) 说明 Delta payload 的 SOURCE_COPY/SOURCE_BSDIFF 等操作依赖旧版源分区块；[OTA 构建文档](https://source.android.com/docs/core/ota/tools) 区分 Full 和 Incremental。不能保证所有下载的 payload.bin 都可直接解出完整 boot/vendor/system。对于每个分区应独立检查其操作类型。
+
+**签名机制严重误解：** AOSP [SignApk](https://android.googlesource.com/platform/build/+/79f56d876c721a0404cd50664a7f9da693d1e757/tools/signapk/src/com/android/signapk/SignApk.java) 用于 APK/JAR/OTA ZIP 包签名；启动链中的 vbmeta、hash/hashtree、链式分区与校验签名由 [AVB libavb/avbtool](https://android.googlesource.com/platform/external/avb/+/android11-release/README.md) 负责。对 Magisk 修改的 boot.img 使用 signapk 并不会生成合格的 AVB 签名链，也不解决 locked Bootloader 镜像写入。
+
+**新旧版 OTA 历史实证：** [楽天社区 2024-07-31 P780 161→162 问题帖](https://community.mobile.rakuten.net/questions/x933grdoe6mhntuf) 记录了真正 `_161` 手机当时显示“アップデートを利用できます”，却无法安装 `_162`。这证明当时存在更新提示，不提供完整历史 Android fingerprint、OTA 链接或分发服务器证明，更不能认定就是 Google GOTA。
+
+**决定：** 暂不伪造旧 build fingerprint、不批量扫描、不使用 signapk 作为 AVB 重签刷机流程。优先寻找可追溯的旧版 P780 完整 fingerprint/OTA metadata，或按独立专题研究 Android Keystore Key Attestation。Root 和解锁仍未实现。
