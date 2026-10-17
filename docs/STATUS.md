@@ -32,6 +32,13 @@
 - `ro.boot.vbmeta.digest=33ee3a6cf5215befd8a4f953382bd746d12efc37f6d4116c0c9b68a7661f95f2`。这是包括链式 VBMeta 的校验基线，**不是**测试公钥的指纹；只据此不能确定具体 AVB 测试密钥。
 - 新增 [AVB 实机取证与离线校验专题](research/avb-live-baseline-20261018.md) 与 [PowerShell ADB 只读采集脚本](../tools/p780-avb-readonly.ps1)。尚未获得 `vbmeta_b` 原始镜像，locked 写入通道仍未知，Root/BL 状态不变。
 
+## 2026-10-18：AVB 第二轮只读实测
+
+- 用户提供 `ro.boot.vbmeta.hash_alg=sha256`、`ro.boot.vbmeta.size=7744` 字节、`ro.boot.avb_version=1.1`。AOSP libavb 代码核实 7744 是**本次加载的 VBMeta 结构总长度**，不是单个分区大小。
+- 当前槽 B 的软链接：`vbmeta_b→sde31`、`vbmeta_system_b→sda11`、`boot_b→sde28`、`vendor_boot_b→sde36`、`dtbo_b→sde32`、`super→sda9`；完整双槽名称对应记录在 [AVB 基线专题](research/avb-live-baseline-20261018.md)。
+- `vbmeta_system_b` 为 **候选链式 VBMeta**，尚未获得真实分区内容/签名描述符。两级链关系、AVB 公钥指纹、rollback index 和锁定态写入路径仍待证实。
+- GitHub API 已再次确认项目 `visibility=private`；继续按 [SECURITY](../SECURITY.md) 约束未脱敏系统日志。
+
 ## 新增历史原件（2026-10-10）
 
 - 新上传两份 ADB 审计 ZIP（22 和 9 条目），与其展开目录逐字节相同；删除 31 个冗余展开副本，保留原始 ZIP 与清理前备份分支。
