@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — DSU Google 主索引已核验，六子目录待查
+
+- 机主在 Windows 成功取得 `gsi-src.json` 原始文件（508 bytes），SHA-256 `0A1970ABFCEB6BF3962177881B255E6AF9D4F43903AAC3BA9AEF2C1E5B4A2D09`，本聊天附件也已离线二次哈希完全匹配。不是 P780 本机流量抓包。
+- 根目录包含 Google `rvc/sc/tm/udc/vic/baklava` 六个子目录 `gsi-dsc.json`，自身没有 `images`，故此前关于 BP1A/CPI1 的 VNDK30/公钥身份仍不可升级为实测结论。AOSP DSU JSON 支持递归 include、可选 vndk/pubkey；元数据必须以实际子目录的原始响应为准。
+- 当前研究环境无法直接抓取 Google 子目录。已在本聊天生成离线模拟测试通过的 Python metadata-only 辅助脚本，可由机主在 Windows 以固定 Google allowlist 小范围下载子 JSON、校验 SHA 并上传 ZIP，不会下载 GSI 镜像、执行 ADB 或改写 P780。
+- 同步 [DSU 专题](docs/research/p780-dsu-locked-gsi-20261018.md)、[研究计划](docs/NEXT_STEPS.md)、证据总表；不重复已有基础 Treble/KeyAttestation 实机任务。Root/Bootloader/固件镜像写入状态均无变化。
+
 ## 2026-10-18 — 第六轮 DSU Treble/VNDK 隔离：本机三项官方前置检查完成
 
 - 机主 Treble Check 截图显示 Treble、A/B、ARM64、System-as-root 支持；同时普通 ADB `ro.treble.enabled=true`，运行时 `/linkerconfig/ld.config.txt` 存在(90,115B)，`[vendor] namespace.default.isolated=true` 明确位于第370行，且包含真实 Vendor/ODM linker search paths。旧 `/system/etc/ld.config*` 不存在只是路径差异。
