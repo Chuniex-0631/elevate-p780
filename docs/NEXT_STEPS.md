@@ -8,11 +8,11 @@
 2. **Fstab 两份已读取**：`system/system_ext/product` 使用 `avb=vbmeta_system`；`vendor/odm` 使用默认 `avb`。`system` 额外包含 `/avb/q-gsi.avbpubkey` 等三份 Google 开发 GSI 公钥文件路径候选。[Fstab 实测](research/p780-fstab-avb-20261018.md)。但仍未读取真实 `vbmeta_b`、`vbmeta_system_b` 或 chain descriptors。
 3. **已完成但没有结果的尝试**：Fastboot 常见 OEM 解锁指令均为 unknown command；EDL Sahara 可识别但没有兼容且授权的 Firehose；Google OTA Prober 对当前 `264` fingerprint 无 `update_url`。不再重复这些请求；OTA 支线暂缓。对应 [启动/EDL](research/device-and-boot.md)、[OTA](research/google-ota-prober-p780-20261018.md)。
 
-## 新的优先路线 A：DSU / GSI 在锁定态下的官方受信任启动支持（可行性核验）
+## 路线 A：DSU / GSI 在锁定态下的官方受信任启动支持（第一轮只读已完成）
 
-**判定：仅有 AOSP 设计和 P780 Fstab 支持的研究假说；未运行或安装 GSI。** [专项分析和来源](research/p780-dsu-locked-gsi-20261018.md)。DSU 并非已证实的 Root/BL 解锁路径，不能替代真正的分区写入通道。
+**判定：第一轮 P780 只读已经完成。** `gsi_tool` 文件存在（47,016B），但 `pm path com.android.dynsystem` 无输出；`ls /system/bin/gsid` 返回 Permission denied，不等于文件不存在；三个 `/avb/*-gsi.avbpubkey` 在当前用户空间未找到，但可能属于启动后释放的 first-stage ramdisk；`init.svc.gsid`、DSU 开关和 `ro.gsid.image_running` 三项属性均为空，不能确认为 false。Android 11 `gsid.rc` 设计为 `disabled/oneshot`，不宜据此排除服务。**目前仅能确定部分底层组件存在、标准 UI 未解析到，完整 DSU 支持尚未证实。** [实机+AOSP 专题](research/p780-dsu-locked-gsi-20261018.md)。既非 Root，也非分区写入通道。
 
-如果机主希望继续实机取证，先在 Windows PowerShell 仅运行以下 **只读** 查询（可以逐条粘贴，不需要生成新脚本）：
+第一轮六条**已运行**，以下保留的是之前命令清单（不要重复）；只有机主愿意进一步判断 DSU 是否仅为 AOSP 底层框架，才执行第二轮四条：
 
 ```powershell
 adb shell pm path com.android.dynsystem
@@ -23,7 +23,16 @@ adb shell getprop ro.gsid.image_running
 adb shell ls -l /avb/q-gsi.avbpubkey /avb/r-gsi.avbpubkey /avb/s-gsi.avbpubkey
 ```
 
-同时在开发者选项中只**观察**是否出现 `DSU Loader`，不要下载/安装/重启任何 GSI。缺失或 `Permission denied` 是有效观察，不能自动推断功能永久不支持。AOSP 某些版本的 `gsi_tool status` 会按需启动 `gsid` 服务，当前严格只读阶段先不调用；更不要调用 `install/enable/disable/wipe`。可在随后确认可用性、镜像兼容性、可信公钥及备份后，再另立方案。
+第二轮只读：
+
+```powershell
+adb shell pm list packages -u | findstr /I "dynsystem gsi"
+adb shell ls -l /system/etc/init/gsid.rc
+adb shell ls -ld /metadata/gsi /metadata/gsi/dsu
+adb shell getprop | findstr /I "gsid dsu gsi"
+```
+
+同时在开发者选项中只**观察**是否出现 `DSU Loader`，不要下载/安装/重启任何 GSI。缺失或 `Permission denied` 是有效观察，不能自动推断功能永久不支持。AOSP 某些版本的 `gsi_tool status` 会按需启动 `gsid` 服务，当前严格只读阶段先不调用；更不要调用 `install/enable/disable/wipe`。若依旧无标准包/入口，则**暂停 DSU 支线**，避免投入过多精力在可能只有模板的功能上。
 
 ## 主要路线 B：真正阻挡永久 Root / 自定义 Boot 的环节
 
