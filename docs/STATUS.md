@@ -46,6 +46,12 @@
 - `system_b/system_ext_b/product_b/vendor_b/odm_b` 分别映射 dm-0 至 dm-4；`system_b-cow→dm-5`；五个 `*-verity` 分别 dm-6 至 dm-10。COW 线索不等于正在 OTA 或发现绕过途径。
 - 进一步证据边界与下轮查询见 [AVB 专题](research/avb-live-baseline-20261018.md)。`_162` 镜像、公钥指纹和锁定态写入入口仍未取得；Root/BL 状态未变。
 
+## 2026-10-18：AVB 第四轮属性核查与取证收束
+
+- 用户实机 `ro.boot.dynamic_partitions=true`：明确确认动态分区；`ro.virtual_ab.enabled`、`ro.virtual_ab.compression.enabled`、`ro.boot.vbmeta.device` 均为空。**空属性不能视为否定 Virtual A/B 或 VBMeta 的证据**。
+- 根据 AOSP，Android 11 Virtual A/B 使用 kernel COW，压缩快照支持出现于 Android 12；`system_b-cow` 与此前观察相符，但**只记录为候选线索，不写成已证明正在 OTA、快照合并或写入漏洞**。
+- 本阶段结束常规 getprop 再采集，后续优先查找可信匹配 `_162` 的 OTA/分区镜像和 P780-specific locked 写入通道。见 [AVB 实机专题](research/avb-live-baseline-20261018.md)。
+
 ## 新增历史原件（2026-10-10）
 
 - 新上传两份 ADB 审计 ZIP（22 和 9 条目），与其展开目录逐字节相同；删除 31 个冗余展开副本，保留原始 ZIP 与清理前备份分支。
