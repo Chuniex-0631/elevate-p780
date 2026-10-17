@@ -1,5 +1,11 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 DSU 第一轮六项实机只读取证
+
+- 机主在本聊天提交 PowerShell 原始输出（无独立 TXT 附件）：`pm path com.android.dynsystem` 空；`/system/bin/gsi_tool` 存在 47,016B、权限 `-rwxr-xr-x root shell`；`/system/bin/gsid` 访问 `Permission denied`；`init.svc.gsid`、`persist.sys.fflag.override.settings_dynamic_system`、`ro.gsid.image_running` 均为空；`/avb/q-gsi.avbpubkey`、`r-gsi`、`s-gsi` 在当前文件系统均不可见（No such file）。
+- 2026-10-18 仅采集只读信息，**未执行** `gsi_tool status`（其某些 AOSP 版本会按需启动服务）、安装、启用或重启 DSU/GSI。文件及权限结果不能单独判断启用情况。
+- AOSP Android 11 `gsid.rc` 是 disabled/oneshot 按需服务；GSI 公钥可能在 first-stage ramdisk，启动切根后正常不可见。**只有 `gsi_tool` 存在和标准 DSU PackageManager 路径无返回得到直接实机支持，不能宣称 P780 确实可运行 GSI 或根本不支持。** [对应研究及来源](research/p780-dsu-locked-gsi-20261018.md)。
+
 ## 2026-10-18 Key Attestation 本机证实（脱敏档案）
 
 - 用户上传 `P780-KeyAttestation.p7b`（PKCS#7，3475 bytes，含 4 张证书），目前**仅在当前私有会话和用户设备/电脑中保留原件，Git 中没有复制或完整证书链**。
