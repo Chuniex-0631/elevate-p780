@@ -20,6 +20,8 @@
 
 **2026-10-18 OTA 新线索：** 已审阅 [Google OTA Prober](https://github.com/tangalbert919/google-ota-prober) 的真实 Check-in 逻辑；发现同 TINNO OEM 的 Rakuten Mini C330 在公开 OTA 索引中存在经记录的 Google OTA 增量包、P710 有指纹记录。**P780 尚未证实使用该服务，也尚未运行实测或取得镜像。** 用户提供当前 P780 指纹 `Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys`，且只找到 `fstab.default` / `fstab.emmc` 而非 `fstab.qcom`。[专题](docs/research/google-ota-prober-p780-20261018.md)。
 
+**2026-10-18 Google OTA + Fstab 实机结果：** P780 当前 build fingerprint 首次通过 [Google OTA Prober](https://github.com/tangalbert919/google-ota-prober) 模拟 Check-in，**未返回任何 OTA URL**，不能据此证明服务器从未分发 P780 固件。用户实机已读取 `fstab.default` / `fstab.emmc`，均将 `system/system_ext/product` 指向 `avb=vbmeta_system`，`vendor/odm` 采用默认 `avb`，其中 GSI 附加公钥**并非已验证的生产根公钥**。[Fstab 专题](docs/research/p780-fstab-avb-20261018.md)；[Google OTA 专题](docs/research/google-ota-prober-p780-20261018.md)。不再要求重复执行相同指纹查询。
+
 ## 从哪里开始
 
 1. [当前状态](docs/STATUS.md)：已证实、候选结果与阻断点。
