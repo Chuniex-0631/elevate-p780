@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — P780 DSU 官方安装服务恢复成功；推进到只读兼容性预检
+
+- 机主正式执行 `cmd package install-existing --user 0 com.android.dynsystem`，设备返回 `Package com.android.dynsystem installed for user: 0`；`pm path` 已恢复显示原厂 `DynamicSystemInstallationService.apk`；`dumpsys` 证明 `installed=true`（由恢复前 `false` 变为 `true`）。`enabled=0` 始终为 PackageManager DEFAULT。
+- 本次通过用户级安装登记恢复预装组件，无需 Root、恢复出厂、APK 下载或刷机。`stopped=false` / `notLaunched=false` 不等于 DSU/GSI 已安装或镜像已启动。
+- 已修订 DSU 专项、STATUS 和 NEXT_STEPS 中的旧“installed=false 当前状态 / 未恢复”描述，历史取证阶段保留追溯。下一阶段仅做 `settings_dynamic_system.list`、`ro.vndk.version`、ABI、`df -h /data` 只读检查；不选中截图中较新 Google GSI，也不触发下载/安装/重启。
+- 尚无 P780 locked GSI 启动实证，仍未取得 boot/vbmeta 原始镜像、Root 或已证实分区写入通道。
+
 ## 2026-10-18 — 解释 DSU Loader 在线四项镜像与无需恢复出厂
 
 - 机主确认从未主动安装 GSI，愿意必要时恢复原厂。根据 AOSP Android 11 DSU Loader 和 Settings `DSULoader.java`，进入开发者选项后 Settings 从 HTTPS DSU JSON 列表抓取元数据并按 ABI/OS/VNDK/SPL 筛选，显示四个远程候选并**不表示**镜像在本机或已下载。
