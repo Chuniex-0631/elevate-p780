@@ -1,5 +1,13 @@
 # 归档维护日志
 
+## 2026-10-18 — 第九轮 DSU 签名信任链：六份公开 GSI AVB 公钥哈希与 AOSP 早期启动核验
+
+- 交叉审核 Android11 `target/product/gsi_keys.mk`、`developer_gsi_keys.mk` 与 `rootdir/avb/Android.mk`，明确两组标准 q/r/s-GSI 与 Developer q/r/s-GSI 公钥分别存在；P780 fstab 只声明**标准** q/r/s-GSI 文件，不可把它们笼统称作 Developer GSI key。
+- 借助 GitHub 公共 Android11 源码镜像获得 q/r/s 普通与 Developer 共六份 RSA4096 AVB 公钥二进制（1032B/份），JS SHA256 用 abc 向量自测后逐份算哈希；六个摘要均不同于 P780 TEE KeyAttestation AVB Test 根密钥摘要。全部 SHA、Git blob 哈希、AOSP 源码证据见 [新增第九轮报告](docs/research/p780-dsu-trust-chain-audit-20261018.md)。**没有直接访问 P780 boot ramdisk 字节；公开公钥值是候选证据，不是机上加载实测。**
+- AOSP 将 Settings DSU JSON 筛选、安装期可选公钥预检查/撤销检查和 first-stage AVB 最终受信公钥验证分开；缺少 JSON pubkey 不构成签名绕过。仍缺 Android15/16实际系统镜像 AVB Footer 签名钥匙和 P780 实际运行时受信钥匙。
+- 从 Google 官方 Android15/16 GSI 发布页面核对未来ZIP SHA，并发现部分设备启动/重启 GSI 失败时可能需 Recovery 清空 userdata。此风险不允许仅凭 DSU 是“临时系统”便承诺无损回退；暂不下载、安装或重启 GSI，不影响 locked/未 Root 现状。
+- 同步 STATUS、NEXT_STEPS、DSU 主专题、导航和证据索引；后续不重复已完成的 Treble、KeyAttestation/JSON 抓取。
+
 ## 2026-10-18 — DSU 六子目录镜像元数据已核验：24条全无 VNDK/pubkey；CP11 纠错
 
 - 机主上传 `p780-dsu-catalog-detail.zip`，4073B / SHA-256 `ad732d61aa7751aeaa6f2a148e3a1998aeee645beb5fe3f344fff98d9ca74c74`。离线验证ZIP全部8项、六子目录原始字节SHA与report完整匹配，无读取错误；24条 GSI JSON 记录已经独立解析。
