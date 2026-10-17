@@ -14,6 +14,12 @@
 - 更新 AVB 专题、STATUS、NEXT_STEPS、README 与 PowerShell 采集脚本（新增可选公钥摘要属性、mapper 软链接及权限只读查看），未实施 Root 或刷写。
 - 机主将仓库设回 Private，GitHub API 复核 `visibility=private`；SECURITY/README 同步更正，保留先前 Public 状态的潜在暴露说明。
 
+## 2026-10-18 — AVB 第三轮：版本、dm-verity、root-only 分区与 COW
+
+- 机主 ADB 证实：公钥摘要属性为空、`ro.boot.vbmeta.avb_version=1.0`（Bootloader libavb）、`ro.boot.avb_version=1.1`（Android fs_mgr libavb）、`ro.boot.veritymode=enforcing`。AOSP VINTF 资料说明版本差异并非异常。
+- `/dev/block/sde31`、`/dev/block/sda11` 权限 `brw------- root root`；非 root Shell 只能列出而不能直接提取该 VBMeta 数据。五个 B 槽逻辑分区 dm-0..4、`system_b-cow` dm-5、五个 dm-verity dm-6..10 被原样记录，COW 仅为 OTA 快照候选而非写入或 Root 成果。
+- 同步 AVB 专题、STATUS、NEXT_STEPS、README、证据索引及 PowerShell 只读取证工具；新工具补充 Virtual A/B 和 VBMeta device 的可选属性查询。设备不刷机不切槽，根本阻断仍是 `_162` 原厂 AVB 镜像与锁定态写入途径。
+
 ## 2026-10-17 — XDA 正文补档与 Recovery 验签边界
 
 - 原样保存用户提供的 XDA 4805241 正文，标注来源链及未独立复核状态；关闭同一正文人工获取提醒，保留既有邮件历史。
