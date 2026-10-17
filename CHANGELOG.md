@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — 第十一轮 DSU 日志核验与一次性启动状态消费机制确认
+
+- 机主返回 GSID：`gsi_tool status`= `installed` + `disabled`，当前槽 `_b`，`ro.gsid.image_running` 空，pstore访问被SELinux/权限拒绝。UI重复返回原厂系统这一现象得到了安装backend的独立证据。
+- 本地独立解析用户上传的 UTF-16LE 4.1MB Logcat（15455行，SHA256 `955c9775371658b36d59e749c648149193a05746a72d26807f09a3f97de6e970`）与三行过滤日志（SHA256 `333d7ac1de09d46f4a77a3611842a38d47c0ec14819d2b2b23d6ebfb2a74cf76`）；直接提取 `DynamicSystemService: isInstalled(): true`、`NOTIFY_IF_IN_USE` 和启动后通知，未发现 first-stage/AVB/镜像映射故障原始记录。**不提交原始敏感日志**。
+- Android 11 AOSP `libgsi.cpp::CanBootIntoGsi` 在默认one-shot模式**本次尝试继续前**就标记下一次为disabled，因此在当前原厂系统看到disabled不能简单诊断成“UI未设置启动标记”。AOSP first_stage仍有 images map、AVB/fstab验证等后续步骤，根因尚无直接日志。
+- 更新 [第十一轮调查专题](docs/research/p780-dsu-stock-fallback-20261018.md)、STATUS、NEXT_STEPS、证据清单、README，后续仅建议内核日志缓冲区/bootreason只读查阅；不重复重启、重新下载、Root或修改GSID启用状态。
+
 ## 2026-10-18 — 首次 DSU 安装提示成功，重启两次仍返回原厂系统（诊断待收集）
 
 - 机主实际操作 DSU：GSI 下载完成、系统提示点击 Restart；至少两次手动点击后设备均重启回原厂 Android11，随后仍显示 DSU Restart 通知。**原厂系统正常可用，尚未成功运行 Android15 GSI；并非无外力的自动 bootloop。**
