@@ -1,6 +1,6 @@
 # 研究状态总表（更新：2026-10-18）
 
-2026-10-18 取得本机 P780 Key Attestation：**TEE / Google 根证书签名链核验通过，证实 AVB 默认测试公钥身份**，不再等待原厂镜像才能确认根钥匙。当前研究进入 AVB 只读取证阶段，保留公开新线索监测；不涉及刷机、Root 或更改 Bootloader。读取入口见 [文档导航](README.md)，结构验收见 [全库整理](REPOSITORY_AUDIT.md)。
+2026-10-18 取得本机 P780 Key Attestation：**TEE / Google 根证书签名链核验通过，证实 AVB 默认测试公钥身份**，不再等待原厂镜像才能确认根钥匙。已增加一条**尚未在 P780 实测**的 DSU/GSI 支线：两份 Fstab 的 q/r/s GSI 公钥配置与 AOSP Android 11 的 locked-state 可信 DSU 设计一致，但设备前端、实际公钥文件、HAL 兼容和安装能力仍未知。[源码交叉报告](research/p780-dsu-locked-gsi-20261018.md)。当前研究进入 AVB 只读取证阶段，保留公开新线索监测；不涉及刷机、Root 或更改 Bootloader。读取入口见 [文档导航](README.md)，结构验收见 [全库整理](REPOSITORY_AUDIT.md)。
 
 本仓库存档长期围绕 **Rakuten Hand 5G / TINNO P780** 进行的个人设备实验。证据有明确等级：**实机已证实 / 离线源码或文件已证实 / 其他设备参考 / 未验证假设**。不同等级不能互相替代。
 
@@ -24,6 +24,7 @@
 | Android Clang 11.0.2 `rtmutex.o` | **云端编译成功** | 已匹配实机编译器，非完整 `vmlinux`，非可刷写内核 |
 | 还原与出厂 `vmlinux` 一致的内核 | **未完成** | 原厂私有代码与构建身份未满足 |
 | JourneyConfigService | **静态与运行状态核对已完成** | vendor/XML/TCS 版本均 42；64 键一致；消费者静态定位进程管理与 Service/Provider 限制；未发现 OTA/Root 链 |
+| DSU/GSI 临时系统（LOCKED） | **新候选，未实机验证** | Fstab 声明 q/r/s 开发 GSI 公钥路径，Android 11/F2FS/动态分区/dm-verity 条件与 AOSP DSU 相容；未查证 `com.android.dynsystem`、`gsid`、运行时公钥或实际启动。不是 Root 或 Fastboot 写入。[DSU 专题](research/p780-dsu-locked-gsi-20261018.md) |
 | Root / Bootloader 解锁 / 刷机 | **均未达成** | 任何适配包不得宣称 Root 成功 |
 
 ## 2026-10-18：AVB 锁定状态下的实机基线（用户提供）
