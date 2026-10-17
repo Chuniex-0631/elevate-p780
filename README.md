@@ -1,6 +1,6 @@
 # Rakuten Hand 5G / TINNO P780 研究档案
 
-**2026-10-18 P780 DSU 第十二轮实机结果：** 用户通过官方 DSU Loader 安装镜像后，点击 Restart **只发生一次正常重启便返回 Android11 原厂系统**；ADB **`ro.boot.bootreason` 与 `sys.boot.reason` 均为 `reboot,dynsystem`**，因此 DSU 专用重启请求确实发出。先前 GSID `installed/disabled` 与 Android11 的 one-shot 标志被消费相容，但**未证实具体失败点**。当前内核 logcat 缓冲区 2MiB/实际0B，pstore shell 权限不足；AOSP first-stage 可在镜像映射等问题时放弃 DSU 并继续原厂，因此优先研究**早期无第二次自动重启的回退机制**，不要直接归因为 AVB 公钥冲突。原厂设备仍可用、GSI 未成功启动、BL LOCKED/无 Root。[实机诊断](docs/research/p780-dsu-stock-fallback-20261018.md) · [后续路线](docs/NEXT_STEPS.md)。
+**2026-10-18 DSU 第十三轮：** 机主提交完整 `adb bugreport`（ZIP有效，362成员，主文本19.7MB）；从系统启动历史直接找到**两次** `reboot,dynsystem`（06:30:31、06:31:30，UTC+8），并确认 `gsid.image_installed=1`、`ro.gsid.image_running=0`，设备当时仍是原厂 B 槽。官方 dumpstate 的 `LAST KMSG` 明确因 `/proc/last_kmsg` 不存在失败，incidentd 也打不开 pstore、`LAST LOGCAT` 失败；当次 dmesg 最早从开机943秒后开始，未记录DSU early-boot。**没有验证是哪一步 AVB/映射失败，没有成功启动GSI、Root或BL解锁**。优先转向 P780 `_162` boot ramdisk和真实GSI公钥的离线取证，不重复重启或再抓相同Bugreport。[Bugreport 独立分析](docs/research/p780-dsu-bugreport-audit-20261018.md) · [现行研究计划](docs/NEXT_STEPS.md)。
 
 **2026-10-18 重大实机验证：P780 `_162` 的 Android Key Attestation 由 Google 官方硬件证明根签署，TEE 证明已核验；`verifiedBootKey` 精确匹配 AOSP `testkey_rsa4096_pub.pem` 经 AVB 专用编码得到的 SHA-256。`verifiedBootHash` 同样精确匹配既有本机 VBMeta Digest。** 这将官方已公布的默认测试钥匙漏洞升级为对本机公钥身份的独立密码学证明，但**尚无 Root、Bootloader 解锁或 locked 写入通道**。[脱敏验证与证据](docs/research/avb-attestation-confirmed-20261018.md)。原始 `.p7b` 未上传仓库。
 
