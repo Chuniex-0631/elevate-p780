@@ -54,6 +54,10 @@
 - **不是 Bootloader 解锁证明**：锁状态可以保持 locked，而签名验证仍因受信任测试钥匙而失效；“可被错误信任”与“已有途径写入”是不同条件。
 - **不是当前 Root 成果**：本机仍未 Root、未解锁；`_162` 原厂二进制和匹配 Firehose 仍缺。
 
+## 2026-10-18：实机 AVB 基线与离线验证路径
+
+机主实机 ADB 输出确认本次启动：`green`、`locked`、`flash.locked=1`、slot `_b`、VBMeta digest `33ee3a6cf5215befd8a4f953382bd746d12efc37f6d4116c0c9b68a7661f95f2`。详细证据边界、AOSP `calculate_vbmeta_digest` 正确比较方式和 Windows 只读采集脚本见 [独立 AVB 取证专题](avb-live-baseline-20261018.md)。这个 digest 不是公钥指纹，也不是原厂二进制；锁定态写入通道依旧未知。
+
 ## 2026-10-17：XDA 正文由用户提供
 
 来源：[XDA 4805241](https://xdaforums.com/t/p780-rakuten-hand-5g-looking-for-stock-firmware-firehose-loader-edl-reachable-ota-sideload-not-using-aosp-test-key.4805241/)，[用户粘贴全文](../../evidence/web/2026-10-17/xda-4805241-user-provided.txt)。取得时间为 2026-10-17；不是直接下载的网页 HTML，作者身份、发表日期及独立性未核实。未提供测试 ZIP、签名命令、证书指纹或完整 Recovery 日志，也未给出固件构建号，不能直接归属于本机 `_162`。
