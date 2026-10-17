@@ -5,6 +5,7 @@
 - 用户在本次对话中提交 2 轮 ADB 原始终端输出；已摘录到 [AVB 专题](research/avb-live-baseline-20261018.md)，包括 `green`、`locked`、`_b`、完整 VBMeta digest、`sha256`、`7744`、AVB `1.1` 和 A/B 分区软链接。
 - **保存状态：仅文档转录，未提供独立 TXT 原件**；未来若需逐字节存证，应由用户自行导出并检查潜在隐私再上传。不可冒称是已取得 `vbmeta_b.img` / `vbmeta_system_b.img`。
 - `vbmeta.size` 为本次加载 VBMeta 总大小，候选链式 `vbmeta_system_b` 未经签名描述符读取验证。未来原厂镜像采集状态依然为**未取得**。
+- 同日第三轮会话终端输出：`vbmeta.public_key_digest` 空、Bootloader/Android libavb `1.0/1.1`、`veritymode=enforcing`、VBMeta 对应设备节点 `0600 root:root`、动态分区 dm-verity 映射及 `system_b-cow`；**同样仅专题转录、未上传日志原件、未获取块设备原始字节**。
 
 2026-10-10 从历史文件库实际枚举。**已登记不代表原件已经 GitHub 归档**；文件名与大小来源于文件库。文本报告已有用户设备实测背景；研究工具有不同的只读与会修改设备类别。
 
