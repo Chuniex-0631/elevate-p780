@@ -1,5 +1,13 @@
 # 归档维护日志
 
+## 2026-10-18 — 纠正外部 AI 的 P780 OTA 与 AVB 签名混淆
+
+- 根据上游真实 CLI，纠正不存在的 `--device`、source/target fingerprint 参数和 `devices.json` 文件；否定毫无来源的 `264→151/120` 字符串改写作为旧构建证据。
+- AOSP 官方 `signapk` 是 APK/OTA ZIP 签名而非 AVB 签名，AVB 使用 `avbtool`/libavb；Magisk + signapk 不能自动实现 locked P780 强刷。
+- AOSP payload Full/Delta 区分决定镜像能否离线完整恢复；所谓 Google 下载直链固定数小时到期或长期保留旧包，缺乏 P780 证据。
+- 新增楽天社区 2024-07-31 真实 `_161` 收到 `_162` OTA 提示但安装失败的历史材料；仍缺旧版完整 fingerprint、OTA URL 和分发服务器身份。
+- 同步 [Google OTA Prober 核对专题](docs/research/google-ota-prober-p780-20261018.md) 与 NEXT_STEPS；设备无改动，Root/BL 无新成功证据。
+
 ## 2026-10-18 — P780 Google OTA 单次无 URL / 实机 Fstab 信任分组确定
 
 - 机主在 Windows 执行 `python probe.py --fingerprint "Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys" --model P780`，程序返回 `No OTA URL found for your build`；无 HTTP 状态、无 Google OTA URL。最新 `_162` 构建下的单次负面查询不能证实 P780 不使用 Google OTA；不再对相同 fingerprint 重复查询。
