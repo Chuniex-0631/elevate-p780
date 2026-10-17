@@ -24,7 +24,7 @@
 | Android Clang 11.0.2 `rtmutex.o` | **云端编译成功** | 已匹配实机编译器，非完整 `vmlinux`，非可刷写内核 |
 | 还原与出厂 `vmlinux` 一致的内核 | **未完成** | 原厂私有代码与构建身份未满足 |
 | JourneyConfigService | **静态与运行状态核对已完成** | vendor/XML/TCS 版本均 42；64 键一致；消费者静态定位进程管理与 Service/Provider 限制；未发现 OTA/Root 链 |
-| DSU/GSI 临时系统（LOCKED） | **新候选，未实机验证** | Fstab 声明 q/r/s 开发 GSI 公钥路径，Android 11/F2FS/动态分区/dm-verity 条件与 AOSP DSU 相容；未查证 `com.android.dynsystem`、`gsid`、运行时公钥或实际启动。不是 Root 或 Fastboot 写入。[DSU 专题](research/p780-dsu-locked-gsi-20261018.md) |
+| DSU/GSI 临时系统（LOCKED） | **底层工具已实机发现；标准安装器未解析到** | `gsi_tool` 存在（47,016B）；`pm path com.android.dynsystem` 无路径；`gsid` 文件查询 Permission denied，`init.svc.gsid` 等属性为空；`/avb/q,r,s-gsi` 在普通 Android namespace 中不存在，但 first-stage ramdisk 可能已释放。不能推断 DSU 已实际可用、已禁用或可 Root。[AOSP/实机交叉专题](research/p780-dsu-locked-gsi-20261018.md) |
 | Root / Bootloader 解锁 / 刷机 | **均未达成** | 任何适配包不得宣称 Root 成功 |
 
 ## 2026-10-18：AVB 锁定状态下的实机基线（用户提供）
