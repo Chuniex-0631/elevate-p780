@@ -5,13 +5,16 @@
     "library_file_id": "libfile_464b9fd423908191b572224f0dd1ab4f",
     "filename": "P780-watch-20261017T0314Z.json"
   },
-  "status": "Unverified search-index lead; full text HTTP 403 site verification. No attachments acquired or confirmed. Manual capture requested.",
-  "assessment": "Title refers to OTA sideload signing; do not conflate package signing with AVB trust. Does not establish a P780 write path or refute JVN. Research conclusions unchanged.",
+  "status": "Body received from user on 2026-10-17; original HTML, replies and experimental artifacts not obtained. Claims not independently reproduced.",
+  "assessment": "Reported test ZIP rejection is narrower than proving recovery key identity. OTA package certificate and AVB RSA trust keys are separate. No new P780 write/root/unlock success.",
   "notification": {
     "sent": true,
     "gmail_message_id": "1a147db9474e342d",
     "subject": "[P780 需人工操作] 请保存 XDA 新线索正文与附件（访问验证受限）",
     "dedup_key": "xda-4805241-manual-capture"
   },
-  "next_action": "Await user-supplied full text/attachments or normally accessible original page; do not repeatedly email for same blocker."
+  "next_action": "Do not request same body again. Monitor substantive updates; reassess only with original test ZIP, commands, recovery logs, keys or new device-specific firmware/loader evidence.",
+  "resolved_at": "2026-10-17T17:19:07+08:00",
+  "body_path": "evidence/web/2026-10-17/xda-4805241-user-provided.txt",
+  "manual_body_capture_request_closed": true
 }

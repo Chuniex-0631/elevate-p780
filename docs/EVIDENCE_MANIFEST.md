@@ -115,3 +115,9 @@ _早前至少 57 条历史文件记录已保留；本轮新增文件按原始名
 
 同一批 framework 输入复用，不重复上传原始 JAR。新增 [134 方法反汇编](../evidence/framework/2026-10-10/performance-disassembly.txt)、[79 条外部引用](../evidence/framework/2026-10-10/performance-callsites.json)、[6 个决策方法原始指令与解析](../evidence/framework/2026-10-10/performance-decision-methods.json)、逐 DEX SHA 和验证摘要；[提取脚本](../tools/read_performance_dex.py) 直接读取原始表，无 DEX 修补。54 个此前配置方法偏移/字节交叉核验通过。覆盖与运行时限制见既有 [Journey 专题](research/journey-config.md)，关闭消费者/星号待研究项。
 
+
+## 2026-10-17：XDA 4805241 用户提供正文
+
+- [英文粘贴正文](../evidence/web/2026-10-17/xda-4805241-user-provided.txt)：按用户提供的文本归档，不冒称原网页 HTML；作者、发表时间及是否独立于机主研究未核实。
+- [线索状态/去重记录](../evidence/web/2026-10-17/xda-4805241-pending.json)：保留原始获取失败和邮件通知历史，追加正文已收到/获取请求关闭。未取得实验 ZIP、完整命令、证书或 Recovery 原始日志。
+- 技术边界与下一步见 [专题补充](research/firmware-advisory-20260928.md)；第三方设备报告不替代本机 `_162` 证据。

@@ -2,9 +2,11 @@
 
 **官方源码请求（2026-10-11）：** 已向 TINNO 官网页面列出的海外销售邮箱发送 P780 `_162` 对应 GPL 源码申请并要求转交专业团队；Rakuten Mobile 的日文请求稿待通过官网客服渠道提交。详见 [联络记录](docs/official-source-request-log.md)。
 
-截至 **2026-10-15**：研究待机，持续监测公开新线索。**未取得 Root、未解锁 Bootloader；匹配原厂 `_162` 的完整 OTA、boot.img、vmlinux 仍未取得。**
+截至 **2026-10-17**：研究待机，持续监测公开新线索。**未取得 Root、未解锁 Bootloader；匹配原厂 `_162` 的完整 OTA、boot.img、vmlinux 仍未取得。**
 
 **2026-10-14 新增官方漏洞编号：** JVN 确认 Rakuten Hand 5G **全部版本**的 AVB 使用已知 AOSP 测试钥匙，登记为 [JVN#47427200](https://jvn.jp/jp/JVN47427200/) / [CVE-2026-107153](https://www.cve.org/CVERecord?id=CVE-2026-107153)。这是固件信任链的实证，但公开资料仍未给出 P780 在锁定状态下的具体写入通道，不能改写为已 Root/已解锁。
+
+**2026-10-17 XDA 正文补档：** 作者报告测试 ZIP 的 Recovery 验签失败；缺少原始包、签名命令和日志，不能确定信任钥匙或推翻 AVB 公告。已关闭正文获取提醒，见 [专题补充](docs/research/firmware-advisory-20260928.md)。
 
 这是机主实体机取证、公开源码实验与历史资料的长期档案，不是刷机包或一键 Root 工具。设备基线：Android 11 / `P780AE_11.0_RMN_JP_162` / `5.4.233-qgki-gea5245e94afe-dirty`。
 

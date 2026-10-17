@@ -1,6 +1,6 @@
 # 后续关卡与待机监测
 
-更新：2026-10-15。当前暂停主动设备实验，保留公开线索监测。机主暂时无需操作手机。
+更新：2026-10-17。当前暂停主动设备实验，保留公开线索监测。机主暂时无需操作手机。
 
 ## 值得重启研究的新证据
 
@@ -32,3 +32,11 @@
 ## 持续阻断与资料缺口
 
 原厂 `_162` 完整 OTA/boot.img/vbmeta/vmlinux 未取得；JVN 已确认 AVB 测试钥匙问题，但 P780 锁定态写入通道仍未知；GhostLock 仍 BLOCKED；Firehose 分区读取、Root 和 BL 解锁均无成功证据。部分历史 APK/getprop/Fastboot 原件和新上传 framework 原始 ZIP/JAR 未迁入 Git，逐项见 [资产清单](EVIDENCE_MANIFEST.md)。敏感转储仍按 [SECURITY](../SECURITY.md) 管理。
+
+## XDA 4805241 后续分流（2026-10-17）
+
+- **已完成**：用户提供正文，原样归档；关闭 `xda-4805241-manual-capture` 正文提醒，不重复索取同一正文。未声称获得回复、附件或原始网页。
+- **继续推进**：可信 `_162` 镜像、Recovery/OTA 公钥及 AVB 公钥的离线核对，匹配 Loader 和 P780 locked 通道的原始成功日志。
+- **有工件再核验**：测试 ZIP/哈希、signapk 版本与完整命令（包括 whole-file 签名方式）、证书指纹、Recovery 完整日志、测试设备构建号。未取得这些资料前不重复要求机主运行测试。
+- **暂缓**：以包证书 testkey 直接 sideload 的捷径；`fastboot boot` 仅为作者求助设想，无成功证据；`OPG105` 仅作待验证检索词，不使用其镜像。
+- TINNO 源码申请继续等待原线程回复；本篇未改变厂商联络安排。详见 [归因专题](research/firmware-advisory-20260928.md)。

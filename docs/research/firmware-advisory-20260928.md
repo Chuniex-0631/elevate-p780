@@ -53,3 +53,17 @@
 - **不是 JourneyConfigService**：明文 HTTP、`RootProcess` 名称和应用策略消费者与 AVB 测试钥匙无关。
 - **不是 Bootloader 解锁证明**：锁状态可以保持 locked，而签名验证仍因受信任测试钥匙而失效；“可被错误信任”与“已有途径写入”是不同条件。
 - **不是当前 Root 成果**：本机仍未 Root、未解锁；`_162` 原厂二进制和匹配 Firehose 仍缺。
+
+## 2026-10-17：XDA 正文由用户提供
+
+来源：[XDA 4805241](https://xdaforums.com/t/p780-rakuten-hand-5g-looking-for-stock-firmware-firehose-loader-edl-reachable-ota-sideload-not-using-aosp-test-key.4805241/)，[用户粘贴全文](../../evidence/web/2026-10-17/xda-4805241-user-provided.txt)。取得时间为 2026-10-17；不是直接下载的网页 HTML，作者身份、发表日期及独立性未核实。未提供测试 ZIP、签名命令、证书指纹或完整 Recovery 日志，也未给出固件构建号，不能直接归属于本机 `_162`。
+
+- 作者报告正常启动后 `adb reboot edl` 可进入 05c6:9008；这只是第三方报告，不是本机新采集的结果，更不代表 Firehose 握手或分区读写成功。
+- 作者报告 Recovery 主菜单无 ADB，sideload 可连接但 shell 返回 closed；菜单出现 fastboot/SD card 选项，不证明 fastboot 写入权限或物理 SD 卡能力。
+- 作者报告以 `testkey.x509.pem / testkey.pk8` 和 signapk 签名的最小 ZIP 被拒，显示 `Signature verification failed`。严格结论仅是“该测试包在该次测试中未通过验签”；不能仅凭叙述确定 Recovery 实际信任钥匙。
+- AOSP 将 OTA ZIP 的证书验签与 AVB 镜像信任分开；`testkey.x509.pem/testkey.pk8` 不等同于 AVB 的 RSA 测试密钥。原文把两者的测试钥匙概念混用，不能以此推翻 JVN。参阅 [AOSP OTA 签名说明](https://source.android.com/docs/core/ota/sign_builds)。
+- signapk 是否使用 OTA 所需 whole-file 签名（如相应版本的 `-w`）、包结构与签名是否有效、Recovery 实际钥匙集合，都缺证据。优先离线核对，暂缓重复实机 sideload 尝试。系统 `/system/etc/security/otacerts.zip` 可作线索，但不能单独替代 Recovery ramdisk `/res/keys`（两者可能不同）。
+- “只剩 EDL”是作者判断，不是已经穷尽所有通道的证明；原文请求的 `fastboot boot` 是求助方向，未报告成功。
+- `OPG105` 仅是作者提出的检索别名，尚无同板/分区/签名/固件对应证据；不得直接视为 P780 兼容机型。`rawprogram*.xml/patch*.xml` 是 EDL 包可能携带的刷写描述文件，不能要求普通 OTA 必然包含它们。
+
+优先级：继续获取可信原厂镜像与匹配 Loader／可复核锁定态通道；将“用公开 OTA testkey 直接 sideload”的捷径降为暂缓。后续若取得测试 ZIP、完整签名命令、Recovery 日志、构建身份及可信公钥集合，可重新评估该负面结果。当前仍未 Root／未解锁，GhostLock 状态不变。正文获取请求已完成，不重复要求用户提供同一正文；附件与原始实验工件仍未取得。

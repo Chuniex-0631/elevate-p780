@@ -1,0 +1,44 @@
+Hi all.
+First of all, since I used AI translation, the content might be difficult to understand. I apologize.
+
+I own this device and have been digging into root/unlock options, prompted by JVN#47427200 (official JP vulnerability disclosure stating this device’s AVB verification uses the public AOSP test key) and the related academic paper “AVBTestKeyInTheWild: Bypassing Android Verified Boot Using a Firmware Supply Chain Vulnerability” (Leierzopf et al., SPICES 2025).
+
+Device info:
+
+Product: p780
+Bootloader unlocked: no, secure: yes
+Partition layout: A/B (current-slot: b)
+SoC: Snapdragon 480
+
+What I’ve confirmed so far:
+
+EDL is reachable. adb reboot edl from a normal boot works. Device shows up as:
+Bus 004 Device 012: ID 05c6:9008 Qualcomm, Inc. Gobi Wireless Modem (QDL mode)
+
+Stock recovery menu has:
+Reboot system now
+Reboot to bootloader
+Enter fastboot
+Apply update from ADB
+Apply update from SD card
+Wipe data/factory reset
+Mount /system
+View recovery logs
+Run graphics test
+Run locale test
+Power off.
+
+Recovery adb is locked down as expected: no adb in the main recovery menu; adb sideload mode connects but adb shell returns closed (minadbd, sideload-only).
+Tested whether OTA sideload verification also uses the AOSP test key (since the paper’s attack resigns boot/vbmeta with it): built a minimal test zip, signed it with the public AOSP testkey (testkey.x509.pem / testkey.pk8) using signapk, and tried adb sideload. Result: Signature verification failed. So unlike AVB, the OTA/recovery signature verification is not using the test key — that shortcut is closed.
+
+Where I’m stuck:
+
+Everything points back to needing EDL + the correct signed Firehose loader (prog_firehose_ddr.elf) and a full stock dump (rawprogram*.xml / patch*.xml, boot.img, vbmeta.img) for this device, which nobody seems to have posted yet. Without the OEM-signed Firehose loader, EDL is reachable but silent — no read/write possible.
+
+If anyone has:
+
+A full stock firmware dump / OTA package for P780 or OPG105
+A working Firehose loader for this chipset/OEM combo
+Or has gotten further with the AVB test key angle (boot.img resigned with testkey + fastboot boot temp-boot)
+
+...I’d really appreciate a pointer. Happy to test anything and report back, and will post here if I make further progress.
