@@ -1,5 +1,11 @@
 # 归档维护日志
 
+## 2026-10-18 — 找到无需再次重启的 DSU early boot 取证途径（Bugreport）
+
+- 研究 AOSP framework/native `dumpstate.cpp::DoKmsg()` 证实官方 Bugreport 会尝试读取 `/sys/fs/pstore/console-ramoops`、`console-ramoops-0` 或 `/proc/last_kmsg` 并加入 `LAST KMSG`。普通 ADB shell pstore Permission denied、kernel logcat 0B **不能自动排除** dumpstate 对持久化 early boot 日志的访问。
+- 在 [DSU 启动回退专题](docs/research/p780-dsu-stock-fallback-20261018.md) 和 [NEXT_STEPS](docs/NEXT_STEPS.md) 新增机主可选的 `adb bugreport .\P780-DSU-Bugreport.zip`，**当前尚未在 P780 执行**。不需要再次 Restart，也不触碰 boot/vbmeta；若厂商没有保存 pstore 则可能无内容。
+- Bugreport 可能包含账号/网络/设备标识，强调先本地保留、脱敏后才分享，不把未经核对的原始 ZIP 提交私有或公开 Github。无新增手机实机结果，Root/解锁/DSU 可启动性结论不变。
+
 ## 2026-10-18 — DSU 启动失败后的执行决策：停止重复试错，收敛 first-stage 分支
 
 - 基于已有 `installed/disabled`、`reboot,dynsystem`、单次重启返回原厂、Kernel logcat 0B 和 pstore权限拒绝，认定此时没有能证明具体 root cause 的第一阶段错误日志。
