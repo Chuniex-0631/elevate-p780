@@ -8,15 +8,20 @@
 2. **Fstab 两份已读取**：`system/system_ext/product` 使用 `avb=vbmeta_system`；`vendor/odm` 使用默认 `avb`。`system` 额外包含 `/avb/q-gsi.avbpubkey` 等三份 Google 开发 GSI 公钥文件路径候选。[Fstab 实测](research/p780-fstab-avb-20261018.md)。但仍未读取真实 `vbmeta_b`、`vbmeta_system_b` 或 chain descriptors。
 3. **已完成但没有结果的尝试**：Fastboot 常见 OEM 解锁指令均为 unknown command；EDL Sahara 可识别但没有兼容且授权的 Firehose；Google OTA Prober 对当前 `264` fingerprint 无 `update_url`。不再重复这些请求；OTA 支线暂缓。对应 [启动/EDL](research/device-and-boot.md)、[OTA](research/google-ota-prober-p780-20261018.md)。
 
-## 路线 A：先补 DSU first-stage 证据，不再复现相同失败（后续行动）
+## 路线 A：先用 Bugreport 尝试取得第一阶段 LAST KMSG，不再重启 DSU
 
-**当前实际状态（不可写成成功启动）：** P780 原厂 Android11 正常可用；Google Android15 GSI 在 `gsid` 报 `installed/disabled`，多次通过官方通知 `Restart` 后只发生一次 `reboot,dynsystem` 并返回原厂系统；Kernel logcat 0B、pstore Permission denied。AOSP 的一次性启动模式可能在 first-stage 挂载之前消耗状态，因此这些结果不够区分 `CanBootIntoGsi`/活动槽/`MapAllImages`/标记/AVB/挂载。
+**现有已证实**：DSU 后回原厂系统，单次 `reboot,dynsystem`，GSID `installed/disabled`，内核 logcat 0B、普通 shell 访问 pstore 权限拒绝。根据 Android11 AOSP，one-shot 可能在 first-stage 先把下一轮状态设为disabled；无法从事后状态区别 `GetActiveDsu`、`MapAllImages`、`MarkSystemAsGsi`、AVB/挂载问题，不能继续盲目点击 Restart。
 
-**优先任务（不动手机）：** 根据 [DSU 第十二轮诊断与后续决策矩阵](research/p780-dsu-stock-fallback-20261018.md) 中 AOSP `UseDsuIfPresent()` 失败分支，继续查找与本机 `P780AE_11.0_RMN_JP_162` 对应的 boot ramdisk / 实际 first-stage fstab / 签名公钥证据，或能够在启动失败后保留第一阶段错误的合法观测渠道。不得把网上任意 Android11/高通 GSI 成功实例代替 P780 实测。
+**新增真正可试的观测途径**：Google [AOSP `dumpstate.cpp::DoKmsg`](https://android.googlesource.com/platform/frameworks/native/+/33bc71ff9524457ad4e0f57523d676b500701370/cmds/dumpstate/dumpstate.cpp) 会尝试在 Bugreport 中加入 `LAST KMSG`，来源为 pstore `console-ramoops` / `console-ramoops-0` / `/proc/last_kmsg`。`adb shell` 被拒绝**不必然**代表 dumpstate 也无法获取。**P780 尚未执行本次新 Bugreport**，也不能保证厂商内核保存了故障记录。
 
-**当前明确不做：** 不再反复点击通知 Restart；不直接执行 `gsi_tool enable`（默认 sticky；`enable -s` 虽是一次性仍会重复相同实验）、`wipe`、`disable` 或安装其它新 GSI ；不因为读不到 kernel/pstore 就刷机、恢复出厂或要求 Root。原厂系统能正常启动，保留现有用户态状态，优先完成 PC 离线分析。
+```powershell
+adb bugreport ".\P780-DSU-Bugreport.zip"
+Get-Item ".\P780-DSU-Bugreport.zip"
+```
 
-**以后复现必须先达到三项条件：** (1) 有相较前两次**新的、可验证的观测点或具体改动变量**；(2) 重要用户数据已备份，确认可接受 Recovery/Factory Reset 最坏情形；(3) 获机主对该次启动操作的明确确认。没有这些条件时停止启动重试。若不再研究 DSU、需要释放约数GB空间，可在记录证据后通过官方界面 `Discard`，不要越权操作 metadata。
+无需 Root、无需重新进入 DSU、不需要开启 sticky。请先检查报告中 `LAST KMSG`、`console-ramoops`、`DSU`、`GSI`、`MapAllImages`、`first_stage`、`AVB` 等相关原文；**完整 Bugreport 可能含 IMEI/序列号/账号/网络配置，应在机主私有电脑和本聊天内谨慎保管，未经检查不上传 GitHub**。即使 Bugreport 仍无有用 first-stage 记录，才回到离线 P780 `_162` boot ramdisk/GSI 密钥研究。详见 [DSU 第十二轮诊断和附录](research/p780-dsu-stock-fallback-20261018.md)。
+
+**暂停**：不执行任何 `gsi_tool enable/disable/wipe`、其它 GSI、恢复出厂、Fastboot/EDL 或第三次无新变量的通知 Restart。若以后确实设计一次新实验，必须先有新观测方法、充分备份与机主明确再次同意。
 ## 主要路线 B：真正阻挡永久 Root / 自定义 Boot 的环节
 
 **B1. 只读离线镜像发现**：仅考虑机型为 P780 且有原始构建编号、文件哈希与可信出处的 `vbmeta[_system]`, `boot`, `vendor_boot`, `dtbo`，包括各官方历史版本，但必须注明与 `_162` 的差异。得到镜像后用 AOSP `avbtool info_image` / `verify_image` 分析主 vbmeta→system chain descriptors、rollback indices、boot 分区是否 AVB hash footer；不能从 fstab 或 `7744` 字节 VBMeta 总大小反推出真实描述符。**暂不继续批量搜/探测 OTA。**
