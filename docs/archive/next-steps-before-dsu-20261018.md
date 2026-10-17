@@ -7,7 +7,7 @@
 ## 2026-10-18 本机测试公钥确证：更新优先级
 
 - **已完成**：机主上传本机 KeyAttestation PKCS#7；Google 官方 2019 硬件证明根证书 DER 一致、4 张证书签名全有效，TEE/Keymaster 均 TrustedEnvironment，`deviceLocked=true` / `Verified`。硬件证明 `verifiedBootHash` 与此前 ADB 64 字符 digest 完全相同。
-- **核心突破**：`verifiedBootKey=7728e30f50bfa5cea165f473175a08803f6a8346642b5aa10913e9d9e6defef6`，精确匹配 AOSP `testkey_rsa4096_pub.pem` 按 avbtool 生成的 1032B AVB 公钥 blob SHA-256。此前“公钥身份未知、需要原厂镜像才能确定根公钥”的判断已经过时；详见 [本机证实专题](research/avb-attestation-confirmed-20261018.md)。
+- **核心突破**：`verifiedBootKey=7728e30f50bfa5cea165f473175a08803f6a8346642b5aa10913e9d9e6defef6`，精确匹配 AOSP `testkey_rsa4096_pub.pem` 按 avbtool 生成的 1032B AVB 公钥 blob SHA-256。此前“公钥身份未知、需要原厂镜像才能确定根公钥”的判断已经过时；详见 [本机证实专题](../research/avb-attestation-confirmed-20261018.md)。
 - **仍需攻克**：原厂 vbmeta_b/vbmeta_system_b 镜像、链式描述符/回滚索引、真正可复核的 P780 locked 写入路径。根密钥确认**不代表**可刷机、已 Root 或解锁。Google 当前吊销列表已进行有限检索，正式的全链在线吊销验证仍未完成。
 - **保护隐私**：用户原始 `.p7b` 未提交 Git，仓库仅保留去身份化的技术结果。OTA 支线继续暂缓，不要求重复 Key Attestation 或普通 getprop 测试。
 
@@ -15,8 +15,8 @@
 
 ## 本轮立即可用的只读任务（2026-10-18）
 
-- 用户实机确认 `green / locked / flash.locked=1 / _b`、`sha256`、`7744` 字节 VBMeta 总长度和 AVB `1.1`。B 槽 `vbmeta_b`→`sde31`、`vbmeta_system_b`→`sda11`；**链式描述符未经镜像核验**，细节见 [AVB 基线专题](research/avb-live-baseline-20261018.md)。
-- Windows 用户可以运行 [只读 AVB ADB 采集脚本](../tools/p780-avb-readonly.ps1) 补齐可见的公钥摘要属性、分区软链接、块设备权限及动态分区映射；结果先检查是否有敏感信息再分享。该脚本不会读取 `/dev/block` 内容。
+- 用户实机确认 `green / locked / flash.locked=1 / _b`、`sha256`、`7744` 字节 VBMeta 总长度和 AVB `1.1`。B 槽 `vbmeta_b`→`sde31`、`vbmeta_system_b`→`sda11`；**链式描述符未经镜像核验**，细节见 [AVB 基线专题](../research/avb-live-baseline-20261018.md)。
+- Windows 用户可以运行 [只读 AVB ADB 采集脚本](../../tools/p780-avb-readonly.ps1) 补齐可见的公钥摘要属性、分区软链接、块设备权限及动态分区映射；结果先检查是否有敏感信息再分享。该脚本不会读取 `/dev/block` 内容。
 - 未来获得同版本镜像后，使用 AOSP `avbtool info_image`、`calculate_vbmeta_digest` 校验与实机 digest 是否匹配，并以 NCC Group `test_avb_key` 辅助识别已知测试公钥。**无原始 VBMeta 时不要凭 digest 反推密钥或试刷。**
 
 ## 最新只读取证阶段（2026-10-18 第三轮）
@@ -24,20 +24,20 @@
 - `vbmeta.public_key_digest` 空；`vbmeta.avb_version=1.0`（Bootloader）与 `avb_version=1.1`（Android）来自不同组件；`veritymode=enforcing`。
 - `vbmeta_b` 和 `vbmeta_system_b` 原始块设备权限为 `root:root 0600`，当前非 root Shell 无法直接提取；不尝试越权取镜像。
 - B 槽逻辑分区以及五份 dm-verity 映射已经观察到，`system_b-cow` 是 OTA/COW 候选线索，**不要推断更新仍在进行或 AVB 可被绕过**。
-- **第四轮已核对** `ro.boot.dynamic_partitions=true`；`ro.virtual_ab.enabled`、`ro.virtual_ab.compression.enabled`、`ro.boot.vbmeta.device` 均为空。已确认动态分区，但不能由空值否定 Virtual A/B；`system_b-cow` 仍只是候选快照节点。停止重复属性采集，转入[原厂镜像与写入通道](research/avb-live-baseline-20261018.md)专题。
+- **第四轮已核对** `ro.boot.dynamic_partitions=true`；`ro.virtual_ab.enabled`、`ro.virtual_ab.compression.enabled`、`ro.boot.vbmeta.device` 均为空。已确认动态分区，但不能由空值否定 Virtual A/B；`system_b-cow` 仍只是候选快照节点。停止重复属性采集，转入[原厂镜像与写入通道](../research/avb-live-baseline-20261018.md)专题。
 - **仍最优先取得匹配 `_162` 的可信原厂 VBMeta/OTA**；此类现场映射不是原厂签名与链式描述符的替代品。
 
 ## 2026-10-18：Google OTA Prober 和 Fstab 取证（两项已实测）
 
-- [Google OTA Prober × P780 专题](research/google-ota-prober-p780-20261018.md) 证实项目使用 Google Check-in 的 `fetchSystemUpdates=1` 向 `android.googleapis.com/checkin` 请求下一 OTA URL；只有机型通过 Google OTA 服务器分发才可能得到链接。
+- [Google OTA Prober × P780 专题](../research/google-ota-prober-p780-20261018.md) 证实项目使用 Google Check-in 的 `fetchSystemUpdates=1` 向 `android.googleapis.com/checkin` 请求下一 OTA URL；只有机型通过 Google OTA 服务器分发才可能得到链接。
 - 公开 [Rakuten/Tinno C330](https://github.com/mouseos/ota-archive/blob/main/OTA/Google/rakuten/c330/index.json) 的 2 个增量 OTA 真实索引（`530→620` 和 `620→830`），且 C330 是 Tinno 代工的 Rakuten Mini，构成同 OEM 的历史分发旁证；[P710](https://github.com/mouseos/ota-archive/blob/main/OTA/Google/tinno/p710/index.json) 仅见 fingerprint、无 OTA。P780 当前未出现在该档案的 Rakuten/Tinno 组；**尚未验证 P780 是否使用 Google OTA 服务器**。
 - 本机 fingerprint：`Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys`，`264` 与厂商内部 `_162` 为不同编号。后者已是最终发布版，从当前 fingerprint 查询无更新不构成否定证据；未来应优先找到有出处的旧 P780 fingerprint，不得自行猜造增量号。
 - **已经实测一次**：Windows CLI 按完整构建指纹及 `--model P780` 查询，返回 `No OTA URL found for your build`。这仅表示没有获得 `update_url`，并不证明 P780 不使用 Google OTA，也不能证明 Google 已识别本机；本版本为最终 `_162`，不再重复这一指纹的测试。若发现真实历史 P780 fingerprint 再重新评估。
-- **两份 Fstab 已经读取**：`system/system_ext/product` 声明 `avb=vbmeta_system`；`vendor/odm` 声明 `avb`，`system` 还额外列出 `/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey`。这是挂载配置证据而非 Bootloader 实际密钥/签名 descriptor；详见 [AVB Fstab 专题](research/p780-fstab-avb-20261018.md)。
+- **两份 Fstab 已经读取**：`system/system_ext/product` 声明 `avb=vbmeta_system`；`vendor/odm` 声明 `avb`，`system` 还额外列出 `/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey`。这是挂载配置证据而非 Bootloader 实际密钥/签名 descriptor；详见 [AVB Fstab 专题](../research/p780-fstab-avb-20261018.md)。
 
 ## 2026-10-18：无原厂镜像的剩余主动验证重点（Key Attestation 尚未测试）
 
-经 AOSP 官方 Keystore/CTS 与动态分区文档交叉核对，找到之前未测试的两条只读逻辑线索，详细见 [Key Attestation 与 Fstab 专题](research/avb-attestation-alternative-20261018.md)。
+经 AOSP 官方 Keystore/CTS 与动态分区文档交叉核对，找到之前未测试的两条只读逻辑线索，详细见 [Key Attestation 与 Fstab 专题](../research/avb-attestation-alternative-20261018.md)。
 
 - **新 P1：Android Keystore Hardware Key Attestation**。普通应用可以在设备支持时取得 `RootOfTrust.verifiedBootKey`（AVB 信任公钥哈希）及可选 `verifiedBootHash`（有机会与已有 `33ee…95f2` 一致），以及 `deviceLocked`/`verifiedBootState`。不需要 Root/原厂镜像。**P780 本机尚未验证能否获得硬件证明**；需要检查证书链来源、TEE 安全级别和隐私，不能把软件自报的哈希当作可信硬件证明。官方 APK 工具来源：开源 [vvb2060/KeyAttestation](https://github.com/vvb2060/KeyAttestation/releases)，使用普通 Keystore，无需 Shizuku。
 - **P2 已完成配置取证**：两份可读的 Fstab 均确认 3 个分区通过 `avb=vbmeta_system`，Vendor/ODM 通过默认 `avb`；仍不可据此声称拿到 chain descriptor 或生产公钥。
@@ -68,7 +68,7 @@
 | 新证据 | 先做什么 | 仍需注意的边界 |
 |---|---|---|
 | 可信完整 `_162` OTA / boot.img / Image / vmlinux | 核对来源、构建身份与原件哈希，离线提取内核与更新元数据 | 跨机型镜像不能当成本机原厂输入 |
-| P780 专用的锁定态写入通道或 `_162` AVB 布局/签名证据 | 与 [JVN/CVE 专题](research/firmware-advisory-20260928.md) 对照，离线核对 boot/vbmeta 链和钥匙身份 | JVN 已确认 AOSP 测试钥匙，但未公开 P780 的安装路径；信任缺陷不等于可写分区 |
+| P780 专用的锁定态写入通道或 `_162` AVB 布局/签名证据 | 与 [JVN/CVE 专题](../research/firmware-advisory-20260928.md) 对照，离线核对 boot/vbmeta 链和钥匙身份 | JVN 已确认 AOSP 测试钥匙，但未公开 P780 的安装路径；信任缺陷不等于可写分区 |
 | 本机签名/HWID 匹配的 EDL Loader 证据 | 先核对原件身份与实际握手记录 | 同 SoC 不代表签名兼容；EDL 识别不等于分区读取成功 |
 | 可复核的 P780 Root / BL 解锁新成果 | 核对型号、版本、前置状态、原始记录与可重复性 | 传闻、演示名称、其它机型成果不能改写本机状态 |
 | 原厂内核实现、类型或符号证据 | 核对逐构建身份后再评估 GhostLock 阻断项 | 候选树的 32 项一致不能代替实机 ABI/栈帧/符号 |
@@ -82,7 +82,7 @@
 - 两棵候选内核最终 run 38060518994 各 32 项提取成功、0 差异；结论仍只适用于被测候选采样。
 - 2026-10-14 的 JVN#47427200 / CVE-2026-107153 已归档：确认 Hand 5G 全版本 AVB 使用已知 AOSP 测试钥匙；未把论文中的跨机型通用流程写成本机 Root 成果。
 
-详见 [状态](STATUS.md)、[Journey](research/journey-config.md)、[配置/布局](research/config-layout.md)。以上事项不再重复要求机主采集。
+详见 [状态](../STATUS.md)、[Journey](../research/journey-config.md)、[配置/布局](../research/config-layout.md)。以上事项不再重复要求机主采集。
 
 ## 监测和维护约定
 
@@ -92,7 +92,7 @@
 
 ## 持续阻断与资料缺口
 
-原厂 `_162` 完整 OTA/boot.img/vbmeta/vmlinux 未取得；JVN 已确认 AVB 测试钥匙问题，但 P780 锁定态写入通道仍未知；GhostLock 仍 BLOCKED；Firehose 分区读取、Root 和 BL 解锁均无成功证据。部分历史 APK/getprop/Fastboot 原件和新上传 framework 原始 ZIP/JAR 未迁入 Git，逐项见 [资产清单](EVIDENCE_MANIFEST.md)。敏感转储仍按 [SECURITY](../SECURITY.md) 管理。
+原厂 `_162` 完整 OTA/boot.img/vbmeta/vmlinux 未取得；JVN 已确认 AVB 测试钥匙问题，但 P780 锁定态写入通道仍未知；GhostLock 仍 BLOCKED；Firehose 分区读取、Root 和 BL 解锁均无成功证据。部分历史 APK/getprop/Fastboot 原件和新上传 framework 原始 ZIP/JAR 未迁入 Git，逐项见 [资产清单](../EVIDENCE_MANIFEST.md)。敏感转储仍按 [SECURITY](../../SECURITY.md) 管理。
 
 ## XDA 4805241 后续分流（2026-10-17）
 
@@ -100,14 +100,14 @@
 - **继续推进**：可信 `_162` 镜像、Recovery/OTA 公钥及 AVB 公钥的离线核对，匹配 Loader 和 P780 locked 通道的原始成功日志。
 - **有工件再核验**：测试 ZIP/哈希、signapk 版本与完整命令（包括 whole-file 签名方式）、证书指纹、Recovery 完整日志、测试设备构建号。未取得这些资料前不重复要求机主运行测试。
 - **暂缓**：以包证书 testkey 直接 sideload 的捷径；`fastboot boot` 仅为作者求助设想，无成功证据；`OPG105` 仅作待验证检索词，不使用其镜像。
-- TINNO 源码申请继续等待原线程回复；本篇未改变厂商联络安排。详见 [归因专题](research/firmware-advisory-20260928.md)。
+- TINNO 源码申请继续等待原线程回复；本篇未改变厂商联络安排。详见 [归因专题](../research/firmware-advisory-20260928.md)。
 
 ## 外部 AI 方案核对（2026-10-18）
 
 - 真实旧版 P780 build fingerprint 可能用于 Google Check-in 查 OTA；但绝不能把本机 `264` 任意换成 `151`、`120` 当成真实构建号，厂商 `_161` 与 fingerprint incremental 并非同一套版本。
 - 已读上游 `probe.py` 没有 `--device`、`--source_fingerprint` 或 `--target_fingerprint` 参数，配置是 `config.yml`。所谓 OTA URL 固定小时级过期/服务永久保留固件无足够实证，不能据此继续伪造指纹重试。
 - [楽天社区 2024-07-31 P780 `_161→_162` 帖](https://community.mobile.rakuten.net/questions/x933grdoe6mhntuf) 记录旧版实机出现可用 OTA 提示，却安装失败；未公开完整 Android build fingerprint 或 Google 服务端地址。
-- AOSP `signapk` 签署 APK/JAR/OTA ZIP，并非 `avbtool`；AVB test-key 缺陷也不提供 locked bootloader 写权限；增量 OTA 的 payload 可能依赖旧版分区。详细校对在 [Google OTA Prober 专题](research/google-ota-prober-p780-20261018.md)。
+- AOSP `signapk` 签署 APK/JAR/OTA ZIP，并非 `avbtool`；AVB test-key 缺陷也不提供 locked bootloader 写权限；增量 OTA 的 payload 可能依赖旧版分区。详细校对在 [Google OTA Prober 专题](../research/google-ota-prober-p780-20261018.md)。
 
 ## 2026-10-18：OTA 暂缓后的唯一实机优先路径
 
@@ -115,4 +115,4 @@
 - **P1：Key Attestation**。官方 Android Keystore `RootOfTrust` 含 `verifiedBootKey`、可选 `verifiedBootHash`、`deviceLocked`、`verifiedBootState`，普通应用有机会取得硬件证明。使用 [vvb2060/KeyAttestation](https://github.com/vvb2060/KeyAttestation/releases/tag/v1.8.4) 正常 Android 11 模式，无需 Shizuku、StrongBox、设备 ID 和解锁。实际设备尚未执行。
 - 研究注意：Trusty Keymaster 可直接透传 bootloader 提供的 ≤32 字节 key hash，或对 >32 字节 key 进行 SHA256；**不能预先假定 `verifiedBootKey` 等于 SHA256(AVB public-key blob)**，只有确认具体编码才能与 AOSP test key 比对。
 - 拿到结果仅收集证书可信状态、TEE/Software 级别、`verifiedBootKey`/`verifiedBootHash`、locked 和 boot state；不发布完整证书链/身份标识。验证 `verifiedBootHash` 是否完全等于 `33ee3a6cf5215befd8a4f953382bd746d12efc37f6d4116c0c9b68a7661f95f2`。
-- 详细步骤与 AOSP 来源见 [AVB Key Attestation 专题](research/avb-attestation-alternative-20261018.md)。只有真正取得新证据才升级为已验证，保持既有 locked/未 Root 状态。
+- 详细步骤与 AOSP 来源见 [AVB Key Attestation 专题](../research/avb-attestation-alternative-20261018.md)。只有真正取得新证据才升级为已验证，保持既有 locked/未 Root 状态。
