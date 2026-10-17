@@ -289,3 +289,47 @@ adb shell "grep -n -A 20 '^\[vendor\]' /linkerconfig/ld.config.txt"
 若 linkerconfig 文件/路径不存在或 shell 无法读取，应按具体 Android 11 文件布局重定向检查，不必引入 Root 或执行 `gsi_tool status`/安装。`[vendor]` 命名和 `namespace.default.isolated` 也可能因版本而不同，不能用命令零输出武断推断“不支持 Treble”。
 
 **阶段结果：** 安装器已恢复、目录 UI 正常、ARM64/VNDK 30 明确、可用存储报告充裕，满足继续离线和只读兼容性分析的条件。仍未取得匹配 JSON、DSU trustkey 实际当前加载情况、HAL/Gatekeeper/Weaver 兼容证据、GSI 安装签名验收和启动日志。因此仍不选择镜像、不下载安装、不重启或尝试 locked 写入原厂分区。
+
+
+## 2026-10-18 第六轮实机：Treble 和 Vendor 链接器隔离已直接证实
+
+机主提供 Treble Check 应用截图和同轮 Windows PowerShell ADB 输出（仅私人会话、未提交原始截图至 Git）。截图可见 Project Treble **支持**（VNDK 30.0）、无缝系统更新 **支持**（有 A/B 分区）、64-bit ARM、System-as-root **支持**。此处主要以以下原始 ADB 结果作为可复核证据；第三方应用 UI 只作旁证，不代替系统输出：
+
+```text
+$ adb shell getprop ro.treble.enabled
+true
+$ adb shell ls -l /system/etc/ld.config* /linkerconfig/ld.config.txt
+ls: /system/etc/ld.config*: No such file or directory
+-rw-r--r-- 1 root root 90115 1971-04-25 17:45 /linkerconfig/ld.config.txt
+$ adb shell "grep -n -A 20 '^\[vendor\]' /linkerconfig/ld.config.txt"
+368:[vendor]
+369-additional.namespaces = com_android_adbd,com_android_art,com_android_neuralnetworks,com_android_runtime,system,vndk
+370-namespace.default.isolated = true
+371-namespace.default.visible = true
+372-namespace.default.search.paths = /odm/${LIB}
+373-namespace.default.search.paths += /vendor/${LIB}
+374-namespace.default.search.paths += /vendor/${LIB}/hw
+375-namespace.default.search.paths += /vendor/${LIB}/egl
+376-namespace.default.permitted.paths = /odm
+377-namespace.default.permitted.paths += /vendor
+378-namespace.default.permitted.paths += /system/vendor
+```
+
+### AOSP 合规性交叉确认
+
+- **直接实机已证实：** `ro.treble.enabled=true`，实际 `/linkerconfig/ld.config.txt` 中 `[vendor] namespace.default.isolated=true`。前一轮已确认 `ro.vndk.version=30`、`ro.product.cpu.abi=arm64-v8a`。这正是 [Android 官方 GSI 设备兼容性检查](https://developer.android.com/topic/generic-system-image#check-device-compliance) 列出的 Treble、跨 Android 版本 VNDK 隔离、ABI 检查。`/system/etc/ld.config*` 不存在与 Android 11 生成的 linkerconfig 路径不同有关，**真实 `/linkerconfig/ld.config.txt` 已直接读取成功，不算失败**。
+- **AOSP 官方含义：** 若 Vendor `namespace.default.isolated=true`，官方将该设备描述为可支持**高于原厂 Android 版本**的 GSI 操作系统。它是重要的框架/供应商链接器兼容前提，**不是**所有 Android 15/16 具体 GSI 的安装签名、HAL、设备驱动、Keymaster/Gatekeeper/Weaver 或安全补丁回滚检查已经通过的实机证明。
+- **重要版本提醒：** [AOSP VNDK 现状](https://source.android.com/docs/core/architecture/vndk) 指明自 Android 15 开始弃用 VNDK，但**旧 VNDK 版本 14 及以前的 APEX 继续保留**以服务既有 Vendor；因此“Android 15 GSI 一定不含 Android 11 VNDK30”以及“Android 15 一定能兼容”均属于未证实的过度推断。具体镜像仍需检查 JSON 条目与包内 APEX、AVB GSI 签名。
+- **DSU 与常规手工刷写必须分开：** 官方 GSI [手工 flashing](https://developer.android.com/topic/generic-system-image) 的 `unlocked` 要求不等于 [官方 DSU](https://source.android.com/docs/core/ota/dynamic-system-updates) 经厂商内置受信任开发 GSI keys 允许的 LOCKED 临时安装路线。此前实机 Fstab 确含 q/r/s GSI keys 配置，但未直接取得当前 boot ramdisk 中公钥或确认它们信任截图中 2025/2026 新版本 GSI。
+- **截图证据边界：** Treble Check 报告无缝更新/A-B 和 System-as-root，与既有 by-name A/B 和 fstab 相容，但不能仅凭第三方应用证明 DSU 已完成实际启动或某个 GSI 的签名/硬件适配。
+
+### 第七轮方向：从“抽象兼容性”转为“具体镜像元数据”，不再重复 ADB
+
+目前原生 DSU 安装服务已恢复，Treble/VNDK/ARM64/存储均已有**本机可复核**数据。下一关应该拿到截图中 GSI 候选条目的真实 DSU JSON 元数据，对照 `cpu_abi`, `os_version`, `vndk`, `spl`, `pubkey`, `uri` 和是否存在嵌套 `include`。优先在**Windows PC 上**只读下载官方公共 JSON，不在设备上选镜像/下载巨大的 ZIP；解析公网 JSON 时应保留来源、时间以及服务端格式变化，不执行 JSON 中引用的任意脚本或未知 URL。
+
+- AOSP 默认地址为 `https://dl.google.com/developers/android/gsi/gsi-src.json`，P780 的 `.list` 属性为空；仍不能因此断言已捕获实际设备请求。该 Google URL 当前在研究环境的网页检索接口里不能直接读取 JSON，**尚未取得当前目录原始 JSON 或截图所列两组构建的完整字段**。
+- 下载/解析只读元数据的意义：确认是否明确包含 VNDK30、所列 GSI 的发行系统版本、签名公钥指纹/黑名单和真正分发 URL。**它仍不证明动态启动可以成功**，但能在不修改 P780 的情况下有效减少选择风险。
+
+## 最新阶段判定
+
+**Treble 支持、Vendor linker namespace isolation、VNDK30 和 ARM64 已实机确认；DSU 原厂安装器已恢复；GSI 下载、安装、签名和启动仍未执行**。本次研究没有修改 boot/vbmeta 分区、没有 Root 或 BL 解锁、没有完成锁定态永久写入。
