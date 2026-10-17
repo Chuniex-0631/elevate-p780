@@ -1,6 +1,6 @@
 # Rakuten Hand 5G / TINNO P780 研究档案
 
-**2026-10-18 P780 DSU 第十轮实机结果：** 机主通过原生 DSU Loader 下载 GSI、收到完成/Restart 通知，但连续两次**手动点击 Restart** 后均重启回原厂 Android11，同一提示仍在。**原厂系统可正常启动、Android15 GSI 从未观察到运行；这是重复进入原系统，不是设备自己无限 bootloop。** 原因尚无 GSID installed/enabled、early-init/AVB/pstore 原始日志证明，不能直接断定是密钥不匹配。**当前暂停再次重启和 Discard，优先保留可能的日志及无修改状态查询；未Root/解锁。** [第十轮诊断专题](docs/research/p780-dsu-stock-fallback-20261018.md) · [取证命令](docs/NEXT_STEPS.md)。
+**2026-10-18 DSU 第十一轮诊断更新：** P780 通过原厂 DSU Loader 下载镜像后数次手动点击 Restart 均回 Android11 原厂系统；进一步 ADB 证实 GSID `installed` / `disabled`，原厂 Logcat 中 `DynamicSystemService: isInstalled(): true` 且通知可生成。经 AOSP Android11 `libgsi.cpp` 核对，**one-shot 启动在 first-stage 准备继续本次启动前就会将下一次状态置为 disabled**；所以重启后 disabled **不等于**操作失败或未启用，也不能证明 AVB 根公钥错误。原始4.1MB日志与过滤文本 SHA 已记录、敏感原件未上Git；尚缺映射/AVB/早期 init 日志，**未成功启动 GSI，未 Root 或解锁**。目前停止重复重启并仅做可用的只读诊断。[第十一轮调查](docs/research/p780-dsu-stock-fallback-20261018.md) · [当前计划](docs/NEXT_STEPS.md)。
 
 **2026-10-18 重大实机验证：P780 `_162` 的 Android Key Attestation 由 Google 官方硬件证明根签署，TEE 证明已核验；`verifiedBootKey` 精确匹配 AOSP `testkey_rsa4096_pub.pem` 经 AVB 专用编码得到的 SHA-256。`verifiedBootHash` 同样精确匹配既有本机 VBMeta Digest。** 这将官方已公布的默认测试钥匙漏洞升级为对本机公钥身份的独立密码学证明，但**尚无 Root、Bootloader 解锁或 locked 写入通道**。[脱敏验证与证据](docs/research/avb-attestation-confirmed-20261018.md)。原始 `.p7b` 未上传仓库。
 
