@@ -1,5 +1,13 @@
 # 归档维护日志
 
+## 2026-10-18 — P780 Google OTA 单次无 URL / 实机 Fstab 信任分组确定
+
+- 机主在 Windows 执行 `python probe.py --fingerprint "Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys" --model P780`，程序返回 `No OTA URL found for your build`；无 HTTP 状态、无 Google OTA URL。最新 `_162` 构建下的单次负面查询不能证实 P780 不使用 Google OTA；不再对相同 fingerprint 重复查询。
+- 机主通过 ADB **实际读取并作为聊天附件提交** `fstab.default` 和 `fstab.emmc` 全文。两个文件中 `system/system_ext/product` 均声明 `avb=vbmeta_system`，而 `vendor/odm` 声明普通 `avb`；与既有两级 vbmeta 分区及 dm-verity 线索相容，但仍不是 Bootloader chain descriptor 原件。
+- 额外发现 `/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey` 只在 `system` 的 `avb_keys` 选项中出现。AOSP fs_mgr 优先验证独立 GSI 公钥、失败后回退默认 AVB 的代码路径已核对；**不能将 GSI 公钥当作生产根签名密钥或现成解锁路径**。
+- 新增 [Fstab AVB 专题](docs/research/p780-fstab-avb-20261018.md)，修订原先“尚未读取 Fstab / 尚未查询 P780”的过时状态，更新 Google OTA 专题、AVB 取证计划、STATUS、证据索引、README 与文档导航。保留来源等级：会话原始输出非 Git 中原始文件二进制；设备仍 locked、未 Root、无原厂镜像。
+
+
 ## 2026-10-18 — P780 Google OTA Prober 源码审阅与同 OEM 更新链旁证
 
 - 机主提供 `Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys` 完整 fingerprint；ADB 列出 `/vendor/etc/fstab.default`、`fstab.emmc`，`fstab.qcom` 不存在。改为只读前两份实际文件，暂停假设厂商 fstab 名称。
