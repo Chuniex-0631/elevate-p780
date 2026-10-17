@@ -52,3 +52,58 @@ adb shell ls -l /dev/block/by-name
 - [AVB 核心文档](https://android.googlesource.com/platform/external/avb/+/refs/heads/android11-release/README.md)：`info_image` / `verify_image` / `calculate_vbmeta_digest` 的真实语义。
 
 下一阶段以取得**可信版本一致的 `_162` AVB 镜像**为第一阻断，以**P780-specific locked 写入机制的成功原始日志**为第二阻断。不能用测试密钥替代 Qualcomm Firehose 授权，也不能把其他机型的攻击链视为 P780 已成功的证据。
+
+## 2026-10-18 第二轮 ADB 只读实测（用户提供）
+
+与上述同一次研究阶段的 B 槽状态对应；本轮未重复采集固件号或原始文件，不推断其它时点的状态。
+
+| ADB property | 本轮值 | 精确含义 |
+|---|---|---|
+| `ro.boot.vbmeta.hash_alg` | `sha256` | 对已加载的 VBMeta 结构集合计算启动摘要，**不直接给出 RSA 签名密钥类型** |
+| `ro.boot.vbmeta.size` | `7744`（字节） | 所有本次被 AVB 加载的 VBMeta 结构的 **总字节数**，不是单个分区的物理大小 |
+| `ro.boot.avb_version` | `1.1` | 设备报告的 AVB 版本，**不是**旧的 Verified Boot 1.0 |
+
+用户通过 `adb shell ls -l /dev/block/by-name | Select-String "vbmeta|boot|dtbo|super"` 观察到以下块设备软链接（1971 时间戳为节点列表元数据，不当作固件日期）：
+
+```text
+boot_a             -> /dev/block/sde9
+boot_b             -> /dev/block/sde28
+dtbo_a             -> /dev/block/sde13
+dtbo_b             -> /dev/block/sde32
+super              -> /dev/block/sda9
+vbmeta_a           -> /dev/block/sde12
+vbmeta_b           -> /dev/block/sde31
+vbmeta_system_a    -> /dev/block/sda10
+vbmeta_system_b    -> /dev/block/sda11
+vendor_boot_a      -> /dev/block/sde19
+vendor_boot_b      -> /dev/block/sde36
+```
+
+**高可信候选拓扑，不是已确认签名描述符：**
+
+- 主 AVB 元数据很可能位于活动槽 `vbmeta_b`（`/dev/block/sde31`）。
+- `vbmeta_system_b`（`/dev/block/sda11`）高度符合 AOSP 对动态系统分区的可选链式 VBMeta 设计；**分区名存在不意味着它一定被本次根 VBMeta 引用**。
+- `boot_b`、`vendor_boot_b`、`dtbo_b` 等是后续核验潜在 hash descriptors 的候选目标，当前不知道具体描述符布局、Key ID、算法、rollback index 或分区间验证关系。
+- `super` 是动态分区容器；`system`、`product`、`vendor` 等逻辑分区一般不会直接作为 `by-name` 中的独立物理分区显示。需要额外只读查看 `/dev/block/mapper` 或挂载信息后才能判定本机映射。
+- **`7744` 代表加载 VBMeta 总量**：其定义可以直接在 AOSP [libavb/avb_cmdline.c](https://android.googlesource.com/platform/external/avb/+/761178607206f4cb2af79ed9eec52d8cbd814adb/libavb/avb_cmdline.c) 中核对：对每一项 `slot_data->vbmeta_images[n].vbmeta_size` 相加，Digest 则为同一集合的链式计算。这一字段本身不能证明 VBMeta 数量正好为两份。
+- 只有取得同构建固件镜像后，才能用 `avbtool info_image` 确定根级链式描述符、公钥标识、rollback 等，再核对全链 `sha256` digest 和 7744 字节长度。
+
+参考：AOSP [AVB README / The VBMeta Digest](https://android.googlesource.com/platform/external/avb/+/android11-release/README.md)、[Android 动态分区和链式 AVB 指引](https://source.android.com/docs/core/ota/dynamic_partitions/implement)。
+
+### 下轮无 Root / 无写入的最小增量命令
+
+在已授权的 ADB 环境中执行；属性为空、列表不可访问均正常，不要额外尝试 `su`、`dd`、`fastboot flash` 或 `adb reboot`。
+
+```powershell
+adb shell getprop ro.boot.vbmeta.public_key_digest
+adb shell getprop ro.boot.vbmeta.avb_version
+adb shell getprop ro.boot.veritymode
+adb shell ls -l /dev/block/sde31 /dev/block/sda11
+adb shell ls -l /dev/block/mapper | Select-String "system|vendor|product|odm|verity"
+```
+
+`public_key_digest` 并非 Android 11 所有实现都会公开；空值不代表不存在 AVB 公钥。设备文件 `ls -l` 只看权限，不会读取镜像内容。
+
+### GitHub 隐私状态
+
+机主已将仓库调整为 Private；2026-10-18 再次通过 GitHub API 核实 `visibility=private`。此前短暂 Public 可见性不能视为历史访问已撤销，未经脱敏的系统证据仍须按 [SECURITY.md](../../SECURITY.md) 保密。
