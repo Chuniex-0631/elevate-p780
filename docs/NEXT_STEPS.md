@@ -16,6 +16,15 @@
 - **第四轮已核对** `ro.boot.dynamic_partitions=true`；`ro.virtual_ab.enabled`、`ro.virtual_ab.compression.enabled`、`ro.boot.vbmeta.device` 均为空。已确认动态分区，但不能由空值否定 Virtual A/B；`system_b-cow` 仍只是候选快照节点。停止重复属性采集，转入[原厂镜像与写入通道](research/avb-live-baseline-20261018.md)专题。
 - **仍最优先取得匹配 `_162` 的可信原厂 VBMeta/OTA**；此类现场映射不是原厂签名与链式描述符的替代品。
 
+## 2026-10-18：新的不依赖原厂镜像的实机取证路径（待用户可选验证）
+
+经 AOSP 官方 Keystore/CTS 与动态分区文档交叉核对，找到之前未测试的两条只读逻辑线索，详细见 [Key Attestation 与 Fstab 专题](research/avb-attestation-alternative-20261018.md)。
+
+- **新 P1：Android Keystore Hardware Key Attestation**。普通应用可以在设备支持时取得 `RootOfTrust.verifiedBootKey`（AVB 信任公钥哈希）及可选 `verifiedBootHash`（有机会与已有 `33ee…95f2` 一致），以及 `deviceLocked`/`verifiedBootState`。不需要 Root/原厂镜像。**P780 本机尚未验证能否获得硬件证明**；需要检查证书链来源、TEE 安全级别和隐私，不能把软件自报的哈希当作可信硬件证明。官方 APK 工具来源：开源 [vvb2060/KeyAttestation](https://github.com/vvb2060/KeyAttestation/releases)，使用普通 Keystore，无需 Shizuku。
+- **新 P2：fstab `avb=vbmeta_system` 配置**。可在存在且可读时检查 `/vendor/etc/fstab*`，确认各逻辑分区声明的 AVB 挂载目标。此举不会泄露签名密钥，也不能证明 bootloader chain descriptors。
+- **新 P3：AOSP 默认测试公钥的离线候选哈希**。AOSP build 系统默认采用 RSA4096 测试钥匙；必须先核对 Attestation 指纹的真实性与哈希输入编码才能对比，不能猜测 P780 确定使用这把钥匙。
+- 不需重复穷举普通 `getprop`、执行 EDL、获取 Root 或刷写。用户可选择是否安装第三方开源测试应用；尚未执行安装或采集。
+
 ## 2026-10-18：原厂完整 OTA 稀缺情况下的研究路线调整
 
 **避免把完整 `_162` OTA 当成所有 AVB 工作的唯一前置条件。** 改为两层目标：
