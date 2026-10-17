@@ -333,3 +333,36 @@ $ adb shell "grep -n -A 20 '^\[vendor\]' /linkerconfig/ld.config.txt"
 ## 最新阶段判定
 
 **Treble 支持、Vendor linker namespace isolation、VNDK30 和 ARM64 已实机确认；DSU 原厂安装器已恢复；GSI 下载、安装、签名和启动仍未执行**。本次研究没有修改 boot/vbmeta 分区、没有 Root 或 BL 解锁、没有完成锁定态永久写入。
+
+
+## 2026-10-18 第七轮：机主取得 Google DSU 主索引，508 B 字节级核验
+
+机主在 Windows PowerShell 运行 `Invoke-WebRequest -UseBasicParsing -Uri https://dl.google.com/developers/android/gsi/gsi-src.json -OutFile .\p780-dsu-catalog.json`；返回主文件长度 **508 bytes**，`Get-FileHash -Algorithm SHA256` 为 **`0A1970ABFCEB6BF3962177881B255E6AF9D4F43903AAC3BA9AEF2C1E5B4A2D09`**。其后机主在本轮聊天上传该 JSON，助手在只读工作环境重新解析原始 508 字节并独立计算 SHA-256，**字节长度与 SHA-256 完全一致**。当前文件是机主 PC 自行获取的公开 Google 索引，不是 P780 本机 HTTPS 抓包；不代表设备实际使用的 URL 已被捕获。
+
+### 主索引实际内容：只有 `include`，不含镜像声明
+
+```json
+{
+  "include": [
+    "https://dl.google.com/developers/android/rvc/images/gsi/gsi-dsc.json",
+    "https://dl.google.com/developers/android/sc/images/gsi/gsi-dsc.json",
+    "https://dl.google.com/developers/android/tm/images/gsi/gsi-dsc.json",
+    "https://dl.google.com/developers/android/udc/images/gsi/gsi-dsc.json",
+    "https://dl.google.com/developers/android/vic/images/gsi/gsi-dsc.json",
+    "https://dl.google.com/developers/android/baklava/images/gsi/gsi-dsc.json"
+  ]
+}
+```
+
+- `rvc`=Android 11、`sc`=Android 12、`tm`=Android 13、`udc`=Android 14、`vic`=Android 15、`baklava`=Android 16；这只是索引分支身份，不表示这 6 份镜像已经安装。最相关的是用户手机 DSU 界面截图里的 `BP1A.250405.005.C1`（`vic`）及 `CPI1.251209.009.A1`（待核 `baklava` 子目录的实际记录）。
+- 因为主文件**没有** `images`，它自己无法回答具体 GSI 的 `cpu_abi`、`vndk`、`pubkey`、`spl`、`uri` 或 `os_version`。在子目录正式下载核验前**不能**宣称 `vndk` 显式包含 30，不能声称签名是否匹配 P780 GSI 信任公钥；也不能把目录中的 ZIP URL 当作已经下载的镜像。
+- [AOSP 官方 DSU JSON descriptor](https://source.android.com/docs/core/ota/dynamic-system-updates) 公开解释 `include` 递归、`images` 结构及 **可选** `vndk`、`pubkey` 字段；若某项没有 `vndk`，仅说明目录没有指定该字段，不等于镜像已确认兼容 VNDK30。
+- 本轮研究环境网络检索接口无法直接读取 `dl.google.com/developers/android/*/images/gsi/gsi-dsc.json` 的原始 JSON（返回资源不可访问），并且隔离的运行环境无可用网络解析，**所以六个子 JSON 尚未取得、未冒用网上缓存/他人日志作为当前官方原件**。机主当前 Windows 已证明可访问主目录，下一步在 Windows PC 仅读取上述6个已声明的 Google HTTPS JSON；每个只限制1MiB，只保存原始字节/Hash/字段，**不得跟随 `uri` 下载数GB GSI ZIP**。
+
+### 下一轮可复核的数据采集工具
+
+本轮助手生成并离线模拟测试了标准库 Python 脚本 `p780_dsu_catalog_audit.py`（用户可从当前聊天下载；**当前还未在机主 Windows 上运行**）：从同一目录读取 `p780-dsu-catalog.json`、仅允许 Google 域名 `/developers/android/*.json` 小文件、最多20条包含链/3层/单项1MiB、拒绝外站重定向；将各子 JSON 原始字节、SHA-256 及匹配 `BP1A.250405.005.C1` / `CPI1.251209.009.A1` 的字段放入 `p780-dsu-catalog-detail.zip`。它不请求/下载 ZIP，不运行 ADB，不修改设备。获得并核对实际返回后再考虑将脚本归档入 `tools/`；未经真实网络测试的脚本不可声称在线已验证。
+
+### 结论
+
+**已核验 Google 主索引内容与哈希；6个子索引 URL 和目录结构已确认；两个目标 GSI 的实际签名及 VNDK 字段仍未知。** 保持 P780 Bootloader LOCKED、无 Root、无 GSI 安装/重启。下一步等待 Windows 只读获取子 JSON 原件，或由机主传回工具生成的含原文与 SHA 的小型 ZIP。
