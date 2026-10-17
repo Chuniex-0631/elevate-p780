@@ -8,24 +8,30 @@
 2. **Fstab 两份已读取**：`system/system_ext/product` 使用 `avb=vbmeta_system`；`vendor/odm` 使用默认 `avb`。`system` 额外包含 `/avb/q-gsi.avbpubkey` 等三份 Google 开发 GSI 公钥文件路径候选。[Fstab 实测](research/p780-fstab-avb-20261018.md)。但仍未读取真实 `vbmeta_b`、`vbmeta_system_b` 或 chain descriptors。
 3. **已完成但没有结果的尝试**：Fastboot 常见 OEM 解锁指令均为 unknown command；EDL Sahara 可识别但没有兼容且授权的 Firehose；Google OTA Prober 对当前 `264` fingerprint 无 `update_url`。不再重复这些请求；OTA 支线暂缓。对应 [启动/EDL](research/device-and-boot.md)、[OTA](research/google-ota-prober-p780-20261018.md)。
 
-## 路线 A：DSU 安装器已恢复，下一关只做兼容性预检（第四轮）
+## 路线 A：DSU/GSI 基础预检完成；转向 Treble/Vendor 隔离（第五轮）
 
-**本机实测已完成**：机主此前深度精简后 `com.android.dynsystem` 对 user0 是 `installed=false`，但原 APK 仍在 `/system/priv-app`；机主随后**实际执行** `adb shell cmd package install-existing --user 0 com.android.dynsystem`，返回 `Package com.android.dynsystem installed for user: 0`。复核 `pm path` 正常指向原厂 APK，`dumpsys` 报告 `User 0 ... installed=true ... stopped=false notLaunched=false enabled=0`（0 是默认，不是禁用）。**无需再恢复系统包、无需恢复出厂。**
+**已经实机完成的工作**：机主将历史深度精简中移除的系统预装 `com.android.dynsystem` 通过 `install-existing --user 0` 成功恢复，`pm path` 和 `installed=true` 已验证；开发者选项 DSU Loader 能显示四个在线 ARM64 GSI/GMS 候选。**没有下载、安装或启动过 GSI；未 Root、未解锁 BL。**
 
-开发者选项中的 DSU Loader 在恢复前已能显示两组 ARM64 GSI/GSI+GMS 在线候选，属于 Settings 加载云端 JSON 目录，**没有任何 GSI 下载、安装或启动的实机证据**。官方 [Android DSU](https://developer.android.com/topic/dsu) 要求动态分区和经信任签名的映像，DSU 运行仍受 VNDK、Vendor HAL、AVB 验签、储存空间等条件限制。机主原厂 Android 11、BL LOCKED，截图中较新的 GSI 不保证兼容。
+机主最新四条只读结果：
 
-现在只需以下**只读预检**，避免重复前面已经完成的六项/四项 ADB、Key Attestation 和系统包安装：
+| 参数 | 实机返回 | 判定 |
+|---|---|---|
+| `persist.sys.fflag.override.settings_dynamic_system.list` | 空 | 未观测到指定的 DSU JSON URL 覆写，AOSP 默认 Google GSI 列表有可能是来源，但还没从设备抓包证实 |
+| `ro.vndk.version` | `30` | Android 11 Vendor VNDK，下一步需检验跨版本隔离 |
+| `ro.product.cpu.abi` | `arm64-v8a` | 与截图中的 ARM64 GSI 条目 CPU ABI 一致 |
+| `df -h /data` | `/dev/block/dm-11`, `106G/3.2G/103G`, 4%，Mounted on 为 `/storage/emulated/0/Android/obb` | 当前文件系统报告空间明显充裕，但仍未实际分配临时 DSU userdata 和 system；挂载点显示存在 namespace/bind 可能性 |
+
+依据 [AOSP DSU JSON 筛选代码](https://android.googlesource.com/platform/packages/apps/Settings/+/286dce6b6ed/src/com/android/settings/development/DSULoader.java)，候选选项经过 CPU ABI 检查，`os_version`、`vndk`、`spl` **仅当 JSON 声明时才检查**；没有原始 GSI JSON 不能断言显示出来的四个新版本镜像都具备 VNDK30 兼容支持。即使成功通过客户端元数据筛选，也不等于签名通过或系统能启动。
+
+下一轮优先仅查 [官方 GSI Treble/VNDK 隔离前提](https://developer.android.com/topic/generic-system-image#check-device-compliance)：
 
 ```powershell
-adb shell getprop persist.sys.fflag.override.settings_dynamic_system.list
-adb shell getprop ro.vndk.version
-adb shell getprop ro.product.cpu.abi
-adb shell df -h /data
+adb shell getprop ro.treble.enabled
+adb shell ls -l /system/etc/ld.config* /linkerconfig/ld.config.txt
+adb shell "grep -n -A 20 '^\[vendor\]' /linkerconfig/ld.config.txt"
 ```
 
-第一项是 Settings DSU JSON 目录的 override 参数（与早前查询的无 `.list` 参数不同）；即使为空也只能倾向 AOSP 默认 Google 目录，并不代表已验证网络请求源。第二三项核对 GSI Vendor VNDK 和 CPU ABI，第四项确认 `/data` 空间。AOSP 建议 DSU 预留至少约 10GB，但空间充足也不证明能在 LOCKED 启动。
-
-**当前停止线**：不选中任何 GSI，不同意安装条款，不下载、不重启、不使用 `gsi_tool enable`/`wipe`。如果用户未来明确要求实际 DSU 测试，应另行评估候选 GSI 的系统安全补丁、AVB 公钥、与 P780 Android 11 Vendor HAL 兼容、数据备份与可恢复流程。此支线不等于永久 Root/BL 解锁，也不解决原厂 boot/vbmeta 物理写权限。详见 [第四轮实机证据](research/p780-dsu-locked-gsi-20261018.md)。
+第三条可能因实际 linkerconfig 文件位置不同而无输出/报错：保留原样，确认路径后再进一步查询。后续核验 HAL/Gatekeeper/Weaver、DSU 安全签名与具体 GSI 元数据。**目前暂不选 GSI/同意下载条款/实际下载/重启，禁止使用无依据的 Fastboot/EDL 写入。** [第五轮 DSU 专项](research/p780-dsu-locked-gsi-20261018.md)。
 ## 主要路线 B：真正阻挡永久 Root / 自定义 Boot 的环节
 
 **B1. 只读离线镜像发现**：仅考虑机型为 P780 且有原始构建编号、文件哈希与可信出处的 `vbmeta[_system]`, `boot`, `vendor_boot`, `dtbo`，包括各官方历史版本，但必须注明与 `_162` 的差异。得到镜像后用 AOSP `avbtool info_image` / `verify_image` 分析主 vbmeta→system chain descriptors、rollback indices、boot 分区是否 AVB hash footer；不能从 fstab 或 `7744` 字节 VBMeta 总大小反推出真实描述符。**暂不继续批量搜/探测 OTA。**
