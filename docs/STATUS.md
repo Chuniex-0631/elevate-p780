@@ -64,6 +64,12 @@
 - 审阅 [google-ota-prober](https://github.com/tangalbert919/google-ota-prober) `probe.py`：向 Google Check-in 请求 `update_url`。该项目没有 Universal OEM OTA 能力；本机是否采用此 OTA 服务器未知。
 - 公开 archive 中发现 Tinno 制造的 Rakuten Mini C330 两条真实 Google OTA 元数据与 Tinno/Rakuten P710 fingerprint（该型号未归档 OTA），**未找到 P780 OTA 索引**。详见 [专题分析](research/google-ota-prober-p780-20261018.md)。没有实际对 P780 发送 Check-in、没有取得固件或 root。
 
+## 2026-10-18：Fstab 内容解析 + Google OTA CLI 第一次负面结果
+
+- **实机已观察**：`fstab.default`、`fstab.emmc` 均对 `system/system_ext/product` 使用 `avb=vbmeta_system`，而 `vendor/odm` 使用普通 `avb`；`system` 行列出 `q-gsi/r-gsi/s-gsi.avbpubkey` 供 GSI 验证。与之前发现的 B 槽 `vbmeta_system_b` 和 dm-verity 映射一致，但无法由 fstab 单独证明 Bootloader 的链式签名 descriptor 或 AVB 生产根密钥；GSI 公钥不得混同。两份文件区别在 userdata 加密配置，实际被 first-stage mount 采用哪份尚未证明。
+- **实机附属电脑已执行**：在 `google-ota-prober` CLI 传入正确 `Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys`、`--model P780`，返回 `No OTA URL found for your build`。**只有这一查询没返回 URL**，无法区分当前最终版无更新/Google 服务不认机型/其它服务端限制；无 HTTP 状态与 P780 镜像。无需重复同一查询。
+- 见 [AVB Fstab 专题](research/p780-fstab-avb-20261018.md)、[Google OTA Prober 专题](research/google-ota-prober-p780-20261018.md)。下一实质无原厂镜像的验证项仍是 Key Attestation；设备保持 locked、未 Root。
+
 ## 新增历史原件（2026-10-10）
 
 - 新上传两份 ADB 审计 ZIP（22 和 9 条目），与其展开目录逐字节相同；删除 31 个冗余展开副本，保留原始 ZIP 与清理前备份分支。
