@@ -1,5 +1,12 @@
 # 后续关卡与待机监测
 
+## 2026-10-18 本机测试公钥确证：更新优先级
+
+- **已完成**：机主上传本机 KeyAttestation PKCS#7；Google 官方 2019 硬件证明根证书 DER 一致、4 张证书签名全有效，TEE/Keymaster 均 TrustedEnvironment，`deviceLocked=true` / `Verified`。硬件证明 `verifiedBootHash` 与此前 ADB 64 字符 digest 完全相同。
+- **核心突破**：`verifiedBootKey=7728e30f50bfa5cea165f473175a08803f6a8346642b5aa10913e9d9e6defef6`，精确匹配 AOSP `testkey_rsa4096_pub.pem` 按 avbtool 生成的 1032B AVB 公钥 blob SHA-256。此前“公钥身份未知、需要原厂镜像才能确定根公钥”的判断已经过时；详见 [本机证实专题](research/avb-attestation-confirmed-20261018.md)。
+- **仍需攻克**：原厂 vbmeta_b/vbmeta_system_b 镜像、链式描述符/回滚索引、真正可复核的 P780 locked 写入路径。根密钥确认**不代表**可刷机、已 Root 或解锁。Google 当前吊销列表已进行有限检索，正式的全链在线吊销验证仍未完成。
+- **保护隐私**：用户原始 `.p7b` 未提交 Git，仓库仅保留去身份化的技术结果。OTA 支线继续暂缓，不要求重复 Key Attestation 或普通 getprop 测试。
+
 更新：2026-10-18。**常规 AVB ADB 属性取证已经完成，暂停继续向机主索取重复 getprop 输出**；继续固件/签名/写入通道的公开资料及离线研究，不涉及刷机或 Bootloader 状态修改。
 
 ## 本轮立即可用的只读任务（2026-10-18）
