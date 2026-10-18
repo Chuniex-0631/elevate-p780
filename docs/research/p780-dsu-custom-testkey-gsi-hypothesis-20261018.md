@@ -1,5 +1,7 @@
 # P780 DSU 第十六轮：CVE-2026-107153 公共 AVB 测试根密钥 × 自签名 GSI × DSU Sideloader 可行性（2026-10-18）
 
+> **第十七轮真实PC实验证据已返回：** 机主上传 v1.1 的三份 AVB 输出，真实 1,899,589,632B Google Android15原镜像和 AOSP Root测试密钥重签候选镜像都经 `avbtool verify_image` 报告 VBMeta签名与sha256 Hashtree 验证成功。原版SHA256=`27321f9655530f014c884a690f49a53e6f3beeda71f4f27cbc141b17a8e86954`，B组SHA256=`fd98af142b11263e997adba190810c544857c7b750fd905a663e87256a71d880`；所有非VBMeta区域经脚本强制SHA相同。旧段落“等待真实1.9GB镜像验证”属于历史状态，**最新结论请看 [第十七轮 AVB 实测报告](p780-dsu-testroot-resign-verified-20261018.md)**。P780的Locked first-stage是否信任Root测试密钥仍未知，B**尚未上机**。
+
 > **第十六轮落地进展（2026-10-18）：** 已制作并在当前会话提供 `P780-DSU-testroot-offline-tools-v1.zip`（仅包含 `p780_dsu_resign_run.ps1`、`p780_dsu_resign_offline.py`、中文README），**未对真实多GB GSI执行最终签名**。与本页初始“重新生成hashtree/footer”设想相比，新工具改为**只重新生成并替换原 system.img 的嵌入式 VBMeta（2432B）**，通过 `make_vbmeta_image --include_descriptors_from_image` 保留原始 Hashtree/Prop 描述符，同时保持原始系统数据、Hashtree、FEC、Footer及分区大小逐字节不变。离线模拟端到端测试与真实上传 `system.img.avb-info.txt` 字段检查已通过；须待机主Windows实测 `avbtool verify_image` 才能确认实包兼容。**截至此时没有新镜像上传或设备操作，更不能确认 Locked P780信任Root测试密钥作为standalone GSI。**
 
 > **状态：研究方案/源码分析，尚未重新签名、安装或启动任何新镜像。** 用户提出：P780 既然以AOSP测试密钥作为 Locked Bootloader 的 AVB Root of Trust，可否自编译/重签系统镜像，通过 DSU Sideloader 在 Locked 状态试验？结论是**值得做受控的本地签名实验**，但漏洞影响的 Bootloader 根公钥验证与 DSU 第一阶段额外 `avb_keys` 不等价，DSU Sideloader仅改变安装入口，不自动绕过 AVB。
