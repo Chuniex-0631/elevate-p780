@@ -1,5 +1,7 @@
 # P780 下一步研究计划（2026-10-18）
 
+> **2026-10-18 batch2：** system/lib64 的514项大小/SHA-256全部匹配PC清单（509 ELF、5 bitcode）。通用 bootloader message 库不等于 Journey builtin，尚未建立调用链或新增Root能力。详见[第二批交叉分析](research/p780-static-batch2-analysis-20261018.md)。
+
 > **2026-10-18 SELinux原件审计：** 已查询ODM预编译策略并复核三组CIL/mapping配套摘要。Journey sys属性映射debug_prop，编译策略允许shell设置；config.write、ODM reset及默认vendor诊断开关没有同等shell allow。root socket的0666不能绕过SELinux，本批未见shell连接许可。仅形成静态候选，未写属性或取得Root。详见[权限边界审计](research/p780-policy-boundary-audit-20261018.md)。
 
 > **2026-10-18 batch1原件分析：** ZIP中742个文件条目已逐条重算大小/SHA256，全部匹配1759项PC清单中的对应内容；提取init service声明与ELF依赖。ST factory链确认属于NFC测试；Journey root诊断socket/属性动作仅为待核验权限边界，尚无可利用证据。下一步补SELinux静态映射，不运行工程动作、不恢复DSU重试。详见[原件验证与交叉分析](research/p780-static-batch1-analysis-20261018.md)。
@@ -16,7 +18,7 @@
 
 ## 当前主线：实机静态样本建库与交叉分析
 
-原厂工程/维护APK已排查无线索，不重复作为独立新路线。机主已完成第一批广覆盖只读提取，本地清单1759项/1131297358字节；助手目前收到清单与日志，未取得完整二进制。已完成batch1的哈希、init声明及ELF依赖索引。SELinux映射及编译策略查询已完成。下一步只读核对init厂商builtin和Journey诊断服务原件，确认参数限制；不设置工程属性、不发送socket命令、不触发擦除或重启。
+原厂工程/维护APK已排查无线索，不重复作为独立新路线。机主已完成第一批广覆盖只读提取，本地清单1759项/1131297358字节；已收到并核验 batch1 的742项与 batch2 的514项原件，尚非完整固件。已完成 init 声明、ELF依赖、SELinux映射及编译策略查询。batch2 未建立 Journey builtin 实现链，通用 write_misc_partition 不等于厂商 write_misc。下一步利用已有框架/native样本建立调用者、接口、策略许可和服务端实现的证据表；缺失服务端保留为缺口，不重复受拒绝的文件读取，不设置工程属性、不发送socket命令、不触发擦除或重启。
 
 优先读取电脑已有init配置，再按实际依赖选取native/框架原件。vendor/bin、vendor/lib64采集0文件，部分目录跳过及两个零字节项须区分；不能把完整清单称作完整固件。详见[清单审核和缺口](research/p780-static-corpus-inventory-20261018.md)。
 
