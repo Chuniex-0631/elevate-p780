@@ -8,22 +8,19 @@
 2. **Fstab 两份已读取**：`system/system_ext/product` 使用 `avb=vbmeta_system`；`vendor/odm` 使用默认 `avb`。`system` 额外包含 `/avb/q-gsi.avbpubkey` 等三份 Google 开发 GSI 公钥文件路径候选。[Fstab 实测](research/p780-fstab-avb-20261018.md)。但仍未读取真实 `vbmeta_b`、`vbmeta_system_b` 或 chain descriptors。
 3. **已完成但没有结果的尝试**：Fastboot 常见 OEM 解锁指令均为 unknown command；EDL Sahara 可识别但没有兼容且授权的 Firehose；Google OTA Prober 对当前 `264` fingerprint 无 `update_url`。不再重复这些请求；OTA 支线暂缓。对应 [启动/EDL](research/device-and-boot.md)、[OTA](research/google-ota-prober-p780-20261018.md)。
 
-## 路线 A：Android15 GSI 真实签名公钥已确认：Q Developer；下一项定位 P780 Ramdisk 信任集（第十五轮）
+## 路线 A：自签名 GSI × AOSP AVB 测试根密钥的离线对照实验（第十六轮计划）
 
-**已完成PC端真正镜像取证，无需重新下载ZIP。** 机主的官方Android15无GMS ARM64 GSI ZIP下载器报告整包SHA256核对通过：`61d232315ad773bd4820c76c175efe6a61cd8a9a257508db588032be213e15f7`。上传5件小型结果文件，助手读取**实际原始公钥二进制**独立重算SHA1/SHA256，精确与两份 `avbtool info_image` 一致。[第十五轮详细报告](research/p780-dsu-android15-avb-key-verified-20261018.md)。注意本聊天未取得多GB原始ZIP进行再次整包SHA确认，`info_image`不等价于完整`verify_image`签名/verity验证。
+用户提出将本机确证的 AOSP RSA4096 AVB 根测试密钥漏洞（[JVN#47427200 / CVE-2026-107153](https://jvn.jp/en/jp/JVN47427200/)）与 **DSU 自编译系统镜像 / DSU Sideloader** 结合，测试Locked P780是否可加载第三方系统。**此方案在技术上值得研究，但现在尚未制作/安装/启动自签名镜像**。详细控制变量设计与结论边界见 [第十六轮专项](research/p780-dsu-custom-testkey-gsi-hypothesis-20261018.md)。
 
-| 实际文件 | SHA1（AVB 1032B 公钥） | SHA256（AVB 1032B 公钥） |
-|---|---|---|
-| Android15 `system.img` | `1ffb1af796b18ebf40d18faed213f686720f73f2` | `e53f344beb2646b49651ea8dd336dbe75117183e96ef34beed4b367a4a0ae925` |
-| 同ZIP `vbmeta.img` | `2597c218aae470a130f61162feaae70afd97f011` | `7728e30f50bfa5cea165f473175a08803f6a8346642b5aa10913e9d9e6defef6` |
+**关键不能混同的两层：** 真实P780 TEE认可 Bootloader根公钥 SHA256 `7728e30f50bfa5cea165f473175a08803f6a8346642b5aa10913e9d9e6defef6`（公开AOSP测试RSA4096），但 **standalone GSI** 仍经Android11 first-stage `fs_avb::IsPublicKeyMatching` 对 `fstab.avb_keys` 和预加载公钥进行比对，Locked状态不容许未知公钥。P780现有fstab只证实普通q/r/s GSI的路径，没有确认真实ramdisk bytes或额外keystore；给GSI重新用Bootloader测试根私钥签名**不保证通过第二层**。
 
-**重要真正突破**：Android15 `system.img` 原始公钥SHA256 与此前已从公开AOSP二进制独立核验的 **`q-developer-gsi.avbpubkey`完全一致**；与普通 `q-gsi.avbpubkey`（SHA256 `07b373...`）及另外普通R/S不同。P780实际fstab**只见普通Q/R/S路径**，因此 locked状态 AVB公钥缺少Q Developer成为强配置假说，但**尚无本机ramdisk实体或 early AVB 拒绝日志**，不能把这称为已证实失败根因。
+**首选纯PC离线控制实验，而非先从零编译ROM：** 固定之前下载且SHA已由机主Windows脚本核验的Android15 GSI `system.img` 的文件系统数据、系统补丁及回滚属性，仅在副本上以公开AOSP `testkey_rsa4096.pem` 重新生成合法的 AVB hashtree/footer；保留原版作为A组基线，产生测试根签名B组。用AOSP `avbtool info_image`、`verify_image` 验证两份镜像，记录公钥bytes SHA1/256、原始系统数据段SHA及总大小。**当前只是拟定，尚未签名或执行脚本，不得记录为成功结果**。
 
-**另一项防误判**：这个ZIP的 `vbmeta.img` 嵌入AOSP RSA4096测试根公钥，SHA256恰好与 P780硬件证书 root of trust key哈希一致，**但其 `Flags=2` 是 VERIFICATION_DISABLED，且内含 chain descriptor 的 `system` 公钥SHA1=`cdbb77177f731920bbe0a0f94f84d9038ae0617d`（AOSP RSA2048 testkey），**并不是当前 `system.img` 的 Q Developer 公钥SHA1=`1ffb1...`**。不能视为该 `vbmeta.img` 能授权这份 `system.img` 或已由P780 DSU安装并装载，更不要刷入设备。
+**之后再评估机上安装**：官方 [Android Developers DSU](https://developer.android.com/topic/dsu) 和 [VegaBobo DSU Sideloader](https://github.com/VegaBobo/DSU-Sideloader/blob/master/README.md) 都可在无Root时使用AOSP系统安装入口/ADB mode。Sideloader只是前端，不会绕过Verified Boot；该项目要求通常UNLOCKED，因为Locked只接受受信GSI。不得启用第三方Root/System/Magisk/替换gsid模式；不得执行sticky和修改原厂boot/vbmeta。若PC重签的B组**确实通过离线验证且没有事先明确的不可信公钥阻断证据**，在机主明确同意、备份、Recovery失败方案和原DSU镜像替换退出路线确立后，先只安装并在Restart通知前暂停，再另行确认是否重启。
 
-**下一项研究（不触碰手机）**：寻找来源可信且**精确匹配P780 `_162`** 的 Boot/Ramdisk/first-stage `/avb/*` 公钥文件，判断厂商是否包含 Q Developer GSI 公钥或其他允许同一key的机制；对比此前 `fstab avb_keys` 普通Q/R/S。若设备信任集确实不包含 Q Developer，则在需要强制AVB验证该system时该镜像**不可能通过该密钥校验**；若包含/匹配，则转攻 `CanBootIntoGsi/GetActiveDsu/MapAllImages/MarkSystemAsGsi` 等 first-stage 映射问题。
+**结果解读**：若控制变量完全一致且B能启动而原Q Developer签名A不能，才是信任密钥差异的强实证；若B也一次重启回原厂，仍不能区分两把密钥均不信任与更早`MapAllImages`等失败，不得循环重试。AOSP测试根密钥漏洞不自动提供任何原厂分区写入通道或Root。
 
-**研究停线**：GSID当前 installed/disabled、两次 `reboot,dynsystem`仅回原厂Android11，无 LAST KMSG；不再重复同一Restart/安装、不开sticky、不试刷带`Flags=2`的generic vbmeta、不提出手动`avbctl disable-verification`。Root/BL解锁仍无新进展。
+**当前设备状态不改变：** GSID installed/disabled，Android15官方GSI两次 `reboot,dynsystem`只回原厂，Bootloader LOCKED，原有GSI不Discard/Restart直到下一步备份与实验明确批准。
 ## 主要路线 B：真正阻挡永久 Root / 自定义 Boot 的环节
 
 **B1. 只读离线镜像发现**：仅考虑机型为 P780 且有原始构建编号、文件哈希与可信出处的 `vbmeta[_system]`, `boot`, `vendor_boot`, `dtbo`，包括各官方历史版本，但必须注明与 `_162` 的差异。得到镜像后用 AOSP `avbtool info_image` / `verify_image` 分析主 vbmeta→system chain descriptors、rollback indices、boot 分区是否 AVB hash footer；不能从 fstab 或 `7744` 字节 VBMeta 总大小反推出真实描述符。**暂不继续批量搜/探测 OTA。**
