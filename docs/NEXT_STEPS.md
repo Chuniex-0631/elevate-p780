@@ -8,17 +8,14 @@
 2. **Fstab 两份已读取**：`system/system_ext/product` 使用 `avb=vbmeta_system`；`vendor/odm` 使用默认 `avb`。`system` 额外包含 `/avb/q-gsi.avbpubkey` 等三份 Google 开发 GSI 公钥文件路径候选。[Fstab 实测](research/p780-fstab-avb-20261018.md)。但仍未读取真实 `vbmeta_b`、`vbmeta_system_b` 或 chain descriptors。
 3. **已完成但没有结果的尝试**：Fastboot 常见 OEM 解锁指令均为 unknown command；EDL Sahara 可识别但没有兼容且授权的 Firehose；Google OTA Prober 对当前 `264` fingerprint 无 `update_url`。不再重复这些请求；OTA 支线暂缓。对应 [启动/EDL](research/device-and-boot.md)、[OTA](research/google-ota-prober-p780-20261018.md)。
 
-## 路线 A：PC 自签名 GSI 对照工具 v1 已交付，等待真实 AVB 运行报告
+## 路线 A：PC离线签名 v1.1 已修复 OpenSSL PATH 检测；等待机主首次完整执行
 
-**用户希望立即继续第十六轮AOSP测试根密钥实验。** 本轮交付仅 Windows PC 使用的 ZIP `P780-DSU-testroot-offline-tools-v1.zip`（9769B，SHA256 `189d3a4b6e92eea0cc21e24dfde29950a981b35bef72c6997925bcc26ee4dab6`），含PowerShell引导器、Python脚本、中文说明；链接由**当前聊天附件**提供，不使用自动下载到设备，手机尚未操作。完整设计、各脚本哈希和证据级别见[第十六轮自签名DSU专题](research/p780-dsu-custom-testkey-gsi-hypothesis-20261018.md)。
+**最新实机/PC回报**：用户在Windows运行v1时只执行到阶段[1/4]，由于 `openssl.exe` 不在 PATH 主动报错中止，**并未修改镜像、签名或联系P780**，不能将其认作AVB问题。现提供 v1.1 ZIP（**10708B**，SHA256 `467c36c5c89957a044c2ddcb2adfaf21ed180e797c965bf8db447878f3ff17e4`），同名文件覆盖后启动器自动探测已安装的 Git/OpenSSL、校验 `openssl version`，只影响进程PATH；Python签名内核文件未修改。
 
-**v1实验方法比原计划更严格**：对前轮 Google 官方Android15 `p780-gsi15-avb/system.img` 保留原始fs、Hashtree、FEC、Footer 和所有offset/size，**只在单独副本中重新生成并替换2432B 嵌入式VBMeta**，密钥采用公开AOSP `test/data/testkey_rsa4096.pem`（公钥SHA256必须等于P780 TEE证实的`7728e30f...6defef6`）。用 `make_vbmeta_image --include_descriptors_from_image` 复用原始verity树描述符与系统属性；运行前后独立 `verify_image`、比较**非VBMeta全部数据字节哈希**、key身份/SPL/rollback/algorithm/flags等严格匹配，任何不符拒绝输出成功报告。使用新AOSP VBMeta并**未关闭AVB**（Flags=0），也不会触碰官方ZIP附带的`Flags=2`通用vbmeta。
+**执行步骤**：机主下载聊天中的 `P780-DSU-testroot-offline-tools-v1.1.zip`，解压覆盖原文件，再在 `RakutenHand5G` 目录运行 `powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\\p780_dsu_resign_run.ps1"`。若 Git和常见OpenSSL路径都找不到，可自行安装官方Winget包 `winget install -e --id ShiningLight.OpenSSL.LTS.Light`，新开PowerShell窗口再运行。
 
-**实际运行条件**：Windows Python3.9+、`openssl.exe`在PATH、上一轮 `avbtool.py`、现存经GoogleZIP校验的 `p780-gsi15-avb/system.img`，输出磁盘≥3GiB。解压后PowerShell：`powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\\p780_dsu_resign_run.ps1"`。PS只在未提供测试Key时从 AOSP Gitiles 官方位置下载公开样例private key，Python再将其公钥与已确认的硬件AVB根公钥SHA256做精确比较。
+**待回传**：OpenSSL版本检测成功输出、`P780-DSU-testroot-audit.txt` 和 `testroot-avb-info.txt`（如成功），或完整错误。**本轮只是兼容性修复，尚未用真实1.9GB GSI进行重签，也没有在设备上安装DSU/解除Bootloader锁。** 详见[第十六轮实验专题的v1.1补充](research/p780-dsu-custom-testkey-gsi-hypothesis-20261018.md)。
 
-**下一轮请机主反馈**：只上传 `p780-dsu-testroot-output/P780-DSU-testroot-audit.txt`、`testroot-avb-info.txt` 或运行错误原文。不要上传1.9GB`system.img`；也不要在无单独实验审批下通过DSU Sideloader安装/重启。**此环境测试范围为 Python语法、实际先前system.avb-info元数据校验、模拟avbtool端到端差异验证**；未真正拿到多GB原图/GoogleAOSP原版avbtool执行签名，**尚无真实重签成功实证**。
-
-**真正待证问题不变**：Bootloader Root测试密钥认可不等于first-stage standalone DSU Fstab允许该key。P780 Fstab只见普通q/r/s GSI key路径、原官方Android15 `system.img`用Q Developer key。若控制变量B组离线签名成功，仍需要匹配P780`_162` Ramdisk信任Key集合和恢复/备份风险评估，才能考虑进行新一轮上机实验。不能把AVB自检通过当作Locked DSU会启动。
 ## 主要路线 B：真正阻挡永久 Root / 自定义 Boot 的环节
 
 **B1. 只读离线镜像发现**：仅考虑机型为 P780 且有原始构建编号、文件哈希与可信出处的 `vbmeta[_system]`, `boot`, `vendor_boot`, `dtbo`，包括各官方历史版本，但必须注明与 `_162` 的差异。得到镜像后用 AOSP `avbtool info_image` / `verify_image` 分析主 vbmeta→system chain descriptors、rollback indices、boot 分区是否 AVB hash footer；不能从 fstab 或 `7744` 字节 VBMeta 总大小反推出真实描述符。**暂不继续批量搜/探测 OTA。**
