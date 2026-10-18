@@ -33,7 +33,7 @@
 | **2026-10-18** | 恢复出厂后原生Loader回退；机主停止DSU | 后一次为用户观察，镜像身份未核实；不作为严格A组复测 |
 | **2026-10-18** | 广覆盖静态采集与策略分析 | 1759项清单；batch1 742项、batch2 514项匹配；55份策略设备文件及日志，shell debug_prop静态候选 |
 | **2026-10-18** | native接口交叉与全库整理 | 区分客户端/服务端；36项策略查询；重写当前入口、归档逐轮账本、标识DSU历史；无新增Root/解锁能力 |
-| **2026-10-19** | Windows EDL通信复测；bkerler/edl v3.62 COM模式无初始HELLO，局部串口补丁仍失败 | QDL v2.8 QUD/COM6 成功完成 Sahara v2芯片身份查询；未发送或验证 Firehose Loader。见[专题](research/p780-qdl-qud-sahara-20261019.md) |
+| **2026-10-19** | Windows EDL通信复测；bkerler/edl v3.62 COM模式无初始HELLO，局部串口补丁仍失败 | QDL v2.8 QUD/COM6 成功查询 Sahara v2 芯片身份；后续候选 A 四次 READ64 请求后通信失败，未见 DONE/Firehose。见[专题](research/p780-qdl-qud-sahara-20261019.md) |
 
 ## 重要警告
 

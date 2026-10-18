@@ -7,7 +7,7 @@
 |1|已有样本的调用者与服务端交叉核对|基于[native矩阵](research/p780-native-interface-crosscheck-20261018.md)，逐项区分JNI、传输库、HIDL接口与服务实现；记录样本SHA、引用符号、策略规则、缺失端点|形成有来源的调用链或明确排除理由；只剩缺失二进制时标BLOCKED，不反复扫同名字符串|
 |2|核对尚未取得原件的价值|先核对PC现有清单和已上传范围；只有明确能补齐具体调用链时再提最小增量材料|不重复要求已被Permission denied拒绝的init/Journey/gsid文件；不把未取得内容判为不存在|
 |3|可信同型号固件或源码新证据|新原厂材料需型号、构建、来源、哈希；源码回复需对应 `_162` 与5.4.233说明|能验证来源才离线检查boot/vbmeta/内核；不以A52s或旧TINNO树替代本机|
-|EDL受控实验|QDL v2.8 已在 QUD/COM6 成功返回 Sahara v2 身份信息；下一阶段仅在机主继续实际操作及备份/可恢复条件满足时，验证 Mannar 候选 A 的 Sahara 传输与 Firehose configure/reset；签名 PKHash 前缀不匹配，成功预期极低。见[实测与实验边界](research/p780-qdl-qud-sahara-20261019.md)|保存错误码/阶段/日志并停止该候选；不得用握手成功推断 Root/解锁/写权限。|
+|EDL受控实验|QDL v2.8 已在 QUD/COM6 成功返回 Sahara v2 身份信息；候选 A 已实机经历4次 READ64，随后读取下一条 Sahara 包失败，未取得 END OF IMAGE、DONE 或 Firehose；下一步优先确认设备正常恢复、离线匹配可信签名 Loader。见[实测与实验边界](research/p780-qdl-qud-sahara-20261019.md)|以 EARLY_SAHARA_READ64_FAILURE / CAUSE_UNDETERMINED 标记并停止无差异重试；不得用握手成功推断 Root/解锁/写权限。|
 |条件分支|GhostLock恢复研究|取得运行内核修补状态、可信二进制/符号/类型布局，能核验本机构建身份|当前BLOCKED；不运行跨机型payload，不用候选布局估算偏移|
 
 ## 已结束或暂缓，不重复列为待办
