@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — 第十六轮离线签名工具 v1：VBMeta-only重新签名和逐字节控制变量校验
+
+- 完成用户同意的Windows PC端可下载工具包 `P780-DSU-testroot-offline-tools-v1.zip`，9769B SHA256 `189d3a4b6e92eea0cc21e24dfde29950a981b35bef72c6997925bcc26ee4dab6`，含Python脚本、PowerShell引导器和中文README；原测试Root样例私钥可由引导器自行从AOSP公开源下载，Python会校验其AVB公钥SHA256与P780 TEE已证实AOSP测试根一致。
+- 为减少变量修正最初方案：**不重建 Hashtree 和 FEC**，直接保留原Android15系统镜像的fs/verity tree/FEC/footer和分区长度，仅重新签署 `system.img` 中2432B嵌入式VBMeta；新旧非VBMeta数据分区两段SHA256检查一致，前后各跑一次AOSP `avbtool verify_image`，始终Flags0且不会使用官方ZIP带Flags2的通用 `vbmeta.img`。
+- 完成Python语法/真实上轮AVB metadata检验/模拟avbtool端到端测试，**尚未对完整1.9GB真镜像和Windows+原版avbtool作真实运行**；因此状态仅“工具交付、等待用户执行”。无ADB/Fastboot/EDL、手机未写入、未root或解锁。
+- 详见 [第十六轮自签名GSI专项](docs/research/p780-dsu-custom-testkey-gsi-hypothesis-20261018.md)及 [NEXT_STEPS](docs/NEXT_STEPS.md)。实验产物能通过PC侧AVB签名/数据一致性校验，也不能证实P780的first-stage `avb_keys`信任样例测试Root。
+
 ## 2026-10-18 — 第十六轮：提出针对P780 AVB测试密钥漏洞的自签名DSU GSI控制变量实验
 
 - 机主提出：既然JVN#47427200/CVE-2026-107153确认P780使用AOSP测试AVB根密钥，能否制作或编译一个测试GSI，借助DSU Sideloader保持BL Locked启动。独立核验JVN官方报告与 Android官方 DSU 自定义镜像签名机制；**理论可试，但Root of Trust 与 first-stage standalone GSI允许的公钥不是同一信任判定**。
