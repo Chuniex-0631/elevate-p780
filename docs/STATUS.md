@@ -1,5 +1,7 @@
 # 研究状态总表（更新：2026-10-18）
 
+> **2026-10-18 SELinux原件审计：** 已查询ODM预编译策略并复核三组CIL/mapping配套摘要。Journey sys属性映射debug_prop，编译策略允许shell设置；config.write、ODM reset及默认vendor诊断开关没有同等shell allow。root socket的0666不能绕过SELinux，本批未见shell连接许可。仅形成静态候选，未写属性或取得Root。详见[权限边界审计](research/p780-policy-boundary-audit-20261018.md)。
+
 > **2026-10-18 batch1原件分析：** ZIP中742个文件条目已逐条重算大小/SHA256，全部匹配1759项PC清单中的对应内容；提取init service声明与ELF依赖。ST factory链确认属于NFC测试；Journey root诊断socket/属性动作仅为待核验权限边界，尚无可利用证据。下一步补SELinux静态映射，不运行工程动作、不恢复DSU重试。详见[原件验证与交叉分析](research/p780-static-batch1-analysis-20261018.md)。
 
 > **2026-10-18 20:31 更新：DSU 路线已由机主停止。** B已安装并尝试原生启用/重启，最终回到原厂Android11，Locked/green、installed/disabled；并非“B尚未上机”。失败阶段未知，不能认定厂商禁止DSU。恢复出厂后的原生Loader回退为用户报告，镜像身份未核实。最新实机证据、系统数据段哈希、安装器静态审计及新路线见[阶段收束与维护接口审计](research/p780-dsu-closure-maintenance-route-20261018.md)。当前优先审计原厂维修/工厂测试/更新组件的权限与可核验读取入口；不重复DSU测试，Root/解锁仍未取得。下文与此冲突的DSU待测状态为历史记录。
