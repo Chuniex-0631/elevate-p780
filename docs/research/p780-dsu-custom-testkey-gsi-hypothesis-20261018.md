@@ -1,5 +1,7 @@
 # P780 DSU 第十六轮：CVE-2026-107153 公共 AVB 测试根密钥 × 自签名 GSI × DSU Sideloader 可行性（2026-10-18）
 
+> **第十六轮落地进展（2026-10-18）：** 已制作并在当前会话提供 `P780-DSU-testroot-offline-tools-v1.zip`（仅包含 `p780_dsu_resign_run.ps1`、`p780_dsu_resign_offline.py`、中文README），**未对真实多GB GSI执行最终签名**。与本页初始“重新生成hashtree/footer”设想相比，新工具改为**只重新生成并替换原 system.img 的嵌入式 VBMeta（2432B）**，通过 `make_vbmeta_image --include_descriptors_from_image` 保留原始 Hashtree/Prop 描述符，同时保持原始系统数据、Hashtree、FEC、Footer及分区大小逐字节不变。离线模拟端到端测试与真实上传 `system.img.avb-info.txt` 字段检查已通过；须待机主Windows实测 `avbtool verify_image` 才能确认实包兼容。**截至此时没有新镜像上传或设备操作，更不能确认 Locked P780信任Root测试密钥作为standalone GSI。**
+
 > **状态：研究方案/源码分析，尚未重新签名、安装或启动任何新镜像。** 用户提出：P780 既然以AOSP测试密钥作为 Locked Bootloader 的 AVB Root of Trust，可否自编译/重签系统镜像，通过 DSU Sideloader 在 Locked 状态试验？结论是**值得做受控的本地签名实验**，但漏洞影响的 Bootloader 根公钥验证与 DSU 第一阶段额外 `avb_keys` 不等价，DSU Sideloader仅改变安装入口，不自动绕过 AVB。
 
 ## 外部权威核验
@@ -45,3 +47,16 @@
 ## 当前结论与待办
 
 **想法可行性：可以制作并通过DSU安装自签名GSI，原则上无需先解BL；Locked成功启动是否可能，取决于P780 ramdisk单独的可信签名规则和first-stage映射等条件**。CVE-2026-107153提供真实的测试根密钥风险基础，但不是DSU成功证明。没有用户本轮新ADB结果或自签镜像，**本文件只记录新增研究方向**。下一步优先实现**完全离线、对照明确、可验证的重签实验包**；如设备密钥不信任测试根，没必要让机主冒险安装。仍Bootloader Locked，无Root成果。
+
+## Windows v1 离线签名工具包（已创建，待真实系统镜像实测）
+
+- 交付产物：会话附件 `P780-DSU-testroot-offline-tools-v1.zip`；**9769 bytes**，SHA-256 `189d3a4b6e92eea0cc21e24dfde29950a981b35bef72c6997925bcc26ee4dab6`。
+- `p780_dsu_resign_offline.py`：**12410B**，SHA-256 `7c98b90740189d3bdc403b6b47afa8e6b8cbcc869cc1347698b73dec8d223135`。仅依赖Python标准库+AOSP `avbtool.py`、Windows OpenSSL，在本机文件上做 AVB 原始签名公钥检查、签名前 `verify_image`、密钥导出和指纹校验、`make_vbmeta_image --include_descriptors_from_image` 、对预期VBMeta位置覆盖、前后完整范围SHA256一致性检查、最终 `verify_image --key`、纯文本审计报告。
+- `p780_dsu_resign_run.ps1`：**2742B（请以实际附件为准）**，SHA-256 `33fba5c210e007e27d001d503775b743388834c8071d65a1c5b8992d46f1cdf6`。只在PC验证前置条件、若缺失则从AOSP官方Gitiles下载公开的 `test/data/testkey_rsa4096.pem` 样例私钥（实际公钥指纹还会由Python再次强制确认），然后运行Python；无ADB、Fastboot、DSU安装、更新boot/vbmeta动作。
+- 可验证输入：已完成上一轮的 `p780-gsi15-avb/system.img` 原始镜像（1899589632B），且原镜像的VBMeta offset=1899151360、size=2432、签名公钥SHA256=`e53f344beb2646b49651ea8dd336dbe75117183e96ef34beed4b367a4a0ae925`、Android15 fingerprint/SPL、rollback index 1743811200、原Hashtree salt/root digest均必须符合已上传原文；**如任一条件不符必须中止**。
+- 预期公钥：离线测试密钥所对应1032B AVB公钥SHA256=`7728e30f50bfa5cea165f473175a08803f6a8346642b5aa10913e9d9e6defef6`，与实机Bootloader Test Root摘要相同，但其在 **DSU first-stage Fstab可信keys中尚未证实**。
+- 操作：把ZIP解压进机主Windows原 `RakutenHand5G`工作目录，确保已有官方 `avbtool.py` 和 `p780-gsi15-avb/system.img`、安装Python+OpenSSL、磁盘≥3GiB，运行 `powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\\p780_dsu_resign_run.ps1"`。
+- 仅需机主分享小型 `p780-dsu-testroot-output/P780-DSU-testroot-audit.txt` 与 `testroot-avb-info.txt`，不上传多GB重签 `system.img`。未取得真实成功报告之前，**仓库不得将这一实验记为签名成功，更不得进入手机安装/重启测试**。
+- 测试覆盖：工具Python语法检查通过，且用上一轮上传的真实 `system.img.avb-info.txt` 通过 metadata guard；以模拟AVB工具完成完整 `system.img` 仅VBMeta预定区域变化/签名调用/文件哈希/审计报告的端到端模拟。**未真实调用Google原版 `avbtool`+1.9GB镜像签名**，也未对Windows OpenSSL组合做真实兼容性测试。
+- 为什么不重新生成 Hashtree/FEC：官方 `avbtool add_hashtree_footer` 默认依赖外部 `fec` 工具生成FEC数据，而Windows环境不一定具备。如果只换独立AVB公钥且系统/verity树原样不变，正确做法可以只重签 `VBMeta`，保留原根摘要、Merkle tree和FEC以减少变量；并严格校验新旧所有非VBMeta字节相同。详见[AOSP avbtool 源码](https://android.googlesource.com/platform/external/avb/+/refs/heads/main/avbtool.py)。
+- **仍不证明设备兼容**：AOSP `fs_avb::IsPublicKeyMatching` 在Locked状态还会核对fstab/ramdisk允许的GSI公钥；即便此离线镜像能通过AVB签名自检，也不能直接宣称P780的Locked DSU会启动。
