@@ -8,19 +8,17 @@
 2. **Fstab 两份已读取**：`system/system_ext/product` 使用 `avb=vbmeta_system`；`vendor/odm` 使用默认 `avb`。`system` 额外包含 `/avb/q-gsi.avbpubkey` 等三份 Google 开发 GSI 公钥文件路径候选。[Fstab 实测](research/p780-fstab-avb-20261018.md)。但仍未读取真实 `vbmeta_b`、`vbmeta_system_b` 或 chain descriptors。
 3. **已完成但没有结果的尝试**：Fastboot 常见 OEM 解锁指令均为 unknown command；EDL Sahara 可识别但没有兼容且授权的 Firehose；Google OTA Prober 对当前 `264` fingerprint 无 `update_url`。不再重复这些请求；OTA 支线暂缓。对应 [启动/EDL](research/device-and-boot.md)、[OTA](research/google-ota-prober-p780-20261018.md)。
 
-## 路线 A：自签名 GSI × AOSP AVB 测试根密钥的离线对照实验（第十六轮计划）
+## 路线 A：PC 自签名 GSI 对照工具 v1 已交付，等待真实 AVB 运行报告
 
-用户提出将本机确证的 AOSP RSA4096 AVB 根测试密钥漏洞（[JVN#47427200 / CVE-2026-107153](https://jvn.jp/en/jp/JVN47427200/)）与 **DSU 自编译系统镜像 / DSU Sideloader** 结合，测试Locked P780是否可加载第三方系统。**此方案在技术上值得研究，但现在尚未制作/安装/启动自签名镜像**。详细控制变量设计与结论边界见 [第十六轮专项](research/p780-dsu-custom-testkey-gsi-hypothesis-20261018.md)。
+**用户希望立即继续第十六轮AOSP测试根密钥实验。** 本轮交付仅 Windows PC 使用的 ZIP `P780-DSU-testroot-offline-tools-v1.zip`（9769B，SHA256 `189d3a4b6e92eea0cc21e24dfde29950a981b35bef72c6997925bcc26ee4dab6`），含PowerShell引导器、Python脚本、中文说明；链接由**当前聊天附件**提供，不使用自动下载到设备，手机尚未操作。完整设计、各脚本哈希和证据级别见[第十六轮自签名DSU专题](research/p780-dsu-custom-testkey-gsi-hypothesis-20261018.md)。
 
-**关键不能混同的两层：** 真实P780 TEE认可 Bootloader根公钥 SHA256 `7728e30f50bfa5cea165f473175a08803f6a8346642b5aa10913e9d9e6defef6`（公开AOSP测试RSA4096），但 **standalone GSI** 仍经Android11 first-stage `fs_avb::IsPublicKeyMatching` 对 `fstab.avb_keys` 和预加载公钥进行比对，Locked状态不容许未知公钥。P780现有fstab只证实普通q/r/s GSI的路径，没有确认真实ramdisk bytes或额外keystore；给GSI重新用Bootloader测试根私钥签名**不保证通过第二层**。
+**v1实验方法比原计划更严格**：对前轮 Google 官方Android15 `p780-gsi15-avb/system.img` 保留原始fs、Hashtree、FEC、Footer 和所有offset/size，**只在单独副本中重新生成并替换2432B 嵌入式VBMeta**，密钥采用公开AOSP `test/data/testkey_rsa4096.pem`（公钥SHA256必须等于P780 TEE证实的`7728e30f...6defef6`）。用 `make_vbmeta_image --include_descriptors_from_image` 复用原始verity树描述符与系统属性；运行前后独立 `verify_image`、比较**非VBMeta全部数据字节哈希**、key身份/SPL/rollback/algorithm/flags等严格匹配，任何不符拒绝输出成功报告。使用新AOSP VBMeta并**未关闭AVB**（Flags=0），也不会触碰官方ZIP附带的`Flags=2`通用vbmeta。
 
-**首选纯PC离线控制实验，而非先从零编译ROM：** 固定之前下载且SHA已由机主Windows脚本核验的Android15 GSI `system.img` 的文件系统数据、系统补丁及回滚属性，仅在副本上以公开AOSP `testkey_rsa4096.pem` 重新生成合法的 AVB hashtree/footer；保留原版作为A组基线，产生测试根签名B组。用AOSP `avbtool info_image`、`verify_image` 验证两份镜像，记录公钥bytes SHA1/256、原始系统数据段SHA及总大小。**当前只是拟定，尚未签名或执行脚本，不得记录为成功结果**。
+**实际运行条件**：Windows Python3.9+、`openssl.exe`在PATH、上一轮 `avbtool.py`、现存经GoogleZIP校验的 `p780-gsi15-avb/system.img`，输出磁盘≥3GiB。解压后PowerShell：`powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\\p780_dsu_resign_run.ps1"`。PS只在未提供测试Key时从 AOSP Gitiles 官方位置下载公开样例private key，Python再将其公钥与已确认的硬件AVB根公钥SHA256做精确比较。
 
-**之后再评估机上安装**：官方 [Android Developers DSU](https://developer.android.com/topic/dsu) 和 [VegaBobo DSU Sideloader](https://github.com/VegaBobo/DSU-Sideloader/blob/master/README.md) 都可在无Root时使用AOSP系统安装入口/ADB mode。Sideloader只是前端，不会绕过Verified Boot；该项目要求通常UNLOCKED，因为Locked只接受受信GSI。不得启用第三方Root/System/Magisk/替换gsid模式；不得执行sticky和修改原厂boot/vbmeta。若PC重签的B组**确实通过离线验证且没有事先明确的不可信公钥阻断证据**，在机主明确同意、备份、Recovery失败方案和原DSU镜像替换退出路线确立后，先只安装并在Restart通知前暂停，再另行确认是否重启。
+**下一轮请机主反馈**：只上传 `p780-dsu-testroot-output/P780-DSU-testroot-audit.txt`、`testroot-avb-info.txt` 或运行错误原文。不要上传1.9GB`system.img`；也不要在无单独实验审批下通过DSU Sideloader安装/重启。**此环境测试范围为 Python语法、实际先前system.avb-info元数据校验、模拟avbtool端到端差异验证**；未真正拿到多GB原图/GoogleAOSP原版avbtool执行签名，**尚无真实重签成功实证**。
 
-**结果解读**：若控制变量完全一致且B能启动而原Q Developer签名A不能，才是信任密钥差异的强实证；若B也一次重启回原厂，仍不能区分两把密钥均不信任与更早`MapAllImages`等失败，不得循环重试。AOSP测试根密钥漏洞不自动提供任何原厂分区写入通道或Root。
-
-**当前设备状态不改变：** GSID installed/disabled，Android15官方GSI两次 `reboot,dynsystem`只回原厂，Bootloader LOCKED，原有GSI不Discard/Restart直到下一步备份与实验明确批准。
+**真正待证问题不变**：Bootloader Root测试密钥认可不等于first-stage standalone DSU Fstab允许该key。P780 Fstab只见普通q/r/s GSI key路径、原官方Android15 `system.img`用Q Developer key。若控制变量B组离线签名成功，仍需要匹配P780`_162` Ramdisk信任Key集合和恢复/备份风险评估，才能考虑进行新一轮上机实验。不能把AVB自检通过当作Locked DSU会启动。
 ## 主要路线 B：真正阻挡永久 Root / 自定义 Boot 的环节
 
 **B1. 只读离线镜像发现**：仅考虑机型为 P780 且有原始构建编号、文件哈希与可信出处的 `vbmeta[_system]`, `boot`, `vendor_boot`, `dtbo`，包括各官方历史版本，但必须注明与 `_162` 的差异。得到镜像后用 AOSP `avbtool info_image` / `verify_image` 分析主 vbmeta→system chain descriptors、rollback indices、boot 分区是否 AVB hash footer；不能从 fstab 或 `7744` 字节 VBMeta 总大小反推出真实描述符。**暂不继续批量搜/探测 OTA。**
