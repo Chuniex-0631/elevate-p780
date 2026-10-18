@@ -24,7 +24,7 @@
 | Android Clang 11.0.2 `rtmutex.o` | **云端编译成功** | 已匹配实机编译器，非完整 `vmlinux`，非可刷写内核 |
 | 还原与出厂 `vmlinux` 一致的内核 | **未完成** | 原厂私有代码与构建身份未满足 |
 | JourneyConfigService | **静态与运行状态核对已完成** | vendor/XML/TCS 版本均 42；64 键一致；消费者静态定位进程管理与 Service/Provider 限制；未发现 OTA/Root 链 |
-| DSU/GSI 临时系统（LOCKED） | **第十五轮：Android15 `system.img` 实际用 Q Developer GSI 公钥（已验证SHA）；P780是否信任仍待Ramdisk实物** | 用户PC报告Google Android15无GMS GSI ZIP SHA匹配官方，上传 `system.img` 和 `vbmeta.img`各1032B AVB pubkey，本轮助手独立重算：system SHA256=`e53f344beb2646b49651ea8dd336dbe75117183e96ef34beed4b367a4a0ae925`，与AOSP **q-developer-gsi** 公钥同；P780实机fstab只见普通 q/r/s GSI `avb_keys`，因而Locked公钥不受信成为高度具体的待证条件。发行 `vbmeta.img` key SHA256=`7728e30f...`与本机TEE AOSP根相同，但 `Flags=2`(verification_disabled)，chain system公钥SHA1=`cdbb7717...`(RSA2048 testkey)，与该system Q Developer key不同，**不能以vbmeta root匹配判断能DSU启动或需要刷入**。机主已两次专用重启直接回原厂、无early log。下一步获取 `_162` ramdisk实际信任key，仍Bootloader LOCKED、无Root。[第十五轮实证](research/p780-dsu-android15-avb-key-verified-20261018.md) |
+| DSU/GSI 临时系统（LOCKED） | **第十六轮计划：以CVE-2026-107153根测试密钥进行控制变量自签名GSI对照，先PC离线** | 实机TEE确认AOSP RSA4096测试根key SHA256=`7728e30f...6defef6`，JVN于2026-10-14确认Rakuten Hand5G全版本存在AVB生产测试密钥问题。Android15官方 GSI system key已证实是**Q Developer**(`e53f344...`)，P780 fstab引用普通Q/R/S GSI路径。**Bootloader受信根公钥≠DSU第一阶段standalone Fstab可信公钥**；AOSP Locked first-stage对未知公钥拒绝。机主建议通过Sideloader运行自签GSI，已拟先保留官方system镜像数据、仅用AOSP测试根密钥重签AVB作离线A/B变量实验；Sideloader只是Android DSU前端，并非绕过Verified Boot。**目前未制造/安装/启动B组，原厂Android11可用、GSID installed/disabled、无Root/BL解锁**。[第十六轮方案](research/p780-dsu-custom-testkey-gsi-hypothesis-20261018.md) |
 | Root / Bootloader 解锁 / 刷机 | **均未达成** | 任何适配包不得宣称 Root 成功 |
 
 ## 2026-10-18：AVB 锁定状态下的实机基线（用户提供）
