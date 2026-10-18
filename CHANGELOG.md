@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — Windows OpenSSL 前置检查失败，提供离线 DSU 重签工具 v1.1
+
+- 机主Windows PowerShell执行v1启动器在`[1/4]`阶段因`OpenSSL CLI is not on PATH`安全中止，系统镜像未修改；不是AVB验签结果，也没有连接P780。
+- 已创建会话附件 `P780-DSU-testroot-offline-tools-v1.1.zip`（10708B、SHA256 `467c36c5c89957a044c2ddcb2adfaf21ed180e797c965bf8db447878f3ff17e4`）；启动器可发现当前PATH、Git for Windows和常见Windows安装目录的OpenSSL，并实际运行版本测试，只为当前进程设置PATH。若缺少OpenSSL则提示官方Winget的`ShiningLight.OpenSSL.LTS.Light`安装方式。
+- 核心Python签名工具没有变更，ZIP CRC与Python语法自检通过；**尚未在用户Windows环境/真实1.9GB GSI上完成新版本签名运行**。研究方案与现行NEXT_STEPS已同步，未触碰手机、Bootloader仍LOCKED、未Root。
+
+
 ## 2026-10-18 — 第十六轮离线签名工具 v1：VBMeta-only重新签名和逐字节控制变量校验
 
 - 完成用户同意的Windows PC端可下载工具包 `P780-DSU-testroot-offline-tools-v1.zip`，9769B SHA256 `189d3a4b6e92eea0cc21e24dfde29950a981b35bef72c6997925bcc26ee4dab6`，含Python脚本、PowerShell引导器和中文README；原测试Root样例私钥可由引导器自行从AOSP公开源下载，Python会校验其AVB公钥SHA256与P780 TEE已证实AOSP测试根一致。
