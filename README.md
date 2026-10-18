@@ -1,6 +1,6 @@
 # Rakuten Hand 5G / TINNO P780 研究档案
 
-> **2026-10-18 SELinux原件审计：** 已查询ODM预编译策略并复核三组CIL/mapping配套摘要。Journey sys属性映射debug_prop，编译策略允许shell设置；config.write、ODM reset及默认vendor诊断开关没有同等shell allow。root socket的0666不能绕过SELinux，本批未见shell连接许可。仅形成静态候选，未写属性或取得Root。详见[权限边界审计](docs/research/p780-policy-boundary-audit-20261018.md)。
+> **2026-10-18 batch2：** system/lib64 的514项大小/SHA-256全部匹配PC清单（509 ELF、5 bitcode）。通用 bootloader message 库不等于 Journey builtin，尚未建立调用链或新增Root能力。详见[第二批交叉分析](docs/research/p780-static-batch2-analysis-20261018.md)。
 
 > **2026-10-18 batch1原件分析：** ZIP中742个文件条目已逐条重算大小/SHA256，全部匹配1759项PC清单中的对应内容；提取init service声明与ELF依赖。ST factory链确认属于NFC测试；Journey root诊断socket/属性动作仅为待核验权限边界，尚无可利用证据。下一步补SELinux静态映射，不运行工程动作、不恢复DSU重试。详见[原件验证与交叉分析](docs/research/p780-static-batch1-analysis-20261018.md)。
 
