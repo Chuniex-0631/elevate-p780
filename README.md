@@ -1,5 +1,7 @@
 # Rakuten Hand 5G / TINNO P780 研究档案
 
+> **2026-10-18 batch1原件分析：** ZIP中742个文件条目已逐条重算大小/SHA256，全部匹配1759项PC清单中的对应内容；提取init service声明与ELF依赖。ST factory链确认属于NFC测试；Journey root诊断socket/属性动作仅为待核验权限边界，尚无可利用证据。下一步补SELinux静态映射，不运行工程动作、不恢复DSU重试。详见[原件验证与交叉分析](docs/research/p780-static-batch1-analysis-20261018.md)。
+
 > **2026-10-18 20:31 更新：DSU 路线已由机主停止。** B已安装并尝试原生启用/重启，最终回到原厂Android11，Locked/green、installed/disabled；并非“B尚未上机”。失败阶段未知，不能认定厂商禁止DSU。恢复出厂后的原生Loader回退为用户报告，镜像身份未核实。最新实机证据、系统数据段哈希、安装器静态审计及新路线见[阶段收束与维护接口审计](docs/research/p780-dsu-closure-maintenance-route-20261018.md)。当前优先审计原厂维修/工厂测试/更新组件的权限与可核验读取入口；不重复DSU测试，Root/解锁仍未取得。下文与此冲突的DSU待测状态为历史记录。
 
 **2026-10-18 P780 DSU 第十七轮重签成功：** 机主真实Windows执行v1.1，对已核验的Google Android15无GMS ARM64 `system.img` 制作只改变 **2432B嵌入式VBMeta** 的AOSP RSA4096测试根密钥签名B组；原版、B组真实1.9GB镜像均经 `avbtool verify_image` 验证VBMeta/Footer/Hashtree成功。B组完整SHA256 **`fd98af142b11263e997adba190810c544857c7b750fd905a663e87256a71d880`**，新公钥SHA256=`7728e30f...`与P780 Bootloader TEE根测试公钥相同，之前官方A组Q Developer公钥SHA256=`e53f344...`。脚本对两份镜像在VBMeta 2432B区域之外的全部数据计算SHA256并要求不变；新旧AVB信息28字段对比仅有签名Key身份变化，VBMeta内描述符顺序变化而内容相同。**这是PC有效镜像构建成功，不代表P780 Locked first-stage的Standalone DSU公钥白名单接受B，也没有安装/启动B，未Root/解锁。** 后续优先P780 `_162`ramdisk真实GSI公钥，若要上机测试须先备份、确认现存A组DSU退出、风险/Recovery恢复安排，且先只安装停在Restart。[第十七轮报告](docs/research/p780-dsu-testroot-resign-verified-20261018.md) · [最新计划](docs/NEXT_STEPS.md)。
