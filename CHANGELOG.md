@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — 第十六轮：提出针对P780 AVB测试密钥漏洞的自签名DSU GSI控制变量实验
+
+- 机主提出：既然JVN#47427200/CVE-2026-107153确认P780使用AOSP测试AVB根密钥，能否制作或编译一个测试GSI，借助DSU Sideloader保持BL Locked启动。独立核验JVN官方报告与 Android官方 DSU 自定义镜像签名机制；**理论可试，但Root of Trust 与 first-stage standalone GSI允许的公钥不是同一信任判定**。
+- 通过AOSP `fs_avb.cpp` 源码确认 Locked 对GSI系统镜像独立公钥白名单做严格匹配，未知公钥不能忽略；用户实机fstab只见普通Q/R/S key，Google Android15实际system用Q Developer公钥，根测试密钥签的改版镜像也可能因独立公钥检查失败。不能把漏洞公告解读成“DSU一定能绕过AVB”。
+- 经VegaBobo DSU Sideloader官方README，非Root ADB/Shizuku模式只是DSU Installer前端，不能自动绕签名；项目将解锁BL列为一般要求。在P780上只有**实际设备信任该镜像**才有锁定态成功机会。
+- 新建 [实验方案：CVE-2026-107153 × AOSP测试根自签GSI × DSU Sideloader](docs/research/p780-dsu-custom-testkey-gsi-hypothesis-20261018.md)。首选固定现有Android15文件系统不从零编译新Android，仅在PC生成重签AVB副本并本地verify，必须单独同意且备份后才考虑实际DSU安装和重启。**本轮无新签名镜像、无手机操作、无Root或BL解锁**。
+
 ## 2026-10-18 — 第十五轮重大证据：Android15 system公钥确定为Q Developer，generic vbmeta不能证明可启动
 
 - 用户运行PC离线提取后上传五件AVB元数据/公钥文件，官方ZIP SHA256在PC侧报告校验通过。助手本地独立哈希两个真实1032B公钥：Android15 `system.img` SHA1=`1ffb1af796b18ebf40d18faed213f686720f73f2`、SHA256=`e53f344beb2646b49651ea8dd336dbe75117183e96ef34beed4b367a4a0ae925`，**精确匹配Q Developer GSI公钥**。
