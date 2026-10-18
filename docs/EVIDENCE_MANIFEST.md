@@ -1,5 +1,7 @@
 # P780 已定位研究文件总清单
 
+> **2026-10-18 20:31 更新：DSU 路线已由机主停止。** B已安装并尝试原生启用/重启，最终回到原厂Android11，Locked/green、installed/disabled；并非“B尚未上机”。失败阶段未知，不能认定厂商禁止DSU。恢复出厂后的原生Loader回退为用户报告，镜像身份未核实。最新实机证据、系统数据段哈希、安装器静态审计及新路线见[阶段收束与维护接口审计](research/p780-dsu-closure-maintenance-route-20261018.md)。当前优先审计原厂维修/工厂测试/更新组件的权限与可核验读取入口；不重复DSU测试，Root/解锁仍未取得。下文与此冲突的DSU待测状态为历史记录。
+
 ## 2026-10-18 第十七轮：v1.1 在 Windows 真正完成 test-root VBMeta-only重签与 AVB 验证
 
 - 收到机主当前会话三份原始审计小文件：`original-avb-info.txt` 1549B SHA256 `b7e4890bc061b2228d280bdbdd5a687db51ed9edfba403e10cec62293faa26e1`；`testroot-avb-info.txt` 1549B SHA256 `507e7622f1ec036c338d1c1204ad75e331c004668bd0e606758e790d55714b9a`；`P780-DSU-testroot-audit.txt` 2206B SHA256 `b8f6b9f836eb8b794650949cf3302bc95269c33b56be13c6ca04a1ff21f5774a`，助手独立读取原始bytes计算。仅这三份小报告上传当前聊天，**未上传完整1.9GB镜像至模型或Git**。
