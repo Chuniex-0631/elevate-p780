@@ -10,11 +10,11 @@
 2. **Fstab 两份已读取**：`system/system_ext/product` 使用 `avb=vbmeta_system`；`vendor/odm` 使用默认 `avb`。`system` 额外包含 `/avb/q-gsi.avbpubkey` 等三份 Google 开发 GSI 公钥文件路径候选。[Fstab 实测](research/p780-fstab-avb-20261018.md)。但仍未读取真实 `vbmeta_b`、`vbmeta_system_b` 或 chain descriptors。
 3. **已完成但没有结果的尝试**：Fastboot 常见 OEM 解锁指令均为 unknown command；EDL Sahara 可识别但没有兼容且授权的 Firehose；Google OTA Prober 对当前 `264` fingerprint 无 `update_url`。不再重复这些请求；OTA 支线暂缓。对应 [启动/EDL](research/device-and-boot.md)、[OTA](research/google-ota-prober-p780-20261018.md)。
 
-## 当前主线：原厂维护接口与匹配镜像的只读审计
+## 当前主线：实机静态样本建库与交叉分析
 
-DSU实验收束，停止上机重试。优先用现有证据及重置后原厂组件清单审计工厂测试/维修/更新入口，检查导出组件、签名权限、调用者校验及读取能力。取得明确代码证据后才设计单项实机验证。先寻找可核验的读取入口与匹配固件，不把工程模式菜单等同于Root或写权限。
+原厂工程/维护APK已排查无线索，不重复作为独立新路线。机主已完成第一批广覆盖只读提取，本地清单1759项/1131297358字节；助手目前收到清单与日志，未取得完整二进制。下一步先分析init—框架—native依赖与权限关系，不再重复采集手机状态。
 
-完整结果和证据限制见[阶段收束](research/p780-dsu-closure-maintenance-route-20261018.md)。
+优先读取电脑已有init配置，再按实际依赖选取native/框架原件。vendor/bin、vendor/lib64采集0文件，部分目录跳过及两个零字节项须区分；不能把完整清单称作完整固件。详见[清单审核和缺口](research/p780-static-corpus-inventory-20261018.md)。
 
 ## 主要路线 B：真正阻挡永久 Root / 自定义 Boot 的环节
 
