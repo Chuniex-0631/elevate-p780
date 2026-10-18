@@ -21,7 +21,7 @@
 |AVB 公钥身份|本机硬件证明证书签名链及 Google 根匹配；`verifiedBootKey` 匹配 AOSP AVB RSA4096 默认测试公钥；`verifiedBootHash` 匹配本机 digest|在线吊销完整校验未完成；真实 VBMeta chain descriptors、rollback index 及原厂镜像仍缺。见[确认报告](research/avb-attestation-confirmed-20261018.md)|
 |Fstab / 动态分区|两份 fstab 已读；system/system_ext/product 使用 `avb=vbmeta_system`，vendor/odm 默认 avb；system 列 q/r/s-GSI key 路径|配置不能替代真实描述符和 first-stage 实际公钥。见[fstab](research/p780-fstab-avb-20261018.md)|
 |DSU A/B|Windows A/B 均通过 AVB 验证；B 已由原生安装器安装并触发 dynsystem 重启，最终回到原厂，installed/disabled|**停止**。未启动 GSI；失败阶段未知。恢复出厂后原生 Loader 回退是机主观察，镜像身份未核实。见[收束](research/p780-dsu-closure-maintenance-route-20261018.md)|
-|Fastboot / EDL|常见 unlock 命令 unknown command；2026-10-19 QDL v2.8 使用 Windows QUD/COM6 读到 Sahara v2/HWID/PKHash，与早期实测吻合|已验证 Sahara command-mode，**候选 A 已有早期 READ64 传输，但未完成 Loader 认证或 Firehose 启动**；未取得可用签名 Loader 或原厂 boot/vbmeta。见[实测报告](research/p780-qdl-qud-sahara-20261019.md)|
+|Fastboot / EDL|常见 unlock 命令 unknown command；2026-10-19 QDL v2.8 使用 Windows QUD/COM6 读到 Sahara v2/HWID/PKHash，与早期实测吻合|已验证 Sahara command-mode，**A 曾进行早期 READ64，B–E 仅离线分析；A–E 共3组签名根均与本机 PKHash 不符，未成功运行 Firehose**；未取得可用签名 Loader 或原厂 boot/vbmeta。见[实测报告](research/p780-qdl-qud-sahara-20261019.md)|
 |OTA|6 份历史引擎日志没有 payload；正确 fingerprint 的 Google OTA Prober 查询未返回 URL|**暂缓重复探测**。不证明所有厂商渠道均无包。见[OTA 审计](research/ota-log-audit.md)、[查询](research/google-ota-prober-p780-20261018.md)|
 |源码与内核构建|真实 config.gz 5238 个明确配置项；匹配 Clang11 编译 rtmutex.o；A52s 候选配置值变化0、消失24、新增322；两棵候选树32项布局采样一致|不是原厂 vmlinux/ABI。TINNO 旧5.4.61原生求解消失46、新增14；不同实验数字不可混用。见[布局](research/config-layout.md)|
 |GhostLock|旧源码模式、配置、Tracefs 与四代工作包归档|**BLOCKED**：缺运行内核漏洞确认、二进制/符号/逐构建偏移。见[专题](research/ghostlock.md)|

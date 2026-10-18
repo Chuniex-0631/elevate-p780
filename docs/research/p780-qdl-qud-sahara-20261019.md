@@ -20,7 +20,7 @@
 ### Loader 匹配与下一步
 
 - [bkerler/Loaders 通用 Mannar 候选 A](https://github.com/bkerler/Loaders/blob/main/qualcomm/factory/mannar/0016F0E100000000_d9357db88795b5a8_fhprg.bin)：文件名的 MSM `0016F0E1` 匹配，model `0000` 不同于 P780 `0780`，签名哈希前缀 `d9357db8…` 不同于机主 `c19a5029…`；极可能被安全启动拒绝。
-- **尚未上传此候选、未运行 Firehose、未读取 GPT/UFS、未刷写、未 Root 或解锁。** 之前两次 bkerler 错误不能记作候选 A 被拒。
+- **候选 A 后来进入早期 Sahara READ64 传输，但没有完成认证或启动 Firehose；未读取 GPT/UFS、未刷写、未 Root 或解锁。** 之前两次 bkerler 错误不能记作候选 A 被拒。
 - 若机主继续授权实验，应在完成手机备份并能正常回 Android 后，用 QDL 的 `<programmer> reset` 路径单独验证 Sahara 镜像传输和 Firehose configure/reset；不带 XML/flash/write/erase。注意该命令会尝试在设备 RAM 中执行第三方 Loader、初始化存储并执行复位，不承诺零风险；不要以 `--dry-run` 代替实机测试（该选项不连接设备）。
 - 根据返回的 Sahara NAK / 哈希验证失败 / Firehose configure ACK 分类结果；其后才讨论下一个候选，不反复随机上传。
 
@@ -68,4 +68,26 @@ QDL 未打印 `failed to write ... bytes to sahara`，但没有后续 END OF IMA
 
 对照 P780 实机 OEM PKHash `c19a5029d659b034…`（完整值保留机主 PC），**根证书摘要不匹配**。内部签名 HWID 报告全零，与文件名的 `0016F0E100000000` 不同；文件名不是可靠的签名身份依据。根据认证信任根不匹配，**将 A 排除于下一轮优先实机测试名单**。先前四次 Sahara READ64 后断连仍没有设备端错误码，不能把“签名不匹配”与“本次断连原因已实机确证”划等号。
 
-下一步保持手机不操作；对候选 B `prog_firehose_lite.elf` 及其它不同 PKHash 候选进行同类离线证书提取，排除同根重复件，只有取得根摘要匹配并具可信来源的 programmer 才考虑重新制定实机实验。
+该条为早期 A 单件解析后的历史计划；同日 B–E 已完成离线提取，见上方矩阵。
+
+### A–E 五文件离线证书矩阵（2026-10-19）
+
+机主已成功运行禁用旧 `Loaders` 数据库预扫描去重的临时 `fhloaderparse` 副本，取得 B–E 真实签名元数据；两份最终日志一致。A 数据取自先前单文件解析。
+
+|候选|来源/版本|长度|OEM / MODEL / 解析 HWID|SWID|PKHash 前缀|
+|---|---|---:|---|---|---|
+|A|Qualcomm LAB / 00269|698440|Qualcomm / 0000 / 0000000000000000|3|`d9357db8…`|
+|B|Qualcomm Lite ELF / 00269|698312|Qualcomm / 0000 / 0000000000000000|3|`d9357db8…`|
+|C|Hisense LAA / 00207|691584|Qualcomm / 0000 / 0000000000000000|3|`d9357db8…`|
+|D|Hisense LAA / 00207|691584|0043 / 0000 / 0000000000430000|3|`4352b3bf…`|
+|E|Lenovo LAA / 00259|697928|Lenovo / 0000 / 0016F0E102E80000|1F|`a51a1c2e…`|
+
+根证书哈希（`fhloaderparse` 报告）：
+- A/B/C：`d9357db88795b5a8afaebfd9ab08a569cc8e519f6c689723759f4e6915ca3466e98b5a3282678bdf63673d8517bb0c5b`
+- D：`4352b3bfeac440cab3fc0a181be897f57ceed6cfe7729d61752add407fa6e1bee86fe4a27eaed96a83f9972f707af1d8`
+- E：`a51a1c2e4a5ec0f8040ebaf95a78122b104a0e3b675af5ec00c49e5d266ef6bc`
+
+P780 实机 OEM PKHash 前缀 `c19a5029…` 与以上三组均不匹配。E 的摘要为64位十六进制，其他为96位；差异可能来自证书/哈希算法形式，不能截断或补齐以制造匹配。A/B/C 共根不意味着二进制逐字节一致。内部解析 HWID 全零也不意味着自动可用于任意设备。
+
+**阶段结论：5 个候选全部排除进一步实机盲试。** 只有 A 曾进行一次早期 Sahara READ64，B–E **只是离线分析**；没有任何一个候选得到成功 Firehose 启动或明确设备端鉴权拒绝码。原始日志留在机主 PC / 当前会话，不提交含本地路径或唯一设备串号的原件。下一步只追踪可信同型号原厂恢复包及经过签名校验的 programmer。
+

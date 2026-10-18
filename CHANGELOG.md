@@ -2,6 +2,12 @@
 
 以下按阶段保存当时结论，历史条目中的“未安装/待测”不代表现在。当前状态统一见[STATUS](docs/STATUS.md)。
 
+## 2026-10-19 — Mannar A–E 五候选离线签名矩阵结案
+
+- 机主在临时独立解析器副本中关闭旧 Loader 数据库去重后，成功取得 B–E 全部证书解析输出；两份最终日志一致。
+- A/B/C 根为 d9357db8…，D 为 4352b3bf…，E 为 a51a1c2e…；均不同于 P780 c19a5029…。只有 A 曾实机 READ64，B–E 未进行实机验证；没有任何候选获得 Firehose。
+- 更新专题、README、STATUS、NEXT_STEPS、HISTORY、EVIDENCE_MANIFEST；暂停对这5个不匹配签名的 Loader 继续上机；仅对可信同型号恢复包或签名 programmer 开展离线调查。原始带本地身份的日志不入库。
+
 ## 2026-10-19 — 候选 A 离线签名身份确认
 
 - 机主成功通过 `fhloaderparse` 解析 698440B Mannar 候选 A：OEM Qualcomm、MODEL 0000、解析 HWID 全零、SWID 3、QCVER `BOOT.XF.4.2-00269-MANNARLAZ-1`、VAR `MannarPkgLAB`；根 PKHash `d9357db8…` 与 P780 `c19a5029…` 不匹配。

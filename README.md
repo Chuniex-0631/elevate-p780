@@ -12,7 +12,7 @@
 |DSU / GSI|A/B 在 Windows 验签通过；B 已安装并尝试启动，最终回原厂；恢复出厂后原生 Loader 也由机主报告回退|**路线已停止**；失败阶段未知，不能认定厂商禁止 DSU|
 |静态样本与权限|PC 清单 1759 项；batch1 742 项、batch2 514 项匹配清单；另有 SELinux 配套文件与编译策略|当前主线：调用关系、权限边界与缺失实现交叉分析|
 |Journey / Qualcomm 接口|Journey debug 属性存在 shell 静态 allow；取得部分 JNI/HIDL 客户端库|未形成任意读写或提权链；关键 init/vendor 服务原件缺失|
-|原厂固件、EDL、源码|2026-10-19：QDL v2.8 经 QUD/COM6 成功查询 Sahara v2/HWID/PKHash；TINNO 旧源码及候选构建已归档|尚未上传/认证 Firehose Loader；仍缺匹配原厂镜像和运行内核身份|
+|原厂固件、EDL、源码|2026-10-19：QDL v2.8 经 QUD/COM6 成功查询 Sahara v2/HWID/PKHash；TINNO 旧源码及候选构建已归档|A 已进行早期 READ64 传输但无 Firehose；A–E 五文件签名归为3组，全部不匹配本机 PKHash；仍缺同型号可信原厂镜像|
 |GhostLock|配置、旧源码模式及候选布局已有分析|**BLOCKED**；不得把候选偏移当本机参数|
 
 ## 阅读入口

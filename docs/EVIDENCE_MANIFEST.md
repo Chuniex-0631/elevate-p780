@@ -37,6 +37,8 @@
 |bkerler/edl v3.62 COM6 NOP 失败日志|机主PC/会话终端文本，报告仅存脱敏阶段判断；`END_TRANSFER status 1` 后旧式 Streaming 卡住，不代表 Loader 签名拒绝|
 |Mannar 通用 Firehose 候选 A|第三方 GitHub 源码仓中的候选文件，匹配 MSM 但 model/PKHash 前缀不同；实机已请求4段 Sahara READ64 后通信失败，未完成认证或 Firehose 启动；原始日志只在机主PC/会话，二进制未入仓；同日离线解析获得 Qualcomm/MODEL=0000/HWID=全零/VAR=MannarPkgLAB，根证书 PKHash=`d9357db8…`（与本机不符），详见专题|
 
+|B–E 批量签名离线解析|原始批次因现有 Loaders 去重跳过3文件，临时副本关闭去重后两份日志均列出 B–E。A–E 共5文件、3组根摘要 d935/4352/a51a，均与本机 c19a 不符；原始终端日志和二进制不入仓，见[矩阵](research/p780-qdl-qud-sahara-20261019.md)|
+
 ## AVB与已停止DSU实验
 
 |资产|保存状态与边界|
