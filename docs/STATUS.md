@@ -24,7 +24,7 @@
 | Android Clang 11.0.2 `rtmutex.o` | **云端编译成功** | 已匹配实机编译器，非完整 `vmlinux`，非可刷写内核 |
 | 还原与出厂 `vmlinux` 一致的内核 | **未完成** | 原厂私有代码与构建身份未满足 |
 | JourneyConfigService | **静态与运行状态核对已完成** | vendor/XML/TCS 版本均 42；64 键一致；消费者静态定位进程管理与 Service/Provider 限制；未发现 OTA/Root 链 |
-| DSU/GSI 临时系统（LOCKED） | **PC v1自签名GSI A/B对照工具已交付；只变更 system.img 嵌入式VBMeta，真实签名仍待用户PC核验** | Google Android15 official `system.img`公钥已证实为Q Developer SHA256 `e53f344...`；P780 TEE根测试公钥SHA256 `7728e30f...`，但fstab只有普通Q/R/S GSI允许key路径，不能直接推导standalone DSU信任测试Root。此轮交付 `P780-DSU-testroot-offline-tools-v1.zip` (9769B SHA256 `189d3a4b6e92eea0cc21e24dfde29950a981b35bef72c6997925bcc26ee4dab6`)，在PC侧副本上只生成2432B新版VBMeta，保持系统数据/Hashtree/FEC/Footer原样并做非VBMeta SHA256比较与 avbtool verify_image。工具已做语法、实际元数据守卫和模拟端到端测试，**未在本会话真实1.9GB镜像做最终签名、未安装或启动自签GSI**。仍原厂Android11可用/gsid installed-disabled/Bootloader LOCKED、无Root。[第十六轮工具说明](research/p780-dsu-custom-testkey-gsi-hypothesis-20261018.md) |
+| DSU/GSI 临时系统（LOCKED） | **第十七轮：Windows真实Google Android15 system.img 已用AOSP测试根重签且 `verify_image`通过，未上机** | v1.1报告证明原版和B组重签版两个1.9GB镜像都通过AVB VBMeta/footer/sha256 hashtree验证；脚本强制检查仅2432B VBMeta区间可变，其余system文件系统/Hashtree/FEC/Footer逐字节一致。B组SHA256 `fd98af142b11263e997adba190810c544857c7b750fd905a663e87256a71d880`，公钥SHA256 `7728e30f...`与P780 TEE确认Bootloader Root一致；A组原版签名为Q Developer `e53f344...`，此前两次DSU reboot,dynsystem均单次回原厂。**BL Root测试根≠ first-stage standalone GSI fstab公钥白名单，仍无 `_162` Ramdisk公钥/AVB实际拒绝日志。B组没有安装、没有重启。** 后续仅在备份/恢复及现有DSU清理方案确认后评估非Root Sideloader安装，停在Restart界面。[第十七轮验证](research/p780-dsu-testroot-resign-verified-20261018.md) |
 | Root / Bootloader 解锁 / 刷机 | **均未达成** | 任何适配包不得宣称 Root 成功 |
 
 ## 2026-10-18：AVB 锁定状态下的实机基线（用户提供）
