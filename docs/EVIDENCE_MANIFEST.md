@@ -1,5 +1,12 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 第十六轮：CVE-2026-107153 × 自签名 GSI 与 DSU Sideloader 测试思路（仅方案）
+
+- [JVN#47427200](https://jvn.jp/en/jp/JVN47427200/) 2026-10-14明确确认Rakuten Hand5G全版本因AOSP已知AVB测试密钥漏洞 `CVE-2026-107153`，有物理访问条件时可能安装定制镜像。此前机主实机TEE Hardware Attestation与AOSP RSA4096 Root测试公钥原件SHA256 `7728e30f...6defef6`一致；**这些事实未证明DSU本身绕过第一阶段的额外GSI受信检查**。
+- [AOSP fs_avb.cpp](https://android.googlesource.com/platform/system/core/+/d572c80acec5d04a4bee7a8d9774940839406203/fs_mgr/libfs_avb/fs_avb.cpp)证实standalone分区采用fstab `avb_keys` 或预加载key列表精确比较；Locked未知公钥不允许。P780 fs_mgr fstab实测有普通Q/R/S公钥路径，Android15发行system原件Q Developer公钥SHA256=`e53f344...`；将system重签为Bootloader测试根key也**不代表自动满足fstab受信公钥集合**。
+- [VegaBobo DSU Sideloader README](https://github.com/VegaBobo/DSU-Sideloader/blob/master/README.md)明确无Root ADB模式只是通过系统原厂DSU应用安装镜像，通常要求BL UNLOCKED以放行非受信镜像。不能将Sideloader当成AVB或Bootloader绕过工具。
+- 机主提出最小风险实验：保留已验证的Android15原始GSI system文件系统、仅在PC副本上用AOSP测试根密钥重新生成AVB hashtree/footer，做A/B控制对照，使用`avbtool verify_image`做本地密码学校验，真正DSU安装/重启必须另行确认备份、恢复路线、风险。**目前方案未执行，没有手机新增日志或签名实测**。[新专项](research/p780-dsu-custom-testkey-gsi-hypothesis-20261018.md)。
+
 ## 2026-10-18 第十五轮：Google Android15 GSI 内嵌Q Developer AVB公钥、generic vbmeta与实际设备Root区别
 
 - 用户Windows工具报告Google官方ZIP `aosp_arm64-exp-BP1A.250405.005.C1-13151952-61d23231.zip` 完整SHA256校验通过，预期=`61d232315ad773bd4820c76c175efe6a61cd8a9a257508db588032be213e15f7`；机主上传 `p780-gsi15-avb-report.txt`、`system.img.avb-info.txt`、`system.img.avbpubkey`、`vbmeta.img.avb-info.txt`、`vbmeta.img.avbpubkey`，原始文件各自SHA与长度在 [第十五轮核验](research/p780-dsu-android15-avb-key-verified-20261018.md)。**助手独立重算了已上传公钥二进制哈希，但未重复下载多GB ZIP，不将 `info_image` 冒充 `verify_image` 签名完整性验证。**
