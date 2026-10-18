@@ -1,0 +1,95 @@
+{
+  "archive_sha256": "31aa1878b46a71fd960b7bdc5044e1a5421a2f8e6400bf919873e1efa62e5ce2",
+  "file_count": 514,
+  "total_bytes": 279493296,
+  "manifest_matches": 514,
+  "manifest_mismatches": 0,
+  "elf_parsed": 509,
+  "elf_parse_errors": [],
+  "nonelf_bitcode_files": 5,
+  "files": [
+    {
+      "path": "files/system/lib64/libbase.so",
+      "bytes": 254056,
+      "sha256": "b88da32aacf12a3b94ea588068e3a2b684a20640adca12e27d143cc43f5dbfa9"
+    },
+    {
+      "path": "files/system/lib64/libbootloader_message.so",
+      "bytes": 92216,
+      "sha256": "3fe7a386719e6aefdd7a95156667c79aed1b3ddb66d906087c364d72f1039158"
+    },
+    {
+      "path": "files/system/lib64/libcutils.so",
+      "bytes": 70480,
+      "sha256": "101c5d97cd2252217e15d8f5cf23a7f6b275e3f5ac4446be7ceb2099f3940995"
+    },
+    {
+      "path": "files/system/lib64/libfs_mgr.so",
+      "bytes": 487920,
+      "sha256": "ef72ceaff4c49c2c645958e87800e75ff0e48677ec35987c9646301f5f2306ff"
+    },
+    {
+      "path": "files/system/lib64/libfs_mgr_binder.so",
+      "bytes": 589168,
+      "sha256": "d1b9321869b0de734e7175b18e665884449ff6a6ee3dc39d0aefaa13dbd4c4d6"
+    },
+    {
+      "path": "files/system/lib64/libgsi.so",
+      "bytes": 15576,
+      "sha256": "35c56feef08d5a5206364202850d8370701bf947767b83dc90de32bdd0c3443f"
+    },
+    {
+      "path": "files/system/lib64/libprocessgroup.so",
+      "bytes": 257784,
+      "sha256": "75e170f0f01089ac936097b7e45e5d867ecbb6d1dfb3ccd5f8d5c06626964fc1"
+    },
+    {
+      "path": "files/system/lib64/libprocessgroup_setup.so",
+      "bytes": 32824,
+      "sha256": "34d60b5dc40c42fbf42b6cda8e1e2a94841b2b3aaad53712cb4625619288af1b"
+    },
+    {
+      "path": "files/system/lib64/libselinux.so",
+      "bytes": 102224,
+      "sha256": "34db92f155d9ac3fc3cf35c29b92aab74890562e1a10fe4b0f78d30303c15c9f"
+    }
+  ],
+  "string_hits": {
+    "write_misc": [
+      "files/system/lib64/libbootloader_message.so"
+    ],
+    "sync_file": [
+      "files/system/lib64/libc.so",
+      "files/system/lib64/libgnustl_shared.so",
+      "files/system/lib64/libhwui.so",
+      "files/system/lib64/libminijail.so",
+      "files/system/lib64/libminui.so",
+      "files/system/lib64/libperfetto.so",
+      "files/system/lib64/libsync.so",
+      "files/system/lib64/libui.so"
+    ]
+  },
+  "dependency_summary": {
+    "edge_count": 7477,
+    "missing_basename_counts": {
+      "libnativehelper.so": 28,
+      "libandroidicu.so": 12,
+      "com.quicinc.cne.server@2.0.so": 1,
+      "com.quicinc.cne.server@2.1.so": 1,
+      "com.quicinc.cne.server@2.2.so": 1,
+      "libstatssocket.so": 8,
+      "libstatspull.so": 5,
+      "libadb_pairing_server.so": 1,
+      "libadb_pairing_connection.so": 1,
+      "libpac.so": 1,
+      "libnativeloader.so": 1
+    }
+  },
+  "limitations": [
+    "DT_NEEDED basename matches are not runtime linker namespace resolution",
+    "Missing exact strings do not exclude stripped, static, encoded or indirect implementations",
+    "On-disk ELF sections were analyzed; no device binary was executed"
+  ],
+  "file_list_scope": "Selected libraries only; complete 514-entry hashes retained in owner-PC manifest already committed.",
+  "analysis_scope": "Only uploaded ZIP members; excluded an unrelated scratch temporary file from parsing."
+}
