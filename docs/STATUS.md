@@ -1,5 +1,7 @@
 # 研究状态总表（更新：2026-10-18）
 
+> **2026-10-18 batch1原件分析：** ZIP中742个文件条目已逐条重算大小/SHA256，全部匹配1759项PC清单中的对应内容；提取init service声明与ELF依赖。ST factory链确认属于NFC测试；Journey root诊断socket/属性动作仅为待核验权限边界，尚无可利用证据。下一步补SELinux静态映射，不运行工程动作、不恢复DSU重试。详见[原件验证与交叉分析](research/p780-static-batch1-analysis-20261018.md)。
+
 > **2026-10-18 20:31 更新：DSU 路线已由机主停止。** B已安装并尝试原生启用/重启，最终回到原厂Android11，Locked/green、installed/disabled；并非“B尚未上机”。失败阶段未知，不能认定厂商禁止DSU。恢复出厂后的原生Loader回退为用户报告，镜像身份未核实。最新实机证据、系统数据段哈希、安装器静态审计及新路线见[阶段收束与维护接口审计](research/p780-dsu-closure-maintenance-route-20261018.md)。当前优先审计原厂维修/工厂测试/更新组件的权限与可核验读取入口；不重复DSU测试，Root/解锁仍未取得。下文与此冲突的DSU待测状态为历史记录。
 
 2026-10-18 取得本机 P780 Key Attestation：**TEE / Google 根证书签名链核验通过，证实 AVB 默认测试公钥身份**，不再等待原厂镜像才能确认根钥匙。已开展 P780 实机 DSU/GSI 支线：**开发者选项中 DSU Loader 入口已确认存在**，`gsi_tool`、`gsid.rc` 均存在，`pm list packages -u` 可以找到 `com.android.dynsystem` 包记录；曾实测 user0 `installed=false`；**随后机主通过 `install-existing --user 0` 恢复成功，现已验证 `installed=true` 且 `pm path` 找到原厂 APK**；最新第五轮实机确认 VNDK30、ARM64 和用户数据存储报告可用 103G；**第六轮又实测 `ro.treble.enabled=true`、`[vendor] namespace.default.isolated=true`**，故官方 Treble/VNDK 跨版本前置检查已满足；具体 GSI 公钥和真正启动仍未知。[源码交叉报告](research/p780-dsu-locked-gsi-20261018.md)。当前研究进入 AVB 只读取证阶段，保留公开新线索监测；不涉及刷机、Root 或更改 Bootloader。读取入口见 [文档导航](README.md)，结构验收见 [全库整理](REPOSITORY_AUDIT.md)。
