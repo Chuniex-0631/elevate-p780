@@ -1,5 +1,12 @@
 # 归档维护日志
 
+## 2026-10-18 — 第十七轮：Android15 测试根签名 GSI 真正生成，原版与重签版 AVB 完整验证通过
+
+- 用户Windows真实运行v1.1工具并上传AVB原始/重签info和审计TXT，3个文件本轮独立计算SHA256；AOSP `avbtool verify_image` 对两份真实1.9GB镜像都验证footer/VBMeta RSA4096签名和 system Hashtree 成功。**此前工具仅模拟验证的状态已被真实实验结果取代。**
+- A组原版Google Android15 system公钥SHA256 `e53f344beb2646b49651ea8dd336dbe75117183e96ef34beed4b367a4a0ae925`（Q Developer GSI）；B组重签为AOSP Root testkey SHA256 `7728e30f50bfa5cea165f473175a08803f6a8346642b5aa10913e9d9e6defef6`，与P780 TEE Boot Root匹配。B组完整镜像 SHA256 `fd98af142b11263e997adba190810c544857c7b750fd905a663e87256a71d880`，原版SHA256 `27321f9655530f014c884a690f49a53e6f3beeda71f4f27cbc141b17a8e86954`（PC报告）。
+- 工具脚本核对VBMeta offset1899151360/size2432，分段SHA比较确认VBMeta前/后所有字节不变；文件系统、Merkle Hashtree、FEC、Footer、image大小、Flags0、RollbackIndex、SPL完全相同。VBMeta内描述符顺序不同但内容相同。助手独立比较AVB元数据28项，有效字段仅公钥发生变化。没有下载/上传完整多GB镜像作助手侧再次哈希。
+- 新建 [第十七轮Windows AVB实证报告](docs/research/p780-dsu-testroot-resign-verified-20261018.md)，同步研究状态与下一步。**离线验签成功≠P780 Loaded/受信/Root**。后续优先真实ramdisk公钥；如需要上机B组，须先备份、规划清理原始DSU与Recovery失败恢复，使用非Root安装并停在Restart通知，另行确认才启动。
+
 ## 2026-10-18 — Windows OpenSSL 前置检查失败，提供离线 DSU 重签工具 v1.1
 
 - 机主Windows PowerShell执行v1启动器在`[1/4]`阶段因`OpenSSL CLI is not on PATH`安全中止，系统镜像未修改；不是AVB验签结果，也没有连接P780。
