@@ -1,0 +1,654 @@
+{
+  "zip_sha256": "85f6d86d7d3d33ba940afacca6350527848ce07e29961ab92129ffcdb70a82a1",
+  "files": [
+    {
+      "path": "odm/odm_file_contexts",
+      "bytes": 1278,
+      "sha256": "3082f79a75186e7983065ab5d93cec913d61de64b4a27379c27f8415d10ed08e"
+    },
+    {
+      "path": "odm/odm_property_contexts",
+      "bytes": 312,
+      "sha256": "5205e952ab686ca62e78e39178f506e437ae7b4a5c16d55acc7d2ccce170792f"
+    },
+    {
+      "path": "odm/odm_seapp_contexts",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odm/odm_sepolicy.cil",
+      "bytes": 66277,
+      "sha256": "76795e8039e4102e696edadab0befa216991e8ce06020a3881cccdffd77b182c"
+    },
+    {
+      "path": "odm/precompiled_sepolicy",
+      "bytes": 881104,
+      "sha256": "77f077d8c95b38929aed0434c9c56ca6158c24d90c169ee2644d490684111b79"
+    },
+    {
+      "path": "odm/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256",
+      "bytes": 65,
+      "sha256": "b549a5a9c22d7222c4ad0beb6b44cab090162e86b6170f0593fd90c14eae6a8e"
+    },
+    {
+      "path": "odm/precompiled_sepolicy.product_sepolicy_and_mapping.sha256",
+      "bytes": 65,
+      "sha256": "c55688972224364fc5231f82a2b0768f0fc983a6bbde952b173a0125e445041b"
+    },
+    {
+      "path": "odm/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256",
+      "bytes": 65,
+      "sha256": "d7cf610c012b868835778ad47952c5aca88fb599ec6e37e896c306a286f6f46c"
+    },
+    {
+      "path": "product/mapping/26.0.cil",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "product/mapping/27.0.cil",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "product/mapping/28.0.cil",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "product/mapping/29.0.cil",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "product/mapping/30.0.cil",
+      "bytes": 752,
+      "sha256": "3dccf8d5b205231574f581029e7dc947b143cffb77126cf251d433a031fc1aa0"
+    },
+    {
+      "path": "product/product_file_contexts",
+      "bytes": 107,
+      "sha256": "16b6ccd6047eeb6a0214a281b991eae16ed96dc704cb2f6757a90160eaa3396f"
+    },
+    {
+      "path": "product/product_property_contexts",
+      "bytes": 3349,
+      "sha256": "764b5ecf864a1efa6b00107ebe36b606cc1859e2234625b3d65c699a780d18c6"
+    },
+    {
+      "path": "product/product_seapp_contexts",
+      "bytes": 156,
+      "sha256": "9b7b0d890c8141ca8bf8253e91b1b65a20a096619ebb1557f9955cafdec1fdfe"
+    },
+    {
+      "path": "product/product_sepolicy.cil",
+      "bytes": 30798,
+      "sha256": "6937f62c87800e5fe959186f60a9bbf78b2f3af5aa1c36817358ee343b3a0c3f"
+    },
+    {
+      "path": "product/product_sepolicy_and_mapping.sha256",
+      "bytes": 65,
+      "sha256": "c55688972224364fc5231f82a2b0768f0fc983a6bbde952b173a0125e445041b"
+    },
+    {
+      "path": "product/product_service_contexts",
+      "bytes": 1633,
+      "sha256": "095c819247c4b29651beeb5b13e91c5ac983134e9886977c6fec0a26389da4cf"
+    },
+    {
+      "path": "pull.log",
+      "bytes": 1423,
+      "sha256": "933073cc62fae3ba979e909192b2423486541d9bd67afa8f4f3f0ca14002e938"
+    },
+    {
+      "path": "system/mapping/26.0.cil",
+      "bytes": 43234,
+      "sha256": "a5df4945c1437c772c7f034676eec39aaba019dcf9719cd9b82ea9b025f1a99f"
+    },
+    {
+      "path": "system/mapping/26.0.compat.cil",
+      "bytes": 306,
+      "sha256": "0bd731d104df8e22b19f61ab9ad2828dc4a5b7092c82aa09faf60c01fd6ce6e6"
+    },
+    {
+      "path": "system/mapping/27.0.cil",
+      "bytes": 80073,
+      "sha256": "7818d3efe29adae6f968233284e55fbf44aac784bc39f4ab15e1693abf1bf86e"
+    },
+    {
+      "path": "system/mapping/27.0.compat.cil",
+      "bytes": 306,
+      "sha256": "0bd731d104df8e22b19f61ab9ad2828dc4a5b7092c82aa09faf60c01fd6ce6e6"
+    },
+    {
+      "path": "system/mapping/28.0.cil",
+      "bytes": 94042,
+      "sha256": "8cb4ec52ff22102f01054e59c98ce191b7b191242566974c6101214a804ac3d2"
+    },
+    {
+      "path": "system/mapping/28.0.compat.cil",
+      "bytes": 306,
+      "sha256": "0bd731d104df8e22b19f61ab9ad2828dc4a5b7092c82aa09faf60c01fd6ce6e6"
+    },
+    {
+      "path": "system/mapping/29.0.cil",
+      "bytes": 109152,
+      "sha256": "71327621085b31d500e909ce5ee16c178c5b52afc28d9b894b98b88e6ea4a3e1"
+    },
+    {
+      "path": "system/mapping/29.0.compat.cil",
+      "bytes": 165,
+      "sha256": "70a54391a9cdea7ad7297cae8c3e4dbb89af7ade9aca6d43e9f9e420acb0db37"
+    },
+    {
+      "path": "system/mapping/30.0.cil",
+      "bytes": 165879,
+      "sha256": "ab301412bc42e0816dd2cdc0e820b6d173e184086d9beba088d9e725755a47c8"
+    },
+    {
+      "path": "system/plat_file_contexts",
+      "bytes": 36294,
+      "sha256": "58190d5b71ed10e193138e6d3f16ac9970d436c124f85c170ceabfce8e607809"
+    },
+    {
+      "path": "system/plat_property_contexts",
+      "bytes": 47386,
+      "sha256": "812c1deabbf805b8200d236b0273a86c0686daa560fd80fc72867a83bbee5027"
+    },
+    {
+      "path": "system/plat_seapp_contexts",
+      "bytes": 2898,
+      "sha256": "a6c32777c9bd98039bf618b2b1fba4248b45a1deee4693df78ffa9eeb1fd443a"
+    },
+    {
+      "path": "system/plat_sepolicy.cil",
+      "bytes": 1581837,
+      "sha256": "1bfe1f667bb73dc521178422e398ab4f8361a0744c7d44b282b9770bf00be595"
+    },
+    {
+      "path": "system/plat_sepolicy_and_mapping.sha256",
+      "bytes": 65,
+      "sha256": "b549a5a9c22d7222c4ad0beb6b44cab090162e86b6170f0593fd90c14eae6a8e"
+    },
+    {
+      "path": "system/plat_service_contexts",
+      "bytes": 18876,
+      "sha256": "e4a9f3406dc9c3ff5a03c4b478941e02bede17ee95798bdbce1a31cc33f40959"
+    },
+    {
+      "path": "system_ext/mapping/26.0.cil",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "system_ext/mapping/27.0.cil",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "system_ext/mapping/28.0.cil",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "system_ext/mapping/29.0.cil",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "system_ext/mapping/30.0.cil",
+      "bytes": 4899,
+      "sha256": "052f769cf39730628e2130c0f058c8c0d095760b10c474bfa22082e1fc4ccf37"
+    },
+    {
+      "path": "system_ext/system_ext_file_contexts",
+      "bytes": 3314,
+      "sha256": "019c0e7db7469a49a1c72bb87e81b597a13bc0514badef5b6335feb99da6e138"
+    },
+    {
+      "path": "system_ext/system_ext_property_contexts",
+      "bytes": 10263,
+      "sha256": "c8b2f4e350b148f32e0e9efd5c9026c9ba451f25f80d66054556508de6896ff3"
+    },
+    {
+      "path": "system_ext/system_ext_seapp_contexts",
+      "bytes": 1753,
+      "sha256": "0e8da31aa52f4689f737435a424f67173d3f4620505a326e1db4de7fdeb0eccb"
+    },
+    {
+      "path": "system_ext/system_ext_sepolicy.cil",
+      "bytes": 132412,
+      "sha256": "e1d8b2348be4f96ab57fd4fd077954d9e5ee9e1b0d4bb18903b322c6f85664b4"
+    },
+    {
+      "path": "system_ext/system_ext_sepolicy_and_mapping.sha256",
+      "bytes": 65,
+      "sha256": "d7cf610c012b868835778ad47952c5aca88fb599ec6e37e896c306a286f6f46c"
+    },
+    {
+      "path": "system_ext/system_ext_service_contexts",
+      "bytes": 5143,
+      "sha256": "fb80670302589fbf23c775aa7b52f91eda6b29ee5d5de6d6e9cc7d8deb5271b8"
+    },
+    {
+      "path": "vendor/plat_pub_versioned.cil",
+      "bytes": 891806,
+      "sha256": "a079bd29307fd92f386d4f2a1b6410e48206c02975fd88d13a90d04ea698417c"
+    },
+    {
+      "path": "vendor/plat_sepolicy_vers.txt",
+      "bytes": 5,
+      "sha256": "166983be04e2ab397fc7a70bb60a516b1cfd42a5ec6dd356df01ae63a8500ec0"
+    },
+    {
+      "path": "vendor/selinux_denial_metadata",
+      "bytes": 1511,
+      "sha256": "565038ea94d05bc1a2871c48dc4b323e7843178446556c0319b8077afdaa6292"
+    },
+    {
+      "path": "vendor/vendor_file_contexts",
+      "bytes": 85355,
+      "sha256": "f99c747ab031b5251d3bf4e363ffa129b2b885d1e2770d592288e50b95716489"
+    },
+    {
+      "path": "vendor/vendor_hwservice_contexts",
+      "bytes": 11658,
+      "sha256": "2c48e286daeaea2944c4d606c266a9bb7e8a0ad8126f6465aa43772e8bad485e"
+    },
+    {
+      "path": "vendor/vendor_mac_permissions.xml",
+      "bytes": 4075,
+      "sha256": "0252fe2dd0430d5c49b49010fc3c413b60a78541e73f3b8378bc01e68af88c6f"
+    },
+    {
+      "path": "vendor/vendor_property_contexts",
+      "bytes": 16188,
+      "sha256": "d3dc8b56835ba3d646e3a5b3303b90b1a4887d1fbeb602c39c8b48abb6040de5"
+    },
+    {
+      "path": "vendor/vendor_seapp_contexts",
+      "bytes": 1412,
+      "sha256": "f87b814d5f6cb4443d8359cda57c75cb1597c65227780c45a2059efc113ec5d0"
+    },
+    {
+      "path": "vendor/vendor_sepolicy.cil",
+      "bytes": 733556,
+      "sha256": "b020aad9676079d0fe5ce585401a3a8fb6bb6e15cf0c9cb4e65673f86128835d"
+    },
+    {
+      "path": "vendor/vndservice_contexts",
+      "bytes": 703,
+      "sha256": "0d7b44cb6f94efa8f27e3a4e1d53a411805c21afe46f33aa4d9bd219f390cee2"
+    }
+  ],
+  "queries": [
+    {
+      "source": "shell",
+      "target": "debug_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": [
+        "allow shell debug_prop:property_service set;"
+      ]
+    },
+    {
+      "source": "shell",
+      "target": "config_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "shell",
+      "target": "default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "shell",
+      "target": "odm_journey_diag_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "shell",
+      "target": "vendor_default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app",
+      "target": "debug_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app",
+      "target": "config_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app",
+      "target": "default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app",
+      "target": "odm_journey_diag_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app",
+      "target": "vendor_default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_27",
+      "target": "debug_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_27",
+      "target": "config_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_27",
+      "target": "default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_27",
+      "target": "odm_journey_diag_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_27",
+      "target": "vendor_default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_29",
+      "target": "debug_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_29",
+      "target": "config_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_29",
+      "target": "default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_29",
+      "target": "odm_journey_diag_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_29",
+      "target": "vendor_default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_25",
+      "target": "debug_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_25",
+      "target": "config_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_25",
+      "target": "default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_25",
+      "target": "odm_journey_diag_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_25",
+      "target": "vendor_default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "system_app",
+      "target": "debug_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": [
+        "allow system_app debug_prop:property_service set;"
+      ]
+    },
+    {
+      "source": "system_app",
+      "target": "config_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "system_app",
+      "target": "default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "system_app",
+      "target": "odm_journey_diag_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "system_app",
+      "target": "vendor_default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "vendor_mmi_sys",
+      "target": "debug_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": [
+        "allow vendor_mmi_sys debug_prop:property_service set;"
+      ]
+    },
+    {
+      "source": "vendor_mmi_sys",
+      "target": "config_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "vendor_mmi_sys",
+      "target": "default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "vendor_mmi_sys",
+      "target": "odm_journey_diag_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "vendor_mmi_sys",
+      "target": "vendor_default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "vendor_mmi",
+      "target": "debug_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "vendor_mmi",
+      "target": "config_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "vendor_mmi",
+      "target": "default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "vendor_mmi",
+      "target": "odm_journey_diag_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": [
+        "allow vendor_mmi odm_journey_diag_prop:property_service set;"
+      ]
+    },
+    {
+      "source": "vendor_mmi",
+      "target": "vendor_default_prop",
+      "class": "property_service",
+      "perm": "set",
+      "rules": []
+    },
+    {
+      "source": "shell",
+      "target": "vendor_mmi_sys",
+      "class": "unix_stream_socket",
+      "rules": []
+    },
+    {
+      "source": "shell",
+      "target": "vendor_mmi",
+      "class": "unix_stream_socket",
+      "rules": []
+    },
+    {
+      "source": "shell",
+      "target": "socket_device",
+      "class": "sock_file",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app",
+      "target": "vendor_mmi_sys",
+      "class": "unix_stream_socket",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app",
+      "target": "vendor_mmi",
+      "class": "unix_stream_socket",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app",
+      "target": "socket_device",
+      "class": "sock_file",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_27",
+      "target": "vendor_mmi_sys",
+      "class": "unix_stream_socket",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_27",
+      "target": "vendor_mmi",
+      "class": "unix_stream_socket",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_27",
+      "target": "socket_device",
+      "class": "sock_file",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_29",
+      "target": "vendor_mmi_sys",
+      "class": "unix_stream_socket",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_29",
+      "target": "vendor_mmi",
+      "class": "unix_stream_socket",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_29",
+      "target": "socket_device",
+      "class": "sock_file",
+      "rules": []
+    }
+  ],
+  "permissive_types": [],
+  "scope": "on-disk ODM precompiled policy; not a live kernel policy dump",
+  "mapping_hash_checks": {
+    "plat": true,
+    "system_ext": true,
+    "product": true
+  }
+}
