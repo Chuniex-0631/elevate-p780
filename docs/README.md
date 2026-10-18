@@ -1,26 +1,29 @@
 # 文档导航
 
-当前结论以 [STATUS](STATUS.md) 为准；早期验收和原始报告用于追溯，不覆盖当前状态。目前正推进 DSU/GSI 可信启动与 AVB 签名证据核对；Root/BL 解锁未达成。
+当前主线是已有静态样本的交叉分析。DSU停止，Root/BL解锁未达成。状态以[STATUS](STATUS.md)为准，任务以[NEXT_STEPS](NEXT_STEPS.md)为准。
 
-## 核心入口
+## 当前入口
 
-- [当前状态](STATUS.md)、[后续关卡](NEXT_STEPS.md)、[研究时间线](HISTORY.md)。
-- [文件资产与迁移状态](EVIDENCE_MANIFEST.md)、[全库整理验收](REPOSITORY_AUDIT.md)。
+[当前状态](STATUS.md) · [下一步](NEXT_STEPS.md) · [时间线](HISTORY.md) · [证据索引](EVIDENCE_MANIFEST.md) · [整理验收](REPOSITORY_AUDIT.md)
 
-## 持续研究专题
+## 按研究问题阅读
 
-| 问题 | 文档 |
+|问题|文档|
 |---|---|
-| 手机、启动链、EDL/Fastboot | [第十七轮 Windows 真实 AVB 重签成功](research/p780-dsu-testroot-resign-verified-20261018.md)、[第十六轮Windows AVB VBMeta-only 工具与测试方案](research/p780-dsu-custom-testkey-gsi-hypothesis-20261018.md)、[第十五轮 Android15 GSI Q Developer 实际AVB公钥](research/p780-dsu-android15-avb-key-verified-20261018.md)、[Android15 GSI AVB 公钥 PC 提取计划](research/p780-dsu-android15-avb-extraction-plan-20261018.md)、[Locked BL / Developer GSI 签名信任专项](research/p780-dsu-locked-bl-vs-gsi-trust-20261018.md)、[第十三轮 DSU Bugreport 独立审计](research/p780-dsu-bugreport-audit-20261018.md)、[第十轮 DSU 返回原厂诊断](research/p780-dsu-stock-fallback-20261018.md)、[设备与启动](research/device-and-boot.md)、[DSU/GSI 主专题](research/p780-dsu-locked-gsi-20261018.md)、[Google 24 条 GSI JSON 核验](research/p780-dsu-gsi-catalog-verified-20261018.md)、[第九轮 AVB 公钥信任链与风险](research/p780-dsu-trust-chain-audit-20261018.md)、[首次实机安装实验协议](research/p780-dsu-first-trial-protocol-20261018.md) |
-| 官方固件、OTA 与认证公告 | [固件](research/firmware-ota.md)、[2026-09-28 公告](research/firmware-advisory-20260928.md)、[2026-10-18 AVB 实机基线](research/avb-live-baseline-20261018.md)、[Google OTA Prober 评估](research/google-ota-prober-p780-20261018.md)、[本机 AVB 测试公钥 TEE 实证](research/avb-attestation-confirmed-20261018.md)、[P780 Fstab 与 AVB 挂载实测](research/p780-fstab-avb-20261018.md) |
-| 更新日志到底证明什么 | [OTA 日志审计](research/ota-log-audit.md)、[原始 Bugreport 索引](research/ota-bugreport.md) |
-| QAS、Mink、PFM、TZAccess | [调用链](research/qas-tee-pfm.md)、[TEE 与系统 APK](research/tee-system-apks.md) |
-| GhostLock 是否可适配 | [主线](research/ghostlock.md)、[候选配置/布局](research/config-layout.md) |
-| Journey 网络配置与进程策略 | [实机配置、消费者与匹配规则](research/journey-config.md) |
-| 过去的软件包清理 | [应用实验](research/apps-and-debloat.md) |
+|采集覆盖与实现缺口|[清单审核](research/p780-static-corpus-inventory-20261018.md)、[batch1](research/p780-static-batch1-analysis-20261018.md)、[batch2](research/p780-static-batch2-analysis-20261018.md)|
+|接口、调用者与权限|[native交叉矩阵](research/p780-native-interface-crosscheck-20261018.md)、[SELinux审计](research/p780-policy-boundary-audit-20261018.md)|
+|硬件与启动状态|[设备/Fastboot/EDL](research/device-and-boot.md)、[AVB基线](research/avb-live-baseline-20261018.md)|
+|AVB信任钥匙|[本机硬件证明](research/avb-attestation-confirmed-20261018.md)、[fstab](research/p780-fstab-avb-20261018.md)、[官方公告与第三方报告](research/firmware-advisory-20260928.md)、[早期Attestation方案（已完成）](research/avb-attestation-alternative-20261018.md)|
+|DSU为何停止|[最终收束](research/p780-dsu-closure-maintenance-route-20261018.md)、[全部历史阶段索引](archive/dsu-index-20261018.md)|
+|固件/OTA证据|[固件概况](research/firmware-ota.md)、[Google Prober负面结果](research/google-ota-prober-p780-20261018.md)、[OTA日志分析](research/ota-log-audit.md)、[Bugreport来源](research/ota-bugreport.md)|
+|QAS/Mink/PFM/TEE|[调用链](research/qas-tee-pfm.md)、[系统APK与白名单](research/tee-system-apks.md)|
+|运行内核与候选源码|[GhostLock阻断项](research/ghostlock.md)、[Kconfig与布局](research/config-layout.md)、[官方源码联络](official-source-request-log.md)|
+|Journey应用策略|[配置与消费者审计](research/journey-config.md)；与Journey init诊断命令区分|
+|历史精简操作|[应用实验](research/apps-and-debloat.md)；不是当前实验环境基线|
 
-## 参考与历史
+## 参考、历史与工具
 
-- [来源与可重复性](reference/sources.md)、[归档规范](reference/archive-protocol.md)、[原件完整性](reference/evidence-integrity.md)。
-- [2026-10-10 阶段验收](archive/20261010-archive-review.md)、[原件导入与去重](archive/20261010-import-dedup.md)、[GhostLock 四代包索引](archive/ghostlock-package-versions.md)。
-- [旧完整技术报告](../archive/reports)、[原件与提取证据](../evidence)、[离线工具索引](../tools/README.md)。
+- [来源](reference/sources.md)、[归档规范](reference/archive-protocol.md)、[完整性](reference/evidence-integrity.md)。
+- [2026-10-10验收](archive/20261010-archive-review.md)、[导入去重](archive/20261010-import-dedup.md)、[2026-10-11结构验收](archive/repository-audit-20261011.md)。
+- [GhostLock版本](archive/ghostlock-package-versions.md)、[旧计划](archive/next-steps-before-dsu-20261018.md)、[旧逐轮证据账本](archive/evidence-ledger-before-consolidation-20261018.md)。
+- [旧技术报告](../archive/reports)、[证据目录](../evidence/README.md)、[工具](../tools/README.md)、[隐私说明](../SECURITY.md)。

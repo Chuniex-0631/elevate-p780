@@ -46,6 +46,7 @@ journey_diag_ext_system服务为root+disabled，init socket DAC模式0666。上�
 因此不能用0666认定可连接；本批不支持shell/普通应用直接连接该root socket。确切结论仍须运行标签，但不发送socket请求、不启动服务。
 
 ## 后续
-优先离线取得init实现及Journey诊断服务原件，先读ls -lZ确认文件权限/标签。仅对尚未单文件读取过的目标做一次受限pull；拒绝即记录，不反复尝试、不改变权限。工程属性，特别write_misc/factory.reset，不用于试探；不写misc/boot/vbmeta、不触发Recovery、不启动诊断服务。DSU继续停止。
+机主随后对 /init、/system/bin/init、/system/bin/journey_diag_ext_system、/vendor/bin/journey_diag_ext_vendor 执行 ls -lZ，均为 Permission denied。此项已完成并记录，不重复读取，不改变权限。batch2尚未补齐厂商builtin实现；后续按[native交叉矩阵](p780-native-interface-crosscheck-20261018.md)处理缺口。工程属性，特别write_misc/factory.reset，不用于试探；不写misc/boot/vbmeta、不触发Recovery、不启动诊断服务。DSU继续停止。
 
 本轮无实机属性写入、提权、解锁或永久写入成果。新的实质进展是编译策略支持shell对Journey debug属性的设置权限，以及排除config.write/ODM reset/默认诊断开关的同等权限推断。
+

@@ -1,5 +1,7 @@
 # P780 DSU 首次实机试验协议（2026-10-18）
 
+> **历史阶段文档（2026-10-18收束）：DSU已停止。** B组后来已安装并尝试启动、最终回到原厂；本文的“未上机／下一步”限于当时阶段，不是当前指令。最新见[收束报告](p780-dsu-closure-maintenance-route-20261018.md)与[当前状态](../STATUS.md)。
+
 > **状态：机主已表示愿意开展分阶段 DSU 实验，但截至本记录尚未下载、安装、启动 GSI。** Bootloader 仍 LOCKED，未 Root。DSU 设计避免覆盖原厂 system/boot 镜像，**不保证 userdata 零风险、不会 bootloop 或无需 Recovery 清空数据**。
 
 ## 为什么值得测试
@@ -48,3 +50,4 @@ adb pull /sdcard/ ".\P780-DSU-Backup\SharedStorage"
 ## 首次实际执行结果更新（2026-10-18）：安装完成提示出现，但启动未进入 DSU
 
 机主随后报告：GSI 下载显示完成，DSU 通知要求 Restart；点击重启后回到原厂 Android 11，并再次提示 Restart，第二次点击仍重复回原系统。**首次试验的第二阶段已经由机主实际触发，但并未进入 GSI**，此前本文件“尚未安装/重启”的说明属于事前协议快照，不再代表现状。具体镜像 ID 仍待日志/通知确认；GSID installed/enabled 状态也未读取。不是设备自发持续重启的 bootloop。请以 [启动返回原系统诊断专题](p780-dsu-stock-fallback-20261018.md) 和 [当前计划](../NEXT_STEPS.md) 为准，勿重复 Restart、enable 或 wipe。
+

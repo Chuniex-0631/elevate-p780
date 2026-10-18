@@ -1,5 +1,7 @@
 # P780 DSU 第九轮 — AVB/GSI 信任链源码审计与公开公钥二进制核对（2026-10-18）
 
+> **历史阶段文档（2026-10-18收束）：DSU已停止。** B组后来已安装并尝试启动、最终回到原厂；本文的“未上机／下一步”限于当时阶段，不是当前指令。最新见[收束报告](p780-dsu-closure-maintenance-route-20261018.md)与[当前状态](../STATUS.md)。
+
 > 本次仅离线研究 AOSP、公开 GSI 发布说明与可核验的公开 AVB 公钥数据。**P780 没有下载 GSI ZIP、没有安装、没有重启 GSI；仍为 Bootloader LOCKED / 未 Root。** 研究结论必须区分三件事：设备根 AVB 公钥、fstab 引用的 GSI 额外信任公钥、Google 当期 GSI 映像实际签名公钥。
 
 ## 1. 源码确认的两级筛选，不能混为一谈
@@ -45,3 +47,4 @@ Google 官方发布说明提供与手机菜单相同构建的 ZIP 全文件 SHA-
 **尚未完成：** P780 当前真正使用的 ramdisk `/avb/q,r,s-gsi.avbpubkey` 字节是否与 AOSP 公共素材一致；Google Android15/16 具体 `system.img` AVB 内嵌签名公钥是否匹配上述三把中的任何一把；P780 的 vendor HAL、DSU early boot、Weaver/Gatekeeper 和数据回退安全性。缺少这些条件，**不能**宣称 locked DSU 能启动，也不能认为已获得永久 `boot`/`vbmeta` 写权限。
 
 **不重复 ADB，不发起下载与安装。** 优先继续公开源码和是否有独立小型签名元数据可对照的研究；若要上机 DSU，必须另行征得用户明确同意、备份重要数据，准备 Recovery/Factory Reset 的失败恢复手段。当前仍未 Root、未解锁，主项目的原厂 vbmeta/boot 和 locked 写入通道仍未突破。
+

@@ -1,5 +1,7 @@
 # P780 DSU 第十五轮：Android15 GSI 内嵌 AVB 公钥已取得，确认 Q Developer GSI，根因仍待 P780 Ramdisk（2026-10-18）
 
+> **历史阶段文档（2026-10-18收束）：DSU已停止。** B组后来已安装并尝试启动、最终回到原厂；本文的“未上机／下一步”限于当时阶段，不是当前指令。最新见[收束报告](p780-dsu-closure-maintenance-route-20261018.md)与[当前状态](../STATUS.md)。
+
 > **结论：** 用户 PC 上按官方发布 SHA-256 校验目标 ZIP 后，从 `system.img` 与 `vbmeta.img` 分别提取原始 1032B AVB RSA4096 公钥。聊天助手在容器中**独立重新计算上传两个公钥二进制 SHA-1 / SHA-256**，与报告完全一致。**Android15 `system.img` 的公钥真实匹配 AOSP Q Developer GSI 公钥**，而非 P780 Fstab 所引用的普通 Q/R/S GSI 三把公钥。`vbmeta.img` 的根公钥哈希则与 P780 硬件证明根公钥一致，但此 `vbmeta.img` 的 `Flags=2`（禁用验证），其链式 `system` 描述符中公钥是**第三把 RSA2048 测试公钥**，且非 `system.img` 的签名公钥。**本轮仍无法证明实际P780 first-stage加载了哪些 GSI钥匙，也没有复现 early AVB 拒绝或启动成功。**
 
 ## 原始输入与 SHA256/独立审计

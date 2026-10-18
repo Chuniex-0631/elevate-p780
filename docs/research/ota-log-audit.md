@@ -1,5 +1,7 @@
 # P780 OTA 日志与 Journey 配置服务核对
 
+> 本页“下一步所需材料”为当时阶段计划；后续Journey配置及消费者已完成核对，见[Journey专题](journey-config.md)。
+
 日期：2026-10-10。只读取已归档材料，并对日志中的无鉴权公共配置地址执行 HTTP/HTTPS GET；没有连接、修改手机或重放设备鉴权请求。
 
 ## 结果
@@ -61,4 +63,5 @@ adb pull /system/framework/framework.jar p780-framework-audit/
 不存在的目录可能报错，保留该信息即可；JAR 若无 classes.dex，需结合目录清单再定位对应 ODEX/VDEX。本阶段无需 Root、重启、清数据或刷写，也无需提交整个 Google Play 服务 APK。
 
 Root/BL 状态仍未改变，原厂内核来源仍未解决。
+
 

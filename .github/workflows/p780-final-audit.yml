@@ -17,6 +17,8 @@ on:
       - evidence/framework/**
       - evidence/journey/**
       - evidence/analysis/**
+      - evidence/static/**
+      - CHANGELOG.md
       - tools/**
       - evidence/README.md
 
@@ -223,4 +225,5 @@ jobs:
           path: reports/
           retention-days: 30
           if-no-files-found: warn
+
 

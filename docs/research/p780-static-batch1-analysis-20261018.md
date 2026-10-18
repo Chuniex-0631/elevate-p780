@@ -35,7 +35,7 @@ system/etc/init/journey.init.rc另含config.write.zero/one的路径属性展开�
 **仅确认配置字节和触发语法，不确认服务运行、socket连接权限、属性设置权限或write_misc/sync_file实现。** DAC 0666不绕过SELinux；属性名存在不等于shell可写；root init能执行动作不等于调用者能触发。禁止以设置上述属性作为探测，因为其中包含擦除/重启和持久修改。
 与此前已审查的JourneyConfigService/TCS网络策略链区分：这些init/native动作不自动构成TCS到Root的调用链；没有重新宣称旧配置下载审计为新Root入口。
 
-下一证据关卡是实际plat/vendor/system_ext/product property_contexts、对应SELinux规则、服务端二进制及调用者。先确定权限映射，不能凭字符串下利用结论。
+后续已经取得并核对property_contexts及ODM编译策略，见[策略审计](p780-policy-boundary-audit-20261018.md)。服务端二进制与调用者仍未齐，不能凭字符串下利用结论。
 
 ### Qualcomm JNI和TEE代理依赖
 - libDiagService.so依赖libdiag_system.so，导出Java_com_qti_diagservices_DiagJNIInterface_getNextCommand、JNI_OnLoad、android_diag_handler；静态字符串对应com/qti/diagservices/DiagJNIInterface和DiagCommand，提供可追踪JNI连接点。
@@ -43,7 +43,9 @@ system/etc/init/journey.init.rc另含config.write.zero/one的路径属性展开�
 - QSEECom create/wipe key等API符号不代表shell有权限、不代表任意TA可加载；不调用这些敏感API做探测。
 - warehouse RC指向/vendor/bin/hw/vendor.journey.hardware.warehouse@1.0-service，system UID。该服务端原件不在本包，不能靠代理或RC判定鉴权漏洞。
 
-## 下一步
+## 当时的下一步（后续进展）
+
+SELinux与batch2已完成阶段核验；最新任务见[行动清单](../NEXT_STEPS.md)，下列原采集建议仅作过程记录。
 1. 优先补充实际SELinux静态目录，确定候选属性映射和规则；不执行setprop、ctl.start、socket请求、工厂测试或任何分区写入。
 2. 基于权限证据筛选需要的服务端实现；既有Permission denied缺口保留，不反复批量pull。
 3. 系统数据读取/镜像提取路径仅在具备明确调用者可达性、鉴权和实现证据后才进入实机验证。
@@ -51,3 +53,4 @@ system/etc/init/journey.init.rc另含config.write.zero/one的路径属性展开�
 
 ## 复核方法
 Python zipfile.testzip；每条目SHA256+长度查表；按清单的相对路径恢复分析副本。pyelftools提取动态段、符号表、GNU Build ID；init脚本按service段分组，只做静态声明统计。ELF解释不涵盖所有指令控制流或HIDL服务鉴权。大体积原始二进制仍仅在机主/本会话保存，GitHub保存证据索引及报告。
+

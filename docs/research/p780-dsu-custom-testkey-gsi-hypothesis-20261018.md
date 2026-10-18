@@ -1,5 +1,7 @@
 # P780 DSU 第十六轮：CVE-2026-107153 公共 AVB 测试根密钥 × 自签名 GSI × DSU Sideloader 可行性（2026-10-18）
 
+> **历史阶段文档（2026-10-18收束）：DSU已停止。** B组后来已安装并尝试启动、最终回到原厂；本文的“未上机／下一步”限于当时阶段，不是当前指令。最新见[收束报告](p780-dsu-closure-maintenance-route-20261018.md)与[当前状态](../STATUS.md)。
+
 > **第十七轮真实PC实验证据已返回：** 机主上传 v1.1 的三份 AVB 输出，真实 1,899,589,632B Google Android15原镜像和 AOSP Root测试密钥重签候选镜像都经 `avbtool verify_image` 报告 VBMeta签名与sha256 Hashtree 验证成功。原版SHA256=`27321f9655530f014c884a690f49a53e6f3beeda71f4f27cbc141b17a8e86954`，B组SHA256=`fd98af142b11263e997adba190810c544857c7b750fd905a663e87256a71d880`；所有非VBMeta区域经脚本强制SHA相同。旧段落“等待真实1.9GB镜像验证”属于历史状态，**最新结论请看 [第十七轮 AVB 实测报告](p780-dsu-testroot-resign-verified-20261018.md)**。P780的Locked first-stage是否信任Root测试密钥仍未知，B**尚未上机**。
 
 > **第十六轮落地进展（2026-10-18）：** 已制作并在当前会话提供 `P780-DSU-testroot-offline-tools-v1.zip`（仅包含 `p780_dsu_resign_run.ps1`、`p780_dsu_resign_offline.py`、中文README），**未对真实多GB GSI执行最终签名**。与本页初始“重新生成hashtree/footer”设想相比，新工具改为**只重新生成并替换原 system.img 的嵌入式 VBMeta（2432B）**，通过 `make_vbmeta_image --include_descriptors_from_image` 保留原始 Hashtree/Prop 描述符，同时保持原始系统数据、Hashtree、FEC、Footer及分区大小逐字节不变。离线模拟端到端测试与真实上传 `system.img.avb-info.txt` 字段检查已通过；须待机主Windows实测 `avbtool verify_image` 才能确认实包兼容。**截至此时没有新镜像上传或设备操作，更不能确认 Locked P780信任Root测试密钥作为standalone GSI。**
@@ -71,3 +73,4 @@
 已创建并在本次会话提供 `P780-DSU-testroot-offline-tools-v1.1.zip`（**10708B**，SHA256 `467c36c5c89957a044c2ddcb2adfaf21ed180e797c965bf8db447878f3ff17e4`），以及仅包含启动器的 `p780_dsu_resign_run_v1.1.ps1`（**4582B**，SHA256 `9281f049cea91fbfc51720120593ae13040d3ad79662c5920454fac8a4031cf3`）。v1.1 仅修改 PowerShell 启动器：优先使用本机 PATH 已有 OpenSSL，然后探测 `C:\Program Files\Git\mingw64\bin`、`Git\usr\bin`、`C:\Program Files\OpenSSL-Win64\bin`及部分用户级Git安装位置；**实际执行候选 openssl version 并确认退出码为0** 才继续，仅修改临时进程 PATH。若都找不到则安全停止，提示 `winget install -e --id ShiningLight.OpenSSL.LTS.Light`，由机主自行安装。该包在官方Microsoft Winget 仓库可查，不涉及Root/Flash。有关Git内部PATH可能影响DLL优先级，调整只限脚本进程而不写入永久环境变量。
 
 **Python签名核心脚本无任何修改**：`p780_dsu_resign_offline.py`仍12630B，SHA256 `7c98b90740189d3bdc403b6b47afa8e6b8cbcc869cc1347698b73dec8d223135`；v1.1只涉及依赖检测及中文说明。修订ZIP CRC自检通过、Python核心语法检查通过；因执行容器没有原生Windows PowerShell/用户的OpenSSL环境，**还未在用户Windows真实环境完整测试v1.1发现过程，也仍未用1.9GB GSI做签名**。等待机主回传v1.1 OpenSSL版本、签名报告或下一处实际失败错误后再调整。
+

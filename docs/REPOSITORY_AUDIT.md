@@ -1,37 +1,39 @@
-# 2026-10-11 全库结构整理验收
+# 2026-10-18 全库总结与整理验收
 
-基准提交：`af103577c223c905a26924d623afb220397c34ff`；完整递归树未截断，共 **254 个文件**。本轮是研究档案整理，研究进入待机；未取得 Root、BL 解锁或匹配原厂固件。
+基准提交：`cc92c49c397dd01e9aecc002a7ca60b63aea500a`。完整递归树未截断，整理前289个文件；[逐项树清单](../evidence/analysis/repository-inventory-20261018.json)记录路径、大小、模式和Git blob SHA。当前研究仍Locked/未Root，DSU停止。
 
-## 整理后的入口与层次
+## 审查范围
 
-[README](../README.md) → [文档导航](README.md) → [STATUS](STATUS.md)/[专题](research)/[证据](../evidence)。状态和资产清单保留稳定入口，持续专题位于 research，规范/来源位于 reference，早期阶段验收位于 archive；旧原始报告仍在仓库 archive/。
+获取并检查87份Markdown、Python与工作流文件的结构、链接和相关研究内容；全树289项做元数据盘点。结合已上传批次，继续native依赖/符号、JAR定向字符串与编译策略交叉分析。本轮不是对全部历史二进制、所有网页或所有方法重新做安全审计。
 
-- 原厂配置从根目录归位 evidence/device，原始 Blob 不变；Tracefs、GhostLock ZIP、APK、Bugreport/日志保留原件。
-- 初轮失败布局资料从含混的顶层 builds/ 与 comparison 文件归位 run 38060293186；最终结果仍引用 run 38060518994。所有不同运行上下文保留，LATEST 不能保证最近轮次成功。
-- critical-delta.txt 与同轮 critical-delta.md Blob 完全相同；只删除前者，保留 Markdown 正本与历史恢复分支。
-- 重写首页、文档/证据/工具导航和待办；补齐 OTA、Journey、布局与本轮时间线；旧验收计数标为历史快照。
-- 全量更新相对链接、显式仓库路径及 workflow 输入；候选构建/历史导入改为手动，归档完整性检查继续自动运行。
+## 整理结果
 
-## 数量与重复项
+|问题|处理|
+|---|---|
+|首页/状态同时出现B已上机与B未安装|重写当前入口；以实机回退与停止路线为准|
+|Attestation、fstab、策略核验仍列待测|从当前任务移除，专题补完成状态或历史说明|
+|逐轮追加使证据索引变成实验流水账|按保存等级/资产类型重建索引，完整旧账本冻结归档|
+|DSU占据导航主线|独立历史索引，旧专题保留路径并标记状态|
+|维护APK已做过却继续列为新路线|修订收束报告的后续章节；改为已有样本交叉核对|
+|库API/服务声明容易被当成可调用能力|新增native接口、权限与缺失服务端矩阵|
+|10/11验收和监测描述被当现在|旧验收单独归档；当前任务运行状态须另查|
+|邮件发送日期10/10与10/11不一致|标注待邮件头核对；本轮不伪称已重新查邮箱|
+|静态证据新增不单独触发完整性检查|将evidence/static/**及CHANGELOG.md纳入既有push触发范围|
 
-迁移路径 **44 个**（文档与数据归位），删除 **1 个 / 3,321 B** 的重复阅读格式。整理完成版本为 **258 个受跟踪文件**；后续版本变化以实际 Git tree 为准。
+README负责摘要；STATUS负责当前结论；NEXT_STEPS负责尚未完成任务；专题负责具体证据；HISTORY/CHANGELOG负责时间顺序。今后不向各入口重复粘贴同一阶段通知。
 
-基准树有 **34 组相同 Blob**，包括同源配置、跨运行日志、空输出及不同格式阅读副本。没有把同 SHA 自动等同于“无用”：保留独立运行、ZIP 内部副本和失败证据，仅合并上述一份同轮重复格式。
+## 原件保留与历史恢复
 
-[结构映射与保留 Blob 身份](../evidence/analysis/repository-structure-20261011.json) 登记全部迁移、删除及基准重复组；[复核工具](../tools/verify_repository.py) 验证链接、Python/JSON 格式、Journey 编码 ZIP/阅读视图、方法原始指令哈希及数据迁移 Blob。
+既有evidence原件、脚本和构建结果未删除或改写；同SHA的跨运行产物保留上下文。新增树清单是索引，不是重复存放二进制。旧逐轮证据账本和10/11验收复制归档时只调整相对链接和历史说明。
 
-## 验证范围
+- [整理前完整状态](https://github.com/Chuniex-0631/p780-kernel-research/tree/cc92c49c397dd01e9aecc002a7ca60b63aea500a)
+- [旧证据账本](archive/evidence-ledger-before-consolidation-20261018.md)
+- [10/11结构验收](archive/repository-audit-20261011.md)
 
-提交前已静态核对全量 Markdown 相对路径链接、Python 语法、workflow YAML 格式，以及迁移计划中的旧/新路径。
+## 验证
 
-实际结构提交 `a5212613d8fb784772095a6c2d03170da0dea9ac` 的 [GitHub 验收 run 38069160978](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/38069160978) / job 114262861154 已全部 success：258 文件、48 Markdown、337 个相对路径链接/0 失效、10 个 Python 语法检查、35 个有效 JSON；25 个迁移数据 Blob 身份一致。原配置/GZIP、Tracefs、四版 ZIP 内嵌副本、ADB/Bugreport ZIP、三 APK、UTF-16 快照及 Journey 编码原件/阅读视图均通过检查；54 个配置方法和 6 个性能决策方法的原始指令哈希通过。
+提交前核对Markdown相对路径与完整目标树、Python语法、工作流YAML、新增JSON，以及当前入口不再包含过时的B待上机/Attestation待测指令。具体本地结果见[结构检查记录](../evidence/analysis/repository-review-20261018.json)。路径检查不覆盖标题锚点和外部网页可达性。
 
-验证结果同步写入结构映射 JSON；本记录补记仅更新说明，不改变证据字节。未验证所有网页可达性、Markdown 标题锚点或全历史隐私。
+云端既有[完整性工作流](../.github/workflows/p780-final-audit.yml)会对实际提交重新检查全部Git文件、ZIP/配置/Tracefs、Journey原件与方法字节、历史迁移blob身份。实际结果以对应提交的GitHub Actions为准；本地只拉取文本，不能把本地结构检查称为全库二进制CRC重验。
 
-原始 framework 大 ZIP/JAR 尚未入 Git；现有提取与来源 SHA 不冒称原件完整保存。Journey 小配置 ZIP 以 Base64 可还原；敏感日志仍未发布级脱敏。细节见 [资产清单](EVIDENCE_MANIFEST.md) 和 [SECURITY](../SECURITY.md)。
-
-## 恢复和今后维护
-
-整理前完整快照：[archive/pre-restructure-20261011](https://github.com/Chuniex-0631/p780-kernel-research/tree/archive/pre-restructure-20261011)，较早 pre-cleanup 快照继续保留。移动不改写历史；旧路径可在快照中找到。
-
-每日监测任务保持启用，只有可核验新进展才通知；以当前 GitHub 为基线，有新证据时同步专题、状态、来源与维护说明。无新增不制造提交，主动实机实验暂缓。
+本轮未操作手机、未发送邮件、未修改监测任务或仓库可见性，也未完成全历史隐私审查。原件仍有未入Git部分，见[资产清单](EVIDENCE_MANIFEST.md)。

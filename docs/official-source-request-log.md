@@ -1,6 +1,6 @@
 # Rakuten Hand 5G / TINNO P780 官方源码请求联络
 
-## 2026-10-11：向 TINNO 发送
+## TINNO申请记录（发送日期待邮件头核对）
 
 - 收件方：`Sales@tinno.com`（TINNO 官网公开的**海外销售邮箱**，**不是已验证的开源源码专用邮箱**）。
 - 主题：`Rakuten Hand 5G (P780) — Request for Corresponding GPL Kernel Source / 开源内核源码咨询`
@@ -9,6 +9,10 @@
 - 实机：`P780AE_11.0_RMN_JP_162` / `P780AE_11.0_RMN_JP_162_CFC`，Android 11，kernel `5.4.233-qgki-gea5245e94afe-dirty`，Android Clang11 `r383902b1`。
 - 已有 TinnoOSS/P780 源码链接 https://github.com/TinnoOSS/P780 ，但仓库旧参考 Linux 5.4.61，和设备 5.4.233 不同。请求澄清对应关系以及是否有较新许可覆盖源码、补丁、Kconfig、适用 DTS 和编译脚本。
 - 官方渠道证据：https://www.tinno.com/contact/ （海外销售邮箱）。
+
+## 当前联络状态（2026-10-18）
+
+旧文档按10/11记载发送，机主提供的10/18 Gmail检索摘要记载为10/10；本轮没有重新读取邮件头，不擅自统一日期。已有检索未发现厂商回复，不能写成刚刚重新查信。机主决定暂不联系Rakuten；以下渠道与日文稿为历史资料，不是待立即提交的任务。
 
 ## Rakuten Mobile 单独渠道
 
@@ -56,3 +60,4 @@ TINNO の返答と Rakuten 側の対応を区別して記録する。メール�
 > Rakuten Hand 5G（P780）のGPL対象ソースコードの提供についてお問い合わせしたいのですが、オープンソースライセンス担当部署のメールアドレス、または書面で依頼できる窓口をご案内いただけますでしょうか。製品マニュアルに記載された TinnoOSS/P780 の公開ソースと、手元の最新ファームウェア（P780AE_11.0_RMN_JP_162／Linux 5.4.233）との対応関係を確認したいと考えています。
 
 Rakuten 向けに未検証のメールアドレスを推測して送付しない。製品修理受付終了と GPL 対象ソースの問合せは別問題として扱う。
+

@@ -1,5 +1,7 @@
 # P780 DSU 第八轮：Google 六个子目录原始 JSON 完整验证（2026-10-18）
 
+> **历史阶段文档（2026-10-18收束）：DSU已停止。** B组后来已安装并尝试启动、最终回到原厂；本文的“未上机／下一步”限于当时阶段，不是当前指令。最新见[收束报告](p780-dsu-closure-maintenance-route-20261018.md)与[当前状态](../STATUS.md)。
+
 > **阶段结论：** 用户 Windows 实际获取的 Google DSU 根索引及六份官方子目录经离线 ZIP CRC、逐字节 SHA-256、JSON 解析独立核验通过，共 **24 个镜像条目**。截图中实际出现的四个候选都在其中。**六个子目录共 24 条记录全部缺少 `vndk` 和 `pubkey` 字段，因此 UI 的出现不是明确的 VNDK30 支持或 GSI AVB 验签通过的证据。**
 
 ## 数据出处与边界
@@ -56,3 +58,4 @@ AOSP 初筛对 SPL 的约束是候选 `spl >= ro.build.version.security_patch`�
 当前没有验证：对应 `system.img` 与 `vbmeta_system` AVB Footer/HashTree、GSI实际签名公钥是否受 P780 启动 Ramdisk 中 `q/r/s-gsi.avbpubkey` 认可、Android15/16 与 Android11 Vendor Keymaster/Gatekeeper/Weaver 和 HAL 运行、具体 GSI 镜像下载可用性。**本轮不建议直接点击任何 GSI 安装**。高价值的下一步是公开材料的 DSU 签名流程/公钥对应关系离线核验；若将来真要安装，需要机主单独确认风险、设备备份、兼容性与失败退出办法，不能以显示目录为充分理由。
 
 机主自己的原始 ZIP 在本轮会话中可用于二次验证，**未把原件推入 Git 或暴露任何本机唯一硬件标识**。
+

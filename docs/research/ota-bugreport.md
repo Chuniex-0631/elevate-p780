@@ -1,5 +1,7 @@
 # P780 更新服务日志与 Android Bugreport 原始证据
 
+> 后续Journey配置与消费者已完成核对，见[Journey专题](journey-config.md)。本页保存原始日志来源，不要求重复采集。
+
 > 原始系统日志和 Bugreport 可能记录私有标识、APP 状态或账号信息。这里保留**必要的技术摘要和文件来源**，不在正文复刻敏感行。相关文件目前位于私有 Git 仓库的 `evidence/restricted/` 分类目录——**该目录并不提供额外 GitHub 访问权限隔离**。
 
 | 原件 | 存放位置 | 读取结果 |
@@ -26,4 +28,5 @@
 ## Journey 配置线索已完成初步代码定位
 
 新上传实机 JAR 确认其是应用行为 XML 配置服务，所见消费者为 JourneyPerformanceService；未发现固件下载/安装链。主机/版本检查与密码学验签需区分。当前材料与下一步只读配置采集见 [Journey 审计](journey-config.md)。
+
 

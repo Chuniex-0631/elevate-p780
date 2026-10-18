@@ -1,10 +1,25 @@
 # 归档维护日志
 
-> **2026-10-18 batch2：** system/lib64 的514项大小/SHA-256全部匹配PC清单（509 ELF、5 bitcode）。通用 bootloader message 库不等于 Journey builtin，尚未建立调用链或新增Root能力。详见[第二批交叉分析](docs/research/p780-static-batch2-analysis-20261018.md)。
+以下按阶段保存当时结论，历史条目中的“未安装/待测”不代表现在。当前状态统一见[STATUS](docs/STATUS.md)。
 
-> **2026-10-18 batch1原件分析：** ZIP中742个文件条目已逐条重算大小/SHA256，全部匹配1759项PC清单中的对应内容；提取init service声明与ELF依赖。ST factory链确认属于NFC测试；Journey root诊断socket/属性动作仅为待核验权限边界，尚无可利用证据。下一步补SELinux静态映射，不运行工程动作、不恢复DSU重试。详见[原件验证与交叉分析](docs/research/p780-static-batch1-analysis-20261018.md)。
+## 2026-10-18 — 全库总结、当前状态收敛与native交叉分析
 
-> **2026-10-18 20:31 更新：DSU 路线已由机主停止。** B已安装并尝试原生启用/重启，最终回到原厂Android11，Locked/green、installed/disabled；并非“B尚未上机”。失败阶段未知，不能认定厂商禁止DSU。恢复出厂后的原生Loader回退为用户报告，镜像身份未核实。最新实机证据、系统数据段哈希、安装器静态审计及新路线见[阶段收束与维护接口审计](docs/research/p780-dsu-closure-maintenance-route-20261018.md)。当前优先审计原厂维修/工厂测试/更新组件的权限与可核验读取入口；不重复DSU测试，Root/解锁仍未取得。下文与此冲突的DSU待测状态为历史记录。
+- 审核整理前289文件的完整树、87份Markdown/Python/工作流内容；重写README、STATUS、NEXT_STEPS、文档导航与证据索引，消除B“未上机”、Attestation“待测”、SELinux“待取”等当前入口冲突。
+- 逐轮证据账本和10/11结构验收冻结归档；DSU旧专题保留路径与技术内容并标明停止状态；补齐时间线和当前研究去向。
+- 补入6库native依赖/符号与36项编译策略查询；未建立直接shell可达的提权入口，不将接口库当服务实现。
+- 保留所有既有证据原件与历史构建上下文，不按相同SHA盲目去重；静态证据目录纳入完整性工作流触发范围。
+- 源码邮件日期10/10与旧文档10/11有差异，标为待邮件头核对；本轮没有重新查邮箱或更改监测任务。
+- 详细范围和验证见[本轮验收](docs/REPOSITORY_AUDIT.md)。手机无本轮操作，DSU停止，Root/BL状态不变。
+
+## 2026-10-18 — 静态采集、batch1/batch2与SELinux阶段
+
+- PC清单1759项；batch1 742项、batch2 514项大小/SHA256全部匹配；policy包55设备文件+日志，3组CIL/mapping摘要配套。
+- ST factory为NFC测试链；Journey debug属性是静态权限候选，通用write_misc_partition不等于厂商builtin；关键服务原件仍缺。
+
+## 2026-10-18 — DSU实机阶段收束
+
+- B已安装并触发原生dynsystem重启，最终回原厂；机主恢复出厂后再报告原生Loader回退，随后明确停止路线。
+- 更正“B尚未上机”的当前状态；失败阶段未知，不认定厂商禁止DSU，不宣称Root、解锁或永久写入。
 
 ## 2026-10-18 — 第十七轮：Android15 测试根签名 GSI 真正生成，原版与重签版 AVB 完整验证通过
 

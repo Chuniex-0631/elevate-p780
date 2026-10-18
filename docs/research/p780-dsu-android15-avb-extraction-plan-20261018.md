@@ -1,5 +1,7 @@
 # P780 第十四轮：Android 15 GSI AVB 签名公钥 PC 离线提取方案（2026-10-18）
 
+> **历史阶段文档（2026-10-18收束）：DSU已停止。** B组后来已安装并尝试启动、最终回到原厂；本文的“未上机／下一步”限于当时阶段，不是当前指令。最新见[收束报告](p780-dsu-closure-maintenance-route-20261018.md)与[当前状态](../STATUS.md)。
+
 > **2026-10-18 实验结果已返回（本页为事前操作协议）**：用户实际完成Windows下载并报告官方ZIP SHA256一致，上传 `system.img` / `vbmeta.img` 两套AVB key与info。我方重新计算上传公钥原始bytes，**system.img使用Q Developer GSI公钥**（SHA256 `e53f344beb2646b49651ea8dd336dbe75117183e96ef34beed4b367a4a0ae925`），而发行 `vbmeta.img`根公钥匹配P780公开测试根SHA256 `7728e30f...`，但`Flags=2`且链式system密钥为另一RSA2048公钥。**事前“尚未取得签名公钥”表述已过期；以[第十五轮实证报告](p780-dsu-android15-avb-key-verified-20261018.md)为准。**
 
 > **进度：操作工具已准备，Python语法与离线模拟流程测试通过，尚未下载官方多GB GSI ZIP、更未读取目标包 AVB 公钥。** BL/Root/DSU实际启动状态不变。切勿将未执行的提取任务登记为“GSI签名不匹配已证实”。

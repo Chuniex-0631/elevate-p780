@@ -9,9 +9,12 @@
 | [actions/](actions) | 逐运行配置、日志、对象与候选结构采样 | [布局运行索引](actions/2026-10-10-layout-audit/README.md)；独立运行相同 SHA 保留 |
 | [framework/](framework) | 实机 JAR 来源 SHA、DEX 方法字节、反汇编、调用点与文本阅读视图 | 原始 JAR/大 ZIP 尚未入 Git |
 | [journey/](journey) | vendor XML/version、TCS 阅读视图、对照与可还原原始 ZIP | 配置策略表不等于安装/权限表 |
-| [analysis/](analysis) | OTA 审计结构化摘要 | 分析结论，非固件原件 |
+| [analysis/](analysis) | OTA/仓库审计摘要与树清单 | 分析结论与对象索引，非固件原件 |
+| [static/](static) | PC清单、批次验证与SELinux/native查询 | 完整ZIP/库/策略原件未全量入Git |
+| [web/](web) | 来源快照与用户提供第三方正文 | 不替代本机复核 |
 | [apk/](apk) | 三份实机来源 APK | 离线归档，不主动安装 |
 | [tee/](tee) | 白名单与 native-api 访问证据 | 不等于任意 TEE 权限 |
 | [restricted/](restricted) | 原始 Bugreport、ADB ZIP、OTA 日志和包清单 | 分类标签，无目录级 ACL，尚未发布级脱敏 |
 
 [归档规范](../docs/reference/archive-protocol.md)、[原件完整性](../docs/reference/evidence-integrity.md)、[本轮整理](../docs/REPOSITORY_AUDIT.md)。
+

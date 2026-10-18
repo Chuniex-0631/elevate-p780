@@ -1,5 +1,7 @@
 # P780 第十三轮：首次 DSU 失败后的 Android Bugreport 全量离线审计（2026-10-18）
 
+> **历史阶段文档（2026-10-18收束）：DSU已停止。** B组后来已安装并尝试启动、最终回到原厂；本文的“未上机／下一步”限于当时阶段，不是当前指令。最新见[收束报告](p780-dsu-closure-maintenance-route-20261018.md)与[当前状态](../STATUS.md)。
+
 > 本报告仅针对用户上传的真实 `P780-DSU-Bugreport.zip` 进行**本地只读分析**。提取必要的、已去标识化技术字段，**不上传完整 ZIP / 19.7 MB Bugreport / MAC / IMEI / 账号 / 网络数据到 GitHub**。手机仍原厂 Android 11，Bootloader LOCKED、未 Root，未启动 GSI。
 
 ## 输入文件与完整性

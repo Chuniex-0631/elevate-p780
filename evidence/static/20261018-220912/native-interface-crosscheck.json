@@ -1,0 +1,455 @@
+{
+  "scope": "Static imported/exported dynamic symbols and DT_NEEDED; not a complete call graph or device runtime test",
+  "libraries": [
+    {
+      "path": "files/system_ext/lib64/libDiagService.so",
+      "sha256": "12a65895ee4e3a689da320579da2a208677b08fa7437674bf4b604e8090ce756",
+      "bytes": 15960,
+      "needed": [
+        "libandroid_runtime.so",
+        "libnativehelper.so",
+        "libutils.so",
+        "libcutils.so",
+        "liblog.so",
+        "libdiag_system.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "imports": [
+        "diagpkt_alloc",
+        "diagpkt_tbl_reg"
+      ],
+      "exports": [
+        "JNI_OnLoad",
+        "Java_com_qti_diagservices_DiagJNIInterface_getNextCommand"
+      ]
+    },
+    {
+      "path": "files/system_ext/lib64/libQSEEComAPI_system.so",
+      "sha256": "e739b2ef3fe3a162f5e75eb688c49dbdafad03bab39ad224232701e3df99f067",
+      "bytes": 47088,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "libutils.so",
+        "liblog.so",
+        "libhidlbase.so",
+        "libhidlmemory.so",
+        "libion.so",
+        "vendor.qti.hardware.qseecom@1.0.so",
+        "android.hidl.allocator@1.0.so",
+        "android.hidl.memory@1.0.so",
+        "libc++.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "imports": [
+        "_ZN6vendor3qti8hardware7qseecom4V1_08IQSEECom10getServiceERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEb",
+        "_ZN7android4hidl9allocator4V1_010IAllocator10getServiceERKNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEEb",
+        "_ZN7android4hidl6memory4V1_07IMapper10getServiceERKNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEEb"
+      ],
+      "exports": []
+    },
+    {
+      "path": "files/system_ext/lib64/libdiag_system.qti.so",
+      "sha256": "1e064385f14a3121c989d135390a1df83d6cd31f8fbabaa5010ecbb95a469a37",
+      "bytes": 277456,
+      "needed": [
+        "vendor.qti.diaghal@1.0.so",
+        "libhidlbase.so",
+        "liblog.so",
+        "libutils.so",
+        "android.hidl.allocator@1.0.so",
+        "android.hidl.memory@1.0.so",
+        "libhidlmemory.so",
+        "libc.so",
+        "libcutils.so",
+        "libc++.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "imports": [
+        "_ZN6vendor3qti7diaghal4V1_05Idiag10getServiceERKNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEEb",
+        "_ZN7android4hidl9allocator4V1_010IAllocator10getServiceERKNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEEb"
+      ],
+      "exports": []
+    },
+    {
+      "path": "files/system_ext/lib64/libdiag_system.so",
+      "sha256": "c4a036a94da01f12de126bd9e5af9b106a0b7bb49bbde5157aa58ca33fbd7711",
+      "bytes": 277464,
+      "needed": [
+        "vendor.qti.diaghal@1.0.so",
+        "libhidlbase.so",
+        "liblog.so",
+        "libutils.so",
+        "android.hidl.allocator@1.0.so",
+        "android.hidl.memory@1.0.so",
+        "libhidlmemory.so",
+        "libc.so",
+        "libcutils.so",
+        "libc++.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "imports": [
+        "_ZN6vendor3qti7diaghal4V1_05Idiag10getServiceERKNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEEb",
+        "_ZN7android4hidl9allocator4V1_010IAllocator10getServiceERKNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEEb"
+      ],
+      "exports": []
+    },
+    {
+      "path": "files/system_ext/lib64/libmink-sock-native-api.so",
+      "sha256": "9b3a042d455069bca0deb5642bb7272a976853f14f58bb83c03f8a61f7ffcf51",
+      "bytes": 28624,
+      "needed": [
+        "liblog.so",
+        "libminksocket_system.so",
+        "libjnihelpers.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "imports": [
+        "MinkSocket_new",
+        "MinkSocket_start",
+        "MinkSocket_release"
+      ],
+      "exports": [
+        "Java_com_qualcomm_qti_qms_api_minksocket_MinkSocketFdInternals_nativeGetMinkOpener",
+        "Java_com_qualcomm_qti_qms_api_mink_JMinkObject_nativeRelease",
+        "Java_com_qualcomm_qti_qms_api_mink_CMinkObject_nativeRelease",
+        "JNI_OnLoad",
+        "Java_com_qualcomm_qti_qms_api_mink_CMinkObject_nativeInvoke",
+        "Java_com_qualcomm_qti_qms_api_mink_CMinkObject_nativeIsNull",
+        "Java_com_qualcomm_qti_qms_api_mink_JMinkObject_nativeInit",
+        "Java_com_qualcomm_qti_qms_api_minksocket_MinkSocketFdInternals_nativeCheckFd"
+      ]
+    },
+    {
+      "path": "files/system_ext/lib64/libminksocket_system.so",
+      "sha256": "388ea3b9b1b6ded1c69173472350d0cc2aabfb64fe6c6093532bb640ecf9ebe3",
+      "bytes": 41656,
+      "needed": [
+        "libcutils.so",
+        "liblog.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "imports": [
+        "connect",
+        "getsockopt"
+      ],
+      "exports": []
+    }
+  ],
+  "policy_queries": [
+    {
+      "source": "shell",
+      "target": "vendor_hal_diaghal_hwservice",
+      "tclass": "hwservice_manager",
+      "permission": "find",
+      "rules": []
+    },
+    {
+      "source": "shell",
+      "target": "vendor_hal_qseecom_hwservice",
+      "tclass": "hwservice_manager",
+      "permission": "find",
+      "rules": []
+    },
+    {
+      "source": "shell",
+      "target": "vendor_diag_device",
+      "tclass": "chr_file",
+      "permission": "open",
+      "rules": []
+    },
+    {
+      "source": "shell",
+      "target": "tee_device",
+      "tclass": "chr_file",
+      "permission": "open",
+      "rules": []
+    },
+    {
+      "source": "shell",
+      "target": "vendor_ssgtzd",
+      "tclass": "unix_stream_socket",
+      "permission": "connectto",
+      "rules": []
+    },
+    {
+      "source": "shell",
+      "target": "vendor_ssgtzd_socket",
+      "tclass": "sock_file",
+      "permission": "write",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app",
+      "target": "vendor_hal_diaghal_hwservice",
+      "tclass": "hwservice_manager",
+      "permission": "find",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app",
+      "target": "vendor_hal_qseecom_hwservice",
+      "tclass": "hwservice_manager",
+      "permission": "find",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app",
+      "target": "vendor_diag_device",
+      "tclass": "chr_file",
+      "permission": "open",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app",
+      "target": "tee_device",
+      "tclass": "chr_file",
+      "permission": "open",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app",
+      "target": "vendor_ssgtzd",
+      "tclass": "unix_stream_socket",
+      "permission": "connectto",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app",
+      "target": "vendor_ssgtzd_socket",
+      "tclass": "sock_file",
+      "permission": "write",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_25",
+      "target": "vendor_hal_diaghal_hwservice",
+      "tclass": "hwservice_manager",
+      "permission": "find",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_25",
+      "target": "vendor_hal_qseecom_hwservice",
+      "tclass": "hwservice_manager",
+      "permission": "find",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_25",
+      "target": "vendor_diag_device",
+      "tclass": "chr_file",
+      "permission": "open",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_25",
+      "target": "tee_device",
+      "tclass": "chr_file",
+      "permission": "open",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_25",
+      "target": "vendor_ssgtzd",
+      "tclass": "unix_stream_socket",
+      "permission": "connectto",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_25",
+      "target": "vendor_ssgtzd_socket",
+      "tclass": "sock_file",
+      "permission": "write",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_27",
+      "target": "vendor_hal_diaghal_hwservice",
+      "tclass": "hwservice_manager",
+      "permission": "find",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_27",
+      "target": "vendor_hal_qseecom_hwservice",
+      "tclass": "hwservice_manager",
+      "permission": "find",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_27",
+      "target": "vendor_diag_device",
+      "tclass": "chr_file",
+      "permission": "open",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_27",
+      "target": "tee_device",
+      "tclass": "chr_file",
+      "permission": "open",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_27",
+      "target": "vendor_ssgtzd",
+      "tclass": "unix_stream_socket",
+      "permission": "connectto",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_27",
+      "target": "vendor_ssgtzd_socket",
+      "tclass": "sock_file",
+      "permission": "write",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_29",
+      "target": "vendor_hal_diaghal_hwservice",
+      "tclass": "hwservice_manager",
+      "permission": "find",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_29",
+      "target": "vendor_hal_qseecom_hwservice",
+      "tclass": "hwservice_manager",
+      "permission": "find",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_29",
+      "target": "vendor_diag_device",
+      "tclass": "chr_file",
+      "permission": "open",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_29",
+      "target": "tee_device",
+      "tclass": "chr_file",
+      "permission": "open",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_29",
+      "target": "vendor_ssgtzd",
+      "tclass": "unix_stream_socket",
+      "permission": "connectto",
+      "rules": []
+    },
+    {
+      "source": "untrusted_app_29",
+      "target": "vendor_ssgtzd_socket",
+      "tclass": "sock_file",
+      "permission": "write",
+      "rules": []
+    },
+    {
+      "source": "system_app",
+      "target": "vendor_hal_diaghal_hwservice",
+      "tclass": "hwservice_manager",
+      "permission": "find",
+      "rules": []
+    },
+    {
+      "source": "system_app",
+      "target": "vendor_hal_qseecom_hwservice",
+      "tclass": "hwservice_manager",
+      "permission": "find",
+      "rules": []
+    },
+    {
+      "source": "system_app",
+      "target": "vendor_diag_device",
+      "tclass": "chr_file",
+      "permission": "open",
+      "rules": []
+    },
+    {
+      "source": "system_app",
+      "target": "tee_device",
+      "tclass": "chr_file",
+      "permission": "open",
+      "rules": []
+    },
+    {
+      "source": "system_app",
+      "target": "vendor_ssgtzd",
+      "tclass": "unix_stream_socket",
+      "permission": "connectto",
+      "rules": []
+    },
+    {
+      "source": "system_app",
+      "target": "vendor_ssgtzd_socket",
+      "tclass": "sock_file",
+      "permission": "write",
+      "rules": []
+    }
+  ],
+  "jar_scan": {
+    "files": 73,
+    "dex": 73,
+    "target_strings": [
+      "DiagJNIInterface",
+      "nativeGetMinkOpener",
+      "nativeGetEnvHandle",
+      "warehouse",
+      "QSEECom",
+      "journey.diag",
+      "/dev/diag"
+    ],
+    "hits": [],
+    "limitation": "Only batch1 JAR DEX string tables; not APKs/OAT/all framework, not proof of absent callers"
+  },
+  "limitations": [
+    "SELinux queries apply to uploaded ODM precompiled policy, not live kernel dump",
+    "find/open/connect permissions alone do not establish service method authorization",
+    "vendor service executable contents not collected"
+  ],
+  "positive_controls": [
+    {
+      "target": "vendor_hal_diaghal_hwservice",
+      "tclass": "hwservice_manager",
+      "permission": "find",
+      "rules": [
+        "allow vendor_hal_diaghal_client vendor_hal_diaghal_hwservice:hwservice_manager find;",
+        "allow vendor_hal_diaghal_server vendor_hal_diaghal_hwservice:hwservice_manager { add find };"
+      ]
+    },
+    {
+      "target": "vendor_hal_qseecom_hwservice",
+      "tclass": "hwservice_manager",
+      "permission": "find",
+      "rules": [
+        "allow vendor_hal_qseecom_server vendor_hal_qseecom_hwservice:hwservice_manager { add find };"
+      ]
+    },
+    {
+      "target": "vendor_ssgtzd",
+      "tclass": "unix_stream_socket",
+      "permission": "connectto",
+      "rules": [
+        "allow vendor_feature_enabler_client vendor_ssgtzd:unix_stream_socket connectto;",
+        "allow vendor_ssg_app vendor_ssgtzd:unix_stream_socket connectto;",
+        "allow vendor_ssgtzd vendor_ssgtzd:unix_stream_socket { accept append bind connect connectto create getattr getopt ioctl listen lock map read setattr setopt shutdown write };",
+        "allow vendor_tzas_app vendor_ssgtzd:unix_stream_socket connectto;"
+      ]
+    }
+  ]
+}

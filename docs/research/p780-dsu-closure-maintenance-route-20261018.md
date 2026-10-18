@@ -26,15 +26,13 @@
 - /system/bin/gsid的adb pull被Permission denied拒绝，未绕过。gsi_tool已取得；不能替代服务端实现。
 - 原始bugreport、证书、包含身份信息的日志不直接公开上传；保留在机主PC/会话。仓库保存脱敏结论。
 
-## 新路线：原厂维护接口与原始镜像获取
-1. 基于现有服务、包和权限证据，静态审计TINNO/Qualcomm工厂测试、维修、更新组件：权限、导出组件、调用者校验、受限文件读取或维护API。先审计，不启动未知工程命令。
-2. 仅在有明确代码证据时设计最小读取验证；优先取得匹配162/264的boot、vendor_boot、vbmeta或内核二进制。包名和平台相同不等于存在漏洞。
-3. 可信P780固件或同型号签名匹配Firehose仍是并行证据方向；不随机试loader，不重跑已失败OTA探测。
-4. GhostLock仍BLOCKED于原厂二进制/偏移身份，不直接运行跨机型提权payload。
+## 收束后的研究去向
 
-## 公开来源复核
-- https://jvn.jp/en/jp/JVN47427200/ ：确认P780受测试密钥问题影响，不提供本机已证实写入入口。
-- https://www.android-device-security.org/publications/2025-leierzopf-spices/Leierzopf_2025_SPICES_AVBTestKeyInTheWild.pdf ：将固件获取、修改重签和部署写入分别列为前提；论文所述演示不能当作P780方案。
+机主说明原厂维护/工程APK路线已做过且无线索，随后转为广覆盖静态取样。PC清单、batch1、batch2和SELinux原件分析已经完成阶段核验；不再把“收集原厂包清单/重做工程菜单”列为待办。当前入口是[native交叉矩阵](p780-native-interface-crosscheck-20261018.md)与[行动清单](../NEXT_STEPS.md)。
 
-## 待收集的最小信息
-使用新环境的 pm list packages -s -f 与 pm list permissions -f -g，仅建立原厂维护组件清单；已有重复信息不再穷举。下一阶段成果必须是可核验入口或明确排除理由，而不是反复要求重启。
+原厂镜像、匹配签名Loader和运行内核二进制仍缺；DSU失败阶段不明的结论保持不变，不恢复重试。
+
+## 已有公开参考
+
+- https://jvn.jp/en/jp/JVN47427200/ ：测试密钥问题，不提供本机已证实写入入口。
+- https://www.android-device-security.org/publications/2025-leierzopf-spices/Leierzopf_2025_SPICES_AVBTestKeyInTheWild.pdf ：固件获取、重签和部署是不同前提，不能把其它机型演示当P780方案。
