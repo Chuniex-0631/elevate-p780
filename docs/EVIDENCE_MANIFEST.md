@@ -1,5 +1,13 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 第十六轮PC签名工具v1交付：仅换VBMeta、原Hashtree/FEC/文件系统不变（真实全镜像实验待机主执行）
+
+- 已生成会话附件 `P780-DSU-testroot-offline-tools-v1.zip`：9769B，SHA256 `189d3a4b6e92eea0cc21e24dfde29950a981b35bef72c6997925bcc26ee4dab6`，含 `p780_dsu_resign_offline.py` (12630B, SHA256 `7c98b90740189d3bdc403b6b47afa8e6b8cbcc869cc1347698b73dec8d223135`)、`p780_dsu_resign_run.ps1` (2811B, SHA256 `33fba5c210e007e27d001d503775b743388834c8071d65a1c5b8992d46f1cdf6`) 和中文说明；当前聊天可下载原件。**不含公开样例私钥本身，也不含多GB GSI镜像。**
+- 使用官方AOSP `avbtool make_vbmeta_image --include_descriptors_from_image` 从原 `system.img`复制所有原始 Hashtree/Prop descriptors，仅以AOSP公开 RSA4096 Root测试Key重新生成嵌入式 2432B VBMeta；保持原文件系统、Merkle tree、FEC、Footer、镜像大小完全不变，校验**原VBMeta区间前后全部字节哈希完全一致**。比原建议 `add_hashtree_footer`重新生成FEC更精确控制变量，也无需Windows额外 `fec`工具。
+- 代码强校验：输入原镜像实际大小/offset、GoogleAndroid15 fingerprint/SPL、rollbackIndex、SHA256_RSA4096、Flags0、verity salt/digest、Q Developer 公钥SHA256以及样例根KeySHA256均必须严格符合先前P780真实镜像取证。原版和副本各调用 `avbtool verify_image`，失败中止，不修改原件或发起手机命令；只输出PC侧镜像和纯文本报告。
+- **测试等级**：Python编译/CLI通过；基于上轮用户上传的真实 `system.img.avb-info.txt` 的全部元数据守卫验证通过；合成微型镜像和mock avbtool的完整流程测试通过（确认只有预期VBMeta窗口发生改变）。**尚未用真实Google1.9GB原始system.img和完整AOSP avbtool/Windows OpenSSL实测签名或验证，不能记录成镜像已成功重签或DSU已运行。**
+- [第十六轮工具说明与设备签名独立性](research/p780-dsu-custom-testkey-gsi-hypothesis-20261018.md)。关键剩余风险：尽管P780 BL Root testkey在TEE可核验，standalone DSU Fstab普通Q/R/S keys并不自动信任这把Root Test Key，仍需真实Ramdisk keys或进一步可观测启动条件核对。
+
 ## 2026-10-18 第十六轮：CVE-2026-107153 × 自签名 GSI 与 DSU Sideloader 测试思路（仅方案）
 
 - [JVN#47427200](https://jvn.jp/en/jp/JVN47427200/) 2026-10-14明确确认Rakuten Hand5G全版本因AOSP已知AVB测试密钥漏洞 `CVE-2026-107153`，有物理访问条件时可能安装定制镜像。此前机主实机TEE Hardware Attestation与AOSP RSA4096 Root测试公钥原件SHA256 `7728e30f...6defef6`一致；**这些事实未证明DSU本身绕过第一阶段的额外GSI受信检查**。
