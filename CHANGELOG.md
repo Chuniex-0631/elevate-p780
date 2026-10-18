@@ -2,6 +2,12 @@
 
 以下按阶段保存当时结论，历史条目中的“未安装/待测”不代表现在。当前状态统一见[STATUS](docs/STATUS.md)。
 
+## 2026-10-19 — 设备恢复与离线 Loader 来源排查
+
+- 机主确认 QDL 传输失败后 ADB 设备在线，`sys.boot_completed=1`；设备已正常启动原厂 Android。没有由此声称 Firehose 成功。
+- 对多个公开 Loader 仓库的递归文件路径进行只读搜索，未发现文件名明显匹配 P780 HWID/PKHash 前缀的 programmer；并非二进制内容层面的穷尽搜索。下一步在 PC 离线解析实际证书链再筛选。
+- 原始设备序列号继续不入仓库。详见 QDL 实机专题。
+
 ## 2026-10-19 — Mannar A 早期 READ64 中断
 
 - QDL QUD/COM6 接收四次 Sahara image 13 READ64 请求，随后未取得下一条 Sahara 响应；未见 END OF IMAGE、DONE、Firehose 运行或存储访问。

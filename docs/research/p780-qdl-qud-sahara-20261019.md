@@ -39,3 +39,13 @@ QDL 未打印 `failed to write ... bytes to sahara`，但没有后续 END OF IMA
 本次不证明完整上传、签名通过、Firehose 运行、GPT/UFS 访问或解锁。`reset` Firehose 操作未执行。QDL 上游问题 https://github.com/linux-msm/qdl/issues/184 提示失败后可能需物理重新连接，先确认设备完整恢复 Android，再评估新尝试。
 
 状态：`EARLY_SAHARA_READ64_FAILURE / CAUSE_UNDETERMINED`。日志包含设备身份，仅保存在机主 PC / 会话，不纳入仓库。
+
+### 机主复核：设备正常返回 Android；离线来源搜索（2026-10-19）
+
+上一轮 QDL 传输失败后，机主重新启动设备，Windows ADB 显示设备为 `device` 且 `adb shell getprop sys.boot_completed` 返回 `1`。这是恢复能力的一次实测，并不证明 Firehose Loader 被接受或风险为零。原始 ADB 设备序列号不存仓。
+
+只读调查：GitHub `bkerler/Loaders`（1015 个树条目）、`Iqinix/Qualcomm-firehoses`（1325）、`leefshitz2/Qualcomm_Loaders`（3964）、`essoojay/qualcomm-Loaders`（916）、`RenateUSB/loaders`（70）、`DavidBGE-cmd/Firehose-Finder`（742）、`RoSc22/Qualcomm-_prog_firehose`（682）、`digudc/Programmers`（609）、`Alephgsm/SAMSUNG-EDL-Loaders`（479）的当前递归路径清单；未见文件名含 P780 的签名哈希前缀 `c19a5029` 或准确 HWID `0016f0e100000780` 的 programmer。注意部分仓库是镜像/重复集合，路径搜索的负结果**不证明其二进制内部没有兼容证书**。
+
+2025-06-26 Reddit `r/datarecovery/1ll80dh` 与 `r/androidroot/1ll7jbb` 已有人公开报告相同 P780 HWID 和 PKHash 前缀，仍缺可用 loader；该内容是他人的第三方报告，不能当成本设备测试。
+
+下一步无需再对手机操作：用 [bkerler/edl fhloaderparse](https://github.com/bkerler/edl/blob/master/edlclient/Tools/fhloaderparse.py) 在 PC 上离线提取候选 Programmer 的签名证书链、HWID、PKHash；该脚本依签名格式选用 SHA-256 / SHA-384，不能把主机文件 SHA-256 当作 OEM PKHash。先筛选根证书哈希是否与 P780 设备匹配，再决定是否值得重复上传。
