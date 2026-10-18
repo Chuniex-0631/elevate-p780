@@ -30,3 +30,12 @@
 - [bkerler/edl 的串口/握手源码](https://github.com/bkerler/edl/tree/master/edlclient/Library)、[Mannar Loader 候选](https://github.com/bkerler/Loaders/tree/main/qualcomm/factory/mannar)。
 
 **证据等级**：机主提供的实际终端输出（未提交原始身份日志） + 官方项目源码交叉解释。签名校验和 Loader 功能均未实机测试。
+
+### 候选 A 实机测试：Sahara READ64 后中断（2026-10-19）
+
+机主使用 QDL v2.8 在 Windows QUD/COM6 执行 `--backend=qud --serial=COM6 --storage=ufs --debug <Mannar candidate A> reset`。
+设备先后请求 Sahara image 13 的四个区间：offset/length 为 0x0/0x40、0x40/0x3b8、0x1000/0x1000、0x2000/0xc40。随后程序返回 `failed to read sahara request from device`。
+QDL 未打印 `failed to write ... bytes to sahara`，但没有后续 END OF IMAGE、DONE、Firehose 配置或 ACK。签名不匹配是高优先级假说，但无明确设备 NAK/认证错误码；亦不能排除目标中止或 QUD 超时。
+本次不证明完整上传、签名通过、Firehose 运行、GPT/UFS 访问或解锁。`reset` Firehose 操作未执行。QDL 上游问题 https://github.com/linux-msm/qdl/issues/184 提示失败后可能需物理重新连接，先确认设备完整恢复 Android，再评估新尝试。
+
+状态：`EARLY_SAHARA_READ64_FAILURE / CAUSE_UNDETERMINED`。日志包含设备身份，仅保存在机主 PC / 会话，不纳入仓库。

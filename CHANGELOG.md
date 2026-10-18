@@ -2,6 +2,11 @@
 
 以下按阶段保存当时结论，历史条目中的“未安装/待测”不代表现在。当前状态统一见[STATUS](docs/STATUS.md)。
 
+## 2026-10-19 — Mannar A 早期 READ64 中断
+
+- QDL QUD/COM6 接收四次 Sahara image 13 READ64 请求，随后未取得下一条 Sahara 响应；未见 END OF IMAGE、DONE、Firehose 运行或存储访问。
+- 候选 PKHash 前缀不符，认证拒绝属于推测而不是已捕获的 NAK。分类 `EARLY_SAHARA_READ64_FAILURE / CAUSE_UNDETERMINED`；详见 EDL 实机专题。
+
 ## 2026-10-19 — P780 Windows QUD/Sahara 实机通信突破
 
 - 机主在 Windows 使用 QDL v2.8（官方 Windows x64 Release，程序自报 v2.8-dirty）通过 QUD/COM6 枚举 05c6:9008，并成功执行 Sahara v2 chipinfo；HWID/MSM/OEM/model 与六月早期记录一致，PKHash 前缀也吻合。
