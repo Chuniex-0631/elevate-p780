@@ -51,8 +51,8 @@
 ## Windows v1 离线签名工具包（已创建，待真实系统镜像实测）
 
 - 交付产物：会话附件 `P780-DSU-testroot-offline-tools-v1.zip`；**9769 bytes**，SHA-256 `189d3a4b6e92eea0cc21e24dfde29950a981b35bef72c6997925bcc26ee4dab6`。
-- `p780_dsu_resign_offline.py`：**12410B**，SHA-256 `7c98b90740189d3bdc403b6b47afa8e6b8cbcc869cc1347698b73dec8d223135`。仅依赖Python标准库+AOSP `avbtool.py`、Windows OpenSSL，在本机文件上做 AVB 原始签名公钥检查、签名前 `verify_image`、密钥导出和指纹校验、`make_vbmeta_image --include_descriptors_from_image` 、对预期VBMeta位置覆盖、前后完整范围SHA256一致性检查、最终 `verify_image --key`、纯文本审计报告。
-- `p780_dsu_resign_run.ps1`：**2742B（请以实际附件为准）**，SHA-256 `33fba5c210e007e27d001d503775b743388834c8071d65a1c5b8992d46f1cdf6`。只在PC验证前置条件、若缺失则从AOSP官方Gitiles下载公开的 `test/data/testkey_rsa4096.pem` 样例私钥（实际公钥指纹还会由Python再次强制确认），然后运行Python；无ADB、Fastboot、DSU安装、更新boot/vbmeta动作。
+- `p780_dsu_resign_offline.py`：**12630B**，SHA-256 `7c98b90740189d3bdc403b6b47afa8e6b8cbcc869cc1347698b73dec8d223135`。仅依赖Python标准库+AOSP `avbtool.py`、Windows OpenSSL，在本机文件上做 AVB 原始签名公钥检查、签名前 `verify_image`、密钥导出和指纹校验、`make_vbmeta_image --include_descriptors_from_image` 、对预期VBMeta位置覆盖、前后完整范围SHA256一致性检查、最终 `verify_image --key`、纯文本审计报告。
+- `p780_dsu_resign_run.ps1`：**2811B**，SHA-256 `33fba5c210e007e27d001d503775b743388834c8071d65a1c5b8992d46f1cdf6`。只在PC验证前置条件、若缺失则从AOSP官方Gitiles下载公开的 `test/data/testkey_rsa4096.pem` 样例私钥（实际公钥指纹还会由Python再次强制确认），然后运行Python；无ADB、Fastboot、DSU安装、更新boot/vbmeta动作。
 - 可验证输入：已完成上一轮的 `p780-gsi15-avb/system.img` 原始镜像（1899589632B），且原镜像的VBMeta offset=1899151360、size=2432、签名公钥SHA256=`e53f344beb2646b49651ea8dd336dbe75117183e96ef34beed4b367a4a0ae925`、Android15 fingerprint/SPL、rollback index 1743811200、原Hashtree salt/root digest均必须符合已上传原文；**如任一条件不符必须中止**。
 - 预期公钥：离线测试密钥所对应1032B AVB公钥SHA256=`7728e30f50bfa5cea165f473175a08803f6a8346642b5aa10913e9d9e6defef6`，与实机Bootloader Test Root摘要相同，但其在 **DSU first-stage Fstab可信keys中尚未证实**。
 - 操作：把ZIP解压进机主Windows原 `RakutenHand5G`工作目录，确保已有官方 `avbtool.py` 和 `p780-gsi15-avb/system.img`、安装Python+OpenSSL、磁盘≥3GiB，运行 `powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\\p780_dsu_resign_run.ps1"`。
