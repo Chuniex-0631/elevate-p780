@@ -47,6 +47,10 @@
 - `PK_HASH` 为 EDL 针对 OEM 验证公钥哈希的识别值，不是可以拿来签名的私钥；完整匹配信息保留在历史私有原文件库，仓库正文不包含设备独有序列号。
 - 工具提示需 `[FHPRG/ENPRG].bin` 匹配 Firehose loader；**未证实 Loader 可用、亦无 Firehose 读写成功**。
 
+## 2026-10-19 EDL 复测
+
+Windows QDL v2.8 使用 QUD 后端经 COM6 实机查询成功：Sahara version 2；HWID/MSM/OEM/model 与 2026-06-12 记录一致；PKHash 前缀亦匹配。原始完整 PKHash/设备序列号不入本页。此前 bkerler/edl v3.62 的 COM6 握手异常与 Firehose 验证失败不可混称；通用 Mannar Loader 候选 A 尚未上传或认证。详见[本轮报告](p780-qdl-qud-sahara-20261019.md)。
+
 ## 设备完整性原则
 
 不在缺少可还原官方镜像时进行 EDL GPT / ABL / XBL / VBMeta / RPMB / Keymaster 写入；不把三星 A52s 内核当 P780 的刷机文件。当前目标是保存已证实的数据，尚未获得 root 或解锁。

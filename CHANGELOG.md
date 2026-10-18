@@ -2,6 +2,14 @@
 
 以下按阶段保存当时结论，历史条目中的“未安装/待测”不代表现在。当前状态统一见[STATUS](docs/STATUS.md)。
 
+## 2026-10-19 — P780 Windows QUD/Sahara 实机通信突破
+
+- 机主在 Windows 使用 QDL v2.8（官方 Windows x64 Release，程序自报 v2.8-dirty）通过 QUD/COM6 枚举 05c6:9008，并成功执行 Sahara v2 chipinfo；HWID/MSM/OEM/model 与六月早期记录一致，PKHash 前缀也吻合。
+- bkerler/edl v3.62 串口模式初始 HELLO 未正常接收，错误地发送 Firehose XML NOP 后转入 Streaming/HDLC；机主对 seriallib 缩短读取长度的本地修补未解决。QDL v2.8 兼容 QUD 丢 HELLO 场景；旧错误不得称为候选 A 被拒。
+- 记录 Mannar 候选 A 的 MSM 匹配与 model/签名哈希前缀不匹配；截至本次更新**未上传 Loader、无 Firehose、无分区读写、无 Root/BL 解锁**。
+- 新增[专题](docs/research/p780-qdl-qud-sahara-20261019.md)，同步 STATUS、NEXT_STEPS、HISTORY、EVIDENCE_MANIFEST、设备页、导航、README；不将机主序列号或完整 PKHash 原件存入仓库。
+
+
 ## 2026-10-18 — 全库总结、当前状态收敛与native交叉分析
 
 - 审核整理前289文件的完整树、87份Markdown/Python/工作流内容；重写README、STATUS、NEXT_STEPS、文档导航与证据索引，消除B“未上机”、Attestation“待测”、SELinux“待取”等当前入口冲突。

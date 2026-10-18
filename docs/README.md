@@ -1,6 +1,6 @@
 # 文档导航
 
-当前主线是已有静态样本的交叉分析。DSU停止，Root/BL解锁未达成。状态以[STATUS](STATUS.md)为准，任务以[NEXT_STEPS](NEXT_STEPS.md)为准。
+当前主线包含已有静态样本交叉分析及单独重启的 EDL 通信/候选 Loader 受控实验。DSU停止，Root/BL解锁未达成。状态以[STATUS](STATUS.md)为准，任务以[NEXT_STEPS](NEXT_STEPS.md)为准。
 
 ## 当前入口
 
@@ -12,7 +12,7 @@
 |---|---|
 |采集覆盖与实现缺口|[清单审核](research/p780-static-corpus-inventory-20261018.md)、[batch1](research/p780-static-batch1-analysis-20261018.md)、[batch2](research/p780-static-batch2-analysis-20261018.md)|
 |接口、调用者与权限|[native交叉矩阵](research/p780-native-interface-crosscheck-20261018.md)、[SELinux审计](research/p780-policy-boundary-audit-20261018.md)|
-|硬件与启动状态|[设备/Fastboot/EDL](research/device-and-boot.md)、[AVB基线](research/avb-live-baseline-20261018.md)|
+|硬件与启动状态|[设备/Fastboot/EDL](research/device-and-boot.md)、[QDL QUD/Sahara 实机握手](research/p780-qdl-qud-sahara-20261019.md)、[AVB基线](research/avb-live-baseline-20261018.md)|
 |AVB信任钥匙|[本机硬件证明](research/avb-attestation-confirmed-20261018.md)、[fstab](research/p780-fstab-avb-20261018.md)、[官方公告与第三方报告](research/firmware-advisory-20260928.md)、[早期Attestation方案（已完成）](research/avb-attestation-alternative-20261018.md)|
 |DSU为何停止|[最终收束](research/p780-dsu-closure-maintenance-route-20261018.md)、[全部历史阶段索引](archive/dsu-index-20261018.md)|
 |固件/OTA证据|[固件概况](research/firmware-ota.md)、[Google Prober负面结果](research/google-ota-prober-p780-20261018.md)、[OTA日志分析](research/ota-log-audit.md)、[Bugreport来源](research/ota-bugreport.md)|

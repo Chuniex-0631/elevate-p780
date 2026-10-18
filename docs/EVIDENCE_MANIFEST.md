@@ -1,6 +1,6 @@
 # 证据资产与保存状态
 
-更新：2026-10-18。此页按资产组织，不再将每轮“待测”计划当资产重复追加。当前技术结论见 [STATUS](STATUS.md)；完整旧文件名、来源大小及阶段摘要保存在[冻结的历史账本](archive/evidence-ledger-before-consolidation-20261018.md)。
+更新：2026-10-19。此页按资产组织，不再将每轮“待测”计划当资产重复追加。当前技术结论见 [STATUS](STATUS.md)；完整旧文件名、来源大小及阶段摘要保存在[冻结的历史账本](archive/evidence-ledger-before-consolidation-20261018.md)。
 
 ## 保存等级
 
@@ -28,6 +28,14 @@
 - policy：`85f6d86d7d3d33ba940afacca6350527848ce07e29961ab92129ffcdb70a82a1`
 
 批次计数是文件条目数，不保证路径或内容互斥，不能相加称为去重后的完整固件。0文件的vendor/bin/vendor/lib64采集结果和空journey.factory.rc均不能用于不存在/无功能结论。
+
+## 2026-10-19 EDL 通信实测
+
+|资产|保存状态与边界|
+|---|---|
+|QDL v2.8 Windows x64 `list` / `chipinfo`|机主PC及当前会话日志；已核对 Sahara v2/HWID/PKHash 与 2026-06-12 记录一致；原始串号与完整 PKHash 未入Git。见[专题](research/p780-qdl-qud-sahara-20261019.md)|
+|bkerler/edl v3.62 COM6 NOP 失败日志|机主PC/会话终端文本，报告仅存脱敏阶段判断；`END_TRANSFER status 1` 后旧式 Streaming 卡住，不代表 Loader 签名拒绝|
+|Mannar 通用 Firehose 候选 A|第三方 GitHub 源码仓中的候选文件，匹配 MSM 但 model/PKHash 前缀不同；无上传和运行证据，二进制未入仓|
 
 ## AVB与已停止DSU实验
 
