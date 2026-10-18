@@ -1,5 +1,12 @@
 # P780 已定位研究文件总清单
 
+## 2026-10-18 第十七轮：v1.1 在 Windows 真正完成 test-root VBMeta-only重签与 AVB 验证
+
+- 收到机主当前会话三份原始审计小文件：`original-avb-info.txt` 1549B SHA256 `b7e4890bc061b2228d280bdbdd5a687db51ed9edfba403e10cec62293faa26e1`；`testroot-avb-info.txt` 1549B SHA256 `507e7622f1ec036c338d1c1204ad75e331c004668bd0e606758e790d55714b9a`；`P780-DSU-testroot-audit.txt` 2206B SHA256 `b8f6b9f836eb8b794650949cf3302bc95269c33b56be13c6ca04a1ff21f5774a`，助手独立读取原始bytes计算。仅这三份小报告上传当前聊天，**未上传完整1.9GB镜像至模型或Git**。
+- 本机脚本运行报告原镜像SHA256 `27321f9655530f014c884a690f49a53e6f3beeda71f4f27cbc141b17a8e86954`；候选测试根版SHA256 `fd98af142b11263e997adba190810c544857c7b750fd905a663e87256a71d880`。两次 `avbtool verify_image` 均明确成功，包括 footer/VBMeta RSA4096签名和整个 `system` 的 sha256 hashtree；原版Q Developer GSI公钥SHA256 `e53f344...`变成AOSP RSA4096测试根公钥SHA256 `7728e30f...`，后者与P780真实TEE认可 Boot Root公钥匹配。
+- AVB元数据28字段/属性独立对照，**只有签名公钥身份不同**；两份 descriptor **排列顺序**改变但数值/内容没改。总镜像1899589632B、VBMeta仅2432B在offset1899151360、系统文件数据1869524992B、FEC/Hashtree/RootDigest/Salt、SPL 2025-04-05、回滚index1743811200、Flags0均保持不变。v1.1源代码用前后分段SHA强制检查全部非VBMeta字节相同，并在验签通过后才出报告；这是**机主Windows脚本审计结论，助手没有完整多GB镜像再次计算哈希**。
+- 本轮只证实**电脑端能制作有效的测试根签名GSI**；没有安装/启动B组，未证明P780 first-stage standalone AVB会接受Root测试公钥。P780 fstab引用普通q/r/s GSI key路径而非Boot Root，此外还可能是DSU active slot/ImageManager map早退。文档 [第十七轮实证报告](research/p780-dsu-testroot-resign-verified-20261018.md)。
+
 ## 2026-10-18 第十六轮PC签名工具v1交付：仅换VBMeta、原Hashtree/FEC/文件系统不变（真实全镜像实验待机主执行）
 
 - 已生成会话附件 `P780-DSU-testroot-offline-tools-v1.zip`：9769B，SHA256 `189d3a4b6e92eea0cc21e24dfde29950a981b35bef72c6997925bcc26ee4dab6`，含 `p780_dsu_resign_offline.py` (12630B, SHA256 `7c98b90740189d3bdc403b6b47afa8e6b8cbcc869cc1347698b73dec8d223135`)、`p780_dsu_resign_run.ps1` (2811B, SHA256 `33fba5c210e007e27d001d503775b743388834c8071d65a1c5b8992d46f1cdf6`) 和中文说明；当前聊天可下载原件。**不含公开样例私钥本身，也不含多GB GSI镜像。**
