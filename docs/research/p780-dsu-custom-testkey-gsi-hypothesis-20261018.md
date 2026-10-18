@@ -60,3 +60,12 @@
 - 测试覆盖：工具Python语法检查通过，且用上一轮上传的真实 `system.img.avb-info.txt` 通过 metadata guard；以模拟AVB工具完成完整 `system.img` 仅VBMeta预定区域变化/签名调用/文件哈希/审计报告的端到端模拟。**未真实调用Google原版 `avbtool`+1.9GB镜像签名**，也未对Windows OpenSSL组合做真实兼容性测试。
 - 为什么不重新生成 Hashtree/FEC：官方 `avbtool add_hashtree_footer` 默认依赖外部 `fec` 工具生成FEC数据，而Windows环境不一定具备。如果只换独立AVB公钥且系统/verity树原样不变，正确做法可以只重签 `VBMeta`，保留原根摘要、Merkle tree和FEC以减少变量；并严格校验新旧所有非VBMeta字节相同。详见[AOSP avbtool 源码](https://android.googlesource.com/platform/external/avb/+/refs/heads/main/avbtool.py)。
 - **仍不证明设备兼容**：AOSP `fs_avb::IsPublicKeyMatching` 在Locked状态还会核对fstab/ramdisk允许的GSI公钥；即便此离线镜像能通过AVB签名自检，也不能直接宣称P780的Locked DSU会启动。
+
+
+## 2026-10-18 Windows 第一轮实测：缺少可调用 OpenSSL，v1.1 仅修复自动定位依赖
+
+机主 PowerShell 实测执行 `powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\p780_dsu_resign_run.ps1"`，在阶段 `[1/4] Checking prerequisites` 立即报 `OpenSSL CLI is not on PATH`，退出位置 v1 启动脚本第19行。**这是运行环境缺少可见 openssl.exe 的前置错误，不是 AVB、公钥、GSI 格式或镜像签名验证失败；脚本未执行签名、未修改 system.img、未对 P780 发起任何访问。**
+
+已创建并在本次会话提供 `P780-DSU-testroot-offline-tools-v1.1.zip`（**10708B**，SHA256 `467c36c5c89957a044c2ddcb2adfaf21ed180e797c965bf8db447878f3ff17e4`），以及仅包含启动器的 `p780_dsu_resign_run_v1.1.ps1`（**4582B**，SHA256 `9281f049cea91fbfc51720120593ae13040d3ad79662c5920454fac8a4031cf3`）。v1.1 仅修改 PowerShell 启动器：优先使用本机 PATH 已有 OpenSSL，然后探测 `C:\Program Files\Git\mingw64\bin`、`Git\usr\bin`、`C:\Program Files\OpenSSL-Win64\bin`及部分用户级Git安装位置；**实际执行候选 openssl version 并确认退出码为0** 才继续，仅修改临时进程 PATH。若都找不到则安全停止，提示 `winget install -e --id ShiningLight.OpenSSL.LTS.Light`，由机主自行安装。该包在官方Microsoft Winget 仓库可查，不涉及Root/Flash。有关Git内部PATH可能影响DLL优先级，调整只限脚本进程而不写入永久环境变量。
+
+**Python签名核心脚本无任何修改**：`p780_dsu_resign_offline.py`仍12630B，SHA256 `7c98b90740189d3bdc403b6b47afa8e6b8cbcc869cc1347698b73dec8d223135`；v1.1只涉及依赖检测及中文说明。修订ZIP CRC自检通过、Python核心语法检查通过；因执行容器没有原生Windows PowerShell/用户的OpenSSL环境，**还未在用户Windows真实环境完整测试v1.1发现过程，也仍未用1.9GB GSI做签名**。等待机主回传v1.1 OpenSSL版本、签名报告或下一处实际失败错误后再调整。
