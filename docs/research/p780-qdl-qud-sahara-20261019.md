@@ -49,3 +49,23 @@ QDL 未打印 `failed to write ... bytes to sahara`，但没有后续 END OF IMA
 2025-06-26 Reddit `r/datarecovery/1ll80dh` 与 `r/androidroot/1ll7jbb` 已有人公开报告相同 P780 HWID 和 PKHash 前缀，仍缺可用 loader；该内容是他人的第三方报告，不能当成本设备测试。
 
 下一步无需再对手机操作：用 [bkerler/edl fhloaderparse](https://github.com/bkerler/edl/blob/master/edlclient/Tools/fhloaderparse.py) 在 PC 上离线提取候选 Programmer 的签名证书链、HWID、PKHash；该脚本依签名格式选用 SHA-256 / SHA-384，不能把主机文件 SHA-256 当作 OEM PKHash。先筛选根证书哈希是否与 P780 设备匹配，再决定是否值得重复上传。
+
+### 候选 A 离线证书元数据复核（2026-10-19）
+
+机主运行 `python -m edlclient.Tools.fhloaderparse candidate-check candidate-parsed`，收到仅一条 `Duplicate: ...` 输出，说明签名解析已经成功，且与原 Loaders 数据库存在签名身份重复记录（不等同于已验证二进制逐字节相同）。原始 `P780-Firehose-offline-parse-v2.log` 为 UTF-16LE PowerShell 输出，保留在当前会话/机主 PC，未入 Git。
+
+| 字段 | 文件 A 内部解析结果 |
+|---|---|
+|文件长度|698440 字节|
+|OEM|Qualcomm|
+|MODEL|`0000`|
+|HWID|`0000000000000000`（解析器报告；不能仅凭全零推断厂商锁定策略）|
+|SWID|`0000000000000003`|
+|PK_HASH|`d9357db88795b5a8afaebfd9ab08a569cc8e519f6c689723759f4e6915ca3466e98b5a3282678bdf63673d8517bb0c5b`（96位十六进制，SHA-384 根证书摘要）|
+|OEMVER|`crm-ubuntu50`|
+|QCVER|`BOOT.XF.4.2-00269-MANNARLAZ-1`|
+|VAR|`MannarPkgLAB`|
+
+对照 P780 实机 OEM PKHash `c19a5029d659b034…`（完整值保留机主 PC），**根证书摘要不匹配**。内部签名 HWID 报告全零，与文件名的 `0016F0E100000000` 不同；文件名不是可靠的签名身份依据。根据认证信任根不匹配，**将 A 排除于下一轮优先实机测试名单**。先前四次 Sahara READ64 后断连仍没有设备端错误码，不能把“签名不匹配”与“本次断连原因已实机确证”划等号。
+
+下一步保持手机不操作；对候选 B `prog_firehose_lite.elf` 及其它不同 PKHash 候选进行同类离线证书提取，排除同根重复件，只有取得根摘要匹配并具可信来源的 programmer 才考虑重新制定实机实验。

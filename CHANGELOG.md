@@ -2,6 +2,12 @@
 
 以下按阶段保存当时结论，历史条目中的“未安装/待测”不代表现在。当前状态统一见[STATUS](docs/STATUS.md)。
 
+## 2026-10-19 — 候选 A 离线签名身份确认
+
+- 机主成功通过 `fhloaderparse` 解析 698440B Mannar 候选 A：OEM Qualcomm、MODEL 0000、解析 HWID 全零、SWID 3、QCVER `BOOT.XF.4.2-00269-MANNARLAZ-1`、VAR `MannarPkgLAB`；根 PKHash `d9357db8…` 与 P780 `c19a5029…` 不匹配。
+- `Duplicate` 属原 Loader 数据库内签名身份重复识别，不代表原始文件损坏。内部 HWID 与文件名不能混同。该候选不再建议再次上机；四次 READ64 中断仍未取得设备端认证错误码，不能宣称已经证明断连根因。
+- 更新专题、STATUS、NEXT_STEPS、EVIDENCE_MANIFEST。机主原始设备日志不入仓。
+
 ## 2026-10-19 — 设备恢复与离线 Loader 来源排查
 
 - 机主确认 QDL 传输失败后 ADB 设备在线，`sys.boot_completed=1`；设备已正常启动原厂 Android。没有由此声称 Firehose 成功。

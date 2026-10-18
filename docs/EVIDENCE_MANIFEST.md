@@ -35,7 +35,7 @@
 |---|---|
 |QDL v2.8 Windows x64 `list` / `chipinfo`|机主PC及当前会话日志；已核对 Sahara v2/HWID/PKHash 与 2026-06-12 记录一致；原始串号与完整 PKHash 未入Git。见[专题](research/p780-qdl-qud-sahara-20261019.md)|
 |bkerler/edl v3.62 COM6 NOP 失败日志|机主PC/会话终端文本，报告仅存脱敏阶段判断；`END_TRANSFER status 1` 后旧式 Streaming 卡住，不代表 Loader 签名拒绝|
-|Mannar 通用 Firehose 候选 A|第三方 GitHub 源码仓中的候选文件，匹配 MSM 但 model/PKHash 前缀不同；实机已请求4段 Sahara READ64 后通信失败，未完成认证或 Firehose 启动；原始日志只在机主PC/会话，二进制未入仓|
+|Mannar 通用 Firehose 候选 A|第三方 GitHub 源码仓中的候选文件，匹配 MSM 但 model/PKHash 前缀不同；实机已请求4段 Sahara READ64 后通信失败，未完成认证或 Firehose 启动；原始日志只在机主PC/会话，二进制未入仓；同日离线解析获得 Qualcomm/MODEL=0000/HWID=全零/VAR=MannarPkgLAB，根证书 PKHash=`d9357db8…`（与本机不符），详见专题|
 
 ## AVB与已停止DSU实验
 
