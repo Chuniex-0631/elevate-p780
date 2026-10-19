@@ -1,0 +1,12 @@
+{
+  "checks": {
+    "identity": "passed",
+    "one_avtab_datum_change_detected": "passed",
+    "attribute_bitmap_change_detected": "passed",
+    "truncated_rejected": "passed",
+    "changed_symbol_prefix_rejected": "passed",
+    "header_difference_retained": "passed"
+  },
+  "scope": "Custom pair-specific comparator checks, not independent SETools validation"
+}
+

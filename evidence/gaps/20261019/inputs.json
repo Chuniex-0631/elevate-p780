@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-19",
+  "timezone": "Asia/Shanghai",
+  "files": [
+    {
+      "name": "running-policy.bin",
+      "size": 881104,
+      "sha256": "a4d6851e984a0232dea7cbabbf600f87eeb74b94005a260ecbbca756bcad1409",
+      "preservation": "owner PC original; not original bytes in Git"
+    },
+    {
+      "name": "disk-precompiled-policy",
+      "size": 881104,
+      "sha256": "77f077d8c95b38929aed0434c9c56ca6158c24d90c169ee2644d490684111b79",
+      "preservation": "owner PC original; not original bytes in Git"
+    },
+    {
+      "name": "current-config.gz",
+      "size": 39170,
+      "sha256": "0ff9cbb1844e043e1211b527509f5f435862cace25649bab6641d5d62c7bbce0",
+      "preservation": "owner PC original; not original bytes in Git"
+    },
+    {
+      "name": "historical-config.gz",
+      "size": 39170,
+      "sha256": "0ff9cbb1844e043e1211b527509f5f435862cace25649bab6641d5d62c7bbce0",
+      "preservation": "owner PC original; not original bytes in Git"
+    },
+    {
+      "name": "journey.factory.rc",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "preservation": "owner PC original; not original bytes in Git"
+    }
+  ],
+  "config_matches_historical_bytes": true,
+  "config_selected_lines": [
+    "CONFIG_IKHEADERS=y",
+    "CONFIG_KALLSYMS=y",
+    "CONFIG_KALLSYMS_ALL=y",
+    "CONFIG_KALLSYMS_BASE_RELATIVE=y",
+    "CONFIG_BPF_SYSCALL=y",
+    "CONFIG_PERF_EVENTS=y",
+    "# CONFIG_DEBUG_INFO_BTF is not set"
+  ],
+  "scope": "Only selected outputs and analysis are committed; no claim of full policy originals stored in Git."
+}
+

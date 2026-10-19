@@ -1,27 +1,30 @@
-# 下一步研究计划
+# ��һ���о��ƻ�
 
-更新：2026-10-19。只保留当前任务；事实与完成项见 [STATUS](STATUS.md)。DSU停止，Root/BL解锁未达成。2026-10-19 已按机主新要求重启独立的 EDL 兼容性实验；实验须逐阶段限制为最小操作。
+���£�2026-10-19��ֻ������ǰ������ʵ�������� [STATUS](STATUS.md)��DSUֹͣ��Root/BL����δ��ɡ�2026-10-19 �Ѱ�������Ҫ������������ EDL ������ʵ�飻ʵ������׶�����Ϊ��С������
 
-|优先级|任务|进入条件与交付物|完成或停止条件|
+|���ȼ�|����|���������뽻����|��ɻ�ֹͣ����|
 |---|---|---|---|
-|已完成阶段|OEMLOCK-01已定位；OEMLOCK-02现有语料内未找到路径|296份去重APK/JAR中6个直接调用点，唯一应用层true来自Settings内部确认链；管理权限为signature/privileged。见[OEMLOCK-02调用者边界](research/p780-oemlock-caller-boundary-20261019.md)|停止重复扫描与上机尝试。只有新增组件/服务端原件可补齐明确入口链才重开；不执行setter、不改启动属性、不写FRP。|
-|已完成阶段|NATIVE-01运行端点与诊断Java/JNI交叉|本轮已核对诊断应用16方法、JNI真实CFI实现、启动失败日志、共享UID权限及运行标签。见[报告](research/p780-native-live-endpoints-20261019.md)|不再把该APK作为可用OEM代理；没有导出命令入口，启动时HIDL连接失败。不要以启动服务或重发命令试错。|
-|1（条件候选）|NATIVE-02 Journey root诊断服务 / init builtin实现|两项root服务已确认running；仅在取得同构建可信init/诊断服务端原件或对应源码后，核对debug_prop动作、参数约束与调用者身份|实现取得分支BLOCKED；既有及本轮vendor读取Permission denied不重复尝试，不设置属性、不连socket、不将running推为分区写能力|
-|2|核对尚未取得原件的价值|先核对PC现有清单和已上传范围；只有明确能补齐具体调用链时再提最小增量材料|不重复要求已被Permission denied拒绝的init/Journey/gsid文件；不把未取得内容判为不存在|
-|3|可信同型号固件或源码新证据|新原厂材料需型号、构建、来源、哈希；源码回复需对应 `_162` 与5.4.233说明|能验证来源才离线检查boot/vbmeta/内核；不以A52s或旧TINNO树替代本机|
-|EDL受控实验|QDL v2.8 已在 QUD/COM6 成功返回 Sahara v2 身份信息；候选 A 已实机经历4次 READ64，随后读取下一条 Sahara 包失败，未取得 END OF IMAGE、DONE 或 Firehose；机主已确认恢复 Android；五个本地候选均离线证书排查完成、三组根 PKHash 都不匹配，暂停实机试错；继续查找可信同型号原厂签名 programmer。见[实测与实验边界](research/p780-qdl-qud-sahara-20261019.md)|以 EARLY_SAHARA_READ64_FAILURE / CAUSE_UNDETERMINED 标记并停止无差异重试；不得用握手成功推断 Root/解锁/写权限。|
-|条件分支|GhostLock恢复研究|取得运行内核修补状态、可信二进制/符号/类型布局，能核验本机构建身份|当前BLOCKED；不运行跨机型payload，不用候选布局估算偏移|
+|����ɽ׶�|OEMLOCK-01�Ѷ�λ��OEMLOCK-02����������δ�ҵ�·��|296��ȥ��APK/JAR��6��ֱ�ӵ��õ㣬ΨһӦ�ò�true����Settings�ڲ�ȷ����������Ȩ��Ϊsignature/privileged����[OEMLOCK-02�����߽߱�](research/p780-oemlock-caller-boundary-20261019.md)|ֹͣ�ظ�ɨ�����ϻ����ԡ�ֻ���������/�����ԭ���ɲ�����ȷ��������ؿ�����ִ��setter�������������ԡ���дFRP��|
+|����ɽ׶�|NATIVE-01���ж˵������Java/JNI����|�����Ѻ˶����Ӧ��16������JNI��ʵCFIʵ�֡�����ʧ����־������UIDȨ�޼����б�ǩ����[����](research/p780-native-live-endpoints-20261019.md)|���ٰѸ�APK��Ϊ����OEM������û�е���������ڣ�����ʱHIDL����ʧ�ܡ���Ҫ������������ط������Դ���|
+|����ɽ׶�|GAP-01����policy/config/���ļ���ʵ|����policy�ѵ������޶�v30��¼�Ƚ���ODM����/��������ͬ��config.gz�������һ�£�journey.factory.rcȷΪ�ա���[GAP-01](research/p780-evidence-gap-audit-20261019.md)|�ں�notes/kheaders/kallsyms������sysctl�Ѳ���Ϊ�ܾ������ظ���Ϊ��ִ�У�perf=-1����Ϊ��������|
+|�������ߺ���|��PC����policy������SETools����Ƚϲ�����header config����|ԭ��λ�ڻ���PC 12-evidence-gaps/running-policy.bin ���ODM precompiled����ǰWindowsδ���ÿ���WSL���������о����԰�װ|�޶���¼�Ƚ��Ѿ���ɣ�����ʵ�ֿ��ú󸴺ˣ����ظ������ֻ�������������36�����|
+|1��������ѡ��|NATIVE-02 Journey root��Ϸ��� / init builtinʵ��|����root������ȷ��running������ȡ��ͬ��������init/��Ϸ����ԭ�����ӦԴ��󣬺˶�debug_prop����������Լ�������������|ʵ��ȡ�÷�֧BLOCKED�����м�����vendor��ȡPermission denied���ظ����ԣ����������ԡ�����socket������running��Ϊ����д����|
+|2|�˶���δȡ��ԭ���ļ�ֵ|�Ⱥ˶�PC�����嵥�����ϴ���Χ��ֻ����ȷ�ܲ�����������ʱ������С��������|���ظ�Ҫ���ѱ�Permission denied�ܾ���init/Journey/gsid�ļ�������δȡ��������Ϊ������|
+|3|����ͬ�ͺŹ̼���Դ����֤��|��ԭ���������ͺš���������Դ����ϣ��Դ��ظ����Ӧ `_162` ��5.4.233˵��|����֤��Դ�����߼��boot/vbmeta/�ںˣ�����A52s���TINNO���������|
+|EDL�ܿ�ʵ��|QDL v2.8 ���� QUD/COM6 �ɹ����� Sahara v2 ������Ϣ����ѡ A ��ʵ������4�� READ64������ȡ��һ�� Sahara ��ʧ�ܣ�δȡ�� END OF IMAGE��DONE �� Firehose��������ȷ�ϻָ� Android��������غ�ѡ������֤���Ų���ɡ������ PKHash ����ƥ�䣬��ͣʵ���Դ����������ҿ���ͬ�ͺ�ԭ��ǩ�� programmer����[ʵ����ʵ��߽�](research/p780-qdl-qud-sahara-20261019.md)|�� EARLY_SAHARA_READ64_FAILURE / CAUSE_UNDETERMINED ��ǲ�ֹͣ�޲������ԣ����������ֳɹ��ƶ� Root/����/дȨ�ޡ�|
+|������֧|GhostLock�ָ��о�|ȡ�������ں��޲�״̬�����Ŷ�����/����/���Ͳ��֣��ܺ��鱾����������|��ǰBLOCKED�������п����payload�����ú�ѡ���ֹ���ƫ��|
 
-## 已结束或暂缓，不重复列为待办
+## �ѽ������ݻ������ظ���Ϊ����
 
-- Attestation公钥身份、fstab读取、Google OTA同指纹查询、A/B离线验签、B上机回退和SELinux配套摘要核对均已完成相应阶段。
-- DSU：按机主决策停止安装、Restart、改签名和参数试错。仅保留[收束与证据](research/p780-dsu-closure-maintenance-route-20261018.md)。回退根因未知。
-- 工程APK/菜单、Journey网络配置与应用保活消费者已审查，无新证据不重开同一路线。
-- 不重新穷举getprop、猜OTA指纹或无记录地随机Firehose；不催发厂商邮件、不主动联系Rakuten。
-- 当前所选shell/普通应用域未见diag/QSEE发现权限及目标设备节点/ssgtzd权限，先保留权限矩阵，不尝试直接服务请求。
+- Attestation��Կ���ݡ�fstab��ȡ��Google OTAָͬ�Ʋ�ѯ��A/B������ǩ��B�ϻ����˺�SELinux����ժҪ�˶Ծ��������Ӧ�׶Ρ�
+- DSU������������ֹͣ��װ��Restart����ǩ���Ͳ����Դ���������[������֤��](research/p780-dsu-closure-maintenance-route-20261018.md)�����˸���δ֪��
+- ����APK/�˵���Journey����������Ӧ�ñ�������������飬����֤�ݲ��ؿ�ͬһ·�ߡ�
+- ���������getprop����OTAָ�ƻ��޼�¼�����Firehose�����߷������ʼ�����������ϵRakuten��
+- ��ǰ��ѡshell/��ͨӦ����δ��diag/QSEE����Ȩ�޼�Ŀ���豸�ڵ�/ssgtzdȨ�ޣ��ȱ���Ȩ�޾��󣬲�����ֱ�ӷ�������
 
-## 推进标准
+## �ƽ���׼
 
-新结论必须包含输入身份、直接观察、分析推断、反证与缺口。只有拿到具体实现和权限证据，才设计下一阶段最小验证；现阶段不设置工程属性、不发诊断socket命令、不写misc/boot/vbmeta；单独 EDL 测试可能涉及重启，须明确设备风险。
+�½��۱�������������ݡ�ֱ�ӹ۲졢�����ƶϡ���֤��ȱ�ڡ�ֻ���õ�����ʵ�ֺ�Ȩ��֤�ݣ��������һ�׶���С��֤���ֽ׶β����ù������ԡ��������socket�����дmisc/boot/vbmeta������ EDL ���Կ����漰����������ȷ�豸���ա�
 
-每个实质阶段同步专题、STATUS、EVIDENCE_MANIFEST与CHANGELOG；README只保留摘要。自动监测/邮件任务状态须单独核对，仓库文字不替代运行状态。旧计划见[历史计划](archive/next-steps-before-dsu-20261018.md)与[DSU历史索引](archive/dsu-index-20261018.md)。
+ÿ��ʵ�ʽ׶�ͬ��ר�⡢STATUS��EVIDENCE_MANIFEST��CHANGELOG��READMEֻ����ժҪ���Զ����/�ʼ�����״̬�뵥���˶ԣ��ֿ����ֲ��������״̬���ɼƻ���[��ʷ�ƻ�](archive/next-steps-before-dsu-20261018.md)��[DSU��ʷ����](archive/dsu-index-20261018.md)��
+

@@ -1,0 +1,226 @@
+[
+  {
+    "label": "device-state",
+    "args": [
+      "get-state"
+    ],
+    "started_utc": "2026-10-19T14:01:06.927414+00:00",
+    "exit_code": 0,
+    "stdout": "device\n",
+    "stderr": ""
+  },
+  {
+    "label": "kernel-release",
+    "args": [
+      "shell",
+      "uname",
+      "-r"
+    ],
+    "started_utc": "2026-10-19T14:01:06.953051+00:00",
+    "exit_code": 0,
+    "stdout": "5.4.233-qgki-gea5245e94afe-dirty\n",
+    "stderr": ""
+  },
+  {
+    "label": "kernel-version",
+    "args": [
+      "shell",
+      "cat",
+      "/proc/version"
+    ],
+    "started_utc": "2026-10-19T14:01:07.052261+00:00",
+    "exit_code": 0,
+    "stdout": "Linux version 5.4.233-qgki-gea5245e94afe-dirty (android@HTSVR18) (Android (6877366 based on r383902b1) clang version 11.0.2 (https://android.googlesource.com/toolchain/llvm-project b397f81060ce6d701042b782172ed13bee898b79), LLD 11.0.2 (https://android.googlesource.com/toolchain/llvm-project b397f81060ce6d701042b782172ed13bee898b79)) #1 SMP PREEMPT Tue Feb 20 18:01:03 CST 2024\n",
+    "stderr": ""
+  },
+  {
+    "label": "kernel-notes-metadata",
+    "args": [
+      "shell",
+      "ls",
+      "-l",
+      "/sys/kernel/notes"
+    ],
+    "started_utc": "2026-10-19T14:01:07.142206+00:00",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "ls: /sys/kernel/notes: Permission denied\n"
+  },
+  {
+    "label": "kheaders-metadata",
+    "args": [
+      "shell",
+      "ls",
+      "-l",
+      "/sys/kernel/kheaders.tar.xz"
+    ],
+    "started_utc": "2026-10-19T14:01:07.225833+00:00",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "ls: /sys/kernel/kheaders.tar.xz: Permission denied\n"
+  },
+  {
+    "label": "btf-directory",
+    "args": [
+      "shell",
+      "ls",
+      "-ld",
+      "/sys/kernel/btf"
+    ],
+    "started_utc": "2026-10-19T14:01:07.307138+00:00",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "ls: /sys/kernel/btf: No such file or directory\n"
+  },
+  {
+    "label": "kallsyms-sample",
+    "args": [
+      "shell",
+      "head",
+      "-n",
+      "3",
+      "/proc/kallsyms"
+    ],
+    "started_utc": "2026-10-19T14:01:07.386581+00:00",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "head: /proc/kallsyms: Permission denied\n"
+  },
+  {
+    "label": "kptr-restrict",
+    "args": [
+      "shell",
+      "cat",
+      "/proc/sys/kernel/kptr_restrict"
+    ],
+    "started_utc": "2026-10-19T14:01:07.466218+00:00",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "cat: /proc/sys/kernel/kptr_restrict: Permission denied\n"
+  },
+  {
+    "label": "dmesg-restrict",
+    "args": [
+      "shell",
+      "cat",
+      "/proc/sys/kernel/dmesg_restrict"
+    ],
+    "started_utc": "2026-10-19T14:01:07.545822+00:00",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "cat: /proc/sys/kernel/dmesg_restrict: Permission denied\n"
+  },
+  {
+    "label": "bpf-restriction",
+    "args": [
+      "shell",
+      "cat",
+      "/proc/sys/kernel/unprivileged_bpf_disabled"
+    ],
+    "started_utc": "2026-10-19T14:01:07.625728+00:00",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "cat: /proc/sys/kernel/unprivileged_bpf_disabled: Permission denied\n"
+  },
+  {
+    "label": "perf-restriction",
+    "args": [
+      "shell",
+      "cat",
+      "/proc/sys/kernel/perf_event_paranoid"
+    ],
+    "started_utc": "2026-10-19T14:01:07.704582+00:00",
+    "exit_code": 0,
+    "stdout": "-1\n",
+    "stderr": ""
+  },
+  {
+    "label": "modules-disabled",
+    "args": [
+      "shell",
+      "cat",
+      "/proc/sys/kernel/modules_disabled"
+    ],
+    "started_utc": "2026-10-19T14:01:07.784664+00:00",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "cat: /proc/sys/kernel/modules_disabled: Permission denied\n"
+  },
+  {
+    "label": "factory-rc-metadata",
+    "args": [
+      "shell",
+      "ls",
+      "-l",
+      "/system/etc/init/journey.factory.rc"
+    ],
+    "started_utc": "2026-10-19T14:01:07.864997+00:00",
+    "exit_code": 0,
+    "stdout": "-rw-r--r-- 1 root root 0 2009-01-01 08:00 /system/etc/init/journey.factory.rc\n",
+    "stderr": ""
+  },
+  {
+    "label": "kernel-notes",
+    "args": [
+      "pull",
+      "/sys/kernel/notes",
+      "<CAPTURE_DIR>\\kernel-notes.bin"
+    ],
+    "started_utc": "2026-10-19T14:01:07.952781+00:00",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "adb: error: failed to stat remote object '/sys/kernel/notes': Permission denied\n"
+  },
+  {
+    "label": "current-config",
+    "args": [
+      "pull",
+      "/proc/config.gz",
+      "<CAPTURE_DIR>\\current-config.gz"
+    ],
+    "started_utc": "2026-10-19T14:01:07.990890+00:00",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "/proc/config.gz: 1 file pulled, 0 skipped. 8.9 MB/s (39170 bytes in 0.004s)\n",
+    "file": {
+      "name": "current-config.gz",
+      "size": 39170,
+      "sha256": "0ff9cbb1844e043e1211b527509f5f435862cace25649bab6641d5d62c7bbce0"
+    }
+  },
+  {
+    "label": "running-policy",
+    "args": [
+      "pull",
+      "/sys/fs/selinux/policy",
+      "<CAPTURE_DIR>\\running-policy.bin"
+    ],
+    "started_utc": "2026-10-19T14:01:08.047550+00:00",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "/sys/fs/selinux/policy: 1 file pulled, 0 skipped. 16.1 MB/s (881104 bytes in 0.052s)\n",
+    "file": {
+      "name": "running-policy.bin",
+      "size": 881104,
+      "sha256": "a4d6851e984a0232dea7cbabbf600f87eeb74b94005a260ecbbca756bcad1409"
+    }
+  },
+  {
+    "label": "factory-rc",
+    "args": [
+      "pull",
+      "/system/etc/init/journey.factory.rc",
+      "<CAPTURE_DIR>\\journey.factory.rc"
+    ],
+    "started_utc": "2026-10-19T14:01:08.148714+00:00",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "/system/etc/init/journey.factory.rc: 1 file pulled, 0 skipped.\n",
+    "file": {
+      "name": "journey.factory.rc",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+]
+

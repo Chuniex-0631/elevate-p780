@@ -1,0 +1,259 @@
+{
+  "live": {
+    "size": 881104,
+    "sha256": "a4d6851e984a0232dea7cbabbf600f87eeb74b94005a260ecbbca756bcad1409",
+    "header": {
+      "version": 30,
+      "config": "0x1",
+      "config_offset": 20
+    }
+  },
+  "disk": {
+    "size": 881104,
+    "sha256": "77f077d8c95b38929aed0434c9c56ca6158c24d90c169ee2644d490684111b79",
+    "header": {
+      "version": 30,
+      "config": "0x80000001",
+      "config_offset": 20
+    }
+  },
+  "binary_equal": false,
+  "prefix_equal_except_config": true,
+  "avtab_offset": 153090,
+  "sections": {
+    "unconditional_avtab": {
+      "live": {
+        "records": 45391,
+        "offset": 153090,
+        "end": 718636
+      },
+      "disk": {
+        "records": 45391,
+        "offset": 153090,
+        "end": 718636
+      },
+      "record_multiset_equal": true,
+      "only_live": 0,
+      "only_disk": 0
+    },
+    "conditional_rules": {
+      "live": {
+        "records": 0,
+        "offset": 718636,
+        "end": 718640
+      },
+      "disk": {
+        "records": 0,
+        "offset": 718636,
+        "end": 718640
+      },
+      "record_multiset_equal": true,
+      "only_live": 0,
+      "only_disk": 0
+    },
+    "role_transitions": {
+      "live": {
+        "records": 0,
+        "offset": 718640,
+        "end": 718644
+      },
+      "disk": {
+        "records": 0,
+        "offset": 718640,
+        "end": 718644
+      },
+      "record_multiset_equal": true,
+      "only_live": 0,
+      "only_disk": 0
+    },
+    "role_allows": {
+      "live": {
+        "records": 0,
+        "offset": 718644,
+        "end": 718648
+      },
+      "disk": {
+        "records": 0,
+        "offset": 718644,
+        "end": 718648
+      },
+      "record_multiset_equal": true,
+      "only_live": 0,
+      "only_disk": 0
+    },
+    "filename_transitions": {
+      "live": {
+        "records": 5,
+        "offset": 718648,
+        "end": 718809
+      },
+      "disk": {
+        "records": 5,
+        "offset": 718648,
+        "end": 718809
+      },
+      "record_multiset_equal": true,
+      "only_live": 0,
+      "only_disk": 0
+    },
+    "ocontext_0": {
+      "live": {
+        "records": 27,
+        "offset": 718809,
+        "end": 719785
+      },
+      "disk": {
+        "records": 27,
+        "offset": 718809,
+        "end": 719785
+      },
+      "record_multiset_equal": true,
+      "only_live": 0,
+      "only_disk": 0
+    },
+    "ocontext_1": {
+      "live": {
+        "records": 0,
+        "offset": 719785,
+        "end": 719789
+      },
+      "disk": {
+        "records": 0,
+        "offset": 719785,
+        "end": 719789
+      },
+      "record_multiset_equal": true,
+      "only_live": 0,
+      "only_disk": 0
+    },
+    "ocontext_2": {
+      "live": {
+        "records": 0,
+        "offset": 719789,
+        "end": 719793
+      },
+      "disk": {
+        "records": 0,
+        "offset": 719789,
+        "end": 719793
+      },
+      "record_multiset_equal": true,
+      "only_live": 0,
+      "only_disk": 0
+    },
+    "ocontext_3": {
+      "live": {
+        "records": 0,
+        "offset": 719793,
+        "end": 719797
+      },
+      "disk": {
+        "records": 0,
+        "offset": 719793,
+        "end": 719797
+      },
+      "record_multiset_equal": true,
+      "only_live": 0,
+      "only_disk": 0
+    },
+    "ocontext_4": {
+      "live": {
+        "records": 0,
+        "offset": 719797,
+        "end": 719801
+      },
+      "disk": {
+        "records": 0,
+        "offset": 719797,
+        "end": 719801
+      },
+      "record_multiset_equal": true,
+      "only_live": 0,
+      "only_disk": 0
+    },
+    "ocontext_5": {
+      "live": {
+        "records": 19,
+        "offset": 719801,
+        "end": 720674
+      },
+      "disk": {
+        "records": 19,
+        "offset": 719801,
+        "end": 720674
+      },
+      "record_multiset_equal": true,
+      "only_live": 0,
+      "only_disk": 0
+    },
+    "ocontext_6": {
+      "live": {
+        "records": 0,
+        "offset": 720674,
+        "end": 720678
+      },
+      "disk": {
+        "records": 0,
+        "offset": 720674,
+        "end": 720678
+      },
+      "record_multiset_equal": true,
+      "only_live": 0,
+      "only_disk": 0
+    },
+    "genfs_contexts": {
+      "live": {
+        "records": 849,
+        "offset": 720678,
+        "end": 792924
+      },
+      "disk": {
+        "records": 849,
+        "offset": 720678,
+        "end": 792924
+      },
+      "record_multiset_equal": true,
+      "only_live": 0,
+      "only_disk": 0
+    },
+    "range_transitions": {
+      "live": {
+        "records": 0,
+        "offset": 792924,
+        "end": 792928
+      },
+      "disk": {
+        "records": 0,
+        "offset": 792924,
+        "end": 792928
+      },
+      "record_multiset_equal": true,
+      "only_live": 0,
+      "only_disk": 0
+    },
+    "ordered_type_attribute_bitmaps": {
+      "live": {
+        "records": 1,
+        "offset": 792928,
+        "end": 881104,
+        "bitmap_count": 2437
+      },
+      "disk": {
+        "records": 1,
+        "offset": 792928,
+        "end": 881104,
+        "bitmap_count": 2437
+      },
+      "record_multiset_equal": true,
+      "only_live": 0,
+      "only_disk": 0
+    }
+  },
+  "all_compared_records_equal": true,
+  "limitations": [
+    "Pair-specific v30 parser with externally audited AVTAB offset; not a general binary-policy reader.",
+    "Header config difference is retained and not silently treated as semantically irrelevant.",
+    "No independent SETools semantic diff or live access operation was performed."
+  ]
+}
+
