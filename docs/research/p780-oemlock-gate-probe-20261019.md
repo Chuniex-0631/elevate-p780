@@ -32,3 +32,8 @@ adb shell dumpsys device_policy | Select-String 'no_factory_reset|no_oem_unlock|
 - 无上述限制但灰色：仅将 P780 Settings 厂商修改列为后续离线审计方向；不能从缺席信息肯定否定某层。
 
 **禁止本阶段**：`service call oem_lock`、Binder 任意事务、设置解锁标志、改 FRP/持久数据块、重刷、EDL/DSU 重试。尤其 AOSP `isOemUnlockAllowed()` 所谓读接口可能同步写 persistent data block OEM Unlock 标志，因此不能用猜事务号的方法读取。即使判定灰色原因，也不代表 `fastboot flashing unlock` 会由 unknown command 变为支持。
+
+
+## 离线阶段完成（2026-10-19）
+
+已定位服务carrier查询的Journey customer gate，见[新报告](p780-oemlock-journey-gate-20261019.md)。前述命令仅供历史审计，不重复采集。当前下一步为OEMLOCK-02权限及调用者离线核查，不执行setter或综合查询。

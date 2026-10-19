@@ -11,6 +11,10 @@
 |机主PC/会话原件|已用于分析或由机主报告，但未将原件放入Git|
 |未取得|没有可信原件；文件名、路径、错误日志不代替内容|
 
+## OEMLOCK-01 新增离线证据（2026-10-19）
+
+Settings/framework/services三个PC原件重新计算SHA，Settings匹配旧manifest，后两者匹配DSU专题；大原件留PC。[输入清单](../evidence/oemlock/20261019/manifest.json)、[15方法原始指令/反汇编](../evidence/oemlock/20261019/focused-methods.json)、[历史属性脱敏选行](../evidence/oemlock/20261019/property-excerpts.json)进入Git。全量目标解码114方法，仅提交关键15方法；长度覆盖检查通过，不等于完整调用图或运行内存验证。见[Journey gate离线定位](research/p780-oemlock-journey-gate-20261019.md)。
+
 ## 当前静态样本
 
 |资产|核验结果|Git保存范围|

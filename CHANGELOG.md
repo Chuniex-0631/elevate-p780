@@ -2,6 +2,13 @@
 
 以下按阶段保存当时结论，历史条目中的“未安装/待测”不代表现在。当前状态统一见[STATUS](docs/STATUS.md)。
 
+## 2026-10-19 — OEMLOCK-01 Journey customer gate 定位
+
+- 重算Settings/framework/services原件SHA，离线解码114目标方法，保存15关键方法的字节、偏移、SHA和反汇编。
+- Settings相关分支与AOSP一致；厂商OemLockService carrier getter额外要求 !IS_CUSTOMER_VERSION，framework从ro.boot.journey.customer初始化；两份历史同fingerprint快照为1，解释PDB/无用户限制但灰色。
+- getter/setter检查不一致列为OEMLOCK-02静态候选；系统权限仍拦截shell，无已证实普通调用者路径、无解锁/Root。记录上一轮综合查询与只读协议偏差及前置权限异常；本轮不访问手机。
+- 同步STATUS、NEXT_STEPS、EVIDENCE_MANIFEST和[专题](docs/research/p780-oemlock-journey-gate-20261019.md)。
+
 ## 2026-10-19 — OEMLOCK-01 第三阶段用户限制排除、Settings 包定位
 
 - 实机当前用户为0；其 Restrictions:none、device policy global:null、local:none、effective:none；Guest 限制不混同于用户0限制。

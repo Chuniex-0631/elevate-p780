@@ -60,3 +60,8 @@ adb shell dumpsys user | Select-String 'Restrictions:|no_factory_reset|no_oem_un
 **分析**：进一步排除 Android 用户0 的 AOSP 基础 `DISALLOW_OEM_UNLOCK` / `DISALLOW_FACTORY_RESET` 为灰色开关的直接原因。已确认 PDB 后端、且用户0无相关限制仍显示 carrier/connectivity 文案，值得对**厂商实际 Settings.apk 的控制器方法**做离线实现审查。系统自定义、缓存状态和 AOSP API 与设备实现差异尚不明确；不能认定已形成解锁旁路。
 
 **本机资料状态变化**：机主报告原 `Documents/P780-EDL` 工作目录已清理；因此之前指向该目录的 Python/loader 路径不再有效。当前所在 `Desktop/RakutenHand5G`，可以在此重新建立最小只读工作区，从已连接设备 `adb pull /system_ext/priv-app/Settings/Settings.apk` 提取原厂 APK，并先核对 SHA256 / DEX。需要保持原始文件只读，禁止写入/重启/改 OEM unlock 状态；如果使用 Windows ChatGPT 桌面 Work/Codex 本地模式，须由机主授予相应文件夹/终端访问权限，浏览器聊天不能自动操纵电脑。
+
+
+## 第三阶段离线审计完成：Journey customer gate 已定位
+
+后续已核对原件SHA并定位服务端新增判断；旧文中“尚未审计/待取得”属于当时阶段。见[离线报告](p780-oemlock-journey-gate-20261019.md)。当前结论为静态根因已定位、历史属性支持；没有解锁或可达写入入口。

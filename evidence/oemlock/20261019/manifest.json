@@ -1,0 +1,17 @@
+[
+  {
+    "file": "Settings.apk",
+    "size": 65392240,
+    "sha256": "5e44d4f396b4be7e061df6269984caf15da2fa2e5cbc662ffc6a150a1b995df7"
+  },
+  {
+    "file": "framework.jar",
+    "size": 30153054,
+    "sha256": "93944fb3db369e013cd5b744c749567f7e9b691cce226f6e6f1744a04476080c"
+  },
+  {
+    "file": "P780-services.jar",
+    "size": 15353744,
+    "sha256": "0d93de73a06fca110c2826a92f243ea4afd7d4bf472f27649e0398995adf7345"
+  }
+]

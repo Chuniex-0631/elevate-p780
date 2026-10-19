@@ -1,0 +1,3192 @@
+[
+  {
+    "file": "Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/development/OemUnlockPreferenceController;",
+    "method": "enableOemUnlockPreference()Z",
+    "code_offset": 3227128,
+    "sha256": "f34c7e9791562bc692592b52bfe46ce6ade6f05ca8b63ade312916cd3d7f9790",
+    "insns_hex": "6e10fc8001000a0039000a006e10fd8001000a01380104001211280212010f01",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-virtual",
+        "args": "v1, Lcom/android/settings/development/OemUnlockPreferenceController;->isBootloaderUnlocked()Z"
+      },
+      {
+        "offset": 6,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 8,
+        "op": "if-nez",
+        "args": "v0, +00ah"
+      },
+      {
+        "offset": 12,
+        "op": "invoke-virtual",
+        "args": "v1, Lcom/android/settings/development/OemUnlockPreferenceController;->isOemUnlockAllowedByUserAndCarrier()Z"
+      },
+      {
+        "offset": 18,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 20,
+        "op": "if-eqz",
+        "args": "v1, +004h"
+      },
+      {
+        "offset": 24,
+        "op": "const/4",
+        "args": "v1, 1"
+      },
+      {
+        "offset": 26,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 28,
+        "op": "const/4",
+        "args": "v1, 0"
+      },
+      {
+        "offset": 30,
+        "op": "return",
+        "args": "v1"
+      }
+    ]
+  },
+  {
+    "file": "Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/development/OemUnlockPreferenceController;",
+    "method": "updateOemUnlockSettingDescription()V",
+    "code_offset": 3228060,
+    "sha256": "618e36f75356657e934ce0b3094e1aca4e8003634e0b115d7b24737de72d5ebc",
+    "insns_hex": "6000622e6e10fc8002000a013801050060005f2e28127010ff8002000a01380105006000612e28096e10fd8002000a01390104006000602e54211b415422665d6e10160502000c026e20cd0602000c026e20314721000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "sget",
+        "args": "v0, Lcom/android/settings/R$string;->oem_unlock_enable_summary I"
+      },
+      {
+        "offset": 4,
+        "op": "invoke-virtual",
+        "args": "v2, Lcom/android/settings/development/OemUnlockPreferenceController;->isBootloaderUnlocked()Z"
+      },
+      {
+        "offset": 10,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 12,
+        "op": "if-eqz",
+        "args": "v1, +005h"
+      },
+      {
+        "offset": 16,
+        "op": "sget",
+        "args": "v0, Lcom/android/settings/R$string;->oem_unlock_enable_disabled_summary_bootloader_unlocked I"
+      },
+      {
+        "offset": 20,
+        "op": "goto",
+        "args": "+12h"
+      },
+      {
+        "offset": 22,
+        "op": "invoke-direct",
+        "args": "v2, Lcom/android/settings/development/OemUnlockPreferenceController;->isSimLockedDevice()Z"
+      },
+      {
+        "offset": 28,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 30,
+        "op": "if-eqz",
+        "args": "v1, +005h"
+      },
+      {
+        "offset": 34,
+        "op": "sget",
+        "args": "v0, Lcom/android/settings/R$string;->oem_unlock_enable_disabled_summary_sim_locked_device I"
+      },
+      {
+        "offset": 38,
+        "op": "goto",
+        "args": "+9h"
+      },
+      {
+        "offset": 40,
+        "op": "invoke-virtual",
+        "args": "v2, Lcom/android/settings/development/OemUnlockPreferenceController;->isOemUnlockAllowedByUserAndCarrier()Z"
+      },
+      {
+        "offset": 46,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 48,
+        "op": "if-nez",
+        "args": "v1, +004h"
+      },
+      {
+        "offset": 52,
+        "op": "sget",
+        "args": "v0, Lcom/android/settings/R$string;->oem_unlock_enable_disabled_summary_connectivity_or_locked I"
+      },
+      {
+        "offset": 56,
+        "op": "iget-object",
+        "args": "v1, v2, Lcom/android/settings/development/OemUnlockPreferenceController;->mPreference Lcom/android/settingslib/RestrictedSwitchPreference;"
+      },
+      {
+        "offset": 60,
+        "op": "iget-object",
+        "args": "v2, v2, Lcom/android/settingslib/core/AbstractPreferenceController;->mContext Landroid/content/Context;"
+      },
+      {
+        "offset": 64,
+        "op": "invoke-virtual",
+        "args": "v2, Landroid/content/Context;->getResources()Landroid/content/res/Resources;"
+      },
+      {
+        "offset": 70,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 72,
+        "op": "invoke-virtual",
+        "args": "v2, v0, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;"
+      },
+      {
+        "offset": 78,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 80,
+        "op": "invoke-virtual",
+        "args": "v1, v2, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V"
+      },
+      {
+        "offset": 86,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "file": "Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/development/OemUnlockPreferenceController;",
+    "method": "isOemUnlockAllowedByUserAndCarrier()Z",
+    "code_offset": 3227240,
+    "sha256": "6b939ab590d77aa1766447b24241d123d85e65b4fa12b53537661a8019d44425",
+    "insns_hex": "7100860e00000a007110870e00000c0054211a416e104a1001000a0138010e0054221d411a0172c66e30a90e12000a02390204001212280212020f02",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-static",
+        "args": "Landroid/os/UserHandle;->myUserId()I"
+      },
+      {
+        "offset": 6,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 8,
+        "op": "invoke-static",
+        "args": "v0, Landroid/os/UserHandle;->of(I)Landroid/os/UserHandle;"
+      },
+      {
+        "offset": 14,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 16,
+        "op": "iget-object",
+        "args": "v1, v2, Lcom/android/settings/development/OemUnlockPreferenceController;->mOemLockManager Landroid/service/oemlock/OemLockManager;"
+      },
+      {
+        "offset": 20,
+        "op": "invoke-virtual",
+        "args": "v1, Landroid/service/oemlock/OemLockManager;->isOemUnlockAllowedByCarrier()Z"
+      },
+      {
+        "offset": 26,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 28,
+        "op": "if-eqz",
+        "args": "v1, +00eh"
+      },
+      {
+        "offset": 32,
+        "op": "iget-object",
+        "args": "v2, v2, Lcom/android/settings/development/OemUnlockPreferenceController;->mUserManager Landroid/os/UserManager;"
+      },
+      {
+        "offset": 36,
+        "op": "const-string",
+        "args": "v1, \"no_factory_reset\""
+      },
+      {
+        "offset": 40,
+        "op": "invoke-virtual",
+        "args": "v2, v1, v0, Landroid/os/UserManager;->hasBaseUserRestriction(Ljava/lang/String; Landroid/os/UserHandle;)Z"
+      },
+      {
+        "offset": 46,
+        "op": "move-result",
+        "args": "v2"
+      },
+      {
+        "offset": 48,
+        "op": "if-nez",
+        "args": "v2, +004h"
+      },
+      {
+        "offset": 52,
+        "op": "const/4",
+        "args": "v2, 1"
+      },
+      {
+        "offset": 54,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 56,
+        "op": "const/4",
+        "args": "v2, 0"
+      },
+      {
+        "offset": 58,
+        "op": "return",
+        "args": "v2"
+      }
+    ]
+  },
+  {
+    "file": "Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/development/OemUnlockPreferenceController;",
+    "method": "updateState(Landroidx/preference/Preference;)V",
+    "code_offset": 3228164,
+    "sha256": "45ad9e14cc2e9fe694124e68e44c544b5ba283f463a4d1e78794ff6a25b26c0c",
+    "insns_hex": "6f2041c9210054121b416e10fe8001000a006e206248020070100681010054121b4112006e2029c5020054121b417010f88001000a006e202ac5020054121b416e10fd4602000a023802090054111b411a0272c66e2023c521000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-super",
+        "args": "v1, v2, Lcom/android/settingslib/core/AbstractPreferenceController;->updateState(Landroidx/preference/Preference;)V"
+      },
+      {
+        "offset": 6,
+        "op": "iget-object",
+        "args": "v2, v1, Lcom/android/settings/development/OemUnlockPreferenceController;->mPreference Lcom/android/settingslib/RestrictedSwitchPreference;"
+      },
+      {
+        "offset": 10,
+        "op": "invoke-virtual",
+        "args": "v1, Lcom/android/settings/development/OemUnlockPreferenceController;->isOemUnlockedAllowed()Z"
+      },
+      {
+        "offset": 16,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 18,
+        "op": "invoke-virtual",
+        "args": "v2, v0, Landroidx/preference/TwoStatePreference;->setChecked(Z)V"
+      },
+      {
+        "offset": 24,
+        "op": "invoke-direct",
+        "args": "v1, Lcom/android/settings/development/OemUnlockPreferenceController;->updateOemUnlockSettingDescription()V"
+      },
+      {
+        "offset": 30,
+        "op": "iget-object",
+        "args": "v2, v1, Lcom/android/settings/development/OemUnlockPreferenceController;->mPreference Lcom/android/settingslib/RestrictedSwitchPreference;"
+      },
+      {
+        "offset": 34,
+        "op": "const/4",
+        "args": "v0, 0"
+      },
+      {
+        "offset": 36,
+        "op": "invoke-virtual",
+        "args": "v2, v0, Lcom/android/settingslib/RestrictedSwitchPreference;->setDisabledByAdmin(Lcom/android/settingslib/RestrictedLockUtils$EnforcedAdmin;)V"
+      },
+      {
+        "offset": 42,
+        "op": "iget-object",
+        "args": "v2, v1, Lcom/android/settings/development/OemUnlockPreferenceController;->mPreference Lcom/android/settingslib/RestrictedSwitchPreference;"
+      },
+      {
+        "offset": 46,
+        "op": "invoke-direct",
+        "args": "v1, Lcom/android/settings/development/OemUnlockPreferenceController;->enableOemUnlockPreference()Z"
+      },
+      {
+        "offset": 52,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 54,
+        "op": "invoke-virtual",
+        "args": "v2, v0, Lcom/android/settingslib/RestrictedSwitchPreference;->setEnabled(Z)V"
+      },
+      {
+        "offset": 60,
+        "op": "iget-object",
+        "args": "v2, v1, Lcom/android/settings/development/OemUnlockPreferenceController;->mPreference Lcom/android/settingslib/RestrictedSwitchPreference;"
+      },
+      {
+        "offset": 64,
+        "op": "invoke-virtual",
+        "args": "v2, Landroidx/preference/Preference;->isEnabled()Z"
+      },
+      {
+        "offset": 70,
+        "op": "move-result",
+        "args": "v2"
+      },
+      {
+        "offset": 72,
+        "op": "if-eqz",
+        "args": "v2, +009h"
+      },
+      {
+        "offset": 76,
+        "op": "iget-object",
+        "args": "v1, v1, Lcom/android/settings/development/OemUnlockPreferenceController;->mPreference Lcom/android/settingslib/RestrictedSwitchPreference;"
+      },
+      {
+        "offset": 80,
+        "op": "const-string",
+        "args": "v2, \"no_factory_reset\""
+      },
+      {
+        "offset": 84,
+        "op": "invoke-virtual",
+        "args": "v1, v2, Lcom/android/settingslib/RestrictedSwitchPreference;->checkRestrictionAndSetDisabled(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 90,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "file": "framework.jar",
+    "dex": "classes4.dex",
+    "cls": "Lcom/journey/system/JourneyDebugFeature;",
+    "method": "<clinit>()V",
+    "code_offset": 658712,
+    "sha256": "e768b2321800022bacc01e6603b6440ae439c0a69e9d0b77af917acde40b3667",
+    "insns_hex": "12006900dc157100c31f00000a006a00c6157100c81f00000a006a00cb151a00573512017120be1f10000a006a00c7157100c41f00000a006a00c8157100c21f00000a006a00c4151212390008006300c615380004000120280201106a00c5157100c51f00000a006a00c9151a00ae327120bf1f20000a036a038f157120bf1f20000a00380008006300c515380004000120280201106a0090151a00a3327120c01f10000a00380008006300c515380004000120280201106a0088151a00bf327120c01f20000a00380008006300c515380004000120280201106a00d1151a00cf327120c11f20000a006a00d3151a00c6327120bf1f20000a006a00d2151a00d2327120bf1f20000a006a00d6156300c7151a039a327120be1f03000a006a00d8156300c7151a039b327120be1f03000a006a00d9151a00be327120bf1f20000a006a009e151a00b3327120bf1f10000a00380008006300c415390004000120280201106a0094151a00b8327120140210000a0067009c151a00d0327120bf1f10000a006a00aa151a00c9327120bf1f10000a006a00a5151a00cd327120bf1f10000a006a00a9151a00cb327120bf1f10000a006a00a7151a00cc327120bf1f10000a006a00a8151a00c8327120bf1f10000a006a00a4151a00ca327120bf1f10000a006a00a6151a00c3327120bf1f10000a006a00a1151a00a7327120bf1f10000a006a008c151a00d8327120bf1f20000a006a00b3151a00d9327120bf1f10000a006a00b4151a00b4327120bf1f10000a006a0095151a00b6327120bf1f20000a006a0097151a00b5327120bf1f10000a006a0096151a009f327120bf1f10000a006a0083151a00e4327120bf1f10000a006a00bf151a00a0327120bf1f10000a006a0085151a00b9327120bf1f20000a006a00c215130090011a03bb327120140203000a006700ce151a00bd327120140210000a006700cf151a00bc327120bf1f20000a006a00d0151a00ba327120bf1f20000a006a00cd151a00a1327120bf1f10000a006a0086151a00aa327120bf1f10000a006a0084151a009c327120bf1f20000a006a00c1151a00b0327120bf1f20000a006a008e151a004a327120bf1f10000a006a00bd151a0048327120bf1f10000a006a00b5151a0049327120bf1f10000a006a009d151a0047327120bf1f10000a006a0082151a00c4327120bf1f10000a006a00a2151a00c5327120bf1f10000a006a00a3151a00e8327120bf1f10000a006a008a151a00c0327120c01f20000a006a009f151a00dc327120c01f10000a006a00b8151a004c327120c01f10000a006a007f151a0056357120bf1f10000a006a00cc151a00e1327120c01f10000a006a00ba156300c6151a03e0327120c01f03000a006a00b9151a00b7327120c01f10000a006a009b151a00d1327120bf1f20000a006a00ac151a00a9327120bf1f10000a006a008d151a00b1327120bf1f10000a006a0092151a00ad327120be1f20000a006a00c0151a00db327120bf1f10000a006a00b7151a00a5327120bf1f10000a006a008b151a009d327120bf1f10000a006a0080151a009e327120bf1f10000a006a0081151a00ce327120bf1f10000a006a00b1151a00ac327120bf1f10000a006a00b0151a00c2327120bf1f10000a00390009006300c8153800030028030110280201206a00ca151a00e6327120bf1f10000a00390009006300c8153800030028030110280201206a00d5151a00a6327120bf1f10000a00390009006300c5153800030028030110280201206a00d4151a00c7327120bf1f10000a006a00b2151a00d6327120bf1f10000a006a00af151a00de327120bf1f10000a006a0099151a00dd327120bf1f10000a006a0098151a00df327120bf1f10000a006a009a151a00a4327120bf1f10000a006a0089151a00e5327120bf1f10000a006a00be151a00e2327120bf1f10000a006a00bb151a00d3327120bf1f20000a006a00ad151a00a8327120bf1f10000a006a00ab151a00a2327120bf1f10000a006a0087151a00e3327120bf1f10000a006a00bc151a00da327120bf1f20000a006a00b6151a00b2327120bf1f20000a006a0093151a00d4327120bf1f20000a006a00ae151a00af327120bf1f20000a006a0091151a00c1327120bf1f20000a006a00a01512f06700df1563009a156a00db152200be047010a61f00006900de152200d4007010770200006900dd1522004f0570108f2100006900c3150e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "const/4",
+        "args": "v0, 0"
+      },
+      {
+        "offset": 2,
+        "op": "sput-object",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->mSystemContext Landroid/content/Context;"
+      },
+      {
+        "offset": 6,
+        "op": "invoke-static",
+        "args": "Lcom/journey/system/JourneyDebugFeature;->isDebugBuild()Z"
+      },
+      {
+        "offset": 12,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 14,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_DEBUG_BUILD Z"
+      },
+      {
+        "offset": 18,
+        "op": "invoke-static",
+        "args": "Lcom/journey/system/JourneyDebugFeature;->isRootMode()Z"
+      },
+      {
+        "offset": 24,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 26,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_ROOT_MODE Z"
+      },
+      {
+        "offset": 30,
+        "op": "const-string",
+        "args": "v0, \"ro.journey.factory.mode\""
+      },
+      {
+        "offset": 34,
+        "op": "const/4",
+        "args": "v1, 0"
+      },
+      {
+        "offset": 36,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanAlways(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 42,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 44,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_FACTORY_MODE Z"
+      },
+      {
+        "offset": 48,
+        "op": "invoke-static",
+        "args": "Lcom/journey/system/JourneyDebugFeature;->isFactoryVersion()Z"
+      },
+      {
+        "offset": 54,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 56,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_FACTORY_VERSION Z"
+      },
+      {
+        "offset": 60,
+        "op": "invoke-static",
+        "args": "Lcom/journey/system/JourneyDebugFeature;->isCustomerVersion()Z"
+      },
+      {
+        "offset": 66,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 68,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_CUSTOMER_VERSION Z"
+      },
+      {
+        "offset": 72,
+        "op": "const/4",
+        "args": "v2, 1"
+      },
+      {
+        "offset": 74,
+        "op": "if-nez",
+        "args": "v0, +008h"
+      },
+      {
+        "offset": 78,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_DEBUG_BUILD Z"
+      },
+      {
+        "offset": 82,
+        "op": "if-eqz",
+        "args": "v0, +004h"
+      },
+      {
+        "offset": 86,
+        "op": "move",
+        "args": "v0, v2"
+      },
+      {
+        "offset": 88,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 90,
+        "op": "move",
+        "args": "v0, v1"
+      },
+      {
+        "offset": 92,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_DEBUGGABLE_VERSION Z"
+      },
+      {
+        "offset": 96,
+        "op": "invoke-static",
+        "args": "Lcom/journey/system/JourneyDebugFeature;->isFusedDevice()Z"
+      },
+      {
+        "offset": 102,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 104,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_FUSED_DEVICE Z"
+      },
+      {
+        "offset": 108,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.enhanced\""
+      },
+      {
+        "offset": 112,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 118,
+        "op": "move-result",
+        "args": "v3"
+      },
+      {
+        "offset": 120,
+        "op": "sput-boolean",
+        "args": "v3, Lcom/journey/system/JourneyDebugFeature;->DEBUG_ENHANCED Z"
+      },
+      {
+        "offset": 124,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 130,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 132,
+        "op": "if-eqz",
+        "args": "v0, +008h"
+      },
+      {
+        "offset": 136,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_DEBUGGABLE_VERSION Z"
+      },
+      {
+        "offset": 140,
+        "op": "if-eqz",
+        "args": "v0, +004h"
+      },
+      {
+        "offset": 144,
+        "op": "move",
+        "args": "v0, v2"
+      },
+      {
+        "offset": 146,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 148,
+        "op": "move",
+        "args": "v0, v1"
+      },
+      {
+        "offset": 150,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_ENHANCED_INTERNAL Z"
+      },
+      {
+        "offset": 154,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.app\""
+      },
+      {
+        "offset": 158,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugOnly(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 164,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 166,
+        "op": "if-eqz",
+        "args": "v0, +008h"
+      },
+      {
+        "offset": 170,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_DEBUGGABLE_VERSION Z"
+      },
+      {
+        "offset": 174,
+        "op": "if-eqz",
+        "args": "v0, +004h"
+      },
+      {
+        "offset": 178,
+        "op": "move",
+        "args": "v0, v2"
+      },
+      {
+        "offset": 180,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 182,
+        "op": "move",
+        "args": "v0, v1"
+      },
+      {
+        "offset": 184,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_APP Z"
+      },
+      {
+        "offset": 188,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.monitor\""
+      },
+      {
+        "offset": 192,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugOnly(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 198,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 200,
+        "op": "if-eqz",
+        "args": "v0, +008h"
+      },
+      {
+        "offset": 204,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_DEBUGGABLE_VERSION Z"
+      },
+      {
+        "offset": 208,
+        "op": "if-eqz",
+        "args": "v0, +004h"
+      },
+      {
+        "offset": 212,
+        "op": "move",
+        "args": "v0, v2"
+      },
+      {
+        "offset": 214,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 216,
+        "op": "move",
+        "args": "v0, v1"
+      },
+      {
+        "offset": 218,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->MONITOR_REPORT Z"
+      },
+      {
+        "offset": 222,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.reduce.log\""
+      },
+      {
+        "offset": 226,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanUserOnly(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 232,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 234,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->REDUCE_LOG Z"
+      },
+      {
+        "offset": 238,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.opt.warning\""
+      },
+      {
+        "offset": 242,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 248,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 250,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->OPTIMIZE_WARNING Z"
+      },
+      {
+        "offset": 254,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.shutdown\""
+      },
+      {
+        "offset": 258,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 264,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 266,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->SHUTDOWN Z"
+      },
+      {
+        "offset": 270,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_FACTORY_MODE Z"
+      },
+      {
+        "offset": 274,
+        "op": "const-string",
+        "args": "v3, \"persist.jdf.VFAAC_2189\""
+      },
+      {
+        "offset": 278,
+        "op": "invoke-static",
+        "args": "v3, v0, Lcom/journey/system/JourneyDebugFeature;->getBooleanAlways(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 284,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 286,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->VFAAC_2189 Z"
+      },
+      {
+        "offset": 290,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_FACTORY_MODE Z"
+      },
+      {
+        "offset": 294,
+        "op": "const-string",
+        "args": "v3, \"persist.jdf.VFAAC_2197\""
+      },
+      {
+        "offset": 298,
+        "op": "invoke-static",
+        "args": "v3, v0, Lcom/journey/system/JourneyDebugFeature;->getBooleanAlways(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 304,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 306,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->VFAAC_2197 Z"
+      },
+      {
+        "offset": 310,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.memory.leak\""
+      },
+      {
+        "offset": 314,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 320,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 322,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_MEMORY_LEAK Z"
+      },
+      {
+        "offset": 326,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.heap.limit\""
+      },
+      {
+        "offset": 330,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 336,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 338,
+        "op": "if-eqz",
+        "args": "v0, +008h"
+      },
+      {
+        "offset": 342,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_CUSTOMER_VERSION Z"
+      },
+      {
+        "offset": 346,
+        "op": "if-nez",
+        "args": "v0, +004h"
+      },
+      {
+        "offset": 350,
+        "op": "move",
+        "args": "v0, v2"
+      },
+      {
+        "offset": 352,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 354,
+        "op": "move",
+        "args": "v0, v1"
+      },
+      {
+        "offset": 356,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_HEAP_LIMIT Z"
+      },
+      {
+        "offset": 360,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.log.uid\""
+      },
+      {
+        "offset": 364,
+        "op": "invoke-static",
+        "args": "v0, v1, Landroid/os/SystemProperties;->getInt(Ljava/lang/String; I)I"
+      },
+      {
+        "offset": 370,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 372,
+        "op": "sput",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_LOG_UID I"
+      },
+      {
+        "offset": 376,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.removable_app\""
+      },
+      {
+        "offset": 380,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 386,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 388,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_REMOVABLE_APP Z"
+      },
+      {
+        "offset": 392,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.pkms_all\""
+      },
+      {
+        "offset": 396,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 402,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 404,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_PKMS_ALL Z"
+      },
+      {
+        "offset": 408,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.pkms_scan\""
+      },
+      {
+        "offset": 412,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 418,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 420,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_PKMS_SCAN Z"
+      },
+      {
+        "offset": 424,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.pkms_install\""
+      },
+      {
+        "offset": 428,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 434,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 436,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_PKMS_INSTALL Z"
+      },
+      {
+        "offset": 440,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.pkms_remove\""
+      },
+      {
+        "offset": 444,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 450,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 452,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_PKMS_REMOVE Z"
+      },
+      {
+        "offset": 456,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.permissions\""
+      },
+      {
+        "offset": 460,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 466,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 468,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_PERMISSIONS Z"
+      },
+      {
+        "offset": 472,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.pkms_dexopt\""
+      },
+      {
+        "offset": 476,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 482,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 484,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_PKMS_DEXOPT Z"
+      },
+      {
+        "offset": 488,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.notification\""
+      },
+      {
+        "offset": 492,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 498,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 500,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_NOTIFICATION Z"
+      },
+      {
+        "offset": 504,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.binder.log.trace\""
+      },
+      {
+        "offset": 508,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 514,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 516,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_BINDER_LOG_TRACE Z"
+      },
+      {
+        "offset": 520,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.telephony.vdbg\""
+      },
+      {
+        "offset": 524,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 530,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 532,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_TELEPHONY_VDBG Z"
+      },
+      {
+        "offset": 536,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.telephony.wnw\""
+      },
+      {
+        "offset": 540,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 546,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 548,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_TELEPHONY_WNW Z"
+      },
+      {
+        "offset": 552,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.input.verifier\""
+      },
+      {
+        "offset": 556,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 562,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 564,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_INPUT_VERIFIER Z"
+      },
+      {
+        "offset": 568,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.input.verifier.p\""
+      },
+      {
+        "offset": 572,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 578,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 580,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_INPUT_VERIFIER_POINTER Z"
+      },
+      {
+        "offset": 584,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.input.verifier.m\""
+      },
+      {
+        "offset": 588,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 594,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 596,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_INPUT_VERIFIER_MOTION Z"
+      },
+      {
+        "offset": 600,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.ams.all\""
+      },
+      {
+        "offset": 604,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 610,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 612,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_AMS_ALL Z"
+      },
+      {
+        "offset": 616,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.wm.all\""
+      },
+      {
+        "offset": 620,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 626,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 628,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_WM_ALL Z"
+      },
+      {
+        "offset": 632,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.ams.bc\""
+      },
+      {
+        "offset": 636,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 642,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 644,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_AMS_BROADCAST Z"
+      },
+      {
+        "offset": 648,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.loop\""
+      },
+      {
+        "offset": 652,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 658,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 660,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->ENABLE_MSG_LOOP_CHECK Z"
+      },
+      {
+        "offset": 664,
+        "op": "const/16",
+        "args": "v0, 400"
+      },
+      {
+        "offset": 668,
+        "op": "const-string",
+        "args": "v3, \"persist.jdf.looper.time\""
+      },
+      {
+        "offset": 672,
+        "op": "invoke-static",
+        "args": "v3, v0, Landroid/os/SystemProperties;->getInt(Ljava/lang/String; I)I"
+      },
+      {
+        "offset": 678,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 680,
+        "op": "sput",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->LOOPER_DELAY_DEBUG_LIMIT I"
+      },
+      {
+        "offset": 684,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.looper.uid\""
+      },
+      {
+        "offset": 688,
+        "op": "invoke-static",
+        "args": "v0, v1, Landroid/os/SystemProperties;->getInt(Ljava/lang/String; I)I"
+      },
+      {
+        "offset": 694,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 696,
+        "op": "sput",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->LOOPER_DELAY_DEBUG_UID I"
+      },
+      {
+        "offset": 700,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.looper.trace\""
+      },
+      {
+        "offset": 704,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 710,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 712,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->LOOPER_DELAY_TRACE Z"
+      },
+      {
+        "offset": 716,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.looper.curr.msg\""
+      },
+      {
+        "offset": 720,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 726,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 728,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->LOOPER_CURR_MESSAGE Z"
+      },
+      {
+        "offset": 732,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.ams.get.caller\""
+      },
+      {
+        "offset": 736,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 742,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 744,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_AMS_CALLER Z"
+      },
+      {
+        "offset": 748,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.debug.ams.as\""
+      },
+      {
+        "offset": 752,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 758,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 760,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_AMS_AS Z"
+      },
+      {
+        "offset": 764,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.act.task.check\""
+      },
+      {
+        "offset": 768,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 774,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 776,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->ENABLE_ACTIVITY_TASK_CHECK Z"
+      },
+      {
+        "offset": 780,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.fg.ser.pkg\""
+      },
+      {
+        "offset": 784,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 790,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 792,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_DUMP_FG_SER_PKG Z"
+      },
+      {
+        "offset": 796,
+        "op": "const-string",
+        "args": "v0, \"persist.debug.win.orient\""
+      },
+      {
+        "offset": 800,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 806,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 808,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_WINDOW_ORIENTATION Z"
+      },
+      {
+        "offset": 812,
+        "op": "const-string",
+        "args": "v0, \"persist.debug.pop.win.pkg\""
+      },
+      {
+        "offset": 816,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 822,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 824,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_TRACK_POPUP_WIN_PACKAGE Z"
+      },
+      {
+        "offset": 828,
+        "op": "const-string",
+        "args": "v0, \"persist.debug.sync.lock\""
+      },
+      {
+        "offset": 832,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 838,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 840,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_LONG_LANTENCY_IN_SYSTEM Z"
+      },
+      {
+        "offset": 844,
+        "op": "const-string",
+        "args": "v0, \"persist.debug.act.pause\""
+      },
+      {
+        "offset": 848,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 854,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 856,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_ACTIVITY_PAUSE_FLOW Z"
+      },
+      {
+        "offset": 860,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.oom.adj\""
+      },
+      {
+        "offset": 864,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 870,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 872,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_OOM_ADJ Z"
+      },
+      {
+        "offset": 876,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.oom.adj.reason\""
+      },
+      {
+        "offset": 880,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 886,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 888,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_OOM_ADJ_REASON Z"
+      },
+      {
+        "offset": 892,
+        "op": "const-string",
+        "args": "v0, \"persist.tdf.memory.level\""
+      },
+      {
+        "offset": 896,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 902,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 904,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_APP_TRIM_MEM_LEVEL Z"
+      },
+      {
+        "offset": 908,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.monitor.slow\""
+      },
+      {
+        "offset": 912,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugOnly(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 918,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 920,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_MONITOR_SLOW Z"
+      },
+      {
+        "offset": 924,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.user.switch\""
+      },
+      {
+        "offset": 928,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugOnly(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 934,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 936,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_USER_SWITCH Z"
+      },
+      {
+        "offset": 940,
+        "op": "const-string",
+        "args": "v0, \"persist.jcf.add.exinfo.to.intent\""
+      },
+      {
+        "offset": 944,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugOnly(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 950,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 952,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->ADD_PIDUID_TO_EXTRA_OF_INTENT Z"
+      },
+      {
+        "offset": 956,
+        "op": "const-string",
+        "args": "v0, \"ro.journey.debug.exception.sprd\""
+      },
+      {
+        "offset": 960,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 966,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 968,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->JOURNEY_EXCEPTION_SUPPORT_SPRD_PLAT Z"
+      },
+      {
+        "offset": 972,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.view.input\""
+      },
+      {
+        "offset": 976,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugOnly(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 982,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 984,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_VIEW_INPUT Z"
+      },
+      {
+        "offset": 988,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_DEBUG_BUILD Z"
+      },
+      {
+        "offset": 992,
+        "op": "const-string",
+        "args": "v3, \"persist.jdf.view.draw\""
+      },
+      {
+        "offset": 996,
+        "op": "invoke-static",
+        "args": "v3, v0, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugOnly(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1002,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1004,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_VIEW_DRAW Z"
+      },
+      {
+        "offset": 1008,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.killer\""
+      },
+      {
+        "offset": 1012,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugOnly(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1018,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1020,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_KILLER Z"
+      },
+      {
+        "offset": 1024,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.setting.change\""
+      },
+      {
+        "offset": 1028,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1034,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1036,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_SETTING_CHANGE Z"
+      },
+      {
+        "offset": 1040,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.camera.gesture\""
+      },
+      {
+        "offset": 1044,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1050,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1052,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_CAMERA_GESTURE_TRIGGER Z"
+      },
+      {
+        "offset": 1056,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.gesture.launher\""
+      },
+      {
+        "offset": 1060,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1066,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1068,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_GESTURE_LAUNCHER Z"
+      },
+      {
+        "offset": 1072,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.dropbox\""
+      },
+      {
+        "offset": 1076,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanAlways(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1082,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1084,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DROPBOX_ENHANCED Z"
+      },
+      {
+        "offset": 1088,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.usage.debug\""
+      },
+      {
+        "offset": 1092,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1098,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1100,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_USAGE Z"
+      },
+      {
+        "offset": 1104,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.battery.batterservice\""
+      },
+      {
+        "offset": 1108,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1114,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1116,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_BATTERYSERVICE Z"
+      },
+      {
+        "offset": 1120,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.alarm.debug\""
+      },
+      {
+        "offset": 1124,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1130,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1132,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->ALARM_SERVICE_DEBUG Z"
+      },
+      {
+        "offset": 1136,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.alarm.wakeup\""
+      },
+      {
+        "offset": 1140,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1146,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1148,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->ALARM_WAKEUP_STATS Z"
+      },
+      {
+        "offset": 1152,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.pms\""
+      },
+      {
+        "offset": 1156,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1162,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1164,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_TDF_PMS Z"
+      },
+      {
+        "offset": 1168,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.doze\""
+      },
+      {
+        "offset": 1172,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1178,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1180,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_TDF_DOZE Z"
+      },
+      {
+        "offset": 1184,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.no_battery_warning\""
+      },
+      {
+        "offset": 1188,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1194,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1196,
+        "op": "if-nez",
+        "args": "v0, +009h"
+      },
+      {
+        "offset": 1200,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_FACTORY_VERSION Z"
+      },
+      {
+        "offset": 1204,
+        "op": "if-eqz",
+        "args": "v0, +003h"
+      },
+      {
+        "offset": 1208,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 1210,
+        "op": "move",
+        "args": "v0, v1"
+      },
+      {
+        "offset": 1212,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 1214,
+        "op": "move",
+        "args": "v0, v2"
+      },
+      {
+        "offset": 1216,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_NO_WARNING_VERSION Z"
+      },
+      {
+        "offset": 1220,
+        "op": "const-string",
+        "args": "v0, \"persist.odm.screen.alwayson\""
+      },
+      {
+        "offset": 1224,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1230,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1232,
+        "op": "if-nez",
+        "args": "v0, +009h"
+      },
+      {
+        "offset": 1236,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_FACTORY_VERSION Z"
+      },
+      {
+        "offset": 1240,
+        "op": "if-eqz",
+        "args": "v0, +003h"
+      },
+      {
+        "offset": 1244,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 1246,
+        "op": "move",
+        "args": "v0, v1"
+      },
+      {
+        "offset": 1248,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 1250,
+        "op": "move",
+        "args": "v0, v2"
+      },
+      {
+        "offset": 1252,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->SCREEN_ON_WHEN_CHARGE_TO_62 Z"
+      },
+      {
+        "offset": 1256,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.battery.save_battery_healthifo\""
+      },
+      {
+        "offset": 1260,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1266,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1268,
+        "op": "if-nez",
+        "args": "v0, +009h"
+      },
+      {
+        "offset": 1272,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->IS_DEBUGGABLE_VERSION Z"
+      },
+      {
+        "offset": 1276,
+        "op": "if-eqz",
+        "args": "v0, +003h"
+      },
+      {
+        "offset": 1280,
+        "op": "goto",
+        "args": "+3h"
+      },
+      {
+        "offset": 1282,
+        "op": "move",
+        "args": "v0, v1"
+      },
+      {
+        "offset": 1284,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 1286,
+        "op": "move",
+        "args": "v0, v2"
+      },
+      {
+        "offset": 1288,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->SAVE_DETAILED_BATTERY_HEALTH_INFO Z"
+      },
+      {
+        "offset": 1292,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.overlays.thermal.debug\""
+      },
+      {
+        "offset": 1296,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1302,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1304,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_TDF_THERMAL_ENGINE Z"
+      },
+      {
+        "offset": 1308,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.surface.debug\""
+      },
+      {
+        "offset": 1312,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1318,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1320,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_SURFACE Z"
+      },
+      {
+        "offset": 1324,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.view.dirty.ani\""
+      },
+      {
+        "offset": 1328,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1334,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1336,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_INVALIDATE_ANIMATION Z"
+      },
+      {
+        "offset": 1340,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.view.dirty\""
+      },
+      {
+        "offset": 1344,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1350,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1352,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_INVALIDATE Z"
+      },
+      {
+        "offset": 1356,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.view.dirty.low\""
+      },
+      {
+        "offset": 1360,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1366,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1368,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_INVALIDATE_LOW Z"
+      },
+      {
+        "offset": 1372,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.app.transition\""
+      },
+      {
+        "offset": 1376,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1382,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1384,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_APP_TRANSITION Z"
+      },
+      {
+        "offset": 1388,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.wms.displayfreeze\""
+      },
+      {
+        "offset": 1392,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1398,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1400,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_WMS_DISPLAYFREEZE Z"
+      },
+      {
+        "offset": 1404,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.view.traversal\""
+      },
+      {
+        "offset": 1408,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1414,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1416,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_VIEW_TRAVERSAL Z"
+      },
+      {
+        "offset": 1420,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.split_screen\""
+      },
+      {
+        "offset": 1424,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1430,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1432,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_SPLIT_SCREEN Z"
+      },
+      {
+        "offset": 1436,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.brightness.stack\""
+      },
+      {
+        "offset": 1440,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1446,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1448,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_SCREEN_BRIGHTNESS_STACK Z"
+      },
+      {
+        "offset": 1452,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.animation_vertor\""
+      },
+      {
+        "offset": 1456,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1462,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1464,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_ANIMATION_VECTOR_DRAWABLE Z"
+      },
+      {
+        "offset": 1468,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.wallpaper.theme\""
+      },
+      {
+        "offset": 1472,
+        "op": "invoke-static",
+        "args": "v0, v1, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1478,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1480,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_WALLPAPER_THEME Z"
+      },
+      {
+        "offset": 1484,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.update.language\""
+      },
+      {
+        "offset": 1488,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1494,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1496,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_UPDATE_LANGUAGE Z"
+      },
+      {
+        "offset": 1500,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.gnss\""
+      },
+      {
+        "offset": 1504,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1510,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1512,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_GNSS Z"
+      },
+      {
+        "offset": 1516,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.storage.manager\""
+      },
+      {
+        "offset": 1520,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1526,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1528,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_STORAGE_MANAGER Z"
+      },
+      {
+        "offset": 1532,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.enhanced.mtklogger\""
+      },
+      {
+        "offset": 1536,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1542,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1544,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_ENHANCED_MTKLOGGER Z"
+      },
+      {
+        "offset": 1548,
+        "op": "const-string",
+        "args": "v0, \"persist.jdf.mtklogger\""
+      },
+      {
+        "offset": 1552,
+        "op": "invoke-static",
+        "args": "v0, v2, Lcom/journey/system/JourneyDebugFeature;->getBooleanDebugDefault(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 1558,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 1560,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_MTKLOGGER Z"
+      },
+      {
+        "offset": 1564,
+        "op": "const/4",
+        "args": "v0, -1"
+      },
+      {
+        "offset": 1566,
+        "op": "sput",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->myUid I"
+      },
+      {
+        "offset": 1570,
+        "op": "sget-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->DEBUG_INVALIDATE_LOW Z"
+      },
+      {
+        "offset": 1574,
+        "op": "sput-boolean",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->mEnableLogViewInvalidate Z"
+      },
+      {
+        "offset": 1578,
+        "op": "new-instance",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature$MyLoogerHandler;"
+      },
+      {
+        "offset": 1582,
+        "op": "invoke-direct",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature$MyLoogerHandler;-><init>()V"
+      },
+      {
+        "offset": 1588,
+        "op": "sput-object",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->myLoogerHandler Ljava/util/logging/Handler;"
+      },
+      {
+        "offset": 1592,
+        "op": "new-instance",
+        "args": "v0, Landroid/util/ArrayMap;"
+      },
+      {
+        "offset": 1596,
+        "op": "invoke-direct",
+        "args": "v0, Landroid/util/ArrayMap;-><init>()V"
+      },
+      {
+        "offset": 1602,
+        "op": "sput-object",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->myLoggerHolder Landroid/util/ArrayMap;"
+      },
+      {
+        "offset": 1606,
+        "op": "new-instance",
+        "args": "v0, Ljava/util/concurrent/locks/ReentrantLock;"
+      },
+      {
+        "offset": 1610,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/util/concurrent/locks/ReentrantLock;-><init>()V"
+      },
+      {
+        "offset": 1616,
+        "op": "sput-object",
+        "args": "v0, Lcom/journey/system/JourneyDebugFeature;->ExceptionDumpLock Ljava/util/concurrent/locks/ReentrantLock;"
+      },
+      {
+        "offset": 1620,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "file": "framework.jar",
+    "dex": "classes4.dex",
+    "cls": "Lcom/journey/system/JourneyDebugFeature;",
+    "method": "isCustomerVersion()Z",
+    "code_offset": 658340,
+    "sha256": "5c36cc37da43a6bac69cc1a001a41ec00bbfc87c5f700738aef314b85d6abb46",
+    "insns_hex": "1a000e3512017120130210000a000f00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "const-string",
+        "args": "v0, \"ro.boot.journey.customer\""
+      },
+      {
+        "offset": 4,
+        "op": "const/4",
+        "args": "v1, 0"
+      },
+      {
+        "offset": 6,
+        "op": "invoke-static",
+        "args": "v0, v1, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String; Z)Z"
+      },
+      {
+        "offset": 12,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 14,
+        "op": "return",
+        "args": "v0"
+      }
+    ]
+  },
+  {
+    "file": "P780-services.jar",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/server/oemlock/OemLockService$2;",
+    "method": "isOemUnlockAllowedByCarrier()Z",
+    "code_offset": 5670332,
+    "sha256": "fdd71d37d9073f4f599febff17cd5439f34eb3a6e26dfbde702df5f8efecc9b5",
+    "insns_hex": "5430ab62711099ce000071007b2f00000b005432ab62711097ce02000c026e1087ce02000a023802080063024777390204001212280212027120822f10000f020d027120822f10002702",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "iget-object",
+        "args": "v0, v3, Lcom/android/server/oemlock/OemLockService$2;->this$0 Lcom/android/server/oemlock/OemLockService;"
+      },
+      {
+        "offset": 4,
+        "op": "invoke-static",
+        "args": "v0, Lcom/android/server/oemlock/OemLockService;->access$200(Lcom/android/server/oemlock/OemLockService;)V"
+      },
+      {
+        "offset": 10,
+        "op": "invoke-static",
+        "args": "Landroid/os/Binder;->clearCallingIdentity()J"
+      },
+      {
+        "offset": 16,
+        "op": "move-result-wide",
+        "args": "v0"
+      },
+      {
+        "offset": 18,
+        "op": "iget-object",
+        "args": "v2, v3, Lcom/android/server/oemlock/OemLockService$2;->this$0 Lcom/android/server/oemlock/OemLockService;"
+      },
+      {
+        "offset": 22,
+        "op": "invoke-static",
+        "args": "v2, Lcom/android/server/oemlock/OemLockService;->access$000(Lcom/android/server/oemlock/OemLockService;)Lcom/android/server/oemlock/OemLock;"
+      },
+      {
+        "offset": 28,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 30,
+        "op": "invoke-virtual",
+        "args": "v2, Lcom/android/server/oemlock/OemLock;->isOemUnlockAllowedByCarrier()Z"
+      },
+      {
+        "offset": 36,
+        "op": "move-result",
+        "args": "v2"
+      },
+      {
+        "offset": 38,
+        "op": "if-eqz",
+        "args": "v2, +008h"
+      },
+      {
+        "offset": 42,
+        "op": "sget-boolean",
+        "args": "v2, Lcom/journey/system/JourneyDebugFeature;->IS_CUSTOMER_VERSION Z"
+      },
+      {
+        "offset": 46,
+        "op": "if-nez",
+        "args": "v2, +004h"
+      },
+      {
+        "offset": 50,
+        "op": "const/4",
+        "args": "v2, 1"
+      },
+      {
+        "offset": 52,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 54,
+        "op": "const/4",
+        "args": "v2, 0"
+      },
+      {
+        "offset": 56,
+        "op": "invoke-static",
+        "args": "v0, v1, Landroid/os/Binder;->restoreCallingIdentity(J)V"
+      },
+      {
+        "offset": 62,
+        "op": "return",
+        "args": "v2"
+      },
+      {
+        "offset": 64,
+        "op": "move-exception",
+        "args": "v2"
+      },
+      {
+        "offset": 66,
+        "op": "invoke-static",
+        "args": "v0, v1, Landroid/os/Binder;->restoreCallingIdentity(J)V"
+      },
+      {
+        "offset": 72,
+        "op": "throw",
+        "args": "v2"
+      }
+    ]
+  },
+  {
+    "file": "P780-services.jar",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/server/oemlock/OemLockService$2;",
+    "method": "setOemUnlockAllowedByUser(Z)V",
+    "code_offset": 5670728,
+    "sha256": "b6304c5e76f6c361eaeee51c9cebcd01e08a27828a66c68de7bf60da0ef53955",
+    "insns_hex": "7100b60000000a00380003000e005440ab6271109bce00005440ab6271109ace000071007b2f00000b005442ab6271109cce02000a02380229005442ab62711097ce02000c026e1087ce02000a02380215005442ab62711097ce02000c026e208ace52005442ab62712098ce52007120822f100000000e002202be211a03252d7020acfa320027022202be211a03d5237020acfa320027020d027120822f10002702",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-static",
+        "args": "Landroid/app/ActivityManager;->isUserAMonkey()Z"
+      },
+      {
+        "offset": 6,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 8,
+        "op": "if-eqz",
+        "args": "v0, +003h"
+      },
+      {
+        "offset": 12,
+        "op": "return-void",
+        "args": ""
+      },
+      {
+        "offset": 14,
+        "op": "iget-object",
+        "args": "v0, v4, Lcom/android/server/oemlock/OemLockService$2;->this$0 Lcom/android/server/oemlock/OemLockService;"
+      },
+      {
+        "offset": 18,
+        "op": "invoke-static",
+        "args": "v0, Lcom/android/server/oemlock/OemLockService;->access$400(Lcom/android/server/oemlock/OemLockService;)V"
+      },
+      {
+        "offset": 24,
+        "op": "iget-object",
+        "args": "v0, v4, Lcom/android/server/oemlock/OemLockService$2;->this$0 Lcom/android/server/oemlock/OemLockService;"
+      },
+      {
+        "offset": 28,
+        "op": "invoke-static",
+        "args": "v0, Lcom/android/server/oemlock/OemLockService;->access$300(Lcom/android/server/oemlock/OemLockService;)V"
+      },
+      {
+        "offset": 34,
+        "op": "invoke-static",
+        "args": "Landroid/os/Binder;->clearCallingIdentity()J"
+      },
+      {
+        "offset": 40,
+        "op": "move-result-wide",
+        "args": "v0"
+      },
+      {
+        "offset": 42,
+        "op": "iget-object",
+        "args": "v2, v4, Lcom/android/server/oemlock/OemLockService$2;->this$0 Lcom/android/server/oemlock/OemLockService;"
+      },
+      {
+        "offset": 46,
+        "op": "invoke-static",
+        "args": "v2, Lcom/android/server/oemlock/OemLockService;->access$500(Lcom/android/server/oemlock/OemLockService;)Z"
+      },
+      {
+        "offset": 52,
+        "op": "move-result",
+        "args": "v2"
+      },
+      {
+        "offset": 54,
+        "op": "if-eqz",
+        "args": "v2, +029h"
+      },
+      {
+        "offset": 58,
+        "op": "iget-object",
+        "args": "v2, v4, Lcom/android/server/oemlock/OemLockService$2;->this$0 Lcom/android/server/oemlock/OemLockService;"
+      },
+      {
+        "offset": 62,
+        "op": "invoke-static",
+        "args": "v2, Lcom/android/server/oemlock/OemLockService;->access$000(Lcom/android/server/oemlock/OemLockService;)Lcom/android/server/oemlock/OemLock;"
+      },
+      {
+        "offset": 68,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 70,
+        "op": "invoke-virtual",
+        "args": "v2, Lcom/android/server/oemlock/OemLock;->isOemUnlockAllowedByCarrier()Z"
+      },
+      {
+        "offset": 76,
+        "op": "move-result",
+        "args": "v2"
+      },
+      {
+        "offset": 78,
+        "op": "if-eqz",
+        "args": "v2, +015h"
+      },
+      {
+        "offset": 82,
+        "op": "iget-object",
+        "args": "v2, v4, Lcom/android/server/oemlock/OemLockService$2;->this$0 Lcom/android/server/oemlock/OemLockService;"
+      },
+      {
+        "offset": 86,
+        "op": "invoke-static",
+        "args": "v2, Lcom/android/server/oemlock/OemLockService;->access$000(Lcom/android/server/oemlock/OemLockService;)Lcom/android/server/oemlock/OemLock;"
+      },
+      {
+        "offset": 92,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 94,
+        "op": "invoke-virtual",
+        "args": "v2, v5, Lcom/android/server/oemlock/OemLock;->setOemUnlockAllowedByDevice(Z)V"
+      },
+      {
+        "offset": 100,
+        "op": "iget-object",
+        "args": "v2, v4, Lcom/android/server/oemlock/OemLockService$2;->this$0 Lcom/android/server/oemlock/OemLockService;"
+      },
+      {
+        "offset": 104,
+        "op": "invoke-static",
+        "args": "v2, v5, Lcom/android/server/oemlock/OemLockService;->access$100(Lcom/android/server/oemlock/OemLockService; Z)V"
+      },
+      {
+        "offset": 110,
+        "op": "invoke-static",
+        "args": "v0, v1, Landroid/os/Binder;->restoreCallingIdentity(J)V"
+      },
+      {
+        "offset": 116,
+        "op": "nop",
+        "args": ""
+      },
+      {
+        "offset": 118,
+        "op": "return-void",
+        "args": ""
+      },
+      {
+        "offset": 120,
+        "op": "new-instance",
+        "args": "v2, Ljava/lang/SecurityException;"
+      },
+      {
+        "offset": 124,
+        "op": "const-string",
+        "args": "v3, \"Carrier does not allow OEM unlock\""
+      },
+      {
+        "offset": 128,
+        "op": "invoke-direct",
+        "args": "v2, v3, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 134,
+        "op": "throw",
+        "args": "v2"
+      },
+      {
+        "offset": 136,
+        "op": "new-instance",
+        "args": "v2, Ljava/lang/SecurityException;"
+      },
+      {
+        "offset": 140,
+        "op": "const-string",
+        "args": "v3, \"Admin does not allow OEM unlock\""
+      },
+      {
+        "offset": 144,
+        "op": "invoke-direct",
+        "args": "v2, v3, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 150,
+        "op": "throw",
+        "args": "v2"
+      },
+      {
+        "offset": 152,
+        "op": "move-exception",
+        "args": "v2"
+      },
+      {
+        "offset": 154,
+        "op": "invoke-static",
+        "args": "v0, v1, Landroid/os/Binder;->restoreCallingIdentity(J)V"
+      },
+      {
+        "offset": 160,
+        "op": "throw",
+        "args": "v2"
+      }
+    ]
+  },
+  {
+    "file": "P780-services.jar",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/server/oemlock/OemLockService;",
+    "method": "access$300(Lcom/android/server/oemlock/OemLockService;)V",
+    "code_offset": 5671312,
+    "sha256": "81b162d778b341c8125fd5bc504ae020035dc2b267d2e81878d950ea2be2eb56",
+    "insns_hex": "7010a1ce00000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-direct",
+        "args": "v0, Lcom/android/server/oemlock/OemLockService;->enforceUserIsAdmin()V"
+      },
+      {
+        "offset": 6,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "file": "P780-services.jar",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/server/oemlock/OemLockService;",
+    "method": "access$400(Lcom/android/server/oemlock/OemLockService;)V",
+    "code_offset": 5671336,
+    "sha256": "d3d48bc9e43864191300af87fc3305ecf5f9794fcd2d08b232e1bd2f92043333",
+    "insns_hex": "70109fce00000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-direct",
+        "args": "v0, Lcom/android/server/oemlock/OemLockService;->enforceManageUserOemUnlockPermission()V"
+      },
+      {
+        "offset": 6,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "file": "P780-services.jar",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/server/oemlock/OemLockService;",
+    "method": "access$500(Lcom/android/server/oemlock/OemLockService;)Z",
+    "code_offset": 5670928,
+    "sha256": "575290b248be9e77095a650873825cadbb30caab395c2a640e2b2d69d77407b3",
+    "insns_hex": "7010a4ce01000a000f00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-direct",
+        "args": "v1, Lcom/android/server/oemlock/OemLockService;->isOemUnlockAllowedByAdmin()Z"
+      },
+      {
+        "offset": 6,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 8,
+        "op": "return",
+        "args": "v0"
+      }
+    ]
+  },
+  {
+    "file": "P780-services.jar",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/server/oemlock/OemLockService;",
+    "method": "enforceManageUserOemUnlockPermission()V",
+    "code_offset": 5671420,
+    "sha256": "a664121d79bbd69941e5a9398c8298b45f0b40f12f38127d61c283fa01361d7c",
+    "insns_hex": "5430af621a010bb51a02de2b6e30590610020e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "iget-object",
+        "args": "v0, v3, Lcom/android/server/oemlock/OemLockService;->mContext Landroid/content/Context;"
+      },
+      {
+        "offset": 4,
+        "op": "const-string",
+        "args": "v1, \"android.permission.MANAGE_USER_OEM_UNLOCK_STATE\""
+      },
+      {
+        "offset": 8,
+        "op": "const-string",
+        "args": "v2, \"Can't manage OEM unlock allowed by user\""
+      },
+      {
+        "offset": 12,
+        "op": "invoke-virtual",
+        "args": "v0, v1, v2, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String; Ljava/lang/String;)V"
+      },
+      {
+        "offset": 18,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "file": "P780-services.jar",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/server/oemlock/OemLockService;",
+    "method": "isOemUnlockAllowedByAdmin()Z",
+    "code_offset": 5670992,
+    "sha256": "bbc841f9c3b80c973066d49ab2bc162d25d34891b9f0c52e8cad9c68121683af",
+    "insns_hex": "5430af627110a73500000c006201640f1b02743e01006e30c13520010a00df0000010f00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "iget-object",
+        "args": "v0, v3, Lcom/android/server/oemlock/OemLockService;->mContext Landroid/content/Context;"
+      },
+      {
+        "offset": 4,
+        "op": "invoke-static",
+        "args": "v0, Landroid/os/UserManager;->get(Landroid/content/Context;)Landroid/os/UserManager;"
+      },
+      {
+        "offset": 10,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 12,
+        "op": "sget-object",
+        "args": "v1, Landroid/os/UserHandle;->SYSTEM Landroid/os/UserHandle;"
+      },
+      {
+        "offset": 16,
+        "op": "const-string/jumbo",
+        "args": "v2, no_factory_reset"
+      },
+      {
+        "offset": 22,
+        "op": "invoke-virtual",
+        "args": "v0, v2, v1, Landroid/os/UserManager;->hasUserRestriction(Ljava/lang/String; Landroid/os/UserHandle;)Z"
+      },
+      {
+        "offset": 28,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 30,
+        "op": "xor-int/lit8",
+        "args": "v0, v0, 1"
+      },
+      {
+        "offset": 34,
+        "op": "return",
+        "args": "v0"
+      }
+    ]
+  },
+  {
+    "file": "P780-services.jar",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/server/oemlock/OemLockService;",
+    "method": "setPersistentDataBlockOemUnlockAllowedBit(Z)V",
+    "code_offset": 5671684,
+    "sha256": "6ddcd407b896e5152ff9b3a8ad91624a621c0514c03ecaa96443f426e863629d",
+    "insns_hex": "1c00ce0d7110d94e00000c001f00ce0d380021005431b06220117d1c39011b002201c321701001fb01001a02be9e6e200cfb21006e200efb41006e1015fb01000c011a024d817120a23b12007220e05140000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "const-class",
+        "args": "v0, Lcom/android/server/PersistentDataBlockManagerInternal;"
+      },
+      {
+        "offset": 4,
+        "op": "invoke-static",
+        "args": "v0, Lcom/android/server/LocalServices;->getService(Ljava/lang/Class;)Ljava/lang/Object;"
+      },
+      {
+        "offset": 10,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 12,
+        "op": "check-cast",
+        "args": "v0, Lcom/android/server/PersistentDataBlockManagerInternal;"
+      },
+      {
+        "offset": 16,
+        "op": "if-eqz",
+        "args": "v0, +021h"
+      },
+      {
+        "offset": 20,
+        "op": "iget-object",
+        "args": "v1, v3, Lcom/android/server/oemlock/OemLockService;->mOemLock Lcom/android/server/oemlock/OemLock;"
+      },
+      {
+        "offset": 24,
+        "op": "instance-of",
+        "args": "v1, v1, Lcom/android/server/oemlock/PersistentDataBlockLock;"
+      },
+      {
+        "offset": 28,
+        "op": "if-nez",
+        "args": "v1, +01bh"
+      },
+      {
+        "offset": 32,
+        "op": "new-instance",
+        "args": "v1, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 36,
+        "op": "invoke-direct",
+        "args": "v1, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 42,
+        "op": "const-string",
+        "args": "v2, \"Update OEM Unlock bit in pst partition to \""
+      },
+      {
+        "offset": 46,
+        "op": "invoke-virtual",
+        "args": "v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 52,
+        "op": "invoke-virtual",
+        "args": "v1, v4, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 58,
+        "op": "invoke-virtual",
+        "args": "v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 64,
+        "op": "move-result-object",
+        "args": "v1"
+      },
+      {
+        "offset": 66,
+        "op": "const-string",
+        "args": "v2, \"OemLock\""
+      },
+      {
+        "offset": 70,
+        "op": "invoke-static",
+        "args": "v2, v1, Landroid/util/Slog;->i(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 76,
+        "op": "invoke-interface",
+        "args": "v0, v4, Lcom/android/server/PersistentDataBlockManagerInternal;->forceOemUnlockEnabled(Z)V"
+      },
+      {
+        "offset": 82,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "file": "P780-services.jar",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/server/oemlock/PersistentDataBlockLock;",
+    "method": "isOemUnlockAllowedByCarrier()Z",
+    "code_offset": 5671808,
+    "sha256": "d59002447d8ae767cc02d6a0ed8dac93bd85f9880b4ea6c606d20de37f0b8ce0",
+    "insns_hex": "5430b4627110a73500000c006201640f1b027c3e01006e30c13520010a00df0000010f00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "iget-object",
+        "args": "v0, v3, Lcom/android/server/oemlock/PersistentDataBlockLock;->mContext Landroid/content/Context;"
+      },
+      {
+        "offset": 4,
+        "op": "invoke-static",
+        "args": "v0, Landroid/os/UserManager;->get(Landroid/content/Context;)Landroid/os/UserManager;"
+      },
+      {
+        "offset": 10,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 12,
+        "op": "sget-object",
+        "args": "v1, Landroid/os/UserHandle;->SYSTEM Landroid/os/UserHandle;"
+      },
+      {
+        "offset": 16,
+        "op": "const-string/jumbo",
+        "args": "v2, no_oem_unlock"
+      },
+      {
+        "offset": 22,
+        "op": "invoke-virtual",
+        "args": "v0, v2, v1, Landroid/os/UserManager;->hasUserRestriction(Ljava/lang/String; Landroid/os/UserHandle;)Z"
+      },
+      {
+        "offset": 28,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 30,
+        "op": "xor-int/lit8",
+        "args": "v0, v0, 1"
+      },
+      {
+        "offset": 34,
+        "op": "return",
+        "args": "v0"
+      }
+    ]
+  }
+]

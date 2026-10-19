@@ -1,0 +1,17 @@
+{
+  "notice": "Historical PC snapshots; not reread from device this turn. Full logs remain on PC.",
+  "snapshots": [
+    {
+      "file": "01/hand5g_getprop.txt",
+      "customer_line": 334,
+      "fingerprint_line": 361
+    },
+    {
+      "file": "03/hand5g_debloat_audit/01_getprop_full.txt",
+      "customer_line": 331,
+      "fingerprint_line": 358
+    }
+  ],
+  "customer": "1",
+  "fingerprint": "Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys"
+}
