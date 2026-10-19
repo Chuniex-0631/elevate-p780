@@ -1,0 +1,37 @@
+[
+  {
+    "path": "/system/etc/vintf/compatibility_matrix.202404.xml",
+    "size": 100344,
+    "sha256": "e2fc2029ef0171d0135d832e59ebb916bd2b3d03598a4ac57dc862b2453d3172"
+  },
+  {
+    "path": "/system/etc/vintf/compatibility_matrix.5.xml",
+    "size": 124740,
+    "sha256": "f2b353792c635abdf807aa795396440ebdfc7303b4f9f578c2a2fa9d1c7d5b69"
+  },
+  {
+    "path": "/system/etc/vintf/compatibility_matrix.6.xml",
+    "size": 131775,
+    "sha256": "5a16f8f035956b317e47fe509d1d56dd1c5b41178cb231d6b7515792c3441dca"
+  },
+  {
+    "path": "/system/etc/vintf/compatibility_matrix.7.xml",
+    "size": 104399,
+    "sha256": "3892d7629a10aef3ee65c8a14f920536af7d26c750cdedabe2a3db69539befd9"
+  },
+  {
+    "path": "/system/etc/vintf/compatibility_matrix.8.xml",
+    "size": 101791,
+    "sha256": "83ba92f3bf64b5cd9325bb9abdc82e3313652fed4593361f53a0999a7b203ced"
+  },
+  {
+    "path": "/system/etc/vintf/compatibility_matrix.device.xml",
+    "size": 691,
+    "sha256": "5300c659db799c108ba3477ae7af44489ecedce8fe46305006bd62be18c545ff"
+  },
+  {
+    "path": "/system/etc/vintf/manifest.xml",
+    "size": 1773,
+    "sha256": "fbdedd540c469aa13fccf50ab602282621a5ed5b6bfbe1e8e88192811f4f6fc8"
+  }
+]

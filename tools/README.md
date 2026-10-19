@@ -7,6 +7,7 @@
 | [p780-avb-readonly.ps1](p780-avb-readonly.ps1) | Windows PowerShell / ADB ������ AVB ���������������ֻ���ɼ����μ� [2026-10-18 AVB ����](../docs/research/avb-live-baseline-20261018.md) |
 | [native/README.md](native/README.md) | ���APK DEX��JNI ELF/CFI����ʷ����SHA������ƣ��������ֻ� |
 | [gaps/README.md](gaps/README.md) | �̶�ADBֻ����ȱ�嵥���޶�policy-v30���߼�¼�Ƚϣ������/�ܾ���ظ�ִ�� |
+| [dsu/README.md](dsu/README.md) | DSU固定只读快照与已有ext4 GSI的VINTF提取、内核config子集比较；不试装 |
 | [verify_repository.py](verify_repository.py) | ȫ�����·�����ӡ�Python/JSON ��ʽ��Journey ԭ��/��ͼ�뱣��Ǩ�� Blob ���ݼ�� |
 | [summarize_config.py](summarize_config.py) | ԭʼ/���/��������ò��� |
 | [audit_missing_config.py](audit_missing_config.py) | ȱʧ CONFIG ���ŵĹ̶�Դ������ɨ�� |

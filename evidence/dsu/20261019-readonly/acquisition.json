@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-19",
+  "timezone": "Asia/Shanghai",
+  "files": [
+    {
+      "path": "vendor-manifest.xml",
+      "size": 24723,
+      "sha256": "252588e887bd314664dfa704d46d6d9a77ebecb032e496c56a6ca4aac49e1210"
+    },
+    {
+      "path": "vendor-compatibility-matrix.xml",
+      "size": 2528,
+      "sha256": "5aa869415b923d1668b80845bfb3b821ff82c113a2b61a9063bc9c3d19629dfd"
+    },
+    {
+      "path": "gsi-vintf/compatibility_matrix.5.xml",
+      "size": 124740,
+      "sha256": "f2b353792c635abdf807aa795396440ebdfc7303b4f9f578c2a2fa9d1c7d5b69"
+    },
+    {
+      "path": "gsi-vintf/manifest.xml",
+      "size": 1773,
+      "sha256": "fbdedd540c469aa13fccf50ab602282621a5ed5b6bfbe1e8e88192811f4f6fc8"
+    }
+  ],
+  "denied_metadata_paths": [
+    "/metadata/gsi",
+    "/metadata/gsi/dsu",
+    "/metadata/gsi/dsu/avb",
+    "/data/gsi"
+  ],
+  "denied_result": "Permission denied; not followed by child-file reads",
+  "installer": {
+    "path": "/system/priv-app/DynamicSystemInstallationService/DynamicSystemInstallationService.apk",
+    "sha256": "3015622f3fadb9575cd8521cf303fd3f304a6f1149d42269333e8b9bf3614260",
+    "source": "adb shell sha256sum; matches historical sample"
+  },
+  "permission_observations": {
+    "shell_install_dynamic_system": true,
+    "dynsystem_manage_dynamic_system": true,
+    "dynsystem_uid": 1000,
+    "source": "targeted dumpsys package excerpts; shared UID context"
+  },
+  "provenance": "Denied metadata, installer hash and permissions transcribed from this session tool output; state-snapshot.json is automated labelled acquisition. XML files were adb-pulled or extracted offline as recorded.",
+  "did_not_perform": [
+    "DSU install/enable/disable/remove",
+    "property writes",
+    "OEM Binder calls",
+    "binary push",
+    "reboot",
+    "flash"
+  ],
+  "limitations": [
+    "Metadata denied does not prove missing files.",
+    "Blank properties do not prove globally absent values.",
+    "gsi_tool status can cause a lazy service to start and stop; not an install."
+  ]
+}

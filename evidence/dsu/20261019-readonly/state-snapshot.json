@@ -1,0 +1,302 @@
+[
+  {
+    "label": "gsi_status",
+    "args": [
+      "shell",
+      "gsi_tool",
+      "status"
+    ],
+    "utc": "2026-10-19T14:19:16.142171+00:00",
+    "exit_code": 0,
+    "stdout": "normal\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.build.fingerprint",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.build.fingerprint"
+    ],
+    "utc": "2026-10-19T14:19:16.222006+00:00",
+    "exit_code": 0,
+    "stdout": "Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys\n",
+    "stderr": ""
+  },
+  {
+    "label": "gsid.image_installed",
+    "args": [
+      "shell",
+      "getprop",
+      "gsid.image_installed"
+    ],
+    "utc": "2026-10-19T14:19:16.304709+00:00",
+    "exit_code": 0,
+    "stdout": "\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.gsid.image_running",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.gsid.image_running"
+    ],
+    "utc": "2026-10-19T14:19:16.392961+00:00",
+    "exit_code": 0,
+    "stdout": "\n",
+    "stderr": ""
+  },
+  {
+    "label": "init.svc.gsid",
+    "args": [
+      "shell",
+      "getprop",
+      "init.svc.gsid"
+    ],
+    "utc": "2026-10-19T14:19:16.468180+00:00",
+    "exit_code": 0,
+    "stdout": "stopped\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.boot.bootreason",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.boot.bootreason"
+    ],
+    "utc": "2026-10-19T14:19:16.547165+00:00",
+    "exit_code": 0,
+    "stdout": "reboot,userrequested\n",
+    "stderr": ""
+  },
+  {
+    "label": "sys.boot.reason",
+    "args": [
+      "shell",
+      "getprop",
+      "sys.boot.reason"
+    ],
+    "utc": "2026-10-19T14:19:16.625114+00:00",
+    "exit_code": 0,
+    "stdout": "reboot,userrequested\n",
+    "stderr": ""
+  },
+  {
+    "label": "persist.sys.boot.reason.history",
+    "args": [
+      "shell",
+      "getprop",
+      "persist.sys.boot.reason.history"
+    ],
+    "utc": "2026-10-19T14:19:16.702378+00:00",
+    "exit_code": 0,
+    "stdout": "reboot,userrequested,1792417256\nreboot,userrequested,1792416970\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.vndk.version",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.vndk.version"
+    ],
+    "utc": "2026-10-19T14:19:16.769617+00:00",
+    "exit_code": 0,
+    "stdout": "30\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.vendor.api_level",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.vendor.api_level"
+    ],
+    "utc": "2026-10-19T14:19:16.849275+00:00",
+    "exit_code": 0,
+    "stdout": "\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.product.first_api_level",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.product.first_api_level"
+    ],
+    "utc": "2026-10-19T14:19:16.923776+00:00",
+    "exit_code": 0,
+    "stdout": "30\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.treble.enabled",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.treble.enabled"
+    ],
+    "utc": "2026-10-19T14:19:17.003478+00:00",
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.boot.dynamic_partitions",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.boot.dynamic_partitions"
+    ],
+    "utc": "2026-10-19T14:19:17.082575+00:00",
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.boot.force_normal_boot",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.boot.force_normal_boot"
+    ],
+    "utc": "2026-10-19T14:19:17.161945+00:00",
+    "exit_code": 0,
+    "stdout": "1\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.build.ab_update",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.build.ab_update"
+    ],
+    "utc": "2026-10-19T14:19:17.243316+00:00",
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.boot.slot_suffix",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.boot.slot_suffix"
+    ],
+    "utc": "2026-10-19T14:19:17.308495+00:00",
+    "exit_code": 0,
+    "stdout": "_b\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.boot.flash.locked",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.boot.flash.locked"
+    ],
+    "utc": "2026-10-19T14:19:17.384931+00:00",
+    "exit_code": 0,
+    "stdout": "1\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.boot.verifiedbootstate",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.boot.verifiedbootstate"
+    ],
+    "utc": "2026-10-19T14:19:17.461486+00:00",
+    "exit_code": 0,
+    "stdout": "green\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.vendor.build.security_patch",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.vendor.build.security_patch"
+    ],
+    "utc": "2026-10-19T14:19:17.528448+00:00",
+    "exit_code": 0,
+    "stdout": "2024-02-01\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.build.version.security_patch",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.build.version.security_patch"
+    ],
+    "utc": "2026-10-19T14:19:17.604733+00:00",
+    "exit_code": 0,
+    "stdout": "2024-02-01\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.product.cpu.abilist",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.product.cpu.abilist"
+    ],
+    "utc": "2026-10-19T14:19:17.669626+00:00",
+    "exit_code": 0,
+    "stdout": "arm64-v8a,armeabi-v7a,armeabi\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.build.system_root_image",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.build.system_root_image"
+    ],
+    "utc": "2026-10-19T14:19:17.743881+00:00",
+    "exit_code": 0,
+    "stdout": "false\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.boot.veritymode",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.boot.veritymode"
+    ],
+    "utc": "2026-10-19T14:19:17.808032+00:00",
+    "exit_code": 0,
+    "stdout": "enforcing\n",
+    "stderr": ""
+  },
+  {
+    "label": "gsiservice_dump",
+    "args": [
+      "shell",
+      "dumpsys",
+      "gsiservice"
+    ],
+    "utc": "2026-10-19T14:19:17.889423+00:00",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Can't find service: gsiservice\n"
+  },
+  {
+    "label": "dynamic_system_dump",
+    "args": [
+      "shell",
+      "dumpsys",
+      "dynamic_system"
+    ],
+    "utc": "2026-10-19T14:19:17.974123+00:00",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

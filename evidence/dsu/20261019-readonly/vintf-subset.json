@@ -1,0 +1,2516 @@
+{
+  "vendor_manifest": {
+    "version": "2.0",
+    "type": "device",
+    "target-level": "5"
+  },
+  "gsi_matrix": {
+    "version": "9.0",
+    "type": "framework",
+    "level": "5"
+  },
+  "kernel_branch": {
+    "actual": "5.4.233",
+    "minimum_in_selected_matrix": "5.4.61",
+    "patchlevel_meets_minimum": true,
+    "scope": "Version tuple comparison only; no patch-state inference"
+  },
+  "image": {
+    "size": 1899589632,
+    "sha256": "27321f9655530f014c884a690f49a53e6f3beeda71f4f27cbc141b17a8e86954",
+    "build_prop_sha256": "307fc22e3d952d41c0d73b273f4c628ddc4dd8cf446ff63507048f374e2b872c",
+    "selected_properties": {
+      "ro.system.build.fingerprint": "Android/aosp_arm64/generic_arm64:15/BP1A.250405.005.C1/13151952:user/release-keys",
+      "ro.build.id": "BP1A.250405.005.C1",
+      "ro.build.version.security_patch": "2025-04-05"
+    }
+  },
+  "config_sha256": "0ff9cbb1844e043e1211b527509f5f435862cace25649bab6641d5d62c7bbce0",
+  "groups": [
+    {
+      "index": 16,
+      "conditions": [],
+      "selected": true,
+      "config_count": 248
+    },
+    {
+      "index": 17,
+      "conditions": [
+        {
+          "key": "CONFIG_ARM",
+          "kind": "tristate",
+          "expected": "y",
+          "actual": null,
+          "match": false,
+          "absent_matches_disabled": false
+        }
+      ],
+      "selected": false,
+      "config_count": 4
+    },
+    {
+      "index": 18,
+      "conditions": [
+        {
+          "key": "CONFIG_ARM64",
+          "kind": "tristate",
+          "expected": "y",
+          "actual": "y",
+          "match": true,
+          "absent_matches_disabled": false
+        }
+      ],
+      "selected": true,
+      "config_count": 10
+    },
+    {
+      "index": 19,
+      "conditions": [
+        {
+          "key": "CONFIG_X86",
+          "kind": "tristate",
+          "expected": "y",
+          "actual": null,
+          "match": false,
+          "absent_matches_disabled": false
+        }
+      ],
+      "selected": false,
+      "config_count": 4
+    },
+    {
+      "index": 20,
+      "conditions": [
+        {
+          "key": "CONFIG_X86_64",
+          "kind": "tristate",
+          "expected": "y",
+          "actual": null,
+          "match": false,
+          "absent_matches_disabled": false
+        }
+      ],
+      "selected": false,
+      "config_count": 1
+    },
+    {
+      "index": 21,
+      "conditions": [
+        {
+          "key": "CONFIG_ACPI",
+          "kind": "tristate",
+          "expected": "n",
+          "actual": "n",
+          "match": true,
+          "absent_matches_disabled": false
+        }
+      ],
+      "selected": true,
+      "config_count": 1
+    },
+    {
+      "index": 22,
+      "conditions": [
+        {
+          "key": "CONFIG_OF",
+          "kind": "tristate",
+          "expected": "n",
+          "actual": "y",
+          "match": false,
+          "absent_matches_disabled": false
+        }
+      ],
+      "selected": false,
+      "config_count": 1
+    },
+    {
+      "index": 23,
+      "conditions": [
+        {
+          "key": "CONFIG_EXT4_FS",
+          "kind": "tristate",
+          "expected": "y",
+          "actual": "y",
+          "match": true,
+          "absent_matches_disabled": false
+        }
+      ],
+      "selected": true,
+      "config_count": 1
+    },
+    {
+      "index": 24,
+      "conditions": [
+        {
+          "key": "CONFIG_F2FS_FS",
+          "kind": "tristate",
+          "expected": "y",
+          "actual": "y",
+          "match": true,
+          "absent_matches_disabled": false
+        }
+      ],
+      "selected": true,
+      "config_count": 1
+    }
+  ],
+  "checked_configs": [
+    {
+      "group": 16,
+      "key": "CONFIG_ADVISE_SYSCALLS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_AIO",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_ANDROID",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_ANDROID_BINDERFS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_ANDROID_BINDER_DEVICES",
+      "kind": "string",
+      "expected": "binder,hwbinder,vndbinder",
+      "actual": "binder,hwbinder,vndbinder",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_ANDROID_BINDER_IPC",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_ANDROID_LOW_MEMORY_KILLER",
+      "kind": "tristate",
+      "expected": "n",
+      "actual": null,
+      "match": true,
+      "absent_matches_disabled": true
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_ASHMEM",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_AUDIT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_BINFMT_ELF",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_BINFMT_SCRIPT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_BLK_DEV_INITRD",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_BLK_DEV_LOOP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_BLOCK",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_BPFILTER",
+      "kind": "tristate",
+      "expected": "n",
+      "actual": "n",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_BPF_JIT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_BPF_SYSCALL",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CGROUPS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CGROUP_BPF",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CGROUP_CPUACCT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CGROUP_FREEZER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CGROUP_SCHED",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CROSS_MEMORY_ATTACH",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CRYPTO_AES",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CRYPTO_CBC",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CRYPTO_ECB",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CRYPTO_GCM",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CRYPTO_HMAC",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CRYPTO_MD5",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CRYPTO_NULL",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CRYPTO_SHA1",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CRYPTO_SHA256",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_CRYPTO_SHA512",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_DEBUG_LIST",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_DEFAULT_SECURITY_SELINUX",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_DEVMEM",
+      "kind": "tristate",
+      "expected": "n",
+      "actual": "n",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_DM_SNAPSHOT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_DM_VERITY",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_DUMMY",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_EMBEDDED",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_EPOLL",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_EVENTFD",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_FHANDLE",
+      "kind": "tristate",
+      "expected": "n",
+      "actual": "n",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_FILE_LOCKING",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_FS_ENCRYPTION",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_FS_VERITY",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_FS_VERITY_BUILTIN_SIGNATURES",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_FUSE_FS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_FUTEX",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_FW_CACHE",
+      "kind": "tristate",
+      "expected": "n",
+      "actual": "n",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_HARDENED_USERCOPY",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_HID_GENERIC",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_HID_SONY",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_HIGH_RES_TIMERS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IKCONFIG",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IKCONFIG_PROC",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_INET",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_INET6_ESP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_INET6_IPCOMP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_INET_DIAG_DESTROY",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_INET_ESP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_INET_UDP_DIAG",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_INOTIFY_USER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_INPUT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_INPUT_EVDEV",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_INPUT_JOYSTICK",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP6_NF_FILTER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP6_NF_IPTABLES",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP6_NF_MANGLE",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP6_NF_MATCH_RPFILTER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP6_NF_NAT",
+      "kind": "tristate",
+      "expected": "n",
+      "actual": "n",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP6_NF_RAW",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP6_NF_TARGET_REJECT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IPV6",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IPV6_MIP6",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IPV6_MULTIPLE_TABLES",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IPV6_OPTIMISTIC_DAD",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IPV6_ROUTER_PREF",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IPV6_ROUTE_INFO",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IPV6_VTI",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_ADVANCED_ROUTER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_MULTICAST",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_MULTIPLE_TABLES",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_NF_ARPFILTER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_NF_ARPTABLES",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_NF_ARP_MANGLE",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_NF_FILTER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_NF_IPTABLES",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_NF_MANGLE",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_NF_MATCH_ECN",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_NF_MATCH_TTL",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_NF_NAT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_NF_RAW",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_NF_SECURITY",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_NF_TARGET_MASQUERADE",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_NF_TARGET_NETMAP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_NF_TARGET_REDIRECT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_IP_NF_TARGET_REJECT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_JOYSTICK_XPAD",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_L2TP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_MAGIC_SYSRQ",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_MD",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_MEMBARRIER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_MMU",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_MODULES",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_MODULE_FORCE_UNLOAD",
+      "kind": "tristate",
+      "expected": "n",
+      "actual": "n",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_MODULE_UNLOAD",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_MODVERSIONS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_MULTIUSER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NAMESPACES",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NET",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETDEVICES",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_BPF",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_COMMENT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_CONNLIMIT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_CONNMARK",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_CONNTRACK",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_HASHLIMIT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_HELPER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_IPRANGE",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_LENGTH",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_LIMIT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_MAC",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_MARK",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_OWNER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_PKTTYPE",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_POLICY",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_QUOTA",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_QUOTA2",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_QUOTA2_LOG",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_SOCKET",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_STATE",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_STATISTIC",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_STRING",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_TIME",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_MATCH_U32",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_TARGET_CLASSIFY",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_TARGET_CONNMARK",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_TARGET_CONNSECMARK",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_TARGET_CT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_TARGET_IDLETIMER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_TARGET_MARK",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_TARGET_NFLOG",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_TARGET_NFQUEUE",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_TARGET_SECMARK",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_TARGET_TCPMSS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_TARGET_TPROXY",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NETFILTER_XT_TARGET_TRACE",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NET_CLS_ACT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NET_CLS_BPF",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NET_CLS_U32",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NET_EMATCH",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NET_EMATCH_U32",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NET_IPGRE_DEMUX",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NET_IPVTI",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NET_KEY",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NET_NS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NET_SCHED",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NET_SCH_HTB",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NET_SCH_INGRESS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NFSD",
+      "kind": "tristate",
+      "expected": "n",
+      "actual": "n",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NFS_FS",
+      "kind": "tristate",
+      "expected": "n",
+      "actual": "n",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_CONNTRACK",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_CONNTRACK_AMANDA",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_CONNTRACK_EVENTS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_CONNTRACK_FTP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_CONNTRACK_H323",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_CONNTRACK_IRC",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_CONNTRACK_NETBIOS_NS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_CONNTRACK_PPTP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_CONNTRACK_SANE",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_CONNTRACK_SECMARK",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_CONNTRACK_TFTP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_CT_NETLINK",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_CT_PROTO_DCCP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_CT_PROTO_SCTP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_CT_PROTO_UDPLITE",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_NAT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_SOCKET_IPV4",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NF_SOCKET_IPV6",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_NO_HZ",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_PACKET",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_PM_AUTOSLEEP",
+      "kind": "tristate",
+      "expected": "n",
+      "actual": "n",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_PM_WAKELOCKS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_POSIX_TIMERS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_PPP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_PPPOL2TP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_PPP_BSDCOMP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_PPP_DEFLATE",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_PPP_MPPE",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_PPTP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_PREEMPT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_PROC_FS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_PROFILING",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_PSI",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_QFMT_V2",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_QUOTA",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_QUOTACTL",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_RD_LZ4",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_RTC_CLASS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_RT_GROUP_SCHED",
+      "kind": "tristate",
+      "expected": "n",
+      "actual": "n",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_SCHED_DEBUG",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_SECCOMP",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_SECCOMP_FILTER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_SECURITY",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_SECURITY_NETWORK",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_SECURITY_SELINUX",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_SHMEM",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_SIGNALFD",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_SND",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_SOUND",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_STACKPROTECTOR",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_STACKPROTECTOR_STRONG",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_STAGING",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_STATIC_USERMODEHELPER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_STRICT_KERNEL_RWX",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_STRICT_MODULE_RWX",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_SUSPEND",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_SYNC_FILE",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_SYSFS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_SYSVIPC",
+      "kind": "tristate",
+      "expected": "n",
+      "actual": "n",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_TASKSTATS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_TASK_IO_ACCOUNTING",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_TASK_XACCT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_TIMERFD",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_TTY",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_TUN",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_UHID",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_UID_SYS_STATS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_UNIX",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_USB",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_USB_CONFIGFS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_USB_CONFIGFS_F_ACC",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_USB_CONFIGFS_F_AUDIO_SRC",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_USB_CONFIGFS_F_FS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_USB_CONFIGFS_F_MIDI",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_USB_CONFIGFS_UEVENT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_USB_GADGET",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_USB_SUPPORT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_USELIB",
+      "kind": "tristate",
+      "expected": "n",
+      "actual": "n",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_UTS_NS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_VETH",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_VHOST",
+      "kind": "tristate",
+      "expected": "n",
+      "actual": null,
+      "match": true,
+      "absent_matches_disabled": true
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_XFRM_INTERFACE",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_XFRM_STATISTICS",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_XFRM_USER",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 16,
+      "key": "CONFIG_DEBUG_FS",
+      "kind": "tristate",
+      "expected": "n",
+      "actual": "n",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 18,
+      "key": "CONFIG_ARM64_PAN",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 18,
+      "key": "CONFIG_ARM64_SW_TTBR0_PAN",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 18,
+      "key": "CONFIG_ARMV8_DEPRECATED",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 18,
+      "key": "CONFIG_COMPAT",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 18,
+      "key": "CONFIG_CFI_CLANG",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 18,
+      "key": "CONFIG_CP15_BARRIER_EMULATION",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 18,
+      "key": "CONFIG_SETEND_EMULATION",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 18,
+      "key": "CONFIG_SHADOW_CALL_STACK",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 18,
+      "key": "CONFIG_SWP_EMULATION",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 18,
+      "key": "CONFIG_BPF_JIT_ALWAYS_ON",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 21,
+      "key": "CONFIG_OF",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 23,
+      "key": "CONFIG_EXT4_FS_POSIX_ACL",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    },
+    {
+      "group": 24,
+      "key": "CONFIG_F2FS_FS_POSIX_ACL",
+      "kind": "tristate",
+      "expected": "y",
+      "actual": "y",
+      "match": true,
+      "absent_matches_disabled": false
+    }
+  ],
+  "count": 261,
+  "mismatches": [],
+  "limitations": [
+    "This only compares the selected 5.4.61 FCM5 kernel branches against the exported config.",
+    "No full merged framework/device manifests, APEX fragments, HAL version/range matching, VNDK or sepolicy compatibility evaluation.",
+    "The ext4 reader handles only bounded regular files/directories with extents; no filesystem checksum validation or independent extractor used.",
+    "Successful config subset matching does not prove DSU boot, AVB trust, early mounting or runtime HAL compatibility."
+  ]
+}

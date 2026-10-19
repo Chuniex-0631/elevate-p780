@@ -1,5 +1,7 @@
 # P780 DSU 实机阶段收束与原厂维护接口路线（2026-10-18）
 
+> 2026-10-19补充：机主授权DSU只读取证，当前状态normal且启动日志isInstalled=false；本轮独立重算PC现有A镜像整文件SHA匹配，并完成vendor FCM5与GSI内核config子集核对。见[只读后续](p780-dsu-readonly-followup-20261019.md)。不重开安装/Restart，历史失败根因未知。
+
 ## 最新决策
 2026-10-18 20:31（Asia/Shanghai），机主明确停止 DSU 路线，转向其它研究。停止重复安装、Restart、改签名和 DSU 参数试验。不能把“回原厂”写成“已证实厂商禁止 DSU”。
 
@@ -8,7 +10,7 @@
 - A SHA256: 27321f9655530f014c884a690f49a53e6f3beeda71f4f27cbc141b17a8e86954。
 - B SHA256: fd98af142b11263e997adba190810c544857c7b750fd905a663e87256a71d880。
 - A/B 前1869524992字节系统数据SHA256相同：fe18355c1dc0d83aa9c9e5c0285e5a574c4706d3e7a31c35d12b1d4d619e7ef4。
-- 上述整镜像和数据段摘要来自用户PC输出；助手未取得完整镜像独立重算。
+- 上述整镜像和数据段摘要原来自用户PC输出；2026-10-19助手已从本地完整A镜像独立流式重算并匹配A整文件SHA。B整文件和A/B数据段摘要本轮未独立重算。
 - B经DSU Sideloader非Root ADB前端调用原生安装器，日志18:16:29为 READY / INSTALL_COMPLETED。启动前工具显示normal，bugreport为gsid.image_installed=0。
 - 18:44:55原生通知触发ACTION_REBOOT_TO_DYN_SYSTEM，18:44:57记录Rebooting, reason: dynsystem。原厂APK只在setEnable返回成功后调用该重启；支持启用调用报告成功，不代表启动信任检查通过。
 - 最终回到Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys，Locked=1，green，installed/disabled。启动后bugreport为gsid.image_installed=1、ro.gsid.image_running=0。
