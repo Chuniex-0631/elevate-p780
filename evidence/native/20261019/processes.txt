@@ -1,0 +1,15 @@
+u:r:kernel:s0                  root            235      2       0      0 0                   0 I [kworker/6:5-sock_diag_events]
+u:r:kernel:s0                  root            300      2       0      0 0                   0 S [qseecom-unreg-l]
+u:r:kernel:s0                  root            301      2       0      0 0                   0 S [qseecom-unload-]
+u:r:kernel:s0                  root            372      2       0      0 0                   0 I [kworker/4:2-sock_diag_events]
+u:r:tee:s0                     system          580      1 12510664  2064 0                   0 S qseecomd
+u:r:vendor_hal_qseecom_default:s0 system       581      1 12383100  1936 0                   0 S vendor.qti.hardware.qseecom@1.0-service
+u:r:vendor_ssgtzd:s0           system          854      1 13576288  1092 0                   0 S ssgtzd
+u:r:vendor_diag-router:s0      system         1182      1 12401128  1232 0                   0 S diag-router
+u:r:vendor_mmi_sys:s0          root           1202      1 12366240  1988 0                   0 S journey_diag_ext_system
+u:r:vendor_mmi:s0              root           1211      1 12383944  1032 0                   0 S journey_diag_ext_vendor
+u:r:vendor_wcnss_service:s0    system         1255      1 12350884  3040 0                   0 S cnss_diag
+u:r:hal_tetheroffload_default:s0 radio        1287      1 12365168   720 0                   0 S ipacm-diag
+u:r:hal_fingerprint_default:s0 system         1343      1 12347632   928 0                   0 S vendor.journey.hardware.fingerprint@1.0-service
+u:r:hal_journey_warehouse_default:s0 system   1347      1 12347784  1536 0                   0 S vendor.journey.hardware.warehouse@1.0-service
+u:r:system_app:s0              system         6220    724 14830516 75760 0                   0 S com.qti.diagservices

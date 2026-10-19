@@ -1,0 +1,3453 @@
+{
+  "needed": [
+    "libandroid_runtime.so",
+    "libnativehelper.so",
+    "libutils.so",
+    "libcutils.so",
+    "liblog.so",
+    "libdiag_system.so",
+    "libc++.so",
+    "libc.so",
+    "libm.so",
+    "libdl.so"
+  ],
+  "symbols": [
+    {
+      "name": "__cxa_finalize",
+      "address": 0,
+      "size": 0,
+      "section": "SHN_UNDEF"
+    },
+    {
+      "name": "sem_wait",
+      "address": 0,
+      "size": 0,
+      "section": "SHN_UNDEF"
+    },
+    {
+      "name": "pthread_mutex_lock",
+      "address": 0,
+      "size": 0,
+      "section": "SHN_UNDEF"
+    },
+    {
+      "name": "pthread_mutex_unlock",
+      "address": 0,
+      "size": 0,
+      "section": "SHN_UNDEF"
+    },
+    {
+      "name": "__android_log_print",
+      "address": 0,
+      "size": 0,
+      "section": "SHN_UNDEF"
+    },
+    {
+      "name": "diagpkt_alloc",
+      "address": 0,
+      "size": 0,
+      "section": "SHN_UNDEF"
+    },
+    {
+      "name": "_ZN7android14AndroidRuntime21registerNativeMethodsEP7_JNIEnvPKcPK15JNINativeMethodi",
+      "address": 0,
+      "size": 0,
+      "section": "SHN_UNDEF"
+    },
+    {
+      "name": "Diag_LSM_Init",
+      "address": 0,
+      "size": 0,
+      "section": "SHN_UNDEF"
+    },
+    {
+      "name": "diagpkt_tbl_reg",
+      "address": 0,
+      "size": 0,
+      "section": "SHN_UNDEF"
+    },
+    {
+      "name": "__cfi_slowpath",
+      "address": 0,
+      "size": 0,
+      "section": "SHN_UNDEF"
+    },
+    {
+      "name": "abort",
+      "address": 0,
+      "size": 0,
+      "section": "SHN_UNDEF"
+    },
+    {
+      "name": "memcpy",
+      "address": 0,
+      "size": 0,
+      "section": "SHN_UNDEF"
+    },
+    {
+      "name": "__stack_chk_fail",
+      "address": 0,
+      "size": 0,
+      "section": "SHN_UNDEF"
+    },
+    {
+      "name": "JNI_OnLoad",
+      "address": 8336,
+      "size": 4,
+      "section": 14
+    },
+    {
+      "name": "__cfi_check",
+      "address": 8192,
+      "size": 136,
+      "section": 14
+    },
+    {
+      "name": "kInterfacePath",
+      "address": 17176,
+      "size": 8,
+      "section": 21
+    },
+    {
+      "name": "commandList_lock",
+      "address": 17216,
+      "size": 40,
+      "section": 22
+    },
+    {
+      "name": "commandList",
+      "address": 17272,
+      "size": 16,
+      "section": 22
+    },
+    {
+      "name": "Java_com_qti_diagservices_DiagJNIInterface_getNextCommand",
+      "address": 8328,
+      "size": 4,
+      "section": 14
+    },
+    {
+      "name": "android_diag_handler",
+      "address": 8332,
+      "size": 4,
+      "section": 14
+    },
+    {
+      "name": "kDataPath",
+      "address": 17184,
+      "size": 8,
+      "section": 21
+    },
+    {
+      "name": "diagCommand_ready",
+      "address": 17200,
+      "size": 16,
+      "section": 22
+    }
+  ],
+  "relocations": [
+    {
+      "offset": 12976,
+      "symbol": "__cxa_finalize"
+    },
+    {
+      "offset": 12984,
+      "symbol": "abort"
+    },
+    {
+      "offset": 12992,
+      "symbol": "__cfi_slowpath"
+    },
+    {
+      "offset": 13000,
+      "symbol": "sem_wait"
+    },
+    {
+      "offset": 13008,
+      "symbol": "pthread_mutex_lock"
+    },
+    {
+      "offset": 13016,
+      "symbol": "pthread_mutex_unlock"
+    },
+    {
+      "offset": 13024,
+      "symbol": "__android_log_print"
+    },
+    {
+      "offset": 13032,
+      "symbol": "diagpkt_alloc"
+    },
+    {
+      "offset": 13040,
+      "symbol": "memcpy"
+    },
+    {
+      "offset": 13048,
+      "symbol": "__stack_chk_fail"
+    },
+    {
+      "offset": 13056,
+      "symbol": "_ZN7android14AndroidRuntime21registerNativeMethodsEP7_JNIEnvPKcPK15JNINativeMethodi"
+    },
+    {
+      "offset": 13064,
+      "symbol": "Diag_LSM_Init"
+    },
+    {
+      "offset": 13072,
+      "symbol": "diagpkt_tbl_reg"
+    }
+  ],
+  "plt_entries": [
+    {
+      "address": 8384,
+      "symbol": "__cxa_finalize"
+    },
+    {
+      "address": 8400,
+      "symbol": "abort"
+    },
+    {
+      "address": 8416,
+      "symbol": "__cfi_slowpath"
+    },
+    {
+      "address": 8432,
+      "symbol": "sem_wait"
+    },
+    {
+      "address": 8448,
+      "symbol": "pthread_mutex_lock"
+    },
+    {
+      "address": 8464,
+      "symbol": "pthread_mutex_unlock"
+    },
+    {
+      "address": 8480,
+      "symbol": "__android_log_print"
+    },
+    {
+      "address": 8496,
+      "symbol": "diagpkt_alloc"
+    },
+    {
+      "address": 8512,
+      "symbol": "memcpy"
+    },
+    {
+      "address": 8528,
+      "symbol": "__stack_chk_fail"
+    },
+    {
+      "address": 8544,
+      "symbol": "_ZN7android14AndroidRuntime21registerNativeMethodsEP7_JNIEnvPKcPK15JNINativeMethodi"
+    },
+    {
+      "address": 8560,
+      "symbol": "Diag_LSM_Init"
+    },
+    {
+      "address": 8576,
+      "symbol": "diagpkt_tbl_reg"
+    }
+  ],
+  "sections": [
+    {
+      "name": "",
+      "address": 0,
+      "offset": 0,
+      "size": 0
+    },
+    {
+      "name": ".note.android.ident",
+      "address": 624,
+      "offset": 624,
+      "size": 24
+    },
+    {
+      "name": ".note.gnu.build-id",
+      "address": 648,
+      "offset": 648,
+      "size": 32
+    },
+    {
+      "name": ".dynsym",
+      "address": 680,
+      "offset": 680,
+      "size": 552
+    },
+    {
+      "name": ".gnu.version",
+      "address": 1232,
+      "offset": 1232,
+      "size": 46
+    },
+    {
+      "name": ".gnu.version_r",
+      "address": 1280,
+      "offset": 1280,
+      "size": 96
+    },
+    {
+      "name": ".gnu.hash",
+      "address": 1376,
+      "offset": 1376,
+      "size": 76
+    },
+    {
+      "name": ".dynstr",
+      "address": 1452,
+      "offset": 1452,
+      "size": 601
+    },
+    {
+      "name": ".rela.dyn",
+      "address": 2056,
+      "offset": 2056,
+      "size": 59
+    },
+    {
+      "name": ".relr.dyn",
+      "address": 2120,
+      "offset": 2120,
+      "size": 32
+    },
+    {
+      "name": ".rela.plt",
+      "address": 2152,
+      "offset": 2152,
+      "size": 312
+    },
+    {
+      "name": ".rodata",
+      "address": 2464,
+      "offset": 2464,
+      "size": 451
+    },
+    {
+      "name": ".eh_frame_hdr",
+      "address": 2916,
+      "offset": 2916,
+      "size": 116
+    },
+    {
+      "name": ".eh_frame",
+      "address": 3032,
+      "offset": 3032,
+      "size": 436
+    },
+    {
+      "name": ".text",
+      "address": 4096,
+      "offset": 4096,
+      "size": 4244
+    },
+    {
+      "name": ".plt",
+      "address": 8352,
+      "offset": 8352,
+      "size": 240
+    },
+    {
+      "name": ".data.rel.ro",
+      "address": 12288,
+      "offset": 12288,
+      "size": 72
+    },
+    {
+      "name": ".fini_array",
+      "address": 12360,
+      "offset": 12360,
+      "size": 16
+    },
+    {
+      "name": ".dynamic",
+      "address": 12376,
+      "offset": 12376,
+      "size": 544
+    },
+    {
+      "name": ".got",
+      "address": 12920,
+      "offset": 12920,
+      "size": 32
+    },
+    {
+      "name": ".got.plt",
+      "address": 12952,
+      "offset": 12952,
+      "size": 128
+    },
+    {
+      "name": ".data",
+      "address": 17176,
+      "offset": 13080,
+      "size": 16
+    },
+    {
+      "name": ".bss",
+      "address": 17192,
+      "offset": 13096,
+      "size": 96
+    },
+    {
+      "name": ".shstrtab",
+      "address": 0,
+      "offset": 13096,
+      "size": 246
+    },
+    {
+      "name": ".gnu_debugdata",
+      "address": 0,
+      "offset": 13342,
+      "size": 1016
+    }
+  ],
+  "functions": [
+    {
+      "name": "JNI_OnLoad",
+      "address": 8336,
+      "size": 4,
+      "sha256": "0128a352cb8d982a2b8a51073b0f4c14d7e79e115b2e28c72e7e725a81a0ea85",
+      "insns_hex": "f4fcff17",
+      "instructions": [
+        {
+          "address": 8336,
+          "op": "b",
+          "args": "#0x1460"
+        }
+      ]
+    },
+    {
+      "name": "__cfi_check",
+      "address": 8192,
+      "size": 136,
+      "sha256": "7f46522b72f924647974a5f5f16fa37ca90d1af0e2593ed4dc2a4a952ac9f0dd",
+      "insns_hex": "a8f19ed2683abdf2e80ed5f24818f6f21f0008eb00020054e88180d20884a0f288f7d3f2c8f5fbf21f0008eba0010054a84a82d2086eaff2281dccf22863e6f21f0008eb8101005408000090082102910600001408000090083102910300001408000090084102913f0008eb41000054c0035fd6fe0f1ff8e00302aae6fbff97fe0741f8c0035fd6",
+      "instructions": [
+        {
+          "address": 8192,
+          "op": "mov",
+          "args": "x8, #0xf78d"
+        },
+        {
+          "address": 8196,
+          "op": "movk",
+          "args": "x8, #0xe9d3, lsl #16"
+        },
+        {
+          "address": 8200,
+          "op": "movk",
+          "args": "x8, #0xa877, lsl #32"
+        },
+        {
+          "address": 8204,
+          "op": "movk",
+          "args": "x8, #0xb0c2, lsl #48"
+        },
+        {
+          "address": 8208,
+          "op": "cmp",
+          "args": "x0, x8"
+        },
+        {
+          "address": 8212,
+          "op": "b.eq",
+          "args": "#0x2054"
+        },
+        {
+          "address": 8216,
+          "op": "mov",
+          "args": "x8, #0x40f"
+        },
+        {
+          "address": 8220,
+          "op": "movk",
+          "args": "x8, #0x420, lsl #16"
+        },
+        {
+          "address": 8224,
+          "op": "movk",
+          "args": "x8, #0x9fbc, lsl #32"
+        },
+        {
+          "address": 8228,
+          "op": "movk",
+          "args": "x8, #0xdfae, lsl #48"
+        },
+        {
+          "address": 8232,
+          "op": "cmp",
+          "args": "x0, x8"
+        },
+        {
+          "address": 8236,
+          "op": "b.eq",
+          "args": "#0x2060"
+        },
+        {
+          "address": 8240,
+          "op": "mov",
+          "args": "x8, #0x1255"
+        },
+        {
+          "address": 8244,
+          "op": "movk",
+          "args": "x8, #0x7b70, lsl #16"
+        },
+        {
+          "address": 8248,
+          "op": "movk",
+          "args": "x8, #0x60e9, lsl #32"
+        },
+        {
+          "address": 8252,
+          "op": "movk",
+          "args": "x8, #0x3319, lsl #48"
+        },
+        {
+          "address": 8256,
+          "op": "cmp",
+          "args": "x0, x8"
+        },
+        {
+          "address": 8260,
+          "op": "b.ne",
+          "args": "#0x2074"
+        },
+        {
+          "address": 8264,
+          "op": "adrp",
+          "args": "x8, #0x2000"
+        },
+        {
+          "address": 8268,
+          "op": "add",
+          "args": "x8, x8, #0x88"
+        },
+        {
+          "address": 8272,
+          "op": "b",
+          "args": "#0x2068"
+        },
+        {
+          "address": 8276,
+          "op": "adrp",
+          "args": "x8, #0x2000"
+        },
+        {
+          "address": 8280,
+          "op": "add",
+          "args": "x8, x8, #0x8c"
+        },
+        {
+          "address": 8284,
+          "op": "b",
+          "args": "#0x2068"
+        },
+        {
+          "address": 8288,
+          "op": "adrp",
+          "args": "x8, #0x2000"
+        },
+        {
+          "address": 8292,
+          "op": "add",
+          "args": "x8, x8, #0x90"
+        },
+        {
+          "address": 8296,
+          "op": "cmp",
+          "args": "x1, x8"
+        },
+        {
+          "address": 8300,
+          "op": "b.ne",
+          "args": "#0x2074"
+        },
+        {
+          "address": 8304,
+          "op": "ret",
+          "args": ""
+        },
+        {
+          "address": 8308,
+          "op": "str",
+          "args": "x30, [sp, #-0x10]!"
+        },
+        {
+          "address": 8312,
+          "op": "mov",
+          "args": "x0, x2"
+        },
+        {
+          "address": 8316,
+          "op": "bl",
+          "args": "#0x1014"
+        },
+        {
+          "address": 8320,
+          "op": "ldr",
+          "args": "x30, [sp], #0x10"
+        },
+        {
+          "address": 8324,
+          "op": "ret",
+          "args": ""
+        }
+      ]
+    },
+    {
+      "name": "Java_com_qti_diagservices_DiagJNIInterface_getNextCommand",
+      "address": 8328,
+      "size": 4,
+      "sha256": "ca7be1728685b5ba6d8f5d516f120c1de907c0f4c3188250629acd76d0409090",
+      "insns_hex": "ecfbff17",
+      "instructions": [
+        {
+          "address": 8328,
+          "op": "b",
+          "args": "#0x1038"
+        }
+      ]
+    },
+    {
+      "name": "android_diag_handler",
+      "address": 8332,
+      "size": 4,
+      "sha256": "62d618c1073c61240d410b0feaa072113af644a1db4ceb3a0a2bf2f0d63e0898",
+      "insns_hex": "09fcff17",
+      "instructions": [
+        {
+          "address": 8332,
+          "op": "b",
+          "args": "#0x10b0"
+        }
+      ]
+    },
+    {
+      "name": "__on_dlclose",
+      "address": 4096,
+      "size": 12,
+      "sha256": "3c256110ffc0386255ea0bf6d27a5429aa2bbdc7d3555706da6215dd90812381",
+      "insns_hex": "000000d0000000912e040014",
+      "instructions": [
+        {
+          "address": 4096,
+          "op": "adrp",
+          "args": "x0, #0x3000"
+        },
+        {
+          "address": 4100,
+          "op": "add",
+          "args": "x0, x0, #0"
+        },
+        {
+          "address": 4104,
+          "op": "b",
+          "args": "#0x20c0"
+        }
+      ]
+    },
+    {
+      "name": "__on_dlclose_late",
+      "address": 4112,
+      "size": 4,
+      "sha256": "ba82b500d7154ea634e03d95fbeeeebf5275743859cfdbc03d61c6d4318c1653",
+      "insns_hex": "ffffff17",
+      "instructions": [
+        {
+          "address": 4112,
+          "op": "b",
+          "args": "#0x100c"
+        }
+      ]
+    },
+    {
+      "name": "__emutls_unregister_key",
+      "address": 4108,
+      "size": 4,
+      "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+      "insns_hex": "c0035fd6",
+      "instructions": [
+        {
+          "address": 4108,
+          "op": "ret",
+          "args": ""
+        }
+      ]
+    },
+    {
+      "name": "_ZN7_JNIEnv20CallStaticVoidMethodEP7_jclassP10_jmethodIDz",
+      "address": 4988,
+      "size": 228,
+      "sha256": "0f740ec49dd37b2f6997a7a936c2daacde869e18abc5cc6c8009c58b6bd2dd09",
+      "insns_hex": "ff0305d1fd7b10a9fc5f11a9f65712a9f44f13a9fd030491a39338a9a59b39a9a7831af8e18b00ade39301ade003803de59b02ade71f803d57d03bd5e81640f9aae301d1eb03009100e4006fa8831ff8e8048092a903019108f0dff24aa100916b010291a0833eada92b3da9ab233ea9080040f9f40300aa607d89d26046b9f2153942f9009fc7f2f60301aae0bce3f2e10315aaf30302aa33030094a0877eada34301d1e00314aae10316aae20313aaa0873dada0023fd6e81640f9a9835ff81f0109ebe1000054f44f53a9f65752a9fc5f51a9fd7b50a9ff030591c0035fd63d030094",
+      "instructions": [
+        {
+          "address": 4988,
+          "op": "sub",
+          "args": "sp, sp, #0x140"
+        },
+        {
+          "address": 4992,
+          "op": "stp",
+          "args": "x29, x30, [sp, #0x100]"
+        },
+        {
+          "address": 4996,
+          "op": "stp",
+          "args": "x28, x23, [sp, #0x110]"
+        },
+        {
+          "address": 5000,
+          "op": "stp",
+          "args": "x22, x21, [sp, #0x120]"
+        },
+        {
+          "address": 5004,
+          "op": "stp",
+          "args": "x20, x19, [sp, #0x130]"
+        },
+        {
+          "address": 5008,
+          "op": "add",
+          "args": "x29, sp, #0x100"
+        },
+        {
+          "address": 5012,
+          "op": "stp",
+          "args": "x3, x4, [x29, #-0x78]"
+        },
+        {
+          "address": 5016,
+          "op": "stp",
+          "args": "x5, x6, [x29, #-0x68]"
+        },
+        {
+          "address": 5020,
+          "op": "stur",
+          "args": "x7, [x29, #-0x58]"
+        },
+        {
+          "address": 5024,
+          "op": "stp",
+          "args": "q1, q2, [sp, #0x10]"
+        },
+        {
+          "address": 5028,
+          "op": "stp",
+          "args": "q3, q4, [sp, #0x30]"
+        },
+        {
+          "address": 5032,
+          "op": "str",
+          "args": "q0, [sp]"
+        },
+        {
+          "address": 5036,
+          "op": "stp",
+          "args": "q5, q6, [sp, #0x50]"
+        },
+        {
+          "address": 5040,
+          "op": "str",
+          "args": "q7, [sp, #0x70]"
+        },
+        {
+          "address": 5044,
+          "op": "mrs",
+          "args": "x23, tpidr_el0"
+        },
+        {
+          "address": 5048,
+          "op": "ldr",
+          "args": "x8, [x23, #0x28]"
+        },
+        {
+          "address": 5052,
+          "op": "sub",
+          "args": "x10, x29, #0x78"
+        },
+        {
+          "address": 5056,
+          "op": "mov",
+          "args": "x11, sp"
+        },
+        {
+          "address": 5060,
+          "op": "movi",
+          "args": "v0.2d, #0000000000000000"
+        },
+        {
+          "address": 5064,
+          "op": "stur",
+          "args": "x8, [x29, #-8]"
+        },
+        {
+          "address": 5068,
+          "op": "mov",
+          "args": "x8, #-0x28"
+        },
+        {
+          "address": 5072,
+          "op": "add",
+          "args": "x9, x29, #0x40"
+        },
+        {
+          "address": 5076,
+          "op": "movk",
+          "args": "x8, #0xff80, lsl #32"
+        },
+        {
+          "address": 5080,
+          "op": "add",
+          "args": "x10, x10, #0x28"
+        },
+        {
+          "address": 5084,
+          "op": "add",
+          "args": "x11, x11, #0x80"
+        },
+        {
+          "address": 5088,
+          "op": "stp",
+          "args": "q0, q0, [x29, #-0x30]"
+        },
+        {
+          "address": 5092,
+          "op": "stp",
+          "args": "x9, x10, [x29, #-0x30]"
+        },
+        {
+          "address": 5096,
+          "op": "stp",
+          "args": "x11, x8, [x29, #-0x20]"
+        },
+        {
+          "address": 5100,
+          "op": "ldr",
+          "args": "x8, [x0]"
+        },
+        {
+          "address": 5104,
+          "op": "mov",
+          "args": "x20, x0"
+        },
+        {
+          "address": 5108,
+          "op": "mov",
+          "args": "x0, #0x4beb"
+        },
+        {
+          "address": 5112,
+          "op": "movk",
+          "args": "x0, #0xca33, lsl #16"
+        },
+        {
+          "address": 5116,
+          "op": "ldr",
+          "args": "x21, [x8, #0x470]"
+        },
+        {
+          "address": 5120,
+          "op": "movk",
+          "args": "x0, #0x3cf8, lsl #32"
+        },
+        {
+          "address": 5124,
+          "op": "mov",
+          "args": "x22, x1"
+        },
+        {
+          "address": 5128,
+          "op": "movk",
+          "args": "x0, #0x1de7, lsl #48"
+        },
+        {
+          "address": 5132,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 5136,
+          "op": "mov",
+          "args": "x19, x2"
+        },
+        {
+          "address": 5140,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 5144,
+          "op": "ldp",
+          "args": "q0, q1, [x29, #-0x30]"
+        },
+        {
+          "address": 5148,
+          "op": "sub",
+          "args": "x3, x29, #0x50"
+        },
+        {
+          "address": 5152,
+          "op": "mov",
+          "args": "x0, x20"
+        },
+        {
+          "address": 5156,
+          "op": "mov",
+          "args": "x1, x22"
+        },
+        {
+          "address": 5160,
+          "op": "mov",
+          "args": "x2, x19"
+        },
+        {
+          "address": 5164,
+          "op": "stp",
+          "args": "q0, q1, [x29, #-0x50]"
+        },
+        {
+          "address": 5168,
+          "op": "blr",
+          "args": "x21"
+        },
+        {
+          "address": 5172,
+          "op": "ldr",
+          "args": "x8, [x23, #0x28]"
+        },
+        {
+          "address": 5176,
+          "op": "ldur",
+          "args": "x9, [x29, #-8]"
+        },
+        {
+          "address": 5180,
+          "op": "cmp",
+          "args": "x8, x9"
+        },
+        {
+          "address": 5184,
+          "op": "b.ne",
+          "args": "#0x145c"
+        },
+        {
+          "address": 5188,
+          "op": "ldp",
+          "args": "x20, x19, [sp, #0x130]"
+        },
+        {
+          "address": 5192,
+          "op": "ldp",
+          "args": "x22, x21, [sp, #0x120]"
+        },
+        {
+          "address": 5196,
+          "op": "ldp",
+          "args": "x28, x23, [sp, #0x110]"
+        },
+        {
+          "address": 5200,
+          "op": "ldp",
+          "args": "x29, x30, [sp, #0x100]"
+        },
+        {
+          "address": 5204,
+          "op": "add",
+          "args": "sp, sp, #0x140"
+        },
+        {
+          "address": 5208,
+          "op": "ret",
+          "args": ""
+        },
+        {
+          "address": 5212,
+          "op": "bl",
+          "args": "#0x2150",
+          "target_symbol": "__stack_chk_fail"
+        }
+      ]
+    },
+    {
+      "name": "_ZN7_JNIEnv9NewObjectEP7_jclassP10_jmethodIDz",
+      "address": 5972,
+      "size": 228,
+      "sha256": "8a043ff927972b8e1498fedcf411dab45c35cc012e25c01863ac4786e0655e66",
+      "insns_hex": "ff0305d1fd7b10a9fc5f11a9f65712a9f44f13a9fd030491a39338a9a59b39a9a7831af8e18b00ade39301ade003803de59b02ade71f803d57d03bd5e81640f9aae301d1eb03009100e4006fa8831ff8e8048092a903019108f0dff24aa100916b010291a0833eada92b3da9ab233ea9080040f9f40300aae00c90d2e0dab4f2157540f900bccbf2f60301aa0017e7f2e10315aaf30302aa3d020094a0877eada34301d1e00314aae10316aae20313aaa0873dada0023fd6e81640f9a9835ff81f0109ebe1000054f44f53a9f65752a9fc5f51a9fd7b50a9ff030591c0035fd647020094",
+      "instructions": [
+        {
+          "address": 5972,
+          "op": "sub",
+          "args": "sp, sp, #0x140"
+        },
+        {
+          "address": 5976,
+          "op": "stp",
+          "args": "x29, x30, [sp, #0x100]"
+        },
+        {
+          "address": 5980,
+          "op": "stp",
+          "args": "x28, x23, [sp, #0x110]"
+        },
+        {
+          "address": 5984,
+          "op": "stp",
+          "args": "x22, x21, [sp, #0x120]"
+        },
+        {
+          "address": 5988,
+          "op": "stp",
+          "args": "x20, x19, [sp, #0x130]"
+        },
+        {
+          "address": 5992,
+          "op": "add",
+          "args": "x29, sp, #0x100"
+        },
+        {
+          "address": 5996,
+          "op": "stp",
+          "args": "x3, x4, [x29, #-0x78]"
+        },
+        {
+          "address": 6000,
+          "op": "stp",
+          "args": "x5, x6, [x29, #-0x68]"
+        },
+        {
+          "address": 6004,
+          "op": "stur",
+          "args": "x7, [x29, #-0x58]"
+        },
+        {
+          "address": 6008,
+          "op": "stp",
+          "args": "q1, q2, [sp, #0x10]"
+        },
+        {
+          "address": 6012,
+          "op": "stp",
+          "args": "q3, q4, [sp, #0x30]"
+        },
+        {
+          "address": 6016,
+          "op": "str",
+          "args": "q0, [sp]"
+        },
+        {
+          "address": 6020,
+          "op": "stp",
+          "args": "q5, q6, [sp, #0x50]"
+        },
+        {
+          "address": 6024,
+          "op": "str",
+          "args": "q7, [sp, #0x70]"
+        },
+        {
+          "address": 6028,
+          "op": "mrs",
+          "args": "x23, tpidr_el0"
+        },
+        {
+          "address": 6032,
+          "op": "ldr",
+          "args": "x8, [x23, #0x28]"
+        },
+        {
+          "address": 6036,
+          "op": "sub",
+          "args": "x10, x29, #0x78"
+        },
+        {
+          "address": 6040,
+          "op": "mov",
+          "args": "x11, sp"
+        },
+        {
+          "address": 6044,
+          "op": "movi",
+          "args": "v0.2d, #0000000000000000"
+        },
+        {
+          "address": 6048,
+          "op": "stur",
+          "args": "x8, [x29, #-8]"
+        },
+        {
+          "address": 6052,
+          "op": "mov",
+          "args": "x8, #-0x28"
+        },
+        {
+          "address": 6056,
+          "op": "add",
+          "args": "x9, x29, #0x40"
+        },
+        {
+          "address": 6060,
+          "op": "movk",
+          "args": "x8, #0xff80, lsl #32"
+        },
+        {
+          "address": 6064,
+          "op": "add",
+          "args": "x10, x10, #0x28"
+        },
+        {
+          "address": 6068,
+          "op": "add",
+          "args": "x11, x11, #0x80"
+        },
+        {
+          "address": 6072,
+          "op": "stp",
+          "args": "q0, q0, [x29, #-0x30]"
+        },
+        {
+          "address": 6076,
+          "op": "stp",
+          "args": "x9, x10, [x29, #-0x30]"
+        },
+        {
+          "address": 6080,
+          "op": "stp",
+          "args": "x11, x8, [x29, #-0x20]"
+        },
+        {
+          "address": 6084,
+          "op": "ldr",
+          "args": "x8, [x0]"
+        },
+        {
+          "address": 6088,
+          "op": "mov",
+          "args": "x20, x0"
+        },
+        {
+          "address": 6092,
+          "op": "mov",
+          "args": "x0, #0x8067"
+        },
+        {
+          "address": 6096,
+          "op": "movk",
+          "args": "x0, #0xa6d7, lsl #16"
+        },
+        {
+          "address": 6100,
+          "op": "ldr",
+          "args": "x21, [x8, #0xe8]"
+        },
+        {
+          "address": 6104,
+          "op": "movk",
+          "args": "x0, #0x5de0, lsl #32"
+        },
+        {
+          "address": 6108,
+          "op": "mov",
+          "args": "x22, x1"
+        },
+        {
+          "address": 6112,
+          "op": "movk",
+          "args": "x0, #0x38b8, lsl #48"
+        },
+        {
+          "address": 6116,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 6120,
+          "op": "mov",
+          "args": "x19, x2"
+        },
+        {
+          "address": 6124,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 6128,
+          "op": "ldp",
+          "args": "q0, q1, [x29, #-0x30]"
+        },
+        {
+          "address": 6132,
+          "op": "sub",
+          "args": "x3, x29, #0x50"
+        },
+        {
+          "address": 6136,
+          "op": "mov",
+          "args": "x0, x20"
+        },
+        {
+          "address": 6140,
+          "op": "mov",
+          "args": "x1, x22"
+        },
+        {
+          "address": 6144,
+          "op": "mov",
+          "args": "x2, x19"
+        },
+        {
+          "address": 6148,
+          "op": "stp",
+          "args": "q0, q1, [x29, #-0x50]"
+        },
+        {
+          "address": 6152,
+          "op": "blr",
+          "args": "x21"
+        },
+        {
+          "address": 6156,
+          "op": "ldr",
+          "args": "x8, [x23, #0x28]"
+        },
+        {
+          "address": 6160,
+          "op": "ldur",
+          "args": "x9, [x29, #-8]"
+        },
+        {
+          "address": 6164,
+          "op": "cmp",
+          "args": "x8, x9"
+        },
+        {
+          "address": 6168,
+          "op": "b.ne",
+          "args": "#0x1834"
+        },
+        {
+          "address": 6172,
+          "op": "ldp",
+          "args": "x20, x19, [sp, #0x130]"
+        },
+        {
+          "address": 6176,
+          "op": "ldp",
+          "args": "x22, x21, [sp, #0x120]"
+        },
+        {
+          "address": 6180,
+          "op": "ldp",
+          "args": "x28, x23, [sp, #0x110]"
+        },
+        {
+          "address": 6184,
+          "op": "ldp",
+          "args": "x29, x30, [sp, #0x100]"
+        },
+        {
+          "address": 6188,
+          "op": "add",
+          "args": "sp, sp, #0x140"
+        },
+        {
+          "address": 6192,
+          "op": "ret",
+          "args": ""
+        },
+        {
+          "address": 6196,
+          "op": "bl",
+          "args": "#0x2150",
+          "target_symbol": "__stack_chk_fail"
+        }
+      ]
+    },
+    {
+      "name": "__cfi_check_fail",
+      "address": 4116,
+      "size": 36,
+      "sha256": "b3cf29a08b251cf188de108222c766a1f90813f0a8620ffcafb13cb0d254fba1",
+      "insns_hex": "fd7bbfa9fd030091c00000b4080040391f15007163000054fd7bc1a8c0035fd627040094",
+      "instructions": [
+        {
+          "address": 4116,
+          "op": "stp",
+          "args": "x29, x30, [sp, #-0x10]!"
+        },
+        {
+          "address": 4120,
+          "op": "mov",
+          "args": "x29, sp"
+        },
+        {
+          "address": 4124,
+          "op": "cbz",
+          "args": "x0, #0x1034"
+        },
+        {
+          "address": 4128,
+          "op": "ldrb",
+          "args": "w8, [x0]"
+        },
+        {
+          "address": 4132,
+          "op": "cmp",
+          "args": "w8, #5"
+        },
+        {
+          "address": 4136,
+          "op": "b.lo",
+          "args": "#0x1034"
+        },
+        {
+          "address": 4140,
+          "op": "ldp",
+          "args": "x29, x30, [sp], #0x10"
+        },
+        {
+          "address": 4144,
+          "op": "ret",
+          "args": ""
+        },
+        {
+          "address": 4148,
+          "op": "bl",
+          "args": "#0x20d0",
+          "target_symbol": "abort"
+        }
+      ]
+    },
+    {
+      "name": "JNI_OnLoad.cfi",
+      "address": 5216,
+      "size": 756,
+      "sha256": "37558fa854b82936e95eecd83fc90fbe8995051f526d84ddb0c8da0fc75274f1",
+      "insns_hex": "ff0302d1fd7b03a9fa6704a9f85f05a9f65706a9f44f07a9fdc3009159d03bd5281740f9090000f0f40300aa93008052a8831ff8ff0700f920b501f9080040f920e89ad2805ab0f2408bdef2151940f9605fecf23300a072e10315aa0903009482008052e12300912200a072e00314aaa0023fd6c0000034e1fffff0e2fffff0218c299142b029917a000014f40740f91a0000d0c0668dd260bfbcf2880240f95a4741f9a0fccef2400fe6f2161940f9550340f9e10316aaf2020094e00314aae10315aac0023fd6f40740f9f60300aa404b8fd2004aabf2880240f9c0bfdff28092e6f2158540f9e10315aae5020094f7fffff0f8fffff0f772299118672a91e00314aae10316aae20317aae30318aaa0023fd6e80740f9e20300aae10316aae00308aa74000094f40740f9f60300aa009691d2607da0f2880240f96055c9f20010e7f2155540f9e10315aacd020094e00314aae10316aaa0023fd6f40740f9080000f000b901f9090000d0880240f9294941f9c0668dd260bfbcf2161940f9350140f9a0fccef2400fe6f2e10316aabc020094e00314aae10315aac0023fd6f40740f9f60300aa404b8fd2004aabf2880240f9c0bfdff28092e6f2158540f9e10315aaaf020094e00314aae10316aae20317aae30318aaa0023fd6e80740f9e20300aae10316aae00308aa42000094f40740f9f60300aa009691d2607da0f2880240f96055c9f20010e7f2155540f9e10315aa9b020094e00314aae10316aaa0023fd60a0000d04a210091e80740f94001c03d4a0940f9410340f9090000f0209501f9e243009123008052e00308aae007803dea1300f9aa02009480020034e1fffff0e2fffff0218c299142242b91c00080529302009413008012281740f9a9835ff81f0109eb41030054e003132af44f47a9f65746a9f85f45a9fa6744a9fd7b43a9ff030291c0035fd6e0031faa98020094e1fffff0218c29911f1c007220010054e2fffff042602c91800080527c020094000000d00080009191020094e7ffff17e2fffff042802691e1ffff1780020094",
+      "instructions": [
+        {
+          "address": 5216,
+          "op": "sub",
+          "args": "sp, sp, #0x80"
+        },
+        {
+          "address": 5220,
+          "op": "stp",
+          "args": "x29, x30, [sp, #0x30]"
+        },
+        {
+          "address": 5224,
+          "op": "stp",
+          "args": "x26, x25, [sp, #0x40]"
+        },
+        {
+          "address": 5228,
+          "op": "stp",
+          "args": "x24, x23, [sp, #0x50]"
+        },
+        {
+          "address": 5232,
+          "op": "stp",
+          "args": "x22, x21, [sp, #0x60]"
+        },
+        {
+          "address": 5236,
+          "op": "stp",
+          "args": "x20, x19, [sp, #0x70]"
+        },
+        {
+          "address": 5240,
+          "op": "add",
+          "args": "x29, sp, #0x30"
+        },
+        {
+          "address": 5244,
+          "op": "mrs",
+          "args": "x25, tpidr_el0"
+        },
+        {
+          "address": 5248,
+          "op": "ldr",
+          "args": "x8, [x25, #0x28]"
+        },
+        {
+          "address": 5252,
+          "op": "adrp",
+          "args": "x9, #0x4000"
+        },
+        {
+          "address": 5256,
+          "op": "mov",
+          "args": "x20, x0"
+        },
+        {
+          "address": 5260,
+          "op": "mov",
+          "args": "w19, #4"
+        },
+        {
+          "address": 5264,
+          "op": "stur",
+          "args": "x8, [x29, #-8]"
+        },
+        {
+          "address": 5268,
+          "op": "str",
+          "args": "xzr, [sp, #8]"
+        },
+        {
+          "address": 5272,
+          "op": "str",
+          "args": "x0, [x9, #0x368]"
+        },
+        {
+          "address": 5276,
+          "op": "ldr",
+          "args": "x8, [x0]"
+        },
+        {
+          "address": 5280,
+          "op": "mov",
+          "args": "x0, #0xd741"
+        },
+        {
+          "address": 5284,
+          "op": "movk",
+          "args": "x0, #0x82d4, lsl #16"
+        },
+        {
+          "address": 5288,
+          "op": "movk",
+          "args": "x0, #0xf45a, lsl #32"
+        },
+        {
+          "address": 5292,
+          "op": "ldr",
+          "args": "x21, [x8, #0x30]"
+        },
+        {
+          "address": 5296,
+          "op": "movk",
+          "args": "x0, #0x62fb, lsl #48"
+        },
+        {
+          "address": 5300,
+          "op": "movk",
+          "args": "w19, #1, lsl #16"
+        },
+        {
+          "address": 5304,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 5308,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 5312,
+          "op": "mov",
+          "args": "w2, #4"
+        },
+        {
+          "address": 5316,
+          "op": "add",
+          "args": "x1, sp, #8"
+        },
+        {
+          "address": 5320,
+          "op": "movk",
+          "args": "w2, #1, lsl #16"
+        },
+        {
+          "address": 5324,
+          "op": "mov",
+          "args": "x0, x20"
+        },
+        {
+          "address": 5328,
+          "op": "blr",
+          "args": "x21"
+        },
+        {
+          "address": 5332,
+          "op": "cbz",
+          "args": "w0, #0x14ec"
+        },
+        {
+          "address": 5336,
+          "op": "adrp",
+          "args": "x1, #0"
+        },
+        {
+          "address": 5340,
+          "op": "adrp",
+          "args": "x2, #0"
+        },
+        {
+          "address": 5344,
+          "op": "add",
+          "args": "x1, x1, #0xa63"
+        },
+        {
+          "address": 5348,
+          "op": "add",
+          "args": "x2, x2, #0xa6c"
+        },
+        {
+          "address": 5352,
+          "op": "b",
+          "args": "#0x16d0"
+        },
+        {
+          "address": 5356,
+          "op": "ldr",
+          "args": "x20, [sp, #8]"
+        },
+        {
+          "address": 5360,
+          "op": "adrp",
+          "args": "x26, #0x3000"
+        },
+        {
+          "address": 5364,
+          "op": "mov",
+          "args": "x0, #0x6b36"
+        },
+        {
+          "address": 5368,
+          "op": "movk",
+          "args": "x0, #0xe5fb, lsl #16"
+        },
+        {
+          "address": 5372,
+          "op": "ldr",
+          "args": "x8, [x20]"
+        },
+        {
+          "address": 5376,
+          "op": "ldr",
+          "args": "x26, [x26, #0x288]"
+        },
+        {
+          "address": 5380,
+          "op": "movk",
+          "args": "x0, #0x77e5, lsl #32"
+        },
+        {
+          "address": 5384,
+          "op": "movk",
+          "args": "x0, #0x307a, lsl #48"
+        },
+        {
+          "address": 5388,
+          "op": "ldr",
+          "args": "x22, [x8, #0x30]"
+        },
+        {
+          "address": 5392,
+          "op": "ldr",
+          "args": "x21, [x26]"
+        },
+        {
+          "address": 5396,
+          "op": "mov",
+          "args": "x1, x22"
+        },
+        {
+          "address": 5400,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 5404,
+          "op": "mov",
+          "args": "x0, x20"
+        },
+        {
+          "address": 5408,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 5412,
+          "op": "blr",
+          "args": "x22"
+        },
+        {
+          "address": 5416,
+          "op": "ldr",
+          "args": "x20, [sp, #8]"
+        },
+        {
+          "address": 5420,
+          "op": "mov",
+          "args": "x22, x0"
+        },
+        {
+          "address": 5424,
+          "op": "mov",
+          "args": "x0, #0x7a5a"
+        },
+        {
+          "address": 5428,
+          "op": "movk",
+          "args": "x0, #0x5a50, lsl #16"
+        },
+        {
+          "address": 5432,
+          "op": "ldr",
+          "args": "x8, [x20]"
+        },
+        {
+          "address": 5436,
+          "op": "movk",
+          "args": "x0, #0xfdfe, lsl #32"
+        },
+        {
+          "address": 5440,
+          "op": "movk",
+          "args": "x0, #0x3494, lsl #48"
+        },
+        {
+          "address": 5444,
+          "op": "ldr",
+          "args": "x21, [x8, #0x108]"
+        },
+        {
+          "address": 5448,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 5452,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 5456,
+          "op": "adrp",
+          "args": "x23, #0"
+        },
+        {
+          "address": 5460,
+          "op": "adrp",
+          "args": "x24, #0"
+        },
+        {
+          "address": 5464,
+          "op": "add",
+          "args": "x23, x23, #0xa5c"
+        },
+        {
+          "address": 5468,
+          "op": "add",
+          "args": "x24, x24, #0xa99"
+        },
+        {
+          "address": 5472,
+          "op": "mov",
+          "args": "x0, x20"
+        },
+        {
+          "address": 5476,
+          "op": "mov",
+          "args": "x1, x22"
+        },
+        {
+          "address": 5480,
+          "op": "mov",
+          "args": "x2, x23"
+        },
+        {
+          "address": 5484,
+          "op": "mov",
+          "args": "x3, x24"
+        },
+        {
+          "address": 5488,
+          "op": "blr",
+          "args": "x21"
+        },
+        {
+          "address": 5492,
+          "op": "ldr",
+          "args": "x8, [sp, #8]"
+        },
+        {
+          "address": 5496,
+          "op": "mov",
+          "args": "x2, x0"
+        },
+        {
+          "address": 5500,
+          "op": "mov",
+          "args": "x1, x22"
+        },
+        {
+          "address": 5504,
+          "op": "mov",
+          "args": "x0, x8"
+        },
+        {
+          "address": 5508,
+          "op": "bl",
+          "args": "#0x1754"
+        },
+        {
+          "address": 5512,
+          "op": "ldr",
+          "args": "x20, [sp, #8]"
+        },
+        {
+          "address": 5516,
+          "op": "mov",
+          "args": "x22, x0"
+        },
+        {
+          "address": 5520,
+          "op": "mov",
+          "args": "x0, #0x8cb0"
+        },
+        {
+          "address": 5524,
+          "op": "movk",
+          "args": "x0, #0x3eb, lsl #16"
+        },
+        {
+          "address": 5528,
+          "op": "ldr",
+          "args": "x8, [x20]"
+        },
+        {
+          "address": 5532,
+          "op": "movk",
+          "args": "x0, #0x4aab, lsl #32"
+        },
+        {
+          "address": 5536,
+          "op": "movk",
+          "args": "x0, #0x3880, lsl #48"
+        },
+        {
+          "address": 5540,
+          "op": "ldr",
+          "args": "x21, [x8, #0xa8]"
+        },
+        {
+          "address": 5544,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 5548,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 5552,
+          "op": "mov",
+          "args": "x0, x20"
+        },
+        {
+          "address": 5556,
+          "op": "mov",
+          "args": "x1, x22"
+        },
+        {
+          "address": 5560,
+          "op": "blr",
+          "args": "x21"
+        },
+        {
+          "address": 5564,
+          "op": "ldr",
+          "args": "x20, [sp, #8]"
+        },
+        {
+          "address": 5568,
+          "op": "adrp",
+          "args": "x8, #0x4000"
+        },
+        {
+          "address": 5572,
+          "op": "str",
+          "args": "x0, [x8, #0x370]"
+        },
+        {
+          "address": 5576,
+          "op": "adrp",
+          "args": "x9, #0x3000"
+        },
+        {
+          "address": 5580,
+          "op": "ldr",
+          "args": "x8, [x20]"
+        },
+        {
+          "address": 5584,
+          "op": "ldr",
+          "args": "x9, [x9, #0x290]"
+        },
+        {
+          "address": 5588,
+          "op": "mov",
+          "args": "x0, #0x6b36"
+        },
+        {
+          "address": 5592,
+          "op": "movk",
+          "args": "x0, #0xe5fb, lsl #16"
+        },
+        {
+          "address": 5596,
+          "op": "ldr",
+          "args": "x22, [x8, #0x30]"
+        },
+        {
+          "address": 5600,
+          "op": "ldr",
+          "args": "x21, [x9]"
+        },
+        {
+          "address": 5604,
+          "op": "movk",
+          "args": "x0, #0x77e5, lsl #32"
+        },
+        {
+          "address": 5608,
+          "op": "movk",
+          "args": "x0, #0x307a, lsl #48"
+        },
+        {
+          "address": 5612,
+          "op": "mov",
+          "args": "x1, x22"
+        },
+        {
+          "address": 5616,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 5620,
+          "op": "mov",
+          "args": "x0, x20"
+        },
+        {
+          "address": 5624,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 5628,
+          "op": "blr",
+          "args": "x22"
+        },
+        {
+          "address": 5632,
+          "op": "ldr",
+          "args": "x20, [sp, #8]"
+        },
+        {
+          "address": 5636,
+          "op": "mov",
+          "args": "x22, x0"
+        },
+        {
+          "address": 5640,
+          "op": "mov",
+          "args": "x0, #0x7a5a"
+        },
+        {
+          "address": 5644,
+          "op": "movk",
+          "args": "x0, #0x5a50, lsl #16"
+        },
+        {
+          "address": 5648,
+          "op": "ldr",
+          "args": "x8, [x20]"
+        },
+        {
+          "address": 5652,
+          "op": "movk",
+          "args": "x0, #0xfdfe, lsl #32"
+        },
+        {
+          "address": 5656,
+          "op": "movk",
+          "args": "x0, #0x3494, lsl #48"
+        },
+        {
+          "address": 5660,
+          "op": "ldr",
+          "args": "x21, [x8, #0x108]"
+        },
+        {
+          "address": 5664,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 5668,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 5672,
+          "op": "mov",
+          "args": "x0, x20"
+        },
+        {
+          "address": 5676,
+          "op": "mov",
+          "args": "x1, x22"
+        },
+        {
+          "address": 5680,
+          "op": "mov",
+          "args": "x2, x23"
+        },
+        {
+          "address": 5684,
+          "op": "mov",
+          "args": "x3, x24"
+        },
+        {
+          "address": 5688,
+          "op": "blr",
+          "args": "x21"
+        },
+        {
+          "address": 5692,
+          "op": "ldr",
+          "args": "x8, [sp, #8]"
+        },
+        {
+          "address": 5696,
+          "op": "mov",
+          "args": "x2, x0"
+        },
+        {
+          "address": 5700,
+          "op": "mov",
+          "args": "x1, x22"
+        },
+        {
+          "address": 5704,
+          "op": "mov",
+          "args": "x0, x8"
+        },
+        {
+          "address": 5708,
+          "op": "bl",
+          "args": "#0x1754"
+        },
+        {
+          "address": 5712,
+          "op": "ldr",
+          "args": "x20, [sp, #8]"
+        },
+        {
+          "address": 5716,
+          "op": "mov",
+          "args": "x22, x0"
+        },
+        {
+          "address": 5720,
+          "op": "mov",
+          "args": "x0, #0x8cb0"
+        },
+        {
+          "address": 5724,
+          "op": "movk",
+          "args": "x0, #0x3eb, lsl #16"
+        },
+        {
+          "address": 5728,
+          "op": "ldr",
+          "args": "x8, [x20]"
+        },
+        {
+          "address": 5732,
+          "op": "movk",
+          "args": "x0, #0x4aab, lsl #32"
+        },
+        {
+          "address": 5736,
+          "op": "movk",
+          "args": "x0, #0x3880, lsl #48"
+        },
+        {
+          "address": 5740,
+          "op": "ldr",
+          "args": "x21, [x8, #0xa8]"
+        },
+        {
+          "address": 5744,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 5748,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 5752,
+          "op": "mov",
+          "args": "x0, x20"
+        },
+        {
+          "address": 5756,
+          "op": "mov",
+          "args": "x1, x22"
+        },
+        {
+          "address": 5760,
+          "op": "blr",
+          "args": "x21"
+        },
+        {
+          "address": 5764,
+          "op": "adrp",
+          "args": "x10, #0x3000"
+        },
+        {
+          "address": 5768,
+          "op": "add",
+          "args": "x10, x10, #8"
+        },
+        {
+          "address": 5772,
+          "op": "ldr",
+          "args": "x8, [sp, #8]"
+        },
+        {
+          "address": 5776,
+          "op": "ldr",
+          "args": "q0, [x10]"
+        },
+        {
+          "address": 5780,
+          "op": "ldr",
+          "args": "x10, [x10, #0x10]"
+        },
+        {
+          "address": 5784,
+          "op": "ldr",
+          "args": "x1, [x26]"
+        },
+        {
+          "address": 5788,
+          "op": "adrp",
+          "args": "x9, #0x4000"
+        },
+        {
+          "address": 5792,
+          "op": "str",
+          "args": "x0, [x9, #0x328]"
+        },
+        {
+          "address": 5796,
+          "op": "add",
+          "args": "x2, sp, #0x10"
+        },
+        {
+          "address": 5800,
+          "op": "mov",
+          "args": "w3, #1"
+        },
+        {
+          "address": 5804,
+          "op": "mov",
+          "args": "x0, x8"
+        },
+        {
+          "address": 5808,
+          "op": "str",
+          "args": "q0, [sp, #0x10]"
+        },
+        {
+          "address": 5812,
+          "op": "str",
+          "args": "x10, [sp, #0x20]"
+        },
+        {
+          "address": 5816,
+          "op": "bl",
+          "args": "#0x2160",
+          "target_symbol": "_ZN7android14AndroidRuntime21registerNativeMethodsEP7_JNIEnvPKcPK15JNINativeMethodi"
+        },
+        {
+          "address": 5820,
+          "op": "cbz",
+          "args": "w0, #0x170c"
+        },
+        {
+          "address": 5824,
+          "op": "adrp",
+          "args": "x1, #0"
+        },
+        {
+          "address": 5828,
+          "op": "adrp",
+          "args": "x2, #0"
+        },
+        {
+          "address": 5832,
+          "op": "add",
+          "args": "x1, x1, #0xa63"
+        },
+        {
+          "address": 5836,
+          "op": "add",
+          "args": "x2, x2, #0xac9"
+        },
+        {
+          "address": 5840,
+          "op": "mov",
+          "args": "w0, #6"
+        },
+        {
+          "address": 5844,
+          "op": "bl",
+          "args": "#0x2120",
+          "target_symbol": "__android_log_print"
+        },
+        {
+          "address": 5848,
+          "op": "mov",
+          "args": "w19, #-1"
+        },
+        {
+          "address": 5852,
+          "op": "ldr",
+          "args": "x8, [x25, #0x28]"
+        },
+        {
+          "address": 5856,
+          "op": "ldur",
+          "args": "x9, [x29, #-8]"
+        },
+        {
+          "address": 5860,
+          "op": "cmp",
+          "args": "x8, x9"
+        },
+        {
+          "address": 5864,
+          "op": "b.ne",
+          "args": "#0x1750"
+        },
+        {
+          "address": 5868,
+          "op": "mov",
+          "args": "w0, w19"
+        },
+        {
+          "address": 5872,
+          "op": "ldp",
+          "args": "x20, x19, [sp, #0x70]"
+        },
+        {
+          "address": 5876,
+          "op": "ldp",
+          "args": "x22, x21, [sp, #0x60]"
+        },
+        {
+          "address": 5880,
+          "op": "ldp",
+          "args": "x24, x23, [sp, #0x50]"
+        },
+        {
+          "address": 5884,
+          "op": "ldp",
+          "args": "x26, x25, [sp, #0x40]"
+        },
+        {
+          "address": 5888,
+          "op": "ldp",
+          "args": "x29, x30, [sp, #0x30]"
+        },
+        {
+          "address": 5892,
+          "op": "add",
+          "args": "sp, sp, #0x80"
+        },
+        {
+          "address": 5896,
+          "op": "ret",
+          "args": ""
+        },
+        {
+          "address": 5900,
+          "op": "mov",
+          "args": "x0, xzr"
+        },
+        {
+          "address": 5904,
+          "op": "bl",
+          "args": "#0x2170",
+          "target_symbol": "Diag_LSM_Init"
+        },
+        {
+          "address": 5908,
+          "op": "adrp",
+          "args": "x1, #0"
+        },
+        {
+          "address": 5912,
+          "op": "add",
+          "args": "x1, x1, #0xa63"
+        },
+        {
+          "address": 5916,
+          "op": "tst",
+          "args": "w0, #0xff"
+        },
+        {
+          "address": 5920,
+          "op": "b.eq",
+          "args": "#0x1744"
+        },
+        {
+          "address": 5924,
+          "op": "adrp",
+          "args": "x2, #0"
+        },
+        {
+          "address": 5928,
+          "op": "add",
+          "args": "x2, x2, #0xb18"
+        },
+        {
+          "address": 5932,
+          "op": "mov",
+          "args": "w0, #4"
+        },
+        {
+          "address": 5936,
+          "op": "bl",
+          "args": "#0x2120",
+          "target_symbol": "__android_log_print"
+        },
+        {
+          "address": 5940,
+          "op": "adrp",
+          "args": "x0, #0x3000"
+        },
+        {
+          "address": 5944,
+          "op": "add",
+          "args": "x0, x0, #0x20"
+        },
+        {
+          "address": 5948,
+          "op": "bl",
+          "args": "#0x2180",
+          "target_symbol": "diagpkt_tbl_reg"
+        },
+        {
+          "address": 5952,
+          "op": "b",
+          "args": "#0x16dc"
+        },
+        {
+          "address": 5956,
+          "op": "adrp",
+          "args": "x2, #0"
+        },
+        {
+          "address": 5960,
+          "op": "add",
+          "args": "x2, x2, #0x9a0"
+        },
+        {
+          "address": 5964,
+          "op": "b",
+          "args": "#0x16d0"
+        },
+        {
+          "address": 5968,
+          "op": "bl",
+          "args": "#0x2150",
+          "target_symbol": "__stack_chk_fail"
+        }
+      ]
+    },
+    {
+      "name": "Java_com_qti_diagservices_DiagJNIInterface_getNextCommand.cfi",
+      "address": 4152,
+      "size": 120,
+      "sha256": "700637461a644191132f8418125905e5c20299b1f13f035c5c7ad3a4dc208445",
+      "insns_hex": "fd7bbda9f50b00f9f44f02a9fd030091080040f9f30300aa090000f0c02693d2157d40f9349541f940dda1f260e2ccf26001e3f2e10315aa1c040094e00313aae10314aaa0023fd6000000d0003c41f91a040094130000d0734241f9e00313aa1a040094e00313aaf44f42a9f50b40f9fd7bc3a819040014",
+      "instructions": [
+        {
+          "address": 4152,
+          "op": "stp",
+          "args": "x29, x30, [sp, #-0x30]!"
+        },
+        {
+          "address": 4156,
+          "op": "str",
+          "args": "x21, [sp, #0x10]"
+        },
+        {
+          "address": 4160,
+          "op": "stp",
+          "args": "x20, x19, [sp, #0x20]"
+        },
+        {
+          "address": 4164,
+          "op": "mov",
+          "args": "x29, sp"
+        },
+        {
+          "address": 4168,
+          "op": "ldr",
+          "args": "x8, [x0]"
+        },
+        {
+          "address": 4172,
+          "op": "mov",
+          "args": "x19, x0"
+        },
+        {
+          "address": 4176,
+          "op": "adrp",
+          "args": "x9, #0x4000"
+        },
+        {
+          "address": 4180,
+          "op": "mov",
+          "args": "x0, #0x9936"
+        },
+        {
+          "address": 4184,
+          "op": "ldr",
+          "args": "x21, [x8, #0xf8]"
+        },
+        {
+          "address": 4188,
+          "op": "ldr",
+          "args": "x20, [x9, #0x328]"
+        },
+        {
+          "address": 4192,
+          "op": "movk",
+          "args": "x0, #0xeea, lsl #16"
+        },
+        {
+          "address": 4196,
+          "op": "movk",
+          "args": "x0, #0x6713, lsl #32"
+        },
+        {
+          "address": 4200,
+          "op": "movk",
+          "args": "x0, #0x180b, lsl #48"
+        },
+        {
+          "address": 4204,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 4208,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 4212,
+          "op": "mov",
+          "args": "x0, x19"
+        },
+        {
+          "address": 4216,
+          "op": "mov",
+          "args": "x1, x20"
+        },
+        {
+          "address": 4220,
+          "op": "blr",
+          "args": "x21"
+        },
+        {
+          "address": 4224,
+          "op": "adrp",
+          "args": "x0, #0x3000"
+        },
+        {
+          "address": 4228,
+          "op": "ldr",
+          "args": "x0, [x0, #0x278]"
+        },
+        {
+          "address": 4232,
+          "op": "bl",
+          "args": "#0x20f0",
+          "target_symbol": "sem_wait"
+        },
+        {
+          "address": 4236,
+          "op": "adrp",
+          "args": "x19, #0x3000"
+        },
+        {
+          "address": 4240,
+          "op": "ldr",
+          "args": "x19, [x19, #0x280]"
+        },
+        {
+          "address": 4244,
+          "op": "mov",
+          "args": "x0, x19"
+        },
+        {
+          "address": 4248,
+          "op": "bl",
+          "args": "#0x2100",
+          "target_symbol": "pthread_mutex_lock"
+        },
+        {
+          "address": 4252,
+          "op": "mov",
+          "args": "x0, x19"
+        },
+        {
+          "address": 4256,
+          "op": "ldp",
+          "args": "x20, x19, [sp, #0x20]"
+        },
+        {
+          "address": 4260,
+          "op": "ldr",
+          "args": "x21, [sp, #0x10]"
+        },
+        {
+          "address": 4264,
+          "op": "ldp",
+          "args": "x29, x30, [sp], #0x30"
+        },
+        {
+          "address": 4268,
+          "op": "b",
+          "args": "#0x2110"
+        }
+      ]
+    },
+    {
+      "name": "android_diag_handler.cfi",
+      "address": 4272,
+      "size": 716,
+      "sha256": "b2209db9ea017a3cf05a41242045187f8f006c37433261d2a4511cb096df9210",
+      "insns_hex": "ff8301d1fd7b01a9fa6702a9f85f03a9f65704a9f44f05a9fd43009158d03bd5081740f9f503012ae1fffff0e2fffff0f40300aa218c299142742a9160008052e80700f90b040094a13e0012200580520c040094f30300aaa00000b4a23e4092e00313aae10314aa0a040094190000f034b741f9ff0300f920e89ad2805ab0f2880240f9408bdef2605fecf2151940f9e10315aae703009482008052e10300912200a072e00314aaa0023fd68002003434b741f960d18ed280e6bdf2608ad2f2880240f900bfeaf2151140f9e10315aad8030094e1030091e00314aae2031faaa0023fd600010034e1fffff0e2fffff0218c299142f0279166000014fa031f2a020000143a008052f40340f9090000f0c02693d235b941f9880240f940dda1f260e2ccf26001e3f2167d40f9e10316aac0030094e00314aae10315aac0023fd6600600b4f50340f9f40300aa404b8fd2004aabf2a80240f9c0bfdff28092e6f216c541f9e10316aab2030094e2fffff0e3fffff042d42c9163982791e00315aae10314aac0023fd6400600b4f60340f9f50300aae0cd99d200a8adf2c80240f90020c1f2e0ddf0f2179d42f9e10317aaa0030094e1fffff021442c91e00316aae0023fd6e30300aae00316aae10314aae20315aa3e0000941a06003434b741f9e0bd97d240afb6f20017ddf2880240f920e3eaf2151540f9e10315aa8d030094e00314aaa0023fd6240000149a01003434b741f9e0bd97d240afb6f20017ddf2880240f920e3eaf2151540f9e10315aa80030094e00314aaa0023fd6e1fffff0e2fffff0218c299142e82691110000149a01003434b741f9e0bd97d240afb6f20017ddf2880240f920e3eaf2151540f9e10315aa6f030094e00314aaa0023fd6e1fffff0e2fffff0218c299142b42891c000805277030094081740f9e90740f91f0109eb21010054e00313aaf44f45a9f65744a9f85f43a9fa6742a9fd7b41a9ff830191c0035fd676030094",
+      "instructions": [
+        {
+          "address": 4272,
+          "op": "sub",
+          "args": "sp, sp, #0x60"
+        },
+        {
+          "address": 4276,
+          "op": "stp",
+          "args": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "address": 4280,
+          "op": "stp",
+          "args": "x26, x25, [sp, #0x20]"
+        },
+        {
+          "address": 4284,
+          "op": "stp",
+          "args": "x24, x23, [sp, #0x30]"
+        },
+        {
+          "address": 4288,
+          "op": "stp",
+          "args": "x22, x21, [sp, #0x40]"
+        },
+        {
+          "address": 4292,
+          "op": "stp",
+          "args": "x20, x19, [sp, #0x50]"
+        },
+        {
+          "address": 4296,
+          "op": "add",
+          "args": "x29, sp, #0x10"
+        },
+        {
+          "address": 4300,
+          "op": "mrs",
+          "args": "x24, tpidr_el0"
+        },
+        {
+          "address": 4304,
+          "op": "ldr",
+          "args": "x8, [x24, #0x28]"
+        },
+        {
+          "address": 4308,
+          "op": "mov",
+          "args": "w21, w1"
+        },
+        {
+          "address": 4312,
+          "op": "adrp",
+          "args": "x1, #0"
+        },
+        {
+          "address": 4316,
+          "op": "adrp",
+          "args": "x2, #0"
+        },
+        {
+          "address": 4320,
+          "op": "mov",
+          "args": "x20, x0"
+        },
+        {
+          "address": 4324,
+          "op": "add",
+          "args": "x1, x1, #0xa63"
+        },
+        {
+          "address": 4328,
+          "op": "add",
+          "args": "x2, x2, #0xa9d"
+        },
+        {
+          "address": 4332,
+          "op": "mov",
+          "args": "w0, #3"
+        },
+        {
+          "address": 4336,
+          "op": "str",
+          "args": "x8, [sp, #8]"
+        },
+        {
+          "address": 4340,
+          "op": "bl",
+          "args": "#0x2120",
+          "target_symbol": "__android_log_print"
+        },
+        {
+          "address": 4344,
+          "op": "and",
+          "args": "w1, w21, #0xffff"
+        },
+        {
+          "address": 4348,
+          "op": "mov",
+          "args": "w0, #0x29"
+        },
+        {
+          "address": 4352,
+          "op": "bl",
+          "args": "#0x2130",
+          "target_symbol": "diagpkt_alloc"
+        },
+        {
+          "address": 4356,
+          "op": "mov",
+          "args": "x19, x0"
+        },
+        {
+          "address": 4360,
+          "op": "cbz",
+          "args": "x0, #0x111c"
+        },
+        {
+          "address": 4364,
+          "op": "and",
+          "args": "x2, x21, #0xffff"
+        },
+        {
+          "address": 4368,
+          "op": "mov",
+          "args": "x0, x19"
+        },
+        {
+          "address": 4372,
+          "op": "mov",
+          "args": "x1, x20"
+        },
+        {
+          "address": 4376,
+          "op": "bl",
+          "args": "#0x2140",
+          "target_symbol": "memcpy"
+        },
+        {
+          "address": 4380,
+          "op": "adrp",
+          "args": "x25, #0x4000"
+        },
+        {
+          "address": 4384,
+          "op": "ldr",
+          "args": "x20, [x25, #0x368]"
+        },
+        {
+          "address": 4388,
+          "op": "str",
+          "args": "xzr, [sp]"
+        },
+        {
+          "address": 4392,
+          "op": "mov",
+          "args": "x0, #0xd741"
+        },
+        {
+          "address": 4396,
+          "op": "movk",
+          "args": "x0, #0x82d4, lsl #16"
+        },
+        {
+          "address": 4400,
+          "op": "ldr",
+          "args": "x8, [x20]"
+        },
+        {
+          "address": 4404,
+          "op": "movk",
+          "args": "x0, #0xf45a, lsl #32"
+        },
+        {
+          "address": 4408,
+          "op": "movk",
+          "args": "x0, #0x62fb, lsl #48"
+        },
+        {
+          "address": 4412,
+          "op": "ldr",
+          "args": "x21, [x8, #0x30]"
+        },
+        {
+          "address": 4416,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 4420,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 4424,
+          "op": "mov",
+          "args": "w2, #4"
+        },
+        {
+          "address": 4428,
+          "op": "mov",
+          "args": "x1, sp"
+        },
+        {
+          "address": 4432,
+          "op": "movk",
+          "args": "w2, #1, lsl #16"
+        },
+        {
+          "address": 4436,
+          "op": "mov",
+          "args": "x0, x20"
+        },
+        {
+          "address": 4440,
+          "op": "blr",
+          "args": "x21"
+        },
+        {
+          "address": 4444,
+          "op": "cbz",
+          "args": "w0, #0x11ac"
+        },
+        {
+          "address": 4448,
+          "op": "ldr",
+          "args": "x20, [x25, #0x368]"
+        },
+        {
+          "address": 4452,
+          "op": "mov",
+          "args": "x0, #0x768b"
+        },
+        {
+          "address": 4456,
+          "op": "movk",
+          "args": "x0, #0xef34, lsl #16"
+        },
+        {
+          "address": 4460,
+          "op": "movk",
+          "args": "x0, #0x9453, lsl #32"
+        },
+        {
+          "address": 4464,
+          "op": "ldr",
+          "args": "x8, [x20]"
+        },
+        {
+          "address": 4468,
+          "op": "movk",
+          "args": "x0, #0x55f8, lsl #48"
+        },
+        {
+          "address": 4472,
+          "op": "ldr",
+          "args": "x21, [x8, #0x20]"
+        },
+        {
+          "address": 4476,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 4480,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 4484,
+          "op": "mov",
+          "args": "x1, sp"
+        },
+        {
+          "address": 4488,
+          "op": "mov",
+          "args": "x0, x20"
+        },
+        {
+          "address": 4492,
+          "op": "mov",
+          "args": "x2, xzr"
+        },
+        {
+          "address": 4496,
+          "op": "blr",
+          "args": "x21"
+        },
+        {
+          "address": 4500,
+          "op": "cbz",
+          "args": "w0, #0x11b4"
+        },
+        {
+          "address": 4504,
+          "op": "adrp",
+          "args": "x1, #0"
+        },
+        {
+          "address": 4508,
+          "op": "adrp",
+          "args": "x2, #0"
+        },
+        {
+          "address": 4512,
+          "op": "add",
+          "args": "x1, x1, #0xa63"
+        },
+        {
+          "address": 4516,
+          "op": "add",
+          "args": "x2, x2, #0x9fc"
+        },
+        {
+          "address": 4520,
+          "op": "b",
+          "args": "#0x1340"
+        },
+        {
+          "address": 4524,
+          "op": "mov",
+          "args": "w26, wzr"
+        },
+        {
+          "address": 4528,
+          "op": "b",
+          "args": "#0x11b8"
+        },
+        {
+          "address": 4532,
+          "op": "mov",
+          "args": "w26, #1"
+        },
+        {
+          "address": 4536,
+          "op": "ldr",
+          "args": "x20, [sp]"
+        },
+        {
+          "address": 4540,
+          "op": "adrp",
+          "args": "x9, #0x4000"
+        },
+        {
+          "address": 4544,
+          "op": "mov",
+          "args": "x0, #0x9936"
+        },
+        {
+          "address": 4548,
+          "op": "ldr",
+          "args": "x21, [x9, #0x370]"
+        },
+        {
+          "address": 4552,
+          "op": "ldr",
+          "args": "x8, [x20]"
+        },
+        {
+          "address": 4556,
+          "op": "movk",
+          "args": "x0, #0xeea, lsl #16"
+        },
+        {
+          "address": 4560,
+          "op": "movk",
+          "args": "x0, #0x6713, lsl #32"
+        },
+        {
+          "address": 4564,
+          "op": "movk",
+          "args": "x0, #0x180b, lsl #48"
+        },
+        {
+          "address": 4568,
+          "op": "ldr",
+          "args": "x22, [x8, #0xf8]"
+        },
+        {
+          "address": 4572,
+          "op": "mov",
+          "args": "x1, x22"
+        },
+        {
+          "address": 4576,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 4580,
+          "op": "mov",
+          "args": "x0, x20"
+        },
+        {
+          "address": 4584,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 4588,
+          "op": "blr",
+          "args": "x22"
+        },
+        {
+          "address": 4592,
+          "op": "cbz",
+          "args": "x0, #0x12bc"
+        },
+        {
+          "address": 4596,
+          "op": "ldr",
+          "args": "x21, [sp]"
+        },
+        {
+          "address": 4600,
+          "op": "mov",
+          "args": "x20, x0"
+        },
+        {
+          "address": 4604,
+          "op": "mov",
+          "args": "x0, #0x7a5a"
+        },
+        {
+          "address": 4608,
+          "op": "movk",
+          "args": "x0, #0x5a50, lsl #16"
+        },
+        {
+          "address": 4612,
+          "op": "ldr",
+          "args": "x8, [x21]"
+        },
+        {
+          "address": 4616,
+          "op": "movk",
+          "args": "x0, #0xfdfe, lsl #32"
+        },
+        {
+          "address": 4620,
+          "op": "movk",
+          "args": "x0, #0x3494, lsl #48"
+        },
+        {
+          "address": 4624,
+          "op": "ldr",
+          "args": "x22, [x8, #0x388]"
+        },
+        {
+          "address": 4628,
+          "op": "mov",
+          "args": "x1, x22"
+        },
+        {
+          "address": 4632,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 4636,
+          "op": "adrp",
+          "args": "x2, #0"
+        },
+        {
+          "address": 4640,
+          "op": "adrp",
+          "args": "x3, #0"
+        },
+        {
+          "address": 4644,
+          "op": "add",
+          "args": "x2, x2, #0xb35"
+        },
+        {
+          "address": 4648,
+          "op": "add",
+          "args": "x3, x3, #0x9e6"
+        },
+        {
+          "address": 4652,
+          "op": "mov",
+          "args": "x0, x21"
+        },
+        {
+          "address": 4656,
+          "op": "mov",
+          "args": "x1, x20"
+        },
+        {
+          "address": 4660,
+          "op": "blr",
+          "args": "x22"
+        },
+        {
+          "address": 4664,
+          "op": "cbz",
+          "args": "x0, #0x1300"
+        },
+        {
+          "address": 4668,
+          "op": "ldr",
+          "args": "x22, [sp]"
+        },
+        {
+          "address": 4672,
+          "op": "mov",
+          "args": "x21, x0"
+        },
+        {
+          "address": 4676,
+          "op": "mov",
+          "args": "x0, #0xce6f"
+        },
+        {
+          "address": 4680,
+          "op": "movk",
+          "args": "x0, #0x6d40, lsl #16"
+        },
+        {
+          "address": 4684,
+          "op": "ldr",
+          "args": "x8, [x22]"
+        },
+        {
+          "address": 4688,
+          "op": "movk",
+          "args": "x0, #0x900, lsl #32"
+        },
+        {
+          "address": 4692,
+          "op": "movk",
+          "args": "x0, #0x86ef, lsl #48"
+        },
+        {
+          "address": 4696,
+          "op": "ldr",
+          "args": "x23, [x8, #0x538]"
+        },
+        {
+          "address": 4700,
+          "op": "mov",
+          "args": "x1, x23"
+        },
+        {
+          "address": 4704,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 4708,
+          "op": "adrp",
+          "args": "x1, #0"
+        },
+        {
+          "address": 4712,
+          "op": "add",
+          "args": "x1, x1, #0xb11"
+        },
+        {
+          "address": 4716,
+          "op": "mov",
+          "args": "x0, x22"
+        },
+        {
+          "address": 4720,
+          "op": "blr",
+          "args": "x23"
+        },
+        {
+          "address": 4724,
+          "op": "mov",
+          "args": "x3, x0"
+        },
+        {
+          "address": 4728,
+          "op": "mov",
+          "args": "x0, x22"
+        },
+        {
+          "address": 4732,
+          "op": "mov",
+          "args": "x1, x20"
+        },
+        {
+          "address": 4736,
+          "op": "mov",
+          "args": "x2, x21"
+        },
+        {
+          "address": 4740,
+          "op": "bl",
+          "args": "#0x137c"
+        },
+        {
+          "address": 4744,
+          "op": "cbz",
+          "args": "w26, #0x1348"
+        },
+        {
+          "address": 4748,
+          "op": "ldr",
+          "args": "x20, [x25, #0x368]"
+        },
+        {
+          "address": 4752,
+          "op": "mov",
+          "args": "x0, #0xbdef"
+        },
+        {
+          "address": 4756,
+          "op": "movk",
+          "args": "x0, #0xb57a, lsl #16"
+        },
+        {
+          "address": 4760,
+          "op": "movk",
+          "args": "x0, #0xe8b8, lsl #32"
+        },
+        {
+          "address": 4764,
+          "op": "ldr",
+          "args": "x8, [x20]"
+        },
+        {
+          "address": 4768,
+          "op": "movk",
+          "args": "x0, #0x5719, lsl #48"
+        },
+        {
+          "address": 4772,
+          "op": "ldr",
+          "args": "x21, [x8, #0x28]"
+        },
+        {
+          "address": 4776,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 4780,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 4784,
+          "op": "mov",
+          "args": "x0, x20"
+        },
+        {
+          "address": 4788,
+          "op": "blr",
+          "args": "x21"
+        },
+        {
+          "address": 4792,
+          "op": "b",
+          "args": "#0x1348"
+        },
+        {
+          "address": 4796,
+          "op": "cbz",
+          "args": "w26, #0x12ec"
+        },
+        {
+          "address": 4800,
+          "op": "ldr",
+          "args": "x20, [x25, #0x368]"
+        },
+        {
+          "address": 4804,
+          "op": "mov",
+          "args": "x0, #0xbdef"
+        },
+        {
+          "address": 4808,
+          "op": "movk",
+          "args": "x0, #0xb57a, lsl #16"
+        },
+        {
+          "address": 4812,
+          "op": "movk",
+          "args": "x0, #0xe8b8, lsl #32"
+        },
+        {
+          "address": 4816,
+          "op": "ldr",
+          "args": "x8, [x20]"
+        },
+        {
+          "address": 4820,
+          "op": "movk",
+          "args": "x0, #0x5719, lsl #48"
+        },
+        {
+          "address": 4824,
+          "op": "ldr",
+          "args": "x21, [x8, #0x28]"
+        },
+        {
+          "address": 4828,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 4832,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 4836,
+          "op": "mov",
+          "args": "x0, x20"
+        },
+        {
+          "address": 4840,
+          "op": "blr",
+          "args": "x21"
+        },
+        {
+          "address": 4844,
+          "op": "adrp",
+          "args": "x1, #0"
+        },
+        {
+          "address": 4848,
+          "op": "adrp",
+          "args": "x2, #0"
+        },
+        {
+          "address": 4852,
+          "op": "add",
+          "args": "x1, x1, #0xa63"
+        },
+        {
+          "address": 4856,
+          "op": "add",
+          "args": "x2, x2, #0x9ba"
+        },
+        {
+          "address": 4860,
+          "op": "b",
+          "args": "#0x1340"
+        },
+        {
+          "address": 4864,
+          "op": "cbz",
+          "args": "w26, #0x1330"
+        },
+        {
+          "address": 4868,
+          "op": "ldr",
+          "args": "x20, [x25, #0x368]"
+        },
+        {
+          "address": 4872,
+          "op": "mov",
+          "args": "x0, #0xbdef"
+        },
+        {
+          "address": 4876,
+          "op": "movk",
+          "args": "x0, #0xb57a, lsl #16"
+        },
+        {
+          "address": 4880,
+          "op": "movk",
+          "args": "x0, #0xe8b8, lsl #32"
+        },
+        {
+          "address": 4884,
+          "op": "ldr",
+          "args": "x8, [x20]"
+        },
+        {
+          "address": 4888,
+          "op": "movk",
+          "args": "x0, #0x5719, lsl #48"
+        },
+        {
+          "address": 4892,
+          "op": "ldr",
+          "args": "x21, [x8, #0x28]"
+        },
+        {
+          "address": 4896,
+          "op": "mov",
+          "args": "x1, x21"
+        },
+        {
+          "address": 4900,
+          "op": "bl",
+          "args": "#0x20e0",
+          "target_symbol": "__cfi_slowpath"
+        },
+        {
+          "address": 4904,
+          "op": "mov",
+          "args": "x0, x20"
+        },
+        {
+          "address": 4908,
+          "op": "blr",
+          "args": "x21"
+        },
+        {
+          "address": 4912,
+          "op": "adrp",
+          "args": "x1, #0"
+        },
+        {
+          "address": 4916,
+          "op": "adrp",
+          "args": "x2, #0"
+        },
+        {
+          "address": 4920,
+          "op": "add",
+          "args": "x1, x1, #0xa63"
+        },
+        {
+          "address": 4924,
+          "op": "add",
+          "args": "x2, x2, #0xa2d"
+        },
+        {
+          "address": 4928,
+          "op": "mov",
+          "args": "w0, #6"
+        },
+        {
+          "address": 4932,
+          "op": "bl",
+          "args": "#0x2120",
+          "target_symbol": "__android_log_print"
+        },
+        {
+          "address": 4936,
+          "op": "ldr",
+          "args": "x8, [x24, #0x28]"
+        },
+        {
+          "address": 4940,
+          "op": "ldr",
+          "args": "x9, [sp, #8]"
+        },
+        {
+          "address": 4944,
+          "op": "cmp",
+          "args": "x8, x9"
+        },
+        {
+          "address": 4948,
+          "op": "b.ne",
+          "args": "#0x1378"
+        },
+        {
+          "address": 4952,
+          "op": "mov",
+          "args": "x0, x19"
+        },
+        {
+          "address": 4956,
+          "op": "ldp",
+          "args": "x20, x19, [sp, #0x50]"
+        },
+        {
+          "address": 4960,
+          "op": "ldp",
+          "args": "x22, x21, [sp, #0x40]"
+        },
+        {
+          "address": 4964,
+          "op": "ldp",
+          "args": "x24, x23, [sp, #0x30]"
+        },
+        {
+          "address": 4968,
+          "op": "ldp",
+          "args": "x26, x25, [sp, #0x20]"
+        },
+        {
+          "address": 4972,
+          "op": "ldp",
+          "args": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "address": 4976,
+          "op": "add",
+          "args": "sp, sp, #0x60"
+        },
+        {
+          "address": 4980,
+          "op": "ret",
+          "args": ""
+        },
+        {
+          "address": 4984,
+          "op": "bl",
+          "args": "#0x2150",
+          "target_symbol": "__stack_chk_fail"
+        }
+      ]
+    }
+  ],
+  "strings": [
+    "Android",
+    "__cxa_finalize",
+    "Java_com_qti_diagservices_DiagJNIInterface_getNextCommand",
+    "sem_wait",
+    "pthread_mutex_lock",
+    "pthread_mutex_unlock",
+    "android_diag_handler",
+    "__android_log_print",
+    "diagpkt_alloc",
+    "JNI_OnLoad",
+    "_ZN7android14AndroidRuntime21registerNativeMethodsEP7_JNIEnvPKcPK15JNINativeMethodi",
+    "Diag_LSM_Init",
+    "diagpkt_tbl_reg",
+    "__cfi_slowpath",
+    "__cfi_check",
+    "kInterfacePath",
+    "kDataPath",
+    "commandList_lock",
+    "diagCommand_ready",
+    "commandList",
+    "abort",
+    "memcpy",
+    "__stack_chk_fail",
+    "liblog.so",
+    "LIBLOG",
+    "libc.so",
+    "libdl.so",
+    "LIBC_OMR1",
+    "libandroid_runtime.so",
+    "libnativehelper.so",
+    "libutils.so",
+    "libcutils.so",
+    "libdiag_system.so",
+    "libc++.so",
+    "libm.so",
+    "libDiagService.so",
+    "Diag_LSM_Init call failed",
+    "diag_callback_handler: GetObjectClass error",
+    "(Ljava/lang/String;)V",
+    "diag_callback_handler: AttachCurrentThread error",
+    "diag_callback_handler: GetStaticMethodID error",
+    "<init>",
+    "Diag_Lib",
+    "Failed to get the environment using GetEnv()",
+    "android_diag_handler called!",
+    "getNextCommand",
+    "Failed to register native methods",
+    "com/qti/diagservices/DiagJNIInterface",
+    "reboot",
+    "Diag_LSM_Init call succeeded",
+    "eventHandler",
+    "com/qti/diagservices/DiagCommand",
+    ".fini_array",
+    ".text",
+    ".note.android.ident",
+    ".got.plt",
+    ".rela.plt",
+    ".dynstr",
+    ".eh_frame_hdr",
+    ".gnu.version_r",
+    ".data.rel.ro",
+    ".relr.dyn",
+    ".rela.dyn",
+    ".gnu.version",
+    ".dynsym",
+    ".gnu.hash",
+    ".eh_frame",
+    ".note.gnu.build-id",
+    ".dynamic",
+    ".shstrtab",
+    ".rodata",
+    ".gnu_debugdata",
+    ".data",
+    ">9+&Kt",
+    "htdNc"
+  ]
+}

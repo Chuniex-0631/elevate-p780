@@ -1,0 +1,762 @@
+[
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/DiagCommand;",
+    "method": "<init>()V",
+    "offset": 1564,
+    "sha256": "dc452aa2ded1d8cd0ab21718a55e8edafd169116e914103d78d9d139d9f54388",
+    "insns_hex": "70102a0000000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/Object;-><init>()V"
+      },
+      {
+        "offset": 6,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/DiagCommand;",
+    "method": "<init>(I)V",
+    "offset": 1588,
+    "sha256": "3f0c29d3b900e03db70ad45e273558fa8a08131c70299fc177c33163d97efb2b",
+    "insns_hex": "70102a000000590100000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/Object;-><init>()V"
+      },
+      {
+        "offset": 6,
+        "op": "iput",
+        "args": "v1, v0, Lcom/qti/diagservices/DiagCommand;->command I"
+      },
+      {
+        "offset": 10,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/DiagJNIInterface;",
+    "method": "<clinit>()V",
+    "offset": 1616,
+    "sha256": "3c71f002e25977069e0a205674d0a54710166bcab88c961ea5b3382635ed8880",
+    "insns_hex": "1a0005001201690102001a012e007120140010001a01070071102f00010028070d011a0234007120140020000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "const-string",
+        "args": "v0, \"DiagJNIInterface\""
+      },
+      {
+        "offset": 4,
+        "op": "const/4",
+        "args": "v1, 0"
+      },
+      {
+        "offset": 6,
+        "op": "sput-object",
+        "args": "v1, Lcom/qti/diagservices/DiagJNIInterface;->h Landroid/os/Handler;"
+      },
+      {
+        "offset": 10,
+        "op": "const-string",
+        "args": "v1, \"Trying to load libDiagService\""
+      },
+      {
+        "offset": 14,
+        "op": "invoke-static",
+        "args": "v0, v1, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 20,
+        "op": "const-string",
+        "args": "v1, \"DiagService\""
+      },
+      {
+        "offset": 24,
+        "op": "invoke-static",
+        "args": "v1, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 30,
+        "op": "goto",
+        "args": "+7h"
+      },
+      {
+        "offset": 32,
+        "op": "move-exception",
+        "args": "v1"
+      },
+      {
+        "offset": 34,
+        "op": "const-string",
+        "args": "v2, \"WARNING: Could not load libDiagService\""
+      },
+      {
+        "offset": 38,
+        "op": "invoke-static",
+        "args": "v0, v2, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 44,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/DiagJNIInterface;",
+    "method": "<init>()V",
+    "offset": 1692,
+    "sha256": "dc452aa2ded1d8cd0ab21718a55e8edafd169116e914103d78d9d139d9f54388",
+    "insns_hex": "70102a0000000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/Object;-><init>()V"
+      },
+      {
+        "offset": 6,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/DiagJNIInterface;",
+    "method": "eventHandler(Ljava/lang/String;)V",
+    "offset": 1716,
+    "sha256": "ee47550ca9624fe1554c1c650e1885f1803de83a4245a792120263a28d61dc80",
+    "insns_hex": "620002001a010500390008001a000b007120160001000e001a000a00712015000100220006007010090000001a0140006e300b00100371000e0000000c016e2010000100620202006e20110021006e100f0001000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "sget-object",
+        "args": "v0, Lcom/qti/diagservices/DiagJNIInterface;->h Landroid/os/Handler;"
+      },
+      {
+        "offset": 4,
+        "op": "const-string",
+        "args": "v1, \"DiagJNIInterface\""
+      },
+      {
+        "offset": 8,
+        "op": "if-nez",
+        "args": "v0, +008h"
+      },
+      {
+        "offset": 12,
+        "op": "const-string",
+        "args": "v0, \"Handle is empty\""
+      },
+      {
+        "offset": 16,
+        "op": "invoke-static",
+        "args": "v1, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 22,
+        "op": "return-void",
+        "args": ""
+      },
+      {
+        "offset": 24,
+        "op": "const-string",
+        "args": "v0, \"Going to send message\""
+      },
+      {
+        "offset": 28,
+        "op": "invoke-static",
+        "args": "v1, v0, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 34,
+        "op": "new-instance",
+        "args": "v0, Landroid/os/Bundle;"
+      },
+      {
+        "offset": 38,
+        "op": "invoke-direct",
+        "args": "v0, Landroid/os/Bundle;-><init>()V"
+      },
+      {
+        "offset": 44,
+        "op": "const-string",
+        "args": "v1, \"diag_command\""
+      },
+      {
+        "offset": 48,
+        "op": "invoke-virtual",
+        "args": "v0, v1, v3, Landroid/os/Bundle;->putString(Ljava/lang/String; Ljava/lang/String;)V"
+      },
+      {
+        "offset": 54,
+        "op": "invoke-static",
+        "args": "Landroid/os/Message;->obtain()Landroid/os/Message;"
+      },
+      {
+        "offset": 60,
+        "op": "move-result-object",
+        "args": "v1"
+      },
+      {
+        "offset": 62,
+        "op": "invoke-virtual",
+        "args": "v1, v0, Landroid/os/Message;->setData(Landroid/os/Bundle;)V"
+      },
+      {
+        "offset": 68,
+        "op": "sget-object",
+        "args": "v2, Lcom/qti/diagservices/DiagJNIInterface;->h Landroid/os/Handler;"
+      },
+      {
+        "offset": 72,
+        "op": "invoke-virtual",
+        "args": "v1, v2, Landroid/os/Message;->setTarget(Landroid/os/Handler;)V"
+      },
+      {
+        "offset": 78,
+        "op": "invoke-virtual",
+        "args": "v1, Landroid/os/Message;->sendToTarget()V"
+      },
+      {
+        "offset": 84,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/DiagJNIInterface;",
+    "method": "setHandler(Landroid/os/Handler;)V",
+    "offset": 1820,
+    "sha256": "fdd0f2692b7294c8b8da11c486eaf0000973517f6d292db52bf891f5b2f29f56",
+    "insns_hex": "690102000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "sput-object",
+        "args": "v1, Lcom/qti/diagservices/DiagJNIInterface;->h Landroid/os/Handler;"
+      },
+      {
+        "offset": 4,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/Diag_OnBoot;",
+    "method": "<init>()V",
+    "offset": 1844,
+    "sha256": "585f7f4add0afe96835f153e3ff30d9070dfeea87965b00e7f183b31fcb6ae01",
+    "insns_hex": "7010010000000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-direct",
+        "args": "v0, Landroid/content/BroadcastReceiver;-><init>()V"
+      },
+      {
+        "offset": 6,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/Diag_OnBoot;",
+    "method": "onReceive(Landroid/content/Context; Landroid/content/Intent;)V",
+    "offset": 1868,
+    "sha256": "8683c12ca898e7f2384a4fc93555dacf2268309d9dfe68095c25ec3a9d4b6bbb",
+    "insns_hex": "5b5604006e10070007000c001a0138006e202b0001000a0038004100220003006e10040006000c011c0210006e10290002000c027030020010020000220105007010060001006e20080001000c016e20050016000c011a02080039011b002203170070102c0003001a0403006e202d0043006e10030000000c046e202d0043006e102e0003000c0371201400320028061a032c007120130032000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "iput-object",
+        "args": "v6, v5, Lcom/qti/diagservices/Diag_OnBoot;->mContext Landroid/content/Context;"
+      },
+      {
+        "offset": 4,
+        "op": "invoke-virtual",
+        "args": "v7, Landroid/content/Intent;->getAction()Ljava/lang/String;"
+      },
+      {
+        "offset": 10,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 12,
+        "op": "const-string",
+        "args": "v1, \"android.intent.action.BOOT_COMPLETED\""
+      },
+      {
+        "offset": 16,
+        "op": "invoke-virtual",
+        "args": "v1, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+      },
+      {
+        "offset": 22,
+        "op": "move-result",
+        "args": "v0"
+      },
+      {
+        "offset": 24,
+        "op": "if-eqz",
+        "args": "v0, +041h"
+      },
+      {
+        "offset": 28,
+        "op": "new-instance",
+        "args": "v0, Landroid/content/ComponentName;"
+      },
+      {
+        "offset": 32,
+        "op": "invoke-virtual",
+        "args": "v6, Landroid/content/Context;->getPackageName()Ljava/lang/String;"
+      },
+      {
+        "offset": 38,
+        "op": "move-result-object",
+        "args": "v1"
+      },
+      {
+        "offset": 40,
+        "op": "const-class",
+        "args": "v2, Lcom/qti/diagservices/QTIDiagServices;"
+      },
+      {
+        "offset": 44,
+        "op": "invoke-virtual",
+        "args": "v2, Ljava/lang/Class;->getName()Ljava/lang/String;"
+      },
+      {
+        "offset": 50,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 52,
+        "op": "invoke-direct",
+        "args": "v0, v1, v2, Landroid/content/ComponentName;-><init>(Ljava/lang/String; Ljava/lang/String;)V"
+      },
+      {
+        "offset": 58,
+        "op": "nop",
+        "args": ""
+      },
+      {
+        "offset": 60,
+        "op": "new-instance",
+        "args": "v1, Landroid/content/Intent;"
+      },
+      {
+        "offset": 64,
+        "op": "invoke-direct",
+        "args": "v1, Landroid/content/Intent;-><init>()V"
+      },
+      {
+        "offset": 70,
+        "op": "invoke-virtual",
+        "args": "v1, v0, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;"
+      },
+      {
+        "offset": 76,
+        "op": "move-result-object",
+        "args": "v1"
+      },
+      {
+        "offset": 78,
+        "op": "invoke-virtual",
+        "args": "v6, v1, Landroid/content/Context;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;"
+      },
+      {
+        "offset": 84,
+        "op": "move-result-object",
+        "args": "v1"
+      },
+      {
+        "offset": 86,
+        "op": "const-string",
+        "args": "v2, \"Diag_OnBoot\""
+      },
+      {
+        "offset": 90,
+        "op": "if-nez",
+        "args": "v1, +01bh"
+      },
+      {
+        "offset": 94,
+        "op": "new-instance",
+        "args": "v3, Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 98,
+        "op": "invoke-direct",
+        "args": "v3, Ljava/lang/StringBuilder;-><init>()V"
+      },
+      {
+        "offset": 104,
+        "op": "const-string",
+        "args": "v4, \"Could Not Start Service \""
+      },
+      {
+        "offset": 108,
+        "op": "invoke-virtual",
+        "args": "v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 114,
+        "op": "invoke-virtual",
+        "args": "v0, Landroid/content/ComponentName;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 120,
+        "op": "move-result-object",
+        "args": "v4"
+      },
+      {
+        "offset": 122,
+        "op": "invoke-virtual",
+        "args": "v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+      },
+      {
+        "offset": 128,
+        "op": "invoke-virtual",
+        "args": "v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      },
+      {
+        "offset": 134,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 136,
+        "op": "invoke-static",
+        "args": "v2, v3, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 142,
+        "op": "goto",
+        "args": "+6h"
+      },
+      {
+        "offset": 144,
+        "op": "const-string",
+        "args": "v3, \"Started Successfully\""
+      },
+      {
+        "offset": 148,
+        "op": "invoke-static",
+        "args": "v2, v3, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 154,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/QTIDiagServices$1;",
+    "method": "<init>(Lcom/qti/diagservices/QTIDiagServices;)V",
+    "offset": 2040,
+    "sha256": "04633bfcb6622e12401aa011b2b8ffa3d1a7ad06ef3b0bf2bfa117d8df445608",
+    "insns_hex": "5b01050070100c0000000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "iput-object",
+        "args": "v1, v0, Lcom/qti/diagservices/QTIDiagServices$1;->this$0 Lcom/qti/diagservices/QTIDiagServices;"
+      },
+      {
+        "offset": 4,
+        "op": "invoke-direct",
+        "args": "v0, Landroid/os/Handler;-><init>()V"
+      },
+      {
+        "offset": 10,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/QTIDiagServices$1;",
+    "method": "handleMessage(Landroid/os/Message;)V",
+    "offset": 2068,
+    "sha256": "12cb3f2129ddc40c178ae735c532a221ef0133ec770900f4dd6a78a06694abe8",
+    "insns_hex": "6e100d0005000c001a0140006e200a0010000c011a025e006e202b0021000a0238021100544205001a035c006e20230032000c021f020a0012036e201200320028081a0229001a0302007120160032000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-virtual",
+        "args": "v5, Landroid/os/Message;->getData()Landroid/os/Bundle;"
+      },
+      {
+        "offset": 6,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 8,
+        "op": "const-string",
+        "args": "v1, \"diag_command\""
+      },
+      {
+        "offset": 12,
+        "op": "invoke-virtual",
+        "args": "v0, v1, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;"
+      },
+      {
+        "offset": 18,
+        "op": "move-result-object",
+        "args": "v1"
+      },
+      {
+        "offset": 20,
+        "op": "const-string",
+        "args": "v2, \"reboot\""
+      },
+      {
+        "offset": 24,
+        "op": "invoke-virtual",
+        "args": "v1, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+      },
+      {
+        "offset": 30,
+        "op": "move-result",
+        "args": "v2"
+      },
+      {
+        "offset": 32,
+        "op": "if-eqz",
+        "args": "v2, +011h"
+      },
+      {
+        "offset": 36,
+        "op": "iget-object",
+        "args": "v2, v4, Lcom/qti/diagservices/QTIDiagServices$1;->this$0 Lcom/qti/diagservices/QTIDiagServices;"
+      },
+      {
+        "offset": 40,
+        "op": "const-string",
+        "args": "v3, \"power\""
+      },
+      {
+        "offset": 44,
+        "op": "invoke-virtual",
+        "args": "v2, v3, Lcom/qti/diagservices/QTIDiagServices;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;"
+      },
+      {
+        "offset": 50,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 52,
+        "op": "check-cast",
+        "args": "v2, Landroid/os/PowerManager;"
+      },
+      {
+        "offset": 56,
+        "op": "const/4",
+        "args": "v3, 0"
+      },
+      {
+        "offset": 58,
+        "op": "invoke-virtual",
+        "args": "v2, v3, Landroid/os/PowerManager;->reboot(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 64,
+        "op": "goto",
+        "args": "+8h"
+      },
+      {
+        "offset": 66,
+        "op": "const-string",
+        "args": "v2, \"QTIDiagServices\""
+      },
+      {
+        "offset": 70,
+        "op": "const-string",
+        "args": "v3, \"Cannot handle command\""
+      },
+      {
+        "offset": 74,
+        "op": "invoke-static",
+        "args": "v2, v3, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I"
+      },
+      {
+        "offset": 80,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/QTIDiagServices;",
+    "method": "<init>()V",
+    "offset": 2188,
+    "sha256": "1eecfafaa5a55ea3848bb4da2364f831a3f66945cdf5027536a5411a6833b05f",
+    "insns_hex": "7010000000000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-direct",
+        "args": "v0, Landroid/app/Service;-><init>()V"
+      },
+      {
+        "offset": 6,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/QTIDiagServices;",
+    "method": "onBind(Landroid/content/Intent;)Landroid/os/IBinder;",
+    "offset": 2168,
+    "sha256": "29372a6d02c7422f70504ebdc64b95896155fc743fc07407ec9fe13879d10f49",
+    "insns_hex": "12001100",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "const/4",
+        "args": "v0, 0"
+      },
+      {
+        "offset": 2,
+        "op": "return-object",
+        "args": "v0"
+      }
+    ]
+  },
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/QTIDiagServices;",
+    "method": "onCreate()V",
+    "offset": 2212,
+    "sha256": "f719a221f45088684a496c83a91e1b744588d6ecd2ae8dc6cc5ca753f57d56ea",
+    "insns_hex": "22000f007020200020005b20070022000d0070101a0000005b200800542107006e201d0010000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "new-instance",
+        "args": "v0, Lcom/qti/diagservices/QTIDiagServices$1;"
+      },
+      {
+        "offset": 4,
+        "op": "invoke-direct",
+        "args": "v0, v2, Lcom/qti/diagservices/QTIDiagServices$1;-><init>(Lcom/qti/diagservices/QTIDiagServices;)V"
+      },
+      {
+        "offset": 10,
+        "op": "iput-object",
+        "args": "v0, v2, Lcom/qti/diagservices/QTIDiagServices;->callbackHandler Landroid/os/Handler;"
+      },
+      {
+        "offset": 14,
+        "op": "new-instance",
+        "args": "v0, Lcom/qti/diagservices/DiagJNIInterface;"
+      },
+      {
+        "offset": 18,
+        "op": "invoke-direct",
+        "args": "v0, Lcom/qti/diagservices/DiagJNIInterface;-><init>()V"
+      },
+      {
+        "offset": 24,
+        "op": "iput-object",
+        "args": "v0, v2, Lcom/qti/diagservices/QTIDiagServices;->dji Lcom/qti/diagservices/DiagJNIInterface;"
+      },
+      {
+        "offset": 28,
+        "op": "iget-object",
+        "args": "v1, v2, Lcom/qti/diagservices/QTIDiagServices;->callbackHandler Landroid/os/Handler;"
+      },
+      {
+        "offset": 32,
+        "op": "invoke-virtual",
+        "args": "v0, v1, Lcom/qti/diagservices/DiagJNIInterface;->setHandler(Landroid/os/Handler;)V"
+      },
+      {
+        "offset": 38,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/QTIDiagServices;",
+    "method": "onDestroy()V",
+    "offset": 2268,
+    "sha256": "7a2a7c0a81d1bd595dff09b918f8ecb5b5e8493654a4f83496956ed8eb017674",
+    "insns_hex": "0e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/QTIDiagServices;",
+    "method": "onStart(Landroid/content/Intent; I)V",
+    "offset": 2288,
+    "sha256": "7a2a7c0a81d1bd595dff09b918f8ecb5b5e8493654a4f83496956ed8eb017674",
+    "insns_hex": "0e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "dex": "classes.dex",
+    "cls": "Lcom/qti/diagservices/R;",
+    "method": "<init>()V",
+    "offset": 2308,
+    "sha256": "dc452aa2ded1d8cd0ab21718a55e8edafd169116e914103d78d9d139d9f54388",
+    "insns_hex": "70102a0000000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-direct",
+        "args": "v0, Ljava/lang/Object;-><init>()V"
+      },
+      {
+        "offset": 6,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  }
+]

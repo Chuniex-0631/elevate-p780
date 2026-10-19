@@ -2,6 +2,10 @@
 
 更新：2026-10-19。此页按资产组织，不再将每轮“待测”计划当资产重复追加。当前技术结论见 [STATUS](STATUS.md)；完整旧文件名、来源大小及阶段摘要保存在[冻结的历史账本](archive/evidence-ledger-before-consolidation-20261018.md)。
 
+## NATIVE-01 新增实机与离线交叉证据（2026-10-19）
+
+[报告](research/p780-native-live-endpoints-20261019.md)、[观察摘要](../evidence/native/20261019/observations.json)、[三输入SHA清单](../evidence/native/20261019/input-manifest.json)、[16方法原始字节及反汇编](../evidence/native/20261019/diag-methods.json)、[17方法声明](../evidence/native/20261019/diag-declarations.json)、[manifest](../evidence/native/20261019/diag-manifest.xml)、[ELF/CFI/PLT证据](../evidence/native/20261019/diag-elf.json)、限定进程/服务/启动日志进入Git。三份现机导出字节与PC历史一致；原始APK/JAR/SO留PC。没有全量getprop、设备序列号或私人应用日志入仓。DEX/ELF方法SHA与指令覆盖、改动JSON/Python和路径链接完成验证；不是完整固件或当前内存审计。可重跑工具见[native说明](../tools/native/README.md)。
+
 ## 保存等级
 
 |等级|含义|

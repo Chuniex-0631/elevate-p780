@@ -1,0 +1,15 @@
+ACTIVITY MANAGER SERVICES (dumpsys activity services)
+  User 0 active services:
+  * ServiceRecord{d2963c5 u0 com.qti.diagservices/.QTIDiagServices}
+    intent={cmp=com.qti.diagservices/.QTIDiagServices}
+    packageName=com.qti.diagservices
+    processName=com.qti.diagservices
+    baseDir=/system_ext/app/QTIDiagServices/QTIDiagServices.apk
+    dataDir=/data/user/0/com.qti.diagservices
+    app=ProcessRecord{3a93354 6220:com.qti.diagservices/1000}
+    allowWhileInUsePermissionInFgs=true
+    startForegroundCount=0
+    recentCallingPackage=com.qti.diagservices
+    createTime=-4m56s905ms startingBgTimeout=-4m41s902ms
+    lastActivity=-4m56s904ms restartTime=-4m56s904ms createdFromFg=false
+    startRequested=true delayedStop=false stopIfKilled=false callStart=true lastStartId=1

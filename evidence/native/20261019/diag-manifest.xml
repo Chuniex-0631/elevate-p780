@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:sharedUserId="android.uid.system" android:versionCode="30" android:versionName="11" android:compileSdkVersion="30" android:compileSdkVersionCodename="11" package="com.qti.diagservices" platformBuildVersionCode="30" platformBuildVersionName="11">
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+  <uses-sdk android:minSdkVersion="30" android:targetSdkVersion="30"/>
+  <application android:extractNativeLibs="false" android:usesNonSdkApi="true">
+    <receiver android:label="Diag_OnBoot" android:name=".Diag_OnBoot" android:enabled="true" android:exported="false">
+      <intent-filter android:priority="100">
+        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+      </intent-filter>
+    </receiver>
+    <service android:name="QTIDiagServices"/>
+  </application>
+</manifest>

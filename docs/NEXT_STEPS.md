@@ -5,7 +5,8 @@
 |优先级|任务|进入条件与交付物|完成或停止条件|
 |---|---|---|---|
 |已完成阶段|OEMLOCK-01已定位；OEMLOCK-02现有语料内未找到路径|296份去重APK/JAR中6个直接调用点，唯一应用层true来自Settings内部确认链；管理权限为signature/privileged。见[OEMLOCK-02调用者边界](research/p780-oemlock-caller-boundary-20261019.md)|停止重复扫描与上机尝试。只有新增组件/服务端原件可补齐明确入口链才重开；不执行setter、不改启动属性、不写FRP。|
-|1|已有样本的调用者与服务端交叉核对|基于[native矩阵](research/p780-native-interface-crosscheck-20261018.md)，逐项区分JNI、传输库、HIDL接口与服务实现；记录样本SHA、引用符号、策略规则、缺失端点|形成有来源的调用链或明确排除理由；只剩缺失二进制时标BLOCKED，不反复扫同名字符串|
+|已完成阶段|NATIVE-01运行端点与诊断Java/JNI交叉|本轮已核对诊断应用16方法、JNI真实CFI实现、启动失败日志、共享UID权限及运行标签。见[报告](research/p780-native-live-endpoints-20261019.md)|不再把该APK作为可用OEM代理；没有导出命令入口，启动时HIDL连接失败。不要以启动服务或重发命令试错。|
+|1（条件候选）|NATIVE-02 Journey root诊断服务 / init builtin实现|两项root服务已确认running；仅在取得同构建可信init/诊断服务端原件或对应源码后，核对debug_prop动作、参数约束与调用者身份|实现取得分支BLOCKED；既有及本轮vendor读取Permission denied不重复尝试，不设置属性、不连socket、不将running推为分区写能力|
 |2|核对尚未取得原件的价值|先核对PC现有清单和已上传范围；只有明确能补齐具体调用链时再提最小增量材料|不重复要求已被Permission denied拒绝的init/Journey/gsid文件；不把未取得内容判为不存在|
 |3|可信同型号固件或源码新证据|新原厂材料需型号、构建、来源、哈希；源码回复需对应 `_162` 与5.4.233说明|能验证来源才离线检查boot/vbmeta/内核；不以A52s或旧TINNO树替代本机|
 |EDL受控实验|QDL v2.8 已在 QUD/COM6 成功返回 Sahara v2 身份信息；候选 A 已实机经历4次 READ64，随后读取下一条 Sahara 包失败，未取得 END OF IMAGE、DONE 或 Firehose；机主已确认恢复 Android；五个本地候选均离线证书排查完成、三组根 PKHash 都不匹配，暂停实机试错；继续查找可信同型号原厂签名 programmer。见[实测与实验边界](research/p780-qdl-qud-sahara-20261019.md)|以 EARLY_SAHARA_READ64_FAILURE / CAUSE_UNDETERMINED 标记并停止无差异重试；不得用握手成功推断 Root/解锁/写权限。|

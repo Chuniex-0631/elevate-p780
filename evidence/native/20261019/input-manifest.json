@@ -1,0 +1,23 @@
+[
+  {
+    "name": "QTIDiagServices.apk",
+    "size": 12702,
+    "sha256": "131e725841b919a0cb1b452b4a2f8b40a214322d371fea139a13343188c2a3ff",
+    "historical_file": "09/P780-static-20261018-220912/files/system_ext/app/QTIDiagServices/QTIDiagServices.apk",
+    "historical_match": true
+  },
+  {
+    "name": "libDiagService.so",
+    "size": 15960,
+    "sha256": "12a65895ee4e3a689da320579da2a208677b08fa7437674bf4b604e8090ce756",
+    "historical_file": "09/P780-static-20261018-220912/files/system_ext/lib64/libDiagService.so",
+    "historical_match": true
+  },
+  {
+    "name": "services.jar",
+    "size": 15353744,
+    "sha256": "0d93de73a06fca110c2826a92f243ea4afd7d4bf472f27649e0398995adf7345",
+    "historical_file": "09/P780-services.jar",
+    "historical_match": true
+  }
+]

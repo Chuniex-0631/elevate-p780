@@ -2,6 +2,13 @@
 
 以下按阶段保存当时结论，历史条目中的“未安装/待测”不代表现在。当前状态统一见[STATUS](docs/STATUS.md)。
 
+## 2026-10-19 — NATIVE-01 实机端点与诊断JNI失败链
+
+- ADB只读确认customer=1、locked/green/_b/Enforcing，重新导出的诊断APK/JNI/services三份SHA均匹配历史。
+- 补齐旧73JAR扫描缺失的诊断Java调用方，解码16方法体/17声明及JNI CFI真实实现。启动缓冲日志将失败缩小到Diag_LSM_Init连接HIDL；不再误写成单纯找不到SO，也未确认SELinux为唯一根因。
+- 诊断应用UID1000和OEM管理授权不等于可调用代理；已审组件无对外命令入口，Handler仅reboot。两项Journey root服务确认running，但socket标签不可读、vendor端点原件被拒，NATIVE-02保持有条件实现审计，不触发属性或发包。
+- 同步[报告](docs/research/p780-native-live-endpoints-20261019.md)、脱敏证据、离线工具、STATUS/NEXT_STEPS/EVIDENCE_MANIFEST。没有Root、解锁、重启、安装或分区写入；未改sources同步资料。
+
 ## 2026-10-19 — OEMLOCK-02 调用者与权限边界
 
 - 离线扫描296份去重APK/JAR（176/120），定位6个直接设置调用点，应用层启用点仅Settings确认回调；保存6方法与9确认链方法原始指令及SHA。

@@ -1,0 +1,13 @@
+--------- beginning of main
+10-19 21:41:16.640  6220  6220 E ti.diagservice: Not starting debugger since process cannot load the jdwp agent.
+10-19 21:41:16.772  6220  6220 I Perf    : Connecting to perf service.
+10-19 21:41:16.789  6220  6220 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-19 21:41:16.790  6220  6220 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+--------- beginning of system
+10-19 21:41:16.794  6220  6220 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.startService:1669 android.content.ContextWrapper.startService:720 android.content.ContextWrapper.startService:720 com.qti.diagservices.Diag_OnBoot.onReceive:40 android.app.ActivityThread.handleReceiver:4049 
+10-19 21:41:16.799  6220  6220 D Diag_OnBoot: Started Successfully
+10-19 21:41:16.800  6220  6220 E DiagJNIInterface: Trying to load libDiagService
+10-19 21:41:16.820  6220  6220 E Diag_Lib: diag: Unable to connect to hidl server
+10-19 21:41:16.821  6220  6220 E Diag_Lib:  Diag_LSM_Init: Failed to open handle to diag driver, error = 25
+10-19 21:41:16.821  6220  6220 E Diag_Lib: Diag_LSM_Init call failed
+10-19 21:41:16.821  6220  6220 E DiagJNIInterface: WARNING: Could not load libDiagService

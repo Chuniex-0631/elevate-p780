@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-19",
+  "timezone": "Asia/Shanghai",
+  "scope": "ADB read-only acquisition; offline DEX/ELF analysis",
+  "device": {
+    "model": "P780",
+    "fingerprint": "Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys",
+    "ro.boot.journey.customer": "1",
+    "ro.boot.slot_suffix": "_b",
+    "ro.boot.flash.locked": "1",
+    "ro.boot.verifiedbootstate": "green",
+    "getenforce": "Enforcing"
+  },
+  "journey_init_services": {
+    "journey_diag_ext_system": "running",
+    "journey_diag_ext_vendor": "running"
+  },
+  "blank_property_queries": [
+    "persist.vendor.diag.journey.enabled",
+    "init.svc.vendor.ssgtzd",
+    "init.svc.vendor.journey.warehouse",
+    "init.svc.vendor.diag-router"
+  ],
+  "blank_query_limit": "Empty getprop output does not prove absent property or stopped service.",
+  "diag_package": {
+    "uid": 1000,
+    "shared_uid": "android.uid.system",
+    "granted_permissions_observed": [
+      "android.permission.DIAGNOSTIC",
+      "android.permission.MANAGE_USER_OEM_UNLOCK_STATE",
+      "android.permission.REBOOT"
+    ],
+    "primaryCpuAbi": null,
+    "secondaryCpuAbi": null,
+    "source": "dumpsys package com.qti.diagservices; excerpt of shared UID permission context"
+  },
+  "denied": [
+    {
+      "operation": "ls -l",
+      "path": "/vendor/lib64/vendor.qti.diaghal@1.0.so",
+      "result": "Permission denied"
+    },
+    {
+      "operation": "ls -l",
+      "path": "/vendor/lib64/vendor.qti.hardware.qseecom@1.0.so",
+      "result": "Permission denied"
+    },
+    {
+      "operation": "ls -l",
+      "path": "/vendor/lib64/vendor.journey.hardware.warehouse@1.0.so",
+      "result": "Permission denied"
+    },
+    {
+      "operation": "adb pull",
+      "path": "/vendor/bin/diag-router",
+      "result": "failed to stat remote object: Permission denied"
+    },
+    {
+      "operation": "adb pull",
+      "path": "/vendor/bin/ssgtzd",
+      "result": "failed to stat remote object: Permission denied"
+    }
+  ],
+  "lshal_excerpt": [
+    "DM,FC    ? vendor.journey.hardware.display@1.0::IDisplayExt/default                                               N/A        N/A    ",
+    "DM,FC    ? vendor.journey.hardware.fingerprint@1.0::IFingerprintExt/default                                       N/A        N/A    ",
+    "DM,FC    ? vendor.journey.hardware.warehouse@1.0::IWarehouse/default                                              N/A        N/A    ",
+    "DM,FC    ? vendor.qti.diaghal@1.0::Idiag/default                                                                  N/A        N/A    ",
+    "DM,FC    ? vendor.qti.hardware.qseecom@1.0::IQSEECom/default                                                      N/A        N/A    ",
+    "FC    ? vendor.qti.hardware.qseecom@1.0::IQSEECom/default                                N/A        581    581",
+    "X     ? vendor.qti.hardware.qseecom@1.0::I*/* (/vendor/lib/hw/)                       N/A        N/A    ",
+    "X     ? vendor.qti.hardware.qseecom@1.0::I*/* (/vendor/lib64/hw/)                     N/A        N/A    "
+  ],
+  "lshal_limit": "Many cannot-be-fetched warnings. DM/FC entries do not establish accessible active registration; raw stderr was observed in tool transcript, not preserved as a standalone file.",
+  "socket_excerpt": [
+    "s????????? ? ?           ?           ?                             ?                ? diag_ext_socket",
+    "s????????? ? ?           ?           ?                             ?                ? qwes_ipc",
+    "s????????? ? ?           ?           ?                             ?                ? ssgqmig",
+    "s????????? ? ?           ?           ?                             ?                ? ssgtzd"
+  ],
+  "socket_limit": "Names visible; metadata shown as question marks. No connection was attempted.",
+  "targeted_log_no_hits": [
+    "diag-related AVC denial filter",
+    "Journey init write_misc/sync_file parse/error filter"
+  ],
+  "log_limit": "No matching retained log line is not proof of no denial or successful builtin registration. Startup errors refer to buffered 21:41:16 events, not a fresh initialization.",
+  "performed_mutations": [],
+  "did_not_perform": [
+    "OEM Binder calls",
+    "property writes",
+    "socket/TEE/diagnostic commands",
+    "app installation",
+    "reboot",
+    "flash",
+    "partition write"
+  ],
+  "provenance_note": "Properties and denied-operation results transcribed from this session tool outputs; process/service/startup log files preserve narrowly scoped command outputs. No serial, IMEI, SIM or account data is included."
+}
