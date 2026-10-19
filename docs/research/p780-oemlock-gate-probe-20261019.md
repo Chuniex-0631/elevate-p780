@@ -1,5 +1,5 @@
 # P780-OEMLOCK-01: OEM Unlock 灰色开关的限制来源
-2026-10-19。状态：**计划，尚未实机执行**。不推断 Bootloader 解锁或 Root 已实现。
+2026-10-19。状态：**第一阶段已实机执行，第二阶段待进行**。不推断 Bootloader 解锁或 Root 已实现。
 
 ## 已知实机材料
 P780 Android 11 开发者选项的 OEM unlocking 灰色；早期资料记录 `ro.oem_unlock_supported=1`、`sys.oem_unlock_allowed=0`、Fastboot unlock/get_unlock_ability 返回 unknown command、BL locked。不同时间点的属性不混为同一次快照。
@@ -8,6 +8,8 @@ P780 Android 11 开发者选项的 OEM unlocking 灰色；早期资料记录 `ro
 AOSP Android 11 [Settings OemUnlockPreferenceController](https://github.com/aosp-mirror/platform_packages_apps_settings/blob/android-11.0.0_r48/src/com/android/settings/development/OemUnlockPreferenceController.java) 规定是否可点受 bootloader 状态、`isOemUnlockAllowedByCarrier()`、`DISALLOW_FACTORY_RESET` 及管理策略影响。`ro.oem_unlock_supported=1` 只决定功能可见的条件之一。
 
 [OemLockService](https://github.com/aosp-mirror/platform_frameworks_base/blob/android-11.0.0_r48/services/core/java/com/android/server/oemlock/OemLockService.java) 优先 OEM Lock HAL，否则采用 PersistentDataBlockLock。可分别检查 carrier HAL 存在性、PDB、用户限制以及设备管理策略。但 P780 厂商实现尚未取得，AOSP 不保证完全相同。
+
+已完成的第一阶段实测结果和逐字 AOSP 中文资源对照见[2026-10-19 实机报告](p780-oemlock-first-results-20261019.md)；以下保留原始计划命令供审计，不再作为重复采集要求。
 
 ## 第一阶段（只读；原厂 Android + ADB）
 Windows PowerShell：
