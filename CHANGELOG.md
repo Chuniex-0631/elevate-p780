@@ -2,7 +2,13 @@
 
 以下按阶段保存当时结论，历史条目中的“未安装/待测”不代表现在。当前状态统一见[STATUS](docs/STATUS.md)。
 
-## 2026-10-19 — OEMLOCK-01 新测试点（计划，未实测）
+## 2026-10-19 — OEMLOCK-01 第一阶段实际结果
+
+- 机主报告 OEM unlocking 开关灰色、提示“请连接到互联网或与您的运营商联系”，与 Android 11 AOSP `oem_unlock_enable_disabled_summary_connectivity_or_locked` 中文原文逐字一致；该提示依赖运营商允许状态或基础 `DISALLOW_FACTORY_RESET` 限制。
+- ADB 确认 supported=1、allowed=0、flash.locked=1，Framework oem_lock 与 persistent_data_block 服务均注册。lshal 无 OEMLock 命中但枚举有大量警告；用户/设备限制筛选无明确命中。故仍未确定 Vendor HAL vs PDB 和实际 carrier allowance。
+- 已归档[实机小结](docs/research/p780-oemlock-first-results-20261019.md)和第二阶段仅观察 OemLock 日志、VINTF 声明、用户限制的命令；未执行 Binder transaction、属性写入或解锁操作。
+
+## 2026-10-19 — OEMLOCK-01 新测试点（提出时尚未实测）
 
 - 核对 Android 11 AOSP Settings 与 OemLockService，确认灰色开关可能由运营商 HAL、PDB、用户/设备策略等多种分支造成；P780 现有支持属性与历史 Fastboot unknown command 不能单独确定阻断层。
 - 新增[只读实验协议](docs/research/p780-oemlock-gate-probe-20261019.md)，第一轮只查询属性/服务/HAL/用户与设备策略，不触发 Binder 事务写入或 EDL/DSU；无新增 Root/BL 解锁能力。

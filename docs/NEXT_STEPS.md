@@ -4,7 +4,7 @@
 
 |优先级|任务|进入条件与交付物|完成或停止条件|
 |---|---|---|---|
-|新测试点 OEMLOCK-01|针对 OEM unlocking 灰色原因，核验 Android 11 OEM Lock HAL、persistent-data-block 和用户/设备策略分层；**尚未实机测试**。[只读实验协议](research/p780-oemlock-gate-probe-20261019.md)|取得限制分支证据再做对应厂商代码离线核查；不对 Binder 猜事务、不修改 FRP/解锁标志。|
+|新测试点 OEMLOCK-01|针对 OEM unlocking 灰色原因，核验 Android 11 OEM Lock HAL、persistent-data-block 和用户/设备策略分层；**第一阶段已实测、第二阶段待测**。[只读实验协议](research/p780-oemlock-gate-probe-20261019.md)|先核对 AOSP 精确匹配 UI 文案对应的 carrier 基础限制分支，再只读查 OemLock 系统日志、VINTF HAL 声明；详见[实测](research/p780-oemlock-first-results-20261019.md)；取得限制分支证据再做对应厂商代码离线核查；不对 Binder 猜事务、不修改 FRP/解锁标志。|
 |1|已有样本的调用者与服务端交叉核对|基于[native矩阵](research/p780-native-interface-crosscheck-20261018.md)，逐项区分JNI、传输库、HIDL接口与服务实现；记录样本SHA、引用符号、策略规则、缺失端点|形成有来源的调用链或明确排除理由；只剩缺失二进制时标BLOCKED，不反复扫同名字符串|
 |2|核对尚未取得原件的价值|先核对PC现有清单和已上传范围；只有明确能补齐具体调用链时再提最小增量材料|不重复要求已被Permission denied拒绝的init/Journey/gsid文件；不把未取得内容判为不存在|
 |3|可信同型号固件或源码新证据|新原厂材料需型号、构建、来源、哈希；源码回复需对应 `_162` 与5.4.233说明|能验证来源才离线检查boot/vbmeta/内核；不以A52s或旧TINNO树替代本机|
