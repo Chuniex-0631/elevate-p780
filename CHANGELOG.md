@@ -2,6 +2,12 @@
 
 以下按阶段保存当时结论，历史条目中的“未安装/待测”不代表现在。当前状态统一见[STATUS](docs/STATUS.md)。
 
+## 2026-10-19 — OEMLOCK-01 第二阶段确认 PersistentDataBlockLock
+
+- 机主 logcat 直接提供 `OemLock HAL not present on device` 与 `Using persistent data block based lock`，确认本轮 Android OEM Lock 实际后端；compatibility_matrix 只属兼容性声明，不是 HAL 实装证据。
+- 用户限制筛选重复无 `no_factory_reset` 与 `no_oem_unlock`，若 AOSP 未改 PDB carrier 判定，应允许 carrier，然而 UI 仍显示 carrier/connectivity 文案；此矛盾尚未解释，不应直接推测联网服务器。
+- PC manifest 定位到先前采集的 P780 Settings.apk，记录65,392,240字节和 SHA256；下阶段优先核对已有文件，离线检查厂商 Settings OEM 解锁控制逻辑而非调用 Binder 或改 FRP。见[第二阶段完整证据](docs/research/p780-oemlock-first-results-20261019.md)。
+
 ## 2026-10-19 — OEMLOCK-01 第一阶段实际结果
 
 - 机主报告 OEM unlocking 开关灰色、提示“请连接到互联网或与您的运营商联系”，与 Android 11 AOSP `oem_unlock_enable_disabled_summary_connectivity_or_locked` 中文原文逐字一致；该提示依赖运营商允许状态或基础 `DISALLOW_FACTORY_RESET` 限制。
