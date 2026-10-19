@@ -2,6 +2,11 @@
 
 以下按阶段保存当时结论，历史条目中的“未安装/待测”不代表现在。当前状态统一见[STATUS](docs/STATUS.md)。
 
+## 2026-10-19 — OEMLOCK-01 新测试点（计划，未实测）
+
+- 核对 Android 11 AOSP Settings 与 OemLockService，确认灰色开关可能由运营商 HAL、PDB、用户/设备策略等多种分支造成；P780 现有支持属性与历史 Fastboot unknown command 不能单独确定阻断层。
+- 新增[只读实验协议](docs/research/p780-oemlock-gate-probe-20261019.md)，第一轮只查询属性/服务/HAL/用户与设备策略，不触发 Binder 事务写入或 EDL/DSU；无新增 Root/BL 解锁能力。
+
 ## 2026-10-19 — Mannar A–E 五候选离线签名矩阵结案
 
 - 机主在临时独立解析器副本中关闭旧 Loader 数据库去重后，成功取得 B–E 全部证书解析输出；两份最终日志一致。

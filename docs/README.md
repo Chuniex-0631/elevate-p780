@@ -12,6 +12,7 @@
 |---|---|
 |采集覆盖与实现缺口|[清单审核](research/p780-static-corpus-inventory-20261018.md)、[batch1](research/p780-static-batch1-analysis-20261018.md)、[batch2](research/p780-static-batch2-analysis-20261018.md)|
 |接口、调用者与权限|[native交叉矩阵](research/p780-native-interface-crosscheck-20261018.md)、[SELinux审计](research/p780-policy-boundary-audit-20261018.md)|
+|OEM Unlock 灰色新假说|[OEMLOCK-01：HAL/PDB/策略只读实验](research/p780-oemlock-gate-probe-20261019.md)（尚未实机执行）|
 |硬件与启动状态|[设备/Fastboot/EDL](research/device-and-boot.md)、[QDL QUD/Sahara 实机握手](research/p780-qdl-qud-sahara-20261019.md)、[AVB基线](research/avb-live-baseline-20261018.md)|
 |AVB信任钥匙|[本机硬件证明](research/avb-attestation-confirmed-20261018.md)、[fstab](research/p780-fstab-avb-20261018.md)、[官方公告与第三方报告](research/firmware-advisory-20260928.md)、[早期Attestation方案（已完成）](research/avb-attestation-alternative-20261018.md)|
 |DSU为何停止|[最终收束](research/p780-dsu-closure-maintenance-route-20261018.md)、[全部历史阶段索引](archive/dsu-index-20261018.md)|
