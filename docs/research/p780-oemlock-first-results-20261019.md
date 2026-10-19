@@ -49,3 +49,14 @@ adb shell dumpsys user | Select-String 'Restrictions:|no_factory_reset|no_oem_un
 ```
 
 上述不执行 OEM Binder 方法，不设置 OEM Unlock Allowed 位。然后在已有 PC 采集目录查找 `Settings.apk`，按 manifest SHA256 复核原件并枚举 `classes*.dex`。如含目标 dex，离线比对 `OemUnlockPreferenceController` 的 `enableOemUnlockPreference()`、`isOemUnlockAllowedByUserAndCarrier()`、`updateOemUnlockSettingDescription()` 实现。原件若不存在，仅在确有必要时只读 ADB pull。最终任何失配假说都不自动变成 Bootloader 解锁或 Root 能力。
+
+## 第三阶段第一部分已实测：当前用户无基础限制，Settings 来源确定（2026-10-19）
+
+机主 Windows PowerShell 本轮 ADB 输出：
+- `adb shell am get-current-user` → `0`。
+- `adb shell dumpsys user | Select-String 'Restrictions:|no_factory_reset|no_oem_unlock' -Context 0,2`：当前用户块显示 `Restrictions: none`、`Device policy global restrictions: null`、`Device policy local restrictions: none`、`Effective restrictions: none`。下方另有 `Guest restrictions` 和模板 `mDefaultRestrictions`，不能当作当前用户0生效的限制。
+- `adb shell pm path com.android.settings` → `package:/system_ext/priv-app/Settings/Settings.apk`。与先前 PC 静态采集清单路径相符，不能仅凭路径断言当前文件 SHA 与历史快照相同。
+
+**分析**：进一步排除 Android 用户0 的 AOSP 基础 `DISALLOW_OEM_UNLOCK` / `DISALLOW_FACTORY_RESET` 为灰色开关的直接原因。已确认 PDB 后端、且用户0无相关限制仍显示 carrier/connectivity 文案，值得对**厂商实际 Settings.apk 的控制器方法**做离线实现审查。系统自定义、缓存状态和 AOSP API 与设备实现差异尚不明确；不能认定已形成解锁旁路。
+
+**本机资料状态变化**：机主报告原 `Documents/P780-EDL` 工作目录已清理；因此之前指向该目录的 Python/loader 路径不再有效。当前所在 `Desktop/RakutenHand5G`，可以在此重新建立最小只读工作区，从已连接设备 `adb pull /system_ext/priv-app/Settings/Settings.apk` 提取原厂 APK，并先核对 SHA256 / DEX。需要保持原始文件只读，禁止写入/重启/改 OEM unlock 状态；如果使用 Windows ChatGPT 桌面 Work/Codex 本地模式，须由机主授予相应文件夹/终端访问权限，浏览器聊天不能自动操纵电脑。

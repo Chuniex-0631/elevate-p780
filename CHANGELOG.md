@@ -2,6 +2,12 @@
 
 以下按阶段保存当时结论，历史条目中的“未安装/待测”不代表现在。当前状态统一见[STATUS](docs/STATUS.md)。
 
+## 2026-10-19 — OEMLOCK-01 第三阶段用户限制排除、Settings 包定位
+
+- 实机当前用户为0；其 Restrictions:none、device policy global:null、local:none、effective:none；Guest 限制不混同于用户0限制。
+- Android 当前 Settings 位于 /system_ext/priv-app/Settings/Settings.apk，与旧 PC 清单登记一致，但未独立核验二进制 SHA。机主已清理 Documents/P780-EDL 工作目录，后续应在 Desktop/RakutenHand5G 最小化重建、只读提取 APK 并离线比较 OEM 解锁控制器。
+- 结合已确认 PDB 后端与无用户0限制，进一步缩小灰色开关原因但仍未定位设备特有检查，无 Bootloader 解锁或 Root；更新[专题](docs/research/p780-oemlock-first-results-20261019.md)。
+
 ## 2026-10-19 — OEMLOCK-01 第二阶段确认 PersistentDataBlockLock
 
 - 机主 logcat 直接提供 `OemLock HAL not present on device` 与 `Using persistent data block based lock`，确认本轮 Android OEM Lock 实际后端；compatibility_matrix 只属兼容性声明，不是 HAL 实装证据。
