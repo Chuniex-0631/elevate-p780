@@ -2,6 +2,12 @@
 
 以下按阶段保存当时结论，历史条目中的“未安装/待测”不代表现在。当前状态统一见[STATUS](docs/STATUS.md)。
 
+## 2026-10-19 — OEMLOCK-02 调用者与权限边界
+
+- 离线扫描296份去重APK/JAR（176/120），定位6个直接设置调用点，应用层启用点仅Settings确认回调；保存6方法与9确认链方法原始指令及SHA。
+- 原厂framework-res manifest确认MANAGE_USER/CARRIER/READ权限为0x12（signature/privileged）；176APK manifest解码无异常。请求权限不冒称实际授权，共享UID和间接调用仍有范围边界。
+- 现有语料未发现普通调用者可达的特权代理，停止作为上机候选；未操作手机、未写FRP或修改启动属性。同步状态、计划、证据索引及[报告](docs/research/p780-oemlock-caller-boundary-20261019.md)。
+
 ## 2026-10-19 — OEMLOCK-01 Journey customer gate 定位
 
 - 重算Settings/framework/services原件SHA，离线解码114目标方法，保存15关键方法的字节、偏移、SHA和反汇编。

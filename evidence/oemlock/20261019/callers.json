@@ -1,0 +1,778 @@
+[
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\Settings\\Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/development/OemUnlockPreferenceController;",
+    "method": "onActivityResult(I I Landroid/content/Intent;)Z",
+    "code_offset": 3227420,
+    "sha256": "65ebd13f049961e11406a82299bc3bd35f1192f6b41d7b359a88974721a73309",
+    "insns_hex": "12033901180012f13312130054011b416e105c4801000a01380106006e10f6800000280654001a416e204b10300012100f000f03",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "const/4",
+        "args": "v3, 0"
+      },
+      {
+        "offset": 2,
+        "op": "if-nez",
+        "args": "v1, +018h"
+      },
+      {
+        "offset": 6,
+        "op": "const/4",
+        "args": "v1, -1"
+      },
+      {
+        "offset": 8,
+        "op": "if-ne",
+        "args": "v2, v1, +013h"
+      },
+      {
+        "offset": 12,
+        "op": "iget-object",
+        "args": "v1, v0, Lcom/android/settings/development/OemUnlockPreferenceController;->mPreference Lcom/android/settingslib/RestrictedSwitchPreference;"
+      },
+      {
+        "offset": 16,
+        "op": "invoke-virtual",
+        "args": "v1, Landroidx/preference/TwoStatePreference;->isChecked()Z"
+      },
+      {
+        "offset": 22,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 24,
+        "op": "if-eqz",
+        "args": "v1, +006h"
+      },
+      {
+        "offset": 28,
+        "op": "invoke-virtual",
+        "args": "v0, Lcom/android/settings/development/OemUnlockPreferenceController;->confirmEnableOemUnlock()V"
+      },
+      {
+        "offset": 34,
+        "op": "goto",
+        "args": "+6h"
+      },
+      {
+        "offset": 36,
+        "op": "iget-object",
+        "args": "v0, v0, Lcom/android/settings/development/OemUnlockPreferenceController;->mOemLockManager Landroid/service/oemlock/OemLockManager;"
+      },
+      {
+        "offset": 40,
+        "op": "invoke-virtual",
+        "args": "v0, v3, Landroid/service/oemlock/OemLockManager;->setOemUnlockAllowedByUser(Z)V"
+      },
+      {
+        "offset": 46,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 48,
+        "op": "return",
+        "args": "v0"
+      },
+      {
+        "offset": 50,
+        "op": "return",
+        "args": "v3"
+      }
+    ]
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\Settings\\Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/development/OemUnlockPreferenceController;",
+    "method": "onOemUnlockConfirmed()V",
+    "code_offset": 3227992,
+    "sha256": "ce704b271d42bfb1e3c7fdd7835b9df562cef51a1ae0809dfdeb70fd5b54a15d",
+    "insns_hex": "54111a4112106e204b1001000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "iget-object",
+        "args": "v1, v1, Lcom/android/settings/development/OemUnlockPreferenceController;->mOemLockManager Landroid/service/oemlock/OemLockManager;"
+      },
+      {
+        "offset": 4,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 6,
+        "op": "invoke-virtual",
+        "args": "v1, v0, Landroid/service/oemlock/OemLockManager;->setOemUnlockAllowedByUser(Z)V"
+      },
+      {
+        "offset": 12,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\Settings\\Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/development/OemUnlockPreferenceController;",
+    "method": "onPreferenceChange(Landroidx/preference/Preference; Ljava/lang/Object;)Z",
+    "code_offset": 3227488,
+    "sha256": "9ec8d814df73a4ef35bd73d3d4df278eff3cb40c1796354cf924d6a761af32e6",
+    "insns_hex": "1f0270246e1041f902000a011202380112005401665d6e10160501000c016e30058110020a01390110006e10f6800000280b54011a416e204b102100540019417110f280000012100f00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "check-cast",
+        "args": "v2, Ljava/lang/Boolean;"
+      },
+      {
+        "offset": 4,
+        "op": "invoke-virtual",
+        "args": "v2, Ljava/lang/Boolean;->booleanValue()Z"
+      },
+      {
+        "offset": 10,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 12,
+        "op": "const/4",
+        "args": "v2, 0"
+      },
+      {
+        "offset": 14,
+        "op": "if-eqz",
+        "args": "v1, +012h"
+      },
+      {
+        "offset": 18,
+        "op": "iget-object",
+        "args": "v1, v0, Lcom/android/settingslib/core/AbstractPreferenceController;->mContext Landroid/content/Context;"
+      },
+      {
+        "offset": 22,
+        "op": "invoke-virtual",
+        "args": "v1, Landroid/content/Context;->getResources()Landroid/content/res/Resources;"
+      },
+      {
+        "offset": 28,
+        "op": "move-result-object",
+        "args": "v1"
+      },
+      {
+        "offset": 30,
+        "op": "invoke-virtual",
+        "args": "v0, v1, v2, Lcom/android/settings/development/OemUnlockPreferenceController;->showKeyguardConfirmation(Landroid/content/res/Resources; I)Z"
+      },
+      {
+        "offset": 36,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 38,
+        "op": "if-nez",
+        "args": "v1, +010h"
+      },
+      {
+        "offset": 42,
+        "op": "invoke-virtual",
+        "args": "v0, Lcom/android/settings/development/OemUnlockPreferenceController;->confirmEnableOemUnlock()V"
+      },
+      {
+        "offset": 48,
+        "op": "goto",
+        "args": "+bh"
+      },
+      {
+        "offset": 50,
+        "op": "iget-object",
+        "args": "v1, v0, Lcom/android/settings/development/OemUnlockPreferenceController;->mOemLockManager Landroid/service/oemlock/OemLockManager;"
+      },
+      {
+        "offset": 54,
+        "op": "invoke-virtual",
+        "args": "v1, v2, Landroid/service/oemlock/OemLockManager;->setOemUnlockAllowedByUser(Z)V"
+      },
+      {
+        "offset": 60,
+        "op": "iget-object",
+        "args": "v0, v0, Lcom/android/settings/development/OemUnlockPreferenceController;->mFragment Lcom/android/settings/development/DevelopmentSettingsDashboardFragment;"
+      },
+      {
+        "offset": 64,
+        "op": "invoke-static",
+        "args": "v0, Lcom/android/settings/development/OemLockInfoDialog;->show(Landroidx/fragment/app/Fragment;)V"
+      },
+      {
+        "offset": 70,
+        "op": "const/4",
+        "args": "v0, 1"
+      },
+      {
+        "offset": 72,
+        "op": "return",
+        "args": "v0"
+      }
+    ]
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\framework.jar",
+    "dex": "classes2.dex",
+    "cls": "Landroid/service/oemlock/OemLockManager;",
+    "method": "setOemUnlockAllowedByUser(Z)V",
+    "code_offset": 4732852,
+    "sha256": "2f5f7d7d1f07696c369187fac7397bc6e5aa10f46e67096e1f4382d8d371f626",
+    "insns_hex": "54207281722051cc300000000e000d006e102e9000000c012701",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "iget-object",
+        "args": "v0, v2, Landroid/service/oemlock/OemLockManager;->mService Landroid/service/oemlock/IOemLockService;"
+      },
+      {
+        "offset": 4,
+        "op": "invoke-interface",
+        "args": "v0, v3, Landroid/service/oemlock/IOemLockService;->setOemUnlockAllowedByUser(Z)V"
+      },
+      {
+        "offset": 10,
+        "op": "nop",
+        "args": ""
+      },
+      {
+        "offset": 12,
+        "op": "return-void",
+        "args": ""
+      },
+      {
+        "offset": 14,
+        "op": "move-exception",
+        "args": "v0"
+      },
+      {
+        "offset": 16,
+        "op": "invoke-virtual",
+        "args": "v0, Landroid/os/RemoteException;->rethrowFromSystemServer()Ljava/lang/RuntimeException;"
+      },
+      {
+        "offset": 22,
+        "op": "move-result-object",
+        "args": "v1"
+      },
+      {
+        "offset": 24,
+        "op": "throw",
+        "args": "v1"
+      }
+    ]
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\framework.jar",
+    "dex": "classes2.dex",
+    "cls": "Landroid/service/oemlock/IOemLockService$Stub$Proxy;",
+    "method": "setOemUnlockAllowedByUser(Z)V",
+    "code_offset": 4731632,
+    "sha256": "15fc106779227d643bb2437346415dcca87d39bc2b4e3b0910c154a1b901b67f",
+    "insns_hex": "71004a8d00000c0071004a8d00000c011a0271b16e20c28d20001202380604001213280201236e20c08d300054536881124472529e8143100a023902160071003fcc00000c033803100071003fcc00000c03722051cc63006e109b8d01006e109b8d00000e006e10678d01006e109b8d01006e109b8d000000000e000d026e109b8d01006e109b8d00002702",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-static",
+        "args": "Landroid/os/Parcel;->obtain()Landroid/os/Parcel;"
+      },
+      {
+        "offset": 6,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 8,
+        "op": "invoke-static",
+        "args": "Landroid/os/Parcel;->obtain()Landroid/os/Parcel;"
+      },
+      {
+        "offset": 14,
+        "op": "move-result-object",
+        "args": "v1"
+      },
+      {
+        "offset": 16,
+        "op": "const-string",
+        "args": "v2, \"android.service.oemlock.IOemLockService\""
+      },
+      {
+        "offset": 20,
+        "op": "invoke-virtual",
+        "args": "v0, v2, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 26,
+        "op": "const/4",
+        "args": "v2, 0"
+      },
+      {
+        "offset": 28,
+        "op": "if-eqz",
+        "args": "v6, +004h"
+      },
+      {
+        "offset": 32,
+        "op": "const/4",
+        "args": "v3, 1"
+      },
+      {
+        "offset": 34,
+        "op": "goto",
+        "args": "+2h"
+      },
+      {
+        "offset": 36,
+        "op": "move",
+        "args": "v3, v2"
+      },
+      {
+        "offset": 38,
+        "op": "invoke-virtual",
+        "args": "v0, v3, Landroid/os/Parcel;->writeInt(I)V"
+      },
+      {
+        "offset": 44,
+        "op": "iget-object",
+        "args": "v3, v5, Landroid/service/oemlock/IOemLockService$Stub$Proxy;->mRemote Landroid/os/IBinder;"
+      },
+      {
+        "offset": 48,
+        "op": "const/4",
+        "args": "v4, 4"
+      },
+      {
+        "offset": 50,
+        "op": "invoke-interface",
+        "args": "v3, v4, v0, v1, v2, Landroid/os/IBinder;->transact(I Landroid/os/Parcel; Landroid/os/Parcel; I)Z"
+      },
+      {
+        "offset": 56,
+        "op": "move-result",
+        "args": "v2"
+      },
+      {
+        "offset": 58,
+        "op": "if-nez",
+        "args": "v2, +016h"
+      },
+      {
+        "offset": 62,
+        "op": "invoke-static",
+        "args": "Landroid/service/oemlock/IOemLockService$Stub;->getDefaultImpl()Landroid/service/oemlock/IOemLockService;"
+      },
+      {
+        "offset": 68,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 70,
+        "op": "if-eqz",
+        "args": "v3, +010h"
+      },
+      {
+        "offset": 74,
+        "op": "invoke-static",
+        "args": "Landroid/service/oemlock/IOemLockService$Stub;->getDefaultImpl()Landroid/service/oemlock/IOemLockService;"
+      },
+      {
+        "offset": 80,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 82,
+        "op": "invoke-interface",
+        "args": "v3, v6, Landroid/service/oemlock/IOemLockService;->setOemUnlockAllowedByUser(Z)V"
+      },
+      {
+        "offset": 88,
+        "op": "invoke-virtual",
+        "args": "v1, Landroid/os/Parcel;->recycle()V"
+      },
+      {
+        "offset": 94,
+        "op": "invoke-virtual",
+        "args": "v0, Landroid/os/Parcel;->recycle()V"
+      },
+      {
+        "offset": 100,
+        "op": "return-void",
+        "args": ""
+      },
+      {
+        "offset": 102,
+        "op": "invoke-virtual",
+        "args": "v1, Landroid/os/Parcel;->readException()V"
+      },
+      {
+        "offset": 108,
+        "op": "invoke-virtual",
+        "args": "v1, Landroid/os/Parcel;->recycle()V"
+      },
+      {
+        "offset": 114,
+        "op": "invoke-virtual",
+        "args": "v0, Landroid/os/Parcel;->recycle()V"
+      },
+      {
+        "offset": 120,
+        "op": "nop",
+        "args": ""
+      },
+      {
+        "offset": 122,
+        "op": "return-void",
+        "args": ""
+      },
+      {
+        "offset": 124,
+        "op": "move-exception",
+        "args": "v2"
+      },
+      {
+        "offset": 126,
+        "op": "invoke-virtual",
+        "args": "v1, Landroid/os/Parcel;->recycle()V"
+      },
+      {
+        "offset": 132,
+        "op": "invoke-virtual",
+        "args": "v0, Landroid/os/Parcel;->recycle()V"
+      },
+      {
+        "offset": 138,
+        "op": "throw",
+        "args": "v2"
+      }
+    ]
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\framework.jar",
+    "dex": "classes2.dex",
+    "cls": "Landroid/service/oemlock/IOemLockService$Stub;",
+    "method": "onTransact(I Landroid/os/Parcel; Landroid/os/Parcel; I)Z",
+    "code_offset": 4731920,
+    "sha256": "b1fdd410890120d86df7c707e6aaf35f674cf2359c1a070d8c3911052e28fbe0",
+    "insns_hex": "1a0071b1140146544e5f12123215770012012b05790000006f58487d54760a010f016e20108d06006e1043cc04000a016e10c88d07006e20c08d17000f026e20108d06006e1044cc04000a016e10c88d07006e20c08d17000f026e20108d06006e1046cc04000a016e10c88d07006e20c08d17000f026e20108d06006e106e8d06000a033803030001216e204acc14006e10c88d07000f026e20108d06006e1045cc04000a016e10c88d07006e20c08d17000f026e20108d06006e106e8d06000a033803030001216e10fa8c06000c036e3049cc14036e10c88d07000f026e20108d06006e1041cc04000c016e10c88d07006e20d78d17000f026e20d78d07000f020000000107000100000066000000510000004300000032000000240000001600000008000000",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "const-string",
+        "args": "v0, \"android.service.oemlock.IOemLockService\""
+      },
+      {
+        "offset": 4,
+        "op": "const",
+        "args": "v1, 1598968902"
+      },
+      {
+        "offset": 10,
+        "op": "const/4",
+        "args": "v2, 1"
+      },
+      {
+        "offset": 12,
+        "op": "if-eq",
+        "args": "v5, v1, +077h"
+      },
+      {
+        "offset": 16,
+        "op": "const/4",
+        "args": "v1, 0"
+      },
+      {
+        "offset": 18,
+        "op": "packed-switch",
+        "args": "v5, +0000079h"
+      },
+      {
+        "offset": 24,
+        "op": "invoke-super",
+        "args": "v4, v5, v6, v7, v8, Landroid/os/Binder;->onTransact(I Landroid/os/Parcel; Landroid/os/Parcel; I)Z"
+      },
+      {
+        "offset": 30,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 32,
+        "op": "return",
+        "args": "v1"
+      },
+      {
+        "offset": 34,
+        "op": "invoke-virtual",
+        "args": "v6, v0, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 40,
+        "op": "invoke-virtual",
+        "args": "v4, Landroid/service/oemlock/IOemLockService$Stub;->isDeviceOemUnlocked()Z"
+      },
+      {
+        "offset": 46,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 48,
+        "op": "invoke-virtual",
+        "args": "v7, Landroid/os/Parcel;->writeNoException()V"
+      },
+      {
+        "offset": 54,
+        "op": "invoke-virtual",
+        "args": "v7, v1, Landroid/os/Parcel;->writeInt(I)V"
+      },
+      {
+        "offset": 60,
+        "op": "return",
+        "args": "v2"
+      },
+      {
+        "offset": 62,
+        "op": "invoke-virtual",
+        "args": "v6, v0, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 68,
+        "op": "invoke-virtual",
+        "args": "v4, Landroid/service/oemlock/IOemLockService$Stub;->isOemUnlockAllowed()Z"
+      },
+      {
+        "offset": 74,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 76,
+        "op": "invoke-virtual",
+        "args": "v7, Landroid/os/Parcel;->writeNoException()V"
+      },
+      {
+        "offset": 82,
+        "op": "invoke-virtual",
+        "args": "v7, v1, Landroid/os/Parcel;->writeInt(I)V"
+      },
+      {
+        "offset": 88,
+        "op": "return",
+        "args": "v2"
+      },
+      {
+        "offset": 90,
+        "op": "invoke-virtual",
+        "args": "v6, v0, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 96,
+        "op": "invoke-virtual",
+        "args": "v4, Landroid/service/oemlock/IOemLockService$Stub;->isOemUnlockAllowedByUser()Z"
+      },
+      {
+        "offset": 102,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 104,
+        "op": "invoke-virtual",
+        "args": "v7, Landroid/os/Parcel;->writeNoException()V"
+      },
+      {
+        "offset": 110,
+        "op": "invoke-virtual",
+        "args": "v7, v1, Landroid/os/Parcel;->writeInt(I)V"
+      },
+      {
+        "offset": 116,
+        "op": "return",
+        "args": "v2"
+      },
+      {
+        "offset": 118,
+        "op": "invoke-virtual",
+        "args": "v6, v0, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 124,
+        "op": "invoke-virtual",
+        "args": "v6, Landroid/os/Parcel;->readInt()I"
+      },
+      {
+        "offset": 130,
+        "op": "move-result",
+        "args": "v3"
+      },
+      {
+        "offset": 132,
+        "op": "if-eqz",
+        "args": "v3, +003h"
+      },
+      {
+        "offset": 136,
+        "op": "move",
+        "args": "v1, v2"
+      },
+      {
+        "offset": 138,
+        "op": "invoke-virtual",
+        "args": "v4, v1, Landroid/service/oemlock/IOemLockService$Stub;->setOemUnlockAllowedByUser(Z)V"
+      },
+      {
+        "offset": 144,
+        "op": "invoke-virtual",
+        "args": "v7, Landroid/os/Parcel;->writeNoException()V"
+      },
+      {
+        "offset": 150,
+        "op": "return",
+        "args": "v2"
+      },
+      {
+        "offset": 152,
+        "op": "invoke-virtual",
+        "args": "v6, v0, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 158,
+        "op": "invoke-virtual",
+        "args": "v4, Landroid/service/oemlock/IOemLockService$Stub;->isOemUnlockAllowedByCarrier()Z"
+      },
+      {
+        "offset": 164,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 166,
+        "op": "invoke-virtual",
+        "args": "v7, Landroid/os/Parcel;->writeNoException()V"
+      },
+      {
+        "offset": 172,
+        "op": "invoke-virtual",
+        "args": "v7, v1, Landroid/os/Parcel;->writeInt(I)V"
+      },
+      {
+        "offset": 178,
+        "op": "return",
+        "args": "v2"
+      },
+      {
+        "offset": 180,
+        "op": "invoke-virtual",
+        "args": "v6, v0, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 186,
+        "op": "invoke-virtual",
+        "args": "v6, Landroid/os/Parcel;->readInt()I"
+      },
+      {
+        "offset": 192,
+        "op": "move-result",
+        "args": "v3"
+      },
+      {
+        "offset": 194,
+        "op": "if-eqz",
+        "args": "v3, +003h"
+      },
+      {
+        "offset": 198,
+        "op": "move",
+        "args": "v1, v2"
+      },
+      {
+        "offset": 200,
+        "op": "invoke-virtual",
+        "args": "v6, Landroid/os/Parcel;->createByteArray()[B"
+      },
+      {
+        "offset": 206,
+        "op": "move-result-object",
+        "args": "v3"
+      },
+      {
+        "offset": 208,
+        "op": "invoke-virtual",
+        "args": "v4, v1, v3, Landroid/service/oemlock/IOemLockService$Stub;->setOemUnlockAllowedByCarrier(Z [B)V"
+      },
+      {
+        "offset": 214,
+        "op": "invoke-virtual",
+        "args": "v7, Landroid/os/Parcel;->writeNoException()V"
+      },
+      {
+        "offset": 220,
+        "op": "return",
+        "args": "v2"
+      },
+      {
+        "offset": 222,
+        "op": "invoke-virtual",
+        "args": "v6, v0, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 228,
+        "op": "invoke-virtual",
+        "args": "v4, Landroid/service/oemlock/IOemLockService$Stub;->getLockName()Ljava/lang/String;"
+      },
+      {
+        "offset": 234,
+        "op": "move-result-object",
+        "args": "v1"
+      },
+      {
+        "offset": 236,
+        "op": "invoke-virtual",
+        "args": "v7, Landroid/os/Parcel;->writeNoException()V"
+      },
+      {
+        "offset": 242,
+        "op": "invoke-virtual",
+        "args": "v7, v1, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 248,
+        "op": "return",
+        "args": "v2"
+      },
+      {
+        "offset": 250,
+        "op": "invoke-virtual",
+        "args": "v7, v0, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V"
+      },
+      {
+        "offset": 256,
+        "op": "return",
+        "args": "v2"
+      },
+      {
+        "offset": 258,
+        "op": "nop",
+        "args": ""
+      },
+      {
+        "offset": 260,
+        "op": "packed-switch-payload",
+        "args": "1 2 3 4 5 6 7"
+      }
+    ]
+  }
+]

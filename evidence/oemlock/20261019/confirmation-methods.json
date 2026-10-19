@@ -1,0 +1,491 @@
+[
+  {
+    "file": "Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/SettingsActivity;",
+    "method": "isValidFragment(Ljava/lang/String;)Z",
+    "code_offset": 2672544,
+    "sha256": "f23113c0016328460aebc7e4f237af7f3c6634567882af6a6061557b67ac13f0",
+    "insns_hex": "120301306201453e211235200f00460101006e2033fa41000a013801040012130f03d800000128ef0f03",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "const/4",
+        "args": "v3, 0"
+      },
+      {
+        "offset": 2,
+        "op": "move",
+        "args": "v0, v3"
+      },
+      {
+        "offset": 4,
+        "op": "sget-object",
+        "args": "v1, Lcom/android/settings/core/gateway/SettingsGateway;->ENTRY_FRAGMENTS [Ljava/lang/String;"
+      },
+      {
+        "offset": 8,
+        "op": "array-length",
+        "args": "v2, v1"
+      },
+      {
+        "offset": 10,
+        "op": "if-ge",
+        "args": "v0, v2, +00fh"
+      },
+      {
+        "offset": 14,
+        "op": "aget-object",
+        "args": "v1, v1, v0"
+      },
+      {
+        "offset": 18,
+        "op": "invoke-virtual",
+        "args": "v1, v4, Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+      },
+      {
+        "offset": 24,
+        "op": "move-result",
+        "args": "v1"
+      },
+      {
+        "offset": 26,
+        "op": "if-eqz",
+        "args": "v1, +004h"
+      },
+      {
+        "offset": 30,
+        "op": "const/4",
+        "args": "v3, 1"
+      },
+      {
+        "offset": 32,
+        "op": "return",
+        "args": "v3"
+      },
+      {
+        "offset": 34,
+        "op": "add-int/lit8",
+        "args": "v0, v0, 1"
+      },
+      {
+        "offset": 38,
+        "op": "goto",
+        "args": "-11h"
+      },
+      {
+        "offset": 40,
+        "op": "return",
+        "args": "v3"
+      }
+    ]
+  },
+  {
+    "file": "Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/development/EnableOemUnlockSettingWarningDialog;",
+    "method": "<init>()V",
+    "code_offset": 3219908,
+    "sha256": "96553db8bbc7b7064ae5bdf9ee744185cdb6ab21c304fa6a02215f388c79f066",
+    "insns_hex": "7010797900000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-direct",
+        "args": "v0, Lcom/android/settings/core/instrumentation/InstrumentedDialogFragment;-><init>()V"
+      },
+      {
+        "offset": 6,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "file": "Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/development/EnableOemUnlockSettingWarningDialog;",
+    "method": "show(Landroidx/fragment/app/Fragment;)V",
+    "code_offset": 3220036,
+    "sha256": "5f5863faf1e3c6ba0b1f133c333076fd85d29e7a6665f835a8f770d3857c86d5",
+    "insns_hex": "6e10fa3c04000c006e109e3d00000c001a011c166e20ab3e10000c0239020e002202d21270105f80020012036e30843d42036e30d73c02010e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-virtual",
+        "args": "v4, Landroidx/fragment/app/Fragment;->getActivity()Landroidx/fragment/app/FragmentActivity;"
+      },
+      {
+        "offset": 6,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 8,
+        "op": "invoke-virtual",
+        "args": "v0, Landroidx/fragment/app/FragmentActivity;->getSupportFragmentManager()Landroidx/fragment/app/FragmentManager;"
+      },
+      {
+        "offset": 14,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 16,
+        "op": "const-string",
+        "args": "v1, \"EnableOemUnlockDlg\""
+      },
+      {
+        "offset": 20,
+        "op": "invoke-virtual",
+        "args": "v0, v1, Landroidx/fragment/app/FragmentManager;->findFragmentByTag(Ljava/lang/String;)Landroidx/fragment/app/Fragment;"
+      },
+      {
+        "offset": 26,
+        "op": "move-result-object",
+        "args": "v2"
+      },
+      {
+        "offset": 28,
+        "op": "if-nez",
+        "args": "v2, +00eh"
+      },
+      {
+        "offset": 32,
+        "op": "new-instance",
+        "args": "v2, Lcom/android/settings/development/EnableOemUnlockSettingWarningDialog;"
+      },
+      {
+        "offset": 36,
+        "op": "invoke-direct",
+        "args": "v2, Lcom/android/settings/development/EnableOemUnlockSettingWarningDialog;-><init>()V"
+      },
+      {
+        "offset": 42,
+        "op": "const/4",
+        "args": "v3, 0"
+      },
+      {
+        "offset": 44,
+        "op": "invoke-virtual",
+        "args": "v2, v4, v3, Landroidx/fragment/app/Fragment;->setTargetFragment(Landroidx/fragment/app/Fragment; I)V"
+      },
+      {
+        "offset": 50,
+        "op": "invoke-virtual",
+        "args": "v2, v0, v1, Landroidx/fragment/app/DialogFragment;->show(Landroidx/fragment/app/FragmentManager; Ljava/lang/String;)V"
+      },
+      {
+        "offset": 56,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "file": "Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/development/EnableOemUnlockSettingWarningDialog;",
+    "method": "getMetricsCategory()I",
+    "code_offset": 3219884,
+    "sha256": "16aa78e15478194004a5c3c121ef4ed8dbf214482a14ebd6dbde808deba8bfeb",
+    "insns_hex": "1300c4040f00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "const/16",
+        "args": "v0, 1220"
+      },
+      {
+        "offset": 4,
+        "op": "return",
+        "args": "v0"
+      }
+    ]
+  },
+  {
+    "file": "Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/development/EnableOemUnlockSettingWarningDialog;",
+    "method": "onClick(Landroid/content/DialogInterface; I)V",
+    "code_offset": 3219932,
+    "sha256": "c0084df7512f33300d9226459294f80c516cf55cb0fb972a972aa55493d8fddb",
+    "insns_hex": "6e101d3d00000c001f00e812390003000e0012f1331206007210f380000028047210f48000000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-virtual",
+        "args": "v0, Landroidx/fragment/app/Fragment;->getTargetFragment()Landroidx/fragment/app/Fragment;"
+      },
+      {
+        "offset": 6,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 8,
+        "op": "check-cast",
+        "args": "v0, Lcom/android/settings/development/OemUnlockDialogHost;"
+      },
+      {
+        "offset": 12,
+        "op": "if-nez",
+        "args": "v0, +003h"
+      },
+      {
+        "offset": 16,
+        "op": "return-void",
+        "args": ""
+      },
+      {
+        "offset": 18,
+        "op": "const/4",
+        "args": "v1, -1"
+      },
+      {
+        "offset": 20,
+        "op": "if-ne",
+        "args": "v2, v1, +006h"
+      },
+      {
+        "offset": 24,
+        "op": "invoke-interface",
+        "args": "v0, Lcom/android/settings/development/OemUnlockDialogHost;->onOemUnlockDialogConfirmed()V"
+      },
+      {
+        "offset": 30,
+        "op": "goto",
+        "args": "+4h"
+      },
+      {
+        "offset": 32,
+        "op": "invoke-interface",
+        "args": "v0, Lcom/android/settings/development/OemUnlockDialogHost;->onOemUnlockDialogDismissed()V"
+      },
+      {
+        "offset": 38,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "file": "Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/development/EnableOemUnlockSettingWarningDialog;",
+    "method": "onCreateDialog(Landroid/os/Bundle;)Landroid/app/Dialog;",
+    "code_offset": 3219800,
+    "sha256": "6a50b17397c19fc019093ca1566fd90639c54e4a130fc1f5c6aa4e647401b99f",
+    "insns_hex": "220236056e10fa3c01000c007020812002006000032b6e20972002006000022b6e208a2002006000e12b6e3093200201150004016e308d2002016e10832002000c011101",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "new-instance",
+        "args": "v2, Landroidx/appcompat/app/AlertDialog$Builder;"
+      },
+      {
+        "offset": 4,
+        "op": "invoke-virtual",
+        "args": "v1, Landroidx/fragment/app/Fragment;->getActivity()Landroidx/fragment/app/FragmentActivity;"
+      },
+      {
+        "offset": 10,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 12,
+        "op": "invoke-direct",
+        "args": "v2, v0, Landroidx/appcompat/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V"
+      },
+      {
+        "offset": 18,
+        "op": "sget",
+        "args": "v0, Lcom/android/settings/R$string;->confirm_enable_oem_unlock_title I"
+      },
+      {
+        "offset": 22,
+        "op": "invoke-virtual",
+        "args": "v2, v0, Landroidx/appcompat/app/AlertDialog$Builder;->setTitle(I)Landroidx/appcompat/app/AlertDialog$Builder;"
+      },
+      {
+        "offset": 28,
+        "op": "sget",
+        "args": "v0, Lcom/android/settings/R$string;->confirm_enable_oem_unlock_text I"
+      },
+      {
+        "offset": 32,
+        "op": "invoke-virtual",
+        "args": "v2, v0, Landroidx/appcompat/app/AlertDialog$Builder;->setMessage(I)Landroidx/appcompat/app/AlertDialog$Builder;"
+      },
+      {
+        "offset": 38,
+        "op": "sget",
+        "args": "v0, Lcom/android/settings/R$string;->enable_text I"
+      },
+      {
+        "offset": 42,
+        "op": "invoke-virtual",
+        "args": "v2, v0, v1, Landroidx/appcompat/app/AlertDialog$Builder;->setPositiveButton(I Landroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/AlertDialog$Builder;"
+      },
+      {
+        "offset": 48,
+        "op": "const/high16",
+        "args": "v0, 17039360"
+      },
+      {
+        "offset": 52,
+        "op": "invoke-virtual",
+        "args": "v2, v0, v1, Landroidx/appcompat/app/AlertDialog$Builder;->setNegativeButton(I Landroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/AlertDialog$Builder;"
+      },
+      {
+        "offset": 58,
+        "op": "invoke-virtual",
+        "args": "v2, Landroidx/appcompat/app/AlertDialog$Builder;->create()Landroidx/appcompat/app/AlertDialog;"
+      },
+      {
+        "offset": 64,
+        "op": "move-result-object",
+        "args": "v1"
+      },
+      {
+        "offset": 66,
+        "op": "return-object",
+        "args": "v1"
+      }
+    ]
+  },
+  {
+    "file": "Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/development/EnableOemUnlockSettingWarningDialog;",
+    "method": "onDismiss(Landroid/content/DialogInterface;)V",
+    "code_offset": 3219988,
+    "sha256": "0dd99031659dfa7b98357c9ceb51ad6d22c4d97e8151dcfd0273411135dee7bc",
+    "insns_hex": "6f20cb3c10006e101d3d00000c001f00e812390003000e007210f48000000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "invoke-super",
+        "args": "v0, v1, Landroidx/fragment/app/DialogFragment;->onDismiss(Landroid/content/DialogInterface;)V"
+      },
+      {
+        "offset": 6,
+        "op": "invoke-virtual",
+        "args": "v0, Landroidx/fragment/app/Fragment;->getTargetFragment()Landroidx/fragment/app/Fragment;"
+      },
+      {
+        "offset": 12,
+        "op": "move-result-object",
+        "args": "v0"
+      },
+      {
+        "offset": 14,
+        "op": "check-cast",
+        "args": "v0, Lcom/android/settings/development/OemUnlockDialogHost;"
+      },
+      {
+        "offset": 18,
+        "op": "if-nez",
+        "args": "v0, +003h"
+      },
+      {
+        "offset": 22,
+        "op": "return-void",
+        "args": ""
+      },
+      {
+        "offset": 24,
+        "op": "invoke-interface",
+        "args": "v0, Lcom/android/settings/development/OemUnlockDialogHost;->onOemUnlockDialogDismissed()V"
+      },
+      {
+        "offset": 30,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "file": "Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/development/DevelopmentSettingsDashboardFragment;",
+    "method": "onOemUnlockDialogConfirmed()V",
+    "code_offset": 3216912,
+    "sha256": "de55f5f90310d3f5650447f49c7606e9e516fece1098e5e4e58c0b26f645ca71",
+    "insns_hex": "1c00e9126e200d8001000c011f01e9126e10028101000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "const-class",
+        "args": "v0, Lcom/android/settings/development/OemUnlockPreferenceController;"
+      },
+      {
+        "offset": 4,
+        "op": "invoke-virtual",
+        "args": "v1, v0, Lcom/android/settings/development/DevelopmentSettingsDashboardFragment;->getDevelopmentOptionsController(Ljava/lang/Class;)Lcom/android/settingslib/core/AbstractPreferenceController;"
+      },
+      {
+        "offset": 10,
+        "op": "move-result-object",
+        "args": "v1"
+      },
+      {
+        "offset": 12,
+        "op": "check-cast",
+        "args": "v1, Lcom/android/settings/development/OemUnlockPreferenceController;"
+      },
+      {
+        "offset": 16,
+        "op": "invoke-virtual",
+        "args": "v1, Lcom/android/settings/development/OemUnlockPreferenceController;->onOemUnlockConfirmed()V"
+      },
+      {
+        "offset": 22,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  },
+  {
+    "file": "Settings.apk",
+    "dex": "classes.dex",
+    "cls": "Lcom/android/settings/development/DevelopmentSettingsDashboardFragment;",
+    "method": "onOemUnlockDialogDismissed()V",
+    "code_offset": 3216952,
+    "sha256": "fdb7fbce7ad8f87e5873398606c1a747bccbe92738687d072ddc90366b7e514c",
+    "insns_hex": "1c00e9126e200d8001000c011f01e9126e10038101000e00",
+    "instructions": [
+      {
+        "offset": 0,
+        "op": "const-class",
+        "args": "v0, Lcom/android/settings/development/OemUnlockPreferenceController;"
+      },
+      {
+        "offset": 4,
+        "op": "invoke-virtual",
+        "args": "v1, v0, Lcom/android/settings/development/DevelopmentSettingsDashboardFragment;->getDevelopmentOptionsController(Ljava/lang/Class;)Lcom/android/settingslib/core/AbstractPreferenceController;"
+      },
+      {
+        "offset": 10,
+        "op": "move-result-object",
+        "args": "v1"
+      },
+      {
+        "offset": 12,
+        "op": "check-cast",
+        "args": "v1, Lcom/android/settings/development/OemUnlockPreferenceController;"
+      },
+      {
+        "offset": 16,
+        "op": "invoke-virtual",
+        "args": "v1, Lcom/android/settings/development/OemUnlockPreferenceController;->onOemUnlockDismissed()V"
+      },
+      {
+        "offset": 22,
+        "op": "return-void",
+        "args": ""
+      }
+    ]
+  }
+]

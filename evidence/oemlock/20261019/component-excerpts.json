@@ -1,0 +1,27 @@
+[
+  {
+    "tag": "activity",
+    "attrs": {
+      "name": "com.android.settings.SubSettings"
+    }
+  },
+  {
+    "tag": "activity",
+    "attrs": {
+      "label": "@7F120663",
+      "icon": "@7F080288",
+      "name": "com.android.settings.Settings$DevelopmentSettingsDashboardActivity",
+      "enabled": "false"
+    }
+  },
+  {
+    "tag": "activity",
+    "attrs": {
+      "theme": "@7F130332",
+      "label": "@7F120663",
+      "icon": "@7F080288",
+      "name": "com.android.settings.development.DevelopmentSettingsDisabledActivity",
+      "excludeFromRecents": "true"
+    }
+  }
+]

@@ -1,0 +1,89 @@
+{
+  "hits": [
+    {
+      "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\com.qualcomm.location\\com.qualcomm.location.apk",
+      "sha256": "7eebfe6bbbfb633fe36f982f783c8e166f627467542f9203e37edcad8d85a20c",
+      "package": "com.qualcomm.location",
+      "sharedUserId": null,
+      "hits": [
+        {
+          "tag": "uses-permission",
+          "attrs": {
+            "name": "android.permission.READ_OEM_UNLOCK_STATE"
+          }
+        }
+      ]
+    },
+    {
+      "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\Settings\\Settings.apk",
+      "sha256": "5e44d4f396b4be7e061df6269984caf15da2fa2e5cbc662ffc6a150a1b995df7",
+      "package": "com.android.settings",
+      "sharedUserId": "android.uid.system",
+      "hits": [
+        {
+          "tag": "uses-permission",
+          "attrs": {
+            "name": "android.permission.OEM_UNLOCK_STATE"
+          }
+        },
+        {
+          "tag": "uses-permission",
+          "attrs": {
+            "name": "android.permission.MANAGE_USER_OEM_UNLOCK_STATE"
+          }
+        }
+      ]
+    },
+    {
+      "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework-res.apk",
+      "sha256": "e92f69027d2be2fc6e3a17886e2b7af5fbe1daf94a319003d911ca9b2307ec9e",
+      "package": "android",
+      "sharedUserId": "android.uid.system",
+      "hits": [
+        {
+          "tag": "permission",
+          "attrs": {
+            "name": "android.permission.MANAGE_CARRIER_OEM_UNLOCK_STATE",
+            "protectionLevel": "0x00000012"
+          }
+        },
+        {
+          "tag": "permission",
+          "attrs": {
+            "name": "android.permission.MANAGE_USER_OEM_UNLOCK_STATE",
+            "protectionLevel": "0x00000012"
+          }
+        },
+        {
+          "tag": "permission",
+          "attrs": {
+            "name": "android.permission.READ_OEM_UNLOCK_STATE",
+            "protectionLevel": "0x00000012"
+          }
+        },
+        {
+          "tag": "permission",
+          "attrs": {
+            "name": "android.permission.OEM_UNLOCK_STATE",
+            "protectionLevel": "0x00000002"
+          }
+        }
+      ]
+    },
+    {
+      "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\DynamicSystemInstallationService\\DynamicSystemInstallationService.apk",
+      "sha256": "3015622f3fadb9575cd8521cf303fd3f304a6f1149d42269333e8b9bf3614260",
+      "package": "com.android.dynsystem",
+      "sharedUserId": "android.uid.system",
+      "hits": [
+        {
+          "tag": "uses-permission",
+          "attrs": {
+            "name": "android.permission.READ_OEM_UNLOCK_STATE"
+          }
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

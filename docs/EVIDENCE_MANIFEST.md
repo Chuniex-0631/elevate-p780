@@ -15,6 +15,8 @@
 
 Settings/framework/services三个PC原件重新计算SHA，Settings匹配旧manifest，后两者匹配DSU专题；大原件留PC。[输入清单](../evidence/oemlock/20261019/manifest.json)、[15方法原始指令/反汇编](../evidence/oemlock/20261019/focused-methods.json)、[历史属性脱敏选行](../evidence/oemlock/20261019/property-excerpts.json)进入Git。全量目标解码114方法，仅提交关键15方法；长度覆盖检查通过，不等于完整调用图或运行内存验证。见[Journey gate离线定位](research/p780-oemlock-journey-gate-20261019.md)。
 
+OEMLOCK-02补充：[296输入清单](../evidence/oemlock/20261019/caller-inventory.json)、[6直接调用方法](../evidence/oemlock/20261019/callers.json)、[9确认链方法](../evidence/oemlock/20261019/confirmation-methods.json)、[权限manifest](../evidence/oemlock/20261019/permission-manifests.json)、[组件声明摘录](../evidence/oemlock/20261019/component-excerpts.json)。176APK manifest无解码异常；方法原始字节SHA全部校验通过。只覆盖直接DEX调用，不能替代完整固件/间接调用/运行授权。见[OEMLOCK-02调用者边界](research/p780-oemlock-caller-boundary-20261019.md)。
+
 ## 当前静态样本
 
 |资产|核验结果|Git保存范围|

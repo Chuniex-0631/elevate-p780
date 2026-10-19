@@ -1,0 +1,1784 @@
+[
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\CarrierConfig\\CarrierConfig.apk",
+    "sha256": "052722e4fd045a789067403039af2e7c8c8b60cf520e235774003d352b6e1e09",
+    "size": 173304,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\com.qualcomm.location\\com.qualcomm.location.apk",
+    "sha256": "7eebfe6bbbfb633fe36f982f783c8e166f627467542f9203e37edcad8d85a20c",
+    "size": 3267313,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\com.qualcomm.qti.services.systemhelper\\com.qualcomm.qti.services.systemhelper.apk",
+    "sha256": "94f81b017ce0b0ebc11f5b0dbdbad07cc06a871b983b92c8bd4169fb30c91791",
+    "size": 16798,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\dpmserviceapp\\dpmserviceapp.apk",
+    "sha256": "3d71a995039a012928b7e0d0348bff4b7f1df4751be87257f385bde222f006bc",
+    "size": 33182,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\EmergencyInfo\\EmergencyInfo.apk",
+    "sha256": "d827630357f0f436e12bc32920b925bfa6cb1ee71308a2fb8c39d7215e671920",
+    "size": 7883995,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\GoogleFeedback\\GoogleFeedback.apk",
+    "sha256": "8242dba631e451be8573e3acd27c8b22e6c9350d758815fa6e6494287a8cfcde",
+    "size": 674938,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\GoogleOneTimeInitializer\\GoogleOneTimeInitializer.apk",
+    "sha256": "5ff475603aac6104a9cf956a4bae836de63334fc6cb2ddf1c83552b8ee519313",
+    "size": 168353,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\GoogleServicesFramework\\GoogleServicesFramework.apk",
+    "sha256": "2fc620a0e3c640ef96a076e82df1c6612b30f8871545843f5f1dd962493bc98d",
+    "size": 6469109,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\ims\\ims.apk",
+    "sha256": "1ba5cbd2d97e3fcc43a8ddfa8a55bc1586df5f5abed6c85cbaa169ada70f364f",
+    "size": 1221370,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\QAS_DVC_MSP\\QAS_DVC_MSP.apk",
+    "sha256": "9565e0c11d5d4b2aaabfd22f959c5148acb32141721a3166d0ac9f4153acbcd1",
+    "size": 2706410,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\qcrilmsgtunnel\\qcrilmsgtunnel.apk",
+    "sha256": "86b1c5a6a4b620130939155332b2e6a54476c98941e634dedb6ac978861a33b1",
+    "size": 86430,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\seccamservice\\seccamservice.apk",
+    "sha256": "0623ac81ff6ade2c273bfcf3e061a99a0d53c01b4183984824218440bf892bdc",
+    "size": 64970,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\Settings\\Settings.apk",
+    "sha256": "5e44d4f396b4be7e061df6269984caf15da2fa2e5cbc662ffc6a150a1b995df7",
+    "size": 65392240,
+    "dex": [
+      "classes.dex"
+    ]
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\SetupWizard\\SetupWizard.apk",
+    "sha256": "1f238a3ecce77bb56e850a342b9321d4b6734d9404e91396d5e0f64dbe920934",
+    "size": 6603809,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\SystemUI\\SystemUI.apk",
+    "sha256": "29c2047a88444541e322726cc2409b852b1e21105eedb521a007f5601e31bc0c",
+    "size": 26362132,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\WallpaperCropper\\WallpaperCropper.apk",
+    "sha256": "39ffed079ec9aa99f9d78f8a2c624c599ffada6fc4b071fc556cfc9362810077",
+    "size": 127652,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\WfdService\\WfdService.apk",
+    "sha256": "e3e7e6ca41f6e1d52e471b1e4fed76c4f3c091301272bf6fa9f14b1392b1f3ba",
+    "size": 119283,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\xrvdservice\\xrvdservice.apk",
+    "sha256": "9f76a3291ff57cde382e345f1119d97a4651b2c5d3b73b50f46919062338f427",
+    "size": 78579,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\xtra_t_app\\xtra_t_app.apk",
+    "sha256": "6e005048b214d024a613d27cd4b1c748fbd8b9e39efbf9de9894f8e679a83f7e",
+    "size": 434724,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\priv-app\\xtra_t_app_setup\\xtra_t_app_setup.apk",
+    "sha256": "e8824a42f183081ffa57fa42fdea0c130fc7b420f61d0cbbf4ceaccc6dc61b6d",
+    "size": 171829,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\atfwd\\atfwd.apk",
+    "sha256": "529be70324ce6fd9f4d89e651951cf0a3032ca59f9b01955a616489d2595e736",
+    "size": 45470,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\colorservice\\colorservice.apk",
+    "sha256": "db99743e43ab26aa0b56d993e7624ba1ea72193b00cf057177077ccf97e0aca8",
+    "size": 45463,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\com.qualcomm.qti.services.secureui\\com.qualcomm.qti.services.secureui.apk",
+    "sha256": "23d1fca23ce3e81d976817c4fd75dc851e4de9e4c8a35a840394518135984144",
+    "size": 24990,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\ConferenceDialer\\ConferenceDialer.apk",
+    "sha256": "26773b82d32f7702e89d69774da14d09431e5571ec40ee3a9d3b903054df9c1e",
+    "size": 2965156,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\ConfURIDialer\\ConfURIDialer.apk",
+    "sha256": "b82255bc245ff4669119583a0b76bc75fabcc585dbc815147ea4692e48ff5f97",
+    "size": 33455,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\datastatusnotification\\datastatusnotification.apk",
+    "sha256": "ea95848494d08f367318c659c2b3b0890296450b0c4efe52e25993fe46afd018",
+    "size": 33182,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\DeviceInfo\\DeviceInfo.apk",
+    "sha256": "d077b5aa7a0fcbc9d3f8d153b68e7d30eb8758fa214c48a852b9a4ef66f9a28c",
+    "size": 29155,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\DeviceStatisticsService\\DeviceStatisticsService.apk",
+    "sha256": "4dc774380ca1cab91263bbe132893b361d393c2efbbd80bd985ccfa2ed7bfa27",
+    "size": 61854,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\DynamicDDSService\\DynamicDDSService.apk",
+    "sha256": "3e8c4f85a4e894928afbcd56faadd28e9d08077925383ee80dc7cb65097183cc",
+    "size": 242078,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\embms\\embms.apk",
+    "sha256": "162951649f405f7689a502453514f7c8edc05d2240255ea4932757aebfa00f44",
+    "size": 49566,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\imssettings\\imssettings.apk",
+    "sha256": "8a322403fa9bb86e58c535651c59e2053febcbb046d34c105d3c8fffbc32ee03",
+    "size": 49636,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\NetworkSetting\\NetworkSetting.apk",
+    "sha256": "09af7b75a104f1a9288a56021fa4744396e3c9da28bf1d581c81288f2f4f031a",
+    "size": 486387,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\Nfc_st\\Nfc_st.apk",
+    "sha256": "b74b55f293bd50d0b95d3eb032dbfd9091612bca24b84ef2727aeb25ad7548e7",
+    "size": 3747724,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\PerformanceMode\\PerformanceMode.apk",
+    "sha256": "6aea7e9fc0ec12497dfe5e84c9ca762828c5c28f823f92c3d8a402d048e45f29",
+    "size": 29253,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\QCC\\QCC.apk",
+    "sha256": "4aa252d0b6917cfeaf7d4f398fe76e57072f16bcede53206165b61a9b8b75c88",
+    "size": 917691,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\QCC-AUTHMGR\\QCC-AUTHMGR.apk",
+    "sha256": "e3c808c309cdb374c50181a56dcdafd6453792ba2347467a7cd0ca562c15f55d",
+    "size": 125038,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\QdcmFF\\QdcmFF.apk",
+    "sha256": "e8282b1fe9d9223ae1c92d1547efe012f024c051ed3e57c8f4549698d785d1fe",
+    "size": 16945,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\QTIDiagServices\\QTIDiagServices.apk",
+    "sha256": "131e725841b919a0cb1b452b4a2f8b40a214322d371fea139a13343188c2a3ff",
+    "size": 12702,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\QtiTelephonyService\\QtiTelephonyService.apk",
+    "sha256": "f45b0d6ac8f6416fc9502846af4921f4d36661799ff8123b737e800c069f96cd",
+    "size": 98718,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\remoteSimLockAuthentication\\remoteSimLockAuthentication.apk",
+    "sha256": "41ec0d6ce1db9e68e554ef39d616234f43ce45082156af42dac12e5d7cdcbae9",
+    "size": 8607,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\remotesimlockservice\\remotesimlockservice.apk",
+    "sha256": "e1b019e06b6b394178f502afc71af3bd435b591abc0485232d663332e1f0d051",
+    "size": 24990,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\SimContact\\SimContact.apk",
+    "sha256": "4879e0b859646b947df5272f5911926ebef78dba9e5c929c9a2d0b7cd1e245e3",
+    "size": 3046867,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\SimSettings\\SimSettings.apk",
+    "sha256": "62f35c13be872f3677b004281d20a0dd98c4a06908b992d0c1e8bd4e038312f3",
+    "size": 464986,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\uceShimService\\uceShimService.apk",
+    "sha256": "445b65812b9ddb1a5540da5a8a19d8b51841fe22a6941e6cf54f487fda04993b",
+    "size": 369217,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\uimgbaservice\\uimgbaservice.apk",
+    "sha256": "c9834e20c83b2ff086f6c968f1cc24290c2135425bd1473ed06343bf213f6c51",
+    "size": 20894,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\uimlpaservice\\uimlpaservice.apk",
+    "sha256": "e839b525dc9bfa2b84191af0d72e69c6bfc0566aa022be637f831675a3feaa97",
+    "size": 156216,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\uimremoteclient\\uimremoteclient.apk",
+    "sha256": "571334b2916a81ae3d525062ba4844957efe2961f22524b67bbfedf66b97bc84",
+    "size": 74207,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\uimremoteserver\\uimremoteserver.apk",
+    "sha256": "600e9b17e9edc98e3be9c8548eb534b6b2df5078c7e49158d2f9b70d40d3e936",
+    "size": 70111,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\WAPPushManager\\WAPPushManager.apk",
+    "sha256": "eed329efc1f9764602c7be4340777246344cbdd260a4931db31b4b651baf0411",
+    "size": 20894,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\WigigTetheringRRO\\WigigTetheringRRO.apk",
+    "sha256": "f6bb175c33213a04d2c5a7d2393c38aef3ea6333847c8e5322994d7e97c7e557",
+    "size": 8542,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\workloadclassifier\\workloadclassifier.apk",
+    "sha256": "b3426da162b8efb3d2579995907a24ea21d193e8ced97f7040ef7da7d45c0838",
+    "size": 57758,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\app\\xdivert\\xdivert.apk",
+    "sha256": "67517fdcacb9a96a4a6c4131403aeb4e340a82fca5b7c7279d86043e01cd6e46",
+    "size": 74400,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework-res.apk",
+    "sha256": "e92f69027d2be2fc6e3a17886e2b7af5fbe1daf94a319003d911ca9b2307ec9e",
+    "size": 43393383,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\AOSPLauncherR_QCOM\\AOSPLauncherR_QCOM.apk",
+    "sha256": "ec7928315f0cc594f6faa18211c9dddbb80379c80c6c20ffb826cedc707df329",
+    "size": 7653170,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\ApeCamera2_R_P780\\ApeCamera2_R_P780.apk",
+    "sha256": "05b07af778751009dcc3c614b3fe6a23efcaf1eb0f2cd5ec2eb9d6a7a9f350b1",
+    "size": 174368657,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\ApeFaceUnlock_p780\\ApeFaceUnlock_p780.apk",
+    "sha256": "bdf8f0e16f4d2afdae6193b57aed15a2f8e124612226dfdf7c285d62d03f3999",
+    "size": 33401191,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\ApeFTM_R_QCOM\\ApeFTM_R_QCOM.apk",
+    "sha256": "775da2e283ef557bb97348a9aee045a5a70656c854ff4bd9cf9a26e13c37de53",
+    "size": 29386157,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\ApeHighLights\\ApeHighLights.apk",
+    "sha256": "e8755aabeae90f6b8b0b00b27eaf87ae8bdda1aac64eed3c06cdd1a20b11fa91",
+    "size": 1704633,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\ApeSoundRecorder4\\ApeSoundRecorder4.apk",
+    "sha256": "75fbeca33ca15afc63ea654d6787eda6cd9795df005c221b3468270524ca9eae",
+    "size": 2695348,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\BackupRestoreConfirmation\\BackupRestoreConfirmation.apk",
+    "sha256": "a84e02d0399f1f8ffa8281306b76ce644dfaa364e1e5fdf66925e062f829a175",
+    "size": 258613,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\BlockedNumberProvider\\BlockedNumberProvider.apk",
+    "sha256": "cc91ac885a9eb4c2bc2007462a6f097ae9aff30a04d81ce4606fc35148ae8372",
+    "size": 303518,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\BuiltInPrintService\\BuiltInPrintService.apk",
+    "sha256": "287e26c5318ac21732bdcf964f43c8f30f371f433d1420a4769579dba4e8bef4",
+    "size": 513407,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\CalendarProvider\\CalendarProvider.apk",
+    "sha256": "4af1b92837ffefacd7c6b02aa51b594776470c394740551065ae4d559ef12c8b",
+    "size": 557704,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\CallLogBackup\\CallLogBackup.apk",
+    "sha256": "60a6e3a1f8a1bc7eec437068a50ea63b32fd254daa34809cbb903458ea1ab1bd",
+    "size": 24990,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\CellBroadcastLegacyApp\\CellBroadcastLegacyApp.apk",
+    "sha256": "430d75b510405d933b3b6effc7409f98e14bd8a1d6cc1868c72fb05c25675210",
+    "size": 1296833,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\ContactsProvider\\ContactsProvider.apk",
+    "sha256": "54cee77aaf451ac0e2f7cb50f292939566a487cc315e3dc5dcf3929270a34113",
+    "size": 963056,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\DocumentsUIGoogle\\DocumentsUIGoogle-hdpi.apk",
+    "sha256": "18371fedde1639609f1bc663e9c9e198574ceb0193f4a866953e5e8e4272c1da",
+    "size": 49623,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\DocumentsUIGoogle\\DocumentsUIGoogle-ldpi.apk",
+    "sha256": "8fdae751fb7430fe91411c05f2320333d1fd888e7fcfa4693d61e4462620d72e",
+    "size": 45501,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\DocumentsUIGoogle\\DocumentsUIGoogle-mdpi.apk",
+    "sha256": "15975c18076df87f100e891090183b69c9517199fd0fd19771b33fb840ef7b3a",
+    "size": 45501,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\DocumentsUIGoogle\\DocumentsUIGoogle-tvdpi.apk",
+    "sha256": "99f67f1863bee93755f6505d00a1c93322c24fc2eccfda6d9368aeb3044cedd4",
+    "size": 74227,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\DocumentsUIGoogle\\DocumentsUIGoogle-xhdpi.apk",
+    "sha256": "3b0124b4b9e48f478a712e6d730be260e638de2442a5f4bb407b43e1dcbb79c3",
+    "size": 53754,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\DocumentsUIGoogle\\DocumentsUIGoogle-xxhdpi.apk",
+    "sha256": "c5eb529817dd8022c7abaeb14925dc042cc9f515a9954df8e4d790ec8a5c8741",
+    "size": 57878,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\DocumentsUIGoogle\\DocumentsUIGoogle-xxxhdpi.apk",
+    "sha256": "684aba6d2db6d6444b168b54be9c65a1a149fa21ddb3cade372f526595d87b55",
+    "size": 57876,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\DocumentsUIGoogle\\DocumentsUIGoogle.apk",
+    "sha256": "a2eb51d89ba4579a4c3aefb1f53d2aa39d7ccdfb64370a12d29076a681546ccf",
+    "size": 6245150,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\DownloadProvider\\DownloadProvider.apk",
+    "sha256": "45ef7ed0a604a0e7177aa931b1369b42b4b85872a9ea84316410333cbeb80e69",
+    "size": 787336,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\DownloadProviderUi\\DownloadProviderUi.apk",
+    "sha256": "2bf117a23928227a52695616fc978c22617cabad7c391a68e7af6c2dec28f249",
+    "size": 267144,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\DynamicSystemInstallationService\\DynamicSystemInstallationService.apk",
+    "sha256": "3015622f3fadb9575cd8521cf303fd3f304a6f1149d42269333e8b9bf3614260",
+    "size": 147963,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\ExternalStorageProvider\\ExternalStorageProvider.apk",
+    "sha256": "79915f2009b413214acc6d5ab831f6a871e90287c75618aa7d7ddf78a5d037dd",
+    "size": 61854,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\FusedLocation\\FusedLocation.apk",
+    "sha256": "55357a88c16c8e12fc457674102435173f5e9167ad823123c6b8c343e5eefc3d",
+    "size": 29086,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\GooglePackageInstaller\\GooglePackageInstaller.apk",
+    "sha256": "72ac858c3c1b8722257dc307f856aaef1902863efdb7beab6de4024dc9dc416f",
+    "size": 3204655,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\InputDevices\\InputDevices.apk",
+    "sha256": "1ba4ef55397686301f122f71f1fff0caf658de30f336bb45f6ad3259dcb9092c",
+    "size": 261878,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\LocalTransport\\LocalTransport.apk",
+    "sha256": "d2a858a0d53fd258b4ce87b0baeb9f64ae80c64910ed08fed3f4cd9fea9cb4f4",
+    "size": 24990,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\ManagedProvisioning\\ManagedProvisioning.apk",
+    "sha256": "b446b05f760ef40ed35645525e331de45a3527958f9b6ec19eee5bb5b8edab17",
+    "size": 10070454,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\MediaProviderLegacy\\MediaProviderLegacy.apk",
+    "sha256": "129c9482839bf1563f2cadb54bfe83703ed9eb97310d5b07f69b0371e17283f1",
+    "size": 1587649,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\MmsService\\MmsService.apk",
+    "sha256": "1039b457db6f0717f50300fb203cdee05e80dcfdd47674e3ec1de456a52bec01",
+    "size": 78306,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\MtpService\\MtpService.apk",
+    "sha256": "29e3ce78cc7d2478fe6324252801356ca088f3d93c1a0813fa2ca57180f581cc",
+    "size": 1436754,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\MusicFX\\MusicFX.apk",
+    "sha256": "141a1f70ffd484fe024020ce4a45390bbd63d4a0ed045754dd2c32629b888c1b",
+    "size": 107210,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkPermissionConfigGoogle\\NetworkPermissionConfigGoogle-hdpi.apk",
+    "sha256": "07f7596b1454ed9f85ca28003436471b73c1a9f5e5c006ec1df20113d2cbd5b1",
+    "size": 16797,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkPermissionConfigGoogle\\NetworkPermissionConfigGoogle-ldpi.apk",
+    "sha256": "5a68f16680e152a98ec9db1f5708954dc5d4c2693867ac7cb88b3710ae7c6df4",
+    "size": 16797,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkPermissionConfigGoogle\\NetworkPermissionConfigGoogle-mdpi.apk",
+    "sha256": "2a1f6877587314c2d87dc960a97f8d8c0f8768b312fddd0627db760cd2c3244b",
+    "size": 16797,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkPermissionConfigGoogle\\NetworkPermissionConfigGoogle-tvdpi.apk",
+    "sha256": "cc0150de3b380351f16e0b4bfbcc2c34eea98dca59c1dc13179d350158f9222a",
+    "size": 16797,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkPermissionConfigGoogle\\NetworkPermissionConfigGoogle-xhdpi.apk",
+    "sha256": "55ec57f0b88b32873a84481c9b3be3c586112bb2a145183f8081af223621bded",
+    "size": 16797,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkPermissionConfigGoogle\\NetworkPermissionConfigGoogle-xxhdpi.apk",
+    "sha256": "6a6ba26ce81c0aae312f86f9b2a68c5c3b63d25620e0d2319beeb74cc70aef50",
+    "size": 16797,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkPermissionConfigGoogle\\NetworkPermissionConfigGoogle-xxxhdpi.apk",
+    "sha256": "0527b748aebcab152189695461f57c2f967e1088dd87a7c3f5e458b953e67056",
+    "size": 16797,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkPermissionConfigGoogle\\NetworkPermissionConfigGoogle.apk",
+    "sha256": "819195a3665da2ef4378c48cf9a390ba1480e48ae79473591d95be1efa8e57f3",
+    "size": 49761,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkStackGoogle\\NetworkStackGoogle-arm64_v8a.apk",
+    "sha256": "2029024a216f685408be438fa6b96c174e8e0c9f194ab4da00ff5b66c1a63933",
+    "size": 495973,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkStackGoogle\\NetworkStackGoogle-hdpi.apk",
+    "sha256": "eac835ad4ea649c72e511c1a060bddc348a0dca2d5934c0e07f20c4d2f014b91",
+    "size": 16797,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkStackGoogle\\NetworkStackGoogle-ldpi.apk",
+    "sha256": "539c6eface48ae41f4422bbfb03892ca64f0c90ee746157227fb7a9812fb6369",
+    "size": 16797,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkStackGoogle\\NetworkStackGoogle-mdpi.apk",
+    "sha256": "0e41ec158f45d20e49fa34b74017954a843d9c1b0c1684baf822fe5e19e493ff",
+    "size": 16797,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkStackGoogle\\NetworkStackGoogle-tvdpi.apk",
+    "sha256": "0a8fdcd5768940209360206978d952e0f290eb1a3e0f5b227243d2fd634d75e9",
+    "size": 16797,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkStackGoogle\\NetworkStackGoogle-xhdpi.apk",
+    "sha256": "b355d05c4ea490e1fdd273a749f21df10e4015be8dedc3417a0a3f5dceb994c8",
+    "size": 16797,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkStackGoogle\\NetworkStackGoogle-xxhdpi.apk",
+    "sha256": "435efb9d66a44d5b5782d574ae1c100c9d413f6660384f05f2d3f7b550a4e407",
+    "size": 16797,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkStackGoogle\\NetworkStackGoogle-xxxhdpi.apk",
+    "sha256": "17b4b09ee4c4911bdf7403bec02be4bb9a1c9957a96d6489d34921fda2582655",
+    "size": 16797,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\NetworkStackGoogle\\NetworkStackGoogle.apk",
+    "sha256": "027856296d83b8200c56da49a72a72b2c0241e7d2e6972a524959a2bf5c73303",
+    "size": 968200,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\ONS\\ONS.apk",
+    "sha256": "a4d7672ce348c7277e296811bf600cd86b4b074494fbe9e70e765a28a56fddff",
+    "size": 49673,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\ProxyHandler\\ProxyHandler.apk",
+    "sha256": "a063287e0d853fca0cf9c07a369acb21fb1162be4b99b54d8febd3e2bd812667",
+    "size": 20894,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\R_PlayAutoInstallConfig\\R_PlayAutoInstallConfig.apk",
+    "sha256": "544b4179209d79d4f72799294b528859fa9d6d34a9fb531dff2818b4023bfe53",
+    "size": 12702,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\R_SetupWizard\\R_SetupWizard.apk",
+    "sha256": "ba23bd3e1bfeab7d301381209d407aba7b5414af26d2f7818a0f14f19909621c",
+    "size": 1928366,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\SettingsProvider\\SettingsProvider.apk",
+    "sha256": "db016f065f02637353d64a0c45c4f64eb7bd9ab3abd8ed2db0f135ee2ddfe1a1",
+    "size": 365897,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\SharedStorageBackup\\SharedStorageBackup.apk",
+    "sha256": "7ea32f7bfe5b5f1086643f546d005168a2b3d3227dab427bd375b63b2a410f1b",
+    "size": 16798,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\Shell\\Shell.apk",
+    "sha256": "92c7c7eadd0c0df9111cfd5dad97c44e674681e21b855696aa79472efa5c05a5",
+    "size": 416204,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\SoundPicker\\SoundPicker.apk",
+    "sha256": "868911a6fd7a44cf9759c24b1caac92ec988dbce66d0dd53f2f5a12689bf2f51",
+    "size": 1363114,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\StatementService\\StatementService.apk",
+    "sha256": "ae427835de965538c1755c6c3c87db3cc7264ae3ed93f27662c7b1143cf05311",
+    "size": 57758,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\TagGoogle\\TagGoogle.apk",
+    "sha256": "8984c080b75d4181a66995cd04e8772249f600a23beda51897c8f4ba72237845",
+    "size": 694792,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\Telecom\\Telecom.apk",
+    "sha256": "bed1208b11d1604369e33ce3f6ef3803471d9a9cc9bb039e06cd5b8533e819f6",
+    "size": 8285999,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\TelephonyProvider\\TelephonyProvider.apk",
+    "sha256": "d2cc7e26dc0d96aee878fa9c485b44e2fce2fe74e8e94429df1c1dd649dbce69",
+    "size": 566904,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\TeleService\\TeleService.apk",
+    "sha256": "38368dbba0979184d079c6fbfe6729ba71d29bcbc47237fd00c40089d8715a0a",
+    "size": 9224496,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\Thales_LPA\\Thales_LPA.apk",
+    "sha256": "3376b972799d6d15de7ae4cdc33895e67c04dfd113cdd438a4019f0a3bd44133",
+    "size": 9766418,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\UserDictionaryProvider\\UserDictionaryProvider.apk",
+    "sha256": "f3e956a8f6ee2c50d5eb3fe80f1b2383cd1fe063626d1b13d08952e4577d2a37",
+    "size": 37278,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\priv-app\\VpnDialogs\\VpnDialogs.apk",
+    "sha256": "988a89ce19b8e3e158dee7b62040ac7dee1a01b3e5ca8991ab78931949cd5af7",
+    "size": 176836,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\aptxals\\aptxals.apk",
+    "sha256": "3eb26f0a0b6b32bd490a926b76b2c2872b4fa1350a3b807ddd4d056dcf82709d",
+    "size": 5326814,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\BasicDreams\\BasicDreams.apk",
+    "sha256": "ded306462050635b2ff3c25c666e853edea07cd337b9a24f44f7601aa11cd6bb",
+    "size": 53991,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\Bluetooth\\Bluetooth.apk",
+    "sha256": "dc3199f495640033ab9ad065746ee89d8a47f9e39badff7f6e02d2c9f67cd665",
+    "size": 5440175,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\BluetoothMidiService\\BluetoothMidiService.apk",
+    "sha256": "a31363dbf550e5f2c14a636dfe1ab3aeef92026486a4f5fb6ffdfe03c1882066",
+    "size": 24990,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\BookmarkProvider\\BookmarkProvider.apk",
+    "sha256": "12ab51a59c9aeb931ff7ef0a2874a478e6b6f0c399844bab9b0ed416d681f446",
+    "size": 25328,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\CaptivePortalLoginGoogle\\CaptivePortalLoginGoogle-hdpi.apk",
+    "sha256": "bc1f6f15f8590a5dd837b9451ce1fbcd7bf68ac9d993d69a976080faa4717fa3",
+    "size": 21403,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\CaptivePortalLoginGoogle\\CaptivePortalLoginGoogle-ldpi.apk",
+    "sha256": "1f96d5544252ba78584d9452833cc585abb2e5d8a4b10aad5638ceb336c8f33f",
+    "size": 21400,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\CaptivePortalLoginGoogle\\CaptivePortalLoginGoogle-mdpi.apk",
+    "sha256": "1beeec044fd70160af6c24d435cbef4eea739fb05d399a2166df8be7eb737e22",
+    "size": 21400,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\CaptivePortalLoginGoogle\\CaptivePortalLoginGoogle-tvdpi.apk",
+    "sha256": "debf742a2948022de94e9ab7a7013bd0e43fc9c400aae5296022df5cf2deb937",
+    "size": 21910,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\CaptivePortalLoginGoogle\\CaptivePortalLoginGoogle-xhdpi.apk",
+    "sha256": "d6525556435217907edc5a8b5807bdf478a688e8a76487520ef99035e77dbc0e",
+    "size": 21404,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\CaptivePortalLoginGoogle\\CaptivePortalLoginGoogle-xxhdpi.apk",
+    "sha256": "3622017812e9840f70fdf20553dd2baec2ad3bb13b6381bb7ca5de067068d7d1",
+    "size": 21404,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\CaptivePortalLoginGoogle\\CaptivePortalLoginGoogle-xxxhdpi.apk",
+    "sha256": "ce17d43dc5739d711756992584647109ce0de33591ea955b84ea1a9687449231",
+    "size": 21404,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\CaptivePortalLoginGoogle\\CaptivePortalLoginGoogle.apk",
+    "sha256": "ca5438e6b50d5a034120f7e8a0a6b88ffbe69b78fde5effa313dea9f681e654e",
+    "size": 481913,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\CarrierDefaultApp\\CarrierDefaultApp.apk",
+    "sha256": "8dacadc2622dd024ceca89c1448ecb6bb4bfb0793f6a8ebd41123c44f2ee46a7",
+    "size": 144119,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\CertInstaller\\CertInstaller.apk",
+    "sha256": "1a82cc7c097b9d6452b049f31e7e15c2083f4930383e6ca9c72b331b883a418d",
+    "size": 558062,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\CompanionDeviceManager\\CompanionDeviceManager.apk",
+    "sha256": "d5a19c5fa20158b1b76dc0a20dfed2745240cde434caaa3e0d3d816a6c9a8986",
+    "size": 66319,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\EasterEgg\\EasterEgg.apk",
+    "sha256": "d51af912a7d251772ce5b1dcc1dea23998cb95c1c1cd0770869938501af7c2a2",
+    "size": 4462233,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\GoogleExtShared\\GoogleExtShared.apk",
+    "sha256": "415a5edaa04d04afebae07269ea9fe6a0c0a0f9068b9702658b52f42a5dba991",
+    "size": 12702,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\GooglePrintRecommendationService\\GooglePrintRecommendationService.apk",
+    "sha256": "78d9ec537e428f79de59fb49fecf0bc910600d409af2d42ac9bace769cfe5a14",
+    "size": 126453,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\HTMLViewer\\HTMLViewer.apk",
+    "sha256": "d9a46a1d5d19269184bde75cc96a4eb6a0b58bd7b9651710f5fb814f862c35ea",
+    "size": 25055,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\KeyChain\\KeyChain.apk",
+    "sha256": "5f07950b65fcfd027ab8a9ce1ef48b00ed5896e6321411f6300559de603ff592",
+    "size": 143998,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\LiveWallpapersPicker\\LiveWallpapersPicker.apk",
+    "sha256": "81dfb5cdba9a1d1230a1aa7fa6e97336ea7b5d23ffc29178e58074a859377054",
+    "size": 2891606,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\MobileFeliCaClient\\MobileFeliCaClient.apk",
+    "sha256": "1d9116eeba6585628fefbcccfb26f6cb3388269c0ca9d5d022c81248df08ab7f",
+    "size": 304970,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\PacProcessor\\PacProcessor.apk",
+    "sha256": "b11cd18c7e3142dcf1aa104b1925df0b5d1bb0bca5af4b0e6c0e026f4a388980",
+    "size": 16798,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\PartnerBookmarksProvider\\PartnerBookmarksProvider.apk",
+    "sha256": "c21668fe652a01dd5228d05a9fe4f3fba64973b068be3233b3cb9e71b7aee895",
+    "size": 24990,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\PrintSpooler\\PrintSpooler.apk",
+    "sha256": "88a2bd8d390b049fde62ce1a5ceb1f44927083eee367091891d9151277c6f483",
+    "size": 1064778,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\RakutenFeed\\RakutenFeed.apk",
+    "sha256": "b8619812df3982bc8fbf29f12efe9a130ca8ba4b13bca38cb7c18ca1b99f5715",
+    "size": 5173367,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\RakutenLauncher_R\\RakutenLauncher_R.apk",
+    "sha256": "ff2a5c8d3f3140f2d86b86038b68fe1de3903c2c4e91ab5105aedff88b16a258",
+    "size": 2327373,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\SecureElement\\SecureElement.apk",
+    "sha256": "989069a3e87b6a11e58880cd0e0b4fbf0f6283394d2b967fed9b04695379f8ab",
+    "size": 168350,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\SimAppDialog\\SimAppDialog.apk",
+    "sha256": "3bc8c5e0edaee553b3a6265e79b52fc3a3a7d3a4ea07b69c236ed07742a282e1",
+    "size": 354095,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\Stk\\Stk.apk",
+    "sha256": "b1631017209896eb5af1d5cfe59f4b645e3ba72dd215adfe481e9967aef8558b",
+    "size": 2281612,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\Traceur\\Traceur.apk",
+    "sha256": "5d1ef7efceee97862b33e669fece2b1ec10fd2e05ec5adf05661a289404c2f89",
+    "size": 7863936,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\app\\WallpaperBackup\\WallpaperBackup.apk",
+    "sha256": "9bac4ed14a221b68f4b785da2ca95c2ab6b10993fc66fd22ff4cdb3b572350f9",
+    "size": 20894,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\priv-app\\ConfigUpdater\\ConfigUpdater.apk",
+    "sha256": "f5e819ee82402edc3d492d3b7e6af2873b1ac32be8c12e735bfe1ea17576c6c1",
+    "size": 5850965,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\priv-app\\GoogleRestore\\GoogleRestore.apk",
+    "sha256": "caa520f1724b75befb3314630977e7f0e1a8778ac08e59c5550f5f47c80c8b7d",
+    "size": 5684396,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\priv-app\\HotwordEnrollmentOKGoogleHEXAGON\\HotwordEnrollmentOKGoogleHEXAGON.apk",
+    "sha256": "905423ccba552405fecc2acb79a01be2547a2db275192209b02b0c5e45c752de",
+    "size": 577382,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\priv-app\\HotwordEnrollmentXGoogleHEXAGON\\HotwordEnrollmentXGoogleHEXAGON.apk",
+    "sha256": "4d796581550ce558f65ff13d47d41ed7251d7435ee7fb1077203a195e6ce0672",
+    "size": 528102,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\priv-app\\SettingsIntelligence\\SettingsIntelligence.apk",
+    "sha256": "2105bddcbe56007f39ea28ca9e7a5a3dcd17208762e85bd790080393c03da108",
+    "size": 2886351,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\priv-app\\Turbo\\Turbo.apk",
+    "sha256": "63ccb8ba1879572fe6f6ae882ccaae4bcad619c4fef9562060ce2b8e09716922",
+    "size": 6300475,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\app\\CallFeaturesSetting\\CallFeaturesSetting.apk",
+    "sha256": "02ed756e3461c6e5c31e6e5e429b49359f56bd61614fd77338ef0e0603ac062e",
+    "size": 75140,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\app\\com.google.android.modulemetadata\\com.google.android.modulemetadata.apk",
+    "sha256": "e5358bad44d0aeaf3d3061068e835fea4039122300e0db28c00227b996f7dab4",
+    "size": 25229,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\app\\com.google.mainline.telemetry\\com.google.mainline.telemetry.apk",
+    "sha256": "a5c9e1cc123dad2dcb875de40d231067b93b7e2db4ec28bb00c24c4feea3a6b0",
+    "size": 21015,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\app\\GoogleContactsSyncAdapter\\GoogleContactsSyncAdapter.apk",
+    "sha256": "b4116a85ff5ed822254a356996d4d78e1733fc9dad015dcf4d6efbf1b906471b",
+    "size": 1481322,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\app\\GoogleLocationHistory\\GoogleLocationHistory.apk",
+    "sha256": "176089a4631fa91e0ff71c3fee3837020161d4fd869584b0635b3e56e49aa159",
+    "size": 45780,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\app\\PowerOffAlarm\\PowerOffAlarm.apk",
+    "sha256": "1fa4f46ab8c1d4785c91cccd57a5f413ede9c98f2bdfb8e39d1e45894ab7b081",
+    "size": 53915,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\app\\WallpaperPicker\\WallpaperPicker.apk",
+    "sha256": "fa519e3de94b20e33a2d72e475da2dbabe2a50dc3831577ffc076105c94998ba",
+    "size": 348552,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\apex\\com.android.wifi\\priv-app\\ServiceWifiResources\\ServiceWifiResources.apk",
+    "sha256": "1a1999ce2ea6551f01a224b3f154ff952186810c483a6821af65cf282d32af8c",
+    "size": 619169,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\apex\\com.android.wifi\\app\\OsuLogin\\OsuLogin.apk",
+    "sha256": "ff1310aa259eeff79901a1299854732132c28458141b593d09919003640f604b",
+    "size": 231717,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\apex\\com.android.tethering\\priv-app\\TetheringGoogle\\TetheringGoogle.apk",
+    "sha256": "12ad1f1e342fbc9b6907bb1e7f2a3234c4d323f2263620aa8cfc3b60c19c4d18",
+    "size": 1089780,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\apex\\com.android.permission\\priv-app\\GooglePermissionController\\GooglePermissionController.apk",
+    "sha256": "00a2539c2ef00f0f530e8b73636ee97be381b9ed23d6a3b4e35ea0ee71cf02c8",
+    "size": 8690240,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\apex\\com.android.mediaprovider\\priv-app\\MediaProviderGoogle\\MediaProviderGoogle.apk",
+    "sha256": "ae35fb6d4481260c0e0e7f277cc50e86ef33d55524b01e348a28b08a67661ece",
+    "size": 3882951,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\apex\\com.android.extservices\\priv-app\\GoogleExtServices\\GoogleExtServices.apk",
+    "sha256": "a64eb75f2fe2433af8924185fcd7ee12f695de36a32fb3f7d4f94ecdbd3554ad",
+    "size": 6084508,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\apex\\com.android.cellbroadcast\\priv-app\\GoogleCellBroadcastApp\\GoogleCellBroadcastApp.apk",
+    "sha256": "42546ebdd38ba37cf700dfe81a5005379885814702d5b812c096539678340d0d",
+    "size": 9873977,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\apex\\com.android.cellbroadcast\\priv-app\\GoogleCellBroadcastServiceModule\\GoogleCellBroadcastServiceModule.apk",
+    "sha256": "9422f85e479ef9a0c90c6326ed8ae7e9cc23cf8d882e43684919f24428770ca0",
+    "size": 259101,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\apex\\com.android.apex.cts.shim\\priv-app\\CtsShimPriv\\CtsShimPriv.apk",
+    "sha256": "b274453e04d5abb080e1887ad99deb35360ce471657cc97f73b0541f6fe3e35c",
+    "size": 32077,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\apex\\com.android.apex.cts.shim\\app\\CtsShim\\CtsShim.apk",
+    "sha256": "ba2130dd6b381029596cf0e80da96765655598a5d3152afc8ccbf287241713f1",
+    "size": 5426,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\ActivityExt.jar",
+    "sha256": "e0736cacb81c6cce67bb348282ca93700286665273206f9e5c01115fdb75a781",
+    "size": 8845,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\audiosphere.jar",
+    "sha256": "9418eb39123892d65f8800dd89ae47e6fdfe2e1d57b6d7e61d54a1c1a4c07f61",
+    "size": 4530,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.android.hotwordenrollment.common.util.jar",
+    "sha256": "037f0ce160af118530c5f5b6a34eee491ece8982a63497093c64c5b1437cf5d6",
+    "size": 11578,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.qti.dpmframework.jar",
+    "sha256": "160f4818af5ae8bff97373e31d11b97af6be9e330c24bcd20a83986ac3ece2cf",
+    "size": 322090,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.qti.location.sdk.jar",
+    "sha256": "b9e974934e410398d431aaecdcf98ac006bf689d43279c9cd2447d4b5ba72a91",
+    "size": 274374,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.qti.media.secureprocessor.jar",
+    "sha256": "3d5095d2c656051d50faca17ff1202e63767ffc276cd18252d0fe03e67e3dbe8",
+    "size": 6762,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.qualcomm.qti.imscmservice-V2.0-java.jar",
+    "sha256": "4c2d8f80db8ac15f9552df4164e03103de76ce692c27d547a24e545f17db33a0",
+    "size": 70898,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.qualcomm.qti.imscmservice-V2.1-java.jar",
+    "sha256": "59c51c02627b3a88337e16a959a1fd3bd8f3afc0795f94fae073d8d98910ea80",
+    "size": 105086,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.qualcomm.qti.imscmservice-V2.2-java.jar",
+    "sha256": "c8f2bce5da3ddd9776517a852d03752ad14c6d2959943b46c4bb348f1a9dc7fb",
+    "size": 127402,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.qualcomm.qti.uceservice-V2.0-java.jar",
+    "sha256": "d5615c621c0894b2d8e2bdc3e531d1ba5ae3dbd2a8c7fd0fbfc417bc496d6a19",
+    "size": 91534,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.qualcomm.qti.uceservice-V2.1-java.jar",
+    "sha256": "fff7d530d690633bc2d24a48433b0fc6cd7b559b8634db8a93ae1c2fd76aeb97",
+    "size": 142006,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.qualcomm.qti.uceservice-V2.2-java.jar",
+    "sha256": "e4554e5622cff0b4e70775abc5b286f7653bc1c30647253ab598f098a37db15e",
+    "size": 186586,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.qualcomm.qti.uceservice-V2.3-java.jar",
+    "sha256": "eb74f297048eb18fc8e9bf1dfbdde8b5e42b33acc7a0fcfe49b16235383abb75",
+    "size": 256290,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.quicinc.cne.api-V1.0-java.jar",
+    "sha256": "5b0c5149459ff29ec4e6b9cb71f55b44fb282566c8c4b20e35321845243faa85",
+    "size": 60190,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.quicinc.cne.api-V1.1-java.jar",
+    "sha256": "a322969d37f35a77db8557f5170db306dabea263534e213c92b29bfea210b7b5",
+    "size": 75058,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.quicinc.cne.constants-V1.0-java.jar",
+    "sha256": "44443379d4e83128324015de25e2a0933648d93db403399abe70b6d062e6a9aa",
+    "size": 9438,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.quicinc.cne.constants-V2.0-java.jar",
+    "sha256": "9063ba9fb789702080126c4cdf712b61854d20db808f818866a547133c00997e",
+    "size": 9594,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.quicinc.cne.constants-V2.1-java.jar",
+    "sha256": "c63d27070cc81cfa6db5b744f444b7ff915c7f0fda34a9135270e5c1a1b35535",
+    "size": 4738,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\com.st.android.nfc_extensions.jar",
+    "sha256": "c58027c2d915a6d19cd200716ac1454ed32656d65bd7b1353f0f8b63a550f178",
+    "size": 131774,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\dpmapi.jar",
+    "sha256": "5b57736888c16de41f99264cfb980a41b470737b9b222f4c7ea9e2cd6ed9fe96",
+    "size": 13506,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\embmslibrary.jar",
+    "sha256": "6cd8afc257dad37e1b80302c632a05236905391ffb752386e85bebbfbb52b3f2",
+    "size": 25506,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\izat.xt.srv.jar",
+    "sha256": "1e1c4de6cb02de7c8424070c148a3c748503bcaf0e5ad226df7a6edd31a0e09c",
+    "size": 17598,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\qcrilhook.jar",
+    "sha256": "81241b5817896e1a6aec55d2ce2053910554a1812db4be73a4cbb01364b048a7",
+    "size": 149458,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\qmapbridge.jar",
+    "sha256": "c5955164b444c5defd6d52ba356f77b966b995219ad49ea3f27af6ee3b7c73a4",
+    "size": 22650,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\qti-telephony-common.jar",
+    "sha256": "8d84b48e3c93e51ca56e1471b4172ee9cfb18a2947f32fcf8b34cb42b117d9c4",
+    "size": 1041509,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\qti-telephony-hidl-wrapper.jar",
+    "sha256": "999823acb83a5fc042048fd6b03c7be72aa49d08ca7c925b84fe137055fafc07",
+    "size": 29738,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\qti-telephony-utils.jar",
+    "sha256": "5fb9dfbf2458a0bbc878c13db824ecf4c542c11df7cef2a390d7b08af2228bfa",
+    "size": 46338,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\remotesimlockmanagerlibrary.jar",
+    "sha256": "05ddfa2751115bdfc87c29f850ce2f93935e31420c80ecbe7edfb5258c68d086",
+    "size": 9154,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\uimgbalibrary.jar",
+    "sha256": "4dc1e1234e449b714309d8258fb570dc8113f2136fe3a760c0b7e40bcd0c39d9",
+    "size": 9118,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\uimgbamanagerlibrary.jar",
+    "sha256": "a8a722527620d9f69e1a25a89cec8cf7d618ed6073e3339145e6fb308b825648",
+    "size": 6882,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\uimlpalibrary.jar",
+    "sha256": "e6c7f58d747829e454e2d8ea6fd2fab120766591f33d0d4791e089f60dfd2286",
+    "size": 27882,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\uimremoteclientlibrary.jar",
+    "sha256": "9dad1cbc5bf31649717c134195c3e57d28e1f9145c7572d2d9413928778384d0",
+    "size": 12337,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\uimremoteserverlibrary.jar",
+    "sha256": "c451e18ce0e59a474a335400edac61c4e4ca411b0fb7d6d17a3bdaf210d4ed9c",
+    "size": 13169,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\uimremotesimlocklibrary.jar",
+    "sha256": "b8c61a3c9075080b8c53a453f98e076cc2390aa4257b1296b6609a7abb6385e7",
+    "size": 13710,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\uimservicelibrary.jar",
+    "sha256": "b90888e1893535d0e23997a67169e6afde459f74b229d7a87bbfacb04fbd9f7d",
+    "size": 73390,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.data.factory-V1.0-java.jar",
+    "sha256": "85f5cb3caf420dee2c2a460f2166a97d3b244df3c809a2d5d61923f152596576",
+    "size": 295886,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.data.factory-V2.0-java.jar",
+    "sha256": "bc3cf34a7365f54f8f5280614e0ef4046a02b6ebad52fc3f4152925850a95422",
+    "size": 190654,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.data.factory-V2.1-java.jar",
+    "sha256": "8e636d89f11f6f174785eba2e57d69711b6ced78a5ae74e2eb488f947088c5f4",
+    "size": 243638,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.data.factory-V2.2-java.jar",
+    "sha256": "1b82b1fcf45758807d605c6c38e13860200bbd685a1942fc96feaa27b7ca616a",
+    "size": 264102,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.data.factory-V2.3-java.jar",
+    "sha256": "bc2917c22ff0810e047a11be2eac6ebac2f20b99e337f0c042442f60b72269bf",
+    "size": 295082,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.data.mwqem-V1.0-java.jar",
+    "sha256": "4861164c169fe0b1e68530c99329e548d9c158e1bb89b1cae4dcc86c6c6a2466",
+    "size": 24998,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.data.slm-V1.0-java.jar",
+    "sha256": "f22ac6bba30d6ce996a2a9b1dc639c121afc6410e9e37e52f1865e3dc0601b02",
+    "size": 24942,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.alarm-V1.0-java.jar",
+    "sha256": "783a00e42546db4a7ac41cd2811e62c2b774b2aff71cbdbedb93ded83b579eb1",
+    "size": 18738,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.capabilityconfigstore-V1.0-java.jar",
+    "sha256": "5b370901ef8d52a9787c6a86fa9761a9543583fe1514c30ec7d91d805e56d11f",
+    "size": 20274,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.data.cne.internal.api-V1.0-java.jar",
+    "sha256": "ef2f5d975fb243d922d5fd74b771e84c93f8f4e174f70b0d2878023001563bf1",
+    "size": 52258,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.data.cne.internal.constants-V1.0-java.jar",
+    "sha256": "7ab9952dc93fd7df01a0a2f628f8facebf3741d1fb6031a55b085f772a6ac792",
+    "size": 11086,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.data.cne.internal.server-V1.0-java.jar",
+    "sha256": "af30a28889a99f1751640261aeadbb84b87f6253eb782075cf6d7ab8d416cc97",
+    "size": 64322,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.data.connection-V1.0-java.jar",
+    "sha256": "19da2fa59b63a3a3b5f9e1dfbc3bc9a74cce04f02cc49d7bfc0cb6f0218971a4",
+    "size": 35358,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.data.connection-V1.1-java.jar",
+    "sha256": "fbc522a1b19c1e1b0d220e7b204d12aebc3bb5f3dfbaa26d95669233cdf02bf3",
+    "size": 41566,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.data.dynamicdds-V1.0-java.jar",
+    "sha256": "bdbb7ac0b5f4f417330da5603772678c1bdf9222e597583acdd8b7db8f92656d",
+    "size": 44746,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.data.iwlan-V1.0-java.jar",
+    "sha256": "693efc586c16776045e891a800a2cfa1258b0d8e5bf7c0d7e15fe69cb90daf4b",
+    "size": 943866,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.data.latency-V1.0-java.jar",
+    "sha256": "862567286f9ee6254b8ea481e890a048d8b8350f4f1ebc943f8ab99e0fbdbaac",
+    "size": 32218,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.data.lce-V1.0-java.jar",
+    "sha256": "50bf483f89ed2cb9595160e341033cc668f1cce1e25898d0ca43e7030ae99a87",
+    "size": 34698,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.data.qmi-V1.0-java.jar",
+    "sha256": "adf29fd2fa374d11b44e73f0e038f009ca1eb1eb33d4a2facc3badc10448afd9",
+    "size": 35010,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.fingerprint-V1.0-java.jar",
+    "sha256": "6711bf18ae110c33bcadc4ef83b7e3e4a230b25a6a275e28fbba10ec41dd0645",
+    "size": 84470,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.mwqemadapter-V1.0-java.jar",
+    "sha256": "94c241e6390a9e0b884fe2a2cb4637c6c6c7b59212564650436435608dd128c6",
+    "size": 31346,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.sensorscalibrate-V1.0-java.jar",
+    "sha256": "b00491c3a5f92d27f35fbc34196e9da54eb658148dd956f529897da1f64bf85f",
+    "size": 18178,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.slmadapter-V1.0-java.jar",
+    "sha256": "f01207a033ace0f0af613296fd430eb6981e45dad8fabf4a8ca469167d3d1dbb",
+    "size": 31238,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.wigig.netperftuner-V1.0-java.jar",
+    "sha256": "8f96f880f6bd923fa5e0c850bd31c4969cd360e7c10a12b0f2767af6d75f310f",
+    "size": 20838,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.hardware.wigig.supptunnel-V1.0-java.jar",
+    "sha256": "d5cd8b14e38d426a48eb44cf6ceb27cf9e204864961f052274d68e1eb0122136",
+    "size": 34438,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.ims.callcapability-V1.0-java.jar",
+    "sha256": "0358fd1961d8ed9a057e8e13f07e20cea063b173dd783dd6dc97793d5ece8645",
+    "size": 30446,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.ims.callinfo-V1.0-java.jar",
+    "sha256": "ed3870e398951835dc512d373638b8d88c2996903e68dae148ddbac1c7dad465",
+    "size": 23818,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.ims.factory-V1.0-java.jar",
+    "sha256": "903484e09a2850d287603ce15f88eea4e3c52d3eae0e42fe321931acdc06f29c",
+    "size": 89118,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.ims.factory-V1.1-java.jar",
+    "sha256": "665c607b8f95e3384a8390b5b688f8c0eefa03add4660dffe2d8547cc725eba7",
+    "size": 111098,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.ims.rcsconfig-V1.0-java.jar",
+    "sha256": "b50a2e6d32bf657e22723df4b8c7b214de7ece92af78e42b412bc4baa1ccd797",
+    "size": 31086,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.ims.rcsconfig-V1.1-java.jar",
+    "sha256": "423d6f20f980c39ad0057c94453e8435ca01a2d27855a81e7fe06058ff9a7bb4",
+    "size": 62878,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.ims.rcsconfig-V2.0-java.jar",
+    "sha256": "d43d6a59d933e33426681ac1fa68763158915fc081080541baf624737c933779",
+    "size": 64434,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.ims.rcsconfig-V2.1-java.jar",
+    "sha256": "8c5aa7d46558edc11f897827b5586f581e0c4db10652d4a560f9965505025f89",
+    "size": 79494,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.latency-V2.0-java.jar",
+    "sha256": "be774d91fb21aca15934851271960a895c5cc3ee7fb7dc798f4b0670d554d475",
+    "size": 28778,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.latency-V2.1-java.jar",
+    "sha256": "9ae2d64859efc94415a1fef70612ed55982feb04b2a576528d2d6b054f084cb9",
+    "size": 35418,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\vendor.qti.voiceprint-V1.0-java.jar",
+    "sha256": "fc2e596161b5c314a9db7ffee2de331579be06d2053f2db8abbbdb09f87de814",
+    "size": 56202,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system_ext\\framework\\wigig-service.jar",
+    "sha256": "5a512113d51ec4dfa8a6ea6b71fb0b00ae1675e656dedb10022a788d0d11a173",
+    "size": 498930,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\am.jar",
+    "sha256": "5f03e583bb0858f642d94510b727f86f4e7246c1f7d8e5a6a3ec68a35765c4f6",
+    "size": 543774,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\android.hidl.base-V1.0-java.jar",
+    "sha256": "f168c39b2eb841ab577f9c4d1901d82f4c5be2efa3695a0d23ae48104238b741",
+    "size": 12718,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\android.test.base.jar",
+    "sha256": "a4ae812c08e8c61f4fa791805fc5ca061ead64e64d3121366fc6eebcd382a1a2",
+    "size": 33134,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\android.test.mock.jar",
+    "sha256": "afa573ab46fb3143aaefea358abe24d522f34aeb86b84558910d59269d26bd0f",
+    "size": 202632,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\android.test.runner.jar",
+    "sha256": "e9a37842b8a7a29f871bb7a71eb785c0ab44902fa5c4d8f9f132869dc1fc38e2",
+    "size": 106974,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\appwidget.jar",
+    "sha256": "9c050b9c37cb49364353961de1676977dd2cc8394abf360407da51d166fbbd35",
+    "size": 5682,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\bmgr.jar",
+    "sha256": "0529d56cd3b782b530e7a400791bff5810669d466de229784ca49f5da2dfb3b3",
+    "size": 31258,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\bu.jar",
+    "sha256": "f4c3e1a0ca7b34c5a469a6062b9241300258ad0429705603a48d60e82034988c",
+    "size": 7310,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\com.android.future.usb.accessory.jar",
+    "sha256": "ae0ed9450bdca30dd37b94dc4e60e493928aa61bf2ce7416a7b90ae1a4c1e836",
+    "size": 5334,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\com.android.location.provider.jar",
+    "sha256": "0aaaf01a04474c8bb1ce9a5abf59974d74a1fe40f722b4f4d22821a329f3023b",
+    "size": 20326,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\com.android.media.remotedisplay.jar",
+    "sha256": "7d3d49c6c659ac5805e0283696efdb6e869b7811d72797014c429cbb7ad5320f",
+    "size": 9250,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\com.android.mediadrm.signer.jar",
+    "sha256": "275553108bda378c03c78e630221a8d5ec6fa7e966802bcd6b8be9e0647f1416",
+    "size": 2926,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\com.android.nfc_extras.jar",
+    "sha256": "69457f3da1a600fde53948fa9ef81eb297092d207daf139397ea368409d02d4f",
+    "size": 7970,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\content.jar",
+    "sha256": "34f908f8dbde422dad169dfce87e98ff02d84c3e9ea1bff866f785d5bec123d1",
+    "size": 19646,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\dpm.jar",
+    "sha256": "8b5e8312f47737fe00b32b5f43c72faa365b1175bc584cc2a119387db8c70d46",
+    "size": 9218,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\ethernet-service.jar",
+    "sha256": "04d158d036ee96883bdb89c0dbe6a48e54a5591a6a4b31e13037ae1f515f6bab",
+    "size": 45162,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\ext.jar",
+    "sha256": "571a1a8fc168fd9b339ef9860fda1019d6ea024ddaa5d0862aab61e089ca1ad1",
+    "size": 2220354,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\framework-atb-backward-compatibility.jar",
+    "sha256": "b381c9a8d0014e1a38a7eafab13642641d74c4b0775753982c2243fe67ba6e91",
+    "size": 890,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\framework.jar",
+    "sha256": "93944fb3db369e013cd5b744c749567f7e9b691cce226f6e6f1744a04476080c",
+    "size": 30153054,
+    "dex": [
+      "classes2.dex"
+    ]
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\hid.jar",
+    "sha256": "b7afc42264ab0006010dbe78a0a7ef70cd3a7c7f04ef4723292ec5565acac7a2",
+    "size": 20566,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\ims-common.jar",
+    "sha256": "eb4d982b34867131bab65cb9d7b1631a21c1228a87cea5e09c9ac66b2c2aff1b",
+    "size": 260634,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\incident-helper-cmd.jar",
+    "sha256": "552aa5fe8e14d1a8a29bf845b4758644f4b171ccebc6dc0c1931eba2b5294e50",
+    "size": 15706,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\input.jar",
+    "sha256": "8673a6049d91ec65b9b4e41a20a915fd7aea1f54ad55188ff3c07a6f0505bd79",
+    "size": 13566,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\javax.obex.jar",
+    "sha256": "51f06e162f00b4fddca285200dfbcb75c86311cabd3a0145769312ede2004d67",
+    "size": 60394,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\locksettings.jar",
+    "sha256": "4875d2dbb1384a07d8f5530ff6f53e11f36b458652da3e47688cc09c92f26e73",
+    "size": 3714,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\monkey.jar",
+    "sha256": "b231267f15655ce022494e7207817ccff046756909e5bc6397215001f2be4726",
+    "size": 115617,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\org.apache.http.legacy.jar",
+    "sha256": "473efebbf4a44c28b55f9e2b8c428dfbc091c3010d8ba5b1d6e65b3f6fc8e9d0",
+    "size": 487310,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\QPerformance.jar",
+    "sha256": "d6c2cf235d7c9a1150dee29870592923efb6bea25ba3da85e88c0d8bbe0f1377",
+    "size": 18402,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\QXPerformance.jar",
+    "sha256": "5d990fd3e05c090299aa4da4018bb0a03a57f4ef0537974f504c15a40ef172c7",
+    "size": 3990,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\requestsync.jar",
+    "sha256": "38bbaf20c6e60aa9005e511618c00f73ec4be2e12c402426d6faf7c960e7681a",
+    "size": 12438,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\service-blobstore.jar",
+    "sha256": "3867e615f35104e4c0186a8b32c54fc2923cf36131948902f6687538b717cd73",
+    "size": 106554,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\service-jobscheduler.jar",
+    "sha256": "f3f180277818f2aee08b0c096c333c45f607971ca6dd724bebb24d113bbf7f64",
+    "size": 437486,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\services.jar",
+    "sha256": "0d93de73a06fca110c2826a92f243ea4afd7d4bf472f27649e0398995adf7345",
+    "size": 15353744,
+    "dex": [
+      "classes.dex"
+    ]
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\sm.jar",
+    "sha256": "217ce94ab97086109f882ee4e34c47858cc7f269ce05ac3c82f99b95034f3cd7",
+    "size": 10926,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\svc.jar",
+    "sha256": "00b461f54c40092f3dc0eeaf5ad3fecd7b9597b9f87ecdb6a8063deb5d5dc742",
+    "size": 11950,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\tcmclient.jar",
+    "sha256": "934ebea006bba3faf8c6790aa21fdcdeef5eb25f9acecb41bfabf8d7c13b0a55",
+    "size": 7094,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\tcmiface.jar",
+    "sha256": "eaa17cf4b392a5a47cae87f50a4149329080fd55072116c7400a05cb47d20d44",
+    "size": 814,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\telecom.jar",
+    "sha256": "a6ade39b8882101fc7770adeac29287c664ee83080eaeb96a63095b067e8b065",
+    "size": 15274,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\telephony-common.jar",
+    "sha256": "87f8e3badfdfc98f2a7a10ea66a46da4aac028fc57e2b502139c3305c443db7b",
+    "size": 3557178,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\telephony-ext.jar",
+    "sha256": "c0814f14da0a3b601f6b8e0ea4798e516706bef6f7469b9975830d8ff33ebeb6",
+    "size": 60098,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\uiautomator.jar",
+    "sha256": "348cf9631b6cf9dc40e73e14e20a0f32c0b0f1ab0a048e6325b894ded693e2a9",
+    "size": 366758,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\UxPerformance.jar",
+    "sha256": "ab8382faf705b036c7372284729508166e31c083e1f12b944c0fb1b474f4186a",
+    "size": 11822,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\voip-common.jar",
+    "sha256": "63889af6801af4d98f8f639f65f459dba5b726bff87c27317d1aa974d41c523b",
+    "size": 819682,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\vr.jar",
+    "sha256": "eaa340e1d9b0bacdeec827bdb1f3759c3528cf0fcda251cc04387a110fb934af",
+    "size": 4426,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\system\\framework\\framework\\WfdCommon.jar",
+    "sha256": "d8273d9fa81aae8087ed57b71e09d49b290cc1a6ca79f25e6107e4766ee23759",
+    "size": 105234,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\framework\\com.google.android.dialer.support.jar",
+    "sha256": "1e8c922a94ec1bf5261a06ccec87a07caa173500cca5158d6c25a91c26e38a17",
+    "size": 723,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\framework\\com.qti.snapdragon.sdk.display.jar",
+    "sha256": "7392569f77a073e78241af7d7ac797d678ca87489025f6307ed740cc809079d8",
+    "size": 64430,
+    "dex": []
+  },
+  {
+    "file": "09\\P780-static-20261018-220912\\files\\product\\framework\\ims-ext-common.jar",
+    "sha256": "17e391c19918d64e22ecff8b091ef40c4b006975296b37cfe5cef9c3eaba496b",
+    "size": 100366,
+    "dex": []
+  }
+]
