@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-20",
+  "inputs": [
+    {
+      "role": "running",
+      "size": 881104,
+      "sha256": "a4d6851e984a0232dea7cbabbf600f87eeb74b94005a260ecbbca756bcad1409",
+      "version": 30,
+      "config_offset": 20,
+      "config": "0x1",
+      "config_bytes": "01000000",
+      "symbol_tables": 8,
+      "object_tables": 7
+    },
+    {
+      "role": "disk",
+      "size": 881104,
+      "sha256": "77f077d8c95b38929aed0434c9c56ca6158c24d90c169ee2644d490684111b79",
+      "version": 30,
+      "config_offset": 20,
+      "config": "0x80000001",
+      "config_bytes": "01000080",
+      "symbol_tables": 8,
+      "object_tables": 7
+    }
+  ],
+  "header_xor": "0x80000000",
+  "semantic_diff_status": "BLOCKED_TOOLING",
+  "limitations": [
+    "Independent direct header read; no reuse of the pair-specific record comparator.",
+    "No SETools/libsepol semantic comparison performed.",
+    "No header normalization, phone access, or source modification."
+  ]
+}

@@ -1,3 +1,5 @@
+> 2026-10-20 GAP-01 补证：两份原件哈希核对通过；running config=0x1，disk=0x80000001，纠正旧专题两端写反。独立 SETools 语义复核 BLOCKED_TOOLING；有限记录一致不升级为完全等价。 [详情](research/p780-policy-header-verification-20261020.md)
+
 # ��ǰ�о�״̬
 
 ���£�2026-10-19��Asia/Shanghai�������ǵ�ǰ���۵�ͳһ��ڣ�����ϸ�ڼ� [ʱ����](HISTORY.md) ��ר�⡣**Locked / δ Root / δȡ������֤�����÷���д��������DSU ��ֹͣ��**

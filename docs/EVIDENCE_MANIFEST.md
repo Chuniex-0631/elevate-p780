@@ -1,3 +1,5 @@
+> 2026-10-20：新增 evidence/gaps/20261020/header-verification.json 与 tools/gaps/verify_policy_header.py；原件哈希匹配，header 直接重读。原始两份 policy 继续留 PC，未上传。 [详情](research/p780-policy-header-verification-20261020.md)
+
 # ֤���ʲ��뱣��״̬
 
 ���£�2026-10-19����ҳ���ʲ���֯�����ٽ�ÿ�֡����⡱�ƻ����ʲ��ظ�׷�ӡ���ǰ�������ۼ� [STATUS](STATUS.md)���������ļ�������Դ��С���׶�ժҪ������[�������ʷ�˱�](archive/evidence-ledger-before-consolidation-20261018.md)��

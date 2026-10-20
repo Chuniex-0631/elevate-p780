@@ -1,3 +1,5 @@
+> 2026-10-20：核对两份 policy 原件哈希及 header；修正 running=0x1、disk=0x80000001 的旧文颠倒；新增独立 header 工具/结果及源码对照。SETools 语义比较因工具缺失仍 BLOCKED_TOOLING，未新增设备权限能力。 [详情](docs/research/p780-policy-header-verification-20261020.md)
+
 # �鵵ά����־
 
 ���°��׶α��浱ʱ���ۣ���ʷ��Ŀ�еġ�δ��װ/���⡱���������ڡ���ǰ״̬ͳһ��[STATUS](docs/STATUS.md)��
