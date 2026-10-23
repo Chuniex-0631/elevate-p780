@@ -1,0 +1,237 @@
+[
+  {
+    "path": "otacerts.zip",
+    "size": 1135,
+    "sha256": "3df36fb12be1483ebe3a04af25381c27e7a98b2079eee34223bf6f2c1c89099f"
+  },
+  {
+    "path": "vintf/system/compatibility_matrix.1.xml",
+    "size": 71560,
+    "sha256": "143e9f222a6ad3e490f60e893ab7b633d5a75b9d0fc9047f3de111b890f0e29a"
+  },
+  {
+    "path": "vintf/system/compatibility_matrix.2.xml",
+    "size": 73795,
+    "sha256": "faf0b1129a81a1c2a35016303c22f236b3bd7903dfdc4f8934ecfb0af13acc16"
+  },
+  {
+    "path": "vintf/system/compatibility_matrix.3.xml",
+    "size": 90414,
+    "sha256": "a75a7574758bd10e9d309ca8307f55e8a2e2706fae7e55717b83a18f245bc271"
+  },
+  {
+    "path": "vintf/system/compatibility_matrix.4.xml",
+    "size": 114285,
+    "sha256": "f7a814503a69e86ee260bcb2e6d9ee611813c7e4b575f1f65221a85ef40439ff"
+  },
+  {
+    "path": "vintf/system/compatibility_matrix.5.xml",
+    "size": 125617,
+    "sha256": "fb5cad7004d0d4b828642efe7c0ee7fe17234eb19a812580a9101b3855fdeeb1"
+  },
+  {
+    "path": "vintf/system/compatibility_matrix.device.xml",
+    "size": 31041,
+    "sha256": "a05358f05b23feeb2d19c2c7bc96479745b19d3d76f2d02784c166c3fa8424c3"
+  },
+  {
+    "path": "vintf/system/compatibility_matrix.legacy.xml",
+    "size": 71600,
+    "sha256": "89413591f09556412ce508da4709bd58191660984d417c99e0ac2dac3f84293c"
+  },
+  {
+    "path": "vintf/system/manifest.xml",
+    "size": 4516,
+    "sha256": "868dc65d800fe96436e4eb1002f0969d71c8d97364224a3f880b449eda3883a8"
+  },
+  {
+    "path": "vintf/system_ext/manifest.xml",
+    "size": 179,
+    "sha256": "94edfc634de5917060b00a2eec8abd09ee150fbacabf27d78972f9ccc120994b"
+  },
+  {
+    "path": "vintf/vendor/compatibility_matrix.xml",
+    "size": 2528,
+    "sha256": "5aa869415b923d1668b80845bfb3b821ff82c113a2b61a9063bc9c3d19629dfd"
+  },
+  {
+    "path": "vintf/vendor/manifest.xml",
+    "size": 24723,
+    "sha256": "252588e887bd314664dfa704d46d6d9a77ebecb032e496c56a6ca4aac49e1210"
+  },
+  {
+    "path": "vintf/vendor/manifest/android.hardware.atrace@1.0-service.xml",
+    "size": 323,
+    "sha256": "49e4a804e77b653064e7cb8fc5dc6c6b4aeea2ae4a2a62dab0ff52e0c463ee01"
+  },
+  {
+    "path": "vintf/vendor/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml",
+    "size": 348,
+    "sha256": "473cf370500637de575dc89fbac74e4942d969717a0a72cb5adaa3511bdba693"
+  },
+  {
+    "path": "vintf/vendor/manifest/android.hardware.boot@1.1.xml",
+    "size": 221,
+    "sha256": "d42cd4d5e3448ebe865ca20824031d411c7ea9a0600949454959894444c74a90"
+  },
+  {
+    "path": "vintf/vendor/manifest/android.hardware.cas@1.2-service.xml",
+    "size": 323,
+    "sha256": "9357fb5a7b17fe81638ec82f79d06007bb35c19016e676104fa55449b5f0f0d2"
+  },
+  {
+    "path": "vintf/vendor/manifest/android.hardware.gnss@2.1-service-qti.xml",
+    "size": 1779,
+    "sha256": "b12c00daff67f15983eaf9952d0ded199b2868ad1b9fb512fcab5f6bf813773d"
+  },
+  {
+    "path": "vintf/vendor/manifest/android.hardware.graphics.mapper-impl-qti-display.xml",
+    "size": 2226,
+    "sha256": "00105bbff83fa177fff8c10776678fddcf99179464d866bd688a1bf61ee563b4"
+  },
+  {
+    "path": "vintf/vendor/manifest/android.hardware.health@2.1.xml",
+    "size": 218,
+    "sha256": "d79a8058bf0dd9d4cf7bf65f6ef2f47c3fd9452e641ebc746465d619aabb509c"
+  },
+  {
+    "path": "vintf/vendor/manifest/android.hardware.lights-qti.xml",
+    "size": 171,
+    "sha256": "570ac710477a2e70c8c983e4eea18ddd398907af0502ac95557f4293e9f85cc9"
+  },
+  {
+    "path": "vintf/vendor/manifest/android.hardware.neuralnetworks@1.3-service-qti.xml",
+    "size": 460,
+    "sha256": "1fe231b6b3fd8ec56d0d4063ec9e547be4248da930b9c471212ff9cc9f4afc99"
+  },
+  {
+    "path": "vintf/vendor/manifest/android.hardware.sensors@2.0-multihal.xml",
+    "size": 319,
+    "sha256": "5915f6e142726b3b608379a2e03c2b23478c393b310b024ac7687f73458a630e"
+  },
+  {
+    "path": "vintf/vendor/manifest/android.hardware.thermal@2.0-service.qti.xml",
+    "size": 1844,
+    "sha256": "963119de0310765a376a61ec01854f70c6daa91bff75f0d6eaedc6e4b7f2a8b3"
+  },
+  {
+    "path": "vintf/vendor/manifest/android.hardware.usb@1.2-service.xml",
+    "size": 1878,
+    "sha256": "7f0bd8f15ad0f216869ae1de9c86893c67cd2ebbb6f8392bf0619afd755c5755"
+  },
+  {
+    "path": "vintf/vendor/manifest/android.hardware.wifi.hostapd.xml",
+    "size": 698,
+    "sha256": "641f8d2f6a26b570b7ab7322d9e6cd5f3d51e0ea9ba829fda16569f90cfa3900"
+  },
+  {
+    "path": "vintf/vendor/manifest/android.hardware.wifi@1.0-service.xml",
+    "size": 313,
+    "sha256": "5b785b5e6f63baab071ca757ec3e5bf0ee7a877186c17e2b36ce5bc63112756e"
+  },
+  {
+    "path": "vintf/vendor/manifest/c2_manifest_vendor.xml",
+    "size": 1926,
+    "sha256": "f91b889f1dee3d7740862fae4632df0e9e553fea8ba11b23d6ae86f97e088f29"
+  },
+  {
+    "path": "vintf/vendor/manifest/manifest.xml",
+    "size": 618,
+    "sha256": "44eb838887d1bb904a0270bb80592691e0dcb01cea920012e681eb62bfb55b47"
+  },
+  {
+    "path": "vintf/vendor/manifest/manifest_android.hardware.drm@1.3-service.clearkey.xml",
+    "size": 945,
+    "sha256": "4b9a9214df27df7f546dcd7b27efac3803f8d172548671c8d94903ef1d804aef"
+  },
+  {
+    "path": "vintf/vendor/manifest/manifest_android.hardware.drm@1.3-service.widevine.xml",
+    "size": 945,
+    "sha256": "61cee1f6a061cf5348ca82f5326bd09cedda6bf2eea016c9ad3374f2cd03df7a"
+  },
+  {
+    "path": "vintf/vendor/manifest/power.xml",
+    "size": 1687,
+    "sha256": "541769636e0fe848700a472da66eddaffdfd00de06aab236827edbb334ca8bc3"
+  },
+  {
+    "path": "vintf/vendor/manifest/vendor.journey.hardware.display@1.0.xml",
+    "size": 329,
+    "sha256": "34a6d640c0e4fd482674450687c1cd008f31e183f6ee68bef9c125bf3ff4d6ca"
+  },
+  {
+    "path": "vintf/vendor/manifest/vendor.journey.hardware.fingerprint@1.0.xml",
+    "size": 348,
+    "sha256": "447d5edaa6fa443c9a0f4ca80b97bbf484c36148a32783c0bca088dab8894165"
+  },
+  {
+    "path": "vintf/vendor/manifest/vendor.journey.hardware.warehouse@1.0.xml",
+    "size": 341,
+    "sha256": "6edeafe4efc83f4beafbb8d20ac9aeeb0253d2f88d941c875b79b690e05f1269"
+  },
+  {
+    "path": "vintf/vendor/manifest/vendor.qti.diag.hal.service.xml",
+    "size": 477,
+    "sha256": "e83f49d490b33fe0a47114f5b9fcf651f5b7844a1aa2ea6b26e47cda59fbd85c"
+  },
+  {
+    "path": "vintf/vendor/manifest/vendor.qti.gnss@4.0-service.xml",
+    "size": 690,
+    "sha256": "a2febcc396f453bdabfe60f8adc9b0bc89b110845b3bd4b0c582ce35054a5f4e"
+  },
+  {
+    "path": "vintf/vendor/manifest/vendor.qti.hardware.display.allocator-service.xml",
+    "size": 2203,
+    "sha256": "7a916b6ca645ff92e2f1df462ae44e8e7316ffe339d384cbfc352a8e395ae3f5"
+  },
+  {
+    "path": "vintf/vendor/manifest/vendor.qti.hardware.display.composer-service.xml",
+    "size": 2953,
+    "sha256": "944b74f6eba32f03cf63d5e3b956dc3f270bce4244b6babf441816c7e3b286b9"
+  },
+  {
+    "path": "vintf/vendor/manifest/vendor.qti.hardware.limits@1.0-service.xml",
+    "size": 457,
+    "sha256": "b7a7ec9cd9064450d650372f5c9a8f58ffe658190a613621c93fadbd69d63c70"
+  },
+  {
+    "path": "vintf/vendor/manifest/vendor.qti.hardware.servicetracker@1.2-service.xml",
+    "size": 472,
+    "sha256": "f57b12f5747dc5ba00186e1254dabebd071561c72ce3ae866cf8f9ce0ef901e0"
+  },
+  {
+    "path": "vintf/vendor/manifest/vendor.qti.hardware.vibrator.service.xml",
+    "size": 1694,
+    "sha256": "5cf94ad6bd7b78b2020874fd6fc74764447f2cd9fddb8ef5288eb13619d42aba"
+  },
+  {
+    "path": "vintf/vendor/manifest/vendor.qti.memory.pasrmanager@1.0-service.xml",
+    "size": 464,
+    "sha256": "417e8b42f9d20d9b286ad7affbeca917f556657d40fc681142d5152cab1dc7bf"
+  },
+  {
+    "path": "vintf/system/manifest/android.frameworks.stats@1.0-service.xml",
+    "size": 306,
+    "sha256": "a651013edf8ac7d2804c53ba05e8eb27794d0dd5db66cc509c73351f9f2bab01"
+  },
+  {
+    "path": "vintf/system/manifest/android.hidl.allocator@1.0-service.xml",
+    "size": 307,
+    "sha256": "9e6fee7d22163cfdb0392e10b1dee1f0d7efb24d4f5c3b50adddc3368dc4f11e"
+  },
+  {
+    "path": "vintf/system/manifest/android.system.suspend@1.0-service.xml",
+    "size": 312,
+    "sha256": "8fa3da936a54184f2bf0652bbeb9c5d3c0c290bd508276f599e9bd4213846dd0"
+  },
+  {
+    "path": "vintf/system/manifest/manifest_android.frameworks.cameraservice.service@2.1.xml",
+    "size": 330,
+    "sha256": "ca19fd2335e749f78ea2982b497058a22b38ac0464a8944b7031255e2293b8e5"
+  },
+  {
+    "path": "vintf/system/manifest/manifest_media_c2_software.xml",
+    "size": 317,
+    "sha256": "5f1f54ae43e6a3a062b67dcd5f7df7aa76fce563127b7170ae2a47a5c1bf0ef0"
+  }
+]

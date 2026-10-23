@@ -1,0 +1,2 @@
+u:r:hal_bootctl_default:s0     root            638      1 12348340  2148 0                   0 S android.hardware.boot@1.1-service
+u:r:vendor_diag-router:s0      system         1200      1 12401128  1340 0                   0 S diag-router

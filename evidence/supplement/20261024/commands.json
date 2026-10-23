@@ -1,0 +1,218 @@
+[
+  {
+    "label": "device-state",
+    "args": [
+      "get-state"
+    ],
+    "utc": "2026-10-23T21:58:19.137633+00:00",
+    "exit_code": 0,
+    "stdout": "device\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.build.fingerprint",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.build.fingerprint"
+    ],
+    "utc": "2026-10-23T21:58:19.250003+00:00",
+    "exit_code": 0,
+    "stdout": "Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.build.version.security_patch",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.build.version.security_patch"
+    ],
+    "utc": "2026-10-23T21:58:19.318138+00:00",
+    "exit_code": 0,
+    "stdout": "2024-02-01\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.vendor.build.security_patch",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.vendor.build.security_patch"
+    ],
+    "utc": "2026-10-23T21:58:19.383148+00:00",
+    "exit_code": 0,
+    "stdout": "2024-02-01\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.boot.slot_suffix",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.boot.slot_suffix"
+    ],
+    "utc": "2026-10-23T21:58:19.443139+00:00",
+    "exit_code": 0,
+    "stdout": "_b\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.boot.flash.locked",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.boot.flash.locked"
+    ],
+    "utc": "2026-10-23T21:58:19.504445+00:00",
+    "exit_code": 0,
+    "stdout": "1\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.boot.verifiedbootstate",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.boot.verifiedbootstate"
+    ],
+    "utc": "2026-10-23T21:58:19.575949+00:00",
+    "exit_code": 0,
+    "stdout": "green\n",
+    "stderr": ""
+  },
+  {
+    "label": "ro.boot.vbmeta.digest",
+    "args": [
+      "shell",
+      "getprop",
+      "ro.boot.vbmeta.digest"
+    ],
+    "utc": "2026-10-23T21:58:19.639595+00:00",
+    "exit_code": 0,
+    "stdout": "33ee3a6cf5215befd8a4f953382bd746d12efc37f6d4116c0c9b68a7661f95f2\n",
+    "stderr": ""
+  },
+  {
+    "label": "bootctl-current-slot",
+    "args": [
+      "shell",
+      "bootctl",
+      "get-current-slot"
+    ],
+    "utc": "2026-10-23T21:58:19.741701+00:00",
+    "exit_code": 70,
+    "stdout": "",
+    "stderr": "Error getting bootctrl v1.0 module.\n"
+  },
+  {
+    "label": "bootctl-hal-info",
+    "args": [
+      "shell",
+      "bootctl",
+      "hal-info"
+    ],
+    "utc": "2026-10-23T21:58:19.812552+00:00",
+    "exit_code": 70,
+    "stdout": "",
+    "stderr": "Error getting bootctrl v1.0 module.\n"
+  },
+  {
+    "label": "payload-key-dir",
+    "args": [
+      "shell",
+      "ls",
+      "-l",
+      "/system/etc/update_engine"
+    ],
+    "utc": "2026-10-23T21:58:19.904930+00:00",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "ls: /system/etc/update_engine: No such file or directory\n"
+  },
+  {
+    "label": "update-engine-config",
+    "args": [
+      "shell",
+      "ls",
+      "-l",
+      "/system/etc/update_engine.conf"
+    ],
+    "utc": "2026-10-23T21:58:19.980767+00:00",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "ls: /system/etc/update_engine.conf: No such file or directory\n"
+  },
+  {
+    "label": "vintf-vendor",
+    "args": [
+      "pull",
+      "/vendor/etc/vintf/.",
+      "<CAPTURE_DIR>\\vintf\\vendor"
+    ],
+    "utc": "2026-10-23T21:58:20.145115+00:00",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "/vendor/etc/vintf/./: 32 files pulled, 0 skipped. 0.4 MB/s (54921 bytes in 0.135s)\n"
+  },
+  {
+    "label": "vintf-odm",
+    "args": [
+      "pull",
+      "/odm/etc/vintf/.",
+      "<CAPTURE_DIR>\\vintf\\odm"
+    ],
+    "utc": "2026-10-23T21:58:20.171248+00:00",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "adb: error: failed to stat remote object '/odm/etc/vintf/.': No such file or directory\n"
+  },
+  {
+    "label": "vintf-system",
+    "args": [
+      "pull",
+      "/system/etc/vintf/.",
+      "<CAPTURE_DIR>\\vintf\\system"
+    ],
+    "utc": "2026-10-23T21:58:20.293293+00:00",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "/system/etc/vintf/./: 13 files pulled, 0 skipped. 6.5 MB/s (584400 bytes in 0.086s)\n"
+  },
+  {
+    "label": "vintf-system_ext",
+    "args": [
+      "pull",
+      "/system_ext/etc/vintf/.",
+      "<CAPTURE_DIR>\\vintf\\system_ext"
+    ],
+    "utc": "2026-10-23T21:58:20.347008+00:00",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "/system_ext/etc/vintf/./: 1 file pulled, 0 skipped. 0.0 MB/s (179 bytes in 0.008s)\n"
+  },
+  {
+    "label": "vintf-product",
+    "args": [
+      "pull",
+      "/product/etc/vintf/.",
+      "<CAPTURE_DIR>\\vintf\\product"
+    ],
+    "utc": "2026-10-23T21:58:20.384309+00:00",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "adb: error: failed to stat remote object '/product/etc/vintf/.': No such file or directory\n"
+  },
+  {
+    "label": "ota-certs",
+    "args": [
+      "pull",
+      "/system/etc/security/otacerts.zip",
+      "<CAPTURE_DIR>\\otacerts.zip"
+    ],
+    "utc": "2026-10-23T21:58:20.418401+00:00",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "/system/etc/security/otacerts.zip: 1 file pulled, 0 skipped. 0.1 MB/s (1135 bytes in 0.008s)\n"
+  }
+]
