@@ -47,6 +47,10 @@
 
 构建工具链和 Linux 代码来源是“公开源码”，而不是用户原厂镜像。研究数据完全不支持声称已获得未经授权的生产固件或实际成功 root。
 
+## 2026-10-24 公开同名设备树候选
+
+- [2by2-Project-Devices/android_device_rakuten_p780ae](https://github.com/2by2-Project-Devices/android_device_rakuten_p780ae)，固定核验提交 [7c749c4f678d97c5f410b420a7decd7d88d3ff01](https://github.com/2by2-Project-Devices/android_device_rakuten_p780ae/commit/7c749c4f678d97c5f410b420a7decd7d88d3ff01)（作者时间 2026-10-19）。该项目只作待验证公开线索；主体仍来自 Xiaomi `veux`，无 P780 构建/真机成功证据。详见[专项审计](../research/public-p780ae-device-tree-audit-20261024.md)。
+
 ## 原件保护原则
 
 - 文件名 + 大小不是 SHA 验证；除本仓库已明确列出的 config/编译摘要，未计算的原件不编造校验值。

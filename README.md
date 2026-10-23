@@ -46,3 +46,7 @@
 
 本轮新增47份系统原件：46份VINTF XML与1份OTA公开验证证书包；补齐Boot/Diag/Warehouse声明，保存TINNO RSA-2048证书指纹及Boot HAL查询边界。设备基线仍为locked/green，未取得Root或写入通道。见[研究报告](docs/research/p780-supplement-20261024.md)、[证据与保存范围](evidence/supplement/20261024/README.md)和[复核工具](tools/supplement/README.md)。部分旧索引当前含乱码，本轮通过此入口导航，未对旧文件做转码覆盖。
 
+
+## 2026-10-24 公开设备树线索审计
+
+发现同名公开项目 [2by2-Project-Devices/android_device_rakuten_p780ae](https://github.com/2by2-Project-Devices/android_device_rakuten_p780ae)，但固定提交审计表明它仍主要是 Xiaomi `veux` / Snapdragon 695 设备树的实验性改名移植。少量 P780 分区与 AVB 参数记为待验证线索；没有 P780 配套内核/vendor、构建产物或真机成功记录，不能作为 Root、解锁或可刷 ROM。见[专项审计](docs/research/public-p780ae-device-tree-audit-20261024.md)。

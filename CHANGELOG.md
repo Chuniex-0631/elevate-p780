@@ -1,3 +1,5 @@
+> 2026-10-24：审计新出现的公开 P780AE 设备树候选。固定提交含少量 P780/AVB 参数，但主体仍是 Xiaomi `veux` 实验性移植，无配套 P780 kernel/vendor、构建产物或真机成功记录；登记为待验证线索，不改变 Locked/无 Root/无写入通道结论。[详情](docs/research/public-p780ae-device-tree-audit-20261024.md)
+
 > 2026-10-20：核对两份 policy 原件哈希及 header；修正 running=0x1、disk=0x80000001 的旧文颠倒；新增独立 header 工具/结果及源码对照。SETools 语义比较因工具缺失仍 BLOCKED_TOOLING，未新增设备权限能力。 [详情](docs/research/p780-policy-header-verification-20261020.md)
 
 # �鵵ά����־

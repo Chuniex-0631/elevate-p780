@@ -18,7 +18,7 @@
 |DSU为何停止|[最终收束](research/p780-dsu-closure-maintenance-route-20261018.md)、[全部历史阶段索引](archive/dsu-index-20261018.md)|
 |固件/OTA证据|[固件概况](research/firmware-ota.md)、[Google Prober负面结果](research/google-ota-prober-p780-20261018.md)、[OTA日志分析](research/ota-log-audit.md)、[Bugreport来源](research/ota-bugreport.md)|
 |QAS/Mink/PFM/TEE|[调用链](research/qas-tee-pfm.md)、[系统APK与白名单](research/tee-system-apks.md)|
-|运行内核与候选源码|[GhostLock阻断项](research/ghostlock.md)、[Kconfig与布局](research/config-layout.md)、[官方源码联络](official-source-request-log.md)|
+、[公开同名设备树候选审计](research/public-p780ae-device-tree-audit-20261024.md)|运行内核与候选源码|[GhostLock阻断项](research/ghostlock.md)、[Kconfig与布局](research/config-layout.md)、[官方源码联络](official-source-request-log.md)|
 |Journey应用策略|[配置与消费者审计](research/journey-config.md)；与Journey init诊断命令区分|
 |历史精简操作|[应用实验](research/apps-and-debloat.md)；不是当前实验环境基线|
 
