@@ -46,7 +46,7 @@ DirtyFrag 的相关页面缓存原语依赖的是**文件支持页面进入 UDP 
 
 ## 5. 下一道低风险验证门
 
-下一道低风险验证门已实现为 **v0.3.0 纯 UDP、无 IPsec 的 file-backed sendfile 回环探针**（CI 构建成功，但尚未安装/运行）。它不是 DirtyFrag PoC：
+下一道低风险验证门已由 v0.3.0 完成实机检查：**纯 UDP、无 IPsec 的 file-backed sendfile 回环 PASS**。该检查不是 DirtyFrag PoC：
 
 - 在应用私有 cache 目录创建一份短暂测试文件。
 - 通过普通应用权限，用文件描述符向 `127.0.0.1` 的 UDP 接收 socket 发送一次数据。
