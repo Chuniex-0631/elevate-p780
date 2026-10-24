@@ -405,13 +405,13 @@ public final class MainActivity extends Activity {
         report.append("Scope: app-private temporary file -> 127.0.0.1 UDP; no IPsec/ESP.\n");
         if (!NATIVE_PROBE_AVAILABLE) {
             report.append("SKIPPED: native probe library unavailable: ")
-                    .append(NATIVE_PROBE_LOAD_ERROR).append('\\n');
+                    .append(NATIVE_PROBE_LOAD_ERROR).append('\n');
             return report.toString();
         }
         try {
             report.append(runFileBackedUdpProbe(getCacheDir().getAbsolutePath()));
         } catch (Exception e) {
-            report.append("Probe wrapper failed: ").append(describe(e)).append('\\n');
+            report.append("Probe wrapper failed: ").append(describe(e)).append('\n');
         }
         report.append("This is not an ESP/page-cache exploit test and does NOT establish DirtyFrag.\n");
         return report.toString();
