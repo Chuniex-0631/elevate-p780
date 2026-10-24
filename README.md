@@ -14,6 +14,7 @@
 |Journey / Qualcomm 接口|Journey debug 属性存在 shell 静态 allow；取得部分 JNI/HIDL 客户端库|未形成任意读写或提权链；关键 init/vendor 服务原件缺失|
 |原厂固件、EDL、源码|2026-10-19：QDL v2.8 经 QUD/COM6 成功查询 Sahara v2/HWID/PKHash；TINNO 旧源码及候选构建已归档|A 已进行早期 READ64 传输但无 Firehose；A–E 五文件签名归为3组，全部不匹配本机 PKHash；仍缺同型号可信原厂镜像|
 |GhostLock|配置、旧源码模式及候选布局已有分析|**BLOCKED**；不得把候选偏移当本机参数|
+|DirtyFrag / CVE-2026-43284|TINNO 5.4.61 与 A52s 5.4.233 候选源码均具备 UDP sendpage/page frags 与 ESP no-COW 的静态代码形态；实机配置和部分用户空间符号已核对|**UNDETERMINED**；未取得当前 P780 内核实现或动态原语证据，无 Root|
 
 ## 阅读入口
 
@@ -22,6 +23,8 @@
 - [文档导航](docs/README.md)：按问题索引所有专题，DSU 历史单独归类。
 - [证据资产清单](docs/EVIDENCE_MANIFEST.md)：区分 Git 原件、提取摘要、机主 PC 与会话材料。
 - [时间线](docs/HISTORY.md) · [本轮整理验收](docs/REPOSITORY_AUDIT.md) · [更新日志](CHANGELOG.md)。
+
+最新 DirtyFrag 阶段核对：[UDP sendpage / ESP 静态路径专题](docs/research/p780-dirtyfrag-udp-esp-source-audit-20261024.md)（仅公开源码；不证明 P780 可利用）。
 
 最新实机进展：[QDL QUD/Sahara 握手成功](docs/research/p780-qdl-qud-sahara-20261019.md)。最新分析：[native 接口交叉核对](docs/research/p780-native-interface-crosscheck-20261018.md)、[SELinux 边界](docs/research/p780-policy-boundary-audit-20261018.md)、[batch2](docs/research/p780-static-batch2-analysis-20261018.md)。核心证据：[AVB 硬件证明](docs/research/avb-attestation-confirmed-20261018.md)、[DSU 阶段收束](docs/research/p780-dsu-closure-maintenance-route-20261018.md)。
 
