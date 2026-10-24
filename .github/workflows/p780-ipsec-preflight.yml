@@ -26,8 +26,10 @@ jobs:
           gradle-version: '8.7'
       - name: Check preinstalled Android SDK and install API 35
         run: |
-          test -n "${ANDROID_HOME:-}"
-          sdkmanager --install "platforms;android-35" "build-tools;35.0.0"
+          test -d "${ANDROID_HOME:?GitHub runner Android SDK missing}"
+          sdkmanager_bin="$(find "$ANDROID_HOME/cmdline-tools" -maxdepth 4 -type f -name sdkmanager -print -quit)"
+          test -x "$sdkmanager_bin"
+          "$sdkmanager_bin" --install "platforms;android-35" "build-tools;35.0.0"
       - name: Build debug APK (no device execution)
         run: gradle -p tools/ipsec-preflight-android :app:assembleDebug --no-daemon
       - name: Save unsigned-for-release debug artifact
