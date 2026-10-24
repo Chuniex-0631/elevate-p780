@@ -46,14 +46,14 @@ DirtyFrag 的相关页面缓存原语依赖的是**文件支持页面进入 UDP 
 
 ## 5. 下一道低风险验证门
 
-若继续做手机侧诊断，建议先制作一个**纯 UDP、无 IPsec 的 file-backed sendfile 回环探针**，而不是直接运行 DirtyFrag：
+下一道低风险验证门已实现为 **v0.3.0 纯 UDP、无 IPsec 的 file-backed sendfile 回环探针**（CI 构建成功，但尚未安装/运行）。它不是 DirtyFrag PoC：
 
 - 在应用私有 cache 目录创建一份短暂测试文件。
 - 通过普通应用权限，用文件描述符向 `127.0.0.1` 的 UDP 接收 socket 发送一次数据。
 - 接收端比较完整数据；发送前后校验文件内容/哈希相同。
 - 关闭 socket、删除临时文件；失败时记录 errno，不重试喷射、不构造 ESP、不访问系统文件。
 
-该探针只用于检查普通应用是否能把文件支持的数据送入 UDP socket 的 sendpage/splice 路径。**PASS 仍不等于共享页进入 ESP 解密，更不等于 DirtyFrag 可利用；FAIL 也可能只是 Android/内核 API 限制。** 构建可以先在 CI 完成，安装和运行前须再次由机主明确确认。
+该探针只用于检查普通应用是否能把文件支持的数据通过 sendfile 送入 UDP loopback；Linux 实现可能使用 splice/sendpage 路径，但没有内核 trace。**PASS 仍不等于共享页进入 ESP 解密，更不等于 DirtyFrag 可利用；FAIL 也可能只是 Android/内核 API 限制。** 见 [v0.3 构建与设备执行边界](p780-dirtyfrag-v03-sendfile-probe-20261024.md)。运行前须由机主明确确认。
 
 ## 6. 停止边界
 

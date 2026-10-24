@@ -1,11 +1,12 @@
-## 2026-10-24 下一步（最新计划，优先于下方历史计划）
+## 2026-10-24 下一步（最新计划）
 
-1. **不重复 v0.2。** 已确认普通 UDP/ESP loopback PASS，且测试后服务资源计数为 0。
-2. 下一项低风险任务：评估并准备 v0.3 **纯 UDP file-backed sendfile 回环探针**，只使用应用私有临时文件和 `127.0.0.1`，不启用 IPsec、不构造 ESP、不修改文件页面、不加载模块。
-3. 该探针仅回答普通应用能否通过文件描述符向 UDP socket 发送文件支持的数据；PASS 仍不证明 DirtyFrag，FAIL 也不排除漏洞。先完成源码审核与 CI 构建，再由机主单独确认是否安装/运行。
-4. 在缺少可信 `_162` recovery image 与 running kernel 源码身份前，不运行通用 DirtyFrag/DFRoot payload，不做页面缓存写入或提权尝试。
+1. v0.2 已完成；不要重复运行普通 UDP/ESP loopback。
+2. v0.3.0 APK 已由 CI 成功构建，加入纯 UDP file-backed sendfile 回环检查；目前**未安装、未在 P780 上运行**。
+3. 下一步先由机主确认是否安装并单独运行 v0.3 第 4 项。若同意，使用应用私有 1 KiB 临时文件和 127.0.0.1；不启用 IPsec，不构造 ESP，不修改系统文件，不做 Root。
+4. 无论 PASS/FAIL，都只记录 sendfile-to-UDP 路径结果，不将其升级为 DirtyFrag 漏洞结论。仍缺 running kernel 的可信源码身份和共享页 ESP 解密原语证据；不运行通用 DirtyFrag/DFRoot payload。
 
-详见 [v0.2 回环证据与下一道安全门](research/p780-dirtyfrag-v02-path-interpretation-20261024.md)。
+详见 [v0.3 sendfile 预检报告](research/p780-dirtyfrag-v03-sendfile-probe-20261024.md)。
+
 
 > 2026-10-20 GAP-01：header 原件核验已完成，正文方向已纠正；独立 SETools 语义复核仍 BLOCKED_TOOLING（当前无可用 WSL/SETools）。只在工具环境就绪后比较既有原件，不重复采集或归一化输入冒充通过。 [详情](research/p780-policy-header-verification-20261020.md)
 

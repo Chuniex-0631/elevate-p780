@@ -26,9 +26,9 @@
 
 原厂源码与固件查找：[2026-10-24 公开搜索与 TINNO 邮件头核对](docs/research/p780-source-availability-followup-20261024.md)（仍无可信 `_162` 镜像或对应源码）。
 
-最新 DirtyFrag 阶段核对：[UDP sendpage / ESP 静态路径专题](docs/research/p780-dirtyfrag-udp-esp-source-audit-20261024.md) · [IPsec v0.2 回环证据与下一道安全门](docs/research/p780-dirtyfrag-v02-path-interpretation-20261024.md) · [v0.2 实机回环结果](docs/research/p780-ipsec-v0.2-live-loopback-20261024.md) · [内核版本后缀核验](docs/research/p780-ipsec-preflight-live-and-localversion-20261024.md)。v0.2 的正常 ESP 回环 PASS 不证明 DirtyFrag 可利用。
+最新 DirtyFrag 阶段核对：[UDP sendpage / ESP 静态路径专题](docs/research/p780-dirtyfrag-udp-esp-source-audit-20261024.md) · [v0.2 回环证据分析](docs/research/p780-dirtyfrag-v02-path-interpretation-20261024.md) · [v0.2 实机回环结果](docs/research/p780-ipsec-v0.2-live-loopback-20261024.md) · [v0.3 sendfile 预检（已构建、未实机运行）](docs/research/p780-dirtyfrag-v03-sendfile-probe-20261024.md) · [内核版本后缀核验](docs/research/p780-ipsec-preflight-live-and-localversion-20261024.md)。v0.2 的正常 ESP 回环 PASS 不证明 DirtyFrag 可利用。
 
-Android 11 IPsec 诊断工具 v0.2.0：[源码与操作说明](tools/ipsec-preflight-android/README.md) · [v0.2 构建记录](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40077884020) · [实机回环结果](docs/research/p780-ipsec-v0.2-live-loopback-20261024.md)。**实机只读、资源分配与普通 UDP/ESP 回环均 PASS；dumpsys 记录的资源计数为 0。仍未测试文件支持 UDP sendpage/共享页 ESP 解密，也未证明 DirtyFrag。**
+Android 11 IPsec/UDP 诊断工具 v0.3.0：[源码与操作说明](tools/ipsec-preflight-android/README.md) · [v0.3 APK 构建记录](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40080355011) · [v0.2 实机结果](docs/research/p780-ipsec-v0.2-live-loopback-20261024.md) · [v0.3 sendfile 预检状态](docs/research/p780-dirtyfrag-v03-sendfile-probe-20261024.md)。**v0.2 实机检查全部 PASS；v0.3 仅构建成功，尚未在手机运行。即使 v0.3 PASS，也只证明普通 file-backed sendfile-to-UDP loopback，不证明 DirtyFrag。**
 
 最新实机进展：[QDL QUD/Sahara 握手成功](docs/research/p780-qdl-qud-sahara-20261019.md)。最新分析：[native 接口交叉核对](docs/research/p780-native-interface-crosscheck-20261018.md)、[SELinux 边界](docs/research/p780-policy-boundary-audit-20261018.md)、[batch2](docs/research/p780-static-batch2-analysis-20261018.md)。核心证据：[AVB 硬件证明](docs/research/avb-attestation-confirmed-20261018.md)、[DSU 阶段收束](docs/research/p780-dsu-closure-maintenance-route-20261018.md)。
 

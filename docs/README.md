@@ -17,7 +17,7 @@
 |AVB信任钥匙|[本机硬件证明](research/avb-attestation-confirmed-20261018.md)、[fstab](research/p780-fstab-avb-20261018.md)、[官方公告与第三方报告](research/firmware-advisory-20260928.md)、[早期Attestation方案（已完成）](research/avb-attestation-alternative-20261018.md)|
 |DSU为何停止|[最终收束](research/p780-dsu-closure-maintenance-route-20261018.md)、[全部历史阶段索引](archive/dsu-index-20261018.md)|
 |固件/OTA证据|[固件概况](research/firmware-ota.md)、[2026-10-24 原厂工件检索复核](research/p780-source-availability-followup-20261024.md)、[Google Prober负面结果](research/google-ota-prober-p780-20261018.md)、[OTA日志分析](research/ota-log-audit.md)、[Bugreport来源](research/ota-bugreport.md)|
-|DirtyFrag / ESP 页面缓存路径|[UDP sendpage / ESP 静态审计](research/p780-dirtyfrag-udp-esp-source-audit-20261024.md)、[v0.2 回环证据与下一道安全门](research/p780-dirtyfrag-v02-path-interpretation-20261024.md)、[v0.2 实机结果](research/p780-ipsec-v0.2-live-loopback-20261024.md)|
+|DirtyFrag / ESP 页面缓存路径|[UDP sendpage / ESP 静态审计](research/p780-dirtyfrag-udp-esp-source-audit-20261024.md)、[v0.2 回环证据分析](research/p780-dirtyfrag-v02-path-interpretation-20261024.md)、[v0.2 实机结果](research/p780-ipsec-v0.2-live-loopback-20261024.md)、[v0.3 file-backed sendfile 预检（构建成功，未实机运行）](research/p780-dirtyfrag-v03-sendfile-probe-20261024.md)|
 |QAS/Mink/PFM/TEE|[调用链](research/qas-tee-pfm.md)、[系统APK与白名单](research/tee-system-apks.md)|
 |运行内核与候选源码|[GhostLock阻断项](research/ghostlock.md)、[Kconfig与布局](research/config-layout.md)、[官方源码联络](official-source-request-log.md)、[公开同名设备树候选审计](research/public-p780ae-device-tree-audit-20261024.md)|
 |Journey应用策略|[配置与消费者审计](research/journey-config.md)；与Journey init诊断命令区分|
