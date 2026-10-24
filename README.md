@@ -24,6 +24,8 @@
 - [证据资产清单](docs/EVIDENCE_MANIFEST.md)：区分 Git 原件、提取摘要、机主 PC 与会话材料。
 - [时间线](docs/HISTORY.md) · [本轮整理验收](docs/REPOSITORY_AUDIT.md) · [更新日志](CHANGELOG.md)。
 
+原厂源码与固件查找：[2026-10-24 公开搜索与 TINNO 邮件头核对](docs/research/p780-source-availability-followup-20261024.md)（仍无可信 `_162` 镜像或对应源码）。
+
 最新 DirtyFrag 阶段核对：[UDP sendpage / ESP 静态路径专题](docs/research/p780-dirtyfrag-udp-esp-source-audit-20261024.md) · [IPsec 实机资源 PASS 与内核版本哈希核验](docs/research/p780-ipsec-preflight-live-and-localversion-20261024.md)（均不证明 P780 可利用）。
 
 Android 11 IPsec 安全预检：[源代码与操作说明](tools/ipsec-preflight-android/README.md) · [APK 构建记录（成功）](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40068867263)。**实机两项检查均已回传 PASS（含 SPI/UDP/Transform 创建与释放）；仅证明公开 API 资源可用，不是 DirtyFrag 成功证据。**

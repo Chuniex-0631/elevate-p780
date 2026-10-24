@@ -16,7 +16,7 @@
 |硬件与启动状态|[设备/Fastboot/EDL](research/device-and-boot.md)、[QDL QUD/Sahara 实机握手](research/p780-qdl-qud-sahara-20261019.md)、[AVB基线](research/avb-live-baseline-20261018.md)|
 |AVB信任钥匙|[本机硬件证明](research/avb-attestation-confirmed-20261018.md)、[fstab](research/p780-fstab-avb-20261018.md)、[官方公告与第三方报告](research/firmware-advisory-20260928.md)、[早期Attestation方案（已完成）](research/avb-attestation-alternative-20261018.md)|
 |DSU为何停止|[最终收束](research/p780-dsu-closure-maintenance-route-20261018.md)、[全部历史阶段索引](archive/dsu-index-20261018.md)|
-|固件/OTA证据|[固件概况](research/firmware-ota.md)、[Google Prober负面结果](research/google-ota-prober-p780-20261018.md)、[OTA日志分析](research/ota-log-audit.md)、[Bugreport来源](research/ota-bugreport.md)|
+|固件/OTA证据|[固件概况](research/firmware-ota.md)、[2026-10-24 原厂工件检索复核](research/p780-source-availability-followup-20261024.md)、[Google Prober负面结果](research/google-ota-prober-p780-20261018.md)、[OTA日志分析](research/ota-log-audit.md)、[Bugreport来源](research/ota-bugreport.md)|
 |QAS/Mink/PFM/TEE|[调用链](research/qas-tee-pfm.md)、[系统APK与白名单](research/tee-system-apks.md)|
 |运行内核与候选源码|[GhostLock阻断项](research/ghostlock.md)、[Kconfig与布局](research/config-layout.md)、[官方源码联络](official-source-request-log.md)、[公开同名设备树候选审计](research/public-p780ae-device-tree-audit-20261024.md)|
 |Journey应用策略|[配置与消费者审计](research/journey-config.md)；与Journey init诊断命令区分|
