@@ -1,8 +1,8 @@
 ## 2026-10-24：IPsec/UDP v0.3 构建证据（未实机运行）
 
 - 源码与构建工作流：`tools/ipsec-preflight-android/` 与 `.github/workflows/p780-ipsec-preflight.yml`；版本 `0.3.0`。
-- APK 构建：[run 40080355011](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40080355011)，artifact ID `12555017495`，ZIP digest `sha256:0bcde8fcedc4a334026126c98f3a983f5f6c5d90d45abf49ec75005603695f6b`。
-- 仓库审计：[run 40080355002](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40080355002)，success。
+- APK 构建：[run 40081265263](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40080355011)，artifact ID `12555411610`，ZIP digest `sha256:5cb93cc46acddaa3ed9be17381784b0974da61e044bcd1bf620e8f66ef5c0ea7`。
+- 仓库审计：[run 40081265231](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40080355002)，success。
 - 新增 native 诊断只通过一次 `sendfile()` 将应用私有临时文件发送到 `127.0.0.1` UDP socket，接收后比对，并验证源文件内容未变化后删除。
 - **此记录仅为源码与 CI 构建证据。v0.3 尚未安装/运行；没有 v0.3 设备输出。** 不得将 v0.2 的 PASS 复制为 v0.3 结果。
 - 解释与限制见 [v0.3 预检报告](research/p780-dirtyfrag-v03-sendfile-probe-20261024.md)。

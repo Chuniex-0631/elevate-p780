@@ -6,9 +6,9 @@
 ## 构建证据
 
 - 功能提交：[ed24451](https://github.com/Chuniex-0631/p780-kernel-research/commit/ed24451a1be8927566bbbe77e0960b28747a97bb)；Java 转义修正：[601b2ca](https://github.com/Chuniex-0631/p780-kernel-research/commit/601b2ca5a5123ce926895d06cf05bde7edb541e5)。
-- APK 构建：[Actions run 40080355011](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40080355011)，success。
-- Artifact：`p780-ipsec-preflight-debug-apk`，ID `12555017495`，ZIP digest `sha256:0bcde8fcedc4a334026126c98f3a983f5f6c5d90d45abf49ec75005603695f6b`。
-- 仓库完整性审计：[run 40080355002](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40080355002)，success。
+- APK 构建：[Actions run 40081265263](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40080355011)，success。
+- Artifact：`p780-ipsec-preflight-debug-apk`，ID `12555411610`，ZIP digest `sha256:5cb93cc46acddaa3ed9be17381784b0974da61e044bcd1bf620e8f66ef5c0ea7`。
+- 仓库完整性审计：[run 40081265231](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40080355002)，success。
 
 CI 只编译并上传 APK，没有连接或运行 P780。**v0.3 当前没有设备端结果**；不得把 v0.2 的 PASS 复制成 v0.3 结果。
 

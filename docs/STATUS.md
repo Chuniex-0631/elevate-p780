@@ -2,7 +2,7 @@
 
 - v0.2 的普通 UDP/ESP transport loopback 已在 P780 实机 PASS，相关服务资源计数随后归零。
 - v0.3.0 新增纯 UDP file-backed sendfile 回环探针：1 KiB 应用私有临时文件、一次 sendfile、127.0.0.1 接收/比对、检查源文件前后字节一致并删除临时文件；不启用 IPsec，不构造 ESP；不尝试利用式页面缓存操作。
-- APK 构建成功：[Actions run 40080355011](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40080355011)；完整性审计成功：[run 40080355002](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40080355002)。
+- APK 构建成功：[Actions run 40081265263](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40080355011)；完整性审计成功：[run 40081265231](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40080355002)。
 - **v0.3 尚未安装或在设备上执行**。执行第 4 项前需机主明确确认；PASS 也只说明普通 file-backed sendfile-to-UDP loopback，不证明 DirtyFrag。
 - 当前仍为 **DirtyFrag UNDETERMINED / 无 Root / Bootloader Locked**。详见 [v0.3 预检报告](research/p780-dirtyfrag-v03-sendfile-probe-20261024.md)。
 
