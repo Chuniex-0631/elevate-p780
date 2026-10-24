@@ -27,17 +27,35 @@ import java.util.Arrays;
  * datagram to 127.0.0.1. It never constructs raw ESP or malformed/fragmented traffic.
  */
 public final class MainActivity extends Activity {
+    private static final boolean NATIVE_PROBE_AVAILABLE;
+    private static final String NATIVE_PROBE_LOAD_ERROR;
+
+    static {
+        boolean loaded;
+        String error;
+        try {
+            System.loadLibrary("sendfile_probe");
+            loaded = true;
+            error = "";
+        } catch (UnsatisfiedLinkError e) {
+            loaded = false;
+            error = e.toString();
+        }
+        NATIVE_PROBE_AVAILABLE = loaded;
+        NATIVE_PROBE_LOAD_ERROR = error;
+    }
     private static final byte[] TEST_REMOTE = {(byte) 198, 51, 100, 1};
     private static final byte[] TEST_LOCAL = {127, 0, 0, 1};
     private static final int LOOPBACK_TIMEOUT_MILLIS = 2000;
     private static final byte[] PLAIN_LOOPBACK_PAYLOAD =
-            "P780 plain UDP loopback v0.2".getBytes(StandardCharsets.UTF_8);
+            "P780 plain UDP loopback v0.3".getBytes(StandardCharsets.UTF_8);
     private static final byte[] IPSEC_LOOPBACK_PAYLOAD =
-            "P780 public API IPsec loopback v0.2".getBytes(StandardCharsets.UTF_8);
+            "P780 public API IPsec loopback v0.3".getBytes(StandardCharsets.UTF_8);
 
     private Button inspectButton;
     private Button resourceButton;
     private Button loopbackButton;
+    private Button fileBackedUdpButton;
     private TextView outputView;
 
     @Override
@@ -54,8 +72,8 @@ public final class MainActivity extends Activity {
         root.addView(title);
 
         TextView warning = new TextView(this);
-        warning.setText("仅使用普通应用公开 API。第 3 项会向 127.0.0.1 各发送 1 个普通 UDP 与受 IPsec 保护的数据报。\n"
-                + "不访问外网，不构造原始/畸形/分片 ESP，不修改文件、页面缓存或系统状态，不尝试 DirtyFrag/Root。");
+        warning.setText("仅使用普通应用权限。第 3 项向 127.0.0.1 各发送 1 个普通 UDP 与受 IPsec 保护的数据报。第 4 项从应用私有临时文件向本机 UDP socket 调用一次 sendfile，不启用 IPsec。\n"
+                + "不访问外网，不构造原始/畸形/分片 ESP，不修改系统文件或页面缓存，不尝试 DirtyFrag/Root。");
         warning.setPadding(0, 12, 0, 12);
         root.addView(warning);
 
@@ -73,6 +91,11 @@ public final class MainActivity extends Activity {
         loopbackButton.setText("3. 普通 UDP/ESP 回环诊断（本机，各 1 包）");
         loopbackButton.setOnClickListener(v -> execute(Probe.LOOPBACK));
         root.addView(loopbackButton);
+
+        fileBackedUdpButton = new Button(this);
+        fileBackedUdpButton.setText("4. 文件支持 UDP sendfile 回环（纯 UDP）");
+        fileBackedUdpButton.setOnClickListener(v -> execute(Probe.FILEBACKED_UDP));
+        root.addView(fileBackedUdpButton);
 
         Button copyButton = new Button(this);
         copyButton.setText("复制当前结果");
@@ -100,7 +123,8 @@ public final class MainActivity extends Activity {
     private enum Probe {
         READ_ONLY,
         RESOURCES,
-        LOOPBACK
+        LOOPBACK,
+        FILEBACKED_UDP
     }
 
     private void execute(Probe probe) {
@@ -113,6 +137,8 @@ public final class MainActivity extends Activity {
                     result = resourceProbe();
                 } else if (probe == Probe.LOOPBACK) {
                     result = loopbackProbe();
+                } else if (probe == Probe.FILEBACKED_UDP) {
+                    result = fileBackedUdpProbe();
                 } else {
                     result = readOnlyProbe();
                 }
@@ -131,11 +157,12 @@ public final class MainActivity extends Activity {
         inspectButton.setEnabled(enabled);
         resourceButton.setEnabled(enabled);
         loopbackButton.setEnabled(enabled);
+        fileBackedUdpButton.setEnabled(enabled);
     }
 
     private String readOnlyProbe() {
         StringBuilder report = new StringBuilder();
-        report.append("P780 IPsec diagnostics 0.2.0\n");
+        report.append("P780 IPsec / UDP diagnostics 0.3.0\n");
         report.append("Android API: ").append(Build.VERSION.SDK_INT).append('\n');
         report.append("Device model: ").append(Build.MODEL).append('\n');
         report.append("Kernel version: ")
@@ -371,6 +398,26 @@ public final class MainActivity extends Activity {
         report.append("PASS confirms ordinary API loopback only, NOT DirtyFrag or root access.");
         return report.toString();
     }
+
+    private String fileBackedUdpProbe() {
+        StringBuilder report = new StringBuilder(readOnlyProbe());
+        report.append("\n\nFILE-BACKED UDP SENDFILE LOOPBACK (user-initiated)\n");
+        report.append("Scope: app-private temporary file -> 127.0.0.1 UDP; no IPsec/ESP.\n");
+        if (!NATIVE_PROBE_AVAILABLE) {
+            report.append("SKIPPED: native probe library unavailable: ")
+                    .append(NATIVE_PROBE_LOAD_ERROR).append('\\n');
+            return report.toString();
+        }
+        try {
+            report.append(runFileBackedUdpProbe(getCacheDir().getAbsolutePath()));
+        } catch (Exception e) {
+            report.append("Probe wrapper failed: ").append(describe(e)).append('\\n');
+        }
+        report.append("This is not an ESP/page-cache exploit test and does NOT establish DirtyFrag.\n");
+        return report.toString();
+    }
+
+    private native String runFileBackedUdpProbe(String cacheDirPath);
 
     private static void sendAndVerifyLoopback(
             DatagramSocket socket, InetAddress loopback, byte[] payload) throws Exception {
