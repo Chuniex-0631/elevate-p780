@@ -3,6 +3,7 @@
 > 此时间线只记录能从已保存报告、文件元数据、终端片段或 GitHub Actions 回溯的事项。若仅有摘要而无原始日志，会明确写“历史记录”。日期统一按相关报告日期，不杜撰精确小时。
 
 | 日期 | 阶段与资料 | 实际结果 |
+| **2026-10-24** | IPsec diagnostics v0.2.0 实机回环 | 普通 UDP 与一个 UDP-encapsulated ESP transport 数据报均在 127.0.0.1 PASS；测试后 dumpsys ipsec 相关资源计数为 0。仅证明正常 API 回环，不证明 DirtyFrag；见 [实机报告](research/p780-ipsec-v0.2-live-loopback-20261024.md) 与 [路径覆盖分析](research/p780-dirtyfrag-v02-path-interpretation-20261024.md)。 |
 |---|---|---|
 | **2026-06-12** | 最早保存的 P780 EDL / Sahara / Fastboot 资料；`Rakuten_Hand_5G_P780_EDL_重要数据.txt` | 提取固件号、fastboot locked、unlock 指令返回 unknown command、EDL 05C6:9008 / Sahara v2 / HWID；Firehose 不通 |
 | **2026-10-03 ～ 10-04** | ADB `getprop`、`fastboot getvar all`、`by-name`、`mount`、`df`、`lshal`、包清单；未联网/恢复出厂环境下的部分清理 | OEM unlocking 灰色；固件 264 / 安全补丁 2024-02-01；A/B UFS 分区事实归档 |

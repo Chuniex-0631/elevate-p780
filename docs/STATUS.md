@@ -1,3 +1,11 @@
+## 2026-10-24 最新增量：DirtyFrag / IPsec v0.2
+
+- v0.2.0 已在 P780（Android API 30 / kernel 5.4.233-qgki）实机完成三项检查：只读环境、临时资源分配、普通 UDP/ESP transport 回环均 PASS。
+- 回环阶段完成一个普通 UDP 数据报和一个经 Android 公共 IPsec API 保护的数据报的本机发送/接收与字节比对；之后非提权 `dumpsys ipsec` 显示相关 SPI/Transform/Socket/Tunnel 计数为 0。
+- 这比 API 资源创建更进一步，支持正常 ESP transport 数据路径可用；但 v0.2 使用 Java `DatagramPacket`，没有文件支持的 `sendfile/splice`、没有 DirtyFrag 页面缓存写入原语，也没有内核 trace。
+- TINNO 5.4.61 与其他厂商 5.4.233 候选代码仅为参考，不是本机 running source。**DirtyFrag 仍 UNDETERMINED；无 Root；Bootloader Locked。**
+- 详见 [v0.2 实机结果](research/p780-ipsec-v0.2-live-loopback-20261024.md) 与 [路径覆盖分析](research/p780-dirtyfrag-v02-path-interpretation-20261024.md)。
+
 > 2026-10-20 GAP-01 补证：两份原件哈希核对通过；running config=0x1，disk=0x80000001，纠正旧专题两端写反。独立 SETools 语义复核 BLOCKED_TOOLING；有限记录一致不升级为完全等价。 [详情](research/p780-policy-header-verification-20261020.md)
 
 # ��ǰ�о�״̬

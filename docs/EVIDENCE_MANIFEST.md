@@ -1,3 +1,11 @@
+## 2026-10-24：IPsec v0.2 实机回环证据登记
+
+- 源码：`tools/ipsec-preflight-android/`，功能提交 `1bf4848b3571b20f07704f3d755091335d490ed5`。
+- 构建：GitHub Actions run [40077884020](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40077884020)，artifact `p780-ipsec-preflight-debug-apk`（ID `12554320232`）。
+- 实机记录：`docs/research/p780-ipsec-v0.2-live-loopback-20261024.md`，包含机主环境结果、资源创建/释放、UDP/ESP loopback PASS 及非提权 `dumpsys ipsec` 结果。
+- 分析：`docs/research/p780-dirtyfrag-v02-path-interpretation-20261024.md`。v0.2 证明正常公开 API 保护回环，不证明文件支持 UDP sendpage、共享页 ESP 解密、DirtyFrag 或 Root。
+- 证据来源是仓库源码/CI 元数据及实机报告记录；设备 UI 输出由机主提供，`dumpsys` 由普通 shell 读取。没有 Root、内核 trace 或分区写入证据。
+
 > 2026-10-20：新增 evidence/gaps/20261020/header-verification.json 与 tools/gaps/verify_policy_header.py；原件哈希匹配，header 直接重读。原始两份 policy 继续留 PC，未上传。 [详情](research/p780-policy-header-verification-20261020.md)
 
 # ֤���ʲ��뱣��״̬
