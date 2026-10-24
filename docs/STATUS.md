@@ -1,4 +1,4 @@
-> 2026-10-25：perf v0.1.0 用户态计数探测工具已交付，P780 实测待提供；8项宿主模拟测试不是设备证据。内核/寄存器采样仍未测试，无 Root/解锁能力变化。 [报告](research/p780-perf-permission-probe-20261025.md)
+> 2026-10-25 实测更新：机主提交perf v0.1.0实机日志：UID2000、5.4.233-qgki，自身线程用户态软件计数USER_COUNT_PASS（约200.5ms），临时程序清理exit=0。内核/寄存器采样未测试，GhostLock仍UNDETERMINED，无Root/解锁进展。 [报告](research/p780-perf-v010-live-result-20261025.md)
 
 ## 2026-10-24 最新增量：v0.3 实机 PASS 与 TINNO 5.4.61 源码审计
 

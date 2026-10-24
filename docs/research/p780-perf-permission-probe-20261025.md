@@ -1,6 +1,6 @@
 # P780 perf permission v0.1.0（2026-10-25）
 
-状态：**工具已构建；P780 实机结果待提供。** 不把宿主模拟通过写成设备 perf 可用。
+状态更新：**机主已提供 P780 v0.1.0 用户态计数实机 PASS 日志**，见[结果报告](p780-perf-v010-live-result-20261025.md)。下文保留工具交付阶段的范围和验证记录；内核/寄存器采样仍未测试。
 
 ## 背景与范围
 
@@ -25,6 +25,6 @@ GCC 13.3.0 ARM64 静态构建通过 -Wall/-Wextra/-Werror；ELF 无 PT_INTERP，
 - OPEN_DENIED：记录 EACCES/EPERM 后停止；不把错误直接归因于 SELinux，不更改限制或换身份重试。
 - OPEN_ERROR / CONTROL_ERROR / READ_ERROR / CLOSE_ERROR / 零计数：按原始阶段保存，不能记为完整可用。
 - WRONG_CONTEXT / RUNNER_ERROR：先保留日志，未证明普通 ADB shell 的 perf 可用性。
-- 下一步等待一次完整设备日志；不重复已完成的 IPsec/UDP/sendfile 测试，也不运行 GhostLock/DirtyFrag payload。匹配内核 Image/源码、漏洞修复与布局证据缺口保持不变。
+- 本项已收到完整设备日志，不重复本轮计数检查；不重复已完成的 IPsec/UDP/sendfile 测试，也不运行 GhostLock/DirtyFrag payload。匹配内核 Image/源码、漏洞修复与布局证据缺口保持不变。
 
 接口依据：[perf_event_open(2)](https://man7.org/linux/man-pages/man2/perf_event_open.2.html)。

@@ -1,0 +1,23 @@
+{
+  "source": "owner-supplied attachment; not assistant-operated device",
+  "original_name": "P780-perf-permission-20261025-030532.log",
+  "original_sha256": "88fe054056f7f0a75dccb1a990e352bc7f7142130f70ecdfc5a070c75b08e4d9",
+  "original_size": 1411,
+  "local_started": "2026-10-25T03:05:32.2261227+08:00",
+  "uid": 2000,
+  "euid": 2000,
+  "machine": "aarch64",
+  "kernel": "5.4.233-qgki-gea5245e94afe-dirty",
+  "event": "PERF_COUNT_SW_CPU_CLOCK",
+  "scope": "self-thread user-only counting",
+  "counter_ns": 200523699,
+  "time_enabled_ns": 200533596,
+  "time_running_ns": 200533596,
+  "result": "USER_COUNT_PASS",
+  "probe_exit": 0,
+  "cleanup_adb_exit": 0,
+  "kernel_sampling": "UNTESTED",
+  "register_sampling": "UNTESTED",
+  "GhostLock": "UNDETERMINED",
+  "sanitization": "local PC pack path replaced; CRLF normalized; original attachment not byte-preserved in Git"
+}

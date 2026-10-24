@@ -1,4 +1,4 @@
-> 2026-10-25：新增 tools/perf-permission/ 源码、运行脚本和宿主验证说明；没有 P780 perf 日志。交付静态 ELF 的摘要见报告，二进制不入 Git。 [报告](research/p780-perf-permission-probe-20261025.md)
+> 2026-10-25 实测更新：新增机主perf日志的路径脱敏副本、结构化提取与原附件哈希；UID2000用户态软件计数PASS，内核/寄存器采样未测试。 [报告](research/p780-perf-v010-live-result-20261025.md)
 
 ## 2026-10-24：v0.3 实机结果与 TINNO 5.4.61 静态审计
 

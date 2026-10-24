@@ -1,0 +1,41 @@
+P780 perf permission probe runner 0.1.0
+started_local=2026-10-25T03:05:32.2261227+08:00
+One authorized ADB device required. No root, sampling, reboot or settings changes.
+STEP 1: Check authorized device (no device-list or serial collection).
+device
+adb_exit=0
+STEP 2: Push this probe only.
+<LOCAL_PACK_DIR>/p780-perf-permission-arm64: 1 file pushed, 0 skipped. 99.9 MB/s (635656 bytes in 0.006s)
+adb_exit=0
+adb_exit=0
+STEP 3: Run once in ordinary ADB shell.
+P780 perf permission probe 0.1.0
+scope=self-thread user-only software CPU clock counting
+sampling=off
+kernel_addresses=not_collected
+privilege_changes=none
+NOT a vulnerability test; NOT root; NOT a GhostLock compatibility test.
+uid=2000
+euid=2000
+machine=aarch64
+kernel=5.4.233-qgki-gea5245e94afe-dirty
+event=PERF_COUNT_SW_CPU_CLOCK
+pid_argument=0
+cpu_argument=-1
+attr_size=64
+open=PASS
+close=PASS
+counter_ns=200523699
+time_enabled_ns=200533596
+time_running_ns=200533596
+result=USER_COUNT_PASS
+meaning=self-thread user-only counting worked for this run
+kernel_sampling=UNTESTED
+register_sampling=UNTESTED
+GhostLock=UNDETERMINED
+adb_exit=0
+probe_adb_exit=0
+Return the complete log. Nonzero exit is diagnostic evidence; do not rerun or change permissions.
+STEP 4: Remove only the fixed probe path.
+adb_exit=0
+finished_local=2026-10-25T03:05:32.9425316+08:00
