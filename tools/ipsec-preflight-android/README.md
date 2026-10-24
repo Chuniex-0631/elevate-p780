@@ -1,6 +1,6 @@
 # P780 / Android 11 IPsec preflight (non-exploit)
 
-Status: source-level diagnostic only; no device test has been performed.
+Status: built successfully and both buttons returned PASS on the owner's P780 on 2026-10-24; owner-provided app text only, not an independently verified ADB trace. See [live results and kernel suffix provenance](../../docs/research/p780-ipsec-preflight-live-and-localversion-20261024.md).
 
 This is a small standalone Android app aimed at the Rakuten P780 Android 11 release build (API 30). It distinguishes the ability of an ordinary application to obtain public IPsec resources from any inference about a kernel vulnerability.
 
