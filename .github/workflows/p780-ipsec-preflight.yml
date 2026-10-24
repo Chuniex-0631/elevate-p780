@@ -21,12 +21,13 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - uses: android-actions/setup-android@v3
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.7'
-      - name: Install Android SDK Platform 35
-        run: sdkmanager --install "platforms;android-35" "build-tools;35.0.0"
+      - name: Check preinstalled Android SDK and install API 35
+        run: |
+          test -n "${ANDROID_HOME:-}"
+          sdkmanager --install "platforms;android-35" "build-tools;35.0.0"
       - name: Build debug APK (no device execution)
         run: gradle -p tools/ipsec-preflight-android :app:assembleDebug --no-daemon
       - name: Save unsigned-for-release debug artifact
