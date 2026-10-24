@@ -1,3 +1,5 @@
+> 2026-10-25：新增 tools/perf-permission/ 源码、运行脚本和宿主验证说明；没有 P780 perf 日志。交付静态 ELF 的摘要见报告，二进制不入 Git。 [报告](research/p780-perf-permission-probe-20261025.md)
+
 ## 2026-10-24：v0.3 实机结果与 TINNO 5.4.61 静态审计
 
 - v0.3 设备输出由机主在对话中回传；Android API 30，P780，内核字符串 `5.4.233-qgki-gea5245e94afe-dirty`。

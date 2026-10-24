@@ -1,3 +1,5 @@
+> 2026-10-25：新增 perf v0.1.0 最小权限探测交付：ARM64静态构建和8项宿主模拟通过；待机主提供设备日志。无采样、地址输出、内核写入或利用执行。 [报告](docs/research/p780-perf-permission-probe-20261025.md)
+
 > 2026-10-24：v0.3 实机 PASS：P780 API 30 / 5.4.233 报告中，应用私有 1024 字节文件经一次 sendfile 发送到 127.0.0.1 IPv4 UDP，接收内容匹配、源文件前后内容一致、临时文件删除；无 IPsec/ESP，无利用式页面缓存操作。另审计 TINNO P780 固定提交 20c26c7658cb5273cc71b10c3704b445b0efbe6b：发现旧式 IPv4 UDP sendpage 与 ESP no-COW 的相关静态形态。它是候选代码证据，不等于 P780 5.4.233 源码身份或 DirtyFrag 可利用性证明。详见 [v0.3 实机报告](docs/research/p780-dirtyfrag-v03-sendfile-probe-20261024.md) · [TINNO 5.4.61 源码审计](docs/research/p780-dirtyfrag-tinno-5.4.61-source-audit-20261024.md)。
 
 > 2026-10-24：准备 IPsec/UDP diagnostics v0.3.0 file-backed sendfile 预检；CI APK 构建与仓库审计均成功。该探针仅将应用私有临时文件经一次 sendfile 发送至 127.0.0.1 UDP，校验接收字节及源文件完整性；不启用 IPsec/ESP，且尚未实机运行。需机主另行确认设备执行。[v0.3 报告](docs/research/p780-dirtyfrag-v03-sendfile-probe-20261024.md)

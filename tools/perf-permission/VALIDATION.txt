@@ -1,0 +1,29 @@
+P780 perf permission probe 0.1.0
+Prepared date: 2026-10-25 Asia/Shanghai
+
+Build:
+  AArch64 GCC 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1cross1)
+  ARM64 glibc static libraries 2.39-0ubuntu8cross1
+  -O2 -Wall -Wextra -Werror -static -Wl,--build-id=none
+  Cross-compilation completed without warnings/errors.
+  readelf: ELF64 little-endian AArch64 EXEC, no PT_INTERP, non-executable GNU_STACK.
+  The toolchain was extracted into the build workspace, not installed on the user's PC.
+
+Host verification:
+  Native source compiled with -Wall -Wextra -Werror.
+  Root-context refusal observed: uid/euid=0 -> WRONG_CONTEXT, exit=65.
+  8 host-mock cases passed: count success, EACCES, ENOSYS, wrong context,
+  enable failure, zero count, short read, read failure.
+  Mock wrappers are NOT linked into the ARM64 deliverable.
+
+Not verified:
+  No P780/device execution in this environment.
+  No live perf access, kernel sampling, register sampling, vulnerability or root test.
+  Windows runner not executed in a Windows session here.
+  ARM64 binary not executed under emulation here.
+
+Scope:
+  One self-thread user-only software CPU-clock counting event, no sampling.
+  No perf mmap, address output, futex exploit, IPsec, networking, kernel writes,
+  property changes, SELinux modifications, module loading, reboot or flashing.
+  ADB script pushes/chmods/runs/removes only its fixed executable path.
