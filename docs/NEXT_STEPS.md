@@ -2,7 +2,7 @@
 
 1. v0.2 已完成；不要重复运行普通 UDP/ESP loopback。
 2. v0.3.0 APK 已由 CI 成功构建，加入纯 UDP file-backed sendfile 回环检查；目前**未安装、未在 P780 上运行**。
-3. 下一步先由机主确认是否安装并单独运行 v0.3 第 4 项。若同意，使用应用私有 1 KiB 临时文件和 127.0.0.1；不启用 IPsec，不构造 ESP，不修改系统文件，不做 Root。
+3. 下一步先由机主确认是否安装并单独运行 v0.3 第 4 项。若同意，使用应用私有 1 KiB 临时文件和 127.0.0.1；不启用 IPsec，不构造 ESP，不修改系统文件，不尝试利用式页面缓存操作或 Root。
 4. 无论 PASS/FAIL，都只记录 sendfile-to-UDP 路径结果，不将其升级为 DirtyFrag 漏洞结论。仍缺 running kernel 的可信源码身份和共享页 ESP 解密原语证据；不运行通用 DirtyFrag/DFRoot payload。
 
 详见 [v0.3 sendfile 预检报告](research/p780-dirtyfrag-v03-sendfile-probe-20261024.md)。

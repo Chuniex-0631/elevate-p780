@@ -238,7 +238,7 @@ cleanup:
         appendf(report, sizeof(report), &used, "Cleanup: temporary file removed.\n");
     }
     appendf(report, sizeof(report), &used,
-            "No IPsec transform, ESP packet, page-cache write or exploit was used.\n");
+            "No IPsec transform or ESP packet was used; no exploit-style page-cache manipulation was attempted.\n");
     if (probe_ok && cleanup_ok) {
         appendf(report, sizeof(report), &used,
                 "PASS indicates file-backed sendfile-to-UDP loopback only; NOT DirtyFrag.\n");

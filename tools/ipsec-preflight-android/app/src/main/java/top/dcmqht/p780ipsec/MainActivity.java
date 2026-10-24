@@ -73,7 +73,7 @@ public final class MainActivity extends Activity {
 
         TextView warning = new TextView(this);
         warning.setText("仅使用普通应用权限。第 3 项向 127.0.0.1 各发送 1 个普通 UDP 与受 IPsec 保护的数据报。第 4 项从应用私有临时文件向本机 UDP socket 调用一次 sendfile，不启用 IPsec。\n"
-                + "不访问外网，不构造原始/畸形/分片 ESP，不修改系统文件或页面缓存，不尝试 DirtyFrag/Root。");
+                + "不访问外网，不构造原始/畸形/分片 ESP，不修改系统文件，不尝试利用式页面缓存操作或 DirtyFrag/Root。");
         warning.setPadding(0, 12, 0, 12);
         root.addView(warning);
 

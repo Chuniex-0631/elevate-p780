@@ -21,7 +21,7 @@ It does **not** combine file-backed UDP transmission with ESP decapsulation. It 
 
 - All network destinations are loopback 127.0.0.1; no external connection is opened.
 - The fourth check uses only a short-lived file under the app's private cache directory. It verifies the bytes before/after and unlinks the file.
-- No raw sockets, manually constructed ESP, malformed/oversized/fragmented packets, repetition/fuzzing, DirtyFrag/DFRoot payload, page-cache write, root request, kernel module, SELinux change, bootloader operation or partition write is performed.
+- No raw sockets, manually constructed ESP, malformed/oversized/fragmented packets, repetition/fuzzing, DirtyFrag/DFRoot payload, exploit-style page-cache manipulation, root request, kernel module, SELinux change, bootloader operation or partition write is performed. The temporary test file uses ordinary app-private file I/O.
 - Checks 2 and 3 temporarily create kernel IPsec state; check 4 performs ordinary file-to-UDP sendfile I/O. None is strictly read-only.
 - The APK build does not install or run the app on a device. Device execution requires explicit owner confirmation.
 
