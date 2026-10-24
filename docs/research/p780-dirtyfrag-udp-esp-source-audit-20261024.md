@@ -75,3 +75,11 @@ Android 11 AOSP 的 `IpSecService` 支持应用持有自己的 transport-mode tr
 **源代码身份/实现核验（优先只读、离线）：** 若后续取得与 `_162` 构建匹配的授权内核 Image、`vmlinux`、或经过可核实溯源的 5.4.233 P780 厂商源码，优先核对 `udp_sendpage`、`ip_append_page`、`esp_input` 三处实现及对应编译选项。当前不再重复受拒绝的 `/proc/sys`、`/vendor/bin` 探测，不拿候选源码当运行中事实。
 
 若另行决定制作手机侧诊断，仅允许显式只读/无恶意载荷的功能检查并单独评估风险；不运行通用 DirtyFrag APK，不修改系统页面缓存，不加载内核模块，不刷写 Boot/AVB/EDL。
+
+
+## 2026-10-24 追加：普通应用 IPsec API 安全预检工具
+
+- 已提交独立 Android 11 Java 预检工具：[tools/ipsec-preflight-android](../../tools/ipsec-preflight-android/README.md)。只读按钮仅查看系统版本、内核版本与 `IpSecManager` 是否存在。
+- 另一按钮仅在用户主动触发时，短暂申请 SPI、UDP 封装套接字与 AES-CBC/HMAC-SHA256 transport transform；资源于 `finally` 中回收，**不会绑定网络连接、发送 ESP/UDP、触碰 page cache 或使用提权载荷**。这属于可逆的临时内核状态分配，**并非严格只读**，设备端执行前必须经机主确认。
+- [GitHub Actions 运行 40068867263](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40068867263)：Gradle Android APK 编译及 artifact 上传成功；这是**构建证据**，尚无实机安装、权限或 API 返回结果。
+- 即使 transform 建立成功，也不能推出 ESP 收包 zero-copy/COW 原语或 DirtyFrag 可利用；失败也不能排除内核代码路径。对本机漏洞状态继续标注 **UNDETERMINED**。

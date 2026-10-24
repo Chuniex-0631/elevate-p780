@@ -26,6 +26,8 @@
 
 最新 DirtyFrag 阶段核对：[UDP sendpage / ESP 静态路径专题](docs/research/p780-dirtyfrag-udp-esp-source-audit-20261024.md)（仅公开源码；不证明 P780 可利用）。
 
+Android 11 IPsec 安全预检：[源代码与操作说明](tools/ipsec-preflight-android/README.md) · [APK 构建记录（成功）](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40068867263)。**仅构建通过，尚未安装到 P780；不是 DirtyFrag 成功证据。**
+
 最新实机进展：[QDL QUD/Sahara 握手成功](docs/research/p780-qdl-qud-sahara-20261019.md)。最新分析：[native 接口交叉核对](docs/research/p780-native-interface-crosscheck-20261018.md)、[SELinux 边界](docs/research/p780-policy-boundary-audit-20261018.md)、[batch2](docs/research/p780-static-batch2-analysis-20261018.md)。核心证据：[AVB 硬件证明](docs/research/avb-attestation-confirmed-20261018.md)、[DSU 阶段收束](docs/research/p780-dsu-closure-maintenance-route-20261018.md)。
 
 ## 仓库结构与维护
