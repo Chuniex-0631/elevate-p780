@@ -1,3 +1,5 @@
+> 2026-10-24：v0.3 实机 PASS：P780 API 30 / 5.4.233 报告中，应用私有 1024 字节文件经一次 sendfile 发送到 127.0.0.1 IPv4 UDP，接收内容匹配、源文件前后内容一致、临时文件删除；无 IPsec/ESP，无利用式页面缓存操作。另审计 TINNO P780 固定提交 20c26c7658cb5273cc71b10c3704b445b0efbe6b：发现旧式 IPv4 UDP sendpage 与 ESP no-COW 的相关静态形态。它是候选代码证据，不等于 P780 5.4.233 源码身份或 DirtyFrag 可利用性证明。详见 [v0.3 实机报告](docs/research/p780-dirtyfrag-v03-sendfile-probe-20261024.md) · [TINNO 5.4.61 源码审计](docs/research/p780-dirtyfrag-tinno-5.4.61-source-audit-20261024.md)。
+
 > 2026-10-24：准备 IPsec/UDP diagnostics v0.3.0 file-backed sendfile 预检；CI APK 构建与仓库审计均成功。该探针仅将应用私有临时文件经一次 sendfile 发送至 127.0.0.1 UDP，校验接收字节及源文件完整性；不启用 IPsec/ESP，且尚未实机运行。需机主另行确认设备执行。[v0.3 报告](docs/research/p780-dirtyfrag-v03-sendfile-probe-20261024.md)
 
 > 2026-10-24：归档 IPsec diagnostics v0.2.0 实机回环 PASS；普通 UDP 与一个经公开 API 保护的 ESP transport 数据报均在 loopback 成功收发，dumpsys ipsec 资源计数归零。明确区分正常 ESP 路径与文件支持 UDP sendpage/共享页解密原语；DirtyFrag 仍 UNDETERMINED。下一候选为不启用 IPsec 的 file-backed UDP sendfile 回环探针，运行前另行确认。[实机结果](docs/research/p780-ipsec-v0.2-live-loopback-20261024.md) · [分析](docs/research/p780-dirtyfrag-v02-path-interpretation-20261024.md)

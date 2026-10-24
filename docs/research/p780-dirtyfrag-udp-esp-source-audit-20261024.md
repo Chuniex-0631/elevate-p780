@@ -102,3 +102,10 @@ Does NOT establish DirtyFrag vulnerability or root access.
 **已观测：** API 30、型号与先前基线一致；普通应用成功通过 `getSystemService(IpSecManager.class)` 获得非空管理器实例。
 
 **不能推出：** 该按钮未调用 `allocateSecurityParameterIndex`、`openUdpEncapsulationSocket` 或 `buildTransportModeTransform`，因此未证实 Binder 服务实际分配资源、内核 ESP/XFRM 配置可用、收包原语存在或 DirtyFrag 可利用。本段记述的是第一项只读检查当时的阶段状态；第二项已于随后完成（见[专项实机记录](p780-ipsec-preflight-live-and-localversion-20261024.md)）。DirtyFrag 状态仍为 **UNDETERMINED**。
+
+
+## 2026-10-24 追加：TINNO 5.4.61 旧式 IPv4 sendpage 路径审计
+
+详见独立报告：[TINNO P780 Linux 5.4.61：DirtyFrag 相关 UDP sendpage / ESP 源码审计](p780-dirtyfrag-tinno-5.4.61-source-audit-20261024.md)。固定提交 `TinnoOSS/P780@20c26c7658cb5273cc71b10c3704b445b0efbe6b` 中观察到 `sendfile → splice → inet_sendpage → udp_sendpage → ip_append_page → skb_append_pagefrags` 的旧式 IPv4 路径，以及 ESP4/ESP6 对未克隆 nonlinear skb 的 no-COW 分支。审阅到的旧式 IPv4路径未设置 `SKBTX_SHARED_FRAG`，ESP 输入也未检查 `skb_has_shared_frag()`。这是值得进一步核验的候选静态形态，不是 P780 5.4.233 的源码身份确认或可利用性结论。
+
+机主随后回传的 v0.3 实机结果证明文件支持 UDP sendfile 回环 PASS；它与候选路径相吻合，但没有内核 trace，不能单独证明具体函数实际执行。P780 运行内核的等价修复回移植状态与 ESP 共享页条件仍未知，DirtyFrag 继续标记 **UNDETERMINED**。

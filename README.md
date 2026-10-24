@@ -14,7 +14,7 @@
 |Journey / Qualcomm 接口|Journey debug 属性存在 shell 静态 allow；取得部分 JNI/HIDL 客户端库|未形成任意读写或提权链；关键 init/vendor 服务原件缺失|
 |原厂固件、EDL、源码|2026-10-19：QDL v2.8 经 QUD/COM6 成功查询 Sahara v2/HWID/PKHash；TINNO 旧源码及候选构建已归档|A 已进行早期 READ64 传输但无 Firehose；A–E 五文件签名归为3组，全部不匹配本机 PKHash；仍缺同型号可信原厂镜像|
 |GhostLock|配置、旧源码模式及候选布局已有分析|**BLOCKED**；不得把候选偏移当本机参数|
-|DirtyFrag / CVE-2026-43284|公开候选源码存在 UDP/ESP 相关静态形态；P780 API30 实机 IPsec SPI、UDP 封装、transport transform 资源创建均 PASS|**UNDETERMINED**；没有共享页/ESP 收包原语或当前运行内核的源码身份验证，无 Root|
+|DirtyFrag / CVE-2026-43284|P780 v0.2 普通 UDP/ESP 回环 PASS；v0.3 文件支持 UDP sendfile 回环 PASS。TINNO 5.4.61 候选源码有旧式 IPv4 sendpage 与 ESP no-COW 静态形态|**UNDETERMINED**；本机 5.4.233 对应实现、等价修复回移植与 ESP 共享页条件仍未知，无 Root|
 
 ## 阅读入口
 
@@ -26,9 +26,9 @@
 
 原厂源码与固件查找：[2026-10-24 公开搜索与 TINNO 邮件头核对](docs/research/p780-source-availability-followup-20261024.md)（仍无可信 `_162` 镜像或对应源码）。
 
-最新 DirtyFrag 阶段核对：[UDP sendpage / ESP 静态路径专题](docs/research/p780-dirtyfrag-udp-esp-source-audit-20261024.md) · [v0.2 回环证据分析](docs/research/p780-dirtyfrag-v02-path-interpretation-20261024.md) · [v0.2 实机回环结果](docs/research/p780-ipsec-v0.2-live-loopback-20261024.md) · [v0.3 sendfile 预检（已构建、未实机运行）](docs/research/p780-dirtyfrag-v03-sendfile-probe-20261024.md) · [内核版本后缀核验](docs/research/p780-ipsec-preflight-live-and-localversion-20261024.md)。v0.2 的正常 ESP 回环 PASS 不证明 DirtyFrag 可利用。
+最新 DirtyFrag 阶段核对：[UDP sendpage / ESP 静态路径专题](docs/research/p780-dirtyfrag-udp-esp-source-audit-20261024.md) · [TINNO 5.4.61 旧式 sendpage/ESP 源码审计](docs/research/p780-dirtyfrag-tinno-5.4.61-source-audit-20261024.md) · [v0.2 回环证据分析](docs/research/p780-dirtyfrag-v02-path-interpretation-20261024.md) · [v0.2 实机回环结果](docs/research/p780-ipsec-v0.2-live-loopback-20261024.md) · [v0.3 sendfile 实机 PASS](docs/research/p780-dirtyfrag-v03-sendfile-probe-20261024.md) · [内核版本后缀核验](docs/research/p780-ipsec-preflight-live-and-localversion-20261024.md)。普通回环 PASS 不证明 DirtyFrag 可利用。
 
-Android 11 IPsec/UDP 诊断工具 v0.3.0：[源码与操作说明](tools/ipsec-preflight-android/README.md) · [v0.3 APK 构建记录](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40081265263) · [v0.2 实机结果](docs/research/p780-ipsec-v0.2-live-loopback-20261024.md) · [v0.3 sendfile 预检状态](docs/research/p780-dirtyfrag-v03-sendfile-probe-20261024.md)。**v0.2 实机检查全部 PASS；v0.3 仅构建成功，尚未在手机运行。即使 v0.3 PASS，也只证明普通 file-backed sendfile-to-UDP loopback，不证明 DirtyFrag。**
+Android 11 IPsec/UDP 诊断工具 v0.3.0：[源码与操作说明](tools/ipsec-preflight-android/README.md) · [v0.3 APK 构建记录](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40081265263) · [v0.2 实机结果](docs/research/p780-ipsec-v0.2-live-loopback-20261024.md) · [v0.3 sendfile 预检状态](docs/research/p780-dirtyfrag-v03-sendfile-probe-20261024.md)。**v0.2 普通 UDP/ESP 回环与 v0.3 文件支持 UDP sendfile 回环均已实机 PASS。v0.3 只证明普通 file-backed sendfile-to-UDP loopback，不证明 DirtyFrag。**
 
 最新实机进展：[QDL QUD/Sahara 握手成功](docs/research/p780-qdl-qud-sahara-20261019.md)。最新分析：[native 接口交叉核对](docs/research/p780-native-interface-crosscheck-20261018.md)、[SELinux 边界](docs/research/p780-policy-boundary-audit-20261018.md)、[batch2](docs/research/p780-static-batch2-analysis-20261018.md)。核心证据：[AVB 硬件证明](docs/research/avb-attestation-confirmed-20261018.md)、[DSU 阶段收束](docs/research/p780-dsu-closure-maintenance-route-20261018.md)。
 

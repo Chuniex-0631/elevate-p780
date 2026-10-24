@@ -3,6 +3,7 @@
 > 此时间线只记录能从已保存报告、文件元数据、终端片段或 GitHub Actions 回溯的事项。若仅有摘要而无原始日志，会明确写“历史记录”。日期统一按相关报告日期，不杜撰精确小时。
 
 | 日期 | 阶段与资料 | 实际结果 |
+| **2026-10-24** | v0.3 file-backed UDP sendfile 实机检查；TINNO 5.4.61 源码审计 | v0.3 一次 sendfile 传输 1024 字节到 IPv4 UDP loopback 成功，内容匹配、源文件未变且临时文件已删除。候选 5.4.61 源码含旧式 IPv4 sendpage 与 ESP no-COW 相关静态形态；不证明 P780 5.4.233 同样实现或 DirtyFrag 可利用。见 [实机报告](research/p780-dirtyfrag-v03-sendfile-probe-20261024.md) 与 [源码审计](research/p780-dirtyfrag-tinno-5.4.61-source-audit-20261024.md)。 |
 | **2026-10-24** | IPsec diagnostics v0.3.0 file-backed sendfile 预检 | native probe 与 APK CI 构建 success；尚未在设备运行，不能作为实机 PASS。见 [v0.3 报告](research/p780-dirtyfrag-v03-sendfile-probe-20261024.md)。 |
 | **2026-10-24** | IPsec diagnostics v0.2.0 实机回环 | 普通 UDP 与一个 UDP-encapsulated ESP transport 数据报均在 127.0.0.1 PASS；测试后 dumpsys ipsec 相关资源计数为 0。仅证明正常 API 回环，不证明 DirtyFrag；见 [实机报告](research/p780-ipsec-v0.2-live-loopback-20261024.md) 与 [路径覆盖分析](research/p780-dirtyfrag-v02-path-interpretation-20261024.md)。 |
 |---|---|---|

@@ -1,10 +1,9 @@
-## 2026-10-24 最新增量：v0.3 sendfile 预检已构建，未实机运行
+## 2026-10-24 最新增量：v0.3 实机 PASS 与 TINNO 5.4.61 源码审计
 
-- v0.2 的普通 UDP/ESP transport loopback 已在 P780 实机 PASS，相关服务资源计数随后归零。
-- v0.3.0 新增纯 UDP file-backed sendfile 回环探针：1 KiB 应用私有临时文件、一次 sendfile、127.0.0.1 接收/比对、检查源文件前后字节一致并删除临时文件；不启用 IPsec，不构造 ESP；不尝试利用式页面缓存操作。
-- APK 构建成功：[Actions run 40081265263](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40080355011)；完整性审计成功：[run 40081265231](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40080355002)。
-- **v0.3 尚未安装或在设备上执行**。执行第 4 项前需机主明确确认；PASS 也只说明普通 file-backed sendfile-to-UDP loopback，不证明 DirtyFrag。
-- 当前仍为 **DirtyFrag UNDETERMINED / 无 Root / Bootloader Locked**。详见 [v0.3 预检报告](research/p780-dirtyfrag-v03-sendfile-probe-20261024.md)。
+- v0.3 已在 P780 实机运行：应用私有 1024 字节文件经一次 `sendfile()` 发送至 `127.0.0.1` IPv4 UDP；接收字节匹配、源文件前后内容一致、临时文件删除。无 IPsec/ESP，无利用式页面缓存操作。
+- TINNO 固定提交 `20c26c7658cb5273cc71b10c3704b445b0efbe6b` 的 5.4.61 候选源码含旧式 `sendfile → splice → udp_sendpage → ip_append_page → skb_append_pagefrags` 路径，以及 ESP4/ESP6 的 no-COW 快速分支；审阅到的旧式 IPv4路径未设置 `SKBTX_SHARED_FRAG`，ESP 输入也未检查 `skb_has_shared_frag()`。
+- 该候选静态形态值得继续核验，但不能直接转移为本机 5.4.233 的结论。当前仍缺匹配 `P780AE_11.0_RMN_JP_162` 的可信 kernel Image/源码，以及对应函数是否有等价修复回移植的证据。
+- 当前仍为 **DirtyFrag UNDETERMINED / 无 Root / Bootloader Locked**。详见 [v0.3 实机报告](research/p780-dirtyfrag-v03-sendfile-probe-20261024.md) 与 [TINNO 5.4.61 源码审计](research/p780-dirtyfrag-tinno-5.4.61-source-audit-20261024.md)。
 
 ## 2026-10-24 最新增量：DirtyFrag / IPsec v0.2
 

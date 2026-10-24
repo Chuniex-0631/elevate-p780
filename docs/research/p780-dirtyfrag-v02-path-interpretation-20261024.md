@@ -1,7 +1,7 @@
 # P780 DirtyFrag：v0.2 回环证据的含义与下一道安全门
 
 日期：2026-10-24（Asia/Shanghai）  
-状态：**普通应用 IPsec 保护回环已实机 PASS；UDP file-backed sendpage 路径和 DirtyFrag 页面缓存写入原语仍未验证。**
+状态：**v0.2 的普通应用 IPsec 保护回环与 v0.3 文件支持 UDP sendfile 回环均已实机 PASS；ESP/共享页组合与 DirtyFrag 原语仍未验证。**
 
 ## 1. 本轮基线
 
@@ -53,7 +53,7 @@ DirtyFrag 的相关页面缓存原语依赖的是**文件支持页面进入 UDP 
 - 接收端比较完整数据；发送前后校验文件内容/哈希相同。
 - 关闭 socket、删除临时文件；失败时记录 errno，不重试喷射、不构造 ESP、不访问系统文件。
 
-该探针只用于检查普通应用是否能把文件支持的数据通过 sendfile 送入 UDP loopback；Linux 实现可能使用 splice/sendpage 路径，但没有内核 trace。**PASS 仍不等于共享页进入 ESP 解密，更不等于 DirtyFrag 可利用；FAIL 也可能只是 Android/内核 API 限制。** 见 [v0.3 构建与设备执行边界](p780-dirtyfrag-v03-sendfile-probe-20261024.md)。运行前须由机主明确确认。
+该探针已运行并 PASS；后续不重复普通回环。**PASS 仍不等于共享页进入 ESP 解密，更不等于 DirtyFrag 可利用。** 5.4.61 候选源码含有值得审计的旧式 IPv4 路径，但 P780 5.4.233 的对应代码与回移植修复状态仍未知。
 
 ## 6. 停止边界
 

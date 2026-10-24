@@ -1,11 +1,9 @@
-## 2026-10-24 下一步（最新计划）
+## 2026-10-24 下一步（审计更新）
 
-1. v0.2 已完成；不要重复运行普通 UDP/ESP loopback。
-2. v0.3.0 APK 已由 CI 成功构建，加入纯 UDP file-backed sendfile 回环检查；目前**未安装、未在 P780 上运行**。
-3. 下一步先由机主确认是否安装并单独运行 v0.3 第 4 项。若同意，使用应用私有 1 KiB 临时文件和 127.0.0.1；不启用 IPsec，不构造 ESP，不修改系统文件，不尝试利用式页面缓存操作或 Root。
-4. 无论 PASS/FAIL，都只记录 sendfile-to-UDP 路径结果，不将其升级为 DirtyFrag 漏洞结论。仍缺 running kernel 的可信源码身份和共享页 ESP 解密原语证据；不运行通用 DirtyFrag/DFRoot payload。
-
-详见 [v0.3 sendfile 预检报告](research/p780-dirtyfrag-v03-sendfile-probe-20261024.md)。
+1. 不重复 v0.2 普通 UDP/ESP 回环或 v0.3 普通 sendfile 回环；两者已实机 PASS。
+2. TINNO 5.4.61 候选源码显示旧式 IPv4 UDP sendpage 与 ESP no-COW 相关静态形态，详见 [审计报告](research/p780-dirtyfrag-tinno-5.4.61-source-audit-20261024.md)。
+3. 下一项优先任务是取得或核验 P780 `_162` 对应的 5.4.233 kernel Image / vmlinux / 厂商源码，确认上述函数实现与等价安全修复是否存在；不将候选源码结论直接当成本机事实。
+4. 在 running kernel 身份和共享页 ESP 路径得到可信证据前，不运行 DirtyFrag/DFRoot payload，不做页面缓存写入，不加载内核模块、不刷写 Boot/AVB/EDL。
 
 
 > 2026-10-20 GAP-01：header 原件核验已完成，正文方向已纠正；独立 SETools 语义复核仍 BLOCKED_TOOLING（当前无可用 WSL/SETools）。只在工具环境就绪后比较既有原件，不重复采集或归一化输入冒充通过。 [详情](research/p780-policy-header-verification-20261020.md)
