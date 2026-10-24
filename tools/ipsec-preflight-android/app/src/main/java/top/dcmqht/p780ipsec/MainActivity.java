@@ -174,7 +174,7 @@ public final class MainActivity extends Activity {
         } catch (Exception e) {
             report.append("lookup failed: ").append(describe(e));
         }
-        report.append("\nNO resource allocation; NO traffic.\n");
+        report.append("\nNO resource allocation; NO traffic during this check.\n");
         report.append("Does NOT establish DirtyFrag vulnerability or root access.");
         return report.toString();
     }
