@@ -81,5 +81,24 @@ Android 11 AOSP 的 `IpSecService` 支持应用持有自己的 transport-mode tr
 
 - 已提交独立 Android 11 Java 预检工具：[tools/ipsec-preflight-android](../../tools/ipsec-preflight-android/README.md)。只读按钮仅查看系统版本、内核版本与 `IpSecManager` 是否存在。
 - 另一按钮仅在用户主动触发时，短暂申请 SPI、UDP 封装套接字与 AES-CBC/HMAC-SHA256 transport transform；资源于 `finally` 中回收，**不会绑定网络连接、发送 ESP/UDP、触碰 page cache 或使用提权载荷**。这属于可逆的临时内核状态分配，**并非严格只读**，设备端执行前必须经机主确认。
-- [GitHub Actions 运行 40068867263](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40068867263)：Gradle Android APK 编译及 artifact 上传成功；这是**构建证据**，尚无实机安装、权限或 API 返回结果。
+- [GitHub Actions 运行 40068867263](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40068867263)：Gradle Android APK 编译及 artifact 上传成功；这是**构建证据**，另有第一项只读实机回传（见下）。SPI/UDP/Transform 资源接口仍未执行。
 - 即使 transform 建立成功，也不能推出 ESP 收包 zero-copy/COW 原语或 DirtyFrag 可利用；失败也不能排除内核代码路径。对本机漏洞状态继续标注 **UNDETERMINED**。
+
+
+## 2026-10-24 追加：P780 实机第一项只读检查（用户手工回传）
+
+**来源/信任边界：** 机主将已安装的 `P780 IPsec Preflight 0.1.0` 应用屏幕结果原样复制到本项目聊天；这不是由仓库 CI、独立 ADB 脚本或可核验日志自动采集。
+
+```text
+P780 IPsec preflight 0.1.0
+Android API: 30
+Device model: P780
+Kernel version: 5.4.233-qgki-gea5245e94afe-dirty
+IPsec service: manager accessible
+NO resource allocation; NO traffic.
+Does NOT establish DirtyFrag vulnerability or root access.
+```
+
+**已观测：** API 30、型号与先前基线一致；普通应用成功通过 `getSystemService(IpSecManager.class)` 获得非空管理器实例。
+
+**不能推出：** 该按钮未调用 `allocateSecurityParameterIndex`、`openUdpEncapsulationSocket` 或 `buildTransportModeTransform`，因此未证实 Binder 服务实际分配资源、内核 ESP/XFRM 配置可用、收包原语存在或 DirtyFrag 可利用。资源分配按钮等待机主单独同意，暂未触发。DirtyFrag 状态仍为 **UNDETERMINED**。
