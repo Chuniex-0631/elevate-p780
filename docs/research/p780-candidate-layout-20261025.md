@@ -162,3 +162,67 @@ cred.usage_off            = 0
 2. 用 `commit_creds`/`prepare_kernel_cred` 验证 `cred` 的 `copy_size`、能力位偏移；
 3. 用 `remove_waiter` 中对 `waiter` 的访问验证 `rt_mutex_waiter` 布局；
 4. 全部验证完再生成 profile。
+
+
+---
+
+## 6. 逐字段验证结果（2026-10-25 继续）
+
+全部依据运行镜像的反汇编或立即数，不是候选推断。
+
+### 6.1 task_struct
+
+| 字段 | 运行镜像值 | 证据 |
+|---|---|---|
+| `real_cred` | `0x830` | `get_task_cred`: `ldr x20,[x19,#0x830]` |
+| `pi_lock` | `0x90c` | `task_blocks_on_rt_mutex`: `add x24,x2,#0x90c` → `_raw_spin_lock` |
+| `pi_waiters` | `0x918` | 同一函数 8 处 `#0x918` / `#0x920` |
+| `pi_blocked_on` | `0x930` | `str xzr,[x20,#0x930]`，`str x22,[x20,#0x930]` |
+| `prio` | `0x7c` | `task_prio`: `ldr w8,[x0,#0x7c]; sub w0,w8,#0x64`；rtmutex 链 5 处一致 |
+
+`prio` 与候选的 `0x74` 不同，其余四个与候选一致。这坐实了"TINNO 在 `prio` 附近改过布局、
+但 `pi_*` 区段又与主线一致"的判断，也说明逐字段验证是唯一可靠做法。
+
+### 6.2 cred
+
+| 项 | 运行镜像值 | 证据 |
+|---|---|---|
+| `usage` | `0` | `get_task_cred`: `ldr w8,[x20]` |
+| `cap_permitted` | `0x30` | `commit_creds`: `ldr x8,[x20,#0x30]` |
+| `cap_effective` | `0x38` | `cap_capable`: `ldr w8,[x8,#0x38]`，按 `cap>>5` 索引 |
+| `sizeof(cred)` | `168` (0xa8) | `cred_init`: `kmem_cache_create_usercopy(..., 0xa8, ...)` |
+
+能力位按 `cap>>5` 索引 4 字节字、每套 8 字节（两个 u32），与候选的 `caps_offset=40`、5 套布局吻合。
+
+### 6.3 rt_mutex_waiter
+
+| 字段 | 运行镜像值 | 证据 |
+|---|---|---|
+| `task` | `0x30` (48) | `task_blocks_on_rt_mutex`: `stp x20,x19,[x22,#0x30]` |
+| `lock` | `0x38` (56) | 同上（成对存储） |
+| `prio` | `0x40` (64) | `str w8,[x22,#0x40]` |
+| `deadline` | `0x48` (72) | `str x10,[x22,#0x48]` |
+
+与候选完全一致。
+
+### 6.4 仍未验证
+
+- `task_struct.comm`（2120）：`__set_task_comm` 走 helper，需要更完整的反汇编；
+- `task_struct.seccomp`（2280）：未找到直接访问点；
+- `selinux_state.enforcing`（候选 +1）：`.bss` 无内容，需从读取它的代码确认。
+
+## 7. 汇总：当前可用的 P780 值
+
+```hocon
+task_struct { prio = 0x7c, real_cred = 0x830, pi_lock = 0x90c,
+              pi_waiters = 0x918, pi_blocked_on = 0x930 }
+cred        { size = 168, usage = 0, caps_offset = 40, caps_count = 5,
+              cap_permitted = 0x30, cap_effective = 0x38 }
+waiter      { task = 0x30, lock = 0x38, prio = 0x40, deadline = 0x48 }
+symbols     { init_task = 0x262d280, init_cred = 0x2639be8,
+              root_task_group = 0x27e91b8, selinux_state = 0x27d6000,
+              empty_zero_page = 0x27d7000 }
+```
+
+这些值已经足以开始拼装 profile 的静态部分；剩下的 `comm`/`seccomp`/`enforcing` 属于补全项，
+而 `route.*.waiter_shift` 之类必须实测的字段仍然缺。
