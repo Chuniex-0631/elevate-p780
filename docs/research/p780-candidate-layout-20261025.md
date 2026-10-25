@@ -301,3 +301,48 @@ ldrsw x0, [x8, #0x8e8]   ; current->seccomp.mode
 
 到此为止，**profile 的静态部分已基本完整**；剩余缺口是 `enforcing` 一项待验证，
 以及所有需要真正运行 exploit 才能得到的路线几何。
+
+
+---
+
+## 10. 收尾两项（2026-10-25）
+
+### 10.1 `selinux_state.enforcing = +1`：间接确认
+
+在 SELinux 代码区（`0x106c0000..0x10700000`）找到对 `selinux_state` 的直接引用：
+
+```
+ffffffc0106d314c: adrp x8, 0xffffffc012856000 <selinux_state>
+ffffffc0106d3150: ldrb w8, [x8, #0x3]        ; initialized
+```
+
+代码用 **`+3` 读 `initialized`**，与候选的字段顺序完全吻合：
+
+```
+disabled 0 | enforcing 1 | checkreqprot 2 | initialized 3 | policycap[6] 4 ... 11
+```
+
+`initialized` 在 +3 成立，则 `enforcing` 在 +1 成立（同一组连续 `bool`）。标为**间接验证**。
+
+### 10.2 `task_struct.cred = 0x838`
+
+`commit_creds` 同时读取两个相邻指针：
+
+```
+ffffffc0102f6258: ldr x19, [x21, #0x830]   ; real_cred
+ffffffc0102f625c: ldr x8,  [x21, #0x838]   ; cred
+```
+
+与候选的 `real_cred 2096 / cred 2104` 一致。此前验证的 `0x830` 是 `real_cred`，
+schema 的 `task_struct.cred` 应填 **`0x838`**。
+
+### 10.3 关于 `prio` 的补充说明
+
+运行镜像里所有 `task->prio` 访问都落在 `0x7c`（`task_prio`、`rt_mutex_adjust_prio_chain`
+5 处、`task_blocks_on_rt_mutex` 各一处）。候选布局是 `prio 0x74 / static_prio 0x78 / normal_prio 0x7c`，
+因此有两种可能：
+
+1. TINNO 在 `prio` 之前多了一个 8 字节字段 → 真实布局是 `prio 0x7c / static_prio 0x80 / normal_prio 0x84`；
+2. 该内核的 `task_prio` 语义与主线不同。
+
+无论哪种，**exploit 用到的 `prio` 就是 `0x7c`**；`normal_prio` 暂标 TBD。
