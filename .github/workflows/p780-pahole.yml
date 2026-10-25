@@ -36,6 +36,16 @@ jobs:
           clang-prebuilts/clang-r383902b1/bin/clang --version | head -n 1
           echo "$GITHUB_WORKSPACE/clang-prebuilts/clang-r383902b1/bin" >> "$GITHUB_PATH"
 
+      - name: Toolchain smoke test
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports
+          printf 'int f(void){return 0;}\n' > /tmp/t.c
+          clang -c /tmp/t.c -o /tmp/t.o && ls -l /tmp/t.o && file /tmp/t.o || echo "SMOKE FAILED rc=$?"
+          clang --version | head -n 3
+          df -h /tmp /home/runner
+
       - name: Fetch candidate source (pinned)
         shell: bash
         run: |
@@ -67,7 +77,7 @@ jobs:
             CROSS_COMPILE=aarch64-linux-gnu- -j"$(nproc)" \
             kernel/fork.o kernel/cred.o kernel/locking/rtmutex.o \
             security/selinux/hooks.o fs/exec.o kernel/sys.o \
-            > reports/build.log 2>&1 || { tail -n 40 reports/build.log; exit 1; }
+            V=1 > reports/build.log 2>&1 || { tail -n 60 reports/build.log; exit 1; }
           df -h /home/runner
 
       - name: Dump layouts and disassembly
