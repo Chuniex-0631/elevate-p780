@@ -28,5 +28,10 @@
                 <action android:name="top.dcmqht.p780ipsec.INSTALL_RESULT" />
             </intent-filter>
         </receiver>
+        <provider
+            android:name=".ApkProvider"
+            android:authorities="top.dcmqht.p780ipsec.apk"
+            android:exported="false"
+            android:grantUriPermissions="true" />
     </application>
 </manifest>

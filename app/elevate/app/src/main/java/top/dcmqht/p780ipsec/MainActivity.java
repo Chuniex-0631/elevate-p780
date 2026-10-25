@@ -74,6 +74,29 @@ public final class MainActivity extends Activity {
     private String daemonSeq;
     private String daemonOut;
     private int seq = 0;
+    private java.io.File beatFile;
+    private final Runnable tick = new Runnable() {
+        public void run() {
+            refreshStatus();
+            ui.postDelayed(this, 2000);
+        }
+    };
+    private boolean daemonAlive() {
+        return beatFile != null && beatFile.exists()
+                && (System.currentTimeMillis() - beatFile.lastModified()) < 5000;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ui.post(tick);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ui.removeCallbacks(tick);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,7 +106,11 @@ public final class MainActivity extends Activity {
         daemonCmd = base + "/p780_cmd";
         daemonSeq = base + "/p780_seq";
         daemonOut = base + "/p780_out";
+        beatFile = new java.io.File(base, "p780_beat");
         buildUi();
+        // only the lock is cleared on start; the state file must survive the
+        // activity restart that follows a successful trigger install
+        new java.io.File(getFilesDir(), "p780_lock").delete();
         if (getIntent() != null && getIntent().hasExtra("installStatus")) {
             int status = getIntent().getIntExtra("installStatus", -1);
             String message = getIntent().getStringExtra("installMessage");
@@ -239,8 +266,7 @@ public final class MainActivity extends Activity {
     }
 
     private void refreshStatus() {
-        String state = readText(daemonState);
-        boolean ready = state != null && state.trim().startsWith("READY");
+        boolean ready = daemonAlive();
         if (statusView != null) {
             statusView.setText(ready ? "\u5df2\u8fde\u63a5 \u00b7 uid 0" : "\u672a\u8fde\u63a5");
             statusView.setTextColor(ready ? 0xFF2DD4BF : 0xFF8B949E);
@@ -257,7 +283,6 @@ public final class MainActivity extends Activity {
 
     private void requestRoot() {
         new java.io.File(getFilesDir(), "p780_lock").delete();
-        new java.io.File(getFilesDir(), "p780_state").delete();
         rootButton.setEnabled(false);
         statusView.setText("\u6b63\u5728\u5199\u5165\u8f7d\u8377\u2026");
         new Thread(() -> {
@@ -269,8 +294,7 @@ public final class MainActivity extends Activity {
             }
             log("\u5199\u5165\u8f7d\u8377\uff1a" + ok + " \u5757\u6210\u529f\uff0c" + bad + " \u5757\u5f02\u5e38");
             if (bad > 0) log(report);
-            String state = readText(daemonState);
-            if (state != null && state.trim().startsWith("READY")) {
+            if (daemonAlive()) {
                 ui.post(() -> {
                     rootButton.setEnabled(true);
                     refreshStatus();
@@ -290,44 +314,27 @@ public final class MainActivity extends Activity {
     }
 
     private void installTrigger() {
-        if (!getPackageManager().canRequestPackageInstalls()) {
-            log("\u9700\u8981\u5148\u5141\u8bb8\u672c\u5e94\u7528\u5b89\u88c5\u5e94\u7528\uff0c\u6b63\u5728\u6253\u5f00\u8bbe\u7f6e\u2026");
-            try {
-                startActivity(new android.content.Intent(
-                        android.provider.Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
-                        android.net.Uri.parse("package:" + getPackageName())));
-            } catch (Throwable t) {
-                log("\u65e0\u6cd5\u6253\u5f00\u8bbe\u7f6e: " + t);
-            }
-            return;
-        }
         new Thread(() -> {
             try {
-                android.content.pm.PackageInstaller installer =
-                        getPackageManager().getPackageInstaller();
-                android.content.pm.PackageInstaller.SessionParams params =
-                        new android.content.pm.PackageInstaller.SessionParams(
-                                android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL);
-                params.setAppPackageName("top.dcmqht.trigger");
-                int id = installer.createSession(params);
-                try (android.content.pm.PackageInstaller.Session session = installer.openSession(id)) {
-                    try (java.io.InputStream in = getAssets().open("trigger.apk");
-                         java.io.OutputStream out = session.openWrite("base.apk", 0, -1)) {
-                        byte[] buf = new byte[8192];
-                        int n;
-                        while ((n = in.read(buf)) > 0) {
-                            out.write(buf, 0, n);
-                        }
-                        session.fsync(out);
+                java.io.File apk = new java.io.File(getCacheDir(), ApkProvider.NAME);
+                try (java.io.InputStream in = getAssets().open("trigger.apk");
+                     java.io.FileOutputStream out = new java.io.FileOutputStream(apk)) {
+                    byte[] buf = new byte[8192];
+                    int n;
+                    while ((n = in.read(buf)) > 0) {
+                        out.write(buf, 0, n);
                     }
-                    android.content.Intent intent = new android.content.Intent(
-                        "top.dcmqht.p780ipsec.INSTALL_RESULT").setPackage(getPackageName());
-                android.app.PendingIntent pending = android.app.PendingIntent.getBroadcast(
-                        this, id, intent,
-                        android.app.PendingIntent.FLAG_UPDATE_CURRENT);
-                    session.commit(pending.getIntentSender());
                 }
-                log("\u5df2\u63d0\u4ea4\u89e6\u53d1\u5b89\u88c5\uff0c\u8bf7\u5728\u7cfb\u7edf\u5f39\u7a97\u4e2d\u70b9\u300c\u5b89\u88c5\u300d\u3002");
+                android.net.Uri uri = android.net.Uri.parse(
+                        "content://" + ApkProvider.AUTHORITY + "/" + ApkProvider.NAME);
+                android.content.Intent intent = new android.content.Intent(
+                        android.content.Intent.ACTION_INSTALL_PACKAGE);
+                intent.setData(uri);
+                intent.addFlags(android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                ui.post(() -> {
+                    startActivity(intent);
+                    log("\u5df2\u6253\u5f00\u7cfb\u7edf\u5b89\u88c5\u5668\uff0c\u8bf7\u70b9\u300c\u5b89\u88c5\u300d\u3002");
+                });
             } catch (Throwable t) {
                 log("\u89e6\u53d1\u5b89\u88c5\u5931\u8d25: " + t);
             }
@@ -337,6 +344,11 @@ public final class MainActivity extends Activity {
     private void runCommand() {
         String cmd = commandInput.getText().toString().trim();
         if (cmd.isEmpty()) {
+            return;
+        }
+        if (!daemonAlive()) {
+            log("\u672a\u8fde\u63a5\uff1a\u8bf7\u5148\u70b9\u300c\u83b7\u53d6 Root\u300d\u5e76\u5b8c\u6210\u4e00\u6b21\u5b89\u88c5\u3002");
+            refreshStatus();
             return;
         }
         runButton.setEnabled(false);

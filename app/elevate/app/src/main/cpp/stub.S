@@ -120,7 +120,7 @@ s_dashc:
 s_env:
     .asciz  "PATH=/system/bin"
 s_script:
-    .asciz  "umask 0; D=/data/user/0/top.dcmqht.p780ipsec/files; S=$D/p780_state; C=$D/p780_cmd; Q=$D/p780_seq; O=$D/p780_out; echo READY > $S; chmod 666 $S; while :; do if read -t 1 N < $Q; then if read -t 1 M < $C; then : > $Q; : > $C; if [ $M = __quit ]; then echo BYE > $S; break; fi; { eval $M; } > $O 2>&1; echo SEQ $N END >> $O; chmod 666 $O; fi; fi; done"
+    .asciz  "umask 0; D=/data/user/0/top.dcmqht.p780ipsec/files; S=$D/p780_state; C=$D/p780_cmd; Q=$D/p780_seq; O=$D/p780_out; B=$D/p780_beat; echo READY > $S; chmod 666 $S; while :; do : > $B; if read -t 1 N < $Q; then if read -t 1 M < $C; then : > $Q; : > $C; if [ $M = __quit ]; then echo BYE > $S; break; fi; { eval $M; } > $O 2>&1; echo SEQ $N END >> $O; chmod 666 $O; fi; fi; done"
 
 /* ---- self-test variant -------------------------------------------------- */
     .global p780_stub_test
