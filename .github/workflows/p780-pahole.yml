@@ -1,4 +1,4 @@
-name: P780 candidate vmlinux, pahole layout and System.map
+name: P780 candidate layout probe (object-level DWARF)
 
 on:
   workflow_dispatch:
@@ -7,9 +7,9 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  layout:
     runs-on: ubuntu-22.04
-    timeout-minutes: 90
+    timeout-minutes: 60
     steps:
       - name: Checkout research repository
         uses: actions/checkout@v4
@@ -22,6 +22,7 @@ jobs:
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
             git make gcc bc bison flex libssl-dev libelf-dev python3 rsync cpio \
             dwarves gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu
+          df -h /home/runner
 
       - name: Retrieve Android Clang 11.0.2 (r383902b1)
         shell: bash
@@ -32,58 +33,60 @@ jobs:
             https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 \
             clang-prebuilts
           timeout 600 git -C clang-prebuilts sparse-checkout set clang-r383902b1
-          test -x clang-prebuilts/clang-r383902b1/bin/clang
-          clang-prebuilts/clang-r383902b1/bin/clang --version | head -n 2
+          clang-prebuilts/clang-r383902b1/bin/clang --version | head -n 1
           echo "$GITHUB_WORKSPACE/clang-prebuilts/clang-r383902b1/bin" >> "$GITHUB_PATH"
 
       - name: Fetch candidate source (pinned)
         shell: bash
         run: |
           set -euo pipefail
+          mkdir -p reports
           timeout 900 git clone --depth 1 --single-branch --branch droidian \
             https://github.com/arminask/linux-android-samsung-a52sxq.git linux
-          git -C linux rev-parse HEAD | tee reports-source-commit.txt
-          mkdir -p reports
+          git -C linux rev-parse HEAD | tee reports/source-commit.txt
 
-      - name: Apply the device config
+      - name: Configure with the device config
         shell: bash
         run: |
           set -euo pipefail
           gzip -dc evidence/device/p780-config.gz > linux/.config
           make -C linux ARCH=arm64 CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm \
             OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip \
-            CROSS_COMPILE=aarch64-linux-gnu- olddefconfig | tee reports/olddefconfig.log
+            CROSS_COMPILE=aarch64-linux-gnu- olddefconfig > reports/olddefconfig.log 2>&1
           cp linux/.config reports/effective.config
-          grep -E 'CONFIG_DEBUG_INFO=|CONFIG_DEBUG_INFO_DWARF|CONFIG_RELOCATABLE=|CONFIG_DEBUG_INFO_BTF' \
-            reports/effective.config | tee reports/debug-info-options.txt || true
+          make -C linux ARCH=arm64 CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm \
+            OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip \
+            CROSS_COMPILE=aarch64-linux-gnu- prepare > reports/prepare.log 2>&1
 
-      - name: Build vmlinux
+      - name: Build only the objects that define the structures
         shell: bash
         run: |
           set -euo pipefail
           make -C linux ARCH=arm64 CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm \
             OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip \
-            CROSS_COMPILE=aarch64-linux-gnu- -j"$(nproc)" vmlinux 2>&1 | tee reports/build.log
+            CROSS_COMPILE=aarch64-linux-gnu- -j"$(nproc)" \
+            kernel/fork.o kernel/cred.o kernel/locking/rtmutex.o \
+            security/selinux/hooks.o fs/exec.o kernel/sys.o \
+            > reports/build.log 2>&1 || { tail -n 40 reports/build.log; exit 1; }
+          df -h /home/runner
 
-      - name: Extract struct layouts and System.map
+      - name: Dump layouts and disassembly
         shell: bash
         run: |
           set -euo pipefail
-          for t in task_struct cred rt_mutex_waiter selinux_state nsproxy uts_namespace; do
-            pahole -C "$t" linux/vmlinux > "reports/pahole-$t.txt" 2>&1 || true
-          done
-          llvm-nm -n linux/vmlinux 2>/dev/null | grep -v ' [Uu] ' > reports/System.map || true
-          wc -l reports/System.map reports/pahole-*.txt | tee reports/summary.txt
-          sha256sum linux/vmlinux | tee reports/vmlinux-sha256.txt
+          pahole -C task_struct linux/kernel/fork.o > reports/pahole-task_struct.txt 2>&1 || true
+          pahole -C cred linux/kernel/cred.o > reports/pahole-cred.txt 2>&1 || true
+          pahole -C rt_mutex_waiter linux/kernel/locking/rtmutex.o > reports/pahole-rt_mutex_waiter.txt 2>&1 || true
+          pahole -C selinux_state linux/security/selinux/hooks.o > reports/pahole-selinux_state.txt 2>&1 || true
+          pahole -C uts_namespace linux/kernel/sys.o > reports/pahole-uts_namespace.txt 2>&1 || true
+          llvm-objdump -d --no-show-raw-insn linux/kernel/locking/rtmutex.o > reports/rtmutex.dis.txt 2>&1 || true
+          llvm-objdump -d --no-show-raw-insn linux/kernel/fork.o > reports/fork.dis.txt 2>&1 || true
+          ls -l reports | tee reports/summary.txt
 
       - name: Upload reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: p780-pahole-layout
-          path: |
-            reports/*.txt
-            reports/*.log
-            reports/System.map
-            reports/effective.config
+          name: p780-layout-objects
+          path: reports/*
           retention-days: 14
