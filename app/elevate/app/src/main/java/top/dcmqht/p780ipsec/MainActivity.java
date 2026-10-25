@@ -90,6 +90,23 @@ public final class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         ui.post(tick);
+        if (!getPackageManager().canRequestPackageInstalls()) {
+            new android.app.AlertDialog.Builder(this)
+                    .setTitle("\u9700\u8981\u5b89\u88c5\u6743\u9650")
+                    .setMessage("Elevate \u9700\u8981\u300c\u5b89\u88c5\u672a\u77e5\u5e94\u7528\u300d\u6743\u9650\u624d\u80fd\u89e6\u53d1 root\u3002\n\n"
+                            + "\u70b9\u300c\u53bb\u8bbe\u7f6e\u300d\u540e\u6253\u5f00\u5f00\u5173\uff0c\u8fd4\u56de\u5373\u53ef\u3002")
+                    .setCancelable(false)
+                    .setPositiveButton("\u53bb\u8bbe\u7f6e", (d, w) -> {
+                        try {
+                            startActivity(new android.content.Intent(
+                                    android.provider.Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
+                                    android.net.Uri.parse("package:" + getPackageName())));
+                        } catch (Throwable ignored) {
+                        }
+                    })
+                    .setNegativeButton("\u9000\u51fa", (d, w) -> finish())
+                    .show();
+        }
     }
 
     @Override
@@ -225,6 +242,31 @@ public final class MainActivity extends Activity {
         cmdRow.addView(runButton, runLp);
         root.addView(cmdRow, cmdLp);
 
+        Button cleanButton = new Button(this);
+        cleanButton.setText("\u6e05\u7406\u73af\u5883");
+        cleanButton.setAllCaps(false);
+        cleanButton.setTextColor(dim);
+        android.graphics.drawable.GradientDrawable cleanBg = new android.graphics.drawable.GradientDrawable();
+        cleanBg.setColor(card);
+        cleanBg.setCornerRadius(dp(12));
+        cleanButton.setBackground(cleanBg);
+        cleanButton.setOnClickListener(v -> {
+            new Thread(() -> {
+                String r = libraryPatched() ? unpatchProbe() : null;
+                cleanupState();
+                ui.post(() -> {
+                    log(r != null && r.contains("ROLLBACK COMPLETE")
+                            ? "\u5df2\u6062\u590d\u5e93\u5e76\u6e05\u7406\u72b6\u6001\u3002"
+                            : "\u5df2\u6e05\u7406\u72b6\u6001\uff08\u5e93\u672a\u88ab\u4fee\u6539\uff09\u3002");
+                    refreshStatus();
+                });
+            }).start();
+        });
+        LinearLayout.LayoutParams cleanLp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        cleanLp.topMargin = dp(8);
+        root.addView(cleanButton, cleanLp);
+
         consoleView = new TextView(this);
         consoleView.setTextColor(0xFFC9D1D9);
         consoleView.setTextSize(12);
@@ -273,6 +315,33 @@ public final class MainActivity extends Activity {
         }
         if (rootButton != null) {
             rootButton.setText(ready ? "\u91cd\u65b0\u83b7\u53d6" : "\u83b7\u53d6 Root");
+        }
+    }
+
+    private void cleanupState() {
+        if (daemonAlive()) {
+            writeText(daemonCmd, "__quit\n");
+            seq++;
+            writeText(daemonSeq, String.valueOf(seq) + "\n");
+            try {
+                Thread.sleep(1200);
+            } catch (InterruptedException ignored) {
+            }
+        }
+        for (String n : new String[]{"p780_state", "p780_beat", "p780_cmd", "p780_seq", "p780_out"}) {
+            new java.io.File(getFilesDir(), n).delete();
+        }
+        new java.io.File(getFilesDir(), "p780_lock").delete();
+    }
+
+    private boolean libraryPatched() {
+        try (java.io.RandomAccessFile raf = new java.io.RandomAccessFile(PatchData.LIB, "r")) {
+            raf.seek(PatchData.SENTRY);
+            byte[] entry = new byte[16];
+            raf.readFully(entry);
+            return !hex(entry).equals(PatchData.PROLOGUE_HEX);
+        } catch (Throwable t) {
+            return false;
         }
     }
 
