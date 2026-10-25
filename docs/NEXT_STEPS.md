@@ -1,4 +1,4 @@
-> 2026-10-25 下一阶段决策：主线改为「用 init 域只读取证去拿内核镜像」，以解锁 GhostLock；DSU / OEM Unlock / EDL 等路线的重启判定见 [决策备忘录](research/p780-next-research-20261025.md)。
+> 2026-10-25 阶段更新：匹配Image已取得，符号恢复与独立核验完成；不重复提取或同一符号恢复任务。[结果](research/p780-kernel-symbol-recovery-20261025.md)。下表“补齐镜像”的旧阻塞条件已被本次结果更新；对应源码、debug类型和修复状态仍待核验。
 
 # 下一步计划
 

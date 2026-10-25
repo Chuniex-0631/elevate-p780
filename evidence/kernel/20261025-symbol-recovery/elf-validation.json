@@ -1,0 +1,15 @@
+{
+  "output": "kernel.symbolized.elf",
+  "symbol_entries": 173205,
+  "image_section_sha256": "6df574af40d260c670c32bdee9ceaca023739850d62851d55f77234b89d4f373",
+  "bss_size": 1773056,
+  "elf_sha256": "03e0cae1069e4581c652ef393f44fae0b04e23eeb7d9cecd27ede91c6d178591",
+  "limitations": [
+    "Synthetic broad .image section; no original section permissions or function sizes.",
+    "Raw image bytes preserved; relocation records not applied.",
+    "Not original debug vmlinux, not flashable, no runtime KASLR addresses."
+  ],
+  "elf_symbols_independently_read_back": 173205,
+  "all_name_address_pairs_match_including_duplicates": true,
+  "readelf_parse": "PASS"
+}

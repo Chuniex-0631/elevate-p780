@@ -1,0 +1,50 @@
+{
+  "input_sha256": "6df574af40d260c670c32bdee9ceaca023739850d62851d55f77234b89d4f373",
+  "artifacts": {
+    "kernel.kallsyms": {
+      "size": 9326940,
+      "sha256": "c22d79032952d1188bb19abbfdec97b68c786f3692fd6db7e74b52627a99b5e9"
+    },
+    "kernel.symbolized.elf": {
+      "size": 51964936,
+      "sha256": "03e0cae1069e4581c652ef393f44fae0b04e23eeb7d9cecd27ede91c6d178591"
+    },
+    "verification.json": {
+      "size": 2381,
+      "sha256": "8d64511e6b02f9ce026747005904f4c128244e0c764d772b54a4af391c99f87e"
+    },
+    "elf-validation.json": {
+      "size": 663,
+      "sha256": "da861d87537b01a53078f0e4e469e3525bf8e4390a2bcbf15133e52f5ae363c6"
+    },
+    "image-identity.json": {
+      "size": 807,
+      "sha256": "a4f77850d1b0f562665c7d385210563de0cc46b05a0654840480bda543ca5d30"
+    },
+    "tool-provenance.json": {
+      "size": 584,
+      "sha256": "cdaf92d40f6a7d54e246618039524a88cac83acc263ca1b5a1a7e9c61535e9bc"
+    },
+    "recovery-tool.log": {
+      "size": 5238,
+      "sha256": "9a5dbfd48aa8aa436e6d14c63d9ad33f89cef2480167bb59c67cd3eb2417dff8"
+    },
+    "readelf-header.txt": {
+      "size": 949,
+      "sha256": "3ed6a2f40a925aca509a3f625d859274ac36114b8fad4b840e5de552edb8152c"
+    },
+    "readelf-sections.txt": {
+      "size": 964,
+      "sha256": "a86ff250a79fead7e83250122f7761d11517d2a9de78237b7282e38f20de7ef5"
+    },
+    "verify_recovery.py": {
+      "size": 5162,
+      "sha256": "3079654d85bfcb5e123ed2dbd3019491c44ae5c5ea9ffb5f4d67b140f0f7f655"
+    },
+    "build_analysis_elf.py": {
+      "size": 3122,
+      "sha256": "9254f26c9903dba32ee20e351b6afa7deffca4f1d8e70e36a686ab55075d702e"
+    }
+  },
+  "preservation": "Full symbol map and byte-preserving analysis ELF are in delivered ZIP; original Image remains owner attachment; Git holds derived validation only."
+}

@@ -1,0 +1,18 @@
+{
+  "input_name": "kernel.Image",
+  "input_size": 41767424,
+  "sha256": "6df574af40d260c670c32bdee9ceaca023739850d62851d55f77234b89d4f373",
+  "arm64_magic": "41524d64",
+  "text_offset": 524288,
+  "header_image_size": 43540480,
+  "flags": 10,
+  "embedded_config_gzip_size": 39170,
+  "embedded_config_gzip_sha256": "0ff9cbb1844e043e1211b527509f5f435862cace25649bab6641d5d62c7bbce0",
+  "embedded_config_text_sha256": "db168f088e0de4b54dd2058b7b542c176ae377af8b0322e6a27e80bdc8caad24",
+  "config_matches_prior_device_gzip": true,
+  "limitations": [
+    "Raw Image is not a complete boot image or original debug vmlinux.",
+    "Header image_size can include uninitialized memory; file shorter than that does not alone prove truncation.",
+    "Extraction offsets and chunk logs not independently supplied."
+  ]
+}

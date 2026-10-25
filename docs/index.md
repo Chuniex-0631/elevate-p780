@@ -130,3 +130,8 @@
 | [`P780_PFM_QAS_2026-10-04.md`](../archive/reports/P780_PFM_QAS_2026-10-04.md) | Rakuten Hand 5G P780：QAS → Mink → PFM 研究检查点 | <!-- Historical research report, preserved from an earlier user-provided artifact. Not a fresh assertion; see docs/STATU |
 | [`P780_TZAccess_2026-10-04.md`](../archive/reports/P780_TZAccess_2026-10-04.md) | P780：TZAccessService 服务端 Java 授权链 | <!-- Historical research report, preserved from an earlier user-provided artifact. Not a fresh assertion; see docs/STATU |
 
+
+## 2026-10-25 符号恢复增量（手工补充）
+
+- [内核符号恢复与独立核验](research/p780-kernel-symbol-recovery-20261025.md)
+- [工具与复现说明](../tools/kernel-symbol-recovery/README.md)

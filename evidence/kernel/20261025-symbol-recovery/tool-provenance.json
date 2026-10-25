@@ -1,0 +1,12 @@
+{
+  "tool": "vmlinux-to-elf",
+  "version": "1.4.0",
+  "source": "https://github.com/marin-m/vmlinux-to-elf",
+  "distribution": "PyPI wheel",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "implementation_sha256": {
+    "vmlinux_to_elf/core/kallsyms.py": "9ba2f7fcbaed93a7953d6c78f5724f10bd007aa60874653bb28505b677232bc6",
+    "vmlinux_to_elf/scripts/kallsyms_finder.py": "a1d6e5694cb70e8f78ca138e8bf232fa46c440504f3a40252650fa5b46742620",
+    "vmlinux_to_elf/scripts/vmlinux_to_elf.py": "a9acc6bccfc09b9c7dbfd21058dd86a91ecd9fb0d7e3bcc7720b4e4904f0417b"
+  }
+}

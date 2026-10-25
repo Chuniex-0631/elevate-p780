@@ -1,3 +1,5 @@
+> 2026-10-25 离线更新：Image恢复173,205个符号，全部名称/静态地址经独立解码核对；文件末端与BSS起点自洽。[报告](research/p780-kernel-symbol-recovery-20261025.md)。不等于实时地址、结构体布局或Root能力。
+
 > 2026-10-25 突破：已在锁定、无 root 状态下从 init 域提取完整内核 `Image`（41,767,424 字节，SHA-256 `6df574af…`）。镜像未入库，方法见 [提取报告](research/p780-kernel-image-extraction-20261025.md)。
 
 # 当前研究状态
@@ -30,8 +32,8 @@
 | DSU / GSI | A/B 离线验签通过、B 安装完成、重启回原厂 | **停止** |
 | OEM Unlock 灰化 | Journey gate 静态根因已定位，无可用的普通调用者 | 阻塞 |
 | Fastboot / EDL | unlock 全 unknown command；Sahara v2 可达，Firehose 未通 | 阻塞 |
-| GhostLock | 配置满足、同形调用链、tracefs 候选指针 | **BLOCKED**：缺 5.4.233 二进制 |
-| 内核源码身份 | 实机 config 5238 项、候选编译与结构测量 | 缺原厂 Image/vmlinux |
+| GhostLock | 已有身份匹配Image；本轮恢复173,205个符号并独立核对 | 二进制/符号缺口已补；修复状态、布局及适用性仍未定 |
+| 内核源码身份 | 本机来源Image的版本/构建/config匹配，符号已恢复 | 仍缺对应完整源码、原始debug vmlinux/DWARF |
 
 ## 关键边界
 
