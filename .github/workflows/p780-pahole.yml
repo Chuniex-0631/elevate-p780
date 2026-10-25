@@ -9,7 +9,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-22.04
-    timeout-minutes: 60
+    timeout-minutes: 90
     steps:
       - name: Checkout research repository
         uses: actions/checkout@v4
@@ -77,11 +77,13 @@ jobs:
           sha256sum linux/vmlinux | tee reports/vmlinux-sha256.txt
 
       - name: Upload reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: p780-pahole-layout
           path: |
             reports/*.txt
+            reports/*.log
             reports/System.map
             reports/effective.config
           retention-days: 14
