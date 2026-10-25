@@ -1,0 +1,2304 @@
+{
+  "description": "P780 read-only partition extraction, 2026-10-25 (binaries kept locally; hashes recorded)",
+  "device": {
+    "serial": "b940328a",
+    "fingerprint": "Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys"
+  },
+  "files": [
+    {
+      "path": "devinfo.00.bin",
+      "bytes": 4096,
+      "sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7"
+    },
+    {
+      "path": "dtbo_a.00.bin",
+      "bytes": 8388608,
+      "sha256": "e03beb3a7f8be87c44cfb62cd635cc717677330b932e644f146357e97552dfa1"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_00_00000000.dtb",
+      "bytes": 238606,
+      "sha256": "2b9cfdfc2c8df1672224c9f21b6b647f5c4b5d5cd76c733bfd0b70cb3d523756"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_01_00000000.dtb",
+      "bytes": 187403,
+      "sha256": "dc1f10605068138cd2618d0a8fe5d819a9f54754edf54b37bb48f28a59446849"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_02_00000000.dtb",
+      "bytes": 151083,
+      "sha256": "91f2391b59ec9511b090d892f871a2a013575fff2adbbc1008c9110b53898e5a"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_03_00000000.dtb",
+      "bytes": 164516,
+      "sha256": "24e34d0e3fadfec3bdf470eecc5f5391f374bb23cc3bfc800cd54b05a10bb762"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_04_00000000.dtb",
+      "bytes": 168522,
+      "sha256": "7ed96e4bf8bfe41a1cad11d2f531012eae97d405d2397cb983f560ff894a4bc6"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_05_00000000.dtb",
+      "bytes": 191494,
+      "sha256": "f545bec4716a611cb88595f6d832953a432f6ae055bf715aebbab0f57d81b418"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_06_00000000.dtb",
+      "bytes": 138378,
+      "sha256": "5ff58b81a22da938af6f14388cf767222167e89ee5ca733e935c9b258233a50f"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_07_00000000.dtb",
+      "bytes": 169651,
+      "sha256": "eacc89656011364491f4ff63e583488472fdbb57ca79adbcf710e9db11591fa4"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_08_00000000.dtb",
+      "bytes": 4478,
+      "sha256": "a823f04281b14c8426d2f99febd4373c5da21851752e009aea0e06b1803850a8"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_09_00000000.dtb",
+      "bytes": 205291,
+      "sha256": "5510ec2735b7bbf0fe01789c00171fb3548e3945173d2ab450f1a39fb0945f96"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_10_00000000.dtb",
+      "bytes": 144335,
+      "sha256": "053530e8706379ce32233c6af82557d656160adb81fbc430df1b01b2ba6c0f63"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_11_00000000.dtb",
+      "bytes": 4398,
+      "sha256": "8bb8499e8d9b0bd3210acfaeee9876b939fde948a9cd14da1f520cf73b658730"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_12_00000000.dtb",
+      "bytes": 237622,
+      "sha256": "a99ad1042befe7518ef394179555128711034018667d941d2a41bcb356ad6f52"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_13_00000000.dtb",
+      "bytes": 160421,
+      "sha256": "440b6dca4e87394c0186bc14d000365aba9bb1d2ddb86371b8de40ad6c939193"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_14_00000000.dtb",
+      "bytes": 122228,
+      "sha256": "561b37f049281c3dacbe838db3a7f0acca921433365bc62d3b62e3517326b768"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_15_00000000.dtb",
+      "bytes": 113505,
+      "sha256": "3688b2560027308aca24932193fa0c1e54950ab72841a69aa03d33ad4f755f82"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_16_00000000.dtb",
+      "bytes": 267,
+      "sha256": "0ec807f61ad1b45cc8742d1bbcc5ac00724fc32d6924fe1f07924a1b183b2632"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_17_00000000.dtb",
+      "bytes": 143021,
+      "sha256": "09d0e3e049c212dadfa0340aaacdf0af1905ceb187a4d32f0f4f01e6d4e43c48"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_18_00000000.dtb",
+      "bytes": 200142,
+      "sha256": "f2999fc7c6cdfc67504ce680310b28ae7602c9c582599840d27b5bf0fb8a2d44"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_19_00000000.dtb",
+      "bytes": 127022,
+      "sha256": "540cf8ad33a33815a924ecea5efa04586877d43297065e29ccad21f842e8c685"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_20_00000000.dtb",
+      "bytes": 197738,
+      "sha256": "2dde9a3cb5e0952f0d3cf6b79b524fd7806c48fb5b72add4a4295b8892b575c2"
+    },
+    {
+      "path": "dtbo_a_entries/overlay_21_00000000.dtb",
+      "bytes": 225494,
+      "sha256": "0c3c72093303070a57aed36f6779686de049ee72281155a828542ada37a58307"
+    },
+    {
+      "path": "frp.00.bin",
+      "bytes": 524288,
+      "sha256": "3dcc7365caea79ba9ce361fc3025be814c443f288973e6a4eb9dc58942997b05"
+    },
+    {
+      "path": "fsc.00.bin",
+      "bytes": 131072,
+      "sha256": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471"
+    },
+    {
+      "path": "fsg.00.bin",
+      "bytes": 3145728,
+      "sha256": "08ff1c33591cfed1c43facfa93bd32cfcd79c85ed452f4c2e4f2371a133653d9"
+    },
+    {
+      "path": "modemst1.00.bin",
+      "bytes": 3145728,
+      "sha256": "869416d047c3d9b6d7453c52189581c2aa76c4cc84c6b0714779ead8e96ec9c0"
+    },
+    {
+      "path": "modemst2.00.bin",
+      "bytes": 3145728,
+      "sha256": "0fb3bfb682fccff85811be595b899cd11667c8b48c097384bba98734fe7f1398"
+    },
+    {
+      "path": "persist.00.bin",
+      "bytes": 8388608,
+      "sha256": "44255c016f0d077f95532b6352ad81f2a092e8b0c189c03dc7247355ad48b9ea"
+    },
+    {
+      "path": "persist.01.bin",
+      "bytes": 8388608,
+      "sha256": "460808f0f82d9f5a85b426e43395f72e977401b1afe62686e25184574ce1909e"
+    },
+    {
+      "path": "persist.02.bin",
+      "bytes": 8388608,
+      "sha256": "c343e4946f0867224e448569bed6a48ca0b3f3d29201abf11495c8f11b0192b7"
+    },
+    {
+      "path": "persist.03.bin",
+      "bytes": 8388608,
+      "sha256": "49b6c279655acd147c4ba89bb964246e56e6c1bae431fb3cb6685ec9c59d5065"
+    },
+    {
+      "path": "persist_tree/aw_cali.bin",
+      "bytes": 10,
+      "sha256": "1a85bd08d49e7f540d709ea13671e3a8c00f885ea188e7f84d46ff433aaa36f7"
+    },
+    {
+      "path": "persist_tree/coresight/qdss.agent.sh",
+      "bytes": 1619,
+      "sha256": "0fad0e751d95b2473594a60a29d76def23adc0e3e1245f0a8dda2af6906388c1"
+    },
+    {
+      "path": "persist_tree/coresight/qdss.config.sh",
+      "bytes": 818,
+      "sha256": "792bc75b109db4c64cd48a93ccc56e2f18125f129d80f7868d59069e9b68ab5b"
+    },
+    {
+      "path": "persist_tree/coresight/qdss.functions.sh",
+      "bytes": 18568,
+      "sha256": "36cd6efd5d7cdd8ffbccf06500df8bedcd486d557c3541a1628f7edd01546c2f"
+    },
+    {
+      "path": "persist_tree/data/+fhcyjluctcAld1TmmKlv1z4PSoRRs6Y6gedgcLDNjw_/+fhcyjluctcAld1TmmKlv1z4PSoRRs6Y6gedgcLDNjw_",
+      "bytes": 1588,
+      "sha256": "46ef4e63bfd5baba8a9b8293a637a88034eddb7239d3e3d25155aeb06b7af4d7"
+    },
+    {
+      "path": "persist_tree/data/+fhcyjluctcAld1TmmKlv1z4PSoRRs6Y6gedgcLDNjw_/+fhcyjluctcAld1TmmKlv1z4PSoRRs6Y6gedgcLDNjw_.bak",
+      "bytes": 1588,
+      "sha256": "8eae783f615d0d3918799f0b95a746a3a7f6a6521218f20435030d49e810f82a"
+    },
+    {
+      "path": "persist_tree/data/+fhcyjluctcAld1TmmKlv1z4PSoRRs6Y6gedgcLDNjw_/NyVy6bDdJVB-hqIFVc9E",
+      "bytes": 204800,
+      "sha256": "8613bac1b80d6c6dd475c8b020accbb7cc21251b2c604ac3879b22f31abfe472"
+    },
+    {
+      "path": "persist_tree/data/+fhcyjluctcAld1TmmKlv1z4PSoRRs6Y6gedgcLDNjw_/NyVy6bDdJVB-hqIFVc9E.bak",
+      "bytes": 8192,
+      "sha256": "836d5a030bce28103292584a0394f2fe7c9b166ee72dac2eb0183e8533fc8b64"
+    },
+    {
+      "path": "persist_tree/data/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_/5r5LgWqAGkK7pkbwDExz",
+      "bytes": 12696,
+      "sha256": "b000c3223eb50ac516ca1eaced5f4fe77df93a30f1e97bd964d98e95eeae22f4"
+    },
+    {
+      "path": "persist_tree/data/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_/5r5LgWqAGkK7pkbwDExz.bak",
+      "bytes": 4096,
+      "sha256": "f4e5db6118ac00848723757cc3cbcc647e94f2ba2b329da4ea1ae897c3dcd4bb"
+    },
+    {
+      "path": "persist_tree/data/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_",
+      "bytes": 1588,
+      "sha256": "abb9a913b8b028049060615a06fa07a0c33cbc643bb7eb5cde428f960c705cd8"
+    },
+    {
+      "path": "persist_tree/data/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_.bak",
+      "bytes": 1588,
+      "sha256": "98eed0ca3d97fdb991f74b3d1fce954fabb0e5aaebe1d4f87de6387a7de93908"
+    },
+    {
+      "path": "persist_tree/data/keymasterflag",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "persist_tree/data/pfm/licenses/store_0",
+      "bytes": 122880,
+      "sha256": "6d7bd1fa33ee71b2d2c4fc8062f6c4b09804b84449ff73a687fe7cfd568d0625"
+    },
+    {
+      "path": "persist_tree/data/pfm/licenses/store_1",
+      "bytes": 122880,
+      "sha256": "6d7bd1fa33ee71b2d2c4fc8062f6c4b09804b84449ff73a687fe7cfd568d0625"
+    },
+    {
+      "path": "persist_tree/data/pfm/licenses/store_2",
+      "bytes": 122880,
+      "sha256": "6d7bd1fa33ee71b2d2c4fc8062f6c4b09804b84449ff73a687fe7cfd568d0625"
+    },
+    {
+      "path": "persist_tree/data/pfm/licenses/store_3",
+      "bytes": 122880,
+      "sha256": "6d7bd1fa33ee71b2d2c4fc8062f6c4b09804b84449ff73a687fe7cfd568d0625"
+    },
+    {
+      "path": "persist_tree/data/pfm/licenses/store_4",
+      "bytes": 122880,
+      "sha256": "6d7bd1fa33ee71b2d2c4fc8062f6c4b09804b84449ff73a687fe7cfd568d0625"
+    },
+    {
+      "path": "persist_tree/hvdcp_opti/soh_info.txt",
+      "bytes": 200,
+      "sha256": "6e044eb487348840e6c10bc0333c07a34803ada8e07b95e54e1097c835115bc0"
+    },
+    {
+      "path": "persist_tree/misc/camera/dualcam_calibration.bin",
+      "bytes": 419,
+      "sha256": "9244bbd3b393bba7eb22d716c1683bceac99362a50eeff2e379ed13ce47172d2"
+    },
+    {
+      "path": "persist_tree/misc/camera/dualcam_fuse_data",
+      "bytes": 6,
+      "sha256": "5ee53f947d277122a4c9da7de7456bba70d13c70fc04644fce1ae0f6ee583d1c"
+    },
+    {
+      "path": "persist_tree/misc/FTM_APP/FTM_report",
+      "bytes": 409,
+      "sha256": "e1b7ba72d5ff619c0c68c130decfd2d51350dbc4bcb071c0b152add4affd068f"
+    },
+    {
+      "path": "persist_tree/misc/FTM_APP/FtmApk_Check_Tag",
+      "bytes": 211,
+      "sha256": "11b484712d36ae1cab7f8553c69cd98bc2ef4c10bde5d0fb5edca60136389edd"
+    },
+    {
+      "path": "persist_tree/p780_p",
+      "bytes": 8,
+      "sha256": "e8310d75c25f2b57806902e2e101d547b28e778aff54403d6334c05e924a4d55"
+    },
+    {
+      "path": "persist_tree/rfs/msm/mpss/server_check.txt",
+      "bytes": 5,
+      "sha256": "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
+    },
+    {
+      "path": "persist_tree/rfs/shared/server_info.txt",
+      "bytes": 15,
+      "sha256": "0bd3b1665946f8c53613667ac304b0c00225646ccb122d75c816a5176cbfa34b"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/ak0991x_0",
+      "bytes": 78,
+      "sha256": "d6b83d4e65dec5c989b7252f42cf863841f2e81e53df924ab746d529ea5711c9"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/ak0991x_0.mag",
+      "bytes": 131,
+      "sha256": "c817c78dbb0a44a32e97e0e71691eb74f56bef213a7f7ba22014c511dfc6ca28"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/ak0991x_0.mag.config",
+      "bytes": 233,
+      "sha256": "9efae2052d76f007aae13f86d28d234fb40ea06132860bc14b8fb66137b73835"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/ak0991x_0.mag.config_2",
+      "bytes": 181,
+      "sha256": "861565b609c16fc19b5ee3d0a17cda4a80411ee363a9e7578b463ff7bc76fadc"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/ak0991x_0_platform",
+      "bytes": 222,
+      "sha256": "f800c1b91de092d3059c17501171682198dc5bf784d29f7fc141b3b55057c13e"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/ak0991x_0_platform.config",
+      "bytes": 920,
+      "sha256": "c64a11aa44f6ce80d72103c9998ba11805aaca11c86dc09e82201616606a5684"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/ak0991x_0_platform.mag",
+      "bytes": 142,
+      "sha256": "6de5fbb6f1459f40e87ea750fe3c4ba4cf7d5205220bd3b8914e795e2ffe8854"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/ak0991x_0_platform.mag.fac_cal",
+      "bytes": 146,
+      "sha256": "238f30e887d24693287c1de922f7872767580c15029dee2aeecd24ae9caeeeba"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/ak0991x_0_platform.mag.fac_cal.bias",
+      "bytes": 210,
+      "sha256": "3080e40a0a3247e3b45cd677727ca5652f9cc019e5824a65ff5f05f6785b150a"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/ak0991x_0_platform.mag.fac_cal.corr_mat",
+      "bytes": 530,
+      "sha256": "2d589b7574b5da6e3bbb033fedfea1a6d5cd26289b45dfcda9681d8068c33526"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/ak0991x_0_platform.mag.fac_cal_2",
+      "bytes": 148,
+      "sha256": "b4573717f9d5c179ebc69ae9c4557bbf11717ad019285b0d93f008a6ddd41220"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/ak0991x_0_platform.mag.fac_cal_2.bias",
+      "bytes": 212,
+      "sha256": "059d400ef1196c4781d3c1cd2076baf6f72a802e8cbcd8b41212404f8b8345d2"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/ak0991x_0_platform.mag.fac_cal_2.corr_mat",
+      "bytes": 528,
+      "sha256": "ec35cea937852095b5fb6a325be16c0d755fe6324aef862f59eaf4613b3e5a36"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/ak0991x_0_platform.orient",
+      "bytes": 176,
+      "sha256": "c4fb1f19a32c32ece6f473cda24f5309b6432224a1b1164b7d156e68439c9306"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/ak0991x_0_platform.placement",
+      "bytes": 646,
+      "sha256": "b84d79ef93f1cdba5b35f7ee7fa9583f2aeafedc2fd759ec30204c70c9f2cb06"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/bu52053nvx_0",
+      "bytes": 85,
+      "sha256": "e41aaeae16b2e2eddfe9c18795025e4967d95bc32cd31d269857e21d9b38901a"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/bu52053nvx_0.hall",
+      "bytes": 92,
+      "sha256": "60b243f06555ae0b1c3accf64f7bf9b21041b18be1e22741b2732147cc1fe603"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/bu52053nvx_0.hall.config",
+      "bytes": 240,
+      "sha256": "37f1a20dbf8cda924df4f5d64d3873e718972cd4954b6e2a7b4ad3bdf8c991fe"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/bu52053nvx_0_platform",
+      "bytes": 143,
+      "sha256": "f5195b5ee53de671a9fd750abf419b3bc4a3c219b1d5bdf5f43af50e2b4d0a55"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/bu52053nvx_0_platform.config",
+      "bytes": 867,
+      "sha256": "e33d2909d95fe4deb0daac65b6024eccb75e8d3eea5a48e1d00f17905e062c4c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/bu52053nvx_0_platform.placement",
+      "bytes": 652,
+      "sha256": "54ada77448bb4313e029f28a6a266e4bb5d12aac7415dcc6197626968c7ddd08"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors",
+      "bytes": 902,
+      "sha256": "3b6f5425d6cb44d96ea8b384269efaf56abb4be36419a081c8dbc5f761e87d39"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.accel",
+      "bytes": 86,
+      "sha256": "309d8aa803316b523079d655f48a95f9c3da0e42590f795148026a8379a2fdaa"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.accel.attr_0",
+      "bytes": 133,
+      "sha256": "b72ea283a643d7d291f533d520d2b0d4934c620b75a94fb41525359146c80ee3"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.accel_cal",
+      "bytes": 90,
+      "sha256": "c9736208cf932998412b2b53fc6e57fb3469054691518f8d4023f797eb8ade86"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.accel_cal.attr_0",
+      "bytes": 137,
+      "sha256": "24741644ba3b13de81bbaff618835f86d6c36168b8df98dd4856d913cbbca658"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.ambient_light",
+      "bytes": 94,
+      "sha256": "4ff207b818173ee2e92a9a1147082fa80c7ccee56576ef08e4e98c798222f57f"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.ambient_light.attr_0",
+      "bytes": 141,
+      "sha256": "dd496ea7995cfef6391042dc8af777b996e07cc269c7c68737b910c2f6bd5345"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.amd",
+      "bytes": 84,
+      "sha256": "95d7da0e32164bbf3c836f1f97b6f7eaa30f5370573467454011ee6aa3de0829"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.amd.attr_0",
+      "bytes": 131,
+      "sha256": "ae5795de8516a1eeea0be930c26e503edf0fbdcc1566a12551b2deb4c9b40569"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.fmv",
+      "bytes": 84,
+      "sha256": "e8d855f9f16e1eb4652b09d9e409b70041af0f271e6df54beaea30810afc53e6"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.fmv.attr_0",
+      "bytes": 131,
+      "sha256": "406cbdbbd523d9c7e54dab573492f5216c7e241032c0266893096850b2cbfca0"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.game_rv",
+      "bytes": 88,
+      "sha256": "a6ed695d9c6c409501cac39ba860278a245b05f4b39774845a6619d585cd6b5a"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.game_rv.attr_0",
+      "bytes": 135,
+      "sha256": "173a6f60dce03a14386efb134293b33f12bf4c95331f28d7cf312763e5aff98c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.geomag_rv",
+      "bytes": 90,
+      "sha256": "b4d980dc92a5e31a632a0083cdc8065d974928f2efe4d590700d2cd379ad8f22"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.geomag_rv.attr_0",
+      "bytes": 137,
+      "sha256": "ddd8a956879a9c45905b25a80d38042604c0541264aecb8801c688ca4b593888"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.gravity",
+      "bytes": 88,
+      "sha256": "69a7595ba30de8e8caff8165b8f2ee4b00059e065f9794eeed86a668dc5980e7"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.gravity.attr_0",
+      "bytes": 135,
+      "sha256": "ba5f812952d6796d74c989deef9e47744f966e0fec64c812ad5cb50a1cdc0068"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.gyro",
+      "bytes": 85,
+      "sha256": "f70a98763a37b1590833c0f834085925e3ea3276f32ae2242b9b31a8bd0e58af"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.gyro.attr_0",
+      "bytes": 132,
+      "sha256": "923902afb88acb79e3e51c02e5af24b81177d43997217fa8847c80d5695bef74"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.gyro_cal",
+      "bytes": 89,
+      "sha256": "8ad5ebe7c1f533f09331cbf65465f43259079f0a201c5e520f75e9f347e0fa03"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.gyro_cal.attr_0",
+      "bytes": 136,
+      "sha256": "a4dd9035582411e5688bd575b497ace889ba3197224fd4d70c9f0da5ea541034"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.gyro_rot_matrix",
+      "bytes": 96,
+      "sha256": "a0bee7ef333a4763a9c0298bb722063feb207657fd26ee044a95133866e6127c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.gyro_rot_matrix.attr_0",
+      "bytes": 143,
+      "sha256": "a1cb2bfdcd47430f235670bcabc5333ec320d926e73119e21f4ddfc7fac46ab7"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.mag",
+      "bytes": 84,
+      "sha256": "11cfeb80a29c2a88c72d43f9e981a8012591bc12a3992c8d5ba8e3728e4c0292"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.mag.attr_0",
+      "bytes": 131,
+      "sha256": "ca75c6175b543558def8fd8de355329dfca5df8b3e2dc92ea5d54822024c6cd9"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.mag_cal",
+      "bytes": 88,
+      "sha256": "7e340466662c762c2ea181eca126de23054a3e2f2653a6895ddf877b23db1bd4"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.mag_cal.attr_0",
+      "bytes": 135,
+      "sha256": "f5e965223867e1c765f9573a5aa2e714ae11dcb2c9b08730cd88115ca482f8a1"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.motion_detect",
+      "bytes": 94,
+      "sha256": "a546ca16826044c6fd1074fba118e10763d85ae09c6c9365186d0fa888dbe3ee"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.motion_detect.attr_0",
+      "bytes": 141,
+      "sha256": "45aa71ab01a8fa899336b7daf0e9d5e757fd28d630d0784d3c2d68625718530c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.proximity",
+      "bytes": 90,
+      "sha256": "cc11a6bd27c70e5b2ce3e64e3014ffa625493afb771206394a76735bc82ab6bf"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.proximity.attr_0",
+      "bytes": 137,
+      "sha256": "cc0710664da080f443decfbdf0b50a20eadb5e898dca104b66f8f1a10cb1b51e"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.rotv",
+      "bytes": 85,
+      "sha256": "d7f99f730d71594c69446f4f6d4c74fc98899a8e5b48b928f2e867388d95b64c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.rotv.attr_0",
+      "bytes": 132,
+      "sha256": "e649dcc10e477aa9b846c2f8b9ae231e31fe210d20cee7fd6dc15070bb3bf532"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.sar",
+      "bytes": 84,
+      "sha256": "82a3a4cee6e4cfa6824cc94b44919542316863af6ae349fd74eb946814028f30"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.sar.attr_0",
+      "bytes": 131,
+      "sha256": "b4dae7a65e428d29c256c9f73ecff8e3edde9e90b95aa04cc44235ac3a32a84d"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.sensor_temperature",
+      "bytes": 143,
+      "sha256": "54195050fccb149545516341329b95abaea7319031621b3ee437b48281e49969"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.sensor_temperature.attr_0",
+      "bytes": 146,
+      "sha256": "7af3f9347e5d89314b290cc0ef7f388d9107a3bdb656d29061ece45e861cc6a0"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.sensor_temperature.attr_1",
+      "bytes": 151,
+      "sha256": "b93e7b0a60e61fd557b151cd36f908dc6cd5f55ffe12262d1635ac8f253e0645"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.tilt",
+      "bytes": 85,
+      "sha256": "f10938be290fae6820dc10ba1b8e65d3a520d971ed1496f8348b147b3d4597e4"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/default_sensors.tilt.attr_0",
+      "bytes": 132,
+      "sha256": "d92b3d1520c9b86adaffdbf687c41af42659c1553efb79c2a574a11d8b4731b4"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0",
+      "bytes": 248,
+      "sha256": "c141b1058df18462a1febcb0fda988dc0047fd6c36219dc051a342d605351f77"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0.accel",
+      "bytes": 85,
+      "sha256": "8c1aa75c6795d5e6cad99645f9f65ac1861a0ad588e105ab132c320cf19bf1ce"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0.accel.config",
+      "bytes": 233,
+      "sha256": "48ebc295a9e46b7582b30248a7e7fc4ad7e54ee3ede9a29eff575dd8f70f269e"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0.freefall",
+      "bytes": 88,
+      "sha256": "31b2b770d665f077eb5a4144ab7cde9fb1be0fd2fca52a82cc2e52605084397a"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0.freefall.config",
+      "bytes": 236,
+      "sha256": "0ca46f696e8a19cb7de95a37bf9b7693328e55f7cc286dcec12dd82d9a1cc7fc"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0.gyro",
+      "bytes": 84,
+      "sha256": "c5694c2424a085baceebb0971797dab9e4d4353eafcfb2bf34a8dfbaf912c77b"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0.gyro.config",
+      "bytes": 232,
+      "sha256": "a8af0e92a8f24d0beaea1459e18e58c380c6bc73b578c578d67375d0ca82244b"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0.md",
+      "bytes": 82,
+      "sha256": "2799d82c91c3a3b281664036eb0ea515d2c54fb38fe1a14d4371c58640eac9c3"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0.md.config",
+      "bytes": 230,
+      "sha256": "19a5703e1e7e8a0091c169d08933339d396aaac1b3a6c2c3fc4e07a810be4a11"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0.temp",
+      "bytes": 84,
+      "sha256": "35d693aeaf2e1ad54f8e4bfdce064afe6ffa84bd97667521f26219ddd96485dc"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0.temp.config",
+      "bytes": 232,
+      "sha256": "28ff184bdfc22cb647c12e4de036ad0cab1395cacc0bfb870ea64287e2a2c96e"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform",
+      "bytes": 346,
+      "sha256": "9aec95e38c7965cb067478a117763a48bd6daa81e3a6471c7f8ead11ab8d62e9"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.accel",
+      "bytes": 95,
+      "sha256": "79ce753fbbf3d47230311ddde671212516805fa80c10b6830dba9ad68516c2e3"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.accel.fac_cal",
+      "bytes": 146,
+      "sha256": "077586d53248707d9792e0ecc1d1e8427ab7c2c02c14af8e86fe6a0f5ee8d60b"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.accel.fac_cal.bias",
+      "bytes": 213,
+      "sha256": "a69d8b809126a61630e98ab59fd75d007e5ac287968f8b2802526243fc559b8c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.accel.fac_cal.corr_mat",
+      "bytes": 526,
+      "sha256": "fd0ac1066e2038093265f3c62e075441ed1b1c9c8722c197d9798a6ebb89670f"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.config",
+      "bytes": 916,
+      "sha256": "155b2891415da1faaad396b6ffc00a4f2d1be5f1a94e74ea701108ab28d11e78"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.gyro",
+      "bytes": 94,
+      "sha256": "c229c33bd22efa0f747f31af413632efca3c296818abe834e18f93f0aa60d539"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.gyro.fac_cal",
+      "bytes": 145,
+      "sha256": "0f65c8131b9bf0db303d0e9ca0774cd217bfd022754151180904f89efa277a05"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.gyro.fac_cal.bias",
+      "bytes": 212,
+      "sha256": "acbe0b9bc6f66ce253fadc496e4bd2b13a500cf15085c534d10763e8112e85ff"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.gyro.fac_cal.corr_mat",
+      "bytes": 525,
+      "sha256": "2f7b7fb1569f735f2f09471bf3caa85ee607f17d506a628992ef1256031cbece"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.md",
+      "bytes": 91,
+      "sha256": "9c62e339dd7fe6e5a6a368dc60860911c716ed4474efa3187268a59bc4631747"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.md.config",
+      "bytes": 205,
+      "sha256": "2c3e9a0e709a68bbb0ee64fa4962eaa883a9dddfcf04ee0a1e1f9f66777a38c7"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.orient",
+      "bytes": 174,
+      "sha256": "315292f2edbb7ce8d296302fe1d1d111937542e6dd10d160e9b72d48ca4c900a"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.placement",
+      "bytes": 644,
+      "sha256": "d1d2a411ce22b6e5d79a199b25834bc31272ac7b825fd9e205a6ea9ba993ca90"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.temp",
+      "bytes": 94,
+      "sha256": "1afdcb8a50b3e12ac2674ed447dd0a4a6cd020c12377f672bd5d44d720fb21f9"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.temp.fac_cal",
+      "bytes": 142,
+      "sha256": "52ba464473c7f0a917af3fc1aaa9eb730ebaf5f4fa9c098729c541e4a8c15f6b"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.temp.fac_cal.bias",
+      "bytes": 111,
+      "sha256": "49d268feb25c361a7734c5d2cd8b81c6272689c57dfc26d1b715345cc8ee999e"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xa_0_platform.temp.fac_cal.scale",
+      "bytes": 112,
+      "sha256": "544b4cfdb98bf4d8dac348da8a0e41e3841ff7091748094eee0f0fabef1e98ca"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0",
+      "bytes": 248,
+      "sha256": "431158f63b17f649f2d5c4b5bc6cdf09e6d5681ad9d1243e1ad6a588685beafb"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0.accel",
+      "bytes": 85,
+      "sha256": "6ccb92c59ac43ac3c2fc39b294281c85b56ed9aef3e1b6990966aa10212d83a5"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0.accel.config",
+      "bytes": 233,
+      "sha256": "62e6d180ee8d6d927a6f81a6531dbe5f290a45a949e9d268c654ebe319d1d0c6"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0.freefall",
+      "bytes": 88,
+      "sha256": "899b6667023e282d9db5ac2602b0b7f2be8e835ff01e1302406f878a9bdc2fe5"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0.freefall.config",
+      "bytes": 236,
+      "sha256": "02e8ba24894449736f0784c0ec928ac1eb8b583fdca623ccd44889e5b9aceeb8"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0.gyro",
+      "bytes": 84,
+      "sha256": "3abda43ab077aee6ba44980c21475a1a54058ecebcd45a9cb4e7a7708974286c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0.gyro.config",
+      "bytes": 232,
+      "sha256": "e72f60edc61315aeaecfb8909ef8931de1c33d691c5bdd58b326450d798e6608"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0.md",
+      "bytes": 82,
+      "sha256": "06a2ecf492dc0d153fa11c0eeed8d756b62e16e778ba6f7852920f257e9c76e8"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0.md.config",
+      "bytes": 230,
+      "sha256": "7116860048a337be9d7d8d11be44c7f696ac63e799e6e2c0afdfa3a659cca9c5"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0.temp",
+      "bytes": 84,
+      "sha256": "107aabe4b3db9ff13b3dd36f47d68260a3b76ae59df557c7337e6e39c028c166"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0.temp.config",
+      "bytes": 232,
+      "sha256": "17e5828310966d1c4751fc8b1a64c38e6d610e4adb4a579c7a4a558d08c5e6c3"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform",
+      "bytes": 346,
+      "sha256": "5983f82874ef5cb506c6996018dedac093a7cee5f1980f1753a6e4f70472ea48"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.accel",
+      "bytes": 95,
+      "sha256": "bb925215261d8be963ae9bfdbe9b77366d4f7af72e936e5bd6cd394cf623bd8e"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.accel.fac_cal",
+      "bytes": 146,
+      "sha256": "28fc3178cd6333f0ecdadbb46809931cc0b91a53e9982fa51f14a8715f1c9359"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.accel.fac_cal.bias",
+      "bytes": 210,
+      "sha256": "35fc68c09bde6e8cdae3843de60329d26931c5003361edf4fad1bb80e3647c93"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.accel.fac_cal.corr_mat",
+      "bytes": 526,
+      "sha256": "838cec44b305ffc1f475bc13ab3da2dcd1b164b6c65938f70b3c576f82c2b50f"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.config",
+      "bytes": 916,
+      "sha256": "7ccfd2f1d67081fbeaf5045f741dcdb79947a0a5c5f6e00ab8dc79bd5f1b5e1d"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.gyro",
+      "bytes": 94,
+      "sha256": "60159f9cedf7baf338fa71a86090cfac6526502f9a2297a22227cec5bc50af99"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.gyro.fac_cal",
+      "bytes": 145,
+      "sha256": "f5da03fa891ce68db122560a6a39c167f3fdd8220f02d5c71c4135c118b8d4de"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.gyro.fac_cal.bias",
+      "bytes": 209,
+      "sha256": "1a4ac865e48c6025954f4cfd8f61b2ef139480f6ff3fb3d3092755c44ea4a16c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.gyro.fac_cal.corr_mat",
+      "bytes": 525,
+      "sha256": "9e6eb1eb381fe7103795e3c4e6eb3fb5d2cc4534fa43659bbfe151968ce4ee6f"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.md",
+      "bytes": 91,
+      "sha256": "8186284d659c423edda09a47ece8694d0f53046ecefaa06f874aa912c865b799"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.md.config",
+      "bytes": 205,
+      "sha256": "5fe4d87e441437ab4f4a43b324ece1cca0047f94be2c62f1a3e82e70634d31c4"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.orient",
+      "bytes": 174,
+      "sha256": "cbedcee36800c2ebcdf1229ca5c7d28577e4fc5a6a3a64ebadba3c4795dfb78a"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.placement",
+      "bytes": 644,
+      "sha256": "1c0f7c732ba8766f790d936ddc8bdf2cc8312896a070b82268998e88919fa8a6"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.temp",
+      "bytes": 94,
+      "sha256": "7140fee8a0836debefde33aa6362f775e99e4d544ed377ef3f22228901730646"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.temp.fac_cal",
+      "bytes": 142,
+      "sha256": "47c71df4f353863313f313af7f9f6162ad76eed535c9b0bb371ce5475aacf740"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.temp.fac_cal.bias",
+      "bytes": 111,
+      "sha256": "e0049266311e45837dcf1025ef4264b3d306943cefe2004d8e08d08a3d72161d"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icm4x6xx_0_platform.temp.fac_cal.scale",
+      "bytes": 112,
+      "sha256": "d313510a901e807daef04927aad5ecf98d4fcccb33dcd23705043933d6ec168a"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0",
+      "bytes": 127,
+      "sha256": "10c79f0c98e84546501dc57a2f202ff2bdbd4612215476aff637e1b77cf2a056"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0.pressure",
+      "bytes": 92,
+      "sha256": "aacab77c90975d94f2a705374e8a677d90989454c510ab54429c4a5144289545"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0.pressure.config",
+      "bytes": 240,
+      "sha256": "07afa0e9e188d670350ede002d9a5d87a8829c46a9ea2ebec4cb94a3446526a1"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0.temp",
+      "bytes": 88,
+      "sha256": "ee8ba5307004ca06c36adb85960134f9a698295f25b804fc36f88945cbb8aa82"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0.temp.config",
+      "bytes": 236,
+      "sha256": "686171d73f4f8f03ca11c5dde64119dcb2267ba453918638c474181092cf50e3"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0_platform",
+      "bytes": 227,
+      "sha256": "470daf7079f74d13ee04c0821e63f576e3bd4a8699c368129f4db59d466f51eb"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0_platform.config",
+      "bytes": 599,
+      "sha256": "2d89f3b496d70f3a2ecd5c036f295dc610c66eaad563e08a1ff80213bfa0dc0c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0_platform.placement",
+      "bytes": 648,
+      "sha256": "549caeaca79d4049781c42298bebe55e401333df0e89acca14d80e9a40debbcb"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0_platform.pressure",
+      "bytes": 102,
+      "sha256": "48d6a4c52cf4c82aec304357510fa28860f17987476fd6154a04bf2f3d478026"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0_platform.pressure.fac_cal",
+      "bytes": 150,
+      "sha256": "914627f78fdf84d73cc3434c3ca9e46ba25e4ce7e0fac561341d7f23ac459bdc"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0_platform.pressure.fac_cal.bias",
+      "bytes": 119,
+      "sha256": "1ddc7c145afd2a6f4ddb4e001990a36c7198112ebb96cf9a9bb9c079fbcc0291"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0_platform.pressure.fac_cal.scale",
+      "bytes": 120,
+      "sha256": "44355a2d6a0ce345bc7a3d4c57d7ffa350cf4cb5aff1077f24ff0ca4b7115495"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0_platform.temp",
+      "bytes": 98,
+      "sha256": "685aad012384585f7104a461ccb46d25e7d176f4ab5c69301e9e07523d11c8be"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0_platform.temp.fac_cal",
+      "bytes": 146,
+      "sha256": "78f79a1c15d5faee6a79f357e7ac3168802385296ec8688c5223c7ddb2d646dd"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0_platform.temp.fac_cal.bias",
+      "bytes": 115,
+      "sha256": "94eeae1a5c9cbf6115e42053b5940f6595812cda7d5008c420916eb3f482e1f7"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/icp101xx_0_platform.temp.fac_cal.scale",
+      "bytes": 116,
+      "sha256": "56cb6a6d1780f06bd25f683f424663583786456c8413694ab5a5ae4882242e13"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0",
+      "bytes": 200,
+      "sha256": "4de059037cfd132b303f71ad0a5c1143fae74be0735d39fd94e19d47b3bd7b5f"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0.accel",
+      "bytes": 83,
+      "sha256": "3f5515fa05b7511752c4b88f8080972e1227198dc0b741c54ffcc47d0f57cee8"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0.accel.config",
+      "bytes": 231,
+      "sha256": "7e48602f364ac266033582c92c7f1fb2cd548d5a6f8056563223aa6c29452902"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0.gyro",
+      "bytes": 82,
+      "sha256": "c45ab87b0e1cdafc35ec66bd694b88b42847fae24187404954671483acc70573"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0.gyro.config",
+      "bytes": 230,
+      "sha256": "bc0e792abd10d62eb563140ab6277b02e01a658e83ecaec09b3a00ffe135a7f1"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0.md",
+      "bytes": 80,
+      "sha256": "f0d723338808bf0751d2cebddbe91a5276eb1d87cf666b122072321c5bcf8cfe"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0.md.config",
+      "bytes": 228,
+      "sha256": "c64418d95d5cf900303d9cc76a24b9ca1dc710bfb62331da70375d48201c9143"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0.temp",
+      "bytes": 82,
+      "sha256": "af9bfea2b5f30698e2b69914fd7fd2bf72ad4a30671cd717103e83f7dcf03bae"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0.temp.config",
+      "bytes": 230,
+      "sha256": "5633a31ccbc281c4de14f6157ac69abda60ad7b4c000b5c6b09f19e9deef53f0"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform",
+      "bytes": 344,
+      "sha256": "d5828f910cd8fff35eabe00a55899b6c686cb802a02d125e1c4f4b7a016584fe"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.accel",
+      "bytes": 93,
+      "sha256": "8e13cbc01903f843be8ff34322ef0dffb4143da9b9e60855fc506e8058de56f8"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.accel.fac_cal",
+      "bytes": 144,
+      "sha256": "add2315587604b4d09adb5951546143f191949fdbf38762ad1991bb5c3a1651c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.accel.fac_cal.bias",
+      "bytes": 208,
+      "sha256": "607037025bc648b8c2aaf58694c434dd491ab60d8d1d2b464607954bfe44e63b"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.accel.fac_cal.corr_mat",
+      "bytes": 524,
+      "sha256": "346f6f6161dcf2ad43bfa52b38ae733cc8021585a3a191287e817f6752c91c05"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.config",
+      "bytes": 1011,
+      "sha256": "faf7f0543a1bc910c6726df5df51f574e36a0d63d771291230dfefe66afc1ee9"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.gyro",
+      "bytes": 92,
+      "sha256": "6d763fac86a5eeb42e1f1ca08a86f7b57fb60908c76ae27bae24ab499a9b3239"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.gyro.fac_cal",
+      "bytes": 143,
+      "sha256": "af7bc1429b6adbddd40e87ac77b5104d58afb319f52e2f7cff5493fa7cce6f53"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.gyro.fac_cal.bias",
+      "bytes": 207,
+      "sha256": "69a431ade96623473acf59d37b3bb4b797af74e30f081cb4b7d232602339d993"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.gyro.fac_cal.corr_mat",
+      "bytes": 523,
+      "sha256": "a3e92701bcc1e0d771f7cc532db9bb564a00935399fd8149adf7991e9c9e77ce"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.md",
+      "bytes": 89,
+      "sha256": "120d21cd4d993a133746110976eb24cbf851a562f15680b336d0a19eb1e53579"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.md.config",
+      "bytes": 203,
+      "sha256": "33524a4a90460d7bc1761fd9385ecfd1f1c1423e8dacd8667388bc7b9cc3ff03"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.orient",
+      "bytes": 172,
+      "sha256": "3503140ce97dbd91e623030b9cbcf3e66659d36d1f54c117e14fb9fc5adec5fd"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.placement",
+      "bytes": 642,
+      "sha256": "663bdf2a6bbcec49ebec3f5fecc8202df44735c6d0f1ef69ea35add21ca8ce27"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.temp",
+      "bytes": 92,
+      "sha256": "449d0d3d2475fd85575cbe4400cebcb8215802116474b92cc38b830f70550820"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.temp.fac_cal",
+      "bytes": 140,
+      "sha256": "7a26c14aecaf80e1d13e40d2afc5de6d0efb91ea2d5132e0e80ab3d5f2d92cf6"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.temp.fac_cal.bias",
+      "bytes": 109,
+      "sha256": "a4af83408ab9b150445f817ccc0de2ae3f2ce15f7d9f71deb70b631ac96dfe92"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/lsm6dst_0_platform.temp.fac_cal.scale",
+      "bytes": 110,
+      "sha256": "88ac5f74b6512e92cf99109daf265997cb40edbf3992b5b871c4728f5ae2fb2e"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/mn58xxx_0",
+      "bytes": 135,
+      "sha256": "ef2e3e1ec762b846347017c88f0d05ac05fcd1d285183425d9142a9c4cfece26"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/mn58xxx_0.ambient_light",
+      "bytes": 95,
+      "sha256": "ad464b8f491461e9f305a7885da1a99957406abf60202b04c48978bbdbe1a1c7"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/mn58xxx_0.ambient_light.config",
+      "bytes": 243,
+      "sha256": "465e31487c8ea0f8c6cb71b886c117ea09f4be0ce8daafda43f7086cf16bb64f"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/mn58xxx_0.proximity",
+      "bytes": 91,
+      "sha256": "2998218445bc52bc93ab972bc410387ddad29c018d3352741df9b8957b4af182"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/mn58xxx_0.proximity.config",
+      "bytes": 239,
+      "sha256": "7d3fbfb5a37d5bd478ebc739ca528b9277a8bb795250344a96d871f1d40896bd"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/mn58xxx_0_platform",
+      "bytes": 218,
+      "sha256": "7483f617881326f4f0ce5a8625d724944652cba921c77efd01a79803e252b39c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/mn58xxx_0_platform.als",
+      "bytes": 139,
+      "sha256": "e34b858638628bcf2c31de0552c28b1db466dc4544ddec9b4acb11ecded30176"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/mn58xxx_0_platform.als.config",
+      "bytes": 808,
+      "sha256": "8a831a2ed089d2f80f07278a34974b74e6684cad8c721e336714c5c3d156448d"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/mn58xxx_0_platform.als.fac_cal",
+      "bytes": 163,
+      "sha256": "64393ab190c66ecb0e67602d65d673992944785de23625e760ee063e788a52d7"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/mn58xxx_0_platform.config",
+      "bytes": 935,
+      "sha256": "6a70a361f242317400cd93d26a05c6e7822be697b19abcb0026425999c52ab5f"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/mn58xxx_0_platform.placement",
+      "bytes": 646,
+      "sha256": "dce704921ef368c5870d77d0144d550714cbc71bb8029d6e129f1329dc50a136"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/mn58xxx_0_platform.ps",
+      "bytes": 138,
+      "sha256": "7d6bd8a8a649822893b5a548b6284454872dd8a0376bd28746b62550f0f9c40d"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/mn58xxx_0_platform.ps.config",
+      "bytes": 528,
+      "sha256": "227e0a399039ea18d4770e127b96795022f464e0e16ea703d9082f49b97af58c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/mn58xxx_0_platform.ps.fac_cal",
+      "bytes": 245,
+      "sha256": "3f9fae5cc7a012a50d5da71108c7c6d3ec90473c77a6c01cc827096c09888758"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/power",
+      "bytes": 79,
+      "sha256": "0c67c3ef00b22e0464a85c2768e13739355dacf01809290eed4c8f2ea2f16152"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/power.island",
+      "bytes": 94,
+      "sha256": "e2d005116fba017b5588593fb175770ed6191f41b3f84c5a1cd9740b383336af"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/qmc6308_0",
+      "bytes": 78,
+      "sha256": "cd787143977c640ebc15b8b1981af106668d2caf946a4dd0240cf07fb2bc614d"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/qmc6308_0.mag",
+      "bytes": 131,
+      "sha256": "35919ea12c8628b47ba7b79a3f6e8e939798b1bf72c01b16ee60e1ec556e9fa1"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/qmc6308_0.mag.config",
+      "bytes": 233,
+      "sha256": "bf856e800213ad549015481836a86017a7d610d2eea5dd663dddfd07d0a03813"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/qmc6308_0.mag.config_2",
+      "bytes": 181,
+      "sha256": "fdeb7bd7e24402a9273c44905de849bbbd06ad00ed92aae1b6bdbf98b689e1fa"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/qmc6308_0_platform",
+      "bytes": 222,
+      "sha256": "975b73d1ae81203b90d6be64eef5e94b4efa1011d5021720887364f35a33f4ca"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/qmc6308_0_platform.config",
+      "bytes": 866,
+      "sha256": "50708858477727825fc17a1c2a83b0182c5f89d308d784fcb5bbda91ffd3eeb1"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/qmc6308_0_platform.mag",
+      "bytes": 142,
+      "sha256": "ea85614725532815f9832f4f9d82f63d2dad23946313bf1155efc42bc596b402"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/qmc6308_0_platform.mag.fac_cal",
+      "bytes": 146,
+      "sha256": "1b56a5ce1bd5c5c4a952996acc85df314c95e043122077680cad9681a7404165"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/qmc6308_0_platform.mag.fac_cal.bias",
+      "bytes": 210,
+      "sha256": "74d976b52678746897201339842bc13e028094725d789d71767f5c071f882218"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/qmc6308_0_platform.mag.fac_cal.corr_mat",
+      "bytes": 528,
+      "sha256": "9961f0039cec92747d4fa50cc7442cf395b1baaa7cb94ba3df8e3f3582c07c44"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/qmc6308_0_platform.mag.fac_cal_2",
+      "bytes": 148,
+      "sha256": "b3a74d2e1d86eadc5262914f75c294a86cb43be7a1227a63a11ae8b58644b042"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/qmc6308_0_platform.mag.fac_cal_2.bias",
+      "bytes": 212,
+      "sha256": "7d7c965e8ff2bc27666ad0c17ceb16feb6420a48ef776f8c37dc0e979c01ce43"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/qmc6308_0_platform.mag.fac_cal_2.corr_mat",
+      "bytes": 528,
+      "sha256": "d491663e45a246eae5dd4508750d3ab7a381b25177b7d05e9ca18ce4b8c71d8e"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/qmc6308_0_platform.orient",
+      "bytes": 176,
+      "sha256": "ca502f9e14deda442639055e51114817a66fea91b14aabc39e01fecbe656d8f7"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/qmc6308_0_platform.placement",
+      "bytes": 646,
+      "sha256": "f86020568a3204fc2abdda8a19eeb458edaae4d386a427ecffada0bab0b22963"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sensors_registry",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_amd",
+      "bytes": 245,
+      "sha256": "fd8e12c9b213d16cf2290a055111b4f69cc0efc36a470b4fbbff6e266d417602"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_aont",
+      "bytes": 83,
+      "sha256": "15848908fd6e0f17af2b8f88a4f9219c2e6e90c2b3b67b45cf13c72d6f549e09"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_basic_gestures",
+      "bytes": 572,
+      "sha256": "202df580409d088cf0b856815fa260c00081246a9dabd77dc9ecaaedd5a5e344"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_cm",
+      "bytes": 207,
+      "sha256": "982ee8c648dc3fe858e11e3a1435373224b6a35fde4d7ea5bff8fc5f4b9a8320"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_device_orient_platform",
+      "bytes": 104,
+      "sha256": "6fd01a6419a43b7dd6bc0336cbec3a757d93fba3dbf13d1f441c9ce22545d727"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_device_orient_platform.config",
+      "bytes": 485,
+      "sha256": "3db3007666be7e8134f79bfb0bd4d7d380bb4677d0ef64c2cebe4f3c1466fd83"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_diag_config",
+      "bytes": 93,
+      "sha256": "2c556b62bb49661ba4d603f81d0dc79e21f8421abde4aa6cdac6e1634ccbc84b"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_diag_sensor_datatype",
+      "bytes": 2872,
+      "sha256": "c485be45ff26533edd28554d8c9fe9d87560e5b31d478a126bda927593f01ae3"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_direct_channel",
+      "bytes": 106,
+      "sha256": "e6965fa44805ef47f47f131778022a0735caba135af41697be4b44313cd20a3f"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_distance_bound_speed_for_motion_states",
+      "bytes": 565,
+      "sha256": "8c064688928a1c66a9648b984b0b31a8d9c5397b8ba7c73ed0e5e880f7e0caaf"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_dpc",
+      "bytes": 355,
+      "sha256": "3aad057b1b4a1fef09110ed18d38c425c88e29dcee790bfad45c43971b315796"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_facing",
+      "bytes": 342,
+      "sha256": "fb6f535de6dafe5467cd7a40d04770d66d0adbdf392da0feddd518ca634aa01c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_fmv_platform",
+      "bytes": 84,
+      "sha256": "2fd57d0709b62ed292aaadb1468fa84ca4dc414bb285569d092b5204d606ec34"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_fmv_platform.config",
+      "bytes": 841,
+      "sha256": "6dca0463425ebad7a365a2b234e295fce3b4e8628ca4446a24193ab7e15eec1c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_geomag_rv",
+      "bytes": 87,
+      "sha256": "db1ca319c6e89bdc98372b8e56a03b363e2a732dda590dbdd67fca92cdeffbea"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_geomag_rv.config",
+      "bytes": 555,
+      "sha256": "b0a2b0bc5bf277b6838439c94b9d054d5760683c4dd31601998aadbadf9cb49a"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_config",
+      "bytes": 345,
+      "sha256": "e946db46658e69f4745d7a1cc40fb585dcb9139f0c999694e9a608c47cc02db5"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_persist_s0",
+      "bytes": 398,
+      "sha256": "bc8d3764de8fe491b765104f8a0aff3487fe7585cb24ce01d3b41f6276f80ae4"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_persist_s0.bias",
+      "bytes": 214,
+      "sha256": "f0616c512a24f933c940ad42052b16064f4cfb504705cf970eca778c0b61dd46"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_persist_s0.table_max_temp",
+      "bytes": 166,
+      "sha256": "58b73b23b7902b9740bd054828b9cdba48c53124dd400d492b7e76b04a0b889a"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_persist_s0.table_max_temp.bias_max_temp",
+      "bytes": 266,
+      "sha256": "ad7beb87375a2ac62f59a06060afc859c043582db946b516bc5c8a1abece9d1c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_persist_s0.table_min_temp",
+      "bytes": 166,
+      "sha256": "8a05078ea8a59e683fbdaca74bf0d2f6e7f82cebe45f5649ca11b9caff2ac349"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_persist_s0.table_min_temp.bias_min_temp",
+      "bytes": 265,
+      "sha256": "3d588ab5c4f2cc6fbc46a5595222261265b6e67fc53961c948d73b6c1fcd44bf"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0",
+      "bytes": 200,
+      "sha256": "57d0cd6e81c63d73b0ee48dd669d41036151e72680dce90156ad83343e33d5f3"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g2",
+      "bytes": 163,
+      "sha256": "129d2ad954bc0d30bba1d115c2afb57cc3bea235200eeccf79187bd394a1bc05"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g2.25",
+      "bytes": 210,
+      "sha256": "6ee8683f37619b3e837e749bc1fa290b05ea0c5087b8e499aeb49a9b8e509b74"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g2.28",
+      "bytes": 213,
+      "sha256": "5a6799df573cbb9cd1907a6af56ce28ff7d2136beb3f0f71e094bebbc9d0dc27"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g2.29",
+      "bytes": 213,
+      "sha256": "d99b2f6c33f3eaf3ee82368dbacb5a43641ebf1a30fef228f3ef469d82ba4dff"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g3",
+      "bytes": 443,
+      "sha256": "02c6086342decb46e63a2942a917725b4f6323f0b547a147660b809ea823f383"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g3.30",
+      "bytes": 213,
+      "sha256": "ea2cfa647800e754f501ee4563095598ac13b6f70e43017e476b997c555fcf72"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g3.31",
+      "bytes": 213,
+      "sha256": "1fb5d5e39c4895c8c92497e2400819bb48ef4f53be16295a2b5b6330ab9038fd"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g3.32",
+      "bytes": 213,
+      "sha256": "82e49770b6c37fefd2d10b15298bb0c001a3cf4314e02ad02dc0197790fe7fd6"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g3.33",
+      "bytes": 213,
+      "sha256": "4c03d1a2ea90789d3db12ed92342a289ab061891e2487afb6caf6263cb5b421c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g3.34",
+      "bytes": 213,
+      "sha256": "921c16c2d8b0e1e58fc2b801a03493c19f39ecdd6bfbd1717c300dfcbc3f3418"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g3.35",
+      "bytes": 212,
+      "sha256": "0256f82f7c29b04f159ac1c7c6d7da25b1bffeb5a9d94325f34d33ced487621d"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g3.36",
+      "bytes": 212,
+      "sha256": "5187e2b3edc6323ca26e51f44c98426000c155234915acccee279178d3806c49"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g3.37",
+      "bytes": 212,
+      "sha256": "59d899f98a6785ae85282ac845c0b541d3d1606cb326fb901f00c5e877672255"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g3.38",
+      "bytes": 212,
+      "sha256": "330f6275764eba8a6485d72c5aab2c2a847ca9470387f1fd3f3180f83cfdc655"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g3.39",
+      "bytes": 213,
+      "sha256": "aea579c598fe0b9e5ac2ddc6b5f7792f051ce9f7d945d6db51299aa7ffd38288"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g4",
+      "bytes": 323,
+      "sha256": "6efa9682fffe895632afe92bfeda6e5c16d9360cd5d08ae13dbb71355b9f1119"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g4.40",
+      "bytes": 213,
+      "sha256": "95d78110002adbde3eabbffd0c6b5f85f76990209bdcead947cef394f03ec1a0"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g4.41",
+      "bytes": 210,
+      "sha256": "436cb020629ce4e0c541dfed20aeebfdbae6343b0e788b7888067bff973591aa"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g4.43",
+      "bytes": 209,
+      "sha256": "e3e00a980d483a520b3b95ccd8203b0b8512b2d95bec4fa09e8e89bf0f2edf3d"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g4.45",
+      "bytes": 211,
+      "sha256": "786eef20a52563e71b0ba4b0487265899f2f0af0a54ce3913c258cddff7f7dcb"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g4.47",
+      "bytes": 211,
+      "sha256": "ff7e868b1fd6041f96cd7f628b4b5a281bc1bfc22b2c4a04c0d3f8f2a1bb243e"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g4.48",
+      "bytes": 211,
+      "sha256": "e16e5e6c81e45aadf5540fb42b949a426e125e8905db85d3fc024ae4f4f6150b"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g4.49",
+      "bytes": 211,
+      "sha256": "ea60a8e12d59fc23ab0a9de563770318292571375874ba91f745cfc730de987f"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g5",
+      "bytes": 163,
+      "sha256": "fc34bdda57f7cd998f7941530482be1411d2c8b1297877901b41b2f772fbeff3"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g5.50",
+      "bytes": 211,
+      "sha256": "c9f11663617547929bea92e9675e70680e954d882734a84fe48f5f5541f577cb"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g5.51",
+      "bytes": 211,
+      "sha256": "bce83db78c3f5c6e9eb4be74ac780e82e6d299d9764115855bd7bad5176973b9"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_gyro_cal_table_s0.g5.52",
+      "bytes": 211,
+      "sha256": "3b8a36295bf53bd42934a118821c34e3ee481be3f234ef79684005e5a12b36b0"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_mag_cal_config",
+      "bytes": 173,
+      "sha256": "1b3ab27091b6ed267b5efed4c954dfda2f73d5341e05c7c322e50b8346e02023"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_mag_cal_persist_s0c0",
+      "bytes": 190,
+      "sha256": "deefca6ea27422424c99b8cd6b84454f526204e15df6ef854d40c9469f4fc3fb"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_mag_cal_persist_s0c0.bias",
+      "bytes": 215,
+      "sha256": "f412cef21dc39d0905f81e6c6daeebf67569fd3967fd19a424f521303c0ff326"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_multishake",
+      "bytes": 352,
+      "sha256": "c63a3405c3767ea00727715e94dcbf624747c8b5403d571c37ca1596f6c7ccb6"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_pedometer",
+      "bytes": 475,
+      "sha256": "a171e238aee8319114c3733d7aaf48c41d0a533ef02ab052cee23fe60ee73e01"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_reg_config",
+      "bytes": 6156,
+      "sha256": "4414260053513334df71bea031b3882599df7331fa94cc8e5eb9b1b47a10e534"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_rmd",
+      "bytes": 309,
+      "sha256": "17da36ddef54495cef7a6a16c81886abaa56861707a24eddb5b35abf94894156"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_rotv_platform",
+      "bytes": 86,
+      "sha256": "9bca4c687b1e556eed16fc5e49f4bd38e6e60b795e9493e8fcfe953c8892a2e4"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_rotv_platform.config",
+      "bytes": 220,
+      "sha256": "01ba618c5edc7d48f21f2d86322323e966bfcc2f90b147252a66e8037576c9d3"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_smd",
+      "bytes": 637,
+      "sha256": "566fa82d5a05d9a47d6d6013fbf77b50788007a6204aaebe5c6fd1385ff6c491"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_tilt",
+      "bytes": 337,
+      "sha256": "6c9f12c60b35917b900f69c27c0f83c1e938cc026df1102e464568e4e6c8bfd2"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/sns_tilt_to_wake",
+      "bytes": 949,
+      "sha256": "17ac90032092447ff3934d0933e5ff17a9f769ed69b539d234c3f1d0d414ccb0"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0",
+      "bytes": 120,
+      "sha256": "235f7c0dc56ff4950d248d782f51e6aff7444a0bc589b07df33ddc1173248bef"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0.als",
+      "bytes": 85,
+      "sha256": "0e3b2570153bc1ed890ec2652f3a848418cc6e9680ac21dc814447ec57a78a62"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0.als.config",
+      "bytes": 233,
+      "sha256": "b0677e747ca5b1d7b772ab73e594e18cf5f2b420bd1b0886e8dc66d56b4ee230"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0.prox",
+      "bytes": 86,
+      "sha256": "3bc98b0ab24a6603439442b9896a0ad892db89bc608b2ecad1c2660e379b5caa"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0.prox.config",
+      "bytes": 234,
+      "sha256": "64e17de4e5031e8ddc8fa973a9c9665f741d21ac41a4d5c79326e5170ff95ef3"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0_platform",
+      "bytes": 220,
+      "sha256": "5d40fe7971ab9de8e6b72bc066cb553fd97345c35f44da4ce162c938a3dfbf36"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0_platform.als",
+      "bytes": 239,
+      "sha256": "6f2ee42aed9316b4b815a663ceda2b8076a376785c75254076e04361f598491d"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0_platform.als.cal_target",
+      "bytes": 198,
+      "sha256": "be798137cd31b57eeacf3d531213a26943fa81dca28a494d96b47d49526f15ea"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0_platform.als.custom_cal",
+      "bytes": 355,
+      "sha256": "9d20bab05f6ba3da8297caabb988ab59817f6cae709e73211fcfbd147886232a"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0_platform.als.def_config",
+      "bytes": 518,
+      "sha256": "a1dba5f8014c6e7ea101fdc19031503c9dd4dbfeda7bf785b4e0220f9d3c8e12"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0_platform.als.fac_cal",
+      "bytes": 169,
+      "sha256": "d1975125f26938d3068c2793441dcdcd38f283c41811cf2441cbb87b9b460c1a"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0_platform.config",
+      "bytes": 935,
+      "sha256": "b5fcdeccc2ba029a04c53e916717844a3addbe016493603e0855ddd8242986e8"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0_platform.placement",
+      "bytes": 646,
+      "sha256": "be406c9cc34915c18d72c75fe813b74bd0a85f67927fd362d9cc1674e2d1d0fe"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0_platform.prox",
+      "bytes": 198,
+      "sha256": "8ed04a6b4238839ff2cc4a8461188256e98bb0f66ea7e77060a6ad962fa921ab"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0_platform.prox.def_config",
+      "bytes": 752,
+      "sha256": "9e73bc5c3788cb379b3bde9ebcc0c5dcb9a9cb4be6497d9934b5a7a29e82c2e3"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0_platform.prox.fac_cal",
+      "bytes": 184,
+      "sha256": "7fb98fb564b82aa671d830c11dd43f39cef9c319902f54c5e64703a220171ea6"
+    },
+    {
+      "path": "persist_tree/sensors/registry/registry/tmd2725_0_platform.prox.proxOffset_hWcal",
+      "bytes": 188,
+      "sha256": "6e161f7ef09d392681d73029b75558c81240432f6ab6f7404a83f4b825cc725c"
+    },
+    {
+      "path": "persist_tree/sensors/registry/sns_reg_config",
+      "bytes": 553,
+      "sha256": "c1e09e88fe3df7f7811e55172e26b13d9dd62d936e90b4aa5c6badb288587807"
+    },
+    {
+      "path": "persist_tree/sensors/registry/sns_reg_version",
+      "bytes": 10,
+      "sha256": "9c7a6b1706fbd672af64d908c7bd1044958ce50801e86d112fbfbba57f1dd4ff"
+    },
+    {
+      "path": "persist_tree/sensors/sensors_list.txt",
+      "bytes": 159,
+      "sha256": "2064e9cd68767b5b294dbe25b735c0c2b0a10ef2be03709db74c950970db4dce"
+    },
+    {
+      "path": "persist_tree/sensors/sensors_settings",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "persist_tree/time/ats_1",
+      "bytes": 8,
+      "sha256": "9c55f3d75f61f94ff03fa9f529b9489a42cb50fd1510dfeeab850025f9dc2f58"
+    },
+    {
+      "path": "persist_tree/time/ats_10",
+      "bytes": 8,
+      "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+    },
+    {
+      "path": "persist_tree/time/ats_11",
+      "bytes": 8,
+      "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+    },
+    {
+      "path": "persist_tree/time/ats_12",
+      "bytes": 8,
+      "sha256": "a3a23165e29d15022a1b31d727e078683469969fd031ebbe0bb9474760829f86"
+    },
+    {
+      "path": "persist_tree/time/ats_13",
+      "bytes": 8,
+      "sha256": "230aabfbeb93b0ca841619eec95adbb5ade0c5d93486075e4b8c617005d3a0d4"
+    },
+    {
+      "path": "persist_tree/time/ats_15",
+      "bytes": 8,
+      "sha256": "4b99bfbbe8abedc9fc39e0db69fbd5b792cc2f91f58ff0b06108a789a3c5bcbe"
+    },
+    {
+      "path": "persist_tree/time/ats_16",
+      "bytes": 8,
+      "sha256": "9c55f3d75f61f94ff03fa9f529b9489a42cb50fd1510dfeeab850025f9dc2f58"
+    },
+    {
+      "path": "persist_tree/time/ats_17",
+      "bytes": 8,
+      "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+    },
+    {
+      "path": "persist_tree/time/ats_18",
+      "bytes": 8,
+      "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+    },
+    {
+      "path": "persist_tree/time/ats_2",
+      "bytes": 8,
+      "sha256": "9c55f3d75f61f94ff03fa9f529b9489a42cb50fd1510dfeeab850025f9dc2f58"
+    },
+    {
+      "path": "persist_tree/time/ats_3",
+      "bytes": 8,
+      "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+    },
+    {
+      "path": "persist_tree/time/ats_4",
+      "bytes": 8,
+      "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+    },
+    {
+      "path": "persist_tree/time/ats_7",
+      "bytes": 8,
+      "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+    },
+    {
+      "path": "persist_tree/time/ats_8",
+      "bytes": 8,
+      "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+    },
+    {
+      "path": "vbmeta_a.00.bin",
+      "bytes": 65536,
+      "sha256": "71ff9c498c8386eab849919c04b245171c763182e027332ed879718daa5a5192"
+    },
+    {
+      "path": "vbmeta_b.00.bin",
+      "bytes": 65536,
+      "sha256": "05e904b8635add0bf7e34c65753914099a5c3277e6cf55c8961a83aa2809513b"
+    },
+    {
+      "path": "vbmeta_system_a.00.bin",
+      "bytes": 65536,
+      "sha256": "48ccb84aced3466c6e7421e2b2f7357f65abebe44c7f5ad3e27e8c7826ab3d89"
+    },
+    {
+      "path": "vbmeta_system_b.00.bin",
+      "bytes": 65536,
+      "sha256": "f52a061b71163d9c2cca7c8d80029c2b91c9b1f2857e7b8b0e03fc302aaeb1cc"
+    },
+    {
+      "path": "vendor_boot_a.00.bin",
+      "bytes": 8388608,
+      "sha256": "d61a895649c123f01dffa66e1eded0e6fc57f7b4b32003c41a62387d3c0e9ce5"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/first_stage_ramdisk/fstab.default",
+      "bytes": 5245,
+      "sha256": "11be78f007670d4e66fc42e39178753ffe96b5225a6ac3e419f9fde453d7edec"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/first_stage_ramdisk/fstab.emmc",
+      "bytes": 5238,
+      "sha256": "0c6d042e79829dc6e85617f2897d3addefafc5c5c734f119f1103758aced51b3"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/_qcom_scm.ko",
+      "bytes": 186920,
+      "sha256": "b882ef4f49c38acf84372bb179b8f3b9bd2cfbf2769e6c5e1a6892ed7ef168ac"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/clk-dummy.ko",
+      "bytes": 16312,
+      "sha256": "f816f6bb5ee69bce727d40d7c09f452a1e380baf2ae971deee9d0c9d7831293d"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/clk-qcom.ko",
+      "bytes": 342776,
+      "sha256": "9865aea21584ffa162967eecac4ecd0393676bb3ae86dcff417dce6eb0a8d748"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/clk-smd-rpm.ko",
+      "bytes": 257992,
+      "sha256": "c33ed4fb1ed07f853721074d517a7bd3171b5df22ad3bfcd4a7aa5953a7aeb3e"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/cqhci-crypto-qti.ko",
+      "bytes": 19200,
+      "sha256": "f5fa949841523126a892b4e5430fffd03d2013344d29d4a453202513bf557dab"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/cqhci-crypto.ko",
+      "bytes": 28160,
+      "sha256": "ccd6d3f9a48c84d7dd441b774fc82b85da687c197fac1e58d008786324dedb6e"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/cqhci.ko",
+      "bytes": 47000,
+      "sha256": "5138d30e98b0926ba0f26e8311bd629738c2f13a81416a3036335fd8651a5baf"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/crypto-qti-common.ko",
+      "bytes": 28064,
+      "sha256": "8ff28113a9d6d1a8e0be7e2068a9b667bb6097c6cedac24e9c33b6267913c1be"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/crypto-qti-hwkm.ko",
+      "bytes": 18800,
+      "sha256": "857967ba31e93ae40fbcde265b2330c9c436dbd2f0f931fe2ed78d9fbb009979"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/gcc-blair.ko",
+      "bytes": 203832,
+      "sha256": "de88dc8df7cb9a6ff6468092e31b1e0f856262859934898540c6ee1650586930"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/gcc-holi.ko",
+      "bytes": 205688,
+      "sha256": "c7ffa873424445925caf4d2cd2353d753236ff65ed09de5b3ed1b39f357621d9"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/hwkm.ko",
+      "bytes": 34432,
+      "sha256": "850c2c86ae94f11db511b38942c1fd7ec9ed0e7b545d3e224ac70e722a0abdfe"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/icc-rpm.ko",
+      "bytes": 13144,
+      "sha256": "9ace54d9180ec11c04d555cd48c00adc1b3ae7538357560cafc260ae6896669d"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/iommu-logger.ko",
+      "bytes": 12528,
+      "sha256": "fa99d1d25ff793d10529c413c7358f795f02f98f507d306a6f7460f09a806503"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/memory_dump_v2.ko",
+      "bytes": 29896,
+      "sha256": "81a09213e2b174fba45512150fb5f43ab12eada3dcac56250fdbb61bbf0d7758"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/modules.alias",
+      "bytes": 4367,
+      "sha256": "a400d3a8aa377272596665cb481d6c56864728ae0f0f4f6f15fbfc8d09a70a6e"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/modules.dep",
+      "bytes": 4036,
+      "sha256": "699c7ef890eeef6136e80b5576b600551d3f2f2c8f2182347775482e3e87926a"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/modules.load",
+      "bytes": 722,
+      "sha256": "580009cae9fb7bb112fb571e7e0ec845a65d75d22f8421595f5f460d3d0457bf"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/modules.softdep",
+      "bytes": 89,
+      "sha256": "8f826563ef7eca1672c74cf56c31ec22f80e8a69cfb22189f2057fff031e4139"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/mpm.ko",
+      "bytes": 57112,
+      "sha256": "dce5ee216ed42b7638cc4b7ea634bdaec3508f2b13b8ddff5a29d3747772c93d"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/msm-poweroff.ko",
+      "bytes": 31720,
+      "sha256": "f2a11a1dd5f017f371e01638af0bc0f4d5a1141537ca053083006eb08661f98d"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/phy-qcom-ufs-qmp-v3.ko",
+      "bytes": 20264,
+      "sha256": "63f5ab93f599084eb9ad7d6f3aa4011537ba30fdecdccf273e762fcfaf8e1639"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/phy-qcom-ufs-qmp-v4-yupik.ko",
+      "bytes": 21376,
+      "sha256": "deb37a7e89620944ff390237a9f1d02e6799a2425ede4e89ff2ef9aa1e1e7212"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/phy-qcom-ufs-qrbtc-sdm845.ko",
+      "bytes": 16496,
+      "sha256": "5b8aa3b195c07572318f894d09417cf278ae3cc4440b84cbf68c32b21f981959"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/phy-qcom-ufs.ko",
+      "bytes": 33792,
+      "sha256": "33206fd94e7d771c3d3c8c04bf1dc598a5e8225fe04f9bf0de5141ce4e5a17c6"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/pinctrl-blair.ko",
+      "bytes": 133280,
+      "sha256": "91feda0b2daf6edc24df4e1d43cbe0177aed34e444f1c222b3273ee9592def77"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/pinctrl-holi.ko",
+      "bytes": 132784,
+      "sha256": "8f7592d9d341e61225a18dc602e5e3ff4a135159e70a07fbbf5dd271bea72669"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/pinctrl-msm.ko",
+      "bytes": 60728,
+      "sha256": "c9817a485574638731230682910033b513945a99f5bd54832d34aecfc4fa6f59"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/proxy-consumer.ko",
+      "bytes": 21392,
+      "sha256": "21fa49985208c8b51a2a8dc5222c44a005905b6ca518990e1e4f111c9e36178c"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/qcom-arm-smmu-mod.ko",
+      "bytes": 223832,
+      "sha256": "9c975855876a1cc6965c593d5bf5545026833445d229fd8db07cc9f5c074c5af"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/qcom_glink_native.ko",
+      "bytes": 58264,
+      "sha256": "0b064cc88b1df3b417c9ff9c4d0c9a4b2ec7f38496e20bc35ea89f7bce7097af"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/qcom_glink_rpm.ko",
+      "bytes": 18736,
+      "sha256": "eba2cc02f9b83d08cf835e55a8cf8dcc42d8d3ba83e759df16e72575e7bb3b95"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/qcom_glink_smem.ko",
+      "bytes": 18896,
+      "sha256": "56785ced5bc6b39b268cd44a5c5f8da8a1bc29c5519fd6398952a919a0dfedd7"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/qcom_hwspinlock.ko",
+      "bytes": 15784,
+      "sha256": "259e3f2af775c636f721badfc9d68b9bc388aeada22b1f9f5c199d964ef1e6d0"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/qcom_ipcc.ko",
+      "bytes": 22632,
+      "sha256": "352695c26ec4aedfc8f807e558240c7a81653538b362de3fdfb99556e6424fe0"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/qmi_helpers.ko",
+      "bytes": 37248,
+      "sha256": "0feb925d4d9ecc488930c894738425165979a8680eaad473c0bdc2c3e965b0c0"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/qnoc-holi.ko",
+      "bytes": 96816,
+      "sha256": "b662aa94087ef79d4cb6c2c488742240198fe5898e0c2c1b3cac6d977ba5001c"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/qnoc-qos.ko",
+      "bytes": 11360,
+      "sha256": "eb21fc232f03da61c05781544992ec28b5bdd845aa82a76615da5375e63566fc"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/qpnp-power-on.ko",
+      "bytes": 69288,
+      "sha256": "80e11bc15c9fe56eafb83c3cbcb9fb5a961463e00f0e4d55f01fb853fef13a6b"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/refgen.ko",
+      "bytes": 17112,
+      "sha256": "9e07cc08f597accf701f3243d25f7a94bf12c41e51d7bec4155f1feeae49d745"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/rpm-smd-regulator.ko",
+      "bytes": 50912,
+      "sha256": "a36adc27891099fa1f8003b4f355b8c3b85731cb55b7f904f2988950d08139d3"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/rpm-smd.ko",
+      "bytes": 74520,
+      "sha256": "a3e680e5093d5b935f0a53cf624cb165b722f658dbd1b2365b449e71791e506d"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/sdhci-msm.ko",
+      "bytes": 102896,
+      "sha256": "c1cf0319562d2c7030688820e1d9363c8cf98dc82f215fcb47324ec7f6a58018"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/secure_buffer.ko",
+      "bytes": 50136,
+      "sha256": "222a15c903c1b2698374abe98cb5e641e172e13c5b23e03dcb045bb54edea1ca"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/smem.ko",
+      "bytes": 26240,
+      "sha256": "fab747241e89057325946ee74b43df918b92f2c00e8e1bde2b0e25257f666ab6"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/stub-regulator.ko",
+      "bytes": 16464,
+      "sha256": "7f4fe68e70c03e27212218ff14763770067242081469da7a9e1b8742ab4650ff"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/subsystem_restart.ko",
+      "bytes": 139640,
+      "sha256": "1a53664e8c63254fafb3aee9ee4eb6804d8c79d30fa3ebb69decf7bf837dad05"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/ufs-qcom.ko",
+      "bytes": 103768,
+      "sha256": "901904498e53681ff661b6f25697b7ef3785dce588d1c134cb540d10fad4b890"
+    },
+    {
+      "path": "vendor_boot_a_ramdisk/lib/modules/5.4-gki/ufshcd-crypto-qti.ko",
+      "bytes": 18960,
+      "sha256": "195bd538f5f6c255b611be98e15054bbb3559b020cca940c401418f82d7341f2"
+    },
+    {
+      "path": "vendor_boot_b.00.bin",
+      "bytes": 8388608,
+      "sha256": "226b58c386e6d34d90847f94c4ea779fda7edd0e9b0cced6bae74e32d495e384"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/first_stage_ramdisk/fstab.default",
+      "bytes": 5245,
+      "sha256": "11be78f007670d4e66fc42e39178753ffe96b5225a6ac3e419f9fde453d7edec"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/first_stage_ramdisk/fstab.emmc",
+      "bytes": 5238,
+      "sha256": "0c6d042e79829dc6e85617f2897d3addefafc5c5c734f119f1103758aced51b3"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/_qcom_scm.ko",
+      "bytes": 186920,
+      "sha256": "5260f4cbac9a93cbd85d3d80280d0d241651be056c0c87b750b341953d7dd78e"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/clk-dummy.ko",
+      "bytes": 16312,
+      "sha256": "7c37777867bb02b68f0ddef4648aa95c71c1467718c9525b259b43c33924aeca"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/clk-qcom.ko",
+      "bytes": 342776,
+      "sha256": "e452e37e3a9c98c361d955d32407d0a5c4c15b92fb0fcf52f034afd8e4a1ad54"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/clk-smd-rpm.ko",
+      "bytes": 257992,
+      "sha256": "cda8ea8ecd5801eb42865ec60a6a0d2fd78f96b479d22355b5dd2518834b9a74"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/cqhci-crypto-qti.ko",
+      "bytes": 19200,
+      "sha256": "5bec4abac96c48736d88f30b8d89a926194ac20bf13033d0e4e8e7f64d59bf04"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/cqhci-crypto.ko",
+      "bytes": 28160,
+      "sha256": "661c3a62b50ee1bbc4baf3d4b631454d037f0f2d5238a1a7899b3765ae129630"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/cqhci.ko",
+      "bytes": 47000,
+      "sha256": "582fe5fda394e390077f7a79a7edcd5f11010e28a4be053f6512ac03e509b93d"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/crypto-qti-common.ko",
+      "bytes": 28064,
+      "sha256": "838bb8a6def47ddb9c6292f63633b4dd3ab83da840dd01598cf18940e85d6657"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/crypto-qti-hwkm.ko",
+      "bytes": 18800,
+      "sha256": "65b6da3531978154d75acdddc2a63aa07fe4711a27be81a14c78c8477c949fe1"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/gcc-blair.ko",
+      "bytes": 203832,
+      "sha256": "585a71781d3aba5f454e620d46cb2b49a923afa7ecbe554d0e717b76c7c30cdc"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/gcc-holi.ko",
+      "bytes": 205688,
+      "sha256": "69a039461b6b0e3b42b0f83285c416c392b157bd737f68f54ca9fe98084d427a"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/hwkm.ko",
+      "bytes": 34432,
+      "sha256": "f17401d76dbd4fa8bf6fcacb2a824d9d4e9c0363266210a323520307197696b7"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/icc-rpm.ko",
+      "bytes": 13144,
+      "sha256": "396e1aa9e7b6b9863008dda9efb4f8ec2889bec0f318dc89bf1f92c292ba0eef"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/iommu-logger.ko",
+      "bytes": 12528,
+      "sha256": "1aee64f55e17e9570b57493aff6af47777a6fbd4aa160ba2c4733f0d6dce93ad"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/memory_dump_v2.ko",
+      "bytes": 29896,
+      "sha256": "5cdf7b287177c3b04159e31349ea30f55b12556b5f7c28612fcd8820090ab132"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/modules.alias",
+      "bytes": 4367,
+      "sha256": "a400d3a8aa377272596665cb481d6c56864728ae0f0f4f6f15fbfc8d09a70a6e"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/modules.dep",
+      "bytes": 4036,
+      "sha256": "699c7ef890eeef6136e80b5576b600551d3f2f2c8f2182347775482e3e87926a"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/modules.load",
+      "bytes": 722,
+      "sha256": "580009cae9fb7bb112fb571e7e0ec845a65d75d22f8421595f5f460d3d0457bf"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/modules.softdep",
+      "bytes": 89,
+      "sha256": "8f826563ef7eca1672c74cf56c31ec22f80e8a69cfb22189f2057fff031e4139"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/mpm.ko",
+      "bytes": 57112,
+      "sha256": "62dc0472d7a448f04184fa4c5d418c7d0416aeb94346d7dc2cbaae039a5ed0f6"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/msm-poweroff.ko",
+      "bytes": 31720,
+      "sha256": "56b854bd0d739d6f813ddb85dfdfac7673185b6468bea9e6939bd457283f903f"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/phy-qcom-ufs-qmp-v3.ko",
+      "bytes": 20264,
+      "sha256": "c2c0db6f792cb4bba31c9fe7c2d059dcfd97e965b3a4da21bb96ecccd49b1491"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/phy-qcom-ufs-qmp-v4-yupik.ko",
+      "bytes": 21376,
+      "sha256": "391923a0dc7fbd3119f8a317d695807523a4618331336b62d9ea41541df487a6"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/phy-qcom-ufs-qrbtc-sdm845.ko",
+      "bytes": 16496,
+      "sha256": "c26215581fbe3090bc682ffa5137d841e63167b47592e87d458b1a9d8dca24d1"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/phy-qcom-ufs.ko",
+      "bytes": 33792,
+      "sha256": "325a527fe3f1cc97fc7ec1d61f2b7fd73b91f6adba7d713112bac486d9a86fe2"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/pinctrl-blair.ko",
+      "bytes": 133280,
+      "sha256": "2b588b3ecf12d6930c5967b8046329fa31c32db6adea97729aa4a50cbeb70256"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/pinctrl-holi.ko",
+      "bytes": 132784,
+      "sha256": "f59d4548364d6e3929387ad95ebbe2c656d500206dde40b2407e2dd5cd6f4c4e"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/pinctrl-msm.ko",
+      "bytes": 60728,
+      "sha256": "2e7fad7d6931ec7fe7ce318ac047b3734fdda30b647f347c63ccb52d69c83e0e"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/proxy-consumer.ko",
+      "bytes": 21392,
+      "sha256": "c69054cca862de349649899622b9a62dc0a29446c53a1ee73d57bd0b940939d0"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/qcom-arm-smmu-mod.ko",
+      "bytes": 223832,
+      "sha256": "93ea7838d78f47717c3edc7d787fd01a961b3caf82b2101480529b04a04c01de"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/qcom_glink_native.ko",
+      "bytes": 58264,
+      "sha256": "41d4d4753e0052df8142b6d9bae2ef169a2c061890b1c4fcc6436d2b11da8142"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/qcom_glink_rpm.ko",
+      "bytes": 18736,
+      "sha256": "a7b02f45b9f92f6f2b089f8f963fb451b1109a2c08f67d0e298d60edebb3da51"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/qcom_glink_smem.ko",
+      "bytes": 18896,
+      "sha256": "b4ef2d1455c5bd07f639d45d7be1e14556aed28011eb19220ea7eeb4de4e1972"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/qcom_hwspinlock.ko",
+      "bytes": 15784,
+      "sha256": "97fb341c899d7f8ec4b0409b1b15b305b891413f12f3e2937512e27e2d83d671"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/qcom_ipcc.ko",
+      "bytes": 22632,
+      "sha256": "682850b893c4bd5dd0e2601654996cd615521d62323d0e7f474318a913e9d506"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/qmi_helpers.ko",
+      "bytes": 37248,
+      "sha256": "0eb5e762e019686e2f21ffc90646c01002a646954280e477bf60e4df672c252a"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/qnoc-holi.ko",
+      "bytes": 96816,
+      "sha256": "97a5fa0f58eb1e31ced67b894512c38d86df53c7fa76f54695f03fa302e955e6"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/qnoc-qos.ko",
+      "bytes": 11360,
+      "sha256": "65e6218f34f6346ef27a914049551112712036ada446730be7bee02984b013b7"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/qpnp-power-on.ko",
+      "bytes": 69288,
+      "sha256": "361c403fdc55e157f49c0971d579500adbf14fde2e9934d2e2888e614c5905d0"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/refgen.ko",
+      "bytes": 17112,
+      "sha256": "636941e8738d670b6f25cbc90e1ed4b80ce68e227361786d8d542cb6217f71f5"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/rpm-smd-regulator.ko",
+      "bytes": 50912,
+      "sha256": "e24c5c6cec581cd3f4367e0ac412255e2ccbff1b7ab8e0961c40f55807fc0871"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/rpm-smd.ko",
+      "bytes": 74520,
+      "sha256": "e621d090ebbee6203f9d2bd909afd8b093d65b0610c70f5d586a78be0423e7f0"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/sdhci-msm.ko",
+      "bytes": 102896,
+      "sha256": "e34983b065017b549c8e4d3fcbafe0ec10226284699b5e158b837f12c02e2aca"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/secure_buffer.ko",
+      "bytes": 50136,
+      "sha256": "365aada421293b1ae3b7e3eb27d92580cdc6a0a5413784832557b090382dccbd"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/smem.ko",
+      "bytes": 26240,
+      "sha256": "a0f3fdc21e5cc2e88a01d573535af4757d83b2c66eccf1c5d8b5777f6587d91d"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/stub-regulator.ko",
+      "bytes": 16464,
+      "sha256": "02c6cef738bd7eda241dea9685776fbb67780b9c52a3dcbc9d6743a452f509ae"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/subsystem_restart.ko",
+      "bytes": 139640,
+      "sha256": "6fc598aa80c0e418ef46155e5b0fe9183dc5ad84a1d1c2afd61e78273c73d321"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/ufs-qcom.ko",
+      "bytes": 103768,
+      "sha256": "eba7284537a2e29af2981291316c983e642e02b02781ff332ae88bb54c422838"
+    },
+    {
+      "path": "vendor_boot_b_ramdisk/lib/modules/5.4-gki/ufshcd-crypto-qti.ko",
+      "bytes": 18960,
+      "sha256": "9a7eeda887008edaa73e790bd914a17425874bfac47bc500da9844e3445c15a2"
+    }
+  ]
+}

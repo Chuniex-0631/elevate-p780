@@ -1,47 +1,59 @@
-# P780 下一步计划（2026-10-25 复核更新）
+# 下一步计划
 
-> 以 [STATUS](STATUS.md) 为唯一当前状态入口。此前“缺内核 Image / 符号”“尚未取得任何 Root Shell”的阻塞条件均已被新实机记录更新；旧方案不可再作为当前进度。
->
-> **本阶段不修改 Elevate，不操作手机，不尝试写入分区。** 先验证归档真实字节，再开展静态分析，最后维护清晰的权限能力边界。
+> 2026-10-25 重建。每项都写明"要什么证据"与"什么情况下停止"，避免把推断当结论。
 
-## 阶段 1：ROM Release 完整性（优先进行）
+## 优先级 1：新的突破点（详见 `research/p780-phase-3-closure-20261025.md` §9）
 
-| 工作 | 已有证据 | 下一步验收标准 |
+| 候选 | 要取得的证据 | 停止条件 |
 |---|---|---|
-| Release 上传确认 | 七个资产全部存在，size / GitHub SHA-256 digest 与 JSON 一致 | **已完成（元数据层）** |
-| 文本清单审计 | 4,789 个普通文件条目自洽，32 项 system 缺口未误列 | **已完成（文本层）** |
-| Product 分卷重组 | part1 1,700,000,000 B + part2 1,558,192,896 B；完整 tar SHA 已记录 | 用真实文件顺序拼接；长度 3,258,192,896 B，实算 SHA-256 与 `SHA256SUMS.txt` 相同 |
-| 归档逐字节与条目核验 | [离线工具](../tools/rom/verify_release.py) 已入库 | 对七个本地资产实算 SHA-256；逐 TAR 遍历，与 manifest 匹配；保存运行日志 |
+| OTA / 供应链 | 拿到 TINNO 签名 OTA 包，分析 update_engine 验证与回滚 | 无法获取签名包或服务端地址 |
+| EDL / Firehose | 找到匹配签名的 programmer 并完成一次读操作 | programmer 不可得 |
+| installd 域宽权限 | 枚举 `(allow installd …)` 中未利用的 `relabelfrom`/`setattr` 等 | 连续 3 条候选均被策略拒绝 |
+| 内核 5.4.233 其它 CVE | 用已恢复的 Image/符号定位可达点并验证触发 | 无可达触发路径 |
+| ABL 镜像 | 从固件包拿到 `abl_a/b`，枚举私有 fastboot 命令 | 无镜像来源 |
+| 供应商预置服务 | 审计 `QAS_DVC_MSP`、`Journey` 等本地接口 | 无新增可达入口 |
 
-指引：[ROM 审计](rom/AUDIT-20261025.md)。如资产不可下载或校验失败，应记录 **BLOCKED/FAIL**，不能写“已验证”。
+## 旧优先级 1：把 DirtyFrag 的域执行变成可用 root（已被阶段收尾取代）
 
-## 阶段 2：内核与系统组件离线基线
-
-| 工作 | 已有证据 | 下一步验收标准 |
+| 任务 | 要取得的证据 | 停止条件 |
 |---|---|---|
-| 内核身份与符号 | 本机 `kernel.Image`，173,205 个符号恢复及独立核验 | 保留原始 Image SHA、验证 JSON；不把静态地址当成运行时 KASLR 地址 |
-| 静态修复审计 | 局部函数检查未观察到公开修复相应语义 | 报告仅指已审范围；任何扩展结论需有新二进制证据 |
-| ROM 的 APK / native / init 信息 | 各分区的清单路径和大小已有 | 下载并核验资产后，在副本上记录 ELF/DEX/APK 元数据与 SHA，保留原文件不修改 |
-| SELinux / VINTF | 既有 CIL 与 46 份 XML 的采集记录 | 区分静态声明、缺失文件与实际服务；不将 XML 可解析等同于整机兼容 |
-| 厂商缺口 | `MISSING.txt` 的 32 项及 vendor 大量读取失败 | 明确缺口来源及影响；不宣称获得完整镜像 |
+| 找到可写可读的中转路径 | 某目录能被目标域 `create` **且** `write`，同时 shell 可读 | 连续 5 个候选目录均被拒则记录为负结论 |
+| 换权限更宽的域 | 目标域的 `exec` 与 `/data` 写入至少一项可用 | 若 `vold`/`netd` 仍无可用触发，转优先级 2 |
+| 压缩载荷以适配 `liblog` | 载荷 ≤170 字节且能在 `liblog` 的 `.text` 中找到零引用落点 | `liblog` 无零填充洞且无冷门函数则放弃该载体 |
 
-专题：[只读组件/权限复核](research/p780-rom-kernel-system-triage-20261025.md)。
+## 已完成（2026-10-25）：内核镜像与符号
 
-## 阶段 3：Root 能力边界和文档同步
+- `boot_b` 已提取 41,767,424 B arm64 Image（SHA-256 `6df574af…4f373`）；
+- `vmlinux-to-elf` + 独立校验恢复 173,205 个符号，旧偏移表错位一个符号已修正；
+- 仍缺原厂源码，但符号级分析不再受阻。
 
-已有实机证据：`uid=0(root)`、SELinux `u:r:installd:s0` / Enforcing、部分 `/data` 路径可读写、`/system/bin/sh` 可运行；重启后不持久，不等于有完整 root、Bootloader 解锁或分区写通道。
+## 旧优先级 2：补齐内核镜像（已完成）
 
-1. 对外统一称为“受限、临时 `installd` 域 UID 0 shell”。
-2. 静态及实机结论分栏，声明已测操作和失败操作，不能从 UID 0 推断未测试能力。
-3. 已同步：[README](../README.md)、[STATUS](STATUS.md)、[Root Shell 原始报告](research/p780-installd-root-shell-20261025.md)和本计划；本轮不新增权限实验。
+| 任务 | 要取得的证据 | 停止条件 |
+|---|---|---|
+| 取得 `_162` 对应的 `boot.img` / `vmlinux` / 厂商源码 | 与实机 `uname -r`、编译时间、config 逐项吻合 | 官方与第三方渠道均确认不提供 |
+| 用镜像确证 `esp_input` 是否回移共享页修复 | 反汇编或符号级比对结论 | 无镜像则保持"未判定" |
 
-## 当前不重复的任务
+## 已完成（2026-10-25）：GhostLock 判负
 
-- 不重复提取已经取得的 `kernel.Image` 或再次从零恢复同一符号表。
-- 不重复 DSU/GSI 启动实验、EDL Sahara 盲试、无新入口的 OEM Unlock 静态扫描。
-- 无原厂完整源码时，不把 TINNO 5.4.61/A52s 5.4.233 当本机同构建源码。
-- 不修改 Elevate、自动触发逻辑或其它应用代码。
+- M1/M2 实机成立；M3 在 6 秒窗口内无可用观测/改写手段，9 种尝试全部无效；
+- 细节见 `research/p780-phase-3-closure-20261025.md` §2。
 
-## 记录规范
+## 旧优先级 3：GhostLock 移植可行性（已判负）
 
-新的二进制“PASS”必须附输入大小、完整 SHA-256、执行步骤、实际输出和缺失项。需更新 `docs/STATUS.md`、`CHANGELOG.md` 与对应研究专题；若改变 `evidence/` 再更新 `EVIDENCE_MANIFEST.md`，新增文档须纳入索引。
+| 任务 | 要取得的证据 | 停止条件 |
+|---|---|---|
+| 评估 5.4 profile 的构造路径 | 明确所需字段、来源（Image/符号/偏移）与工作量 | 必须依赖原厂 Image 且 Image 无法取得 |
+
+## 已停止（不再重复）
+
+- DSU / GSI 启动实验：已安装、已回原厂，失败阶段未知。
+- EDL Sahara 盲目重试：只保留 `<programmer> reset` 单次传输验证，需先备份。
+- OEM Unlock 静态扫描：296 份已完成，无新入口即停。
+- OEM Unlock 的 fastboot 入口：`flashing unlock` 等全部 `unknown command`，已关闭。
+- 运行时 Permissive / tracefs / kprobe：`security:setenforce` 无 allow，已关闭。
+- AVB 测试密钥身份核验：已完成，不再重复采集。
+
+## 记录规则
+
+任何新结论必须同时更新：`docs/STATUS.md`、`CHANGELOG.md`、对应 `docs/research/` 专题；证据变更后重跑 `docs/EVIDENCE_MANIFEST.md` 与 `docs/index.md`。
