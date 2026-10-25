@@ -132,3 +132,32 @@ xfrm4_udp_encap_rcv.cfi_jt
 同样的时间线逻辑：`remove_waiter` 的 UAF 自 2.6.39 存在、2026-04 修复，本机 2024-02 的构建必然包含该缺陷；符号表里 `remove_waiter = 0x2c2c40`、`rt_mutex_adjust_prio_chain = 0x2c1d50` 也都在。
 
 GhostLock 剩下的工作不是"确认漏洞存在"，而是**生成与 5.4.233 匹配的 profile**（符号偏移、结构布局、pselect 几何），这需要逐项静态测量，而不是再找证据。
+
+
+---
+
+## 9. 符号表补全（2026-10-25 追加）
+
+补 dump `/proc/kallsyms` 尾部后，列表共 **250,895** 行；其中前 **173,205** 行与镜像的 `num_syms` 精确相等，是内置符号，之后 77,690 行是运行时加载的模块与 BPF 程序（带 `[bpf]` 等后缀），不属于镜像。
+
+对前 173,205 条做单调性校验：**全部通过**，末条为 `_end`。
+
+数据符号（偏移相对镜像起点）：
+
+| 符号 | 偏移 | 位置 |
+|---|---|---|
+| `selinux_state` | `0x27d5200` | 恰等于镜像大小 → 位于 `.bss`，镜像内无内容 |
+| `init_cred` | `0x2639be0` | `.data`，镜像内有 |
+| `init_task` | `0x262d238` | `.data` |
+| `init_mm` | `0x2660728` | `.data` |
+| `init_fs` | `0x26675c8` | `.data` |
+| `init_nsproxy` | `0x2639a90` | `.data` |
+| `core_pattern` | `0x2669950` | `.data` |
+| `modprobe_path` | `0x2639f28` | `.data` |
+
+注意：`.bss` 符号（如 `selinux_state = 0x27d5200`，正好等于镜像长度）只有偏移、没有文件内容，运行时值需另取。这也解释了为什么此前直接查 `selinux_state` 得到的是"偏移存在但无法从镜像读取内容"。
+
+### 产物
+
+- `symbols_full.txt`：173,205 条 `偏移 名字`，可复现（`tools/kallsyms/extract_symbols.py`）；
+- 未入库（约 4 MB 派生数据），仓库只保留方法与关键偏移。
