@@ -56,7 +56,22 @@ connect           -> -1 EACCES (13)
 
 - app 连 `stat`/`getxattr` 都被拒；`connect` 两种类型均 EACCES；
 - shell 侧此前也已确认被拒（`ls -lZ /dev/socket/diag_ext_socket` → EACCES）；
-- 只剩 installd（root 但受策略约束）未测；按现有结果，这条线按"不可达"记录。
+- installd 域载荷（uid 0，raw syscall）实测同样是 `connect -> -13 EACCES`：
+
+```
+socket(SEQPACKET) -> 8    connect -> -13
+socket(STREAM)    -> 8    connect -> -13
+```
+
+三个域全部 EACCES：
+
+| 域 | stat/getxattr | connect |
+|---|---|---|
+| `untrusted_app` | EACCES | EACCES |
+| `shell` | EACCES | — |
+| `installd`（uid 0） | — | EACCES |
+
+**结论：Journey diag socket 对 app / shell / installd 全部不可达，这条线关闭。**
 
 ## 4. 新原语：shell → init 写 misc 分区
 
