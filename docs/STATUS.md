@@ -1,3 +1,5 @@
+> 2026-10-25 静态核对：相关清理路径仍呈现current语义，未观察到上游3bfdc63936dd修复语义；范围仅限已审函数及直接调用者，不等于完整可利用性结论。Magic3文章纳入方法参考，不能套用其参数。 [报告](research/p780-static-patch-review-20261025.md)。
+
 > 2026-10-25 离线更新：Image恢复173,205个符号，全部名称/静态地址经独立解码核对；文件末端与BSS起点自洽。[报告](research/p780-kernel-symbol-recovery-20261025.md)。不等于实时地址、结构体布局或Root能力。
 
 > 2026-10-25 突破：已在锁定、无 root 状态下从 init 域提取完整内核 `Image`（41,767,424 字节，SHA-256 `6df574af…`）。镜像未入库，方法见 [提取报告](research/p780-kernel-image-extraction-20261025.md)。

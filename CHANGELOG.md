@@ -39,3 +39,9 @@
 ## 2026-06-12 — 最早的公开资料
 
 - P780 的 EDL / Sahara / Fastboot 资料：`fastboot locked`、unlock 返回 `unknown command`。
+
+## 2026-10-25 — 静态修复核对与外部文章参考
+
+- 归档已审函数/调用者反汇编和摘要：相关清理仍呈现旧式current语义，未观察到公开修复在该位置的语义；不泛化为可利用性或全部缓解审计结论。
+- 纳入junyu33 Magic3文章的方法启示，区分旧CFI、厂商布局、运行时映射和权限分层；外部设备结论不转移到P780。
+- 未操作设备或生成适配载荷。[报告](docs/research/p780-static-patch-review-20261025.md)。

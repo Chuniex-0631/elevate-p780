@@ -1,0 +1,45 @@
+
+kernel-symbol-recovery/kernel.symbolized.elf:     file format elf64-littleaarch64
+
+
+Disassembly of section .image:
+
+ffffffc010342c40 <rt_mutex_start_proxy_lock>:
+ffffffc010342c40:	f800865e 	str	x30, [x18], #8
+ffffffc010342c44:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
+ffffffc010342c48:	f9000bf5 	str	x21, [sp, #16]
+ffffffc010342c4c:	a9024ff4 	stp	x20, x19, [sp, #32]
+ffffffc010342c50:	910003fd 	mov	x29, sp
+ffffffc010342c54:	aa0203f5 	mov	x21, x2
+ffffffc010342c58:	aa0103f4 	mov	x20, x1
+ffffffc010342c5c:	aa0003f3 	mov	x19, x0
+ffffffc010342c60:	9445c243 	bl	ffffffc0114b356c <_raw_spin_lock_irq>
+ffffffc010342c64:	aa1303e0 	mov	x0, x19
+ffffffc010342c68:	aa1503e1 	mov	x1, x21
+ffffffc010342c6c:	aa1f03e2 	mov	x2, xzr
+ffffffc010342c70:	97fffebb 	bl	ffffffc01034275c <try_to_take_rt_mutex>
+ffffffc010342c74:	340001a0 	cbz	w0, ffffffc010342ca8 <rt_mutex_start_proxy_lock+0x68>
+ffffffc010342c78:	52800035 	mov	w21, #0x1                   	// #1
+ffffffc010342c7c:	aa1303e0 	mov	x0, x19
+ffffffc010342c80:	aa1403e1 	mov	x1, x20
+ffffffc010342c84:	94000015 	bl	ffffffc010342cd8 <remove_waiter>
+ffffffc010342c88:	aa1303e0 	mov	x0, x19
+ffffffc010342c8c:	9445c288 	bl	ffffffc0114b36ac <_raw_spin_unlock_irq>
+ffffffc010342c90:	2a1503e0 	mov	w0, w21
+ffffffc010342c94:	a9424ff4 	ldp	x20, x19, [sp, #32]
+ffffffc010342c98:	f9400bf5 	ldr	x21, [sp, #16]
+ffffffc010342c9c:	a8c37bfd 	ldp	x29, x30, [sp], #48
+ffffffc010342ca0:	f85f8e5e 	ldr	x30, [x18, #-8]!
+ffffffc010342ca4:	d65f03c0 	ret
+ffffffc010342ca8:	52800023 	mov	w3, #0x1                   	// #1
+ffffffc010342cac:	aa1303e0 	mov	x0, x19
+ffffffc010342cb0:	aa1403e1 	mov	x1, x20
+ffffffc010342cb4:	aa1503e2 	mov	x2, x21
+ffffffc010342cb8:	97ffff2a 	bl	ffffffc010342960 <task_blocks_on_rt_mutex>
+ffffffc010342cbc:	2a0003f5 	mov	w21, w0
+ffffffc010342cc0:	34fffe40 	cbz	w0, ffffffc010342c88 <rt_mutex_start_proxy_lock+0x48>
+ffffffc010342cc4:	f9400e68 	ldr	x8, [x19, #24]
+ffffffc010342cc8:	f100091f 	cmp	x8, #0x2
+ffffffc010342ccc:	54fffd82 	b.cs	ffffffc010342c7c <rt_mutex_start_proxy_lock+0x3c>  // b.hs, b.nlast
+ffffffc010342cd0:	2a1f03f5 	mov	w21, wzr
+ffffffc010342cd4:	17ffffed 	b	ffffffc010342c88 <rt_mutex_start_proxy_lock+0x48>

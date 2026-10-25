@@ -1,0 +1,143 @@
+
+kernel-symbol-recovery/kernel.symbolized.elf:     file format elf64-littleaarch64
+
+
+Disassembly of section .image:
+
+ffffffc010342cd8 <remove_waiter>:
+ffffffc010342cd8:	f800865e 	str	x30, [x18], #8
+ffffffc010342cdc:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+ffffffc010342ce0:	a9015ff8 	stp	x24, x23, [sp, #16]
+ffffffc010342ce4:	a90257f6 	stp	x22, x21, [sp, #32]
+ffffffc010342ce8:	a9034ff4 	stp	x20, x19, [sp, #48]
+ffffffc010342cec:	910003fd 	mov	x29, sp
+ffffffc010342cf0:	f9400816 	ldr	x22, [x0, #16]
+ffffffc010342cf4:	aa0003f3 	mov	x19, x0
+ffffffc010342cf8:	aa0103f7 	mov	x23, x1
+ffffffc010342cfc:	b4000096 	cbz	x22, ffffffc010342d0c <remove_waiter+0x34>
+ffffffc010342d00:	f9401ec8 	ldr	x8, [x22, #56]
+ffffffc010342d04:	eb13011f 	cmp	x8, x19
+ffffffc010342d08:	54000f41 	b.ne	ffffffc010342ef0 <remove_waiter+0x218>  // b.any
+ffffffc010342d0c:	f9400e78 	ldr	x24, [x19, #24]
+ffffffc010342d10:	d5384114 	mrs	x20, sp_el0
+ffffffc010342d14:	91243295 	add	x21, x20, #0x90c
+ffffffc010342d18:	aa1503e0 	mov	x0, x21
+ffffffc010342d1c:	9445c1e2 	bl	ffffffc0114b34a4 <_raw_spin_lock>
+ffffffc010342d20:	f94002e8 	ldr	x8, [x23]
+ffffffc010342d24:	eb17011f 	cmp	x8, x23
+ffffffc010342d28:	54000160 	b.eq	ffffffc010342d54 <remove_waiter+0x7c>  // b.none
+ffffffc010342d2c:	f9400a68 	ldr	x8, [x19, #16]
+ffffffc010342d30:	eb17011f 	cmp	x8, x23
+ffffffc010342d34:	54000081 	b.ne	ffffffc010342d44 <remove_waiter+0x6c>  // b.any
+ffffffc010342d38:	aa1703e0 	mov	x0, x23
+ffffffc010342d3c:	9445639a 	bl	ffffffc01149bba4 <rb_next>
+ffffffc010342d40:	f9000a60 	str	x0, [x19, #16]
+ffffffc010342d44:	91002261 	add	x1, x19, #0x8
+ffffffc010342d48:	aa1703e0 	mov	x0, x23
+ffffffc010342d4c:	94456213 	bl	ffffffc01149b598 <rb_erase>
+ffffffc010342d50:	f90002f7 	str	x23, [x23]
+ffffffc010342d54:	aa1503e0 	mov	x0, x21
+ffffffc010342d58:	f9049a9f 	str	xzr, [x20, #2352]
+ffffffc010342d5c:	9445c230 	bl	ffffffc0114b361c <_raw_spin_unlock>
+ffffffc010342d60:	eb1702df 	cmp	x22, x23
+ffffffc010342d64:	54000ba1 	b.ne	ffffffc010342ed8 <remove_waiter+0x200>  // b.any
+ffffffc010342d68:	927ffb15 	and	x21, x24, #0xfffffffffffffffe
+ffffffc010342d6c:	b4000b75 	cbz	x21, ffffffc010342ed8 <remove_waiter+0x200>
+ffffffc010342d70:	912432b6 	add	x22, x21, #0x90c
+ffffffc010342d74:	aa1603e0 	mov	x0, x22
+ffffffc010342d78:	9445c1cb 	bl	ffffffc0114b34a4 <_raw_spin_lock>
+ffffffc010342d7c:	f8418ee8 	ldr	x8, [x23, #24]!
+ffffffc010342d80:	eb17011f 	cmp	x8, x23
+ffffffc010342d84:	54000160 	b.eq	ffffffc010342db0 <remove_waiter+0xd8>  // b.none
+ffffffc010342d88:	f94492a8 	ldr	x8, [x21, #2336]
+ffffffc010342d8c:	eb17011f 	cmp	x8, x23
+ffffffc010342d90:	54000081 	b.ne	ffffffc010342da0 <remove_waiter+0xc8>  // b.any
+ffffffc010342d94:	aa1703e0 	mov	x0, x23
+ffffffc010342d98:	94456383 	bl	ffffffc01149bba4 <rb_next>
+ffffffc010342d9c:	f90492a0 	str	x0, [x21, #2336]
+ffffffc010342da0:	912462a1 	add	x1, x21, #0x918
+ffffffc010342da4:	aa1703e0 	mov	x0, x23
+ffffffc010342da8:	944561fc 	bl	ffffffc01149b598 <rb_erase>
+ffffffc010342dac:	f90002f7 	str	x23, [x23]
+ffffffc010342db0:	f9400668 	ldr	x8, [x19, #8]
+ffffffc010342db4:	b4000568 	cbz	x8, ffffffc010342e60 <remove_waiter+0x188>
+ffffffc010342db8:	f9400a60 	ldr	x0, [x19, #16]
+ffffffc010342dbc:	b4000080 	cbz	x0, ffffffc010342dcc <remove_waiter+0xf4>
+ffffffc010342dc0:	f9401c08 	ldr	x8, [x0, #56]
+ffffffc010342dc4:	eb13011f 	cmp	x8, x19
+ffffffc010342dc8:	54000961 	b.ne	ffffffc010342ef4 <remove_waiter+0x21c>  // b.any
+ffffffc010342dcc:	f9448eae 	ldr	x14, [x21, #2328]
+ffffffc010342dd0:	912462a1 	add	x1, x21, #0x918
+ffffffc010342dd4:	b400034e 	cbz	x14, ffffffc010342e3c <remove_waiter+0x164>
+ffffffc010342dd8:	b940400a 	ldr	w10, [x0, #64]
+ffffffc010342ddc:	52800028 	mov	w8, #0x1                   	// #1
+ffffffc010342de0:	5280020b 	mov	w11, #0x10                  	// #16
+ffffffc010342de4:	5280010c 	mov	w12, #0x8                   	// #8
+ffffffc010342de8:	1400000a 	b	ffffffc010342e10 <remove_waiter+0x138>
+ffffffc010342dec:	710001bf 	cmp	w13, #0x0
+ffffffc010342df0:	9a8b018e 	csel	x14, x12, x11, eq	// eq = none
+ffffffc010342df4:	f86e692e 	ldr	x14, [x9, x14]
+ffffffc010342df8:	1a9f07ed 	cset	w13, ne	// ne = any
+ffffffc010342dfc:	9100412f 	add	x15, x9, #0x10
+ffffffc010342e00:	91002130 	add	x16, x9, #0x8
+ffffffc010342e04:	0a0d0108 	and	w8, w8, w13
+ffffffc010342e08:	9a8f020d 	csel	x13, x16, x15, eq	// eq = none
+ffffffc010342e0c:	b40001ee 	cbz	x14, ffffffc010342e48 <remove_waiter+0x170>
+ffffffc010342e10:	b94029cd 	ldr	w13, [x14, #40]
+ffffffc010342e14:	aa0e03e9 	mov	x9, x14
+ffffffc010342e18:	6b0d015f 	cmp	w10, w13
+ffffffc010342e1c:	1a9fa7ed 	cset	w13, lt	// lt = tstop
+ffffffc010342e20:	36fffe6a 	tbz	w10, #31, ffffffc010342dec <remove_waiter+0x114>
+ffffffc010342e24:	54fffe4b 	b.lt	ffffffc010342dec <remove_waiter+0x114>  // b.tstop
+ffffffc010342e28:	f940240d 	ldr	x13, [x0, #72]
+ffffffc010342e2c:	f940192e 	ldr	x14, [x9, #48]
+ffffffc010342e30:	cb0e01ad 	sub	x13, x13, x14
+ffffffc010342e34:	d37ffdad 	lsr	x13, x13, #63
+ffffffc010342e38:	17ffffed 	b	ffffffc010342dec <remove_waiter+0x114>
+ffffffc010342e3c:	aa1f03e9 	mov	x9, xzr
+ffffffc010342e40:	52800028 	mov	w8, #0x1                   	// #1
+ffffffc010342e44:	aa0103ed 	mov	x13, x1
+ffffffc010342e48:	f8018c09 	str	x9, [x0, #24]!
+ffffffc010342e4c:	a900fc1f 	stp	xzr, xzr, [x0, #8]
+ffffffc010342e50:	f90001a0 	str	x0, [x13]
+ffffffc010342e54:	34000048 	cbz	w8, ffffffc010342e5c <remove_waiter+0x184>
+ffffffc010342e58:	f90492a0 	str	x0, [x21, #2336]
+ffffffc010342e5c:	94456181 	bl	ffffffc01149b460 <rb_insert_color>
+ffffffc010342e60:	f9448ea8 	ldr	x8, [x21, #2328]
+ffffffc010342e64:	b4000088 	cbz	x8, ffffffc010342e74 <remove_waiter+0x19c>
+ffffffc010342e68:	f94492a8 	ldr	x8, [x21, #2336]
+ffffffc010342e6c:	f9400d01 	ldr	x1, [x8, #24]
+ffffffc010342e70:	14000002 	b	ffffffc010342e78 <remove_waiter+0x1a0>
+ffffffc010342e74:	aa1f03e1 	mov	x1, xzr
+ffffffc010342e78:	aa1503e0 	mov	x0, x21
+ffffffc010342e7c:	97feffde 	bl	ffffffc010302df4 <rt_mutex_setprio>
+ffffffc010342e80:	f9449aa8 	ldr	x8, [x21, #2352]
+ffffffc010342e84:	b4000268 	cbz	x8, ffffffc010342ed0 <remove_waiter+0x1f8>
+ffffffc010342e88:	f9401d17 	ldr	x23, [x8, #56]
+ffffffc010342e8c:	aa1603e0 	mov	x0, x22
+ffffffc010342e90:	9445c1e3 	bl	ffffffc0114b361c <_raw_spin_unlock>
+ffffffc010342e94:	b4000237 	cbz	x23, ffffffc010342ed8 <remove_waiter+0x200>
+ffffffc010342e98:	9100e2a0 	add	x0, x21, #0x38
+ffffffc010342e9c:	94109396 	bl	ffffffc010767cf4 <refcount_inc_checked>
+ffffffc010342ea0:	aa1303e0 	mov	x0, x19
+ffffffc010342ea4:	9445c202 	bl	ffffffc0114b36ac <_raw_spin_unlock_irq>
+ffffffc010342ea8:	aa1503e0 	mov	x0, x21
+ffffffc010342eac:	2a1f03e1 	mov	w1, wzr
+ffffffc010342eb0:	aa1303e2 	mov	x2, x19
+ffffffc010342eb4:	aa1703e3 	mov	x3, x23
+ffffffc010342eb8:	aa1f03e4 	mov	x4, xzr
+ffffffc010342ebc:	aa1403e5 	mov	x5, x20
+ffffffc010342ec0:	97fffbcd 	bl	ffffffc010341df4 <rt_mutex_adjust_prio_chain>
+ffffffc010342ec4:	aa1303e0 	mov	x0, x19
+ffffffc010342ec8:	9445c1a9 	bl	ffffffc0114b356c <_raw_spin_lock_irq>
+ffffffc010342ecc:	14000003 	b	ffffffc010342ed8 <remove_waiter+0x200>
+ffffffc010342ed0:	aa1603e0 	mov	x0, x22
+ffffffc010342ed4:	9445c1d2 	bl	ffffffc0114b361c <_raw_spin_unlock>
+ffffffc010342ed8:	a9434ff4 	ldp	x20, x19, [sp, #48]
+ffffffc010342edc:	a94257f6 	ldp	x22, x21, [sp, #32]
+ffffffc010342ee0:	a9415ff8 	ldp	x24, x23, [sp, #16]
+ffffffc010342ee4:	a8c47bfd 	ldp	x29, x30, [sp], #64
+ffffffc010342ee8:	f85f8e5e 	ldr	x30, [x18, #-8]!
+ffffffc010342eec:	d65f03c0 	ret
+ffffffc010342ef0:	d4210000 	brk	#0x800
+ffffffc010342ef4:	d4210000 	brk	#0x800

@@ -1,0 +1,19 @@
+{
+  "input_sha256": "6df574af40d260c670c32bdee9ceaca023739850d62851d55f77234b89d4f373",
+  "audit_type": "offline patch-presence analysis only",
+  "upstream_fix": "3bfdc63936dd4773109b7b8c280c0f3b5ae7d349",
+  "observations": [
+    "remove_waiter derives the task pointer from SP_EL0 before lock/dequeue/clear/unlock; pointer origin matches ARM64 current convention.",
+    "The early cleanup clear is based on that current-derived pointer, not a waiter-task-derived pointer.",
+    "rt_mutex_start_proxy_lock contains direct calls to the same cleanup function."
+  ],
+  "result": "PUBLIC_FIX_SEMANTICS_NOT_OBSERVED_IN_AUDITED_CLEANUP_PATH",
+  "confidence_scope": "Audited current-derived cleanup and direct proxy caller; not a complete mitigation audit or exploitability test.",
+  "cfi_jt_symbol_count": 36985,
+  "article_reference": "https://blog.junyu33.me/en/2026/09/24/xp3/",
+  "limitations": [
+    "No exploit construction, runtime address recovery, structure-layout adaptation or device execution.",
+    "Other equivalent mitigations in unaudited paths are not ruled out.",
+    "CFI symbol presence is not proof that every jump-table label targets its apparent function."
+  ]
+}

@@ -135,3 +135,7 @@
 
 - [内核符号恢复与独立核验](research/p780-kernel-symbol-recovery-20261025.md)
 - [工具与复现说明](../tools/kernel-symbol-recovery/README.md)
+
+## 2026-10-25 静态修复核对增量
+
+- [静态修复核对与Magic3文章参考](research/p780-static-patch-review-20261025.md)

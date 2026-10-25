@@ -320,3 +320,11 @@
 | `evidence/kernel/20261025-symbol-recovery/readelf-sections.txt` | 964 | `a86ff250a79fead7e83250122f7761d11517d2a9de78237b7282e38f20de7ef5` |
 
 其余产物及工具摘要见 `evidence/kernel/20261025-symbol-recovery/artifact-hashes.json`。
+
+## 2026-10-25 静态修复核对增量（不含于上方基础统计）
+
+| 路径 | 字节 | SHA-256 |
+|---|---:|---|
+| `evidence/kernel/20261025-static-patch-review/summary.json` | 1180 | `5168fc0404297b95df04fe9260e046f99c51498dd80c6988ce8b71a80fa13cb0` |
+| `evidence/kernel/20261025-static-patch-review/proxy-lock.txt` | 2159 | `ebda85c061a3ffcb2d563244ef157ca7c4498e0ae498f3eb34675764069ddc6b` |
+| `evidence/kernel/20261025-static-patch-review/remove-waiter.txt` | 7430 | `97dabbacbdf81aa2358a973fa7c5050f6c680588921b5f4bdee064f5da4ad9b6` |
