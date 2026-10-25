@@ -226,3 +226,78 @@ symbols     { init_task = 0x262d280, init_cred = 0x2639be8,
 
 这些值已经足以开始拼装 profile 的静态部分；剩下的 `comm`/`seccomp`/`enforcing` 属于补全项，
 而 `route.*.waiter_shift` 之类必须实测的字段仍然缺。
+
+
+---
+
+## 8. 补全：comm 与 seccomp（2026-10-25 继续）
+
+### 8.1 先纠正一处误判
+
+`__set_task_comm` / `__get_task_comm` 里的 `add x?, x?, #0x908` 一开始被我当成 `comm`，
+但与 `pi_lock = 0x90c` 冲突。核对调用顺序后确认：`0x908` 是 `task_lock()` 用的
+**`alloc_lock`**，不是 comm。于是：
+
+- `alloc_lock = 0x908`（4 字节）
+- `pi_lock = 0x90c`（4 字节）
+- 中间 8 字节对齐填充，`pi_waiters = 0x918`
+
+三者自洽，`pi_lock = 0x90c` 的结论不变。
+
+### 8.2 comm = 0x848
+
+| 证据 | 指令 |
+|---|---|
+| `__set_task_comm` | `add x23, x20, #0x848` |
+| `__get_task_comm` | `add x8, x22, #0x848` |
+
+与候选的 `2120 (0x848)` 一致。
+
+### 8.3 seccomp = 0x8e8
+
+`prctl_get_seccomp`：
+
+```
+mrs  x8, SP_EL0          ; current
+ldrsw x0, [x8, #0x8e8]   ; current->seccomp.mode
+```
+
+与候选的 `2280 (0x8e8)` 一致。
+
+### 8.4 selinux_state.enforcing：仍未实机验证
+
+`enforcing_setup` 写的是 `selinux_enforcing_boot`（启动用的静态变量），不是
+`selinux_state.enforcing`；AVC 路径的 `avc_has_perm` 反汇编里也没有 `ldrb`。
+因此 `enforcing = selinux_state + 1` 目前只有候选依据（结构体稳定，风险低），**标记为待验证**。
+
+## 9. 字段状态总表
+
+| schema 字段 | 值 | 状态 |
+|---|---|---|
+| `offset.init_task` | `0x262d280` | 权威符号表 |
+| `offset.init_cred` | `0x2639be8` | 权威符号表 |
+| `offset.root_task_group` | `0x27e91b8` | 权威符号表 |
+| `offset.selinux_enforcing` | `selinux_state + 1` | **待验证** |
+| `offset.empty_zero_page` | `0x27d7000` | 权威符号表 |
+| `task_struct.cred` | `0x830` | 反汇编确认 |
+| `task_struct.comm` | `0x848` | 反汇编确认 |
+| `task_struct.seccomp` | `0x8e8` | 反汇编确认 |
+| `task_struct.prio` | `0x7c` | 反汇编确认（**非候选值**） |
+| `task_struct.pi_lock` | `0x90c` | 反汇编确认 |
+| `task_struct.pi_waiters` | `0x918` | 反汇编确认 |
+| `task_struct.pi_blocked_on` | `0x930` | 反汇编确认 |
+| `cred.copy_size` | `168` | `cred_init` 立即数 |
+| `cred.usage_offset` | `0` | 反汇编确认 |
+| `cred.caps_offset` | `40` | `cap_capable` / `commit_creds` |
+| `cred.caps_count` | `5` | 由 `cap>>5` 索引方式推得 |
+| `waiter.task` | `0x30` | 反汇编确认 |
+| `waiter.lock` | `0x38` | 反汇编确认 |
+| `waiter.prio` | `0x40` | 反汇编确认 |
+| `waiter.deadline` | `0x48` | 反汇编确认 |
+| `route.*.waiter_shift` 等几何 | — | **必须实测** |
+| `cred.ref_count` / 能力位初值 | — | 需按 schema 语义再定 |
+| KASLR 锚点 `nfulnl_logger` | `0x25ba9e0` | 权威符号表 |
+| KASLR 锚点 `loggers` | `0x25c3000` | 权威符号表 |
+
+到此为止，**profile 的静态部分已基本完整**；剩余缺口是 `enforcing` 一项待验证，
+以及所有需要真正运行 exploit 才能得到的路线几何。
