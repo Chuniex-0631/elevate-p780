@@ -73,3 +73,40 @@ adb shell "rm -f /data/local/tmp/system.tar"
 - 对应 `*_err.txt` 为各分区读取失败清单
 
 这些是**运行状态**下的内容（已应用全部 OTA），不是出厂镜像。
+
+
+---
+
+## 7. 补洞结果（2026-10-25 追加）
+
+用 init 域的表驱动载荷（一次运行搬多个文件）补齐 `*_exec` 二进制：
+
+- 成功搬出 **60 个**（`/system/bin` 下的 `apexd`、`audioserver`、`dexopt` 相关等），
+  打包为 `meta1.tar`（10,715,136 字节），已按原路径归档到 `system-extra/`；
+- 另外补齐此前单独提取的 `vold`、`netd`、`installd` 三个守护进程；
+- **仍有 32 个未取到**，清单见 `system-extra/MISSING.txt`（`dex2oat`、`surfaceflinger`、
+  `traced*`、`update_engine`、`watchdogd`、`wificond` 等）。
+
+### 为什么停在这里
+
+剩余文件的搬运尝试会让 **init 崩溃并触发重启**（`init` SIGABRT，`crash_log` 可查）。
+原因推测是 init 主线程栈偏小，载荷 4 KB 缓冲 + 多文件循环在 init 域里不稳定。
+已确认设备未进入启动循环（`uptime` 递增、`boot_completed=1`），库在重启后自动复原。
+
+权衡：剩余 32 个文件（合计约几 MB）价值有限，继续尝试会反复重启设备，
+因此**主动停止**这条补洞路线。
+
+### 最终产出
+
+| 内容 | 大小 |
+|---|---|
+| `system.tar` | 1,810,707,456 B |
+| `product.tar` | 3,258,192,896 B |
+| `system_ext.tar` | 361,280,512 B |
+| `vendor.tar` | 233,448,960 B |
+| `meta1.tar`（60 个 `*_exec`） | 10,715,136 B |
+| 单独守护进程（vold/netd/installd） | 2,208,576 B |
+| **合计** | **≈ 5.68 GB** |
+
+覆盖：`/system` 主体、`/product` 全部、`/system_ext` 全部、`/vendor` 主体、
+以及大部分 `/system/bin` 可执行文件。
