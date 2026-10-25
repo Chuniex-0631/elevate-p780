@@ -202,3 +202,22 @@ GhostLock 剩下的工作不是"确认漏洞存在"，而是**生成与 5.4.233 
 ### 10.4 结论
 
 符号层已经可以把 profile 填到"大半"；**真正的缺口是结构体成员偏移**，而它必须依赖候选构建（DWARF）或人工逆向。下一步应先用 5.4.61 + 本机 config + Clang 11.0.2 出 `vmlinux`，再用"函数字节/符号偏移比对"验证候选与运行镜像的一致性，最后才谈 profile 是否可用。
+
+
+---
+
+## 11. 结构体偏移：镜像内直接读取不可行（2026-10-25 追加）
+
+尝试过"用镜像里的 `init_task` / `init_cred` 实体反推成员偏移"，结论是**不可行**：
+
+- `init_task` 起点是 64 字节全零，且全镜像搜不到 `swapper/0` 字符串；`modprobe_path` 符号处也是全零；
+- 但 `init_cred` 符号处有合理内容（`usage=2` + 能力位掩码），`init_uts_ns` 附近也能看到 `Linux` 字符串但偏移与结构定义不符（kref 不在 0）；
+- `CONFIG_RELOCATABLE=y`：Image 里 `.data` 的绝对指针在启动时由重定位表修正，静态文件中的值不能直接当作运行时结构。
+
+因此**结构体成员偏移不能从镜像静态读出**，必须来自带 DWARF 的候选构建（`CONFIG_DEBUG_INFO=y`，本机 config 已确认）。
+
+候选构建的可行性验证路径（尚未执行）：
+
+1. 用 TINNO 5.4.61 源码 + 本机 `config.gz` + Clang 11.0.2 编译 `vmlinux`；
+2. `pahole` 导出 `task_struct` / `cred` 成员偏移；
+3. 用已还原的符号表做交叉验证：比较若干函数的字节签名、`init_cred` 能力位布局、以及在候选 `vmlinux` 里 `init_task+offsetof(cred)` 是否指向 `init_cred`。
