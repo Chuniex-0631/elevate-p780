@@ -2,8 +2,9 @@
 
 > 由 `23-repo-rebuild/build_index.py` 于 2026-10-25 从 `evidence/` 实际文件生成。
 > 每项给出仓库内路径、字节数与 SHA-256；摘要说明见各专题报告。
+> 2026-10-25 增补：`evidence/partitions/manifest-20261025.json` 记录只读榨取产物（459 个文件、约 79.7 MB；二进制保留在本地，仓库只存 SHA-256）。
 
-以下自动生成基础清单共 **297** 个文件，合计 **18.9 MB**；不含文末单列的2026-10-25符号恢复增量。
+共 **297** 个文件，合计 **18.9 MB**。
 
 | 路径 | 字节 | SHA-256 |
 |---|---:|---|
@@ -304,27 +305,3 @@
 | `evidence/web/2026-10-17/source-preservation.json` | 3539 | `7d1174bb3135de3ad633606eca1e00e6c0b7c40c8765fcb66004376c8a5c8fed` |
 | `evidence/web/2026-10-17/xda-4805241-pending.json` | 1287 | `7135c52ad29147733de276aaf99f2ce9ee46ddfbd717e41617cc212e4968fda9` |
 | `evidence/web/2026-10-17/xda-4805241-user-provided.txt` | 2308 | `31f9508f1db507e85b42a426b45aea6edc4a5fdbe23446f4b388a748b62ada08` |
-
-## 2026-10-25 符号恢复增量（手工补充）
-
-完整Image、符号表和分析ELF不在Git；结果与产物摘要如下，另见[专题](research/p780-kernel-symbol-recovery-20261025.md)。
-
-| 路径 | 字节 | SHA-256 |
-|---|---:|---|
-| `evidence/kernel/20261025-symbol-recovery/image-identity.json` | 807 | `a4f77850d1b0f562665c7d385210563de0cc46b05a0654840480bda543ca5d30` |
-| `evidence/kernel/20261025-symbol-recovery/verification.json` | 2381 | `8d64511e6b02f9ce026747005904f4c128244e0c764d772b54a4af391c99f87e` |
-| `evidence/kernel/20261025-symbol-recovery/elf-validation.json` | 663 | `da861d87537b01a53078f0e4e469e3525bf8e4390a2bcbf15133e52f5ae363c6` |
-| `evidence/kernel/20261025-symbol-recovery/tool-provenance.json` | 584 | `cdaf92d40f6a7d54e246618039524a88cac83acc263ca1b5a1a7e9c61535e9bc` |
-| `evidence/kernel/20261025-symbol-recovery/recovery-tool.log` | 5238 | `9a5dbfd48aa8aa436e6d14c63d9ad33f89cef2480167bb59c67cd3eb2417dff8` |
-| `evidence/kernel/20261025-symbol-recovery/readelf-header.txt` | 949 | `3ed6a2f40a925aca509a3f625d859274ac36114b8fad4b840e5de552edb8152c` |
-| `evidence/kernel/20261025-symbol-recovery/readelf-sections.txt` | 964 | `a86ff250a79fead7e83250122f7761d11517d2a9de78237b7282e38f20de7ef5` |
-
-其余产物及工具摘要见 `evidence/kernel/20261025-symbol-recovery/artifact-hashes.json`。
-
-## 2026-10-25 静态修复核对增量（不含于上方基础统计）
-
-| 路径 | 字节 | SHA-256 |
-|---|---:|---|
-| `evidence/kernel/20261025-static-patch-review/summary.json` | 1180 | `5168fc0404297b95df04fe9260e046f99c51498dd80c6988ce8b71a80fa13cb0` |
-| `evidence/kernel/20261025-static-patch-review/proxy-lock.txt` | 2159 | `ebda85c061a3ffcb2d563244ef157ca7c4498e0ae498f3eb34675764069ddc6b` |
-| `evidence/kernel/20261025-static-patch-review/remove-waiter.txt` | 7430 | `97dabbacbdf81aa2358a973fa7c5050f6c680588921b5f4bdee064f5da4ad9b6` |
