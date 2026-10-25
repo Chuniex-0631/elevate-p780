@@ -31,6 +31,7 @@
 | [`docs/HISTORY.md`](docs/HISTORY.md) | 时间线 |
 | [`docs/EVIDENCE_MANIFEST.md`](docs/EVIDENCE_MANIFEST.md) | 证据清单（路径 / 字节 / SHA-256） |
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | 目录职责与维护约定 |
+| [`docs/rom/README.md`](docs/rom/README.md) | **ROM 内容提取包**（5.73 GB，索引与上传清单） |
 | [`tools/README.md`](tools/README.md) | 可复跑工具 |
 | [`SECURITY.md`](SECURITY.md) | 范围与伦理 |
 
