@@ -3,6 +3,15 @@
 > 由 `23-repo-rebuild/build_index.py` 生成于 2026-10-25。
 > 列出仓库中全部 Markdown 文档，按目录分组，附标题与首句。
 
+## 2026-10-25 增量入口（后续新材料）
+
+> 下方正文是此前自动生成的索引快照；新增文件尚未重跑全量索引脚本，以下链接为已核对的增量补录。状态以 [STATUS](STATUS.md) 为准。
+
+- [ROM Release 元数据与文件清单审计](rom/AUDIT-20261025.md)
+- [ROM Release 上传索引与待完成本地核验](rom/README.md)
+- [ROM / 内核 / 系统组件 / Root 权限分层静态复核](research/p780-rom-kernel-system-triage-20261025.md)
+- [本地 Release 校验与 Product 分卷合并工具](../tools/rom/verify_release.py)
+
 ## 根目录（3）
 
 | 文档 | 标题 | 备注 |
