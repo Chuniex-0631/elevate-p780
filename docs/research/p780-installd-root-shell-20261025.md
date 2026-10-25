@@ -90,3 +90,64 @@ adb shell am start -n top.dcmqht.p780ipsec/.MainActivity -e probe unpatch
 2. **纵向上探**：installd 能否通过 Binder 调用到 system_server 的接口；
 3. **持久化路径**：是否有 installd 可写、且被 root 进程执行的路径（dalvik-cache 等）；
 4. **回到 GhostLock**：现在有了 uid 0 的文件读写，profile 的几何字段仍缺，但载荷投递不再是问题。
+
+
+---
+
+## 8. 写能力实测（2026-10-25 继续）
+
+### 8.1 策略层面
+
+从设备自带的 CIL 解析出的 `installd` 文件权限：
+
+| 类型 | 权限 |
+|---|---|
+| `apk_data_file` | append create link read rename setattr unlink write ... |
+| `dalvikcache_data_file` | append create link read rename setattr unlink write ... |
+| `app_data_file` | append create read rename setattr unlink write ... |
+
+而可执行这些类型的域：
+
+| 类型 | 可执行域 |
+|---|---|
+| `dalvikcache_data_file` | `zygote`、`appdomain`、`app_zygote`、`webview_zygote` |
+| `apk_data_file` | `appdomain`、`app_zygote`、`webview_zygote` |
+
+### 8.2 实机验证
+
+在 installd 域的 root shell 里执行：
+
+```sh
+echo hello > /data/app/p780_root_test
+echo hello > /data/dalvik-cache/p780_write_test
+```
+
+结果（shell 侧回读）：
+
+```
+-rw-rw-rw- 1 root root 6 /data/app/p780_root_test        # 内容 hello
+-rw-rw-rw- 1 root root 6 /data/dalvik-cache/p780_write_test  # 内容 hello
+```
+
+**两个受保护目录都被成功写入**，属主 root。（`ls /data/app` 对 shell 仍是 Permission denied，
+说明这是 installd 域的特权，不是文件系统权限被放开。）
+
+### 8.3 限制
+
+- shell 只能执行 `sh` 内建命令：`cat`/`cp`/`dd`/`rm` 都是 toybox 二进制，`system_file` 无执行权限，
+  所以**无法用 shell 直接做二进制拷贝**；
+- 但载荷本身（我们注入的机器码）以 root 身份运行，可以直接用 syscall 做 read/write 循环复制，
+  已在 dump 载荷里验证过这种模式可行；
+- 因此"APK 替换 / dalvik-cache 注入"在能力上可达，**但需要把复制逻辑写进载荷**，而不是靠 shell 命令。
+
+### 8.4 遗留
+
+- 两个测试文件（`/data/app/p780_root_test`、`/data/dalvik-cache/p780_write_test`）仍在设备上，
+  内容是无害的 `hello`；清理需要再由载荷执行 `unlinkat`（本轮第二次载荷未触发，未清理）。
+- 库已回滚，`getenforce` 仍 Enforcing，uptime 连续。
+
+### 8.5 下一步
+
+1. 用载荷实现 syscall 级文件复制，验证能否替换 `/data/app` 内的 APK（需处理 ART/fs-verity 校验）；
+2. 评估 dalvik-cache 注入：写一个 oat/vdex 是否会被 zygote 接受（ART 会校验 oat 与 APK 的一致性）；
+3. 清理测试文件。
