@@ -5,7 +5,7 @@
 
 ## 1. 这是什么 / 不是什么
 
-**是**：设备运行状态下 `/system`、`/product`、`/system_ext`、`/vendor` 的完整文件内容（tar 归档）、
+**是**：设备运行状态下 `/system`、`/product`、`/system_ext`、`/vendor` 的**已成功读取文件内容**（tar 归档，存在采集缺项）、
 `/system/bin` 下大部分 `*_exec` 二进制、以及运行中的内核镜像 `Image`。
 
 **不是**：可刷写的 `system.img` / `super.img` 原始分区镜像。原始镜像不可得——
@@ -38,27 +38,24 @@
 cat product.tar.part1 product.tar.part2 > product.tar
 ```
 
-## 3. 上传清单（人工上传用）
+## 3. Release 上传状态与独立核验
 
-Release 地址：`https://github.com/Chuniex-0631/p780-kernel-research/releases/tag/p780-rom-20261025`
+Release 地址：<https://github.com/Chuniex-0631/p780-kernel-research/releases/tag/p780-rom-20261025>
 
-已上传：`meta1.tar`。其余六个需要手动拖拽上传（网页版 Release 编辑页支持拖拽，单文件 <2 GB）：
+截至 2026-10-25，已直接核对 GitHub Release：**上述七个资产全部上传**；GitHub 返回的 size / SHA-256 digest 与 `release-assets.json` 全部一致。
 
-| 顺序 | 文件名 | 大小 |
-|---|---|---|
-| 1 | `kernel.Image` | 41.8 MB |
-| 2 | `vendor.tar` | 233 MB |
-| 3 | `system_ext.tar` | 361 MB |
-| 4 | `system.tar` | 1.81 GB |
-| 5 | `product.tar.part1` | 1.70 GB |
-| 6 | `product.tar.part2` | 1.56 GB |
+**尚未进行**真实 5.7 GB 二进制的下载、分卷合并、逐文件 SHA-256 重算或 TAR 元数据扫描。GitHub 资产元数据相符不等于本地归档无损坏。
 
-上传后本地校验（PowerShell）：
+- [本轮元数据与清单审计](AUDIT-20261025.md)
+- [离线归档核验工具](../../tools/rom/verify_release.py)
+
+本机下载七个 Release 资产并克隆仓库之后：
 
 ```powershell
-Get-FileHash .\system.tar -Algorithm SHA256
-# 对比 release-assets.json 里的值
+python tools/rom/verify_release.py "D:\\P780-ROM" --merge-product
 ```
+
+工具依次检查资产实算 SHA-256 / 大小、拼接后 `product.tar` SHA-256，以及 TAR 普通文件清单。默认不写文件；仅指定 `--merge-product` 时创建 `product.tar`，且不会覆盖已有文件。
 
 ## 4. 内容覆盖
 
@@ -69,7 +66,7 @@ Get-FileHash .\system.tar -Algorithm SHA256
 | `/system_ext` | 1,298 | 15 |
 | `/vendor` | 1,185 | 2,127 报错 |
 
-完整文件清单见 [`file-manifest.txt`](file-manifest.txt)（4,799 行，含每个文件的大小）。
+普通文件清单见 [`file-manifest.txt`](file-manifest.txt)（4,789 个普通文件条目；TAR 内另有目录、链接等条目）。
 
 ## 5. 已知缺口
 
@@ -100,8 +97,8 @@ tcpdump  pppd  dnsmasq  sgdisk  tune2fs  sdcard  usbd  ...
 
 - 内核 `Image` 已带完整符号表（173,205 条内置符号），见
   [`docs/research/p780-kernel-image-extraction-20261025.md`](../research/p780-kernel-image-extraction-20261025.md)；
-- `/system` 内的 TINNO 定制组件（`com.tinno.*`、`journey_diag`）与 AOSP 的差异，可基于
-  `system.tar` 做比对；
+- TINNO / Journey / Qualcomm / Rakuten 定制组件与 AOSP 的差异可基于各归档进行**离线**比对；
+  [组件清单与权限分层复核](../research/p780-rom-kernel-system-triage-20261025.md) 仅完成路径级筛选，尚未进行二进制分析；
 - `vendor.tar` 覆盖约 223 MB，接近 `du` 报告的全部字节，但报错较多，分析时注意缺项。
 
 ## 8. 隐私提示
