@@ -161,3 +161,44 @@ GhostLock 剩下的工作不是"确认漏洞存在"，而是**生成与 5.4.233 
 
 - `symbols_full.txt`：173,205 条 `偏移 名字`，可复现（`tools/kallsyms/extract_symbols.py`）；
 - 未入库（约 4 MB 派生数据），仓库只保留方法与关键偏移。
+
+
+---
+
+## 10. GhostLock profile 字段可得性（2026-10-25 追加）
+
+按 `ghostlock-app` 的 profile schema（5.x 分支），需要三类输入。清点结果：
+
+### 10.1 符号偏移：基本齐备
+
+| 字段 | 符号 | 偏移 |
+|---|---|---|
+| `offset.init_task` | `init_task` | `0x262d238` |
+| `offset.init_cred` | `init_cred` | `0x2639be0` |
+| `offset.root_task_group` | `root_task_group` | `0x27e8fb8` |
+| `offset.empty_zero_page` | `empty_zero_page` | `0x27d6000` |
+| `offset.selinux_enforcing` | `selinux_state` + `offsetof(enforcing)` | `0x27d5200` + 待定 |
+| KASLR 锚点 | `nfulnl_logger` | `0x25ba9d8` |
+| KASLR 锚点 | `loggers` | `0x25c2ff8` |
+| 其它 | `security_hook_heads` / `selinux_blob_sizes` | `0x207c868` / `0x207d1a8` |
+
+`boot_id` 与 `loggers_0_1` 未以该名字出现，需要按结构体成员推算（`loggers[0]` 的字段）。
+
+### 10.2 结构体成员偏移：缺失，且镜像里没有 BTF
+
+`task_struct`（`prio` / `pi_lock` / `pi_waiters` / `pi_blocked_on` / `cred` / `seccomp`）与
+`cred`（`copy_size` / `usage_offset` / `caps_offset` / `refN_offset`）这些**成员偏移**无法从符号表得到。
+
+镜像内**没有 BTF**（`CONFIG_DEBUG_INFO_BTF` 未启用，扫描无合法 BTF 头），镜像本身也不含 DWARF。
+所以这些偏移只有两条来源：
+
+1. **构造匹配的候选构建**：用 TINNO 公开的 5.4.61 源码 + 本机 `config.gz` + 同一套 Clang 11.0.2 编译，得到带 DWARF 的 `vmlinux`，用 `pahole` 导出成员偏移；
+2. **纯逆向**：从镜像里反汇编访问这些字段的函数，逐个人工推导（工作量大、易错）。
+
+### 10.3 路线几何：需要实测
+
+`route.select_stack.waiter_shift`、`route.tcp_zerocopy.compact_waiter` 这类字段取决于 exploit 自身的栈布局，必须通过运行/调试获得，不能从镜像静态推出。
+
+### 10.4 结论
+
+符号层已经可以把 profile 填到"大半"；**真正的缺口是结构体成员偏移**，而它必须依赖候选构建（DWARF）或人工逆向。下一步应先用 5.4.61 + 本机 config + Clang 11.0.2 出 `vmlinux`，再用"函数字节/符号偏移比对"验证候选与运行镜像的一致性，最后才谈 profile 是否可用。
