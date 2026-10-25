@@ -9,6 +9,7 @@
 | [`native/`](native/README.md) | APK DEX / JNI ELF / CFI 的历史取证结果 | 否 |
 | [`gaps/`](gaps/README.md) | ADB 只读取证缺口与 policy 记录 | 否 |
 | [`dsu/`](dsu/README.md) | DSU 固定只读快照与 GSI VINTF 提取 | 否（不尝试安装） |
+| [`rom/`](rom/README.md) | 校验七个 Release 资产 SHA-256、可选 Product 分卷重组与 TAR 文件清单 | 否（只在本地可选创建 `product.tar`） |
 | [`verify_repository.py`](verify_repository.py) | 仓库结构、Markdown 链接与证据一致性校验 | 否 |
 | [`summarize_config.py`](summarize_config.py) / [`audit_missing_config.py`](audit_missing_config.py) | 内核 config 差异与缺失项分析 | 否 |
 | [`derive_candidate_layout.py`](derive_candidate_layout.py) / [`p780-layout-probe.c`](p780-layout-probe.c) | 候选源码结构测量 | 否 |
