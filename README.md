@@ -1,61 +1,44 @@
-> 2026-10-25 实机更新：确认 CVE-2026-43284（DirtyFrag）页缓存写入原语成立，并据此改写 libc++.so / libbase.so 代码页，在 init 域与 installd 域（均 uid 0）执行任意系统调用；仍受 SELinux 域策略限制，未取得交互式 root shell。全部只改页缓存、可回滚。 [报告](docs/research/p780-dirtyfrag-live-exploit-20261025.md) · [探针工具](tools/dirtyfrag-probe/README.md)
-
 # Rakuten Hand 5G / TINNO P780 研究档案
 
-更新：2026-10-24（Asia/Shanghai）。记录机主实机取证、离线样本分析与候选源码实验。**Bootloader 仍 Locked，未取得 Root；没有已验证的锁定态永久分区写入通道。**
+> 更新：2026-10-25（Asia/Shanghai）。记录机主实机取证、离线样本分析与候选源码实验。
+> **Bootloader 仍为 Locked，未取得可用的 Root shell；没有已验证的锁定态永久分区写入通道。**
 
-设备：Qualcomm 平台（holi / mannar），Android 11，内部固件 `P780AE_11.0_RMN_JP_162`，系统指纹末段 `264:user/release-keys`，内核 `5.4.233-qgki-gea5245e94afe-dirty`。`_162` 与指纹中的 `264` 是不同版本字段。
+设备：Qualcomm 平台（holi / mannar），Android 11，内部固件 `P780AE_11.0_RMN_JP_162`，系统指纹末段 `264:user/release-keys`，内核 `5.4.233-qgki-gea5245e94afe-dirty`（Clang 11.0.2，2024-02-20 构建），`ro.debuggable=0`，SELinux Enforcing。
 
 ## 当前结论
 
-|方向|已取得的证据|当前状态|
+| 方向 | 已取得的证据 | 当前状态 |
 |---|---|---|
-|AVB 测试根密钥|本机 TEE 硬件证明中的公钥摘要匹配 AOSP 默认 RSA4096 AVB 测试公钥；VBMeta digest 同时吻合|公钥身份已核验；不等于可写入或解锁|
-|DSU / GSI|A/B 在 Windows 验签通过；B 已安装并尝试启动，最终回原厂；恢复出厂后原生 Loader 也由机主报告回退|**路线已停止**；失败阶段未知，不能认定厂商禁止 DSU|
-|静态样本与权限|PC 清单 1759 项；batch1 742 项、batch2 514 项匹配清单；另有 SELinux 配套文件与编译策略|当前主线：调用关系、权限边界与缺失实现交叉分析|
-|Journey / Qualcomm 接口|Journey debug 属性存在 shell 静态 allow；取得部分 JNI/HIDL 客户端库|未形成任意读写或提权链；关键 init/vendor 服务原件缺失|
-|原厂固件、EDL、源码|2026-10-19：QDL v2.8 经 QUD/COM6 成功查询 Sahara v2/HWID/PKHash；TINNO 旧源码及候选构建已归档|A 已进行早期 READ64 传输但无 Firehose；A–E 五文件签名归为3组，全部不匹配本机 PKHash；仍缺同型号可信原厂镜像|
-|GhostLock|配置、旧源码模式及候选布局已有分析|**BLOCKED**；不得把候选偏移当本机参数|
-|DirtyFrag / CVE-2026-43284|P780 v0.2 普通 UDP/ESP 回环 PASS；v0.3 文件支持 UDP sendfile 回环 PASS。TINNO 5.4.61 候选源码有旧式 IPv4 sendpage 与 ESP no-COW 静态形态|**UNDETERMINED**；本机 5.4.233 对应实现、等价修复回移植与 ESP 共享页条件仍未知，无 Root|
+| DirtyFrag / CVE-2026-43284 | 公开 IPsec API 建 SA + `splice` 钉页 + 内核原地解密；有效 ESP 报文被接受并覆盖文件页；可写只读系统库页缓存 | **原语已实机确认** |
+| 代码执行 | 改写 `libc++.so` / `libbase.so` 代码页，在 **init 域**与 **installd 域**（均 uid 0）执行任意系统调用；全程可回滚 | **成立** |
+| Root shell | 两个域均被 SELinux 限制：`exec` 被拒、`/data` 写入被拒、selinuxfs 不可写 | **未取得** |
+| AVB 测试根密钥 | 本机 TEE 证书公钥摘要匹配 AOSP 默认 RSA4096 AVB 测试公钥；vbmeta digest 同时吻合 | 公钥身份已核验；不等于可写入或解锁 |
+| DSU / GSI | A/B 槽离线验签通过；B 已安装并尝试启动，最终回原厂；恢复出厂后原生 Loader 也由机主报告回退 | **路线已停止**；失败阶段未知 |
+| OEM Unlock 灰化 | Journey gate：`OemLockService` 读 `ro.boot.journey.customer=1` 后返回 false；296 份去壳 APK/JAR 中仅 6 个直接调用点 | 静态根因已定位；无普通调用者入口 |
+| Fastboot / EDL | unlock 系列全 `unknown command`；QDL v2.8 通到 Sahara v2（HWID / PKHash 已记录） | 未取得 Firehose；缺匹配签名的 programmer 与原厂镜像 |
+| GhostLock / CVE-2026-43499 | 配置满足、TINNO 5.4.61 有同形 `remove_waiter` 调用链、tracefs 有候选指针 | **BLOCKED**：缺 5.4.233 二进制与逐构建偏移 |
+| 源码与内核身份 | 实机 `config.gz` 5238 项；匹配 Clang11 候选编译与结构测量 | 缺原厂 `Image`/`vmlinux`/源码；候选不等于 running |
 
-## 阅读入口
+结论以 [`docs/STATUS.md`](docs/STATUS.md) 为准；任务与验收标准见 [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md)。
 
-- [当前状态与证据边界](docs/STATUS.md)：全路线结果、尚不能推出的结论。
-- [下一步](docs/NEXT_STEPS.md)：只保留尚未完成、满足条件才推进的任务。
-- [文档导航](docs/README.md)：按问题索引所有专题，DSU 历史单独归类。
-- [证据资产清单](docs/EVIDENCE_MANIFEST.md)：区分 Git 原件、提取摘要、机主 PC 与会话材料。
-- [时间线](docs/HISTORY.md) · [本轮整理验收](docs/REPOSITORY_AUDIT.md) · [更新日志](CHANGELOG.md)。
+## 导航
 
-原厂源码与固件查找：[2026-10-24 公开搜索与 TINNO 邮件头核对](docs/research/p780-source-availability-followup-20261024.md)（仍无可信 `_162` 镜像或对应源码）。
-
-最新 DirtyFrag 阶段核对：[UDP sendpage / ESP 静态路径专题](docs/research/p780-dirtyfrag-udp-esp-source-audit-20261024.md) · [TINNO 5.4.61 旧式 sendpage/ESP 源码审计](docs/research/p780-dirtyfrag-tinno-5.4.61-source-audit-20261024.md) · [v0.2 回环证据分析](docs/research/p780-dirtyfrag-v02-path-interpretation-20261024.md) · [v0.2 实机回环结果](docs/research/p780-ipsec-v0.2-live-loopback-20261024.md) · [v0.3 sendfile 实机 PASS](docs/research/p780-dirtyfrag-v03-sendfile-probe-20261024.md) · [内核版本后缀核验](docs/research/p780-ipsec-preflight-live-and-localversion-20261024.md)。普通回环 PASS 不证明 DirtyFrag 可利用。
-
-Android 11 IPsec/UDP 诊断工具 v0.3.0：[源码与操作说明](tools/ipsec-preflight-android/README.md) · [v0.3 APK 构建记录](https://github.com/Chuniex-0631/p780-kernel-research/actions/runs/40081265263) · [v0.2 实机结果](docs/research/p780-ipsec-v0.2-live-loopback-20261024.md) · [v0.3 sendfile 预检状态](docs/research/p780-dirtyfrag-v03-sendfile-probe-20261024.md)。**v0.2 普通 UDP/ESP 回环与 v0.3 文件支持 UDP sendfile 回环均已实机 PASS。v0.3 只证明普通 file-backed sendfile-to-UDP loopback，不证明 DirtyFrag。**
-
-最新实机进展：[QDL QUD/Sahara 握手成功](docs/research/p780-qdl-qud-sahara-20261019.md)。最新分析：[native 接口交叉核对](docs/research/p780-native-interface-crosscheck-20261018.md)、[SELinux 边界](docs/research/p780-policy-boundary-audit-20261018.md)、[batch2](docs/research/p780-static-batch2-analysis-20261018.md)。核心证据：[AVB 硬件证明](docs/research/avb-attestation-confirmed-20261018.md)、[DSU 阶段收束](docs/research/p780-dsu-closure-maintenance-route-20261018.md)。
-
-## 仓库结构与维护
-
-|目录|职责|
+| 入口 | 内容 |
 |---|---|
-|[docs/](docs)|当前状态、行动清单、证据索引与时间线|
-|[docs/research/](docs/research)|专题；历史试验页在页首标记状态|
-|[docs/reference/](docs/reference)|来源、归档规范与完整性记录|
-|[docs/archive/](docs/archive)|冻结的阶段账本与结构验收|
-|[evidence/](evidence)|原件、提取证据、逐运行构建产物；保存范围见索引|
-|[archive/](archive)|旧报告、设备摘要与历史脚本|
-|[tools/](tools)|分析与验证工具，依赖和设备影响见工具说明|
-|[.github/workflows/](.github/workflows)|归档完整性检查；候选构建与历史迁移为手动工作流|
+| [`docs/index.md`](docs/index.md) | **全量文档索引**（自动生成，含全部专题与旧档） |
+| [`docs/STATUS.md`](docs/STATUS.md) | 当前结论、证据等级与边界 |
+| [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md) | 下一步计划与停止条件 |
+| [`docs/HISTORY.md`](docs/HISTORY.md) | 时间线 |
+| [`docs/EVIDENCE_MANIFEST.md`](docs/EVIDENCE_MANIFEST.md) | 证据清单（路径 / 字节 / SHA-256） |
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | 目录职责与维护约定 |
+| [`tools/README.md`](tools/README.md) | 可复跑工具 |
+| [`SECURITY.md`](SECURITY.md) | 范围与伦理 |
 
-当前结论只在 STATUS 汇总；专题保存证据细节，HISTORY/CHANGELOG 保存时间顺序。每阶段修订正文与索引，不再向所有入口重复追加同一通知。例行查询无新证据时不制造研究成果。
+## 最新专题
 
-仓库含未经发布级脱敏的历史资料；`restricted` 只是分类，不能提供目录级访问控制。原始硬件证明证书不入仓。可见性及历史风险见 [SECURITY](SECURITY.md)。自动监测是否运行须查实际任务状态，文档中的历史“已启用”不是当前运行凭据。
+- [`docs/research/p780-dirtyfrag-live-exploit-20261025.md`](docs/research/p780-dirtyfrag-live-exploit-20261025.md) — DirtyFrag 实机利用链：原语确认、系统库写入、init/installd 域代码执行、能力边界与回滚。
+- [`tools/dirtyfrag-probe/README.md`](tools/dirtyfrag-probe/README.md) — 配套探针、钩子桩与离线分析工具。
 
-## 2026-10-24 补充情报
+## 范围
 
-本轮新增47份系统原件：46份VINTF XML与1份OTA公开验证证书包；补齐Boot/Diag/Warehouse声明，保存TINNO RSA-2048证书指纹及Boot HAL查询边界。设备基线仍为locked/green，未取得Root或写入通道。见[研究报告](docs/research/p780-supplement-20261024.md)、[证据与保存范围](evidence/supplement/20261024/README.md)和[复核工具](tools/supplement/README.md)。部分旧索引当前含乱码，本轮通过此入口导航，未对旧文件做转码覆盖。
-
-
-## 2026-10-24 公开设备树线索审计
-
-发现同名公开项目 [2by2-Project-Devices/android_device_rakuten_p780ae](https://github.com/2by2-Project-Devices/android_device_rakuten_p780ae)，但固定提交审计表明它仍主要是 Xiaomi `veux` / Snapdragon 695 设备树的实验性改名移植。少量 P780 分区与 AVB 参数记为待验证线索；没有 P780 配套内核/vendor、构建产物或真机成功记录，不能作为 Root、解锁或可刷 ROM。见[专项审计](docs/research/public-p780ae-device-tree-audit-20261024.md)。
+本仓库只做机主自有设备的只读取证、离线分析与可回滚的受控实验；不包含第三方利用载荷、不提供解锁/刷写服务、不针对他人设备。

@@ -1,25 +1,26 @@
-> 2026-10-25 新增 `dirtyfrag-probe/`：探针 JNI 层、钩子桩、补丁生成与零引用扫描工具。 [说明](dirtyfrag-probe/README.md) · [报告](../docs/research/p780-dirtyfrag-live-exploit-20261025.md)
+# 工具
 
-# ��ǰ���߹���
+> 2026-10-25 重建。每个工具目录自带 README，写明用途、依赖、运行方式与边界。
 
-������������ڹ���Ŀ¼��ȡ�ļ����������ֻ���**`p780-avb-readonly.ps1` Ϊ����**����ͨ������Ȩ ADB ִ��ֻ�����Բ�ѯ���������ö�٣�����ȡ��������Ҳ�������豸���о�����ͱ߽�� [�ĵ�����](../docs/README.md)����ʷ�豸�����ű����� [archive/scripts](../archive/scripts)�����޸��ֻ�״̬��
+| 工具 | 用途 | 是否改动设备 |
+|---|---|---|
+| [`dirtyfrag-probe/`](dirtyfrag-probe/README.md) | DirtyFrag 探针：ESP 页缓存写入、系统库改写、钩子桩、离线分析脚本 | **是**（仅页缓存，可回滚） |
+| [`p780-avb-readonly.ps1`](p780-avb-readonly.ps1) | 只读 AVB 信息采集 | 否 |
+| [`native/`](native/README.md) | APK DEX / JNI ELF / CFI 的历史取证结果 | 否 |
+| [`gaps/`](gaps/README.md) | ADB 只读取证缺口与 policy 记录 | 否 |
+| [`dsu/`](dsu/README.md) | DSU 固定只读快照与 GSI VINTF 提取 | 否（不尝试安装） |
+| [`verify_repository.py`](verify_repository.py) | 仓库结构、Markdown 链接与证据一致性校验 | 否 |
+| [`summarize_config.py`](summarize_config.py) / [`audit_missing_config.py`](audit_missing_config.py) | 内核 config 差异与缺失项分析 | 否 |
+| [`derive_candidate_layout.py`](derive_candidate_layout.py) / [`p780-layout-probe.c`](p780-layout-probe.c) | 候选源码结构测量 | 否 |
+| [`compare_candidate_layouts.py`](compare_candidate_layouts.py) | 候选布局对比 | 否 |
+| [`scan_journey_framework.py`](scan_journey_framework.py) | Journey 框架调用点扫描 | 否 |
+| [`read_performance_dex.py`](read_performance_dex.py) | 原始 DEX 读取 | 否 |
+| [`compare_journey_config.py`](compare_journey_config.py) | vendor XML 与 TCS dump 对比 | 否 |
 
-| �ļ� | ��; |
-|---|---|
-| [p780-avb-readonly.ps1](p780-avb-readonly.ps1) | Windows PowerShell / ADB ������ AVB ���������������ֻ���ɼ����μ� [2026-10-18 AVB ����](../docs/research/avb-live-baseline-20261018.md) |
-| [native/README.md](native/README.md) | ���APK DEX��JNI ELF/CFI����ʷ����SHA������ƣ��������ֻ� |
-| [gaps/README.md](gaps/README.md) | �̶�ADBֻ����ȱ�嵥���޶�policy-v30���߼�¼�Ƚϣ������/�ܾ���ظ�ִ�� |
-| [dsu/README.md](dsu/README.md) | DSU固定只读快照与已有ext4 GSI的VINTF提取、内核config子集比较；不试装 |
-| [verify_repository.py](verify_repository.py) | ȫ�����·�����ӡ�Python/JSON ��ʽ��Journey ԭ��/��ͼ�뱣��Ǩ�� Blob ���ݼ�� |
-| [summarize_config.py](summarize_config.py) | ԭʼ/���/��������ò��� |
-| [audit_missing_config.py](audit_missing_config.py) | ȱʧ CONFIG ���ŵĹ̶�Դ������ɨ�� |
-| [derive_candidate_layout.py](derive_candidate_layout.py)��[p780-layout-probe.c](p780-layout-probe.c) | ��ʵ�� Kbuild ���������ѡ�ṹ̽�� |
-| [compare_candidate_layouts.py](compare_candidate_layouts.py) | �����к�ѡ���ֱȽ� |
-| [scan_journey_framework.py](scan_journey_framework.py) | ԭ�� JourneyConfigService ֱ������ɨ�裻���ڴ渱������ hidden-API �������� |
-| [read_performance_dex.py](read_performance_dex.py) | ֱ�Ӷ�ȡԭʼ DEX ������ȡ���ܷ�������õ㣻����ԭ�����޸� |
-| [compare_journey_config.py](compare_journey_config.py) | vendor XML ��ֻ�� TCS dump ���գ�ALL ����Ϊ�Ƚϼ��� |
+历史脚本见 [`../archive/scripts`](../archive/scripts)。
 
-DEX ������Ҫ Python��androguard��loguru�����ӵ�ǰĿ¼�� framework-audit/ ��ȡ services.jar �� framework.jar���������߷����ļ������ö����÷���`python tools/compare_journey_config.py <��ѹĿ¼>`��Ŀ¼���� config.xml��version.txt ��ԭʼ tcs-state.txt�������������ߵĲ����������Խű�����Ӧ�ֶ� workflow Ϊ׼��
+## 约定
 
-ԭʼ framework ����δǨ�� Git�����ܽ���¡��������� DEX ��ȡ������ SHA �ͷ�Χ�� [Journey ר��](../docs/research/journey-config.md)����ѡ���ֲ��ǿ�ֱ������ʵ���Ĳ�����
-
+- **只读工具**与**会改动设备状态**的工具必须在上表标注。
+- 任何会改动设备的工具都要写回滚方法与最坏后果。
+- 工具输出若被引用为证据，必须归档到 `evidence/` 并在清单中登记。

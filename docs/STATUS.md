@@ -1,68 +1,45 @@
-> 2026-10-25 实机更新：确认 CVE-2026-43284（DirtyFrag）页缓存写入原语成立，并据此改写 libc++.so / libbase.so 代码页，在 init 域与 installd 域（均 uid 0）执行任意系统调用；仍受 SELinux 域策略限制，未取得交互式 root shell。全部只改页缓存、可回滚。 [报告](research/p780-dirtyfrag-live-exploit-20261025.md)
+# 当前研究状态
 
-> 2026-10-25 实测更新：机主提交perf v0.1.0实机日志：UID2000、5.4.233-qgki，自身线程用户态软件计数USER_COUNT_PASS（约200.5ms），临时程序清理exit=0。内核/寄存器采样未测试，GhostLock仍UNDETERMINED，无Root/解锁进展。 [报告](research/p780-perf-v010-live-result-20261025.md)
+> 2026-10-25 重建。本页是唯一权威状态页；其余页面的结论只在"本页范围"内有效。
+> 历史正文中因二次编码损坏的段落不再引用（见 `docs/index.md` 的"部分损坏"标记）。
 
-## 2026-10-24 最新增量：v0.3 实机 PASS 与 TINNO 5.4.61 源码审计
+## 设备与版本事实
 
-- v0.3 已在 P780 实机运行：应用私有 1024 字节文件经一次 `sendfile()` 发送至 `127.0.0.1` IPv4 UDP；接收字节匹配、源文件前后内容一致、临时文件删除。无 IPsec/ESP，无利用式页面缓存操作。
-- TINNO 固定提交 `20c26c7658cb5273cc71b10c3704b445b0efbe6b` 的 5.4.61 候选源码含旧式 `sendfile → splice → udp_sendpage → ip_append_page → skb_append_pagefrags` 路径，以及 ESP4/ESP6 的 no-COW 快速分支；审阅到的旧式 IPv4路径未设置 `SKBTX_SHARED_FRAG`，ESP 输入也未检查 `skb_has_shared_frag()`。
-- 该候选静态形态值得继续核验，但不能直接转移为本机 5.4.233 的结论。当前仍缺匹配 `P780AE_11.0_RMN_JP_162` 的可信 kernel Image/源码，以及对应函数是否有等价修复回移植的证据。
-- 当前仍为 **DirtyFrag UNDETERMINED / 无 Root / Bootloader Locked**。详见 [v0.3 实机报告](research/p780-dirtyfrag-v03-sendfile-probe-20261024.md) 与 [TINNO 5.4.61 源码审计](research/p780-dirtyfrag-tinno-5.4.61-source-audit-20261024.md)。
-
-## 2026-10-24 最新增量：DirtyFrag / IPsec v0.2
-
-- v0.2.0 已在 P780（Android API 30 / kernel 5.4.233-qgki）实机完成三项检查：只读环境、临时资源分配、普通 UDP/ESP transport 回环均 PASS。
-- 回环阶段完成一个普通 UDP 数据报和一个经 Android 公共 IPsec API 保护的数据报的本机发送/接收与字节比对；之后非提权 `dumpsys ipsec` 显示相关 SPI/Transform/Socket/Tunnel 计数为 0。
-- 这比 API 资源创建更进一步，支持正常 ESP transport 数据路径可用；但 v0.2 使用 Java `DatagramPacket`，没有文件支持的 `sendfile/splice`、没有 DirtyFrag 页面缓存写入原语，也没有内核 trace。
-- TINNO 5.4.61 与其他厂商 5.4.233 候选代码仅为参考，不是本机 running source。**DirtyFrag 仍 UNDETERMINED；无 Root；Bootloader Locked。**
-- 详见 [v0.2 实机结果](research/p780-ipsec-v0.2-live-loopback-20261024.md) 与 [路径覆盖分析](research/p780-dirtyfrag-v02-path-interpretation-20261024.md)。
-
-> 2026-10-20 GAP-01 补证：两份原件哈希核对通过；running config=0x1，disk=0x80000001，纠正旧专题两端写反。独立 SETools 语义复核 BLOCKED_TOOLING；有限记录一致不升级为完全等价。 [详情](research/p780-policy-header-verification-20261020.md)
-
-# ��ǰ�о�״̬
-
-���£�2026-10-19��Asia/Shanghai�������ǵ�ǰ���۵�ͳһ��ڣ�����ϸ�ڼ� [ʱ����](HISTORY.md) ��ר�⡣**Locked / δ Root / δȡ������֤�����÷���д��������DSU ��ֹͣ��**
-
-## �豸��汾����
-
-|�ֶ�|�Ѽ�¼ֵ|�߽�|
+| 字段 | 已记录值 | 边界 |
 |---|---|---|
-|�豸|Rakuten Hand 5G / TINNO P780��Qualcomm holi / mannar|����������ƽ̨|
-|�̼�|Android 11��`P780AE_11.0_RMN_JP_162` / `_162_CFC`|�ڲ������� fingerprint ��Ų�ͬ|
-|Fingerprint|`Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys`|������ 162 �滻���� 264|
-|�ں�|`5.4.233-qgki-gea5245e94afe-dirty`��Android Clang 11.0.2 r383902b1|��ѡԴ�벻�ǳ���������|
-|����״̬|`flash.locked=1`��verified boot `green`����ʷ��� `_b`|ÿ�βɼ��Ŀ��գ�����֤�Ժ󲻱�|
+| 设备 | Rakuten Hand 5G / TINNO P780，Qualcomm holi / mannar | 平台名称层级不同，非矛盾 |
+| 固件 | Android 11，`P780AE_11.0_RMN_JP_162` / `_162_CFC` | 内部构建号与指纹字段 `264` 不同 |
+| 指纹 | `Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys` | — |
+| 内核 | `5.4.233-qgki-gea5245e94afe-dirty`，Clang 11.0.2 r383902b1 | 候选源码不等于 running source |
+| 启动状态 | `flash.locked=1`，verified boot green，槽 `_b` | 每次采集的快照 |
+| SELinux | Enforcing；shell 为 UID 2000 | — |
+| Root | 未取得 | — |
 
-��Դ��[�豸](research/device-and-boot.md)��[AVB ����](research/avb-live-baseline-20261018.md)��[���˺�״̬](research/p780-dsu-closure-maintenance-route-20261018.md)���ָ�������İ�״̬����������ǰ������ա�
+## 结论总表
 
-## ·������
-
-|·��|��֤ʵ�������|ʣ��ȱ�� / ����|
+| 方向 | 已取得的证据 | 状态 |
 |---|---|---|
-|AVB ��Կ����|����Ӳ��֤��֤��ǩ������ Google ��ƥ�䣻`verifiedBootKey` ƥ�� AOSP AVB RSA4096 Ĭ�ϲ��Թ�Կ��`verifiedBootHash` ƥ�䱾�� digest|���ߵ�������У��δ��ɣ���ʵ VBMeta chain descriptors��rollback index ��ԭ��������ȱ����[ȷ�ϱ���](research/avb-attestation-confirmed-20261018.md)|
-|Fstab / ��̬����|���� fstab �Ѷ���system/system_ext/product ʹ�� `avb=vbmeta_system`��vendor/odm Ĭ�� avb��system �� q/r/s-GSI key ·��|���ò��������ʵ�������� first-stage ʵ�ʹ�Կ����[fstab](research/p780-fstab-avb-20261018.md)|
-|DSU A/B|Windows A/B ��ͨ�� AVB ��֤��B ����ԭ����װ����װ������ dynsystem ���������ջص�ԭ����installed/disabled|**ֹͣ**��δ���� GSI��ʧ�ܽ׶�δ֪���ָ�������ԭ�� Loader �����ǻ����۲죬��������δ��ʵ����[����](research/p780-dsu-closure-maintenance-route-20261018.md)|
-|OEM Unlock ��ɫ����|ԭ�����߶�λ����� carrier getter ����Ҫ�� !JourneyDebugFeature.IS_CUSTOMER_VERSION��framework��ʼ����ȡ ro.boot.journey.customer��������ʷͬfingerprint����Ϊ1������ADB�ٴζ���customer=1������PDB/���û������Ի�ɫ|��̬�����Ѷ�λ��2026-10-19����pull��services.jar SHAƥ����ʷ��δ���˵�ǰ�ڴ档OEMLOCK-02��ɨ��296��APK/JAR����6��ֱ�ӵ��õ㣻ȷ������signature/privilegedȨ���Ѻ��飬��������δ�ҵ��ɴ�д����ڡ���[OEMLOCK-02�����߽߱�](research/p780-oemlock-caller-boundary-20261019.md)��[Journey gate](research/p780-oemlock-journey-gate-20261019.md)|
-|native���ж˵� / ���JNI|QTIDiagServices��libDiagService��services�����ֻ�ԭ��SHAƥ����ʷ������16��DEX�������JNI CFIʵ�֣�������־��λDiag_LSM_Init����HIDLʧ�ܣ�����Journey root��Ϸ�����������|���APK�����������û��OEM������HIDLʧ������ԭ��δ����vendor����˶�ȡ���ܾ���Journey init builtinʵ����ȱ����[���н��汨��](research/p780-native-live-endpoints-20261019.md)|
-|Fastboot / EDL|���� unlock ���� unknown command��2026-10-19 QDL v2.8 ʹ�� Windows QUD/COM6 ���� Sahara v2/HWID/PKHash��������ʵ���Ǻ�|����֤ Sahara command-mode��**A ���������� READ64��B�CE �����߷�����A�CE ��3��ǩ�������뱾�� PKHash ������δ�ɹ����� Firehose**��δȡ�ÿ���ǩ�� Loader ��ԭ�� boot/vbmeta����[ʵ�ⱨ��](research/p780-qdl-qud-sahara-20261019.md)|
-|OTA|6 ����ʷ������־û�� payload����ȷ fingerprint �� Google OTA Prober ��ѯδ���� URL|**�ݻ��ظ�̽��**����֤�����г����������ް�����[OTA ���](research/ota-log-audit.md)��[��ѯ](research/google-ota-prober-p780-20261018.md)|
-|Դ�����ں˹���|��ʵ config.gz 5238 ����ȷ�����ƥ�� Clang11 ���� rtmutex.o��A52s ��ѡ����ֵ�仯0����ʧ24������322�����ú�ѡ��32��ֲ���һ��|����ԭ�� vmlinux/ABI��TINNO ��5.4.61ԭ�������ʧ46������14����ͬʵ�����ֲ��ɻ��á���[����](research/config-layout.md)|
-|�ں�֤�ݲ�ȱ|�ֻ�config.gz��10��10�չ鵵ѹ���ֽ�һ�£�notes/kheaders/kallsyms��ȡ�ܾ���BTF��׼Ŀ¼���ɼ���perf_event_paranoid=-1|����/����sysctl��֤�������Ʋ��������ͻ�ʵ��perf���ʣ�ԭ��Image/Build ID/������ȱ����[GAP-01](research/p780-evidence-gap-audit-20261019.md)|
-|GhostLock|��Դ��ģʽ�����á�Tracefs ���Ĵ��������鵵|**BLOCKED**��ȱ�����ں�©��ȷ�ϡ�������/����/�𹹽�ƫ�ơ���[ר��](research/ghostlock.md)|
-|Journey Ӧ������|TCS/vendor XML �汾42��64���� ALL ����һ�£������߶�λ�������� Service/Provider ����|�����·��δ������ѧ��ǩ������ OTA/Root �������ظ���Ϊ�¹�����ڡ���[ר��](research/journey-config.md)|
-|QAS / Mink / PFM|class119��eMBMS feature700��XR feature2100�����ִ�����־��UID/PID��ƾ��·�����з���|����������������Ȩ�ɹ���δ���� OEM Unlock����[ר��](research/qas-tee-pfm.md)|
-|��̬����|1759��PC�嵥��batch1 742�batch2 514������ƥ�䣻���߰�55�豸�ļ�+��־|�嵥���������̼���ZIPδȫ����Git��vendor/bin��vendor/lib64���޲ɼ����ݡ���[֤������](EVIDENCE_MANIFEST.md)|
-|Journey init / SELinux|��ȡ������policy��45391��AVTAB/849��genfs��¼��2437������bitmap���ODM��¼��ͬ��debug_prop�Ⱦɹ��������������ԭ��֧�֣�����Journey root������ȷ��running|�ļ���ϣ��ͬ����¼˳����header config��λ���챣��������SETools����diffδ����builtin/����/����˼�socket��ǩ��ȱ���ܾ�·�����ظ����ԡ���[GAP-01](research/p780-evidence-gap-audit-20261019.md)��[�ɾ���](research/p780-policy-boundary-audit-20261018.md)|
-|native �ӿڽ���|Diag JNI��diag���HIDL������QSEE HIDL��װ��Mink JNI������������֣�6����ѡ���36����Բ�ѯδ��allow|���޿�ֱ�ӵ��õ���Ȩ��ڣ�����˺;��巽����Ȩδ�롣��[���汨��](research/p780-native-interface-crosscheck-20261018.md)|
-|�ٷ�Դ������|���� TINNO �������󣻼���2026-10-18����δ���ֳ��̻ظ�|����δ���¼������䣻����������10/10��10/11��¼���죬���ʼ�ͷ�˶ԡ�Rakuten�ݲ���ϵ����[�����¼](official-source-request-log.md)|
+| DirtyFrag 页缓存写入 | 有效 ESP 报文被内核接受，文件页被原地解密覆盖；`/proc/net/xfrm_stat` 计数吻合 | **已确认** |
+| 只读系统库写入 | `libc++.so` `.rodata` 填充区被改写，另一进程可读；写回零后恢复 | **已确认** |
+| init 域代码执行 | `sentry` 入口 trampoline + 桩；孤儿回收触发；标记落地 | **已确认** |
+| installd 域代码执行 | `libbase` `LogMessage` 入口改写；275 个调用点；标记落地、`exec` 失败标记出现 | **已确认** |
+| 交互式 root shell | 两个域 `exec` 被拒、`/data/local/tmp` 写入被拒、`/sys/fs/selinux/enforce` 打开即拒 | **未取得** |
+| AVB 测试根密钥 | TEE 公钥摘要 = AOSP 默认 RSA4096 AVB 测试公钥；vbmeta digest 吻合 | 身份已核验，不等于可写 |
+| DSU / GSI | A/B 离线验签通过、B 安装完成、重启回原厂 | **停止** |
+| OEM Unlock 灰化 | Journey gate 静态根因已定位，无可用的普通调用者 | 阻塞 |
+| Fastboot / EDL | unlock 全 unknown command；Sahara v2 可达，Firehose 未通 | 阻塞 |
+| GhostLock | 配置满足、同形调用链、tracefs 候选指针 | **BLOCKED**：缺 5.4.233 二进制 |
+| 内核源码身份 | 实机 config 5238 项、候选编译与结构测量 | 缺原厂 Image/vmlinux |
 
-## ����ժҪ�����ͱ߽�
+## 关键边界
 
-- AVB ��Կ SHA-256��1032�ֽ� AVB ��ʾ����`7728e30f50bfa5cea165f473175a08803f6a8346642b5aa10913e9d9e6defef6`��
-- ���� VBMeta digest��`33ee3a6cf5215befd8a4f953382bd746d12efc37f6d4116c0c9b68a7661f95f2`������ VBMeta �ܳ���7744�ֽڣ����ǵ��������ȡ�
-- B������ SHA-256��`fd98af142b11263e997adba190810c544857c7b750fd905a663e87256a71d880`����ֵ��A/B���ݶ�һ�������Ի���PC���������û������1.9GB����������㡣
-- ͨ�� `write_misc_partition` �����ڳ��� `write_misc` builtin��DT_NEEDED/������������������ͼ��δ�����ַ�����֤��ʵ�ֲ����ڡ�
-- ����Ԥ���� SELinux ����������ժҪ�Ǻϣ����������ں˲��� dump������ allow��root UID��socket 0666 �����ܵ���֤���˵��˲����ɹ���
+1. **DirtyFrag 的原语与"拿到 root"是两件事**。原语已确认；root 受 SELinux 域策略限制，逐项否定见
+   [`research/p780-dirtyfrag-live-exploit-20261025.md`](research/p780-dirtyfrag-live-exploit-20261025.md) 第 5 节。
+2. **所有页缓存改写都是易失的**：不改磁盘、重启还原；改动前备份原始字节、可逐字节回滚。
+3. **候选源码与在线二进制不能混用**：TINNO 5.4.61、A52s 5.4.233 都不是本机 running source。
+4. **历史编码损坏**：少量早期页面正文含不可逆替换字符，结论不再引用；以本页与未损坏专题为准。
 
-֤�ݷ�Ϊ��ʵ��ԭʼ���/�����۲졢ԭ����̬����������Դ���������ο���δ��֤���衣ÿ��ע����Դ��������ͬ�ȼ������������һ��ͳһ�� [�ж��嵥](NEXT_STEPS.md)��
+## 证据
 
+- 证据清单：[`EVIDENCE_MANIFEST.md`](EVIDENCE_MANIFEST.md)（由脚本从 `evidence/` 生成）
+- 证据规范：[`reference/evidence-integrity.md`](reference/evidence-integrity.md)、[`reference/archive-protocol.md`](reference/archive-protocol.md)
