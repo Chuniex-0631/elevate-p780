@@ -8,6 +8,7 @@ import android.net.IpSecManager;
 import android.net.IpSecTransform;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -63,6 +64,8 @@ public final class MainActivity extends Activity {
 
     private TextView statusView;
     private TextView outputView;
+    private ScrollView scrollView;
+    private TextView hintView;
     private TextView consoleView;
     private EditText commandInput;
     private Button rootButton;
@@ -147,29 +150,28 @@ public final class MainActivity extends Activity {
     }
 
     private void buildUi() {
-        int bg = 0xFF0E1116, card = 0xFF161B22, accent = 0xFF2DD4BF, text = 0xFFE6E8EB, dim = 0xFF8B949E;
+        int bg = 0xFF0B0E13, card = 0xFF14181F, accent = 0xFF2DD4BF, text = 0xFFEDEFF2, dim = 0xFF8A94A6;
 
         LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
         root.setBackgroundColor(bg);
-        root.setPadding(dp(20), dp(28), dp(20), dp(16));
+        root.setPadding(dp(20), dp(26), dp(20), dp(18));
 
+        // header
         LinearLayout header = new LinearLayout(this);
         header.setOrientation(LinearLayout.HORIZONTAL);
         header.setGravity(android.view.Gravity.CENTER_VERTICAL);
-
         ImageView icon = new ImageView(this);
         icon.setImageResource(R.mipmap.ic_launcher);
-        LinearLayout.LayoutParams iconLp = new LinearLayout.LayoutParams(dp(52), dp(52));
-        iconLp.rightMargin = dp(14);
+        LinearLayout.LayoutParams iconLp = new LinearLayout.LayoutParams(dp(46), dp(46));
+        iconLp.rightMargin = dp(13);
         header.addView(icon, iconLp);
-
         LinearLayout titles = new LinearLayout(this);
         titles.setOrientation(LinearLayout.VERTICAL);
         TextView name = new TextView(this);
         name.setText("Elevate");
         name.setTextColor(text);
-        name.setTextSize(24);
+        name.setTextSize(23);
         name.setTypeface(null, android.graphics.Typeface.BOLD);
         TextView sub = new TextView(this);
         sub.setText("P780 \u00b7 temporary root console");
@@ -180,20 +182,48 @@ public final class MainActivity extends Activity {
         header.addView(titles);
         root.addView(header);
 
+        // status card
+        LinearLayout statusCard = new LinearLayout(this);
+        statusCard.setOrientation(LinearLayout.HORIZONTAL);
+        statusCard.setGravity(android.view.Gravity.CENTER_VERTICAL);
+        statusCard.setPadding(dp(16), dp(14), dp(16), dp(14));
+        android.graphics.drawable.GradientDrawable statusBg = new android.graphics.drawable.GradientDrawable();
+        statusBg.setColor(card);
+        statusBg.setCornerRadius(dp(16));
+        statusCard.setBackground(statusBg);
+
+        View dot = new View(this);
+        dot.setId(android.R.id.icon1);
+        android.graphics.drawable.GradientDrawable dotBg = new android.graphics.drawable.GradientDrawable();
+        dotBg.setShape(android.graphics.drawable.GradientDrawable.OVAL);
+        dotBg.setColor(dim);
+        dot.setBackground(dotBg);
+        LinearLayout.LayoutParams dotLp = new LinearLayout.LayoutParams(dp(10), dp(10));
+        dotLp.rightMargin = dp(12);
+        statusCard.addView(dot, dotLp);
+
+        LinearLayout statusTexts = new LinearLayout(this);
+        statusTexts.setOrientation(LinearLayout.VERTICAL);
         statusView = new TextView(this);
         statusView.setText("\u672a\u8fde\u63a5");
-        statusView.setTextColor(dim);
-        statusView.setTextSize(13);
-        statusView.setPadding(dp(12), dp(8), dp(12), dp(8));
-        android.graphics.drawable.GradientDrawable pill = new android.graphics.drawable.GradientDrawable();
-        pill.setColor(card);
-        pill.setCornerRadius(dp(14));
-        statusView.setBackground(pill);
-        LinearLayout.LayoutParams statusLp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        statusLp.topMargin = dp(18);
-        root.addView(statusView, statusLp);
+        statusView.setTextColor(text);
+        statusView.setTextSize(16);
+        statusView.setTypeface(null, android.graphics.Typeface.BOLD);
+        TextView hint = new TextView(this);
+        hint.setText("\u70b9\u4e0b\u65b9\u6309\u94ae\u83b7\u53d6");
+        hint.setTextColor(dim);
+        hint.setTextSize(11);
+        statusTexts.addView(statusView);
+        statusTexts.addView(hint);
+        hintView = hint;
+        statusCard.addView(statusTexts);
 
+        LinearLayout.LayoutParams statusLp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        statusLp.topMargin = dp(18);
+        root.addView(statusCard, statusLp);
+
+        // primary action
         rootButton = new Button(this);
         rootButton.setText("\u83b7\u53d6 Root");
         rootButton.setAllCaps(false);
@@ -201,29 +231,38 @@ public final class MainActivity extends Activity {
         rootButton.setTextColor(0xFF04120F);
         android.graphics.drawable.GradientDrawable btn = new android.graphics.drawable.GradientDrawable();
         btn.setColor(accent);
-        btn.setCornerRadius(dp(14));
+        btn.setCornerRadius(dp(16));
         rootButton.setBackground(btn);
         rootButton.setOnClickListener(v -> requestRoot());
         LinearLayout.LayoutParams btnLp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, dp(52));
+                LinearLayout.LayoutParams.MATCH_PARENT, dp(54));
         btnLp.topMargin = dp(14);
         root.addView(rootButton, btnLp);
 
+        // command row
+        TextView cmdLabel = new TextView(this);
+        cmdLabel.setText("\u547d\u4ee4");
+        cmdLabel.setTextColor(dim);
+        cmdLabel.setTextSize(11);
+        LinearLayout.LayoutParams labelLp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        labelLp.topMargin = dp(18);
+        root.addView(cmdLabel, labelLp);
+
         LinearLayout cmdRow = new LinearLayout(this);
         cmdRow.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout.LayoutParams cmdLp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        cmdLp.topMargin = dp(16);
+        cmdRow.setGravity(android.view.Gravity.CENTER_VERTICAL);
         commandInput = new EditText(this);
-        commandInput.setHint("id  /  ls\uff08\u4ec5 shell \u5185\u5efa\uff09");
+        commandInput.setHint("id");
         commandInput.setTextColor(text);
         commandInput.setHintTextColor(dim);
         commandInput.setTextSize(14);
+        commandInput.setSingleLine(true);
         android.graphics.drawable.GradientDrawable field = new android.graphics.drawable.GradientDrawable();
         field.setColor(card);
-        field.setCornerRadius(dp(12));
+        field.setCornerRadius(dp(14));
         commandInput.setBackground(field);
-        commandInput.setPadding(dp(12), dp(10), dp(12), dp(10));
+        commandInput.setPadding(dp(14), dp(12), dp(14), dp(12));
         cmdRow.addView(commandInput, new LinearLayout.LayoutParams(0,
                 LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
 
@@ -233,23 +272,24 @@ public final class MainActivity extends Activity {
         runButton.setTextColor(text);
         android.graphics.drawable.GradientDrawable runBg = new android.graphics.drawable.GradientDrawable();
         runBg.setColor(card);
-        runBg.setCornerRadius(dp(12));
+        runBg.setCornerRadius(dp(14));
         runButton.setBackground(runBg);
         runButton.setOnClickListener(v -> runCommand());
-        LinearLayout.LayoutParams runLp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        runLp.leftMargin = dp(8);
+        LinearLayout.LayoutParams runLp = new LinearLayout.LayoutParams(dp(84), dp(46));
+        runLp.leftMargin = dp(10);
         cmdRow.addView(runButton, runLp);
+        LinearLayout.LayoutParams cmdLp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        cmdLp.topMargin = dp(6);
         root.addView(cmdRow, cmdLp);
 
+        // secondary: cleanup
         Button cleanButton = new Button(this);
         cleanButton.setText("\u6e05\u7406\u73af\u5883");
         cleanButton.setAllCaps(false);
+        cleanButton.setTextSize(12);
         cleanButton.setTextColor(dim);
-        android.graphics.drawable.GradientDrawable cleanBg = new android.graphics.drawable.GradientDrawable();
-        cleanBg.setColor(card);
-        cleanBg.setCornerRadius(dp(12));
-        cleanButton.setBackground(cleanBg);
+        cleanButton.setBackgroundColor(0x00000000);
         cleanButton.setOnClickListener(v -> {
             new Thread(() -> {
                 String r = libraryPatched() ? unpatchProbe() : null;
@@ -257,36 +297,46 @@ public final class MainActivity extends Activity {
                 ui.post(() -> {
                     log(r != null && r.contains("ROLLBACK COMPLETE")
                             ? "\u5df2\u6062\u590d\u5e93\u5e76\u6e05\u7406\u72b6\u6001\u3002"
-                            : "\u5df2\u6e05\u7406\u72b6\u6001\uff08\u5e93\u672a\u88ab\u4fee\u6539\uff09\u3002");
+                            : "\u5df2\u6e05\u7406\u72b6\u6001\u3002");
                     refreshStatus();
                 });
             }).start();
         });
         LinearLayout.LayoutParams cleanLp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        cleanLp.topMargin = dp(8);
+        cleanLp.topMargin = dp(4);
         root.addView(cleanButton, cleanLp);
 
+        // console
+        TextView outLabel = new TextView(this);
+        outLabel.setText("\u8f93\u51fa");
+        outLabel.setTextColor(dim);
+        outLabel.setTextSize(11);
+        LinearLayout.LayoutParams outLabelLp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        outLabelLp.topMargin = dp(10);
+        root.addView(outLabel, outLabelLp);
+
         consoleView = new TextView(this);
-        consoleView.setTextColor(0xFFC9D1D9);
+        consoleView.setTextColor(0xFFC7D0DE);
         consoleView.setTextSize(12);
         consoleView.setTypeface(android.graphics.Typeface.MONOSPACE);
         consoleView.setTextIsSelectable(true);
-        consoleView.setText("\u8f93\u51fa\u5c06\u663e\u793a\u5728\u8fd9\u91cc\u3002");
+        consoleView.setLineSpacing(dp(2), 1f);
+        consoleView.setText("\u5c1a\u65e0\u8f93\u51fa\u3002");
         outputView = consoleView;
         android.graphics.drawable.GradientDrawable cardBg = new android.graphics.drawable.GradientDrawable();
         cardBg.setColor(card);
-        cardBg.setCornerRadius(dp(14));
+        cardBg.setCornerRadius(dp(16));
         consoleView.setBackground(cardBg);
-        consoleView.setPadding(dp(14), dp(12), dp(14), dp(12));
+        consoleView.setPadding(dp(16), dp(14), dp(16), dp(14));
 
-        ScrollView scroll = new ScrollView(this);
-        scroll.addView(consoleView, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        scrollView = new ScrollView(this);
+        scrollView.addView(consoleView);
         LinearLayout.LayoutParams scrollLp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f);
-        scrollLp.topMargin = dp(16);
-        root.addView(scroll, scrollLp);
+        scrollLp.topMargin = dp(6);
+        root.addView(scrollView, scrollLp);
 
         setContentView(root);
     }
@@ -311,7 +361,17 @@ public final class MainActivity extends Activity {
         boolean ready = daemonAlive();
         if (statusView != null) {
             statusView.setText(ready ? "\u5df2\u8fde\u63a5 \u00b7 uid 0" : "\u672a\u8fde\u63a5");
-            statusView.setTextColor(ready ? 0xFF2DD4BF : 0xFF8B949E);
+            if (hintView != null) {
+                hintView.setText(ready ? "\u53ef\u5728\u4e0b\u65b9\u8f93\u5165\u547d\u4ee4"
+                        : (libraryPatched() ? "\u5df2\u5c31\u7eea\uff0c\u8bf7\u5b8c\u6210\u5b89\u88c5\u786e\u8ba4"
+                        : "\u70b9\u4e0b\u65b9\u6309\u94ae\u83b7\u53d6"));
+            }
+            statusView.setTextColor(0xFFEDEFF2);
+            View d = findViewById(android.R.id.icon1);
+            if (d != null && d.getBackground() instanceof android.graphics.drawable.GradientDrawable) {
+                ((android.graphics.drawable.GradientDrawable) d.getBackground())
+                        .setColor(ready ? 0xFF2DD4BF : 0xFF8A94A6);
+            }
         }
         if (rootButton != null) {
             rootButton.setText(ready ? "\u91cd\u65b0\u83b7\u53d6" : "\u83b7\u53d6 Root");
@@ -347,7 +407,12 @@ public final class MainActivity extends Activity {
 
     private void log(String line) {
         android.util.Log.i("Elevate", line);
-        ui.post(() -> consoleView.append(line.endsWith("\n") ? line : line + "\n"));
+        ui.post(() -> {
+            consoleView.append(line.endsWith("\n") ? line : line + "\n");
+            if (scrollView != null) {
+                scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
+            }
+        });
     }
 
     private void requestRoot() {
