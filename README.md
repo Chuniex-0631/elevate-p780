@@ -46,6 +46,13 @@ P780 的 bootloader 锁定、`ro.debuggable=0`、SELinux Enforcing，常规手�
 | **保持 Enforcing** | 不关闭 SELinux、不改策略 |
 | **可回收** | 内置「清理」，随时回滚而无需重启 |
 
+## 下载
+
+**[⬇ Elevate 1.0](https://github.com/Chuniex-0631/elevate-p780/releases/latest)** —
+从 Releases 页面下载 `Elevate-1.0.apk`（约 58 KB，已签名）。
+
+仓库内也保留了一份副本：[`release/Elevate-1.0.apk`](release/Elevate-1.0.apk)。
+
 ## 快速开始
 
 ```text
