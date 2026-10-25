@@ -93,3 +93,72 @@
 2. 用 `__schedule` 或 `set_user_nice` 验证 `prio`；
 3. 解决 `uts_namespace` 的 16 字节差（若为厂商改动，则说明 TINNO 确实动过结构，验证必须全部做完）；
 4. 全部字段验证通过后，才把这些偏移写进 GhostLock profile。
+
+
+---
+
+## 5. 更正与实机验证（2026-10-25，基于独立符号恢复包）
+
+机主提供了独立恢复包（`vmlinux-to-elf 1.4.0` + 自带验证器），含 173,205 条**带静态地址**的
+`kernel.kallsyms` 与可反汇编的 `kernel.symbolized.elf`。地址约定：
+
+```
+image_offset = symbol_addr - 0xffffffc010080000
+```
+
+### 5.1 此前那份符号表有系统性偏差
+
+用权威表重算后，此前 `symbols_full.txt` 里的偏移**偏低且幅度不一**，原因是我们用
+`/proc/kallsyms` 的行序去配 `kallsyms_offsets` 数组——同名同地址的符号在两侧顺序不同，
+导致逐步漂移。**教训：偏移必须从表里直接取，不能按行序配对。**
+
+权威值（镜像相对偏移）：
+
+| 符号 | 权威偏移 | 此前错误值 |
+|---|---|---|
+| `init_task` | `0x262d280` | `0x262d238` |
+| `init_cred` | `0x2639be8` | `0x2639be0` |
+| `modprobe_path` | `0x263a1a8` | `0x2639f28` |
+| `core_pattern` | `0x2669e5c` | `0x2669950` |
+| `remove_waiter` | `0x2c2cd8` | `0x2c2c40` |
+| `esp_input$…` | `0x11f8a4c` | `0x11f8a24` |
+| `selinux_state` | `0x27d6000` | `0x27d5200` |
+
+### 5.2 `uts_namespace` 的 16 字节差已澄清
+
+用权威地址读 `init_uts_ns`（`0x262d008`）：`kref = 2` 在偏移 0，`Linux` 在 **+4**——
+与候选布局**完全一致**。此前的 16 字节差是我们的偏移错误，**不是厂商改结构**。
+
+### 5.3 用运行镜像的反汇编逐字段验证
+
+| 字段 | 候选 | 运行镜像 | 依据 | 结论 |
+|---|---|---|---|---|
+| `task_struct.real_cred` | 2096 (0x830) | **0x830** | `get_task_cred` 中 `ldr x20,[x19,#0x830]` | 一致 |
+| `task_struct.pi_waiters` | 2328 (0x918) | **0x918** | `remove_waiter` 中 8 处 `#0x918` | 一致 |
+| `task_struct.pi_blocked_on` | 2352 (0x930) | **0x930** | `remove_waiter` 中 `str xzr,[x20,#0x930]` | 一致 |
+| `task_struct.prio` | 116 (0x74) | **124 (0x7c)** | `task_prio`：`ldr w8,[x0,#0x7c]; sub w0,w8,#0x64`；rtmutex 链 5 处一致 | **不一致** |
+| `cred.usage` | 0 | 0 | `get_task_cred` 中 `ldr w8,[x20]` | 一致 |
+
+`prio` 的差异说明：TINNO 的 `task_struct` 与 A52s 候选**在 `prio` 附近确实不同**（差 8 字节），
+但 `pi_waiters`/`pi_blocked_on`/`real_cred` 又对得上。这验证了此前的判断——**不能整体照搬候选布局**，
+必须逐字段以镜像为准。
+
+### 5.4 当前可用值（P780 专用）
+
+```hocon
+# 已用运行镜像验证
+task_struct.cred_real_off = 0x830
+task_struct.prio_off      = 0x7c
+task_struct.pi_waiters_off= 0x918
+task_struct.pi_blocked_on = 0x930
+cred.usage_off            = 0
+```
+
+尚未验证：`pi_lock`、`comm`、`seccomp`、`cred` 的能力位布局、`rt_mutex_waiter` 的成员偏移。
+
+### 5.5 下一步
+
+1. 用 `remove_waiter`/`rt_mutex_lock` 的 `ldxr/stxr` 序列定位 `pi_lock`；
+2. 用 `commit_creds`/`prepare_kernel_cred` 验证 `cred` 的 `copy_size`、能力位偏移；
+3. 用 `remove_waiter` 中对 `waiter` 的访问验证 `rt_mutex_waiter` 布局；
+4. 全部验证完再生成 profile。
