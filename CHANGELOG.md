@@ -1,5 +1,15 @@
 # 变更记录
 
+## 2026-10-25 — ROM 元数据核验、离线审计工具与状态统一
+
+- GitHub Release `p780-rom-20261025` 七个资产已全部存在；资产大小和 GitHub digest 与 `release-assets.json` 一致。
+- 复核 `file-manifest.txt`：五组 tar 清单合计 4,789 个普通文件；`MISSING.txt` 32 项未被误算为已取得。
+- 明确审计分层：**尚未**下载实算七个资产哈希、合并验证 Product 分卷或逐 TAR 解读真实字节；见 [ROM 审计](docs/rom/AUDIT-20261025.md)。
+- 新增 [`tools/rom/verify_release.py`](tools/rom/verify_release.py)：本地 SHA-256、可选只新增 `product.tar`、只读 TAR 条目与 manifest 比对。脚本的逻辑通过小型模拟归档检查，真实 Release 运行记录待补。
+- 复核本机内核 173,205 符号已有证据、ROM 路径级组件线索及受限 `installd` 域 `uid 0` shell 能力边界；见 [联合复核](docs/research/p780-rom-kernel-system-triage-20261025.md)。
+- 同步 `README.md`、`docs/STATUS.md`、`docs/NEXT_STEPS.md`、`docs/rom/README.md` 的过期结论。未操作设备、未修改 Elevate 或其它 App 代码。
+
+
 ## 2026-10-25 — 内核符号恢复与独立核验
 
 - 从机主Image恢复173,205个kallsyms符号；独立标准库解码核对全部名称/静态地址、256个token和677个marker。
