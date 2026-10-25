@@ -1,0 +1,87 @@
+name: P780 candidate vmlinux, pahole layout and System.map
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    steps:
+      - name: Checkout research repository
+        uses: actions/checkout@v4
+
+      - name: Install host dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            git make gcc bc bison flex libssl-dev libelf-dev python3 rsync cpio \
+            dwarves gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu
+
+      - name: Retrieve Android Clang 11.0.2 (r383902b1)
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 600 git clone --depth 1 --filter=blob:none --sparse \
+            --branch android11-qpr2-release \
+            https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 \
+            clang-prebuilts
+          timeout 600 git -C clang-prebuilts sparse-checkout set clang-r383902b1
+          test -x clang-prebuilts/clang-r383902b1/bin/clang
+          clang-prebuilts/clang-r383902b1/bin/clang --version | head -n 2
+          echo "$GITHUB_WORKSPACE/clang-prebuilts/clang-r383902b1/bin" >> "$GITHUB_PATH"
+
+      - name: Fetch candidate source (pinned)
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 900 git clone --depth 1 --single-branch --branch droidian \
+            https://github.com/arminask/linux-android-samsung-a52sxq.git linux
+          git -C linux rev-parse HEAD | tee reports-source-commit.txt
+          mkdir -p reports
+
+      - name: Apply the device config
+        shell: bash
+        run: |
+          set -euo pipefail
+          gzip -dc evidence/device/p780-config.gz > linux/.config
+          make -C linux ARCH=arm64 CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm \
+            OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip \
+            CROSS_COMPILE=aarch64-linux-gnu- olddefconfig | tee reports/olddefconfig.log
+          cp linux/.config reports/effective.config
+          grep -E 'CONFIG_DEBUG_INFO=|CONFIG_DEBUG_INFO_DWARF|CONFIG_RELOCATABLE=|CONFIG_DEBUG_INFO_BTF' \
+            reports/effective.config | tee reports/debug-info-options.txt || true
+
+      - name: Build vmlinux
+        shell: bash
+        run: |
+          set -euo pipefail
+          make -C linux ARCH=arm64 CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm \
+            OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip \
+            CROSS_COMPILE=aarch64-linux-gnu- -j"$(nproc)" vmlinux 2>&1 | tee reports/build.log
+
+      - name: Extract struct layouts and System.map
+        shell: bash
+        run: |
+          set -euo pipefail
+          for t in task_struct cred rt_mutex_waiter selinux_state nsproxy uts_namespace; do
+            pahole -C "$t" linux/vmlinux > "reports/pahole-$t.txt" 2>&1 || true
+          done
+          llvm-nm -n linux/vmlinux 2>/dev/null | grep -v ' [Uu] ' > reports/System.map || true
+          wc -l reports/System.map reports/pahole-*.txt | tee reports/summary.txt
+          sha256sum linux/vmlinux | tee reports/vmlinux-sha256.txt
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: p780-pahole-layout
+          path: |
+            reports/*.txt
+            reports/System.map
+            reports/effective.config
+          retention-days: 14
