@@ -1,3 +1,5 @@
+> 2026-10-25 更新：DirtyFrag 页缓存写入原语已实机确认，init 域与 installd 域均取得代码执行；仍受 SELinux 域策略限制，未取得交互式 root shell。 [报告](research/p780-dirtyfrag-live-exploit-20261025.md)
+
 # 文档导航
 
 当前主线包含已有静态样本交叉分析及单独重启的 EDL 通信/候选 Loader 受控实验。DSU停止，Root/BL解锁未达成。状态以[STATUS](STATUS.md)为准，任务以[NEXT_STEPS](NEXT_STEPS.md)为准。

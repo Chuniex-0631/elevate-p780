@@ -1,3 +1,5 @@
+> 2026-10-25 新增 `dirtyfrag-probe/`：探针 JNI 层、钩子桩、补丁生成与零引用扫描工具。 [说明](dirtyfrag-probe/README.md) · [报告](../docs/research/p780-dirtyfrag-live-exploit-20261025.md)
+
 # ��ǰ���߹���
 
 ������������ڹ���Ŀ¼��ȡ�ļ����������ֻ���**`p780-avb-readonly.ps1` Ϊ����**����ͨ������Ȩ ADB ִ��ֻ�����Բ�ѯ���������ö�٣�����ȡ��������Ҳ�������豸���о�����ͱ߽�� [�ĵ�����](../docs/README.md)����ʷ�豸�����ű����� [archive/scripts](../archive/scripts)�����޸��ֻ�״̬��
