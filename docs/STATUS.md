@@ -1,3 +1,5 @@
+> 2026-10-25 ROM 内容已提取并归档：约 5.73 GB（`system` / `product` / `system_ext` / `vendor` + 60 个 `*_exec` + 内核 `Image`），索引见 [rom/README.md](rom/README.md)，大文件在 Release `p780-rom-20261025`。
+
 > 2026-10-25 静态核对：相关清理路径仍呈现current语义，未观察到上游3bfdc63936dd修复语义；范围仅限已审函数及直接调用者，不等于完整可利用性结论。Magic3文章纳入方法参考，不能套用其参数。 [报告](research/p780-static-patch-review-20261025.md)。
 
 > 2026-10-25 离线更新：Image恢复173,205个符号，全部名称/静态地址经独立解码核对；文件末端与BSS起点自洽。[报告](research/p780-kernel-symbol-recovery-20261025.md)。不等于实时地址、结构体布局或Root能力。

@@ -1,0 +1,30 @@
+{
+  "system.tar": [
+    1810707456,
+    "dc0c4671b466b6bb4ab49cca1f069657cbb151f676f043fda47bf639fbea9d25"
+  ],
+  "product.tar.part1": [
+    1700000000,
+    "1c331db13f0734827c7af92ab63b1d150f6cca9022b78a690098bb441cc0d7d3"
+  ],
+  "product.tar.part2": [
+    1558192896,
+    "836bcd5044a1bb23614d6852aeafa25f3f317fd5302f1ec6516cc233f9288a43"
+  ],
+  "system_ext.tar": [
+    361280512,
+    "e7335396d1a1708b8e8a5c61fbcdef07ff8b8a8923956b93b6a17a12cbebc7cf"
+  ],
+  "vendor.tar": [
+    233448960,
+    "bf3ae9a3bf56faf9ae834583bd440e240d8b99d15145f981ac49b3551030a2c5"
+  ],
+  "meta1.tar": [
+    10715136,
+    "5bc6dbb79a7a05862b9f4229982ea24d2e09bdfcee83830e20dd0cca6ef10475"
+  ],
+  "kernel.Image": [
+    41767424,
+    "6df574af40d260c670c32bdee9ceaca023739850d62851d55f77234b89d4f373"
+  ]
+}
