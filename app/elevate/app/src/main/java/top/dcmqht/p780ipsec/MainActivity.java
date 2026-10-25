@@ -217,6 +217,30 @@ public final class MainActivity extends Activity {
         statusTexts.addView(hint);
         hintView = hint;
         statusCard.addView(statusTexts);
+        View spacer = new View(this);
+        statusCard.addView(spacer, new LinearLayout.LayoutParams(0, 1, 1f));
+
+        Button cleanButton = new Button(this);
+        cleanButton.setText("\u6e05\u7406");
+        cleanButton.setAllCaps(false);
+        cleanButton.setTextSize(12);
+        cleanButton.setTextColor(0xFF8A94A6);
+        cleanButton.setBackgroundColor(0x00000000);
+        cleanButton.setPadding(dp(10), 0, dp(4), 0);
+        cleanButton.setOnClickListener(v -> {
+            new Thread(() -> {
+                String r = libraryPatched() ? unpatchProbe() : null;
+                cleanupState();
+                ui.post(() -> {
+                    log(r != null && r.contains("ROLLBACK COMPLETE")
+                            ? "\u5df2\u6062\u590d\u5e93\u5e76\u6e05\u7406\u72b6\u6001\u3002"
+                            : "\u5df2\u6e05\u7406\u72b6\u6001\u3002");
+                    refreshStatus();
+                });
+            }).start();
+        });
+        statusCard.addView(cleanButton);
+
 
         LinearLayout.LayoutParams statusLp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -282,30 +306,6 @@ public final class MainActivity extends Activity {
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         cmdLp.topMargin = dp(6);
         root.addView(cmdRow, cmdLp);
-
-        // secondary: cleanup
-        Button cleanButton = new Button(this);
-        cleanButton.setText("\u6e05\u7406\u73af\u5883");
-        cleanButton.setAllCaps(false);
-        cleanButton.setTextSize(12);
-        cleanButton.setTextColor(dim);
-        cleanButton.setBackgroundColor(0x00000000);
-        cleanButton.setOnClickListener(v -> {
-            new Thread(() -> {
-                String r = libraryPatched() ? unpatchProbe() : null;
-                cleanupState();
-                ui.post(() -> {
-                    log(r != null && r.contains("ROLLBACK COMPLETE")
-                            ? "\u5df2\u6062\u590d\u5e93\u5e76\u6e05\u7406\u72b6\u6001\u3002"
-                            : "\u5df2\u6e05\u7406\u72b6\u6001\u3002");
-                    refreshStatus();
-                });
-            }).start();
-        });
-        LinearLayout.LayoutParams cleanLp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        cleanLp.topMargin = dp(4);
-        root.addView(cleanButton, cleanLp);
 
         // console
         TextView outLabel = new TextView(this);
