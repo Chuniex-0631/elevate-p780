@@ -3,6 +3,13 @@
 > 2026-10-25 重建：本页只保留可被仓库文件或 Actions 证据支持的里程碑。
 > 早期逐条日志（含编码损坏段落）不再重排，原始内容保留在 git 历史中。
 
+## 2026-10-25 — 厂商服务审计：shell → init 的 misc 写原语
+
+- Journey diag 服务以 uid 0 常驻，`/dev/socket/diag_ext_socket`（0666）；JNI 探针确认 untrusted_app 与 shell 均 EACCES。
+- `sys.journey.diag.write_misc` shell 可写，init 将值写入 misc 分区 offset 72（保留 `recovery.` 前缀）；实机前后对比验证并还原（diff=0）。
+- `sys.journey.restorecon` 同样 shell 可写，init 执行 `restorecon_recursive <路径>`，利用路径待评估。
+- 新增 `docs/research/p780-vendor-service-audit-20261025.md`。
+
 ## 2026-10-25 — GhostLock 判负、能力边界与只读榨取
 
 - GhostLock（CVE-2026-43499）：M1/M2 实机成立；M3 卡在 6 秒窗口的 prio 门与单次读限制，9 种尝试全部无效，判负。

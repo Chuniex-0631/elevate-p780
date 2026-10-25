@@ -18,6 +18,7 @@
 | 运行时 Permissive | `security:setenforce` 无任何 allow，avc 证实 write 被拒 | **不可行**；tracefs/kprobe 一并关闭 |
 | OEM Unlock | `oem device-info` 可执行，解锁命令全 `unknown`；`ro.oem_unlock_supported=1` 是 vendor 属性 | **关闭** |
 | 只读榨取 | 9 类分区已提取；AVB 根信任 = AOSP testkey；B 槽 vendor_boot 与运行内核同源 | **完成** |
+| 厂商预置服务 | Journey diag 服务以 uid 0 常驻；diag socket 对 app/shell 均 EACCES；`sys.journey.diag.write_misc` shell 可写 → init 写 misc 分区 | **新原语（shell→init 写 misc）** |
 
 ## 结论总表
 
