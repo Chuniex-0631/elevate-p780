@@ -61,3 +61,53 @@
 - 提取过程只读块设备，未写入任何分区；页缓存改动已回滚，`libc++.so` 入口与牺牲函数均恢复原始字节。
 - 设备 uptime 连续，SELinux 仍 Enforcing。
 - `/metadata/cur.bin` 残留在设备上（shell 无权限删除），重启即清空。
+
+
+---
+
+## 7. 符号表重建（2026-10-25 追加）
+
+镜像到手后，用两条信息交叉得到符号表：
+
+1. `/proc/kallsyms` 的顺序（地址被置零，但顺序与内核 kallsyms 数组一致）；
+2. 镜像里 `kallsyms_offsets` 的 u32 单调数组：起点 `0x17e3a14`，长度 173,205，紧随其后在 `0x188cc78` 是 `num_syms = 0x2a495`（173,205），再后是压缩名字区（`0x188cc80`）。
+
+把 `kallsyms` 行的第 i 个名字与 `offsets[i]` 配对，逐项校验 158,309 条全部单调一致，确认配对成立。
+
+**结果：158,309 条符号（共 173,205 条，尾部约 1.5 万条位于 `.data/.bss` 高地址段，尚未 dump）。** 偏移以镜像起点为基准，`_text = 0x0`、`_stext = 0x1000`。
+
+部分关键符号（偏移，相对镜像起点）：
+
+| 符号 | 偏移 |
+|---|---|
+| `remove_waiter` | `0x2c2c40` |
+| `rt_mutex_adjust_prio_chain` | `0x2c1d50` |
+| `init_cred` | `0x2639be0` |
+| `init_task` | `0x262d238` |
+| `commit_creds` | `0x276074` |
+| `prepare_kernel_cred` | `0x2765bc` |
+| `kallsyms_lookup_name` | `0x31cb08` |
+| `sys_call_table` | `0x1f64620` |
+| `modprobe_path` | `0x2639f28` |
+| `core_pattern` | `0x2669950` |
+| `selinux_avc_init` | `0x6510a8` |
+| `xfrm4_udp_encap_rcv` | `0x12048cc` |
+
+### CFI 的影响
+
+内核 `CONFIG_CFI_CLANG=y`，因此函数符号带类型哈希后缀，并存在 `*.cfi_jt` 跳板。例如 `esp4` 相关的符号是：
+
+```
+esp4_rcv_cb$ee9972e53b2a47f73fa94ea47f11d354
+esp4_init$ee9972e53b2a47f73fa94ea47f11d354
+esp6_input$a389dddd51419b44d6851f5cc143785d
+xfrm4_udp_encap_rcv.cfi_jt
+```
+
+这意味着：**按裸名查 `esp_input` 会查不到，必须按带后缀的名字或 `*.cfi_jt` 跳板来定位**；同时也说明本机内核确实启用了 CFI，任何走间接调用的利用路径都要考虑这一点。
+
+### 尚未完成
+
+- 尾部 1.5 万条符号（高地址 `.data/.bss`）仍需再 dump 一段 `kallsyms`；
+- 用 `esp4_*` 后缀符号反汇编 `esp_input`，确认是否回移了共享页修复（`skb_has_shared_frag`）；
+- 依据上述偏移生成 GhostLock 的 5.4.233 profile。
