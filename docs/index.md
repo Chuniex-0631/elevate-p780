@@ -7,20 +7,22 @@
 
 | 文档 | 标题 | 备注 |
 |---|---|---|
-| [`CHANGELOG.md`](../CHANGELOG.md) | 2026-10-25 DirtyFrag 实机利用链 | ���°��׶α��浱ʱ���ۣ���ʷ��Ŀ�еġ�δ��װ/���⡱���������ڡ���ǰ״̬ͳһ��STATUS�� ⚠️ 部分损坏 |
-| [`README.md`](../README.md) | Rakuten Hand 5G / TINNO P780 研究档案 | 更新：2026-10-24（Asia/Shanghai）。记录机主实机取证、离线样本分析与候选源码实验。Bootloader 仍 Locked，未取得 Root；没有已验证的锁定态永久分区写入通道。 |
+| [`CHANGELOG.md`](../CHANGELOG.md) | 变更记录 | - 确认 CVE-2026-43284 页缓存写入原语在 P780（5.4.233）成立：有效 ESP 报文被接受并覆盖 splice 进来的文件页。 |
+| [`README.md`](../README.md) | Rakuten Hand 5G / TINNO P780 研究档案 | 设备：Qualcomm 平台（holi / mannar），Android 11，内部固件 P780AE11.0RMNJP162，系统指纹末段 264:user/release-keys，内核 5.4.233-qgki-gea5245e94 |
 | [`SECURITY.md`](../SECURITY.md) | 私人设备研究资料的隐私与安全 | 本仓库记录用户本人持有的 Rakuten Hand 5G P780。2026-10-18 曾由 GitHub API 检测到 visibility=public；机主随后已改回 Private，经 GitHub API 再次确认。此前的公开 |
 
-## docs 总览（7）
+## docs 总览（9）
 
 | 文档 | 标题 | 备注 |
 |---|---|---|
-| [`EVIDENCE_MANIFEST.md`](EVIDENCE_MANIFEST.md) | 2026-10-24：v0.3 实机结果与 TINNO 5.4.61 静态审计 | - v0.3 设备输出由机主在对话中回传；Android API 30，P780，内核字符串 5.4.233-qgki-gea5245e94afe-dirty。 ⚠️ 部分损坏 |
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | 仓库结构与维护约定 | 1. 状态只有一个权威页：docs/STATUS.md。其他页面只写"本页范围"，不另立结论。 |
+| [`EVIDENCE_MANIFEST.md`](EVIDENCE_MANIFEST.md) | 证据清单 | 共 297 个文件，合计 18.9 MB。 |
 | [`HISTORY.md`](HISTORY.md) | 研究时间线（据可复查材料重建） | - “2026-10-04 去预装实验”会改变 Android 用户 0 的包状态；恢复出厂后数值可能改变。不要将不同日期观察的包数认为同一时间。 |
-| [`NEXT_STEPS.md`](NEXT_STEPS.md) | 2026-10-24 下一步（审计更新） | 1. 不重复 v0.2 普通 UDP/ESP 回环或 v0.3 普通 sendfile 回环；两者已实机 PASS。 ⚠️ 部分损坏 |
-| [`README.md`](README.md) | 文档导航 | 当前主线包含已有静态样本交叉分析及单独重启的 EDL 通信/候选 Loader 受控实验。DSU停止，Root/BL解锁未达成。状态以STATUS为准，任务以NEXTSTEPS为准。 |
+| [`NEXT_STEPS.md`](NEXT_STEPS.md) | 下一步计划 | - DSU / GSI 启动实验：已安装、已回原厂，失败阶段未知。 |
+| [`README.md`](README.md) | 文档导航 | - research/：按主题与日期的专题报告（p780-<主题>-<日期>.md） |
 | [`REPOSITORY_AUDIT.md`](REPOSITORY_AUDIT.md) | 2026-10-18 全库总结与整理验收 | 基准提交：cc92c49c397dd01e9aecc002a7ca60b63aea500a。完整递归树未截断，整理前289个文件；逐项树清单记录路径、大小、模式和Git blob SHA。当前研究仍Locked/未Root，DSU停止。 |
-| [`STATUS.md`](STATUS.md) | 2026-10-24 最新增量：v0.3 实机 PASS 与 TINNO 5.4.61 源码审计 | - v0.3 已在 P780 实机运行：应用私有 1024 字节文件经一次 sendfile() 发送至 127.0.0.1 IPv4 UDP；接收字节匹配、源文件前后内容一致、临时文件删除。无 IPsec/ESP，无利用式页面缓存操作。 ⚠️ 部分损坏 |
+| [`STATUS.md`](STATUS.md) | 当前研究状态 | 1. DirtyFrag 的原语与"拿到 root"是两件事。原语已确认；root 受 SELinux 域策略限制，逐项否定见 |
+| [`index.md`](index.md) | 文档索引 |  ⚠️ 部分损坏 |
 | [`official-source-request-log.md`](official-source-request-log.md) | Rakuten Hand 5G / TINNO P780 官方源码请求联络 | - 收件方：Sales@tinno.com（TINNO 官网公开的海外销售邮箱，不是已验证的开源源码专用邮箱）。 |
 
 ## docs/research（55）
@@ -107,7 +109,7 @@
 
 | 文档 | 标题 | 备注 |
 |---|---|---|
-| [`README.md`](../tools/README.md) | ��ǰ���߹��� | ������������ڹ���Ŀ¼��ȡ�ļ����������ֻ���p780-avb-readonly.ps1 Ϊ��������ͨ������Ȩ ADB ִ��ֻ�����Բ�ѯ���������ö�٣�����ȡ��������Ҳ ⚠️ 部分损坏 |
+| [`README.md`](../tools/README.md) | 工具 | 历史脚本见 ../archive/scripts。 |
 | [`README.md`](../tools/dirtyfrag-probe/README.md) | DirtyFrag 探针工具（P780） | 本目录收录 2026-10-25 实机专题用到的全部离线工具与载荷源码，配套报告见 |
 | [`README.md`](../tools/dsu/README.md) | DSU read-only follow-up tools | Python standard-library tools for exported P780 files and the existing raw ext4 Android15 A image. No image download, mo |
 | [`README.md`](../tools/gaps/README.md) | Evidence gap tools | comparepolicyrecords.py and verifypolicycomparator.py are offline Python-standard-library tools. They read original PC p |
