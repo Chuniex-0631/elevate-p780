@@ -1,3 +1,5 @@
+> 2026-10-25 实机更新：确认 CVE-2026-43284（DirtyFrag）页缓存写入原语成立，并据此改写 libc++.so / libbase.so 代码页，在 init 域与 installd 域（均 uid 0）执行任意系统调用；仍受 SELinux 域策略限制，未取得交互式 root shell。全部只改页缓存、可回滚。 [报告](research/p780-dirtyfrag-live-exploit-20261025.md)
+
 > 2026-10-25 实测更新：机主提交perf v0.1.0实机日志：UID2000、5.4.233-qgki，自身线程用户态软件计数USER_COUNT_PASS（约200.5ms），临时程序清理exit=0。内核/寄存器采样未测试，GhostLock仍UNDETERMINED，无Root/解锁进展。 [报告](research/p780-perf-v010-live-result-20261025.md)
 
 ## 2026-10-24 最新增量：v0.3 实机 PASS 与 TINNO 5.4.61 源码审计

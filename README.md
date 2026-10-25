@@ -1,3 +1,5 @@
+> 2026-10-25 实机更新：确认 CVE-2026-43284（DirtyFrag）页缓存写入原语成立，并据此改写 libc++.so / libbase.so 代码页，在 init 域与 installd 域（均 uid 0）执行任意系统调用；仍受 SELinux 域策略限制，未取得交互式 root shell。全部只改页缓存、可回滚。 [报告](docs/research/p780-dirtyfrag-live-exploit-20261025.md) · [探针工具](tools/dirtyfrag-probe/README.md)
+
 # Rakuten Hand 5G / TINNO P780 研究档案
 
 更新：2026-10-24（Asia/Shanghai）。记录机主实机取证、离线样本分析与候选源码实验。**Bootloader 仍 Locked，未取得 Root；没有已验证的锁定态永久分区写入通道。**

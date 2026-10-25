@@ -1,3 +1,5 @@
+> 2026-10-25 更新：DirtyFrag 原语已实机确认，init 域与 installd 域均已取得代码执行；下一缺口是可写可读的中转路径、更宽权限域的入口、以及 5.4.233 的 boot.img/vmlinux。 [报告](research/p780-dirtyfrag-live-exploit-20261025.md)
+
 > 2026-10-25 实测更新：perf v0.1.0 已实机 USER_COUNT_PASS，不再重复用户态计数。下一可设计项仅为自身线程包含内核时间的纯计数权限核验；本轮未制作/执行。地址、调用链和寄存器采样仍未测试。 [报告](research/p780-perf-v010-live-result-20261025.md)
 
 ## 2026-10-24 下一步（审计更新）
