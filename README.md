@@ -156,6 +156,11 @@ NDK clang（native 探针）→ `zipalign` → `apksigner`。
 | 指纹 | `Rakuten/P780/P780:11/RKQ1.210715.001/264:user/release-keys` |
 | Bootloader | Locked（工具不需要解锁） |
 
+## 许可
+
+代码与文档采用 [MIT License](LICENSE)。随仓库附带的厂商固件、系统镜像与 ROM 提取内容，
+版权归各自权利人所有，仅供个人研究与备份使用。
+
 ## 安全与免责
 
 - 仅限机主本人设备的备份与研究用途；
