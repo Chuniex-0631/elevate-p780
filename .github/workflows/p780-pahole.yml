@@ -41,10 +41,12 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p reports
-          printf 'int f(void){return 0;}\n' > /tmp/t.c
-          clang -c /tmp/t.c -o /tmp/t.o && ls -l /tmp/t.o && file /tmp/t.o || echo "SMOKE FAILED rc=$?"
-          clang --version | head -n 3
-          df -h /tmp /home/runner
+          { printf 'int f(void){return 0;}\n' > /tmp/t.c
+            clang -c /tmp/t.c -o /tmp/t.o && ls -l /tmp/t.o || echo "SMOKE FAILED rc=$?"
+            clang --version | head -n 3
+            df -h /tmp /home/runner
+          } > reports/smoke.txt 2>&1
+          cat reports/smoke.txt
 
       - name: Fetch candidate source (pinned)
         shell: bash
@@ -63,6 +65,10 @@ jobs:
           make -C linux ARCH=arm64 CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm \
             OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip \
             CROSS_COMPILE=aarch64-linux-gnu- olddefconfig > reports/olddefconfig.log 2>&1
+          ./linux/scripts/config --file linux/.config --disable MODVERSIONS --disable MODULE_SIG --disable MODULE_SIG_ALL
+          make -C linux ARCH=arm64 CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm \
+            OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip \
+            CROSS_COMPILE=aarch64-linux-gnu- olddefconfig > /dev/null 2>&1
           cp linux/.config reports/effective.config
           make -C linux ARCH=arm64 CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm \
             OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip \
