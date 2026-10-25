@@ -151,3 +151,60 @@ echo hello > /data/dalvik-cache/p780_write_test
 1. 用载荷实现 syscall 级文件复制，验证能否替换 `/data/app` 内的 APK（需处理 ART/fs-verity 校验）；
 2. 评估 dalvik-cache 注入：写一个 oat/vdex 是否会被 zygote 接受（ART 会校验 oat 与 APK 的一致性）；
 3. 清理测试文件。
+
+
+---
+
+## 9. fs-verity 判定：APK 可写（2026-10-25 继续）
+
+### 9.1 方法
+
+复用已验证的 exec-sh 载荷，只把脚本换成：
+
+```sh
+umask 0
+O=/data/local/tmp/p780_verity
+if read P < /data/local/tmp/p780_apkpaths.txt; then
+  if echo x >> $P 2>/dev/null; then echo WRITE_OK >> $O; else echo WRITE_FAIL >> $O; fi
+else
+  echo NOPATH >> $O
+fi
+chmod 666 $O
+```
+
+触发方式改为 `cmd package compile -m speed -f <pkg>`（dexopt 会让 installd 走
+`libbase::LogMessage`，且**不改变 APK 路径**，这是关键）。
+
+### 9.2 结果
+
+```
+WRITE_OK
+WRITE_OK
+...
+```
+
+**从 installd 域向已安装的 `/data/app/.../base.apk` 追加字节成功**，说明本机对该 APK
+**没有启用 fs-verity 强制保护**（或未对该应用启用）。
+
+### 9.3 含义与边界
+
+- `/data/app` 下的 APK 在 installd root 下是**可写**的；
+- 但"能写"不等于"能持久注入"：安装时的签名校验、dex/oat 一致性、ART 校验仍可能拦截；
+- 本次为验证可行性确实改坏了 APK（追加了若干 `x` 字节），随后用 `adb install -r` 修复，
+  应用可正常启动。
+
+### 9.4 过程中踩到的坑（重要）
+
+1. `pm clear` 会**删除应用 cache 里的回滚备份**，导致 `unpatch` 无法恢复库——
+   两次都只能靠重启清页缓存恢复。**结论：打补丁期间绝对不要执行 `pm clear`。**
+2. 之前的 APK 探针载荷有栈展开错误（两个不同大小的栈帧共用一个出口），
+   导致 init SIGABRT → 设备重启。已放弃该载荷，改用"已验证的 exec-sh + 只换脚本"的方式。
+3. 触发 installd 的稳定方式有两个：
+   - `adb install`（会改变 APK 路径，不适合路径相关实验）；
+   - `cmd package compile -m speed -f <pkg>`（不改变路径，推荐）。
+
+### 9.5 当前状态
+
+- 库已恢复（重启后 `sentry` 入口与牺牲函数均为原始字节）；
+- SELinux 仍 Enforcing；
+- 应用已修复并可正常启动。
