@@ -3,6 +3,15 @@
 > 由 `23-repo-rebuild/build_index.py` 生成于 2026-10-25。
 > 列出仓库中全部 Markdown 文档，按目录分组，附标题与首句。
 
+## 2026-10-25 增量入口（后续新材料）
+
+> 下方正文是此前自动生成的索引快照；新增文件尚未重跑全量索引脚本，以下链接为已核对的增量补录。状态以 [STATUS](STATUS.md) 为准。
+
+- [ROM Release 元数据与文件清单审计](rom/AUDIT-20261025.md)
+- [ROM Release 上传索引与待完成本地核验](rom/README.md)
+- [ROM / 内核 / 系统组件 / Root 权限分层静态复核](research/p780-rom-kernel-system-triage-20261025.md)
+- [本地 Release 校验与 Product 分卷合并工具](../tools/rom/verify_release.py)
+
 ## 根目录（3）
 
 | 文档 | 标题 | 备注 |
@@ -43,7 +52,8 @@
 | [`ota-bugreport.md`](research/ota-bugreport.md) | P780 更新服务日志与 Android Bugreport 原始证据 | - hand5gupdateactivity.txt 是 Activity/系统状态记录，其中可见 SystemUpdate 相关组件名，但没有直接可复用的完整 OTA 文件。 |
 | [`ota-log-audit.md`](research/ota-log-audit.md) | P780 OTA 日志与 Journey 配置服务核对 | 日期：2026-10-10。只读取已归档材料，并对日志中的无鉴权公共配置地址执行 HTTP/HTTPS GET；没有连接、修改手机或重放设备鉴权请求。 |
 | [`p780-dirtyfrag-live-exploit-20261025.md`](research/p780-dirtyfrag-live-exploit-20261025.md) | P780 DirtyFrag 实机利用链（2026-10-25） | 设备基线（全部来自实机）： |
-| [`p780-phase-3-closure-20261025.md`](research/p780-phase-3-closure-20261025.md) | 阶段收尾：GhostLock 判负、域能力边界、只读榨取、OEM Unlock 关闭（2026-10-25） | GhostLock M1/M2 成立、M3 判负；内核 Image 与 173,205 符号恢复；init/installd 能力边界与 setenforce avc；9 类分区提取（AVB 根信任 = AOSP testkey）；fastboot 解锁命令全 unknown。 |
+| [`p780-phase-3-closure-20261025.md`](research/p780-phase-3-closure-20261025.md) | 阶段收尾：GhostLock 判负、域能力边界、只读榨取、OEM Unlock 关闭（2026-10-25） | 摘要见正文 |
+| [`p780-vendor-service-audit-20261025.md`](research/p780-vendor-service-audit-20261025.md) | 厂商服务审计：Journey root 服务、shell→init misc 原语、io_uring 候选（2026-10-25） | 摘要见正文 |
 | [`p780-dirtyfrag-tinno-5.4.61-source-audit-20261024.md`](research/p780-dirtyfrag-tinno-5.4.61-source-audit-20261024.md) | TINNO P780 Linux 5.4.61：DirtyFrag 相关 UDP sendpage / ESP 源码审计 | 日期：2026-10-24（Asia/Shanghai） |
 | [`p780-dirtyfrag-udp-esp-source-audit-20261024.md`](research/p780-dirtyfrag-udp-esp-source-audit-20261024.md) | P780 DirtyFrag / CVE-2026-43284：UDP sendpage 与 ESP 静态源码核对 | 日期：2026-10-24（Asia/Shanghai） |
 | [`p780-dirtyfrag-v02-path-interpretation-20261024.md`](research/p780-dirtyfrag-v02-path-interpretation-20261024.md) | P780 DirtyFrag：v0.2 回环证据的含义与下一道安全门 | 日期：2026-10-24（Asia/Shanghai） |
@@ -131,3 +141,12 @@
 | [`P780_PFM_QAS_2026-10-04.md`](../archive/reports/P780_PFM_QAS_2026-10-04.md) | Rakuten Hand 5G P780：QAS → Mink → PFM 研究检查点 | <!-- Historical research report, preserved from an earlier user-provided artifact. Not a fresh assertion; see docs/STATU |
 | [`P780_TZAccess_2026-10-04.md`](../archive/reports/P780_TZAccess_2026-10-04.md) | P780：TZAccessService 服务端 Java 授权链 | <!-- Historical research report, preserved from an earlier user-provided artifact. Not a fresh assertion; see docs/STATU |
 
+
+## 2026-10-25 符号恢复增量（手工补充）
+
+- [内核符号恢复与独立核验](research/p780-kernel-symbol-recovery-20261025.md)
+- [工具与复现说明](../tools/kernel-symbol-recovery/README.md)
+
+## 2026-10-25 静态修复核对增量
+
+- [静态修复核对与Magic3文章参考](research/p780-static-patch-review-20261025.md)
