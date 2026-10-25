@@ -65,7 +65,7 @@ jobs:
           make -C linux ARCH=arm64 CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm \
             OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip \
             CROSS_COMPILE=aarch64-linux-gnu- olddefconfig > reports/olddefconfig.log 2>&1
-          ./linux/scripts/config --file linux/.config --disable MODVERSIONS --disable MODULE_SIG --disable MODULE_SIG_ALL
+          ./linux/scripts/config --file linux/.config --disable MODVERSIONS --disable MODULE_SIG --disable MODULE_SIG_ALL --disable LTO_CLANG --disable LTO_CLANG_THIN --disable CFI_CLANG --disable SHADOW_CALL_STACK
           make -C linux ARCH=arm64 CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm \
             OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip \
             CROSS_COMPILE=aarch64-linux-gnu- olddefconfig > /dev/null 2>&1
@@ -84,6 +84,7 @@ jobs:
             kernel/fork.o kernel/cred.o kernel/locking/rtmutex.o \
             security/selinux/hooks.o fs/exec.o kernel/sys.o \
             V=1 > reports/build.log 2>&1 || { tail -n 60 reports/build.log; exit 1; }
+          file linux/kernel/fork.o linux/kernel/cred.o | tee reports/object-types.txt
           df -h /home/runner
 
       - name: Dump layouts and disassembly
