@@ -3,7 +3,7 @@
 > 由 `tools/build_research_index.py` 从实际文件生成（2026-10-26）。
 > 每项给出仓库内路径、字节数与 SHA-256；摘要说明见各专题报告。
 
-共 **498** 个文件，合计 **128.3 MiB**。
+共 **560** 个文件，合计 **130.4 MiB**。
 
 | 路径 | 字节 | SHA-256 |
 |---|---:|---|
@@ -189,6 +189,68 @@
 | `evidence/20261026/README.md` | 550 | `21998d76f10024b017a31c5f0682fcf6c202746439fb7df6abe962614054d43d` |
 | `evidence/20261026/vuln-surface/props_report.txt` | 33566 | `24a2de082cc62c7cb0da083660a8bf041c8c9a9292bfa9ef06eccc8f06c28886` |
 | `evidence/20261026/vuln-surface/README.md` | 78 | `a834ecfa4da20cfe02e2bc2900c62644cb3ba05a7f037334685f8713a385ce41` |
+| `evidence/20261027/vendor-config/audio_effects.xml` | 7774 | `a6483eaeeed2d7e354d1c2baa10c1ea6224febf015b9c9b899841273f51a0703` |
+| `evidence/20261027/vendor-config/audio_platform_info.xml` | 55301 | `b47b069a0e9b3be1bb1a1f4de3e99d5c8108977df6f107813d8c189ed6946106` |
+| `evidence/20261027/vendor-config/audio_platform_info_intcodec.xml` | 41419 | `4effb1f0d893ebcf88ac3b92ff4258dca80b32f8cb2a4646e830d9645899e61b` |
+| `evidence/20261027/vendor-config/audio_platform_info_qrd.xml` | 41553 | `3d096a3298095f458dbaa8e59f8a0d1d8834188b9f88b7c0604251148ab2c230` |
+| `evidence/20261027/vendor-config/audio_policy_configuration.xml` | 16938 | `999533fe9a53df8b61905b3dfcf5f167ea8ec72769770ee8a538c7a61fa0d339` |
+| `evidence/20261027/vendor-config/audio_policy_volumes.xml` | 13561 | `6732440a6237e80159e71cd4b861d94b9aed6908070a43786f9e216bfbb3f2c7` |
+| `evidence/20261027/vendor-config/charger_fstab.qti` | 2100 | `ea20ec5865dbfc2d877fcd7cc407f2eb58a1e7c89f3b9ed2389dc7f996dade33` |
+| `evidence/20261027/vendor-config/default_volume_tables.xml` | 5133 | `700b3e3979801bc09875e948bfae489d4c488e8b17911e8dcc2eebbfd17bb4ec` |
+| `evidence/20261027/vendor-config/fstab.default` | 5245 | `11be78f007670d4e66fc42e39178753ffe96b5225a6ac3e419f9fde453d7edec` |
+| `evidence/20261027/vendor-config/fstab.emmc` | 5238 | `0c6d042e79829dc6e85617f2897d3addefafc5c5c734f119f1103758aced51b3` |
+| `evidence/20261027/vendor-config/init-hw/init.qcom.factory.rc` | 8262 | `e5b74288f0d03f5288a2ed290a5ac9d07d244bc249ad3037e551ae5258b23824` |
+| `evidence/20261027/vendor-config/init-hw/init.qcom.rc` | 31156 | `ed8e462505b62d4b14a2e7c91f244858181d8874eed2853abc19d413588fc60e` |
+| `evidence/20261027/vendor-config/init-hw/init.qcom.usb.rc` | 99738 | `ef4f4f365ef686330115d15129e657a818529b86c3f470aa71bb7aa176af2920` |
+| `evidence/20261027/vendor-config/init-hw/init.qti.kernel.rc` | 7269 | `f510c96ace0524a80ebbd4386ef3c0fd10ceb808e7f91e24bfe6a40de891f62a` |
+| `evidence/20261027/vendor-config/init-hw/init.qti.ufs.rc` | 1727 | `a2fb0a6e80ec8f8eeff93de9f173d516b1af39ecb7739b117b3433d584e9d11c` |
+| `evidence/20261027/vendor-config/init-hw/init.stnfc.rc` | 224 | `9abdc758b348295ee3a2a378e2c0fd10bbf65e39cf9cc5c47defe4e3d78c9710` |
+| `evidence/20261027/vendor-config/init-hw/init.target.rc` | 8968 | `17216659eff78ea8bad0a7987b9255fbf00ae52baba699600fce02f018040e8f` |
+| `evidence/20261027/vendor-config/media_codecs_holi.xml` | 14994 | `9c192e89c8c4287280a0dfc0fe05a4241c880abf9b58b4c53f2c1fb631b1b4bc` |
+| `evidence/20261027/vendor-config/media_codecs_performance_holi.xml` | 7548 | `dc3387543cffab95c2c0b7f71e1f97822f9e0968efff30eed400e302aaf52442` |
+| `evidence/20261027/vendor-config/media_profiles_holi.xml` | 44975 | `5176cbafceada55402e4372943e7825d42e740d42f58fbdff871654041230ef1` |
+| `evidence/20261027/vendor-config/selinux/plat_pub_versioned.cil` | 891806 | `a079bd29307fd92f386d4f2a1b6410e48206c02975fd88d13a90d04ea698417c` |
+| `evidence/20261027/vendor-config/selinux/plat_sepolicy_vers.txt` | 5 | `166983be04e2ab397fc7a70bb60a516b1cfd42a5ec6dd356df01ae63a8500ec0` |
+| `evidence/20261027/vendor-config/selinux/selinux_denial_metadata` | 1511 | `565038ea94d05bc1a2871c48dc4b323e7843178446556c0319b8077afdaa6292` |
+| `evidence/20261027/vendor-config/selinux/vendor_file_contexts` | 85355 | `f99c747ab031b5251d3bf4e363ffa129b2b885d1e2770d592288e50b95716489` |
+| `evidence/20261027/vendor-config/selinux/vendor_hwservice_contexts` | 11658 | `2c48e286daeaea2944c4d606c266a9bb7e8a0ad8126f6465aa43772e8bad485e` |
+| `evidence/20261027/vendor-config/selinux/vendor_mac_permissions.xml` | 4075 | `0252fe2dd0430d5c49b49010fc3c413b60a78541e73f3b8378bc01e68af88c6f` |
+| `evidence/20261027/vendor-config/selinux/vendor_property_contexts` | 16188 | `d3dc8b56835ba3d646e3a5b3303b90b1a4887d1fbeb602c39c8b48abb6040de5` |
+| `evidence/20261027/vendor-config/selinux/vendor_seapp_contexts` | 1412 | `f87b814d5f6cb4443d8359cda57c75cb1597c65227780c45a2059efc113ec5d0` |
+| `evidence/20261027/vendor-config/selinux/vendor_sepolicy.cil` | 733556 | `b020aad9676079d0fe5ce585401a3a8fb6bb6e15cf0c9cb4e65673f86128835d` |
+| `evidence/20261027/vendor-config/selinux/vndservice_contexts` | 703 | `0d7b44cb6f94efa8f27e3a4e1d53a411805c21afe46f33aa4d9bd219f390cee2` |
+| `evidence/20261027/vendor-config/vintf/compatibility_matrix.xml` | 2528 | `5aa869415b923d1668b80845bfb3b821ff82c113a2b61a9063bc9c3d19629dfd` |
+| `evidence/20261027/vendor-config/vintf/manifest/android.hardware.atrace@1.0-service.xml` | 323 | `49e4a804e77b653064e7cb8fc5dc6c6b4aeea2ae4a2a62dab0ff52e0c463ee01` |
+| `evidence/20261027/vendor-config/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml` | 348 | `473cf370500637de575dc89fbac74e4942d969717a0a72cb5adaa3511bdba693` |
+| `evidence/20261027/vendor-config/vintf/manifest/android.hardware.boot@1.1.xml` | 221 | `d42cd4d5e3448ebe865ca20824031d411c7ea9a0600949454959894444c74a90` |
+| `evidence/20261027/vendor-config/vintf/manifest/android.hardware.cas@1.2-service.xml` | 323 | `9357fb5a7b17fe81638ec82f79d06007bb35c19016e676104fa55449b5f0f0d2` |
+| `evidence/20261027/vendor-config/vintf/manifest/android.hardware.gnss@2.1-service-qti.xml` | 1779 | `b12c00daff67f15983eaf9952d0ded199b2868ad1b9fb512fcab5f6bf813773d` |
+| `evidence/20261027/vendor-config/vintf/manifest/android.hardware.graphics.mapper-impl-qti-display.xml` | 2226 | `00105bbff83fa177fff8c10776678fddcf99179464d866bd688a1bf61ee563b4` |
+| `evidence/20261027/vendor-config/vintf/manifest/android.hardware.health@2.1.xml` | 218 | `d79a8058bf0dd9d4cf7bf65f6ef2f47c3fd9452e641ebc746465d619aabb509c` |
+| `evidence/20261027/vendor-config/vintf/manifest/android.hardware.lights-qti.xml` | 171 | `570ac710477a2e70c8c983e4eea18ddd398907af0502ac95557f4293e9f85cc9` |
+| `evidence/20261027/vendor-config/vintf/manifest/android.hardware.neuralnetworks@1.3-service-qti.xml` | 460 | `1fe231b6b3fd8ec56d0d4063ec9e547be4248da930b9c471212ff9cc9f4afc99` |
+| `evidence/20261027/vendor-config/vintf/manifest/android.hardware.sensors@2.0-multihal.xml` | 319 | `5915f6e142726b3b608379a2e03c2b23478c393b310b024ac7687f73458a630e` |
+| `evidence/20261027/vendor-config/vintf/manifest/android.hardware.thermal@2.0-service.qti.xml` | 1844 | `963119de0310765a376a61ec01854f70c6daa91bff75f0d6eaedc6e4b7f2a8b3` |
+| `evidence/20261027/vendor-config/vintf/manifest/android.hardware.usb@1.2-service.xml` | 1878 | `7f0bd8f15ad0f216869ae1de9c86893c67cd2ebbb6f8392bf0619afd755c5755` |
+| `evidence/20261027/vendor-config/vintf/manifest/android.hardware.wifi.hostapd.xml` | 698 | `641f8d2f6a26b570b7ab7322d9e6cd5f3d51e0ea9ba829fda16569f90cfa3900` |
+| `evidence/20261027/vendor-config/vintf/manifest/android.hardware.wifi@1.0-service.xml` | 313 | `5b785b5e6f63baab071ca757ec3e5bf0ee7a877186c17e2b36ce5bc63112756e` |
+| `evidence/20261027/vendor-config/vintf/manifest/c2_manifest_vendor.xml` | 1926 | `f91b889f1dee3d7740862fae4632df0e9e553fea8ba11b23d6ae86f97e088f29` |
+| `evidence/20261027/vendor-config/vintf/manifest/manifest.xml` | 618 | `44eb838887d1bb904a0270bb80592691e0dcb01cea920012e681eb62bfb55b47` |
+| `evidence/20261027/vendor-config/vintf/manifest/manifest_android.hardware.drm@1.3-service.clearkey.xml` | 945 | `4b9a9214df27df7f546dcd7b27efac3803f8d172548671c8d94903ef1d804aef` |
+| `evidence/20261027/vendor-config/vintf/manifest/manifest_android.hardware.drm@1.3-service.widevine.xml` | 945 | `61cee1f6a061cf5348ca82f5326bd09cedda6bf2eea016c9ad3374f2cd03df7a` |
+| `evidence/20261027/vendor-config/vintf/manifest/power.xml` | 1687 | `541769636e0fe848700a472da66eddaffdfd00de06aab236827edbb334ca8bc3` |
+| `evidence/20261027/vendor-config/vintf/manifest/vendor.journey.hardware.display@1.0.xml` | 329 | `34a6d640c0e4fd482674450687c1cd008f31e183f6ee68bef9c125bf3ff4d6ca` |
+| `evidence/20261027/vendor-config/vintf/manifest/vendor.journey.hardware.fingerprint@1.0.xml` | 348 | `447d5edaa6fa443c9a0f4ca80b97bbf484c36148a32783c0bca088dab8894165` |
+| `evidence/20261027/vendor-config/vintf/manifest/vendor.journey.hardware.warehouse@1.0.xml` | 341 | `6edeafe4efc83f4beafbb8d20ac9aeeb0253d2f88d941c875b79b690e05f1269` |
+| `evidence/20261027/vendor-config/vintf/manifest/vendor.qti.diag.hal.service.xml` | 477 | `e83f49d490b33fe0a47114f5b9fcf651f5b7844a1aa2ea6b26e47cda59fbd85c` |
+| `evidence/20261027/vendor-config/vintf/manifest/vendor.qti.gnss@4.0-service.xml` | 690 | `a2febcc396f453bdabfe60f8adc9b0bc89b110845b3bd4b0c582ce35054a5f4e` |
+| `evidence/20261027/vendor-config/vintf/manifest/vendor.qti.hardware.display.allocator-service.xml` | 2203 | `7a916b6ca645ff92e2f1df462ae44e8e7316ffe339d384cbfc352a8e395ae3f5` |
+| `evidence/20261027/vendor-config/vintf/manifest/vendor.qti.hardware.display.composer-service.xml` | 2953 | `944b74f6eba32f03cf63d5e3b956dc3f270bce4244b6babf441816c7e3b286b9` |
+| `evidence/20261027/vendor-config/vintf/manifest/vendor.qti.hardware.limits@1.0-service.xml` | 457 | `b7a7ec9cd9064450d650372f5c9a8f58ffe658190a613621c93fadbd69d63c70` |
+| `evidence/20261027/vendor-config/vintf/manifest/vendor.qti.hardware.servicetracker@1.2-service.xml` | 472 | `f57b12f5747dc5ba00186e1254dabebd071561c72ce3ae866cf8f9ce0ef901e0` |
+| `evidence/20261027/vendor-config/vintf/manifest/vendor.qti.hardware.vibrator.service.xml` | 1694 | `5cf94ad6bd7b78b2020874fd6fc74764447f2cd9fddb8ef5288eb13619d42aba` |
+| `evidence/20261027/vendor-config/vintf/manifest/vendor.qti.memory.pasrmanager@1.0-service.xml` | 464 | `417e8b42f9d20d9b286ad7affbeca917f556657d40fc681142d5152cab1dc7bf` |
+| `evidence/20261027/vendor-config/vintf/manifest.xml` | 24723 | `252588e887bd314664dfa704d46d6d9a77ebecb032e496c56a6ca4aac49e1210` |
 | `evidence/actions/2026-10-10-clang11/android-clang-version.txt` | 324 | `032523b9ca554ed5410aaea41892b9978c42e60e5f74bfa5c0a0612ae60b4879` |
 | `evidence/actions/2026-10-10-clang11/config-changes.json` | 26729 | `9aeb6b411be9897c77ebb724fecdaacbe310d8a5d7c4939a82667d97119bc1b9` |
 | `evidence/actions/2026-10-10-clang11/config-sha256.txt` | 82 | `a1eb02ec5b9e2f2b1b9f6485e6edf4cf5c03974bf4844bd7e015caa8160fa909` |
