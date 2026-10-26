@@ -287,6 +287,20 @@ QEMU + GDB 里用断点把四个 vCPU 精确停在 `exit_notify`/`wait4`/`timer_
 适合真机的时序 harness。下一步应改成"进程 CPU 时钟 + 忙等消耗 + 多 racer 并发 + 可调
 delete 延迟"，而不是继续加大同一 PoC 的循环次数。
 
+### 8.1 第二版 harness 也停住了
+
+按上面的设计写了 `poc_harness.c`（v2）：`P` 负责 trace/reap，`C` 里 `T` 用忙等消耗 CPU、
+多个 CPU-time timer 瞄着退出路径，`D` 用可调忙等延迟再 `timer_delete`；加了每轮 1 s 的
+`alarm` 看门狗。编译、推送、单轮/20 轮都能跑，但 500 轮在 60 s 内没有跑完——
+大量轮次卡在 `wait4(T, __WALL)` 的 ptrace 退出停点上，看门狗反复触发。
+
+这说明**没有内核侧断点/单步时，靠用户态时序去复现这个竞态不可靠**：`T` 的 trace 停点、
+`C` 的 `exit_group` 与 `P` 的 reap 三者互相干扰，正是公开 PoC 依赖 QEMU+GDB 编排的原因。
+继续调这个 harness 的性价比很低。
+
+**建议**：38352 到此为止，保留"源码+二进制确认修复缺失"的结论；把精力转回
+CVE-2023-6931 的 data-only 链（仓库已有 dry-run、KASLR 泄漏和常量修复）或页缓存→模块路线。
+
 ## 9. 参考
 
 - 仓库内：[STATUS](../STATUS.md)、[NEXT_STEPS](../NEXT_STEPS.md)、
