@@ -271,3 +271,49 @@ user-level 禁用无法持久。当前已再次 disable-user，**只在本次启
 2. 直接改 system 镜像/删除包（需要可写 system 或 EDL）。
 
 保留 com.android.nfc 与 com.android.se，不关闭整个 NFC/SE。
+
+## 9. uid0（Elevate/installd）能力矩阵（2026-10-27）
+
+两个 root 取证目录已通过 Elevate 的命令控制台删除：
+
+```
+rm -rf /data/local/tmp/p780-elevate-acq-20261026 /data/local/tmp/p780-elevate-backups-20261026
+```
+
+实测 uid0 的能力边界：
+
+| 目标 | 结果 |
+|---|---|
+| `/data/local/tmp` 写/删 | 可以 |
+| `/data/system` 读 | 可以（`appops.xml`、`batterystats*` 等） |
+| `/data/system` 写 | **Permission denied** |
+| `/data/data`、`/data/user/0` 读 | 可以（可列 app 私有目录） |
+| `/data/misc` | 部分可读，部分 `d?????????`/denied |
+| `/data/misc/update_engine` | **denied** |
+| `/data/ota_package` | **denied** |
+| `/data/tombstones`、`/data/anr` | **denied** |
+| `/proc/kallsyms` | **denied** |
+| `/dev/block/*` | 未获授权（installd 域） |
+| `/system/bin/pm` | **Permission denied** |
+| `/system/bin/cmd` | **Permission denied** |
+| `pm disable`（system 级） | shell 被 SecurityException；uid0 因 pm 不可执行也不可用 |
+
+结论：Elevate 的 uid0 是 **installd 域的文件级 root**，不是通用 root。
+它能做文件读写/删除、读部分 `/data/system` 和 app 私有数据；
+不能包管理、不能写 system、不能读 update_engine/OTA/tombstone/kallsyms、
+不能碰块设备。因此它不能持久禁用 Felica，也不能继续刷机/内核路线。
+
+### 还能做的额外优化
+
+1. 用 uid0 清禁用 App 的 cache/data（只删 cache 最安全）；
+2. 用 uid0 删除 `/data/data/<pkg>/cache/*` 释放存储；
+3. 读 `/data/system` 下的 appops/batterystats 做进一步分析（只读）；
+4. 备份 app 私有数据（隐私敏感，不建议无授权做）。
+
+### 剩余价值
+
+- 能 dump 的“之前不能 dump”的只有：`/data/system` 的部分文件、app 私有目录、
+  `/data/misc` 的部分子目录；
+- update_engine/OTA、tombstone、anr、kallsyms、块设备仍然不可达；
+- 不能修改 `/data/system`，所以无法通过 package-restrictions.xml 持久禁用系统包；
+- 对完整 root 没有新增能力，只是文件级操作和取证范围扩大。
