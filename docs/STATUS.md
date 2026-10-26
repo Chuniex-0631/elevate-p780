@@ -102,6 +102,22 @@
   并重签（`avbtool verify_image` 通过），以及尝试 B 的 vbmeta/boot，A 仍回到 B。
   随后 update_engine 拒绝写 `misc`（`kInstallDeviceOpenError`），fastboot 无
   `set_active`/`flash`/`erase`，`bootctl` 不可用 —— **slot 元数据无法清除**。
+- **关键更正：update_engine 根本没有切槽**。重新跑 `SWITCH_SLOT_ON_REBOOT=1`
+  的 payload，日志只有：
+  `UpdateBootFlagsAction` → `Marking booted slot as good`
+  → `Marking new slot as unbootable` → apply → `Update successfully applied`；
+  **没有 `SetActiveBootSlot` / “marking new slot as active”**。
+  原因：设备只注册了 `android.hardware.boot@1.1::IBootControl/default`
+  （PID 645，`hal_bootctl_default`），而 update_engine 和 `/system/bin/bootctl`
+  都请求 **v1.0**；v1.0 service 不存在，bootctl 报
+  `Error getting bootctrl v1.0 module`，SELinux 也拒绝 shell 的
+  `find hal_bootctl_hwservice`。因此 `switch_slot_on_reboot=1` 是**静默 no-op**，
+  A 槽从未被真正设为 active；B 一直 active。
+- **misc 写入域**：policy 允许 `init`、`vendor_init`、`vold`、`uncrypt`、
+  `update_engine`、`hal_bootctl_default/server`、`vendor_misc_writer` 写
+  `misc_block_device`；但设备上没有 `/vendor/bin/vendor_misc_writer`，
+  只有 bootctl HAL。能 `find hal_bootctl_hwservice` 的域只有
+  `update_engine`、`update_verifier`、`vold`（`hal_bootctl_client`）。
 - **OTA 情报收集**：A=263、B=264；`/data/ota_package` 与 `/data/misc/update_engine`
   对 shell/system_app 均拒绝；`/system/etc`、`/vendor/etc`、props 中没有 OTA URL；
   没有 OTA/FOTA/SystemUpdate 应用；Rakuten 官方页只给操作说明。详见

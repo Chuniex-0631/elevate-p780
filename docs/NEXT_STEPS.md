@@ -28,10 +28,14 @@
    - 现成记录：[`OBSERVED-V-20261027.md`](../tools/uring/analysis/OBSERVED-V-20261027.md)。
 2. **update_engine 路线（暂停，能力已备）**：
    - ✅ 验签绕过、任意块写都已实测；
-   - ⛔ A 槽 slot 元数据（unbootable/retry）无法清除：fastboot 无 set_active/flash，
-     `misc` 不被 update_engine 接受，`bootctl` 不可用；
+   - ⛔ **切槽是静默 no-op**：设备只运行 `android.hardware.boot@1.1` HAL，
+     update_engine / `bootctl` 请求 v1.0，v1.0 service 不存在；日志只有
+     `Marking new slot as unbootable`，没有 `SetActiveBootSlot`；
+   - A 槽从未真正 active；fastboot 无 set_active/flash，misc 不被 payload 接受；
    - A=build 263、B=264，A 的 boot 镜像缺失；OTA 包无法获取
      （见 [`p780-ota-recon-20261027.md`](research/p780-ota-recon-20261027.md)）。
+   - **下一步**：要么提供/触发 v1.0 bootctl（或在允许域内调用 v1.1），
+     要么找到能写 misc 的 vold/init 路径；否则此路线无解。
 3. **EDL 只做询价/验证**：官方与商业渠道确认是否提供 TINNO/holi 签名 programmer；
    没有文件、没有真机写，就不算进展。
 
