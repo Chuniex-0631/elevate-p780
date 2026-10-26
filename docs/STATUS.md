@@ -3,6 +3,23 @@
 > 2026-10-27 更新。本页是唯一权威状态页；其余页面的结论只在"本页范围"内有效。
 > 历史正文中因二次编码损坏的段落不再引用（见 `docs/index.md` 的"部分损坏"标记）。
 
+## 2026-10-27 收口结论
+
+**完整 root 尝试停止。** 从 `shell` 可达的软件路径已全部证伪：
+
+- update_engine：验签绕过 + 任意块写成立，但切槽是 no-op（仅 boot@1.1，
+  update_engine 请求 v1.0），A 槽从未 active；misc 无写入接口；
+- 6931 perf：values 槽位不可控，geo-direct/交替关闭全部失败；
+- KGSL：驱动无 VBO，CVE-2024-23380/23373 不适用；CVE-2025-21479 仅 A7xx；
+- FastRPC：CVE-2024-21455 被 `ASYNC_FASTRPC_CAP=0` 挡住；
+  CVE-2024-43047 的 map collision 前置条件可达，但没有有效 DSP handle，
+  `put_args` 触发点不可达；
+- EDL：入口可达，但无 TINNO/holi 签名 Firehose loader。
+
+设备当前：B 槽 stock、Enforcing、数据完好。保留的能力只有 uid0 shell
+（Elevate，installd 域）作为**部分 root**；完整 root 需要 EDL loader、
+可写 misc/slot 的服务/工厂工具，或新的零权限驱动漏洞。
+
 ## 设备与版本事实
 
 | 字段 | 已记录值 | 边界 |

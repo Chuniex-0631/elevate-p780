@@ -11,6 +11,11 @@
 
 ## 2026-10-27 当前优先
 
+> **收口：完整 root 的软件路径已全部证伪，主线暂停。**
+> 不再运行 6931 heap groom、update_engine 切槽、KGSL/FastRPC 探针。
+> 只保留 EDL loader / 工厂工具 / 新零权限驱动漏洞这三类外部输入；
+> 当前可用能力仅为 uid0 shell（部分 root）。
+
 1. **FastRPC / adsprpc —— 已证伪（2026-10-27）**：
    - `/dev/adsprpc-smd` 可 O_RDONLY 打开，未知 ioctl 返回 `ENOTTY`；
    - `INIT_ATTACH=0` 成功，ION system heap 可用，两个 `vaddrin=0` 的

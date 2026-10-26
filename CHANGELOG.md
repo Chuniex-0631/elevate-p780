@@ -5,6 +5,8 @@
 
 ## 2026-10-27 — 6931 原语打通与暂停、信息层收尾
 
+- **完整 root 软件路径收口（晚）**：update_engine 切槽被 v1.0 bootctl 缺失挡住（日志只有 `Marking new slot as unbootable`，没有 `SetActiveBootSlot`）；6931 的 values 槽位不可控；KGSL 无 VBO，CVE-2024-23380/23373 不适用且 CVE-2025-21479 仅 A7xx；FastRPC 的 CVE-2024-21455 被 `ASYNC_FASTRPC_CAP=0` 挡住，CVE-2024-43047 虽能创建两个 `vaddrin=0` 的重叠 map，但 shell 没有有效 DSP handle（`handle=0/3..6` ENOSUCH，`7..20` EPERM），`put_args` 不可达；EDL 仍缺签名 loader。设备保持 B 槽 stock，仅保留 uid0 shell 作为部分 root。
+
 - CVE-2023-6931：perf 组 u16 回绕、8446 sibling、delta 页错误校准（1888/5984/10080/14176/22368 一次命中）、KASLR/sock/cred 泄漏均实机验证；`__perf_read_group_add` 的 `x19` 可读出 values 地址。
 - observed-V：校准会移动 X；双组 8446 规模在真机卡死，小观察组采样为 0；**暂停 6931 设备实验**，恢复条件写入 `docs/NEXT_STEPS.md`。
 - 进程因卡死重启两次；无 OOB 写盘，设备恢复。`boot_id` 记录在对应报告。
