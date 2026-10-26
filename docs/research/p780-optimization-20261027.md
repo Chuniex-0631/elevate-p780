@@ -241,9 +241,9 @@ com.ape.soundrecorder
 重启后 MemAvailable 约 **1.76 GB**（执行前约 1.58 GB）。
 GMS/YouTube/Play Store 仍是 RSS 大户；这是保留基础 Google 服务的代价。
 
-剩余：/data/local/tmp/p780-elevate-acq-20261026 与
-p780-elevate-backups-20261026 为 root 所有，shell 无法删除；需要 Elevate 的
-uid0 shell 或保留（约 224K）。
+剩余：`/data/local/tmp/p780-elevate-acq-20261026` 与
+`p780-elevate-backups-20261026` 已通过 Elevate uid0 控制台删除；
+`/data/local/tmp` 当前为空。
 
 ## 8. Osaifu-Keitai（Felica）禁用记录（2026-10-27）
 
@@ -258,19 +258,20 @@ com.felicanetworks.mfs
 
 尝试过：
 
-- pm disable-user --user 0：当前会话有效，**重启后失效**；
-- pm uninstall --user 0：返回 Success，但**重启后被系统恢复**；
-- pm suspend --user 0：重启后 suspended 被清空；
-- pm disable（system 级）：shell 被 SecurityException 拒绝，需要 uid0/system；
-- m force-stop：只能清当前进程，不能阻止下次启动。
+- `pm disable-user --user 0`：前几次重启后失效，
+  但最后一轮在 `pm uninstall --user 0`、`pm suspend`、`am force-stop`
+  之后再次 `disable-user`，重启后**保持禁用**；
+- `pm uninstall --user 0`：返回 Success，早期重启后被系统恢复；
+- `pm suspend --user 0`：早期重启后 suspended 被清空；
+- `pm disable`（system 级）：shell 被 SecurityException 拒绝；
+- `am force-stop`：只清当前进程，但配合最后一轮状态后看起来帮助了持久化。
 
-结论：这组 Felica 包由厂商系统在开机时恢复/重新启用，普通 shell 的
-user-level 禁用无法持久。当前已再次 disable-user，**只在本次启动有效**。
-要持久禁用，需要：
-1. Elevate uid0 shell 执行 pm disable（system 级）；或
-2. 直接改 system 镜像/删除包（需要可写 system 或 EDL）。
+**当前状态（2026-10-27 最后一次重启后）**：四个 Felica 包均为
+`disabled-user`，`pm list packages -d` 共 29 项；`com.android.nfc` 与
+`com.android.se` 仍启用。
 
-保留 com.android.nfc 与 com.android.se，不关闭整个 NFC/SE。
+注意：厂商的恢复逻辑不稳定，早期多次重启确实恢复过；如果后续重启又恢复，
+需要重新执行同样的禁用序列，或等待 system 级 `pm disable`/可写 system。
 
 ## 9. uid0（Elevate/installd）能力矩阵（2026-10-27）
 
@@ -301,14 +302,32 @@ rm -rf /data/local/tmp/p780-elevate-acq-20261026 /data/local/tmp/p780-elevate-ba
 结论：Elevate 的 uid0 是 **installd 域的文件级 root**，不是通用 root。
 它能做文件读写/删除、读部分 `/data/system` 和 app 私有数据；
 不能包管理、不能写 system、不能读 update_engine/OTA/tombstone/kallsyms、
-不能碰块设备。因此它不能持久禁用 Felica，也不能继续刷机/内核路线。
+不能碰块设备。Felica 当前的持久禁用来自最后一次 `disable-user` 序列，
+不是 uid0 的 `pm disable`；该持久性仍不稳定。
 
-### 还能做的额外优化
+### app 私有数据能提取到什么
 
-1. 用 uid0 清禁用 App 的 cache/data（只删 cache 最安全）；
-2. 用 uid0 删除 `/data/data/<pkg>/cache/*` 释放存储；
-3. 读 `/data/system` 下的 appops/batterystats 做进一步分析（只读）；
-4. 备份 app 私有数据（隐私敏感，不建议无授权做）。
+`/data/data` 与 `/data/user/0` 的目录列举已确认；installd 域通常也能
+读取其中的文件，但需要逐 app 验证 SELinux。可提取的典型内容：
+
+- `shared_prefs/*.xml`：明文偏好、账号标识、开关；
+- `databases/*.db`（含 `-wal`/`-shm`）：聊天记录、缓存、配置；
+- `files/`、`no_backup/`：离线文件、导出内容；
+- `cache/`：临时数据。
+
+提取方法（uid0 控制台）：
+
+```sh
+cp -a /data/data/<pkg> /data/local/tmp/<pkg>_data
+# 然后 adb pull /data/local/tmp/<pkg>_data
+```
+
+限制：
+
+- Android Keystore/TEE 保护的密钥不可导出，加密 DB/cookie 可能仍是密文；
+- Widevine/DRM 密钥不在 app 数据里；
+- 进程内存、其他用户、`/data/system` 写入仍不可达；
+- 会话 token/cookie 属于敏感凭据，提取和迁移有账号安全风险。
 
 ### 剩余价值
 
