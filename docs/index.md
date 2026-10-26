@@ -20,7 +20,7 @@
 | [archive/reports/P780_PFM_QAS_2026-10-04.md](../archive/reports/P780_PFM_QAS_2026-10-04.md) | Rakuten Hand 5G P780：QAS → Mink → PFM 研究检查点 |
 | [archive/reports/P780_TZAccess_2026-10-04.md](../archive/reports/P780_TZAccess_2026-10-04.md) | P780：TZAccessService 服务端 Java 授权链 |
 
-## docs（108）
+## docs（109）
 
 | 文档 | 标题 |
 |---|---|
@@ -81,6 +81,7 @@
 | [docs/research/p780-escalation-and-integration-20261025.md](../docs/research/p780-escalation-and-integration-20261025.md) | 从 installd root 继续提权与平台联动（2026-10-25） |
 | [docs/research/p780-escalation-roadmap-20261026.md](../docs/research/p780-escalation-roadmap-20261026.md) | P780 提权与刷机路线图（2026-10-26） |
 | [docs/research/p780-evidence-gap-audit-20261019.md](../docs/research/p780-evidence-gap-audit-20261019.md) | GAP-01�����в��ԡ��ں�֤������ļ���ʵ��2026-10-19��（部分损坏） |
+| [docs/research/p780-fastrpc-20261027.md](../docs/research/p780-fastrpc-20261027.md) | P780 新攻击面复核：KGSL 与 FastRPC（2026-10-27） |
 | [docs/research/p780-firehose-screening-20261026.md](../docs/research/p780-firehose-screening-20261026.md) | Firehose 候选与商业 EDL 读取核对（2026-10-26） |
 | [docs/research/p780-fstab-avb-20261018.md](../docs/research/p780-fstab-avb-20261018.md) | P780 fstab AVB 挂载配置实机取证（2026-10-18） |
 | [docs/research/p780-full-root-routes-20261027.md](../docs/research/p780-full-root-routes-20261027.md) | 完整 root 路线复审（2026-10-27） |

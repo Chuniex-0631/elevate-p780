@@ -84,6 +84,14 @@
 - **完整 root 结论（2026-10-27）**：在现有可达接口下，刷机路线卡在 v1.0 bootctl，
   6931 路线卡在 values 槽位不可控；PIPA 的函数指针链又受本机 CFI 限制。
   **暂停完整 root 尝试**，保留已实现的 uid0 shell（Elevate）作为部分 root。
+- **新攻击面：FastRPC（2026-10-27 晚）**：`/dev/adsprpc-smd` 为 `crw-rw-r--`，
+  shell 可 O_RDONLY 打开，未知 ioctl 返回 `ENOTTY`（已进入驱动）。
+  内核 2024-02 / SPL 2024-02，而 CVE-2024-43047（ITW map collision UAF）与
+  CVE-2024-21455（compat `is_compat` 指针混淆）均在 2024 下半年修复。
+  这成为新的完整 root 主线；先做 CVE-2024-21455 只读探针。
+  详见 [`p780-fastrpc-20261027.md`](research/p780-fastrpc-20261027.md)。
+- **KGSL 复核**：`/dev/kgsl-3d0` 可打开，但内核无 VBO 符号，
+  CVE-2024-23380/23373 不适用；CVE-2025-21479 仅 A7xx，本机 A619。
 - **EDL 无新候选**：公开仓库仍无 TINNO/holi 签名 loader；同 SoC 样本使用不同 OEM key。
 - **完整 root 路线复审**（新）：`system_app` 可直接调用 update_engine（实测 `--cancel`
   返回服务错误而非权限拒绝）；update_engine 是唯一可写 boot **和** vbmeta 的可达域；

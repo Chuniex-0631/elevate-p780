@@ -11,7 +11,16 @@
 
 ## 2026-10-27 当前优先
 
-1. **6931 —— 已暂停（2026-10-27 结论：当前接口下不可控）**：
+1. **FastRPC / adsprpc —— 新完整 root 主线**：
+   - 设备事实：`/dev/adsprpc-smd` 为 `crw-rw-r--`，shell 可 O_RDONLY 打开；
+     未知 ioctl 返回 `ENOTTY`，read-only fd 仍进入驱动；
+   - 内核 2024-02 构建、SPL 2024-02，而 CVE-2024-43047（ITW map collision UAF）
+     与 CVE-2024-21455（compat `is_compat` 指针混淆）都在 2024 下半年修复；
+   - 先做 **CVE-2024-21455 只读探针**：32 位子进程置 `is_compat`，64 位父进程
+     用 invoke2 把 `invparam` 指向安全内核地址，确认是否发生内核读；
+   - 再评估 `K_COPY_TO_USER` 是否能变成内核写；失败则转 CVE-2024-43047；
+   - 详见 [`p780-fastrpc-20261027.md`](research/p780-fastrpc-20261027.md)。
+2. **6931 —— 已暂停（2026-10-27 结论：当前接口下不可控）**：
    - 不依赖 A 槽启动；成功后 permissive / uid0 shell 即完整 root；
    - 已有：KASLR/sock/cred 泄漏、perf 组 u16 回绕、delta 校准；
    - 观测点已改为 `perf_read` 的 **x24**（x19 在 IRQ 关闭区，采样不可靠）；
@@ -21,7 +30,7 @@
    - ⛔ PIPA 的 `sk_destruct` 函数指针链受本机 **CFI** 限制，不能照搬；
    - **决定**：停止 6931 heap groom，不再以刷机/内核提权为主线；
      仅保留 EDL 情报（bounded）与已实现的 uid0 shell（部分 root）。
-2. **update_engine 路线（暂停，能力已备）**：
+3. **update_engine 路线（暂停，能力已备）**：
    - ✅ 验签绕过、任意块写都已实测；
    - ⛔ **切槽是静默 no-op**：设备只运行 `android.hardware.boot@1.1` HAL，
      update_engine / `bootctl` 请求 v1.0，v1.0 service 不存在；日志只有
@@ -34,7 +43,7 @@
    - 已排除：`RUN_POST_INSTALL=1` 只打印成功、不执行子进程；vold 的公开
      binder 接口没有 slot/misc 方法；shell/system_app 都不能 find
      `hal_bootctl_hwservice`。
-3. **EDL 只做询价/验证**：官方与商业渠道确认是否提供 TINNO/holi 签名 programmer；
+4. **EDL 只做询价/验证**：官方与商业渠道确认是否提供 TINNO/holi 签名 programmer；
    没有文件、没有真机写，就不算进展。
 
 以下 2026-10-26 的优先级 1/2/3 转为**暂停**，保留原触发条件。
