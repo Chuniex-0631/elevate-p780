@@ -244,3 +244,30 @@ GMS/YouTube/Play Store 仍是 RSS 大户；这是保留基础 Google 服务的�
 剩余：/data/local/tmp/p780-elevate-acq-20261026 与
 p780-elevate-backups-20261026 为 root 所有，shell 无法删除；需要 Elevate 的
 uid0 shell 或保留（约 224K）。
+
+## 8. Osaifu-Keitai（Felica）禁用记录（2026-10-27）
+
+目标包：
+
+`
+com.felicanetworks.mfw.a.boot
+com.felicanetworks.mfc
+com.felicanetworks.mfm.main
+com.felicanetworks.mfs
+`
+
+尝试过：
+
+- pm disable-user --user 0：当前会话有效，**重启后失效**；
+- pm uninstall --user 0：返回 Success，但**重启后被系统恢复**；
+- pm suspend --user 0：重启后 suspended 被清空；
+- pm disable（system 级）：shell 被 SecurityException 拒绝，需要 uid0/system；
+- m force-stop：只能清当前进程，不能阻止下次启动。
+
+结论：这组 Felica 包由厂商系统在开机时恢复/重新启用，普通 shell 的
+user-level 禁用无法持久。当前已再次 disable-user，**只在本次启动有效**。
+要持久禁用，需要：
+1. Elevate uid0 shell 执行 pm disable（system 级）；或
+2. 直接改 system 镜像/删除包（需要可写 system 或 EDL）。
+
+保留 com.android.nfc 与 com.android.se，不关闭整个 NFC/SE。
