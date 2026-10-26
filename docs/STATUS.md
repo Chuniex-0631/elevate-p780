@@ -88,7 +88,7 @@
   shell 可 O_RDONLY 打开，未知 ioctl 返回 `ENOTTY`（已进入驱动）。
   内核 2024-02 / SPL 2024-02，而 CVE-2024-43047（ITW map collision UAF）与
   CVE-2024-21455（compat `is_compat` 指针混淆）均在 2024 下半年修复。
-  这成为新的完整 root 主线；先做 CVE-2024-21455 只读探针。
+  CVE-2024-21455 只读探针已跑：32 位子进程可设置 is_compat，但 baseline 与 compat 的 invoke2 都返回 EPROTONOSUPPORT，async 能力检查在拷贝前就失败，**21455 在本机不可达**。下一步只剩 CVE-2024-43047（map collision UAF），工程量和崩溃风险更高。
   详见 [`p780-fastrpc-20261027.md`](research/p780-fastrpc-20261027.md)。
 - **KGSL 复核**：`/dev/kgsl-3d0` 可打开，但内核无 VBO 符号，
   CVE-2024-23380/23373 不适用；CVE-2025-21479 仅 A7xx，本机 A619。
