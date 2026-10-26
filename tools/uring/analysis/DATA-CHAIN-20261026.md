@@ -1,5 +1,11 @@
 # 6931 新数据链设计：fake skb 双写（2026-10-26，离线）
 
+> 2026-10-27 更新：§9 的第 6 项（heap 地址泄漏）已解决。PMU `CPU_CYCLES` +
+> `PERF_SAMPLE_REGS_INTR` 在 `netlink_recvmsg+0x38` 采样 `x19`，可稳定拿到
+> 任意新建 netlink sock 的地址，并验证 8 个 sock 落在同一 32 KB slab、步进 0x800。
+> 方法与实测见 [uring 报告 §22](../../../docs/research/p780-uring-cve-2023-6931-20261025.md)；
+> 工具：[`netlink_addr_leak.c`](netlink_addr_leak.c)。
+
 > 目标：在 ROP 被 CFI 挡死之后，用同一个 OOB 加原语做一条**纯数据、CFI 无关**的利用链。
 > 本文只做离线设计与证据核对；**未上设备**。所有偏移都来自本机
 > `kernel.symbolized.elf` 反汇编（`analysis/kdis.py`），不是 pipa(4.19) 的假设。
