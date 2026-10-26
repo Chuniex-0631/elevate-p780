@@ -75,6 +75,15 @@
   values 没有落到下一槽，而是跳到 57 槽外的另一页（`X1-X0 = -0x1c800`）；
   S/F 都不在已分配 sock 中。说明 SLUB 当前页 freelist 并不能按“向下连续”控制。
   结论：继续用 sock churn 控制 values 槽位，成功率和稳定性都不够，暂停这一方向。
+- **geo-direct 交替关闭也失败**：喷 2000 sock，关闭末尾交替 17 个，等 2s 后
+  read0 三次，X 分别是 `0xffffff80cae24800`、`0xffffff80cae26000`、
+  `0xffffff802d219000`，**都不是被关闭的槽**（关闭槽是 `...cae22800` /
+  `...cae25000` 等）；X 落在同一页的另一个空闲槽，随后又跳页。
+  命中 0/3。说明 5.4 的 SLUB/RCU 行为与 PIPA 的 4.19 不同，
+  “关闭交替槽 → values 复用”这个假设不成立。
+- **完整 root 结论（2026-10-27）**：在现有可达接口下，刷机路线卡在 v1.0 bootctl，
+  6931 路线卡在 values 槽位不可控；PIPA 的函数指针链又受本机 CFI 限制。
+  **暂停完整 root 尝试**，保留已实现的 uid0 shell（Elevate）作为部分 root。
 - **EDL 无新候选**：公开仓库仍无 TINNO/holi 签名 loader；同 SoC 样本使用不同 OEM key。
 - **完整 root 路线复审**（新）：`system_app` 可直接调用 update_engine（实测 `--cancel`
   返回服务错误而非权限拒绝）；update_engine 是唯一可写 boot **和** vbmeta 的可达域；
