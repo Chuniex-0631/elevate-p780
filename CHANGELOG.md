@@ -12,6 +12,7 @@
 - 新增 [`docs/research/p780-info-layer-20261027.md`](docs/research/p780-info-layer-20261027.md)：已有分区/模块/配置清单与各执行域读取边界；`STATUS.md`、`NEXT_STEPS.md` 同步更新。
 - **完整 root 路线复审**（[p780-full-root-routes-20261027.md](docs/research/p780-full-root-routes-20261027.md)）：实测 system_app 可直接调用 update_engine；策略确认 update_engine 是唯一可写 boot + vbmeta 的可达域；OTA 证书为 RSA-2048 releasekey（非 testkey）；Linux 5.4 块设备 page cache 支持 splice + writepage + fsync。当前主线改为 update_engine 验签绕过（先离线确认证书加载时机与 payload 格式），6931 降为 fallback。
 - **update_engine 基线打通**：AOSP 11 源码确认每次 apply 重读 `otacerts.zip`；生成 166 B 最小 payload（大端头、签 `header+manifest`）并通过 openssl 校验；system_app + 本地 HTTP 触发成功，日志精确停在 `kDownloadMetadataSignatureMismatch`。工具与复现步骤在 [`tools/update-engine-probe/`](tools/update-engine-probe/)。
+- **OTA 签名门已绕过**：自建小 APK（`tools/update-engine-probe/app/`）把 1135 B `otacerts_ours.zip` 写进 `/system/etc/security/otacerts.zip` 页缓存（`match=true`），紧接着触发 update_engine，日志出现 `Verified correct signature 1 out of 1 signatures.` 与 `Metadata hash signature matches value in Omaha response.`。RSA-1024 不被 `PadRSASHA256Hash()` 接受，已改用 RSA-2048。空分区 manifest 会让 `DeltaPerformer::Write` SIGSEGV，下一步需要合法 partition/operation payload。
 
 ## 2026-10-26 — 离线审计更正与可复跑筛查
 

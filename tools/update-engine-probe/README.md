@@ -62,13 +62,37 @@ update_engine_client --update \
 `METADATA_SIZE` 是 `24 + manifest_size`（不含 signature）；`METADATA_HASH` 是
 `sha256(payload[0:METADATA_SIZE])` 的 base64。
 
+## 证书页替换已实测（2026-10-27）
+
+`app/` 里的小 APK 已完成页写（`after len=1135 match=true`），紧接着触发 update_engine：
+
+```
+Verifying using certificates: /system/etc/security/otacerts.zip
+signature blob size = 267
+Verified correct signature 1 out of 1 signatures.
+Metadata hash signature matches value in Omaha response.
+```
+
+即 **签名门已绕过**。之后遇到两个小问题：
+
+- `kPayloadTimestampError`：manifest 的 `max_timestamp` 默认为 0；已在
+  `mkpayload.py` 里设为 2100-01-01；
+- 空分区 manifest 会让 `DeltaPerformer::Write` SIGSEGV；下一步需要带
+  `partition` / `REPLACE` operation 的合法 payload。
+
+### 关键坑
+
+- update_engine 的 `PadRSASHA256Hash()` **只接受 RSA-2048 / RSA-4096**；
+  RSA-1024 会在验签前失败。已改用 RSA-2048（证书 zip 947 B，可放进 1135 B）。
+- page cache 可能被回收：写完证书页后要**立刻**触发 update_engine，
+  否则会回落到原始证书。重启设备即可恢复原始页。
+
 ## 下一步
 
-- 需要一个通用的 **DirtyFrag 页写**入口，把 `otacerts_ours.zip`（≤1135 B）写到
-  `/system/etc/security/otacerts.zip` 的页缓存；
-- 现有的 Elevate APK 只有针对 `libc++.so` 的固定 `PatchData`，没有对外接口；
-  重新构建一个调用 `runSysWriteProbe` 的小 APK 需要 Android build-tools/NDK。
-- 证书页生效后，再用同一 payload 生成 boot/vbmeta 写入；先写可回滚的 `vbmeta_b`。
+- 生成带 `partitions` + `InstallOperation(REPLACE)` 的合法 payload（先写
+  `vbmeta_b` 这种可回滚的分区），再验证 update_engine 能否直接写块设备；
+- 注意目标槽：当前 `ro.boot.slot_suffix=_b`，update_engine 默认 target A；
+  基线失败已把 A 标成 unbootable，活动槽 B 不受影响。
 
 ## 边界
 

@@ -2,7 +2,8 @@
 1135-byte otacerts.zip replacement containing our test certificate.
 
 Requires: openssl on PATH (or OPENSSL env), ota_key.pem and ota_cert.pem in
-this directory.  Outputs payload_empty.bin and otacerts_ours.zip.
+this directory.  The certificate must be RSA-2048 (update_engine's
+PadRSASHA256Hash only accepts 2048/4096-bit keys).
 """
 import os
 import pathlib
@@ -43,8 +44,11 @@ def fld_fixed32(field, value):
 
 
 def build_manifest():
-    # DeltaArchiveManifest: block_size=3. Empty partitions list.
-    return fld_varint(3, 4096)
+    # DeltaArchiveManifest: block_size=3, max_timestamp=14 (2100-01-01).
+    # An empty partition list is enough to reach the metadata signature check.
+    m = fld_varint(3, 4096)
+    m += fld_varint(14, 4102444800)
+    return m
 
 
 def build_signatures(sig):
@@ -54,7 +58,7 @@ def build_signatures(sig):
 
 def main():
     manifest = build_manifest()
-    sigs_len = len(build_signatures(b"\0" * 128))
+    sigs_len = len(build_signatures(b"\0" * 256))
     header = (b"CrAU" + struct.pack(">Q", 2) +
               struct.pack(">Q", len(manifest)) + struct.pack(">I", sigs_len))
     metadata = header + manifest
@@ -71,19 +75,15 @@ def main():
     base = WORK / "otacerts_ours.zip"
     with zipfile.ZipFile(base, "w", zipfile.ZIP_DEFLATED) as z:
         z.write(CERT, "releasekey.x509.pem")
-    pad = target - len(base.read_bytes())
-    if pad < 2:
-        raise SystemExit("certificate zip does not fit in 1135 bytes")
-    for extra in range(64):
-        with zipfile.ZipFile(base, "w", zipfile.ZIP_DEFLATED) as z:
-            z.write(CERT, "releasekey.x509.pem")
-            z.comment = b"A" * max(0, pad - 2 - extra)
-        data = base.read_bytes()
-        if len(data) == target:
-            break
-        if len(data) < target:
-            base.write_bytes(data + b"\0" * (target - len(data)))
-            break
+    base_len = base.stat().st_size
+    comment_len = target - base_len
+    if comment_len < 0:
+        raise SystemExit(f"certificate zip too big: {base_len}")
+    with zipfile.ZipFile(base, "w", zipfile.ZIP_DEFLATED) as z:
+        z.write(CERT, "releasekey.x509.pem")
+        z.comment = b"A" * comment_len
+    if base.stat().st_size != target:
+        raise SystemExit(f"zip padding failed: {base.stat().st_size}")
     print("otacerts size", base.stat().st_size)
 
 

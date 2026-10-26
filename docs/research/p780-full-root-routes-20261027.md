@@ -148,6 +148,38 @@ ErrorCode::kDownloadMetadataSignatureMismatch (26)
 副作用：update_engine 在失败前执行了 `Marking new slot as unbootable`（目标槽 A），
 当前活动槽仍是 `_b`，设备未重启。
 
+### 4.2.2 证书页替换成功：签名门已绕过
+
+自建的小 APK（源码在 `tools/update-engine-probe/app/`）使用 Elevate 的
+`writeBlock()` 原语，把 1135 B 的 `otacerts_ours.zip` 写到
+`/system/etc/security/otacerts.zip` 的 page cache：
+
+```
+OtaPatch: after len=1135 match=true
+OtaPatch: done blocks=71
+```
+
+紧接着（必须在 page cache 被回收前）触发 update_engine：
+
+```
+Verifying using certificates: /system/etc/security/otacerts.zip
+signature blob size = 267
+Verified correct signature 1 out of 1 signatures.
+Metadata hash signature matches value in Omaha response.
+```
+
+**结论：update_engine 的 OTA 签名门已被绕过。**
+
+两个后续问题：
+
+- `kPayloadTimestampError`：空 manifest 的 `max_timestamp` 默认 0；已在
+  `mkpayload.py` 里设为 2100-01-01；
+- 空分区 manifest 会让 `DeltaPerformer::Write` 在下载回调里 SIGSEGV；
+  下一步需要带 `partitions` + `InstallOperation(REPLACE)` 的合法 payload。
+
+关键约束：update_engine 的 `PadRSASHA256Hash()` **只接受 RSA-2048 / RSA-4096**，
+RSA-1024 会在验签前失败；已改用 RSA-2048（证书 zip 947 B，可放进 1135 B）。
+
 ### 4.3 最小可行 payload
 
 - 目标分区：`boot`（slot b）；

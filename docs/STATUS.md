@@ -68,11 +68,16 @@
   已生成并通过本地签名校验；system_app + 本地 HTTP 触发成功，错误精确停在
   `kDownloadMetadataSignatureMismatch`（证书门）。工具在
   [`tools/update-engine-probe/`](../tools/update-engine-probe/)。
-- **当前唯一阻塞**：缺少通用 DirtyFrag 页写入口把 1135 B 的 `otacerts_ours.zip`
-  写进 `/system/etc/security/otacerts.zip` 页缓存；Elevate 的 `writeBlock()` 通用，
-  但无对外接口，重打包需要 Android build-tools/NDK。
-- **下一步**：优先解决页写入口（重打包小 APK 或找现成接口），6931 保持 fallback；
-  信息层清单已基本收口。
+- **证书页替换 + 签名门绕过已实测**：自建小 APK（`tools/update-engine-probe/app/`）
+  把 1135 B 的 `otacerts_ours.zip` 写进页缓存（`match=true`），紧接着触发
+  update_engine，日志出现
+  `Verified correct signature 1 out of 1 signatures.` 与
+  `Metadata hash signature matches value in Omaha response.`。
+- **新阻塞**：空分区 manifest 会让 `DeltaPerformer::Write` SIGSEGV；需要带
+  `partitions` + `REPLACE` operation 的合法 payload。另：page cache 会被回收，
+  写完必须立刻触发 update。
+- **下一步**：生成合法 partition/operation payload（先写可回滚的 `vbmeta_b`），
+  6931 保持 fallback；信息层清单已基本收口。
 
 旧复核记录：[ABL / EDL 审计](research/p780-boot-edl-audit-20261026.md) 核实了 14 项注册循环、
 FRP 缓冲区末字节读取与 misc 恢复样本相等。FRP 位到菜单隐藏的完整链未闭合。

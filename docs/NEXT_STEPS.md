@@ -13,12 +13,12 @@
 
 1. **update_engine 验签绕过（完整 root 主线）**：
    - ✅ 离线确认 `payload_verifier` 每次 apply 重读 `otacerts.zip`；
-   - ✅ 最小 payload 已生成并通过本地签名校验，system_app + HTTP 触发成功，
-     错误停在 `kDownloadMetadataSignatureMismatch`；
-   - ⛔ 当前阻塞：缺通用 DirtyFrag 页写入口把 1135 B 的 `otacerts_ours.zip`
-     写进 `/system/etc/security/otacerts.zip` 页缓存；
-   - 下一步：重打包一个只调用 `writeBlock()` 的小 APK（需 build-tools/NDK），
-     或找到现成的可触发页写接口；之后先写可回滚的 `vbmeta_b`，再写 `boot_b`。
+   - ✅ 最小 payload 已生成并通过本地签名校验，system_app + HTTP 触发成功；
+   - ✅ 自建 APK 已把 1135 B `otacerts_ours.zip` 写进页缓存，update_engine 日志
+     `Verified correct signature 1 out of 1 signatures` —— **签名门已绕过**；
+   - ⛔ 新阻塞：空分区 manifest 会在 `DeltaPerformer::Write` SIGSEGV；
+   - 下一步：生成带 `partitions` + `REPLACE` operation 的合法 payload，
+     先写可回滚的 `vbmeta_b`，确认 update_engine 能写块设备后再写 `boot_b`。
 2. **EDL 只做询价/验证**：官方与商业渠道确认是否提供 TINNO/holi 签名 programmer；
    没有文件、没有真机写，就不算进展。
 3. **6931 恢复条件**（满足其一再上设备）：
