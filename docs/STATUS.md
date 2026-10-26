@@ -89,7 +89,9 @@
   内核 2024-02 / SPL 2024-02，而 CVE-2024-43047（ITW map collision UAF）与
   CVE-2024-21455（compat `is_compat` 指针混淆）均在 2024 下半年修复。
   CVE-2024-21455 只读探针已跑：32 位子进程可设置 is_compat，但 baseline 与 compat 的 invoke2 都返回 EPROTONOSUPPORT，async 能力检查在拷贝前就失败，**21455 在本机不可达**。
-  但 **43047 的前置条件已打通**：`INIT_ATTACH=0` 成功、ION system heap fd 可用、两个 `vaddrin=0` 的重叠 FastRPC map 都创建成功（`va=0xe18bc000` / `0xe18b8000`）。下一步用 invoke 的 handle/buffer fds 创建两个 context，再让 `put_args` 错误释放 B。
+  但 **43047 的前置条件已打通**：`INIT_ATTACH=0` 成功、ION system heap fd 可用、两个 `vaddrin=0` 的重叠 FastRPC map 都创建成功（`va=0xe18bc000` / `0xe18b8000`）。
+  然而 **UAF 触发点不可达**：shell 没有有效 DSP handle；`INVOKE(handle=0)` 与静态 handle 3..6 都是 ENOSUCH，7..20 是 EPERM；`put_args` 只在一次真正完成的 invoke 后调用。
+  FastRPC 路线降为不可达。
   详见 [`p780-fastrpc-20261027.md`](research/p780-fastrpc-20261027.md)。
 - **KGSL 复核**：`/dev/kgsl-3d0` 可打开，但内核无 VBO 符号，
   CVE-2024-23380/23373 不适用；CVE-2025-21479 仅 A7xx，本机 A619。

@@ -11,14 +11,16 @@
 
 ## 2026-10-27 当前优先
 
-1. **FastRPC / adsprpc —— 新完整 root 主线**：
-   - 设备事实：`/dev/adsprpc-smd` 为 `crw-rw-r--`，shell 可 O_RDONLY 打开；
-     未知 ioctl 返回 `ENOTTY`，read-only fd 仍进入驱动；
-   - 内核 2024-02 构建、SPL 2024-02，而 CVE-2024-43047（ITW map collision UAF）
-     与 CVE-2024-21455（compat `is_compat` 指针混淆）都在 2024 下半年修复；
-   - 先做 **CVE-2024-21455 只读探针**：32 位子进程置 `is_compat`，64 位父进程
-     用 invoke2 把 `invparam` 指向安全内核地址，确认是否发生内核读；
-   - 再评估 `K_COPY_TO_USER` 是否能变成内核写；失败则转 CVE-2024-43047；
+1. **FastRPC / adsprpc —— 已证伪（2026-10-27）**：
+   - `/dev/adsprpc-smd` 可 O_RDONLY 打开，未知 ioctl 返回 `ENOTTY`；
+   - `INIT_ATTACH=0` 成功，ION system heap 可用，两个 `vaddrin=0` 的
+     重叠 FastRPC map 也创建成功（CVE-2024-43047 的前置条件）；
+   - ⛔ 但 **没有有效 DSP handle**：`INVOKE(handle=0)` / 静态 handle 3..6 都是
+     `ENOSUCH`，7..20 是 `EPERM`；`put_args` 只在一次真正完成的 invoke 后调用，
+     shell 到不了 UAF 触发点；
+   - ⛔ CVE-2024-21455 的 async 能力为 0，invoke2 在拷贝前返回
+     `EPROTONOSUPPORT`；
+   - 结论：**FastRPC 从 shell 不可利用**。
    - 详见 [`p780-fastrpc-20261027.md`](research/p780-fastrpc-20261027.md)。
 2. **6931 —— 已暂停（2026-10-27 结论：当前接口下不可控）**：
    - 不依赖 A 槽启动；成功后 permissive / uid0 shell 即完整 root；
