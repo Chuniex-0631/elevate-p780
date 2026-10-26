@@ -3,6 +3,14 @@
 > 2026-10-26 更新：本页只保留可被仓库文件或 Actions 证据支持的里程碑。
 > 早期逐条日志（含编码损坏段落）不再重排，原始内容保留在 git 历史中。
 
+## 2026-10-27 — 6931 原语打通与暂停、信息层收尾
+
+- CVE-2023-6931：perf 组 u16 回绕、8446 sibling、delta 页错误校准（1888/5984/10080/14176/22368 一次命中）、KASLR/sock/cred 泄漏均实机验证；`__perf_read_group_add` 的 `x19` 可读出 values 地址。
+- observed-V：校准会移动 X；双组 8446 规模在真机卡死，小观察组采样为 0；**暂停 6931 设备实验**，恢复条件写入 `docs/NEXT_STEPS.md`。
+- 进程因卡死重启两次；无 OOB 写盘，设备恢复。`boot_id` 记录在对应报告。
+- EDL：复查公开仓库仍无 TINNO/holi 签名 loader；同 SoC 样本使用不同 OEM key。
+- 新增 [`docs/research/p780-info-layer-20261027.md`](docs/research/p780-info-layer-20261027.md)：已有分区/模块/配置清单与各执行域读取边界；`STATUS.md`、`NEXT_STEPS.md` 同步更新。
+
 ## 2026-10-26 — 离线审计更正与可复跑筛查
 
 - 原件解压逐字节核验，恢复 ABL 的 14 项 fastboot 注册表与分派链；FRP 缓冲区末位读取成立，菜单隐藏因果未闭合。

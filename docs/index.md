@@ -20,7 +20,7 @@
 | [archive/reports/P780_PFM_QAS_2026-10-04.md](../archive/reports/P780_PFM_QAS_2026-10-04.md) | Rakuten Hand 5G P780：QAS → Mink → PFM 研究检查点 |
 | [archive/reports/P780_TZAccess_2026-10-04.md](../archive/reports/P780_TZAccess_2026-10-04.md) | P780：TZAccessService 服务端 Java 授权链 |
 
-## docs（104）
+## docs（105）
 
 | 文档 | 标题 |
 |---|---|
@@ -86,6 +86,7 @@
 | [docs/research/p780-ghostlock-5.4-20261026.md](../docs/research/p780-ghostlock-5.4-20261026.md) | GhostLock 5.4.233 可行性评估（2026-10-26） |
 | [docs/research/p780-ghostlock-bug-shape-20261025.md](../docs/research/p780-ghostlock-bug-shape-20261025.md) | GhostLock 缺陷形态确认（2026-10-25） |
 | [docs/research/p780-ghostlock-profile-draft-20261025.md](../docs/research/p780-ghostlock-profile-draft-20261025.md) | P780 GhostLock profile 草案（5.4.233，静态部分） |
+| [docs/research/p780-info-layer-20261027.md](../docs/research/p780-info-layer-20261027.md) | 信息层收尾清单（2026-10-27） |
 | [docs/research/p780-init-capability-20261025.md](../docs/research/p780-init-capability-20261025.md) | init 域能力盘点（2026-10-25） |
 | [docs/research/p780-installd-root-shell-20261025.md](../docs/research/p780-installd-root-shell-20261025.md) | P780 实机取得 uid 0 root shell（2026-10-25） |
 | [docs/research/p780-ipsec-preflight-live-and-localversion-20261024.md](../docs/research/p780-ipsec-preflight-live-and-localversion-20261024.md) | P780 IPsec Preflight 实机结果与内核版本后缀来源核验 |

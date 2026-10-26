@@ -1,6 +1,6 @@
 # 当前研究状态
 
-> 2026-10-26 更新。本页是唯一权威状态页；其余页面的结论只在"本页范围"内有效。
+> 2026-10-27 更新。本页是唯一权威状态页；其余页面的结论只在"本页范围"内有效。
 > 历史正文中因二次编码损坏的段落不再引用（见 `docs/index.md` 的"部分损坏"标记）。
 
 ## 设备与版本事实
@@ -31,6 +31,8 @@
 | ABL 工厂菜单 | Vol Up + Power：START / Restart bootloader / Recovery mode / Power off / Boot to FFBM / Boot to QMMI；**无 Unlock**；FFBM/QMMI 均回 Android | 历史菜单观察；隐藏原因与工厂镜像是否缺失未证实 |
 | Fastboot / EDL | unlock 全 unknown command；Sahara v2 可达，Firehose 未通 | 阻塞 |
 | GhostLock 5.4 | 5.4.233 `remove_waiter` 漏洞确认；pselect/mcast/tcp/sigreturn/process_vm/bpf 公开车辆在 P780 上全部判负；AArch64 Path B data-only 可用但无完整车辆 | **无可用车辆** |
+| CVE-2023-6931 perf 数据链 | u16 回绕、8446 sibling、delta 校准（1888/5984/10080/14176/22368 全部一次命中）、sock/cred/KASLR 泄漏、`x19` 可观测 | **原语全通；V 放置未解；暂停设备实验** |
+| observed-V | `__perf_read_group_add` 采 `x19` 可拿到 values；校准会移动 X；双组 8446 规模在真机卡死，小观察组采样为 0 | **暂停** |
 | EDL programmer | SD480/Holi；五份候选根均不匹配 `c19a5029…`；本轮未找到可验证匹配样本；摘要算法及多根详见新复核 | **缺签名 loader** |
 | CVE-2024-23373 | NVD 明确含 SD480；`kgsl_mmu_put_gpuaddr` 的 unmap 失败→释放 DMA/anon 页模式成立；但 P780 kgsl 无 VBO、无 sparse，GPUAF 的 VBO 触发不适用 | **待触发** |
 | CVE-2024-26923 | 5.4.233 < 5.4.275；`unix_gc` 未修复；触发 PoC 两轮 30s 未赢 | **未触发** |
@@ -52,9 +54,19 @@
    47 号事故记录、1.6 GB GSI zip、1.9 GB system dump、NDK、`xbl_b.00.bin` 全文（API 401；strings/scan 已入仓）；`boot_b_full.img` 与 `P780-kernel-symbol-recovery-20261025.zip` 已入仓；其余只在 `docs/EVIDENCE_MANIFEST.md`
    或对应 README 登记来源/哈希。`vendor_boot_a/b`、`dtbo_a` 及其解包内容已按 manifest 哈希复核并入仓（2026-10-26，见 [再提取记录](research/p780-partition-reextract-20261026.md)）。
 
-## 本轮优先复核
+## 本轮优先复核（2026-10-27）
 
-[ABL / EDL 审计](research/p780-boot-edl-audit-20261026.md) 核实了 14 项注册循环、FRP 缓冲区末字节读取与 misc 恢复样本相等。FRP 位到菜单隐藏的完整链未闭合。Chimera 精确机型页仅列 Get Info；商业 EDL 读分区未证实。当前仓库公开且仍有原始敏感材料，见 [SECURITY](../SECURITY.md)。
+- **6931 暂停设备实验**：原语层全部打通（泄漏、回绕、delta、observability），
+  但"两次 read 之间不能有分配"与校准冲突；双组 8446 规模会卡死，小观察组采样为 0。
+  详见 [`OBSERVED-V-20261027.md`](../tools/uring/analysis/OBSERVED-V-20261027.md)。
+- **EDL 无新候选**：公开仓库仍无 TINNO/holi 签名 loader；同 SoC 样本使用不同 OEM key。
+- **下一步转信息层收尾**：整理已有分区/模块/配置与各 shell 的读取边界，形成可交付清单；
+  6931 保持"原语已备、待后续"。
+
+旧复核记录：[ABL / EDL 审计](research/p780-boot-edl-audit-20261026.md) 核实了 14 项注册循环、
+FRP 缓冲区末字节读取与 misc 恢复样本相等。FRP 位到菜单隐藏的完整链未闭合。
+Chimera 精确机型页仅列 Get Info；商业 EDL 读分区未证实。当前仓库公开且仍有原始敏感材料，
+见 [SECURITY](../SECURITY.md)。
 
 ## 证据
 
