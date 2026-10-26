@@ -59,6 +59,22 @@
 - **6931 暂停设备实验**：原语层全部打通（泄漏、回绕、delta、observability），
   但"两次 read 之间不能有分配"与校准冲突；双组 8446 规模会卡死，小观察组采样为 0。
   详见 [`OBSERVED-V-20261027.md`](../tools/uring/analysis/OBSERVED-V-20261027.md)。
+- **6931 观测点已修正**：x19 位于 IRQ 关闭的 `__perf_read_group_add` 循环里，
+  PMU 采样会被推迟，之前的 X 多为噪声；改采 `perf_read` 中 kzalloc 之后一直
+  保持 values 的 **x24**，众数信号干净（单值 >95%）。文件页缺页校准在
+  `MADV_DONTNEED` 后 X 不变，但 fault-around 会让计数只有 1/16，需要 16 页步长
+  或 `vm.fault_around_bytes=0`。
+- **X 槽位问题（新阻塞）**：多轮 read0 显示 values 常落在 slab 顶部（slot 13）；
+  喷 512 个 sock 仍只填 X 下方，`X+0x800` 跨页后没有活 sock；UDP skb 占 X 失败。
+  一次 32-sock 分配/关闭循环还导致设备重启（B 槽 stock 恢复，无 OOB）。
+  "S 在 X 上方"命中率低，继续高 churn groom 风险高。
+- **下一步改为直接 OOB 到 cred 的可行性评估**：不经过 victim sock/fake skb，
+  直接检查已知 cred 是否落在 `X..X+67KB` 内；若命中，`values[index] += delta`
+  可直接改 `cred->cap_effective`。这只依赖 X 与 cred 的距离，不要求 X 上方有 sock。
+- **顶部槽位策略也失败**：read0 后先分配 4 个 sock 占住 X 及相邻槽，再 read0，
+  values 没有落到下一槽，而是跳到 57 槽外的另一页（`X1-X0 = -0x1c800`）；
+  S/F 都不在已分配 sock 中。说明 SLUB 当前页 freelist 并不能按“向下连续”控制。
+  结论：继续用 sock churn 控制 values 槽位，成功率和稳定性都不够，暂停这一方向。
 - **EDL 无新候选**：公开仓库仍无 TINNO/holi 签名 loader；同 SoC 样本使用不同 OEM key。
 - **完整 root 路线复审**（新）：`system_app` 可直接调用 update_engine（实测 `--cancel`
   返回服务错误而非权限拒绝）；update_engine 是唯一可写 boot **和** vbmeta 的可达域；

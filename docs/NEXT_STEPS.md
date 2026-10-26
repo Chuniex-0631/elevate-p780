@@ -11,11 +11,20 @@
 
 ## 2026-10-27 当前优先
 
-1. **6931 target A（selinux_state）——完整 root 主线**：
-   - 不依赖 A 槽启动；成功后 permissive + 现有 installd uid0 shell 即完整 root；
-   - 已有：KASLR/sock/cred 泄漏、perf 组 u16 回绕、delta 校准、`x19` 观测；
-   - 待解决：`values` 槽位（V）的确定性放置；observed-V 双组方案在真机卡死过，
-     需要更小的观察组/同步释放载体；
+1. **6931 —— 完整 root 主线**：
+   - 不依赖 A 槽启动；成功后 permissive / uid0 shell 即完整 root；
+   - 已有：KASLR/sock/cred 泄漏、perf 组 u16 回绕、delta 校准；
+   - 观测点已改为 `perf_read` 的 **x24**（x19 在 IRQ 关闭区，采样不可靠）；
+   - 文件页缺页 + 16 页步长可校准 delta 且不移动 X；
+   - ⛔ 新阻塞：values 常落在 slab 顶部，X 上方 15 槽没有活 sock；
+     喷 512 sock / UDP 占 X 均失败，一次 sock churn 还导致重启；
+   - ⛔ 顶部槽位策略也失败：先分配 4 个 sock 占 X 及相邻槽，再 read0，
+     X1 跳到 57 槽外的另一页；SLUB 当前页 freelist 不能按“向下连续”控制；
+   - **下一步 A**：直接 OOB 到 cred 的可行性——检查已知 cred 是否落在
+     `X..X+67KB` 内，命中则直接 `values[index] += delta` 改
+     `cred->cap_effective`，绕开 victim sock/fake skb；
+   - **下一步 B**：若 X→cred 距离长期不命中，停止 6931 堆 groom；
+     优先找 misc/slot 元数据写入路径，或 EDL 签名 loader。
    - 现成记录：[`OBSERVED-V-20261027.md`](../tools/uring/analysis/OBSERVED-V-20261027.md)。
 2. **update_engine 路线（暂停，能力已备）**：
    - ✅ 验签绕过、任意块写都已实测；
