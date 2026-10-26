@@ -1,0 +1,2281 @@
+_FVH
+.text
+`.data
+.reloc
++ih8J
+1R9h
+R9g!
+jj8k
+RBl)
+RB|'
+RB`-
+hztxH
+ !Hz
+kjjx?=
+@9Iz
+zxxhj88
+j88p
+RBT<
+RB(=
+4ij(8
+hjt8H
+ 9Iz
+QJa@
+kjj8?
+4iz(x
+T?!4k
+E@8j
+5(1@
+@y?q
+R!|"
+R!8#
+RhD@8
+R!T-
+Rch<
+R!h4
+R!47
+R!D$
+Rcx+
+@9-M@8
+i.@8
+@9kO@8I
+@9 =p
+@9KO@8I
+@9a=p
+@9nM@8
+@9b=p
+@9L=p
+@9MM@8
+3`}`
+@9y=p
+@9}=p
+M@8o
+@9B=p
+@9">p
+3b|`
+@9U=p
+HC_8(
+@9pM@8)
+@9#<p
+@9LM@8
+[8'q
+M_84a
+@9NM@8p
+@9m=p
+Kik8+
+j 8k
+">)U
+R,hk8
+4Mik8k
+j<8W
+R!p%
+R!P&
+R!X,
+R!$-
+@9!=p
+@9,M@8N
+@9A=p
+ N@8
+@9L=
+@9LM@8m
+@9mM@8
+M@8)
+3DN@8
+@9N=
+@9b<p
+@9,M@8J
+/M@8
+qL@8f
+@9O>
+@9c=p
+^O@8
+@9h=p
+@9NM@8
+9h&@9
+9hF@9
+9`NA8
+N@8I
+@9NM@8P
+*ij8
+)@yJ
+-@yJ
+(ih8
+R!\&
+V@9@OA8
+!MA8(
+@9,M@8
+@9@=p
+R!\2
+@9`=p
+3`=p
+hN@8i
+i/@8
+O@8I
+9 OA8(
+jl8)
+*I{(
+Q*[k
+T,yh
+T*ih
+Trjq
+`nL<
+R7a@
+)3@9
+T"'@
+T"+@
+T"3@9
+T"/@
+*8#0
+J(8"
+RZS8
+'@9*
+if@9
+i6@9
+8(;@
+Q-%@8P
+Y9+%@8K
+`9+%@8K
+A)d$
+8j~H
+9h-G
+@8*q^8+a^8-
+^80q_81a_8K
+3,Q^8/
+@9)Q_8@
+R!P1
+A8(N_82
+@90>@9/:@9@
+316@9(
+3W&@8"
+R!`2
+Y9w%@8
+%@8*
+%@8K
+R!88
+(%@8-
+@9(=
+%@8"
+@9mM@8/
+R,M@8
+R!L;
+R!T<
+R!\=
+R!d>
+R;a@
+5@C]
+T@C]
+*BH6
+R!h9
+R!X:
+R!,!
+MWk&
+Rwj 
+R!X<
+h&C)k*@
+ThbB)
+R!(%
+b@9P
+q@9?
+A@9V
+Q@9Q
+a@9L
+q@9G
+)kx8
+T@3WzW
+TuB4
+T`"@
+@z)u
+99r<
+R!03
+R!02
+R!<9
+R!d;
+R!H>
+TCC_
+!C9)
+(ih8H
+i}8t
+*9s"
+R!d#
+R!4$
+R!0/
+R!`-
+i:8Z
+R!X+
+R!L,
+~)! 
+u_>)V
+ 6Z,
+06:'
+R9a@
+R!, 
+R!p'
+R!83
+R!81
+.6)8
+*!@)+%A)
+&>)h
+*!A))-@)*#>)?
+)/=)
+*!A))-@)
+/=)T
+*!A)+%@)
+J(8>
+TCC@
+"B9h
++)A))1@)
+2=)I
+iz8)
+!@9Y
+R!d,
+R!0(
+jkh8)
+'f)U
+R8a@
+*i(8 
+$F)(}`
+RcT)
+"F)!
+R!T*
+R!T+
+++>)(
+R! 7
+&F)]
+9)!@)
+^A9w
+R!T6
+R!t9
+()A)+%@)
+)A)l
+"8)h
+"9)h
+";)h
+)A)L
+#8)H
+#9)H
+#;)H
+'>)i
+#=)(
+R!P=
+R!|?
+R!,/
+R!`5
+R!|1
+R!42
+R!,3
+R!\6
+@9uM@8
+@9oM@80
+3)%@9@
+R!d9
+(<@9
+R!0;
+R!4<
+(@B9
+(4@9
+(8@9
+4)8@9?
+)4@9?
+R!L?
+A~9(
+@9"N@8
+@9A>p
+3A|`
+32<p
+3R|`
+9A~H
+9Q~X
+9O~P
+jj8K
+R!h"
+!@9*
+%@9*
+)@9*
+h=8 
+R!D(
+R!X)
+R?k(8
+RB0?
+-@9*
+1@9*
+5@9*
+R!l&
+(G~9
+R(G>9)
+R!p4
+R!05
+R5a@
+R!$8
+hkh8
+hkh8H
+'})5
+@9nM@82
+*%@9
+M@8!5@9
+3,~`
+M@8C
+Q%@9
+N@8E5@9
+@92<p
+9/~X
+9/|X
+91|P
+9+|H
+9.}X
+91}P
+kh8)
+jh8?
+H-@8
+@.@8
+@9$L@8
+,@87
+,@8-
+ki8,
+ii8?
+kh8?
+k(8kk(8
+ .@8
+,@8]
+Thki8+
+ki8?
+k)8jk)8
+jh8)
+M@8@
+K%@9
+@9)A
+N@8B5@9
+@9->p
+3M~`
+M@8d
+@9 >p
+3 |`
+r%@9
+@9#N@8f5@9"
+@9@<p
+3`|`
+9P~X
+9P|X
+9R|P
+9L|H
+9O}X
+9R}P
+i-@8
+,@8,
+kj8_
+M@8 
++%@9
+M@8"5@9
+@9`M@8C
+9,|H
+9.~X
+9,~P
+9-~H
+OM@8
+-@8!
+ki8+
+ji8?
+Th~@
+KM@8
+-@8O
+ji8+
+K-@8
+,@8+
+q`)Zz
+T)}@
+*`~|
+iu8(
+i"@)
+B]8(
+R!\0
+R! 5
+R!@1
+#=),)@)-%A)
+R!d6
+R!L8
+A]8?K)8(K68
+R!(?
+TB/@
+TH;@
+3Iz"
+RB|0
+RBL1
+*IC3
+CxH!
+RBH2
+RB,5
+R!d5
+q@y?
+R!04
+R!P7
+R!|3
+R!x#
+R!,(
+6$D@
+6$$@x
+*Ja@
+jh8h
+ij8)
+R*}@
+;@9c
+RBX/
+RB\4
+hh8+hh8
+*ib8K
+T*D@
+T*hi8
+i)8)
+qJa@
+T@ 8
+ThB 
+kw8(
+q)a@
+1ka@
+T`&@
+7`"@
+Z)a@
+xixJ
+@8)!
+@8i#
+yjx)
+@8k!
+yix+
+4HW@
+TKs@
+QLG,
+TH#Ey
+*LW@
+TJ3@
+q\'@
+4,'(7
+5LW@
+*L[@
+4H[@
+TJ;@
+TH7@
+*JW@
+THW@
+@9%L@8'
+@9D<p
+!&@9
+L@8'6@91B
+9D|H
+9A|X
+I#@)JS@
+DzhZ
+TaB"
+IN),
+07$!
+072!
+@9w<p
+9v|H
+9p|X
+9o|P
+TOjs8p
+ok38
+qR~@
+ C@Ly
+@9G>
+9w|H
+TOju8
+ok58
+@96O@8
+TrC8
+@9$N@8
+@9C>p
+3r<p
+9C~H
+T)hj8K
+:WDO
+N[TDO1
+4@9t
+VDO"N@8
+|VDO#
+]VDOq
+3?VDO
+NA|`
+%@x/
+*0!]x
+T1A]x
+T2a]x
+T&!^x
+T'A^x
+T9a^x
+,a^xl
+,A^x
+,!^xl
+R1z;
+;jz8Zjzx]$
+T0E-
+zmxY
+,a]x
+,A]x
+0!]x
+*)q>
+LinuxLoader
+ASSERT_EFI_ERROR (Status = %r)
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/out/target/product/p780/obj/ABL_OBJ/Build/DEBUG_CLANG35/AARCH64/QcomModulePkg/Application/LinuxLoader/LinuxLoader/DEBUG/AutoGen.c
+!EFI_ERROR (Status)
+Loader Build Info: %a %a
+Feb 20 2024
+18:05:10
+LinuxLoader Load Address to debug ABL: 0x%llx
+LinuxLoaderEntry Address: 0x%llx
+Unable to Allocate memory for Unsafe Stack: %r
+Initialize the device info failed: %r
+LinuxLoader: Could not enumerate partitions: %r
+Multi Slot boot is supported
+Error reading key status: %r
+Failed to get Reboot reason: %r
+VB Reset Device State error: %r
+Boot reason: 0x%x not handled, defaulting to Normal Boot
+RecoveryInit failed ignore: %r
+Error finding board information: %r
+KeyPress:%u, BootReason:%u
+Fastboot=%d, Recovery:%d
+VM Hyp calls not present
+LoadImageAndAuth failed: %r
+Launching fastboot
+Failed to Launch Fastboot App: %d
+Error locating the reset reason protocol
+''''''''
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdeModulePkg/Library/PeiDxeDebugLibReportStatusCode/DebugLib.c
+Format != ((void *) 0)
+(CHAR8 *)BaseListMarker <= FormatString
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/BaseLib/SafeString.c
+((UINTN) String & 0x00000001) == 0
+((UINTN) Destination & 0x00000001) == 0
+((UINTN) Source & 0x00000001) == 0
+(Destination != ((void *) 0))
+(Source != ((void *) 0))
+(DestMax <= (_gPcd_FixedAtBuild_PcdMaximumUnicodeStringLength))
+(DestMax != 0)
+(DestMax > SourceLen)
+InternalSafeStringNoStrOverlap (Destination, DestMax, (CHAR16 *)Source, SourceLen + 1)
+(Length <= (_gPcd_FixedAtBuild_PcdMaximumUnicodeStringLength))
+(CopyLen != 0)
+(CopyLen > SourceLen)
+(DestMax <= (_gPcd_FixedAtBuild_PcdMaximumAsciiStringLength))
+InternalSafeStringNoAsciiStrOverlap (Destination, DestMax, (CHAR8 *)Source, SourceLen + 1)
+(Length <= (_gPcd_FixedAtBuild_PcdMaximumAsciiStringLength))
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/BaseLib/String.c
+Destination != ((void *) 0)
+(UINTN)(Destination - Source) > StrLen (Source)
+(UINTN)(Source - Destination) > StrLen (Source)
+(UINTN)(Source - Destination) >= Length
+Length <= _gPcd_FixedAtBuild_PcdMaximumUnicodeStringLength
+Length < _gPcd_FixedAtBuild_PcdMaximumUnicodeStringLength
+StrSize (FirstString) != 0
+StrSize (SecondString) != 0
+Result <= ((((UINTN) ~0) - (*String - L'0')) / 10)
+Result <= DivU64x32 (((UINT64) ~0) - (*String - L'0') , 10)
+Result <= ((((UINTN) ~0) - InternalHexCharToUintn (*String)) >> 4)
+*(String - 1) == L'0'
+Result <= RShiftU64 (((UINT64) ~0) - InternalHexCharToUintn (*String) , 4)
+(UINTN) (Destination - (CHAR8 *) Source) >= StrSize (Source)
+(UINTN) ((CHAR8 *) Source - Destination) > StrLen (Source)
+*Source < 0x100
+AsciiStrSize (ReturnValue) != 0
+(UINTN)(Destination - Source) > AsciiStrLen (Source)
+(UINTN)(Source - Destination) > AsciiStrLen (Source)
+Length <= _gPcd_FixedAtBuild_PcdMaximumAsciiStringLength
+Length < _gPcd_FixedAtBuild_PcdMaximumAsciiStringLength
+AsciiStrSize (FirstString)
+AsciiStrSize (SecondString)
+AsciiStrSize (Destination) != 0
+AsciiStrSize (String) != 0
+AsciiStrSize (SearchString) != 0
+*(String - 1) == '0'
+AsciiStrSize (Source) != 0
+(UINTN) ((CHAR8 *) Destination - Source) > AsciiStrLen (Source)
+(UINTN) (Source - (CHAR8 *) Destination) >= (AsciiStrSize (Source) * sizeof (CHAR16))
+Value < 100
+Value < 0xa0
+(Value & 0xf) < 0xa
+detected buffer overflow in %a, line %d
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/BaseLib/RShiftU64.c
+Count < 64
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/BaseLib/LShiftU64.c
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/BaseLib/DivU64x32.c
+Divisor != 0
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/UefiBootServicesTableLib/UefiBootServicesTableLib.c
+gImageHandle != ((void *) 0)
+gST != ((void *) 0)
+gBS != ((void *) 0)
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/UefiRuntimeServicesTableLib/UefiRuntimeServicesTableLib.c
+gRT != ((void *) 0)
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/UefiLib/UefiLib.c
+TableGuid != ((void *) 0)
+Table != ((void *) 0)
+ProtocolGuid != ((void *) 0)
+NotifyFunction != ((void *) 0)
+Registration != ((void *) 0)
+Name != ((void *) 0)
+NotifyTpl <= 31
+Lock != ((void *) 0)
+Priority <= 31
+Lock->Lock == EfiLockReleased
+Lock->Lock != EfiLockUninitialized
+Lock->Lock == EfiLockAcquired
+Name != ((void *) 0) && Guid != ((void *) 0) && Value != ((void *) 0)
+*Value != ((void *) 0)
+SupportedLanguages != ((void *) 0)
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/DxeHobLib/HobLib.c
+mHobList != ((void *) 0)
+HobStart != ((void *) 0)
+((BOOLEAN)(0==1))
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/DxeServicesTableLib/DxeServicesTableLib.c
+gDS != ((void *) 0)
+Invalid parameter Info
+Booting Into Recovery Mode
+Booting Into Mission Mode
+Err: line:%d %a() status: %r
+LoadImageAndAuth
+No bootable slot
+MultiSlot %a, partition name %s
+AVB version %d
+LoadImageAndAuth failed %r
+Sending Milestone Call
+Error sending milestone call to TZ
+FreeVerifiedBootResource
+GetCertFingerPrint: Invalid parameters
+GetCertFingerPrint
+false
+VB CmdLine allocation failed!
+ERROR: Failed to load image header: %r
+ERROR: Invalid image header size: %u
+Invalid boot image header:%r
+ERROR: Failed to allocate AvbOpsUserData
+ERROR: Failed to allocate AvbOps
+dtbo
+AppendVBCmdLine
+AsciiStrLen
+Unable to locate VB protocol: %r
+AppendVBCommonCmdLine
+ androidboot.verifiedbootstate=
+green
+orange
+yellow
+ androidboot.keymaster=1
+LoadImageAndAuthVB2
+ERROR: Can not determine slot suffix
+LoadImageAndAuthVB2: Error int TZ Rollback Version syscall; ScmCall Status: (0x%x)
+Slot: %a, allow verification error: %a
+State: Unlocked, AvbSlotVerify returned %a, continue boot
+ERROR: Device State %a,AvbSlotVerify returned %a
+Unlocked
+Locked
+Recovery HeaderVersion %d 
+Header version  %d
+Invalid vendor_boot partition. Skipping
+ERROR: Device State %a, AvbSlotVerify returned %a
+Requested Partition: %a
+Loaded Partition: %a
+NumLoadedPartition(%d) too large max images(%d)
+ERROR: AvbSlotVerify slot data error: num of loaded partitions %d, requested %d
+Total loaded partition %d
+ERROR: Failed to allocate VB2Data
+Invalid boot image header size: %u
+vendor_boot
+DateSupport: %d
+com.android.build.boot.security_patch
+VB2: Authenticate complete! boot state is: %a
+No bootable slots found enter fastboot mode
+Non Multi-slot: Unbootable entering fastboot mode
+VB2: boot state: %a(%d)
+vbmeta
+LoadBootImageHeader
+IsValidPartition
+No Ffbm cookie found, ignore: %r
+Boot State is : %d
+Your device is corrupt. It can't be trusted and will not boot.
+Your device will shutdown in 30s
+Your device has loaded a different operating system.
+Wait for 5 seconds before proceeding
+Device will boot into FFBM mode
+Device is unlocked, Skipping boot verification
+KeyMasterStartApp: Invalid Handle
+Unable to locate QSEECom protocol: %r
+keymaster
+KeyMasterStartApp: QseecomStartApp failed status: %r
+keymaster app id %d
+KeyMasterStartApp: Get Version err, status: %d, response status: %d, Major: %d
+KeyMasterStartApp success AppId: 0x%x, Major: %d
+Invalid parameter BootState
+Invalid state to boot!
+KeyMasterSetRotAndBootState
+KeyMasterSendRotAndBootState: Set ROT err, Status: %r, response status: %d
+KeyMasterSendRotAndBootState: Set BootState err, Status: %r, response status: %d
+KeyMasterSetRotAndBootState: SetFuse (TZ_HLOS_IMG_TAMPER_FUSE) fails!
+KeyMasterSetRotAndBootState: SetFuse (TZ_HLOS_TAMPER_NOTIFY_FUSE) fails!
+KeyMasterSetRotAndBootState success
+Vbh input params invalid
+SetVerifiedBootHash
+Set Vbh Error, Status: %r, response status: %d
+VBH not supported in keymaster
+KeyMasterGetDateSupport
+Keymaster: Get date support error, status: %d, response status: %d
+Date in patch level not supported in keymaster
+avb_sha256_init
+avb_sha256_update failed, Data is NULL
+avb_sha256_update failed, Ctx->user_data is NULL
+avb_sha256_update: HashUpdate failed
+avb_sha256_final failed, Ctx->user_data is NULL
+avb_sha256_final
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_property_descriptor.c
+: ERROR: 
+Invalid tag for property descriptor.
+Overflow while adding up sizes.
+Descriptor payload size overflow.
+Invalid digit.
+No terminating NUL byte in key.
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_slot_verify.c
+1400
+: FATAL: 
+assert fail: ops->read_is_device_unlocked != NULL
+1401
+assert fail: ops->read_from_partition != NULL
+1402
+assert fail: ops->get_size_of_partition != NULL
+1403
+assert fail: ops->read_rollback_index != NULL
+1404
+assert fail: ops->get_unique_guid_for_partition != NULL
+1405
+assert fail: ops->validate_public_key_for_partition != NULL
+1428
+AVB_SLOT_VERIFY_FLAGS_NO_VBMETA_PARTITION was passed but the validate_public_key_for_partition() operation isn't implemented.
+1433
+assert fail: ops->validate_vbmeta_public_key != NULL
+1458
+Requested partitions cannot be empty when using AVB_SLOT_VERIFY_FLAGS_NO_VBMETA_PARTITION
+1511
+assert fail: avb_strcmp(slot_data->vbmeta_images[0].partition_name, "boot") == 0
+1537
+assert fail: slot_data->cmdline == NULL
+root=PARTUUID=$(ANDROID_SYSTEM_PARTUUID)
+1587
+assert fail: ret == AVB_SLOT_VERIFY_RESULT_OK
+ERROR_OOM
+ERROR_IO
+ERROR_VERIFICATION
+ERROR_ROLLBACK_INDEX
+ERROR_PUBLIC_KEY_REJECTED
+ERROR_INVALID_METADATA
+ERROR_UNSUPPORTED_VERSION
+ERROR_INVALID_ARGUMENT
+1670
+Unknown AvbSlotVerifyResult value.
+(unknown)
+Partition name is not valid UTF-8.
+Partition name and suffix does not fit.
+: Error loading footer.
+assert fail: footer_num_read == AVB_FOOTER_SIZE
+: DEBUG: 
+: No footer detected.
+: Invalid vbmeta size in footer.
+Loading vbmeta struct in footer from partition '
+Loading vbmeta struct from partition '
+: No such partition. Trying 'boot' instead.
+: Error loading vbmeta data.
+assert fail: vbmeta_num_read <= vbmeta_size
+assert fail: pk_data != NULL && pk_len > 0
+: Error verifying vbmeta image: 
+: Error verifying vbmeta image: invalid vbmeta header
+: Error verifying vbmeta image: unsupported AVB version
+: chained vbmeta image has non-zero flags
+assert fail: !is_main_vbmeta
+: Public key used to sign data does not match key in chain partition descriptor.
+assert fail: is_main_vbmeta
+: Error while checking public key used to sign data.
+: Public key used to sign data rejected.
+: Error getting rollback index for location.
+: Image rollback index is less than the stored rollback index.
+: Error storing rollback index for location.
+assert fail: slot_data->num_vbmeta_images == 0
+assert fail: slot_data->num_vbmeta_images > 0
+: Too many vbmeta images.
+: VERIFICATION_DISABLED bit is set.
+: Descriptor is invalid.
+: Encountered chain descriptor not in main image.
+: Chain partition descriptor is invalid.
+: Chain partition has invalid rollback_index_location field.
+: Kernel cmdline descriptor is invalid.
+: Kernel cmdline is not valid UTF-8.
+: Invalid rollback_index_location.
+: Error determining partition size.
+: Loading entire partition.
+: Error loading data from partition.
+: Read fewer than requested bytes.
+: Too many loaded partitions.
+sha256
+sha512
+: Unsupported hash algorithm.
+: Digest in descriptor not of expected size.
+: Hash of data does not match digest in descriptor.
+: success: Image verification completed
+1368
+System partition name and suffix does not fit.
+1375
+No system partition.
+1378
+Error getting unique GUID for system partition.
+androidboot.vbmeta.device
+PARTUUID=$(ANDROID_VBMETA_PARTUUID)
+androidboot.vbmeta.avb_version
+1228
+Error getting device state.
+androidboot.vbmeta.device_state
+unlocked
+androidboot.vbmeta.hash_alg
+androidboot.vbmeta.size
+androidboot.vbmeta.digest
+1295
+assert_not_reached()
+disabled
+androidboot.vbmeta.invalidate_on_error
+enforcing
+restart_on_corruption
+ignore_zero_blocks
+logging
+ignore_corruption
+$(ANDROID_VERITY_MODE)
+androidboot.veritymode
+0123456789abcdef
+$(ANDROID_BOOT_PARTUUID)
+1032
+1041
+Error getting unique GUID for partition.
+avb_abort!
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_util.c
+assert fail: value != NULL
+Overflow when adding values.
+Overflow when adding string sizes.
+Insufficient buffer space.
+Failed to allocate memory.
+Overflow while determining total length.
+Too many strings passed.
+assert fail: dest == ret + total_length
+ReadSecurityState: Locate SCM Status: (0x%x)
+ReadSecurityState: ScmSipSysCall Status: (0x%x)
+ReadSecurityState: ScmSysCall failed: Status = (0x%x)
+Invalid parameter is_secure
+ReadSecurityState failed!
+LocateProtocol failed for SetFuse!
+ScmSipSysCall failed for SetFuse!
+LocateProtocol failed for GetFuse!
+ScmSipSysCall failed for GetFuse!
+KeyMasterSetRotAndBootState: ScmGetFeatureVersion fails!
+TZ didn't support this feature! Version: major = %d, minor = %d, patch = %d
+Not updating rollbackindex as current slot is unbootable
+UpdateRollbackSyscall: Locate SCM Status: (0x%x)
+UpdateRollbackSyscall: ScmGetFeatureVersion fails!
+UpdateRollbackSyscall: ScmCall Status: (0x%x)
+TZ_UPDATE_ROLLBACK_VERSION_ID failed, Status = (0x%x)
+UpdateRollbackSyscall: Older TZ, skipping update
+Invalid parameter Version
+LocateProtocol failed for ScmGetFeatureVersion!
+ScmSipSysCall failed for ScmGetFeatureVersion!
+TZ_INFO_GET_FEATURE_VERSION_ID failed, Status = (0x%x)
+AVB0
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_vbmeta_image.c
+Magic is incorrect.
+Length is smaller than header.
+Mismatch between image version and libavb version.
+Release string does not end with a NUL byte.
+Block size is not a multiple of 64.
+Overflow while computing size of boot image.
+Block sizes add up to more than given length.
+Boot image location and length mismatch.
+Hash is not entirely in its block.
+Signature is not entirely in its block.
+Public key is not entirely in its block.
+Public key metadata is not entirely in its block.
+Invalid or unknown algorithm.
+Embedded hash has wrong size.
+Unknown algorithm.
+Hash does not match!
+OK_NOT_SIGNED
+INVALID_VBMETA_HEADER
+HASH_MISMATCH
+SIGNATURE_MISMATCH
+Unknown AvbVBMetaVerifyResult value.
+bad input paramaters
+AvbGetSizeOfPartition: GetHandleInfo failed
+Negative Offset outside range.
+negative Offset (%d) converted to (%u) 
+read from %a, 0x%x bytes at Offset 0x%x, partition size 0x%x
+Allocate for partial read failed!
+StartBlock 0x%llx, ReadOffset 0x%llx, read_size 0x%x
+StartBlock 0x%llx, ReadOffset 0x%llx,read_size 0x%x outside range.
+ReadBlocks failed %d
+LastBlock 0x%llx, ReadOffset 0x%llx, read_size 0x%x
+LastBlock 0x%llx, ReadOffset 0x%llx, read_size 0x%x outside range.
+FullBlock 0x%llx, ReadOffset 0x%x, read_size 0x%x outside range.
+Load Image %a total time: %lu ms 
+ValidateVbmetaPublicKey PublicKeyLength %d, PublicKeyMetadataLength %d
+GetUserKey failed!, %r
+ValidateVbmetaPublicKey: public key length too large %d
+ValidateVbmetaPublicKey OutIsTrusted %d, UserKey %d
+ValidatePartitionPublicKey PublicKeyLength %d, PublicKeyMetadataLength %d
+ValidatePartitionPublicKey: public key length too large %d
+ValidatePartitionPublicKey OutIsTrusted %d, UserKey %d
+ReadRollbackIndex failed! %r
+ReadRollbackIndex Location %d, RollbackIndex %d
+WriteRollbackIndex Location %d, RollbackIndex %d
+Updating rollback index %d, for location %d
+No PartitionRecord!
+AvbGetUniqueGuidForPartition: Partition %a, name too large
+%s uuid: %a
+AvbGetSizeOfPartition invalid parameter pointers
+Error allocating memory for AvbOps.
+GetHandleInfo: Partition %a, name too large
+GetHandleInfo: GetBlkIOHandles failed!
+GetHandleInfo: No media!
+GetHandleInfo: More than one result!
+D|,eJ
+Q+lZ'
+1sbX
+IE/G
+k5^]
+J[_c
+<*EG
+Jc_n::*
+vJv6
+oc +F$&
+,1mZ)
+GexhQ
+~/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_chain_partition_descriptor.c
+Invalid tag for chain partition descriptor.
+Invalid rollback index location value.
+@/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_descriptor.c
+Descriptor size is not divisible by 8.
+image_data is NULL
+foreach_func is NULL
+assert fail: (((uintptr_t)image_data) & (AVB_ALIGNMENT_SIZE - 1)) == 0
+Descriptors not inside passed-in data.
+assert fail: (((uintptr_t)dh) & (AVB_ALIGNMENT_SIZE - 1)) == 0
+Invalid descriptor length.
+Invalid data in descriptors array.
+assert fail: data.descriptor_number == num_descriptors
+AVBf
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_footer.c
+Footer magic is incorrect.
+No support for footer version.
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_hash_descriptor.c
+Invalid tag for hash descriptor.
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_kernel_cmdline_descriptor.c
+Invalid tag for kernel cmdline descriptor.
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_rsa.c
+Invalid key.
+Unexpected key length.
+Key does not match expected length.
+Invalid input.
+Error parsing key.
+Signature length does not match key length.
+Padding length does not match hash and signature lengths.
+Error allocating memory.
+Padding check failed.
+Hash check failed.
+D7q/;M
++Yo,
+&\8!
+* qW
+LwH'
+L*~e
+DlError locating PRNG protocol, using default canary :%r
+Error getting PRNG random number, using default canary: %r
+Error: Stack Smashing Detected. Halting...
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/ArmPkg/Library/ArmArchTimerLib/ArmArchTimerLib.c
+(_gPcd_FixedAtBuild_PcdArmArchTimerFreqInHz/1000000U)
+TimerFreq != 0
+ARM Architectural Timer is not available in the CPU, hence this library can not be used.
+Failed to allocate pages for memory map
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/QcomModulePkg/Library/BootLib/ShutdownServices.c
+StrSize
+Error returned from GetRamPartitions %r
+RamPartitions is NULL
+Locate EFI_RAMPARTITION_Protocol failed, Status = %r 
+WARNING: Unsupported EFI_RAMPARTITION_PROTOCOL
+Failed to get MinPasrSize, Status = %r
+Error returned from ReadRamPartitions %r
+Memory Base Address: 0x%x
+EMMC
+NAND
+Error getting pmic model info: %r
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/QcomModulePkg/Library/BootLib/Board.c
+PMIC Model 0x%x: 0x%x
+Error finding board pmic info: %r
+PMIC Target 0x%x: 0x%x
+Raw Chip Id   : 0x%x
+Chip Version  : 0x%x
+Foundry Id    : 0x%x
+Chip BaseBand    : %a
+Fusion Value    : %d
+HLOS SubType    : 0x%x
+Error locating MemCardInfoProtocol:%x
+This API not supported in Revision =%u
+Get BootLun =%u
+SetBootLun =%u
+Error calculating Crc of the unicode serial number: %x
+Error: HW Platform string is NULL
+Locate Protocol failed for gEfiChipInfoProtocolGuid
+Failed to Get the ChipIdString
+Total DDR Size: 0x%016lx 
+Locate EFI_RAMPARTITION_Protocol failed, Status =  (0x%x)
+Failed to get RAM partitions
+Error Occured while populating RamPartitions
+Unknown
+Device type unknown
+Get BlkIohandles failed
+Error locating pmic protocol: %r
+Error getting pmic info: %r
+Error getting pmic info ext: %r
+Error: Failed to locate PlatformInfo protocol.
+Error: GetPlatformInfo failed.
+Error: Unknown platform type (%d).
+Platform Info : 0x%x
+Invalid Type to GetLoadAddr():%d
+BootLinux: invalid parameter Info
+Failed to update HypData!! Status:%r
+BootLinux: Get%aImage failed!
+Boot
+Base memory not found!!! Status:%r
+Integer Overflow: PageSize=%u, KernelSizeActual=%u
+Kernel Load Address: 0x%x
+Kernel Size Actual: 0x%x
+Second Size Actual: 0x%x
+Ramdisk Load Address: 0x%x
+Ramdisk Size Actual: 0x%x
+Ramdisk Offset: 0x%x
+Device Tree Load Address: 0x%x
+root=
+Error updating cmdline. Device Error %r
+Shutting Down UEFI Boot Services: %lu ms
+ERROR: Can not shutdown UEFI boot services. Status=0x%X
+After Life support not available
+ANDROID!
+Invalid boot image header
+VNDRBOOT
+Invalid vendor_boot image header
+Invalid vendor-img pagesize. MAX: %u. PageSize: %u and VendorImageHdrSize: %u
+Integer Overflow: Vendor Ramdisk Size = %u
+Invalid image Sizes
+KernelSize: %u, PageSize=%u
+Invalid image pagesize
+MAX: %u. PageSize: %u and ImageHdrSize: %u
+Integer Overflow: Kernel Size = %u
+Integer Overflow: Ramdisk Size = %u
+Integer Overflow: dt Size = %u
+Integer Overflow: Actual Kernel size = %u
+Integer Overflow: ImgSizeActual=%u, RamdiskActual=%u
+Integer Overflow: ImgSizeActual=%u, DtSizeActual=%u
+Invalid boot image header: %d
+DTB Image not present: DTB Size = %u
+Integer Overflow: ImgSizeActual=%u, DtbActual=%u
+Recovery Dtbo Size too big %x, Allowed size %x
+Integer Overflow: RecoveryDtboOffset=%u RecoveryDtboActual=%u
+Integer Overflow: ImgSizeActual=%u, RecoveryDtboActual=%u
+Boot Image Header Info...
+Image Header version     : 0x%x
+Kernel Size 1            : 0x%x
+Kernel Size 2            : 0x%x
+Ramdisk Size             : 0x%x
+DTB Size                 : 0x%x
+Vendor Ramdisk Size      : 0x%x
+Failed to allocate for Boot image Hdr
+Integer Overflow: ImgSize=%u
+Integer Overflow: in ALIGNMENT_MASK_4KB addition
+No resources available for ImageBuffer
+Failed Kernel Size   : 0x%x
+GetImage: invalid parameters
+AsciiStrnCpyS
+AsciiStrnCatS
+UpdateBootParamsSizeAndCmdLine: Failed to find vendor_boot image
+UpdateBootParamsSizeAndCmdLine: Failed to cat cmdline
+CatCmdLine: Failed to allocate memory for cmdline
+UNCOMPRESSED_IMG
+QueryBootParams Failed: 
+calculating dynamic offsets
+Not Enough space left to load kernel image
+Integer Overflow: the length of decompressed data = %u
+Decompressing kernel image failed!!!
+Decompress kernel size is smaller than image header size
+Decompressing kernel image total time: %lu ms
+Patched kernel detected
+DTB offset goes beyond kernel size.
+DTB header can get corrupted due to runtime kernel size
+Dtb offset goes beyond the image size
+Not the single appended DTB
+Single appended DTB found
+Integer Overflow: in single dtb header addition
+Error: Device Tree blob not found
+Error: Appended Soc Device Tree blob not found
+Error: Board Dtbo blob not found
+Unable to Allocate buffer for Overlay DT
+Error: HypOverlay DT is NULL
+HypInfo: Not overlaying hyp dtboDtbo :%d is null or Bad DT header
+Unable to Allocate buffer for HypOverlay DT num: %d
+Error: Dtb overlay failed
+ApplyOverlay: Overlay DT is NULL
+ApplyOverlay: Unable to Allocate Pre Buffer for Overlay
+ApplyOverlay: Install blob failed
+ApplyOverlay: ufdt apply overlay failed
+ApplyOverlay: After overlay DTB size exceeded than supported
+Apply Overlay total time: %lu ms 
+Error: Ramdisk size is over the limit
+Integer Overflow: ImageBuffer=%u, RamdiskOffset=%u
+Device Tree update failed Status:%r
+Integer Overflow: while Kernel image copy
+Kernel size is over the limit
+ERROR: Failed to switch to 32 bit mode.Status= %r
+the input data is not a gzip package.
+the available length: %u of out_buf is not enough, need %u.
+allocating z_stream failed.
+header error
+1.2.8
+inflateInit2 failed!
+Error in decompression: Output buffer full
+Error in decompression: Something went wrong while decompression
+Out of memory
+DTB offset is NULL
+Error while DTB parse continue with next DTB
+Error while DTB parsing RTIC prop continue with next DTB
+Best match DTB tags %u/%08x/0x%08x/%x/%x/%x/%x/%x/(offset)0x%08x/(size)0x%08x
+Using pmic info 0x%0x/0x%x/0x%x/0x%0x for device 0x%0x/0x%x/0x%x/0x%0x
+Current node is the end
+Unable to find Base memory for DDR %r
+Tags address is not valid
+Tag size is over the limit
+DTB offset is incorrect, kernel image does not have appended DTB
+Exact DTB match found. DTBO search is not required
+Bestmatch = %x
+No match found for Soc Dtb type
+GetOvrdDtb
+Override DTB: GetBlkIOHandles failed loading user_dtbo!
+Override DTB: Buffer allocation failure
+Override DTB: DtboImgBuffer loading falied
+Override DTB: Integer overflow detected Dtbo address
+Override DTB: No proper DtTable
+Override DTB: Exceeding maximum supported dtb count in Image
+Override DTB: No Valid DTB in image
+Dtbo Img buffer is NULL
+Integer overflow deteced with Dtbo address
+Integer overflow detected with Dtbo address
+No Valid Dtb
+Dtbo count = %u LocalBoardDtMatch = %x
+Unable to find the Board Dtb
+DT Total number of entries: %d, DTB version: %d
+ERROR: Unsupported version (%d) in dt node check 
+Delete don't fit DTB entry %u/%08x/0x%08x/%x/%x/%x/%x/%x/%x/%x
+DTs list: NULL
+model
+Failed to allocate memory for model
+model does not exist in device tree
+qcom,pmic-id
+qcom,board-id
+qcom,pmic-id (%d) or qcom,board-id(%d) in device tree is not a multiple of (%d %d)
+qcom,board-id (%d) in device tree is not a multiple of (%d)
+qcom,msm-id
+qcom,msm-id entry not found
+qcom, msm-id in device tree is (%d) not a multiple of (%d)
+Failed to allocate memory for board_data
+Failed to allocate memory for platform_data
+Failed to allocate memory for pmic_data
+Failed to allocate memory for dt_entry_array
+Device tree exact match the board: <0x%x 0x%x 0x%x 0x%x> == <0x%x 0x%x 0x%x 0x%x>
+Device tree's msm_id doesn't match the board: <0x%x 0x%x 0x%x 0x%x> != <0x%x 0x%x 0x%x 0x%x>
+dt_node_tmp is NULL
+Add DTB entry 0x%x/%08x/0x%08x/0x%x/0x%x/0x%x/0x%x/0x%x/0x%x/0x%x
+Failed to allocate memory for dt_node_member
+Failed to allocate memory for dt_node_member->dt_entry_m
+Unable to locate root node
+Platform dt prop search failed.
+qcom, msm-id does not exist (or) is (%d) not a multiple of (%d)
+Board dt prop search failed.
+qcom,pmic-id-size
+LenPmicId(%d) is not multiple of PmicEntSz(%d)
+CurDtbInfo->DtMatchVal : 0x%llx  BestPmicInfo.DtMatchVal :0x%llx
+qcom,pmic-id does not exit
+Boardsocid = %x, Dtsocid = %x
+qcom,msm-id does not match
+BoardSocRev = %x, DtSocRev =%x
+soc version does not match
+BoardFoundry = %x, DtFoundry = %x
+soc foundry does not match
+BoardVariant = %x, DtVariant = %x
+qcom,board-id does not match
+qcom,board-id major version does not match
+qcom,board-id minor version does not match
+BoardSubtype = %x, DtSubType = %x
+subtype-id doesnot match
+ddr size does not match
+qcom,board-id does not exist (or) (%d) is not a multiple of (%d)
+pmic_data[%u].:%x
+Pmic model does not match Idx(%u)
+Pmic revision does not match
+BestPmicInfo.DtMatchVal : 0x%llx CurPmicInfo[%u]->DtMatchVal : 0x%llx
+ERROR: Couldn't find the suitable DTB!
+Failed to add the memory information addr: %d
+Failed to add the memory information size: %d
+ddr_device_rank_ch 
+ddr_device_hbb_ch _rank 
+ERROR: Invalid device tree header ...
+ERROR: Integer Overflow: fdt size = %u
+ERROR: Failed to move/resize dtb buffer ...
+/memory
+ERROR: Could not find memory node ...
+ERROR: Cannot update memory node
+DDR Info Buffer: Out of resources
+DDR deviceType:%d
+ddr_device_type
+ERROR: Cannot update memory node [ddr_device_type]:0x%x
+ddr_device_type is added to memory node
+ddr_device_rank, HBB not supported in Revision=0x%x
+DdrInfo->num_channels:%d
+ddr_device_rank_ch%d:%d
+ddr_device_rank_ch%d
+ERROR: Cannot update memory node ddr_device_rank_ch%d:0x%x
+ddr_device_rank_ch%d added to memory node
+ddr_device_hbb_ch%d_rank%d:%d
+ddr_device_hbb_ch%d_rank%d
+ERROR: Cannot update memory node ddr_device_hbb_ch%d_rank%d:0x%x
+ddr_device_hbb_ch%d_rank%d added to memory node
+/chosen
+ERROR: Could not find chosen node ...
+bootargs
+ERROR: Cannot update chosen node [bootargs] - 0x%x
+rng-seed
+ERROR: Cannot update chosen node [rng-seed] - 0x%x
+ERROR: Cannot generate Random Seed - %r
+kaslr-seed
+ERROR: Cannot update chosen node [kaslr-seed] - 0x%x
+kaslr-Seed is added to chosen node
+ERROR: Cannot generate Kaslr Seed - %r
+linux,initrd-start
+ERROR: Cannot update chosen node [linux,initrd-start] - 0x%x
+linux,initrd-end
+ERROR: Cannot update chosen node [linux,initrd-end] - 0x%x
+Start DT fstab node update: %lu ms
+End DT fstab node update: %lu ms
+Failed to update device tree for partial goods, Status=%r
+Update Device Tree total time: %lu ms 
+Failed to Get parent node: fstab
+error: %d
+Node: %a found.
+Boot device buffer: Out of resources
+Failed to get Boot Device: %r
+Property:%a is not found for sub-node:%a
+Property:%a found for sub-node:%a
+Property:%a
+Disabling node status :%a
+ERROR: Failed to disable Node: %a
+Update property:%a value is not proper to update for sub-node:%a
+String length mismatch b/w DT Bootdevice string (%d) and expected Bootdevice strings (%d)
+Invalid memory configuration, check memory partition table: %r
+ERROR: Not a valid memory node found!
+RAM Partitions
+Add Base: 0x%016lx Available Length: 0x%016lx 
+Add Base: 0x%016lx Length: 0x%016lx Fail
+Error finding root offset
+#address-cells
+Error finding #address-cells property
+#size-cells
+Error finding #size-cells property
+Error unsupported cell size value: #address-cell %d#size-cell
+Mismatch memory address cell and size cell size
+Unable to get Granule Size, Status = %r
+/mem-offline
+INFO: Could not find mem-offline node.
+granule
+INFO: Granule size update failed.
+INFO: Unable to get DDR Info protocol:%r
+INFO: GetDDR details failed
+DDR Header Revision =0x%x
+ERROR: Number of channels is over the limit
+ERROR: Number of ranks is over the limit
+Unable to get splash buffer info, %r
+Version=%d
+Addr=0x%08x
+Size=0x%08x
+/reserved-memory/splash_region
+ERROR: Could not get splash memory region node
+FB mem node name: %a
+ERROR: Could not find the splash reg property
+ERROR: splash mem reservation node size. Expected: %d, Actual: %d
+Splash memory region before updating:
+ERROR: integer Overflow while updating FBAddress
+ERROR: integer Overflow while updating FBSize
+ERROR: Could not update splash mem info
+Splash memory region after updating:
+reg = <0x%08x 0x%08x 0x%08x 0x%08x>
+/reserved-memory/demura_region_0
+/reserved-memory/demura_region_1
+/soc/qcom,dsi-display-primary
+/soc/qcom,dsi-display-secondary
+Could not find the demura reg property
+Invalid demura node size
+Could not update demura info
+qcom,demura-panel-id
+Could not find the panel id property
+Invalid panel ID size
+Could not update demura panel id
+Error locating PRNG protocol. Fail to generate random seed:%r
+Error getting PRNG random number. Fail to generate Kaslr seed:%r
+/firmware/android/fstab
+/soc/
+Unable to get Filesystem Handle buffer %r
+Unable to get Filesystem Handle %r
+Loading Image Start : %u ms
+ExecImgFromVolume(): multiple partitions found.
+%s: GetBlkIOHandles failed: %r
+LoadImageFromPartition
+Loading Image Done : %lu ms
+Total Image Read size : %d Bytes
+Image Handle Failed %r
+Error getting counter property
+VBRwDevice failed with: %r
+Unable to locate NandPartiGuid protocol: %r
+NandPartiGuid GenGuid failed with: %r
+NUll BlockIo or Image
+WriteBlockToPartition: Input Handle is Null.
+Unable to locate Erase block protocol handle:%r
+Write the divisible Image failed :%r
+Failed to allocate zero pool for ImageBuffer
+Reading block failed :%r
+Writing single block failed :%r
+%s: multiple partitions found.
+WriteToPartition
+Write the Msg failed :%r
+Error Reading the secure state: %r
+Error Reseting device state: %r
+Unable to locate Erase block protocol handle: %r
+Unable to Erase Block: %r
+Waiting for the erase event to signal the completion
+Failed to get Boot Device Base address, %r
+%x.ufshc
+%x.sdhci
+Unknown Boot Device type detected 
+Failed to locate MDTP protocol, Status=%r
+Failed to get mdtp state, Status=%r
+Charger Protocol is not available.
+Error finding charger protocol: %r
+Error getting off mode charging info: %r
+Error locating pmic pon protocol: %r
+Error getting pon reason: %r
+Error getting warm reset status: %r
+Error getting charger info: %r
+ PON Reason is %d cold_boot:%d charger path: %d
+Error locating charger detect protocol
+Error getting the info of charger: %r
+Error battery voltage: %d Requireed voltage: %d, can flash: %d
+Error battery check status: %r voltage: %d
+Failed to allocated memory for System path query
+System partition does not exist
+ root=/dev/mmcblk0p%d
+ rootfstype=squashfs root=/dev/mtdblock%d ubi.mtd=%d
+ rootfstype=ubifs rootflags=bulk_read root=ubi0:rootfs ubi.mtd=%d
+ root=/dev/sd%c%d
+Unknown Device type
+System Path - %a 
+Error Finding board serial num: %x
+UpdateCmdLine VBCmdLine present len %d
+Failed to get LEVerityCmdLine: %r
+Device will boot into off mode charging mode
+Invalid BaseBand String
+ androidboot.baseband=
+%a%d
+board id read failed =%r!
+%a, %a 
+secboot register is  %x 
+Cmdline: %a
+Error getting battery presence: %r
+Error getting battery voltage: %r
+Error getting charger presence: %r
+ androidboot.bootdevice=
+ androidboot.boot_devices=soc/
+ androidboot.serialno=
+ androidboot.mode=
+ quite
+ androidboot.mode=charger
+ androidboot.alarmboot=true
+ androidboot.journey.customer=1
+ androidboot.slot_suffix=
+ rootwait ro init=
+/init
+ skip_initramfs
+Unable to get Panel Config, %r
+ androidboot.dtbo_idx=
+ androidboot.dtb_idx=
+ androidboot.board_id_for_odm=
+ androidboot.pcb_version=
+Error locating the smem protocol
+SmemAlloc(SMEM_ID_VENDOR0) failed: %d
+info:b:%lld, s:%lld
+ androidboot.secboot.enable=
+ androidboot.force_normal_boot=1
+ androidboot.fstab_suffix=
+emmc
+default
+CMDLINE: Failed to allocate destination buffer
+Input Open protocol failed Status:%r 
+Key Stroke Read
+ScanCode = (0x%x), UnicodeChar =(0x%x)
+ShiftState=(0x%x), ToggleState==(0x%x)
+Error resetting the input key status: %x
+Error reading virtualab msg from misc partition: %r
+Error read virtualab msg version:%u magic:%u not valid
+read virtualab MergeStatus:%x
+Error Reading from misc partition: %r
+Error in loading Data from misc partition
+Recovery command: %d %a
+ffbm-
+qmmi
+ffbm-02
+Error Reading FFBM info from misc: %r
+WriteVirtualABMessage
+Write the VirtualAbMsg failed :%r
+ReadFromPartitionOffset
+Error allocating memory for reading from Partition
+Error offset:%u passed is not multiple of blocksz:%u
+Failed to get Shared IMEM base, %r
+Failed to get MPM Sleep counter base, %r
+Bad BootStat id: %u, Max: %u
+BootStats: ID-%d: Kernel Load Start:%u
+BootStats: ID-%d: Kernel Load Done:%u
+BootStats: ID-%d: BootStatClockCount:%u
+Failed to get width or height
+Height * Width overflow
+BufferSize * sizeof (EFI_GRAPHICS_OUTPUT_BLT_PIXEL) overflow
+Error: Check the CHAR_NUM_PERROW: Y-axis(%d) is larger than Y-max(%d)
+Failed to allocate zero pool for BltBuffer.
+Failed to allocate zero pool for FontDisplayInfo.
+Failed to render a string to the display: %r
+Failed to allocate zero pool for message info.
+Backup the boot logo blt buffer failed: %r
+Failed to get the handle for the active console input device.
+Failed to get the graphics output protocol.
+Failed to get the width of the screen.
+Failed to get the height of the screen.
+Failed to allocate zero pool for StrSourceTemp.
+"$'Exit key detection timer
+Create keys detection event: %r
+Unsupported menu type
+ffbm-00
+Failed to update fastboot option item
+Failed to update option item's background
+ERROR: Failed to set keys detection Timer: %r
+Failed to allocate zero pool for device info.
+Unable to Read Device Info: %r
+Failed to update the unlock status: %r
+Unable to show %a menu on screen: %r
+Unlock
+Lock
+Creating unlock keys detect event
+Display menu is not enabled!
+H]Failed to allocate zero pool.
+__________
+Unable to show fastboot menu on screen: %r
+Creating fastboot menu keys detect event
+p780
+PRESS POWER KEY TO CONTINUE
+ID: %a
+unsupported
+Unable to show verified menu on screen: %r
+ID: 
+    
+Selected Lun : %d, handle: %d does not have partition record, ignore
+Invalid parameter, pleae check BlockIo info!!!
+Integer overflow while adding LastBlock and 1
+Integer overflow while multiplying LastBlock and BlockSize
+Unsupported  boot device type
+Failed to get BlkIo for device. MaxHandles:%d - %r
+Failed to get the BlockIo for device. MaxHandle:%d, %r
+Unable to Allocate Memory for GptHdr 
+Unable to read the media 
+ Skipping Lun:%d, i=%d
+Error in GPT header, GUID is not match!
+Invalid GPT header fields MaxPtnCount = %x, PtnEntrySz = %x
+Error Calculating CRC32 on the Gpt header: %x
+Error writing primary GPT header: %r
+Error getting block IO handle for %d lun, Lun may be unused
+Error populating block IO handles
+Mibib Magic do not match
+Updating GPT partition
+Failed to write Gpt partition: %x
+Invalid Partition type: %x
+IsCurrentSlotBootable: no active slots found!
+IsCurrentSlotBootable: No boot partition entry for slot %s
+Slot suffix %s Part Attr 0x%lx
+Slot %s is unbootable 
+SetActiveSlot: input parameter invalid
+SetActiveSlot
+SetActiveSlot: No boot partition entry for slot %s
+SetActiveSlot: %s already active slot
+Boot lun mismatch switch from 1 to 2
+Reboot Required
+Boot lun mismatch switch from 2 to 1
+Alternate slot %s, New slot %s
+HandleActiveSlotUnbootable
+HandleActiveSlotUnbootable: No boot partition entry for slot %s
+FirstBoot, skipping slot Unbootable
+Alternate Slot %s is bootable
+HandleActiveSlotUnbootable: Rebooting
+HandleActiveSlotUnbootable: gRT->Resetystem didn't work
+ClearUnbootable: GetActiveSlot failed.
+ClearUnbootable: No boot partition entry for slot %s
+FindBootableSlot: input parameter invalid
+FindBootableSlot
+FindBootableSlot: No boot partition entry for slot %s
+Active Slot %s is bootable
+Active Slot %s is bootable, retry count %ld
+A/B retry count NOT decremented
+Slot %s is unbootable, trying alternate slot
+BootLinux: failed to get dtbo image
+DtboImgBuffer is NULL
+Dtbo hdr magic mismatch %x, with %x
+Dtbo Table TotalSize got corrupted
+Dtbo Table HeaderSize got corrupted
+Dtbo Table DtEntrySize got corrupted
+Dtbo Table DtEntryOffset got corrupted
+DTB header is corrupted, DtEntryCount %x, DtEntrySize %x, DtboImgSize %x
+DTB header is corrupted, DtEntryOffset %x, DtEntryCount %x,DtEntrySize %x, DtboImgSize %x
+GetActiveSlot: No boot partition entry for slot %s
+Error getting block IO handle for Emmc
+Error getting block IO handle for Lun:%x
+Gpt Image size is invalid
+MBR signature do not match
+Failed to get the BlockIo for the device
+Gpt Image size is invalid!
+GPT: Error processing primary GPT header
+Gpt Image size is invalid!!
+GPT: Error processing backup GPT header
+Failed to patch GPT
+Error erasing the storage device: %r
+Error writing protective MBR: %x
+Error writing secondary GPT header: %x
+Error writing partition entries array for Primary Table: %x
+Error writing partition entries array for Secondary Table: %x
+Updated Partition Table Successfully
+Gpt signature is not correct
+GPT Header size is too small: %u
+GPT Header is too large: %u
+Header CRC mismatch CrcVal = %u and CrcOrig = %u
+GPT first usable LBA mismatch
+FirstUsableLba: %u out of Device capacity
+LastUsableLba: %u out of device capacity
+Invalid partition entry size: %u
+Invalid Max Partition Count: %u
+Error calculating CRC for primary partition entry
+Error calculating CRC for secondary partition entry
+Error calculating CRC for primary gpt header
+Error calculating CRC for secondary gpt header
+GetBootPartitionEntry: No boot partition entry for slot %s
+GetBootPartitionEntry: No boot partition entry for slot %s, invalid index
+GetActiveSlot: bad parameter
+GetActiveSlot
+GetActiveSlot: found active slot %s, priority %d
+GetActiveSlot: First Boot: No boot partition entry for slot %s
+GetActiveSlot: First boot: set default slot _a
+GetActiveSlot: No active slot found
+GetActiveSlot: Slot attr: Priority %ld, Retry %ld, Active %ld, Success %ld, unboot %ld
+Unable to get GetMultiSlotPartsList
+Switching the boot lun from 1 to 2
+Switching the boot lun from 2 to 1
+Unable to Allocate Memory for MultiSlot Partition list
+ValidateSlotGuids: No boot partition entry for slot %s
+ValidateSlotGuids: No partition entry for %s
+ValidateSlotGuids: BootableSlot %s does not have valid guids
+Boot GUID %g
+%s GUID %g
+ValidateSlotGuids
+Boot lun: %x and BootableSlot: %s do not match
+Unsupported Device Type
+Booting from slot (%s)
+GetPartitionEntry: No partition entry for %s, invalid index
+Invalid input parameters
+Integer Overflow: RecoveryDtboOffset=%u RecoveryDtboSize=%u
+Invalid recovery dtbo: RecoveryDtboOffset=%u, RecoveryDtboSize=%u, ImageSize=%u
+Image Header Version: 0x%x
+Recovery Dtbo Offset: 0x%x
+Recovery Dtbo Size: 0x%x
+Error %a charger screen: %r
+Enabling
+Disabling
+DisplayCmdLine, too large!
+Unable to store display cmdline: %r
+Unable to read display cmdline: %r
+VBRwDeviceState Returned error: %r
+Unable to set the Value: %r
+recovery
+--wipe_data
+--reason=MasterClearConfirm
+--locale=en_US
+Unable to Write Device Info: %r
+ANDROID-BOOT!
+Device Magic does not match
+ReadRollbackIndex DeviceInfo not initalized 
+ReadRollbackIndex Loc out of range, index: %d, array len: %d
+WriteRollbackIndex DeviceInfo not initalized 
+WriteRollbackIndex Loc out of range, index: %d, array len: %d
+StoreUserKey DeviceInfo not initalized 
+StoreUserKey, UserKeySize too large!
+EraseUserKey DeviceInfo not initalized 
+GetUserKey DeviceInfo not initalized 
+Unable set the unlock value: %r
+Unable set the unlock critical value: %r
+qcom,rtic-id
+qcom, rtic-id does not exist (or) is (%d) not a multiple of (%d)
+MP_DATA
+MP_DATA entry not found
+Failed to allocate memory for MP Data
+rtic-id (%x)
+MpData : (%x) 
+Length of MpData (%d)
+MpData (%x) 
+Locate SCM Protocol failed, Status = (0x%x)
+Kernel base address (%x)
+Kernel mode check 32/64: KernelLoadAddr->magic_64 (%x) KERNEL64_HDR_MAGIC = %x
+ScmSipSysCall() failed, Status = (0x%x)
+No mm partial goods found.
+PartialGoods for Multimedia: 0x%x
+No partial goods for cpu ss found.
+PartialGoods for Cluster[%d]: 0x%x
+Failed to get MM defective[%d] part. %r
+Failed to Get parent node: %a
+Subnode: %a is not present, ignore
+Partial goods (%a) status property disabled
+Failed to update property: %a, ret =%d 
+/soc
+qcom,kgsl-3d0
+qcom,gmu
+kgsl-smmu
+qcom,gpucc
+qcom,vidc
+qcom,vidc0
+qcom,vidc1
+qcom,videocc
+qcom,cam-req-mgr
+qcom,msm-cam
+qcom,csiphy
+qcom,csiphy0
+qcom,csiphy1
+qcom,csiphy2
+qcom,csiphy3
+qcom,csiphy4
+qcom,csiphy5
+qcom,csid0
+qcom,csid1
+qcom,csid-lite0
+qcom,csid-lite1
+qcom,cam_smmu
+qcom,cam-cpas
+qcom,cam-cdm-intf
+qcom,cpas-cdm0
+qcom,cpas-cdm1
+qcom,cpas-cdm2
+qcom,cam-fd
+qcom,fd
+qcom,ife0
+qcom,ife1
+qcom,ife-lite0
+qcom,ife-lite1
+qcom,cci
+qcom,cci0
+qcom,cci1
+qcom,jpegenc
+qcom,jpegdma
+qcom,camera-flash0
+qcom,camera-flash1
+qcom,cam-icp
+qcom,cam-isp
+qcom,a5
+qcom,ipe0
+qcom,bps
+qcom,cam-jpeg
+qcom,lrme
+qcom,ipe1
+qcom,vfe0
+qcom,vfe1
+qcom,camcc
+qcom,mdss_mdp
+qcom,mdss_rotator
+qcom,mdss_dsi0_ctrl
+qcom,mdss_dsi1_ctrl
+qcom,mdss_dsi_phy0
+qcom,mdss_dsi_phy1
+qcom,mdss_dsi0_pll
+qcom,mdss_dsi1_pll
+qcom,mdss_dsi_pll
+qcom,mdss_dp_pll
+qcom,msm-ext-disp
+qcom,sde_rscc
+qcom,dp_display
+qcom,dispcc
+qcom,msm-adsp-loader
+qcom,lpass
+qcom,msm-adsprpc-mem
+qcom,msm_fastrpc
+qcom,mss
+qcom,turing
+qcom,ssc
+qcom,npucc
+qcom,npu
+Failed to get CPU defective[%d] part. %r
+/cpus
+cpu@0
+enable-method
+psci
+none
+cpu@100
+cpu@200
+cpu@300
+cpu@400
+cpu@500
+cpu@600
+cpu@700
+cpu@101
+cpu@102
+cpu@103
+cpu@104
+cpu@105
+cpu@106
+cpu@107
+cpu@108
+verity=
+verity="
+Failed to allocate memory for SectorSize
+GetLEVerityCmdLine: Sector Size error 
+Failed to allocate memory for DataSize
+GetLEVerityCmdLine: Data Size error 
+Failed to allocate memory for Hash
+GetLEVerityCmdLine: Hash error 
+Failed to allocate memory for FecOff
+GetLEVerityCmdLine: Fec Offset error 
+Partition name:%s
+GetLEVerityCmdLine: System partition does not exist 
+Failed to allocate memory for DMTemp
+ %a dm="%a none ro,0 %a %a 1 %a%d %a%d %a %a %a %d %a %a %a"
+ %a dm="%a none ro,0 %a %a 1 %a%d %a%d %a %a %a %d %a %a %a %d %a %a %a %a%d %a 2 %a %a %a %a"
+LEVerityCmdLine buffer: Out of resources
+LEVerityCmdLine - %a - of length = %d 
+No verity command line found
+root=/dev/dm-0
+verity
+/dev/mmcblk0p
+4096
+aee087a5be3b982978c923f566a94613496b417f2af592639bc80d141e34dfe7
+use_fec_from_device
+fec_roots
+fec_blocks
+fec_start
+GetVmData: making ScmCall to get HypInfo
+GetVmData: Locate SCM Protocol failed, Status: (0x%x)
+GetVmData: No Vm data present! Status = (0x%x)
+GetVmData: ScmSipSysCall returned NULL
+returned Smc call to disable Uart logging from Hyp: 0x%x
+HypInfo is NULL
+Failed to update HypInfo!! Status:%r
+Hyp version: %d
+Invalid HYP MAGIC
+HypInfo: Invalid number of dtbos: %d max supported : %d
+HypInfo: Failed to allocate memory for DtboBaseAddr
+Remove NULL thread pointer, drop it
+try to remove a NULL node
+ remove CurrentThread = %r stack
+Add NULL thread pointer, drop it
+Failed to Allocate memory for UnSafeStack 
+AllocateUnSafeStackPtr CurrentThread = 0x%x,UnSafeStackPtr = 0x%x with API 
+AllocateUnSafeStackPtr ThreadSetThreadUnsafeSPfailed, Status = %d 
+AllocateUnSafeStackPtr CurrentThread = 0x%x with linktable 
+ThreadStackNodeAppend ThreadStackNode notcreated.
+ThreadStackReleaseCb UnSafeStackPtr = 0x%x
+multi stack is not supported, using global single stack.
+SetThreadStackEnv () kernel version = 0x%x 
+Unable to Init thread unsafe stack: %r.
+getStackTableByThread ThreadStackNode notcreated
+getStackTableByThread CurrentThread is NULL 
+Failed to Allocate memory for ThreadStackNodeTmp
+Failed to Allocate memory for ThreadStackNodeTmp->ThreadStackEntry
+Failed to Allocate memory for ThreadStackNodeTmp->ThreadStackEntry->StackBottom 
+Failed to Allocate memory for stack list 
+[GPIO] +++ GpioReadStats!
+[GPIO] Input Open TLMMProtocol failed Status:%r 
+[GPIO]: Error configuring TLMM GPIO%d
+[GPIO]: Error Read TLMM GPIO%d
+[GPIO]: Error release TLMM GPIO%d
+[GpioReadStats]: st0:%lld st1:%lld, sw_stats:%lld, hw_stats:%lld
+TINNOBootLinux:: %a: Failed to GpioReadStats!
+MapBoardIDIdx
+[MapBoardIDIdx]:%lld 
+TINNOBootLinux:: %a: Failed to load ADC Protocol!
+SkuIDVoltageRead
+GPIO6
+TINNOBootLinux:: %a: Failed to get ADC Channel!
+TINNOBootLinux:: %a: Failed to read HW ID PM_GPIO6 ADC Channel!
+TINNOBootLinux:: %a: HW ID Adc Voltage:%lld
+TINNOBootLinux:: %a: voltage:%lld, idx:%d
+GetVoltageIdx
+v010
+v011
+evt2
+v013
+dvt1
+v020
+ndef
+v100
+dvt2
+v110
+dvt3
+rsvd
+dvt4
+v120
+ERROR: %s():
+ufdt_install_blob
+Blob_size %zu smaller than the header size %zu
+incompatible blob version: %d, should be: %d
+error validating blob: %s
+ufdt_apply_overlay
+Bad overlay size!
+Bad fdt size!
+failed to allocate memory for DTB blob with overlays
+Failed to dump the device tree to out_fdt_header
+ufdt_apply_multi_overlay
+Bad main fdt!
+Dts list is invalid: NULL!
+Bad overlay fdt! index: %d
+Failed to apply devie tree
+Failed to apply devie tree, index: %d
+ufdt_overlay_apply
+Overlay_length %zu smaller than header size %zu
+failed to perform local fixups in overlay
+failed to perform fixups in overlay
+failed to apply fragments
+ufdt_overlay_local_ref_update
+linux,phandle
+/__local_fixups__
+/__symbols__
+/__fixups__
+ufdt_overlay_do_fixups
+Bad main_symbols in ufdt_overlay_do_fixups
+Bad overlay_fixups in ufdt_overlay_do_fixups
+Couldn't find '%s' symbol in main dtb
+Couldn't find '%s' path in main dtb
+Failed one fixup in ufdt_do_one_fixup
+ufdt_get_fixup_location
+Missing property part in '%s'
+Missing offset part in '%s'
+'%s' is not valid number
+Path '%s' not found
+Property '%s' not found in  '%s' node
+%s: property length is too small for fixup
+target
+ufdt_apply_fragment
+failed to find target %04x
+target-path
+failed to find target-path %s
+__overlay__
+missing __overlay__ sub-node
+failed to overlay node %s to target %s
+/aliases
+ufdt_get_node_by_path_len
+Failed to find alias %s
+ufdt_node_add_child
+invalid children tag type
+output_property_to_fdt
+Not enough space for the string space: %d
+NODE 
+PROP 
+UNKNOWN 
+node name is NULL.
+ufdt_node_dict_add
+failed to find new index in ufdt_node_dict add for entry :%s:
+%ld -> %s
+ufdt_node_dict_resize
+failed to find new index in ufdt_node_dict resize for entry :%s:
+Fastboot USB: Unable to free Tx Buffer
+Fastboot USB: Unable to free Rx Buffer
+Fastboot Device connected
+Fastboot Device disconnected
+Error, should not happen! Check your USB connection
+Fastboot Build Info: %a %a
+18:04:39
+couldnt Start fastboot usb device, exiting
+Error, failed to handle USB event
+Continue detected, Exiting App...
+couldnt uninit fastboot
+Bulk in XFR aborted
+UsbDeviceTransferStatusCompleteOK
+Bulk in xfr aborted
+unhandled trasnfer status
+Usb controller init event not signaled: %r
+couldnt find USB device protocol, exiting now
+couldnt init fastboot , exiting
+Error start the usb device, cannot enter fastboot mode
+Error Allocate RX buffer, cannot enter fastboot mode
+Error Allocate TX buffer, cannot enter fastboot mode
+Fastboot: Processing commands
+Error the array index out of bounds
+Error Allocating memory for HS config descriptors
+Error Allocating memory for SS config descriptors
+FAIL
+INFO
+OKAY
+Error getting the partition record for Lun %d and Handle: %d : %r
+Name:[%s] StartLba: %u EndLba:%u
+DataReady %d
+Failed to free up fastboot buffer
+Multi thread is not supported.
+DOWNLOAD
+FLASH
+InitMultiThreadEnv successfully, will use thread to flash 
+Fastboot: Initializing...
+Fastboot: Couldn't disable watchdog timer: %r
+Couldn't create Fastboot protocol send event: %r
+Failed to get free memory for fastboot buffer
+ERROR: Allocation fail for minimim buffer for fastboot
+Not enough memory to Allocate Fastboot Buffer
+Fastboot Buffer Size allocated: %ld
+Failed to allocate memory to cmd
+%a%a
+Sending %d:%a
+Download Finished
+AcceptData: Send %d
+Failed to creat event for waiting flash completely
+Failed to set timer for waiting flash completely
+Fatal error sending command response. Exiting.
+ERROR: Undefined response get memory map
+ERROR: integer Overflow while adding additionalmemory to MemMapSize
+ERROR: Failed to allocate memory for memory map
+ERROR: Failed to query memory map
+Free Memory available: %ld
+Invalid input command
+Handling Cmd: %a
+erase
+fastboot: battery voltage: %d
+Warning: battery's capacity is very low
+getvar:partition-type
+Fastboot Send Fail
+unknown command
+oem enable-charger-screen
+oem disable-charger-screen
+oem off-mode-charge
+oem select-display-panel
+oem device-info
+continue
+reboot-recovery
+reboot-fastboot
+snapshot-update
+reboot-bootloader
+getvar:
+download:
+oem display-cmdline
+kernel
+uefi
+max-download-size
+is-userspace
+snapshot-update-status
+product
+serialno
+secure
+Failed to publish part info for all partitions
+%a %a
+variant
+ 0x%x
+logical-block-size
+erase-block-size
+version-bootloader
+version-baseband
+battery-voltage
+battery-soc-ok
+charger-screen-enabled
+hw-revision
+parallel-download-flash
+IsAllowUnlock is %d
+Error Reading FRP partition: %r
+Enabling Charger Screen
+Failed to enable charger screen
+Disabling Charger Screen
+Failed to disable charger screen
+Invalid input entered
+Enter fastboot oem off-mode-charge 0/1
+: failed
+: done
+existing panel name (%a)
+Display get variable failed with status(%d)!
+Display set variable failed with status(%d)!
+Verity mode: %a
+Device unlocked: %a
+Device critical unlocked: %a
+Charger screen enabled: %a
+Failed to load image from partition: %r
+rebooting the device
+Failed to reboot
+Failed to reboot to recovery mode
+rebooting the device to recovery
+Failed to reboot to fastboot mode
+rebooting the device to fastbootd
+merge
+Snapshot Cancel is not allowed in Lock State
+Failed to update snapshot state to cancel
+Invalid snapshot-update command
+Rebooting the device into bootloader mode
+partition-
+Invalid partition name
+GetVar Variable Not found
+ERROR: Fail to get the number of bytes to download.
+Failed to get the number of bytes to download
+ERROR: Data size (%d) is more than max download size (%d)
+Requested download size is more than max allowed
+CmdDownload: Send 12 %a
+Failed to store display command line
+Failed to publish a variable readable(%a): malloc error!
+unknown
+snapshotted
+merging
+cancelled
+slot-count
+Unable to allocate memory for BootSlotInfo
+boot_
+slot-successful:
+slot-unbootable:
+slot-retry-count:
+%llu
+has-slot:boot
+current-slot
+has-slot:system
+has-slot:modem
+partition-size:
+partition-type:
+Error Publishing size info for %s partition
+Error Publishing type info for %s partition
+BlockIo for %s is corrupted
+ 0x%llx
+Partition not found : %s
+ext4
+f2fs
+Failed to Info for %s partition
+Failed to allocate buffer for superblock %s
+%s Found EXT FS type
+%s Found F2FS FS type
+%s No Known FS type Found
+Failed to allocate memory for unlock value 
+Set off mode charger: 
+Selecting Panel: 
+DATA
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/IntelFrameworkModulePkg/Library/DxeReportStatusCodeLibFramework/ReportStatusCodeLib.c
+PostCode != ((void *) 0)
+Filename != ((void *) 0)
+Description != ((void *) 0)
+LineNumber != ((void *) 0)
+ErrorLevel != ((void *) 0)
+Marker != ((void *) 0)
+DevicePath != ((void *) 0)
+ExtendedData != ((void *) 0)
+ExtendedDataSize != 0
+!((ExtendedData == ((void *) 0)) && (ExtendedDataSize != 0))
+!((ExtendedData != ((void *) 0)) && (ExtendedDataSize == 0))
+Status code extended data is too large to be reported!
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/BasePrintLib/PrintLib.c
+(((UINTN) (StartOfBuffer)) & 0x01) == 0
+(((UINTN) (FormatString)) & 0x01) == 0
+(((UINTN) (Buffer)) & 0x01) == 0
+FormatString != ((void *) 0)
+*-369<
+"0123456789ABCDEFSuccess
+Warning Unknown Glyph
+Warning Delete Failure
+Warning Write Failure
+Warning Buffer Too Small
+Warning Stale Data
+Load Error
+Invalid Parameter
+Unsupported
+Bad Buffer Size
+Not Ready
+Device Error
+Write Protected
+Out of Resources
+Volume Corrupt
+Volume Full
+No Media
+Media changed
+Not Found
+Access Denied
+No Response
+No mapping
+Time out
+Not started
+Already started
+Aborted
+ICMP Error
+TFTP Error
+Protocol Error
+Incompatible Version
+Security Violation
+CRC Error
+End of Media
+Reserved (29)
+Reserved (30)
+End of File
+Invalid Language
+Compromised Data
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/BasePrintLib/PrintLibInternal.c
+Width < 38
+(Flags & ~(0x01 | 0x08 | 0x20 | 0x80)) == 0
+((Flags & 0x08) == 0) || ((Flags & 0x80) == 0)
+StrSize ((CHAR16 *) Format) != 0
+AsciiStrSize (Format) != 0
+<null string>
+<null guid>
+%08x-%04x-%04x-%02x%02x-%02x%02x%02x%02x%02x%02x
+<null time>
+%02d/%02d/%04d  %02d:%02d
+%08X
+(((Flags & 0x00000040) == 0)) || (StrSize ((CHAR16 *) OriginalBuffer) != 0)
+(((Flags & 0x00000040) != 0)) || (AsciiStrSize (OriginalBuffer) != 0)
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/UefiMemoryAllocationLib/MemoryAllocationLib.c
+Pages != 0
+(Alignment & (Alignment - 1)) == 0
+RealPages > Pages
+AllocationSize <= (0xFFFFFFFFFFFFFFFFULL - (UINTN) Buffer + 1)
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/ArmPkg/Library/BaseMemoryLibStm/ScanMem8Wrapper.c
+(Length - 1) <= (0xFFFFFFFFFFFFFFFFULL - (UINTN)Buffer)
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/ArmPkg/Library/BaseMemoryLibStm/ZeroMemWrapper.c
+!(Buffer == ((void *) 0) && Length > 0)
+Length <= (0xFFFFFFFFFFFFFFFFULL - (UINTN)Buffer + 1)
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/ArmPkg/Library/BaseMemoryLibStm/CompareMemWrapper.c
+DestinationBuffer != ((void *) 0)
+SourceBuffer != ((void *) 0)
+(Length - 1) <= (0xFFFFFFFFFFFFFFFFULL - (UINTN)DestinationBuffer)
+(Length - 1) <= (0xFFFFFFFFFFFFFFFFULL - (UINTN)SourceBuffer)
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/ArmPkg/Library/BaseMemoryLibStm/SetMemWrapper.c
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/ArmPkg/Library/BaseMemoryLibStm/CopyMemWrapper.c
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/UefiDevicePathLib/DevicePathUtilities.c
+Node != ((void *) 0)
+(Length >= sizeof (EFI_DEVICE_PATH_PROTOCOL)) && (Length < 0x00010000)
+Size != ((void *) 0)
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/BaseLib/DivU64x64Remainder.c
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/BaseLib/DivU64x32Remainder.c
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/BaseLib/Arm/Unaligned.c
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/MdePkg/Library/UefiLib/UefiLibPrint.c
+((UINTN) Format & 0x00000001) == 0
+Console != ((void *) 0)
+ConsoleHandle != ((void *) 0)
+(HorizontalResolution != 0) && (VerticalResolution !=0)
+Blt != ((void *) 0)
+UgaDraw!= ((void *) 0)
+Blt->Image.Bitmap != ((void *) 0)
+RowInfoArray != ((void *) 0)
+RowInfoArraySize <= 1
+StrSize(BufferToReturn)==SizeRequired
+compatible
+<valid offset/length>
+<no error>
+<unknown error>
+FDT_ERR_NOTFOUND
+FDT_ERR_EXISTS
+FDT_ERR_NOSPACE
+FDT_ERR_BADOFFSET
+FDT_ERR_BADPATH
+FDT_ERR_BADSTATE
+FDT_ERR_TRUNCATED
+FDT_ERR_BADMAGIC
+FDT_ERR_BADVERSION
+FDT_ERR_BADSTRUCTURE
+FDT_ERR_BADLAYOUT
+2222
+incorrect header check
+unknown compression method
+invalid window size
+invalid block type
+invalid stored block lengths
+too many length or distance symbols
+invalid code lengths set
+invalid bit length repeat
+invalid code -- missing end-of-block
+invalid literal/lengths set
+invalid distances set
+invalid literal/length code
+invalid distance code
+invalid distance too far back
+incorrect data check
+')+-/1C3E5G
+The register is related to Hypervisor Mode. Can't perform requested operation
+Unknown ARM Generic Timer register %x. 
+Attempt to read ARM Generic Timer registers. But ARM Generic Timer extension is not implemented 
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/bootable/bootloader/edk2/ArmPkg/Library/ArmLib/AArch64/AArch64ArchTimer.c
+Can't write to Read Only Register: CNTPCT 
+Can't write to Read Only Register: CNTVCT 
+Attempt to write to ARM Generic Timer registers. But ARM Generic Timer extension is not implemented 
+ir;a
+nRH}
+2(/-
+|5hJ
+ir;"[N
+ir;E\z
+(H5E
+v28(
+QjuG
+C$Q$
+rQSBQ}
+ systemd.setenv="SLOT_SUFFIX=_a"
+START
+Restart bootloader
+Recovery mode
+Power off
+Boot to FFBM
+Boot to QMMI
+Press volume key to select, and press power key to select
+FastBoot Mode
+PRODUCT_NAME - 
+VARIANT - 
+BOOTLOADER VERSION - 
+BASEBAND VERSION - 
+SERIAL NUMBER - 
+SECURE BOOT - 
+DEVICE STATE - 
+Your device has loaded a different operating system
+Visit this link on another device:
+g.co/ABH
+PRESS POWER KEY TO PAUSE BOOT
+The boot loader is unlocked and software integrity cannot be guaranteed. Any data stored on the device may be available to attackers. Do not store any sensitive data on the device.
+Your device is corrupt. It can't be trusted and will not boot
+Your device is corrupt. It can't be trusted and may not work properly
+system
+userdata
+cache
+metadata
+NB10
+/home/android/work/workspace/P780AE_Rakuten_11.0_DailyBuild/out/target/product/p780/obj/ABL_OBJ/Build/DEBUG_CLANG35/AARCH64/QcomModulePkg/Application/LinuxLoader/LinuxLoader/DEBUG/LinuxLoader.dll
+)EFIDebug
+eRESET_PARAM
+KernelBaseAddr
+KernelSize
+/DisplaySplashBufferInfo
+DisplayDemuraInfo
+misc
+BootDeviceBaseAddr
+recoveryfs
+DisplayPanelConfiguration
+Shared_IMEM_Base
+MPM2_SLP_CNTR_ADDR
+sysfont3x
+sysfont2x
+sysfont4x
+sysfont5x
+sysfont6x
+sysfont7x
+sysfont8x
+ boot_a
+boot_b
+abl_x
+UsbfnMaxSpeed
+Google
+Android
+fastboot
+DisplayPanelOverride
+Downloading %d bytes
+modem
+9GJp
+#+3;CScs
+!1Aa

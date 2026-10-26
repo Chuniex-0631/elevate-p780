@@ -1,0 +1,200 @@
+E1Ec
+=>|Pn
+n\2V
+San Diego1
+CDMA Technologies1
+QUALCOMM1 0
+QUALCOMM Attestation CA0
+240220105817Z
+440215105817Z0f1
+California1
+SecTools Test User1
+SecTools1
+San Diego0v0
+'}gG
+.P[j
+S0Q0
+0LU@
+ g-;
+San Diego1301
+*General Use Test Key (for testing 13 only)1
+QUALCOMM1
+QCT Root CA 10
+210531043937Z
+410526043937Z0
+QUALCOMM Attestation CA0v0
+L)$!
+`0^0
+M>s)
+f*&=
+210531043836Z
+410526043836Z0
+QCT Root CA 10v0
+VM|>
+,gZT
+<0:0
+CFGL
+/pmic_settings.bin
+/devcfg.bin
+PSI2
+RSBP0
+rO0 
+|)8 
+|)< 
+p), 
+O@a@
+p(l 
+ ,`R
+=P E=PB
+>P E>PM
+E=PC
+E>PC
+q(l 
+1pP@
+1pPE
+ [PV
+FPVp
+PrOr
+JQZ E=P E>PF
+1R3r
+q(T@AOUAAO
+t#T@)sUA)s
+p(QCCO
+p QCDO
+ACsh
+@IAU@IIU@IJU@IFQ@IJQ
+1pPP
+)|)P
+u$UA
+u UA
+`TQOaUQObVQOcWQO
+PP?)O
+P?)O
+,P?)s
+PD)O
+0P?)s
+RSBP
+*ArO
+,*Ars
+@@Q@
+r)$@t)
+ @|)
+$@t)xA
+{p)8
+v(dNx)`
+Nx)`
+Nx)v
+Ox)v
+,Np)
+0Np)
+4Np)
+t( P
+Pr)A!
+Pp)F
+Pp)&
+~) N|)
+w(8Nr)t!
+D<Qt
+XQ|)
+hQ|)
+xQ|)
+@Qz)
+DQz)
+HQz)
+LQz)
+PQz)
+TQz)
+w( Rx)
+w(0Rx)
+w(@Rx)
+Qz)p
+0Tz)p
+u(tVv)
+x(tUv)
+x(PRv)
+y(DXt)
+y(PXt)
+y(\Xt)
+y(hXt)
+y(|Yt)
+tX|)
+s(@Zv)
+Zx)T
+[x)T
+u(0[x)T
+u(D[x)T
+D,Np)
+D0Np)
+D@Zp)
+D4Np)
+D<Zp)
+Qx) 
+8Zp)
+q(h\x)
+p)|\x) 
+D<Qp
+t)p\x)
+DZt)
+HZt)
+LZt)
+Yt)P
+Zv)Jd
+Zp)*
+8Zr)
+p(H]~)@
+p]~)J
+z(X]~)
+0^v)
+at)?@
+^v)!a
+]v)!a
+p)L_v)
+@p)D_v)
+a~)8
+w(<`p)y
+w(D`p)y
+`p)y
+D]t)
+x(xa~)
+r)|`v) c
+l`v) d
+v(T_~)
+v(h^t)
+ap)?
+r(Dbp)/
+_p)2
+t!Ta~)J
+4a~)J
+p(\ar)@!
+Zx)J
+c|) 
+r(Xc|) 
+r(|c|) 
+XQ|)Lb
+hQ|)Lb
+xQ|)Lb
+Q|)Lb
+W|)Lb
+tX|)Lb
+X|)Lb
+D]r)
+dv)Ea
+q(@dv)
+q(ddv)
+dx)F
+34OTZPQ
+|xtplhd`\XTPLHD@<8
+#'+/37;?CGKOSW[_cgko
+|xtplhd`\XTPLHD@<8xl`TH<0$
+)*1692354
+|xtplhd`\XTPLHD@<840,(
+IsRemotable
+NumSysWorkLoops
+FixedMemLength
+DalEnv
+DALPROP_TARGET_PROP_NAME
+hs_phy_cfg_addr
+hs_phy_cfg_val
+ss_phy_cfg_addr
+ss_phy_cfg_val
+QUSB_PORT_PRIM

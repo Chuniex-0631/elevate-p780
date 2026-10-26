@@ -1,0 +1,23 @@
+avc evidence: installd cannot setenforce (2026-10-25 20:39)
+
+From the init-domain /dev/kmsg dump (/metadata/kmsg2.bin, 270,522 bytes):
+
+audit: type=1400 audit(1792931803.429:27558): avc:  denied  { setenforce } for  pid=14510 comm="sh" scontext=u:r:installd:s0 tcontext=u:object_r:kernel:s0 tclass=security permissive=0
+audit: type=1400 audit(1792931819.889:27560): avc:  denied  { setenforce } for  pid=14510 comm="sh" scontext=u:r:installd:s0 tcontext=u:object_r:kernel:s0 tclass=security permissive=0
+audit: type=1400 audit(1792931848.837:27605): avc:  denied  { setenforce } for  pid=14510 comm="sh" scontext=u:r:installd:s0 tcontext=u:object_r:kernel:s0 tclass=security permissive=0
+
+Policy search (device files):
+- /system/etc/selinux/plat_sepolicy.cil
+- /system/etc/selinux/mapping/*.cil
+- /vendor/etc/selinux/vendor_sepolicy.cil
+- /vendor/etc/selinux/plat_pub_versioned.cil
+
+Only these mention "setenforce":
+(class security (... setenforce ...))
+(neverallow base_typeattr_182 kernel (security (setenforce)))
+(neverallow base_typeattr_179_30_0 kernel_30_0 (security (setenforce)))
+(dontaudit kernel self (security (setenforce)))
+(dontaudit kernel_30_0 self (security (setenforce)))
+
+No (allow ... (security (setenforce))) rule exists in any readable policy file,
+i.e. no domain on this build may flip SELinux mode at runtime.

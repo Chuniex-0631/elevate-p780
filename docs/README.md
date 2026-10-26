@@ -1,6 +1,6 @@
 # 文档导航
 
-> 2026-10-25 重建。完整目录见 [`index.md`](index.md)（自动生成）；本页只给入口。
+> 2026-10-26 更新。完整目录见 [`index.md`](index.md)（自动生成）；本页只给入口。
 
 | 入口 | 内容 |
 |---|---|
@@ -10,6 +10,19 @@
 | [`HISTORY.md`](HISTORY.md) | 时间线 |
 | [`EVIDENCE_MANIFEST.md`](EVIDENCE_MANIFEST.md) | 证据清单 |
 | [`ARCHITECTURE.md`](ARCHITECTURE.md) | 目录职责与维护约定 |
+
+## 2026-10-25 / 10-26 新专题
+
+- [`research/p780-abl-avb-gsi-20261026.md`](research/p780-abl-avb-gsi-20261026.md) — ABL 工厂菜单、AVB/GSI、XBL EDL。
+- [`research/p780-ghostlock-5.4-20261026.md`](research/p780-ghostlock-5.4-20261026.md) — GhostLock 5.4.233 车辆判负。
+- [`research/p780-edl-programmer-20261026.md`](research/p780-edl-programmer-20261026.md) — EDL 签名 programmer 搜索。
+- [`research/p780-kgsl-cve-2024-23373-20261026.md`](research/p780-kgsl-cve-2024-23373-20261026.md) — kgsl / CVE-2024-23373 / GPUAF。
+- [`research/p780-afunix-cve-2024-26923-20261026.md`](research/p780-afunix-cve-2024-26923-20261026.md) — AF_UNIX GC 触发。
+- [`research/p780-uring-cve-2023-6931-20261025.md`](research/p780-uring-cve-2023-6931-20261025.md) — CVE-2023-6931。
+- [`research/p780-init-capability-20261025.md`](research/p780-init-capability-20261025.md) — init 域能力。
+- [`research/p780-artifact-scan-20261025.md`](research/p780-artifact-scan-20261025.md) — 静态样本扫描。
+- [`research/p780-oem-unlock-final-20261025.md`](research/p780-oem-unlock-final-20261025.md) — OEM unlock final。
+- [`research/p780-vuln-surface-analysis-20261025.md`](research/p780-vuln-surface-analysis-20261025.md) — 攻击面分析。
 
 ## 专题分区
 

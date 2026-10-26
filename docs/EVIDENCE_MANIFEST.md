@@ -1,638 +1,369 @@
 # 证据清单
 
-
-
-> 由 `23-repo-rebuild/build_index.py` 于 2026-10-25 从 `evidence/` 实际文件生成。
-
+> 由 `23-repo-rebuild/build_index.py` 于 2026-10-26 从 `evidence/` 实际文件生成。
 > 每项给出仓库内路径、字节数与 SHA-256；摘要说明见各专题报告。
->
-> 2026-10-25 增补：`evidence/partitions/manifest-20261025.json` 记录只读榨取产物（459 个文件、约 79.7 MB；二进制留在本地，仓库只存 SHA-256）。
 
-
-
-以下自动生成基础清单共 **297** 个文件，合计 **18.9 MB**；不含文末单列的2026-10-25符号恢复增量。
-
-
+共 **360** 个文件，合计 **25.6 MB**。
 
 | 路径 | 字节 | SHA-256 |
-
 |---|---:|---|
-
+| `evidence/20261026/abl/abl_b_scan.txt` | 358 | `0ef6bcbfe004b8c34b37b2382467b965f30912674bcc4ecc1ffa9dfead5b7510` |
+| `evidence/20261026/abl/abl_lzma.bin` | 434376 | `8bca951a25f8bd19a38bca333843f7a982b589d738d6a518bbb934c5afd87437` |
+| `evidence/20261026/abl/abl_lzma.bin.strings.txt` | 64063 | `45479b3b090a14b725a045d7950fca18463fdf63a3b3feb780a172732510d699` |
+| `evidence/20261026/abl/abl_lzma_scan.txt` | 27232 | `a4e040315aea650026a2012bd9355d7dfc08bd1c10422e1868691ea85d624222` |
+| `evidence/20261026/abl/devcfg_b.00.bin.scan.txt` | 3762 | `81ae88ed2736442afc0b8fe9078308fb13de7c8dd271c4329b1c7398c82a503a` |
+| `evidence/20261026/abl/fastbootd-getvar-all.txt` | 946 | `3d09cc3bd151159dfcbf22288db961c9ceb0d9aa9425c4f751f652d9d875493b` |
+| `evidence/20261026/abl/README.md` | 301 | `5743c4008d364c8f64ed75547647f08cce33a81534209a11c75701532b3c90f5` |
+| `evidence/20261026/abl/xbl_b.00.bin.scan.txt` | 10354 | `177958abd8b28be21bbe691b98f07a228c73fd1374a08dde09c0c8d5556fe86a` |
+| `evidence/20261026/abl/xbl_config_b.00.bin.scan.txt` | 368 | `400b291f86adb42704584153cd432a49ca91a827d0bf2955689239ca2dcc01ef` |
+| `evidence/20261026/afunix/poc_26923` | 15448 | `4b364a464efed66b19e912f5c836b479a524929343cd17a84a3bdf8ce08bc681` |
+| `evidence/20261026/afunix/poc_26923.c` | 8835 | `9025cbcc654d5225cb71637ee6069445a6186f724d252e4cd5517156dedf71b9` |
+| `evidence/20261026/afunix/README.md` | 172 | `b7caeda6a34ee2ff398f9c804638e95b39b6745b65e80facaccd3df0cd7fe2e4` |
+| `evidence/20261026/artifact-scan/README.md` | 97 | `299f38319385866cd765113ea974b476620fca977937523c9c4223845e9c2b4c` |
+| `evidence/20261026/artifact-scan/scan.json` | 262716 | `7826e72bf1f8c3364f915bf8f291ddd1c74afe27694f6c8a6ef899fb52091e10` |
+| `evidence/20261026/ghostlock/do_futex.txt` | 82824 | `ae8adceff14e47106119d62c214c70e1c2fc5beae5bc562be42c69bb1d33d620` |
+| `evidence/20261026/ghostlock/futex_wait.txt` | 24382 | `b62fac9353f04ed592247651485f59986d4418e237461ecfb8704065c3c5989a` |
+| `evidence/20261026/ghostlock/README.md` | 259 | `9f66181ece0bf0393bc70591e6f156b8ba42360c9c0dc1754c53e26bb328808b` |
+| `evidence/20261026/ghostlock/restore_sigframe.txt` | 14581 | `0939c0cd8ffc1b000e32809989fe64474c47ae319f2166e955c8c3cb01883e6d` |
+| `evidence/20261026/ghostlock/restore_sigframe_full.txt` | 92138 | `df470eb6ecfc69c661792aed84683ace966a97cb9efd110313619b4d86184689` |
+| `evidence/20261026/gsi/r_gsi/system.avbpubkey` | 1032 | `e53f344beb2646b49651ea8dd336dbe75117183e96ef34beed4b367a4a0ae925` |
+| `evidence/20261026/gsi/r_gsi/vbmeta.img` | 4096 | `b3281c527ecf2a6a743b37f5b9e118f492d2038e0a82e6777d292d1c5b42601a` |
+| `evidence/20261026/gsi/r_gsi_gms/system.avbpubkey` | 1032 | `e53f344beb2646b49651ea8dd336dbe75117183e96ef34beed4b367a4a0ae925` |
+| `evidence/20261026/gsi/r_gsi_gms/vbmeta.img` | 4096 | `b3281c527ecf2a6a743b37f5b9e118f492d2038e0a82e6777d292d1c5b42601a` |
+| `evidence/20261026/gsi/README.md` | 242 | `6054e6e816a1c013af276be1b1833a70f76ef3ec932467d6a79e06e17409ee5c` |
+| `evidence/20261026/init/avc-enforce.txt` | 1333 | `2b89a51c3da53ea7a966be98dbf0992adc22e9c065fe5deca559b45a3b4b7441` |
+| `evidence/20261026/init/final-report-20261025.md` | 7380 | `3bb4758efbddfa186d6c1576c2fa2d8c53a359dc4b182648d0bd5b7672ae4edd` |
+| `evidence/20261026/init/init_status.txt` | 947 | `b3ceb04f176e25eb0307c2c3db148d55eb00ab978bde72d22cc923d679e71ce4` |
+| `evidence/20261026/init/README.md` | 113 | `9209c7cf619878136d3b1517979300cddd1c3eee33eb81cc5802dcae4e93c998` |
+| `evidence/20261026/kernel/README.md` | 382 | `1c374992fae8126386db247f5bf26462854dd1ce6e59341495ee5efb4d34e360` |
+| `evidence/20261026/keys/testkey_rsa4096.pem` | 3243 | `6a224754880a57ab9cbd308267cd157d94cf05a1c8cb851aec4090e045d24121` |
+| `evidence/20261026/oem/fastboot-getvar-all.txt` | 16700 | `a4a133b8b79064142b7a71f0d80875b9cdaa28a4f3767e03174e282e615b0b13` |
+| `evidence/20261026/oem/README.md` | 64 | `eb0e41fce48d1584c91b3278796a67f8655dd751d297c62f66e83408cfe35ca2` |
+| `evidence/20261026/partitions/abl_b.00.bin` | 1048576 | `cf1487794d6e7288092e78f29590a72a74255213760da409c3fd72131c86680b` |
+| `evidence/20261026/partitions/abl_b.00.bin.strings.txt` | 10483 | `d010090ee36c35dce4cf2cfb14376b20e6978b89c09ddea33db6f1a859929d84` |
+| `evidence/20261026/partitions/devcfg_b.00.bin` | 131072 | `f1df10cc82220059d56f596edf77a88a1ef3202e8044f15140e855a7c5c47b7a` |
+| `evidence/20261026/partitions/devcfg_b.00.bin.strings.txt` | 7078 | `4c542b5d1f2254a8b7c11c07968c52ce6d14d28d967f007a532fe9f2d2fc3617` |
+| `evidence/20261026/partitions/devinfo.00.bin` | 4096 | `ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7` |
+| `evidence/20261026/partitions/frp.00.bin` | 524288 | `3dcc7365caea79ba9ce361fc3025be814c443f288973e6a4eb9dc58942997b05` |
+| `evidence/20261026/partitions/misc.00.bin` | 1048576 | `277261eeac6e5594e5dcd609977b769fc1ac06b693cff9de29ad3af7eb6d1946` |
+| `evidence/20261026/partitions/misc_after.00.bin` | 1048576 | `ca88659ee2033c2564acdfa6e91a397c63a6cbe5ba5845524a99935bdba8c85f` |
+| `evidence/20261026/partitions/misc_restore.00.bin` | 1048576 | `277261eeac6e5594e5dcd609977b769fc1ac06b693cff9de29ad3af7eb6d1946` |
+| `evidence/20261026/partitions/README.md` | 533 | `2af73e2c47c1d1cf90f447ada0808119ffb3de8716387cad9e9d70a091ff65fa` |
+| `evidence/20261026/partitions/vbmeta_a.00.bin` | 65536 | `71ff9c498c8386eab849919c04b245171c763182e027332ed879718daa5a5192` |
+| `evidence/20261026/partitions/vbmeta_b.00.bin` | 65536 | `05e904b8635add0bf7e34c65753914099a5c3277e6cf55c8961a83aa2809513b` |
+| `evidence/20261026/partitions/vbmeta_system_a.00.bin` | 65536 | `48ccb84aced3466c6e7421e2b2f7357f65abebe44c7f5ad3e27e8c7826ab3d89` |
+| `evidence/20261026/partitions/vbmeta_system_a.avbpubkey` | 520 | `22de3994532196f61c039e90260d78a93a4c57362c7e789be928036e80b77c8c` |
+| `evidence/20261026/partitions/vbmeta_system_b.00.bin` | 65536 | `f52a061b71163d9c2cca7c8d80029c2b91c9b1f2857e7b8b0e03fc302aaeb1cc` |
+| `evidence/20261026/partitions/xbl_b.00.bin.strings.txt` | 211978 | `34c834ea8bb6d2b784c91d5016530a8645953111da51e82e6821ca0a1ef19d5a` |
+| `evidence/20261026/partitions/xbl_config_b.00.bin` | 131072 | `0ca31ef02bbcb606cb6276068527984af33c9f72ae17e90db91ba5b55b63626f` |
+| `evidence/20261026/partitions/xbl_config_b.00.bin.strings.txt` | 1825 | `eae34f571a59a0eb37b6f0a67ffecc2851b5c0912c6009506b67e931d25cf815` |
+| `evidence/20261026/README.md` | 486 | `c6138c60a19a0e3a8b0d09d2374a9ce160bbaf99387b4d599416cced632b57ae` |
+| `evidence/20261026/vuln-surface/props_report.txt` | 33566 | `24a2de082cc62c7cb0da083660a8bf041c8c9a9292bfa9ef06eccc8f06c28886` |
+| `evidence/20261026/vuln-surface/README.md` | 81 | `63c318d2ae3d5d0ad100211a4c9c6fb7ccb161d1c771e465c42e42af2ee0d5cb` |
 | `evidence/actions/2026-10-10-clang11/android-clang-version.txt` | 320 | `a42d10597ccb74cece967cc278e982bfe8f45a4b4865e9eceae2bb6709b5d90b` |
-
 | `evidence/actions/2026-10-10-clang11/config-changes.json` | 25946 | `282ef65c44274fb4b0b67fca8871fa428689bae03ef7dc7e7404c6e604c89cc8` |
-
 | `evidence/actions/2026-10-10-clang11/config-sha256.txt` | 81 | `afec8d7b862f713a9b5446fbbc5ed94286c2eef0562b7c7a92ab031176875757` |
-
 | `evidence/actions/2026-10-10-clang11/config-summary.md` | 7936 | `baa99cf57b85f13cd7475a81eb48daa3383b6d2a38e8874f556a4bd1e67b6cbf` |
-
 | `evidence/actions/2026-10-10-clang11/config.diff` | 29215 | `fb57d678f5dec1db2bf784b0d3db7f12af09c4dba9c6c4b2bb760e29e1afc860` |
-
 | `evidence/actions/2026-10-10-clang11/IMPORTANT.txt` | 62 | `d38d398890d8eda6e496cf07576d0ec6223bd0702eabfdfb257b691f6eff383c` |
-
 | `evidence/actions/2026-10-10-clang11/olddefconfig-clang11.log` | 1642 | `d9446354940cf05d6e43be990fd223e241252f7cc7aa272aeb048a168f305453` |
-
 | `evidence/actions/2026-10-10-clang11/olddefconfig-exit.txt` | 2 | `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa` |
-
 | `evidence/actions/2026-10-10-clang11/original.config` | 178163 | `db168f088e0de4b54dd2058b7b542c176ae377af8b0322e6a27e80bdc8caad24` |
-
 | `evidence/actions/2026-10-10-clang11/post-compile.config` | 190456 | `6861d2658ec4828a4feb21503450816b9e75e3ed7197fb1af192b334212c9d43` |
-
 | `evidence/actions/2026-10-10-clang11/resolved.config` | 190456 | `6861d2658ec4828a4feb21503450816b9e75e3ed7197fb1af192b334212c9d43` |
-
 | `evidence/actions/2026-10-10-clang11/rtmutex-build-exit.txt` | 2 | `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa` |
-
 | `evidence/actions/2026-10-10-clang11/rtmutex-clang11.log` | 46540 | `fdc8a869ccb85ca34f4d4747cf9916eca58bac6167f4b021cff17dc89ee340e6` |
-
 | `evidence/actions/2026-10-10-clang11/rtmutex-sha256.txt` | 95 | `00b48201f1412c23d08e9e7c8f4a0dc7c2bdc42b8f6183a09ea377433a001855` |
-
 | `evidence/actions/2026-10-10-clang11/rtmutex-type.txt` | 46 | `62640c97d99b6373a81766281587f0afa3818ee9034533555dea735b252b3424` |
-
 | `evidence/actions/2026-10-10-clang11/rtmutex.o` | 187280 | `4894a2675d971f4bf3506f9ed68eb576b479088e8d49b13ff8723093fbbc01c5` |
-
 | `evidence/actions/2026-10-10-clang11/source-clone.log` | 2831 | `1a64f779cfad4855684334b9d820c6761c288a9782f4f4b6d3d26e9491514090` |
-
 | `evidence/actions/2026-10-10-clang11/source-commit.txt` | 41 | `2c0cb7f0eae62dae551a040aaee6984f5dd2308a89999d75d570d5886995b464` |
-
 | `evidence/actions/2026-10-10-clang11/specific-changes.txt` | 1458 | `e9453194bba4b96cbbc5a73c83fac8e46a1e8016e7ffbda4de0f89bafb8ed061` |
-
 | `evidence/actions/2026-10-10-clang11/toolchain-clone.log` | 34 | `7619213cc3974e46347df0806b136dc8ab58ac290f9e75753efec0581f901133` |
-
 | `evidence/actions/2026-10-10-clang11/toolchain-commit.txt` | 41 | `378deb51c61f789bea3a2b6f7ff19bb612da228e81d45c18edfac2d10ed2bd7c` |
-
 | `evidence/actions/2026-10-10-clang11/toolchain-size.txt` | 37 | `2a1b722bbdd4a24ec5c6bfca1e9fc19fcdcaae1122d3325018dcee23d28e62b5` |
-
 | `evidence/actions/2026-10-10-clang11/toolchain-sparse.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
-
 | `evidence/actions/2026-10-10-clang14/clone.log` | 3251 | `74c5ade9668302bbaf4f243e1f259c47dffa2747f0274d8660d93b21dc515e3e` |
-
 | `evidence/actions/2026-10-10-clang14/config-changes.json` | 26248 | `a2e6503364f99942e5b619efebe7cc69df0e3ac4dc91a06bba15db73e8145923` |
-
 | `evidence/actions/2026-10-10-clang14/config-sha256.txt` | 81 | `afec8d7b862f713a9b5446fbbc5ed94286c2eef0562b7c7a92ab031176875757` |
-
 | `evidence/actions/2026-10-10-clang14/config-summary.md` | 7981 | `4b46e66707e725df13df20f13ac3e2b4c9e18750b95f822a24d1b9bba2d4a4a7` |
-
 | `evidence/actions/2026-10-10-clang14/config.diff` | 29961 | `b0a4479fa4bac9beeb9c69e6b34213aeacbbf847490e32125508722ac2f50c44` |
-
 | `evidence/actions/2026-10-10-clang14/host-clang-version.txt` | 110 | `a09097b784a9df985ba9b033c4c4650d3052545a7f9fc4e6fa8ce304521383d5` |
-
 | `evidence/actions/2026-10-10-clang14/IMPORTANT.txt` | 68 | `a1c78782e8fe1ebeefa2aa20ee619e86b1a32beccc6f00ec26f6438836a1ee95` |
-
 | `evidence/actions/2026-10-10-clang14/key-options.txt` | 313 | `f3083552835d557892008cf6631146b4dfaffa1d1f7cc1acbfaf448f9ef79371` |
-
 | `evidence/actions/2026-10-10-clang14/object-elf-header.txt` | 87 | `36b90a276005713ddf4e249d8dc7fa5b0b4c193d55980e4859435cdac44dd6cc` |
-
 | `evidence/actions/2026-10-10-clang14/object-type.txt` | 46 | `62640c97d99b6373a81766281587f0afa3818ee9034533555dea735b252b3424` |
-
 | `evidence/actions/2026-10-10-clang14/olddefconfig-exit.txt` | 2 | `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa` |
-
 | `evidence/actions/2026-10-10-clang14/olddefconfig.log` | 1642 | `d9446354940cf05d6e43be990fd223e241252f7cc7aa272aeb048a168f305453` |
-
 | `evidence/actions/2026-10-10-clang14/original.config` | 178163 | `db168f088e0de4b54dd2058b7b542c176ae377af8b0322e6a27e80bdc8caad24` |
-
 | `evidence/actions/2026-10-10-clang14/post-compile.config` | 190506 | `6608c2e42e475d42e82262e59d69ba8c827a099884ff4832404f3b90e6a1184e` |
-
 | `evidence/actions/2026-10-10-clang14/resolved.config` | 190506 | `6608c2e42e475d42e82262e59d69ba8c827a099884ff4832404f3b90e6a1184e` |
-
 | `evidence/actions/2026-10-10-clang14/rtmutex-build-exit.txt` | 2 | `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa` |
-
 | `evidence/actions/2026-10-10-clang14/rtmutex-build.log` | 46540 | `8a37ab8702a20f3bdc0c3f99be65da2d3de7ba5cdeb5c368ef0100b7eb7e5dd0` |
-
 | `evidence/actions/2026-10-10-clang14/rtmutex-compile-command.txt` | 52075 | `0104db9ab47e7e2b5c639eb2c867606d427ca71c1a499f27fde5f8484fdbe864` |
-
 | `evidence/actions/2026-10-10-clang14/rtmutex-object-sha256.txt` | 95 | `6ebc9815a7d86f4fcad7e3fa68ec8946aa7c3baff56ce343d699858c3272403d` |
-
 | `evidence/actions/2026-10-10-clang14/rtmutex-object-type.txt` | 46 | `62640c97d99b6373a81766281587f0afa3818ee9034533555dea735b252b3424` |
-
 | `evidence/actions/2026-10-10-clang14/rtmutex.o` | 188700 | `abdfbd86e5d9bfc1e782c21071a5e8bca4e351ff0c475662563a4a30fd4ca033` |
-
 | `evidence/actions/2026-10-10-clang14/runner-uname.txt` | 120 | `d7465b14a6fc0ea1f95515f8990876631c5a5e02459610d484f1aea49d81bd78` |
-
 | `evidence/actions/2026-10-10-clang14/source-commit.txt` | 41 | `2c0cb7f0eae62dae551a040aaee6984f5dd2308a89999d75d570d5886995b464` |
-
 | `evidence/actions/2026-10-10-clang14/source-kernel-version.txt` | 121 | `241ebbcb926217385e74be0bbb23dbb8d8e319ff847646daba59f9b8d7b4a3be` |
-
 | `evidence/actions/2026-10-10-clang14/source-remote.txt` | 151 | `e8eebba7fc657ca3072bb0a0beff7d10693dfd3c33105569cf15c09211d3242a` |
-
 | `evidence/actions/2026-10-10-config-delta/config-changes.json` | 26248 | `a2e6503364f99942e5b619efebe7cc69df0e3ac4dc91a06bba15db73e8145923` |
-
 | `evidence/actions/2026-10-10-config-delta/critical-delta.md` | 3321 | `35a780fe231535e355628bb6caaa8108688ca76fd57354ced1e1379d6396a444` |
-
 | `evidence/actions/2026-10-10-layout-audit/LATEST.txt` | 12 | `6eef0893932a5877118e5332619299c6a9a331cb3ad85fc2d6dd309dd6be6cc3` |
-
 | `evidence/actions/2026-10-10-layout-audit/README.md` | 1148 | `22a65c77f581bf3f2b38949afdcbd59482f21ef18785efaf29683d9777f0374e` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/candidate-layout.json` | 1078 | `d7d966752a0fa42aa060e09d77bb2a3e19bb683965403fa04a515b54543e63c4` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/clang-version.txt` | 320 | `a42d10597ccb74cece967cc278e982bfe8f45a4b4865e9eceae2bb6709b5d90b` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/config-changes.json` | 25946 | `282ef65c44274fb4b0b67fca8871fa428689bae03ef7dc7e7404c6e604c89cc8` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/config-summary.md` | 7936 | `baa99cf57b85f13cd7475a81eb48daa3383b6d2a38e8874f556a4bd1e67b6cbf` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/IMPORTANT.txt` | 86 | `313713eae8096686f87d611b1e7a5bb362bdd2e732e502e4c2f5de1b9f49cf26` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/kbuild-command.txt` | 2549 | `4fd70f3efc77df8ba56889a4362a2106bf489437917cbe50042d055aad5544ad` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/layout-probe.s` | 3144 | `fdcb8c0b6e6bec1119f5f41875d5a03a4bc066ab7eed4d4aa7f0d2c8090a3abf` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/olddefconfig.log` | 1644 | `97bdbff07c4c93d6fef851f7f810c885286d2ebdc68c2bde3eb665c99cf59952` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/original.config` | 178163 | `db168f088e0de4b54dd2058b7b542c176ae377af8b0322e6a27e80bdc8caad24` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/post-prepare.config` | 190456 | `6861d2658ec4828a4feb21503450816b9e75e3ed7197fb1af192b334212c9d43` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/prepare.log` | 287932 | `82cb0ffa980ef059c249f5be9ec57a7c9ea5d6b893d10cd94311a0825370475f` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/probe-command.json` | 2981 | `b7ce034365919ed17d1608857970e4ff26164cf6f06779c590b277bc7ad9efb2` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/probe-compile.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/resolved.config` | 190456 | `6861d2658ec4828a4feb21503450816b9e75e3ed7197fb1af192b334212c9d43` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/source-commit.txt` | 41 | `2c0cb7f0eae62dae551a040aaee6984f5dd2308a89999d75d570d5886995b464` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/source-dir.txt` | 67 | `8af0ef0b5e1e2d060243347e00af7baf9d3ba2642e378d257f962b0dedb1528a` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-a52s-5.4.233/toolchain-commit.txt` | 41 | `378deb51c61f789bea3a2b6f7ff19bb612da228e81d45c18edfac2d10ed2bd7c` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/clang-version.txt` | 320 | `a42d10597ccb74cece967cc278e982bfe8f45a4b4865e9eceae2bb6709b5d90b` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/IMPORTANT.txt` | 86 | `313713eae8096686f87d611b1e7a5bb362bdd2e732e502e4c2f5de1b9f49cf26` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/olddefconfig.log` | 4055 | `1e88163c509a02c835341298dd81d175db79dac16ec2c43a23d0231e0e4c8d8b` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/original.config` | 178163 | `db168f088e0de4b54dd2058b7b542c176ae377af8b0322e6a27e80bdc8caad24` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/source-commit.txt` | 41 | `8d80e659473b13301107ae5579870aafefc237a89abddc928b103f3eb1889c17` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/source-dir.txt` | 75 | `ff95d0cd083e8f376f0a1c5235449cfd96db59854115b3e0fabc0351ac49dd41` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/builds/p780-layout-tinno-5.4.61/toolchain-commit.txt` | 41 | `378deb51c61f789bea3a2b6f7ff19bb612da228e81d45c18edfac2d10ed2bd7c` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/layout-comparison.json` | 1393 | `db3e1c1123ac46aa545b1c218b1c9fa75f384a06cd58084e80d265618ffbbbd7` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060293186/layout-comparison.md` | 337 | `04b8e5a845e7ac790b74e4cb509a6bb9c6880ba727c78472a8c2e5613ed6b284` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/candidate-layout.json` | 1078 | `d7d966752a0fa42aa060e09d77bb2a3e19bb683965403fa04a515b54543e63c4` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/clang-version.txt` | 320 | `a42d10597ccb74cece967cc278e982bfe8f45a4b4865e9eceae2bb6709b5d90b` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/config-changes.json` | 25946 | `282ef65c44274fb4b0b67fca8871fa428689bae03ef7dc7e7404c6e604c89cc8` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/config-summary.md` | 7936 | `baa99cf57b85f13cd7475a81eb48daa3383b6d2a38e8874f556a4bd1e67b6cbf` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/executable-mode-repairs.txt` | 136 | `105441e92cbe331251c5f9369c53e703d73159c79178b1b3051ed507d7b2ee44` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/IMPORTANT.txt` | 86 | `313713eae8096686f87d611b1e7a5bb362bdd2e732e502e4c2f5de1b9f49cf26` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/kbuild-command.txt` | 2549 | `4fd70f3efc77df8ba56889a4362a2106bf489437917cbe50042d055aad5544ad` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/layout-probe.s` | 3144 | `fdcb8c0b6e6bec1119f5f41875d5a03a4bc066ab7eed4d4aa7f0d2c8090a3abf` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/olddefconfig.log` | 1644 | `97bdbff07c4c93d6fef851f7f810c885286d2ebdc68c2bde3eb665c99cf59952` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/original.config` | 178163 | `db168f088e0de4b54dd2058b7b542c176ae377af8b0322e6a27e80bdc8caad24` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/post-prepare.config` | 190456 | `6861d2658ec4828a4feb21503450816b9e75e3ed7197fb1af192b334212c9d43` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/prepare.log` | 287950 | `7e8015c6b68d25855cdf1b9e3c23833a03eb8f8aeeaa7b453f1c4e78336c9716` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/probe-command.json` | 2981 | `b7ce034365919ed17d1608857970e4ff26164cf6f06779c590b277bc7ad9efb2` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/probe-compile.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/resolved.config` | 190456 | `6861d2658ec4828a4feb21503450816b9e75e3ed7197fb1af192b334212c9d43` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/source-commit.txt` | 41 | `2c0cb7f0eae62dae551a040aaee6984f5dd2308a89999d75d570d5886995b464` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/source-dir.txt` | 67 | `8af0ef0b5e1e2d060243347e00af7baf9d3ba2642e378d257f962b0dedb1528a` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-a52s-5.4.233/toolchain-commit.txt` | 41 | `378deb51c61f789bea3a2b6f7ff19bb612da228e81d45c18edfac2d10ed2bd7c` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/candidate-layout.json` | 1078 | `b1f43221a85f8f49299c1da7c6cee81d1f3cf4e002d8d7ab0f956da1aaf25e99` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/clang-version.txt` | 320 | `a42d10597ccb74cece967cc278e982bfe8f45a4b4865e9eceae2bb6709b5d90b` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/config-changes.json` | 6128 | `dd4a307c063861c51d0b5e470232d47c762d36fab2712091a6e51a011f143eb4` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/config-summary.md` | 4226 | `58a22022a10096ade9271e03bbabf39a3732263b9042b46c2f1b862b8287fd4c` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/executable-mode-repairs.txt` | 2826 | `be05161d1c48fe76d51bcf167f855f6dacbf2d426226e3d2393788c5aca2df4c` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/IMPORTANT.txt` | 86 | `313713eae8096686f87d611b1e7a5bb362bdd2e732e502e4c2f5de1b9f49cf26` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/kbuild-command.txt` | 2726 | `625942ce6d72844e5ea4c9af0d60bdfa5d7993a5df14c0232935f75cecbc8305` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/layout-probe.s` | 3144 | `fdcb8c0b6e6bec1119f5f41875d5a03a4bc066ab7eed4d4aa7f0d2c8090a3abf` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/olddefconfig.log` | 2996 | `fd93d751d2e17144285a11a1e21b927b80cf721a4e1efce5fb82333c5daef37b` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/original.config` | 178163 | `db168f088e0de4b54dd2058b7b542c176ae377af8b0322e6a27e80bdc8caad24` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/post-prepare.config` | 177049 | `057caa8cc2b4c242549ba0fa3bcdeb9bb77f4a5b1875f18197bf4e9c8ab5218a` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/prepare.log` | 292851 | `d9cffec99cff5bae7b430744475cc7b083f353c53355c04bceeee5c31901b318` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/probe-command.json` | 3155 | `2bcc739c198d593e12c2250f3be5a04f981854f846cfa1ac5397f9ded14a39f2` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/probe-compile.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/resolved.config` | 177049 | `057caa8cc2b4c242549ba0fa3bcdeb9bb77f4a5b1875f18197bf4e9c8ab5218a` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/source-commit.txt` | 41 | `8d80e659473b13301107ae5579870aafefc237a89abddc928b103f3eb1889c17` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/source-dir.txt` | 75 | `ff95d0cd083e8f376f0a1c5235449cfd96db59854115b3e0fabc0351ac49dd41` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/builds/p780-layout-tinno-5.4.61/toolchain-commit.txt` | 41 | `378deb51c61f789bea3a2b6f7ff19bb612da228e81d45c18edfac2d10ed2bd7c` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/layout-comparison.json` | 2618 | `fc8036b04b430c193b68b08c66986114feadc819259ae14834e71501ff3e518c` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060466663/layout-comparison.md` | 1599 | `a768d07c387922bbd0e370afd8cb80803b771671d354216aa693dbb564113bba` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/candidate-layout.json` | 1114 | `6d51f121bfa4296663dd5691fc68e28b4624007d68a35fa544ba91babe554817` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/clang-version.txt` | 320 | `a42d10597ccb74cece967cc278e982bfe8f45a4b4865e9eceae2bb6709b5d90b` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/config-changes.json` | 25946 | `282ef65c44274fb4b0b67fca8871fa428689bae03ef7dc7e7404c6e604c89cc8` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/config-summary.md` | 7936 | `baa99cf57b85f13cd7475a81eb48daa3383b6d2a38e8874f556a4bd1e67b6cbf` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/executable-mode-repairs.txt` | 136 | `105441e92cbe331251c5f9369c53e703d73159c79178b1b3051ed507d7b2ee44` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/IMPORTANT.txt` | 86 | `313713eae8096686f87d611b1e7a5bb362bdd2e732e502e4c2f5de1b9f49cf26` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/kbuild-command.txt` | 2549 | `4fd70f3efc77df8ba56889a4362a2106bf489437917cbe50042d055aad5544ad` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/layout-probe.s` | 3031 | `81d55ac673ebfd017db5ee535bab573f80bc46c12cc7786d9414c0f6dc05ec47` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/olddefconfig.log` | 1644 | `97bdbff07c4c93d6fef851f7f810c885286d2ebdc68c2bde3eb665c99cf59952` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/original.config` | 178163 | `db168f088e0de4b54dd2058b7b542c176ae377af8b0322e6a27e80bdc8caad24` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/post-prepare.config` | 190456 | `6861d2658ec4828a4feb21503450816b9e75e3ed7197fb1af192b334212c9d43` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/prepare.log` | 287950 | `7e8015c6b68d25855cdf1b9e3c23833a03eb8f8aeeaa7b453f1c4e78336c9716` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/probe-command.json` | 2981 | `b7ce034365919ed17d1608857970e4ff26164cf6f06779c590b277bc7ad9efb2` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/probe-compile.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/resolved.config` | 190456 | `6861d2658ec4828a4feb21503450816b9e75e3ed7197fb1af192b334212c9d43` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/source-commit.txt` | 41 | `2c0cb7f0eae62dae551a040aaee6984f5dd2308a89999d75d570d5886995b464` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/source-dir.txt` | 67 | `8af0ef0b5e1e2d060243347e00af7baf9d3ba2642e378d257f962b0dedb1528a` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-a52s-5.4.233/toolchain-commit.txt` | 41 | `378deb51c61f789bea3a2b6f7ff19bb612da228e81d45c18edfac2d10ed2bd7c` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/candidate-layout.json` | 1114 | `1c4172d9baa342266c1e4b7fea1f12b6290b13220c959ffc1376e387608b95c7` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/clang-version.txt` | 320 | `a42d10597ccb74cece967cc278e982bfe8f45a4b4865e9eceae2bb6709b5d90b` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/config-changes.json` | 6128 | `dd4a307c063861c51d0b5e470232d47c762d36fab2712091a6e51a011f143eb4` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/config-summary.md` | 4226 | `58a22022a10096ade9271e03bbabf39a3732263b9042b46c2f1b862b8287fd4c` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/executable-mode-repairs.txt` | 2826 | `be05161d1c48fe76d51bcf167f855f6dacbf2d426226e3d2393788c5aca2df4c` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/IMPORTANT.txt` | 86 | `313713eae8096686f87d611b1e7a5bb362bdd2e732e502e4c2f5de1b9f49cf26` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/kbuild-command.txt` | 2726 | `625942ce6d72844e5ea4c9af0d60bdfa5d7993a5df14c0232935f75cecbc8305` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/layout-probe.s` | 3031 | `81d55ac673ebfd017db5ee535bab573f80bc46c12cc7786d9414c0f6dc05ec47` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/olddefconfig.log` | 2996 | `fd93d751d2e17144285a11a1e21b927b80cf721a4e1efce5fb82333c5daef37b` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/original.config` | 178163 | `db168f088e0de4b54dd2058b7b542c176ae377af8b0322e6a27e80bdc8caad24` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/post-prepare.config` | 177049 | `057caa8cc2b4c242549ba0fa3bcdeb9bb77f4a5b1875f18197bf4e9c8ab5218a` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/prepare.log` | 292798 | `31c04bd5ab74f8717a6471e6b892695c67014dc9d75ebe92da8d882fd85cc091` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/probe-command.json` | 3155 | `2bcc739c198d593e12c2250f3be5a04f981854f846cfa1ac5397f9ded14a39f2` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/probe-compile.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/resolved.config` | 177049 | `057caa8cc2b4c242549ba0fa3bcdeb9bb77f4a5b1875f18197bf4e9c8ab5218a` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/source-commit.txt` | 41 | `8d80e659473b13301107ae5579870aafefc237a89abddc928b103f3eb1889c17` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/source-dir.txt` | 75 | `ff95d0cd083e8f376f0a1c5235449cfd96db59854115b3e0fabc0351ac49dd41` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/builds/p780-layout-tinno-5.4.61/toolchain-commit.txt` | 41 | `378deb51c61f789bea3a2b6f7ff19bb612da228e81d45c18edfac2d10ed2bd7c` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/layout-comparison.json` | 2698 | `9b944ffead76d845e66228ad04a9c1da919582f50524d4d6a4081358a72cbee1` |
-
 | `evidence/actions/2026-10-10-layout-audit/runs/38060518994/layout-comparison.md` | 1647 | `468b94be4dc63da2a1828072cb5e11faf52b9a2728593be5743d085c106f9476` |
-
 | `evidence/actions/2026-10-10-layout-audit/source-audit/core-header-diff.txt` | 15779 | `f3d7538066ffe0bf35645bfbba3568b4ddf9b0052729ae17007f837284d95d95` |
-
 | `evidence/actions/2026-10-10-layout-audit/source-audit/core-header-hashes.json` | 1513 | `32d5dbc1488356b08db62fbd47fd640a7e414677a68d0c212543cbdf64d1eb6e` |
-
 | `evidence/actions/2026-10-10-layout-audit/source-audit/missing-config-references.json` | 27901 | `90ff1a0c933e935af251704adcb39508740f0bf17b1cf4b807d05a5a90f1782a` |
-
 | `evidence/actions/2026-10-10-layout-audit/source-audit/missing-config-references.md` | 17400 | `168c4a5dbfbbbcdb2410cdf93c827cf9c437730571635a2daf10819ae5b4f62a` |
-
 | `evidence/actions/2026-10-10-layout-audit/source-audit/provenance.json` | 1129 | `c7ffb14177493438e9e06cd8a7897e6e6b26c9c1a36c29c2e064e6457e8353d6` |
-
 | `evidence/analysis/2026-10-10-ota-log-audit.json` | 3827 | `ccb3368d28071b83f14b49ef34345c27e749a4e62d16daa4105cac314bef9146` |
-
 | `evidence/analysis/repository-inventory-20261018.json` | 70079 | `df6e92ace857443dc068cecfaa80e491e102a2f338625ad0f5281bd7be996ce1` |
-
 | `evidence/analysis/repository-review-20261018.json` | 2632 | `97bc9eaa669a4d15169041e425663cb7c89cfab4c9dc501075f37e8a99ff2494` |
-
 | `evidence/analysis/repository-structure-20261011.json` | 33409 | `de5d9f6aefceb2241eb45140829f2e6ec39f42d0d6340d1183f3de5b75502d79` |
-
 | `evidence/apk/ApeHighLights.apk` | 1704633 | `e8755aabeae90f6b8b0b00b27eaf87ae8bdda1aac64eed3c06cdd1a20b11fa91` |
-
 | `evidence/apk/com.qualcomm.qti.services.secureui.apk` | 24990 | `23d1fca23ce3e81d976817c4fd75dc851e4de9e4c8a35a840394518135984144` |
-
 | `evidence/apk/com.qualcomm.qti.services.systemhelper.apk` | 16798 | `94f81b017ce0b0ebc11f5b0dbdbad07cc06a871b983b92c8bd4169fb30c91791` |
-
 | `evidence/device/p780-config.gz` | 39170 | `0ff9cbb1844e043e1211b527509f5f435862cace25649bab6641d5d62c7bbce0` |
-
 | `evidence/device/p780-cpu4.raw` | 4096 | `435e5e1d05767ebc7a65322a2da2599ad07c58c7277456cd96d6960620587fac` |
-
 | `evidence/dsu/20261019-readonly/acquisition.json` | 2016 | `aef81b4b66e91014bec66d028273253d22e0c1d0900ba54ec45bcb4a695dde3d` |
-
 | `evidence/dsu/20261019-readonly/dsu-log.txt` | 271 | `7a452ca6f638368567f89cb4b9dbac98f317ffed7bbdb42f59022ca767cdba40` |
-
 | `evidence/dsu/20261019-readonly/gsi-extraction-manifest.json` | 1184 | `2dba969b34ea6d65a142b3022febb6717100d095ece95c28b38c74a4baafa0c6` |
-
 | `evidence/dsu/20261019-readonly/gsi-fcm5.xml` | 124740 | `f2b353792c635abdf807aa795396440ebdfc7303b4f9f578c2a2fa9d1c7d5b69` |
-
 | `evidence/dsu/20261019-readonly/gsi-framework-manifest.xml` | 1773 | `fbdedd540c469aa13fccf50ab602282621a5ed5b6bfbe1e8e88192811f4f6fc8` |
-
 | `evidence/dsu/20261019-readonly/state-snapshot.json` | 6119 | `123465561b4218d66243b6870c8c105c8719abc40ed519957721b87ce9f4f0c9` |
-
 | `evidence/dsu/20261019-readonly/vendor-compatibility-matrix.xml` | 2528 | `5aa869415b923d1668b80845bfb3b821ff82c113a2b61a9063bc9c3d19629dfd` |
-
 | `evidence/dsu/20261019-readonly/vendor-manifest.xml` | 24723 | `252588e887bd314664dfa704d46d6d9a77ebecb032e496c56a6ca4aac49e1210` |
-
 | `evidence/dsu/20261019-readonly/vintf-subset.json` | 56298 | `d11e51b798cae3440fdd02bd5084e584c468568f07a1e4b30b201d00071f9b46` |
-
 | `evidence/framework/2026-10-10/gms-paths.txt` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
-
 | `evidence/framework/2026-10-10/input-manifest.json` | 2551 | `90596f517e387df2e481c96674c12ea3e13a19cb05645f9f7efec87b85b726bb` |
-
 | `evidence/framework/2026-10-10/journey-bytecode.json` | 35119 | `5bec9ff4683861792d7c4c2b89b9b916fb49e31168f17861aa0bc4944951a330` |
-
 | `evidence/framework/2026-10-10/journey-callsites.json` | 17869 | `44a8686bbfb0abc5e40f350ed29c57d684bfe58d8472e2ba1179066d33d5ab43` |
-
 | `evidence/framework/2026-10-10/journey-disassembly.txt` | 149433 | `8f37799bdb37f694ef4f8930d8655c30abbf954e338629d212ef7cb0190cac0c` |
-
 | `evidence/framework/2026-10-10/performance-callsites.json` | 175432 | `d041340bbcfcd27ad5ee29bf7128f68c2d453c8be6b1571f7e2fc4f7288ae568` |
-
 | `evidence/framework/2026-10-10/performance-decision-methods.json` | 178559 | `1d4177683245b2c91dd37c26889698564582d11bb9686a806ccfd8f922020990` |
-
 | `evidence/framework/2026-10-10/performance-disassembly.txt` | 444744 | `44b8f24a8a42aeb2a0b876fd1de0218bcf0221de83ac2b6255893487dfc251dd` |
-
 | `evidence/framework/2026-10-10/performance-scan-inputs.json` | 1107 | `d66546341826549bd11c414f2fec23d5452c1c56dc10aea7234a7d2ad3dfa4d3` |
-
 | `evidence/framework/2026-10-10/performance-verification.json` | 206 | `035b2f8ad79c7c56ed54a780488ddd33b624f44996fb7b0c5462f339e21327fa` |
-
 | `evidence/framework/2026-10-10/product-framework-list.txt` | 294 | `caf207083c9dff614cf0fa4852fa01b771e525e7af3b9b81f699e01ff31b3643` |
-
 | `evidence/framework/2026-10-10/system-ext-framework-list.txt` | 6139 | `ff4da2571b7b1988af9e79d5429ebd3d3209c6bc75ac86956f4ef53f30b3aa22` |
-
 | `evidence/framework/2026-10-10/system-framework-list.txt` | 4354 | `c3bf02a2b4136f4848bdbf69e8d2a1dd47f6fdc7795997e1a37b038f5405cfca` |
-
 | `evidence/framework/2026-10-10/systemserver-classpath.txt` | 240 | `ac93193733b795510eb00e514d4ffb1689768dadd7d7c91899b7b8fb512d37b2` |
-
 | `evidence/gaps/20261019/commands.json` | 5815 | `9ad956ec0a11c8bd60e6d1f314bc6c8065b5c94e988c9ff55d35ae97485a8ac5` |
-
 | `evidence/gaps/20261019/comparator-validation.json` | 364 | `a3367d347be9af493c13485f97cdf82bd83dc95d82607b9b753f13c0898ca079` |
-
 | `evidence/gaps/20261019/inputs.json` | 1601 | `869579645bc10d285ce7d93ef604eaf0a3ffe27666186b15c003d5682a0b162d` |
-
 | `evidence/gaps/20261019/policy-record-comparison.json` | 5485 | `f61939e77c2c899d22c62f77d107286d82d3ea7362c67cf7148e1fe783b43cd1` |
-
 | `evidence/gaps/20261020/header-verification.json` | 963 | `d883f549998b401c85fbaeb17adcdefd2e62bf2bbf25275ebc6bd2d431b61ac1` |
-
 | `evidence/ghostlock/P780-GhostLock-port-v0.1.zip` | 57818 | `e93c02077af6b5998d6adcb4720acce6fedf4b98a17757dca2cde68938f8691a` |
-
 | `evidence/ghostlock/P780-GhostLock-port-v0.2.zip` | 72599 | `3fedf983e6489711bd25ded2b23d25b44ade084f6ff25810fe0f426bf30ad142` |
-
 | `evidence/ghostlock/P780-GhostLock-port-v0.3.zip` | 67667 | `247e1c6277be550d38e29263981ed21836acee2a6a5b50cb8eb9e7b3d0368fca` |
-
 | `evidence/ghostlock/P780-GhostLock-port-v0.4.zip` | 99662 | `64cf94d149a113b69758285e923f1e445a2a01aaf19592eab3b97596f8485f19` |
-
 | `evidence/journey/2026-10-10/comparison.json` | 3441 | `3978b8c46b5f63e6f3a1fa92866310a5e85777d9c7a56c01dfc9f2dee11ddd17` |
-
 | `evidence/journey/2026-10-10/config.xml` | 6440 | `18c226792cd8044f3bdf0503b8b240510a70664f63dd687064512eed97198181` |
-
 | `evidence/journey/2026-10-10/input-manifest.json` | 1277 | `1f8321bedeb98d47ae1aa0249e79a94bc30f48f26b823fd0681db21f965f6c2f` |
-
 | `evidence/journey/2026-10-10/p780-journey-config.zip.b64` | 5257 | `9de147e1ea20a4de3f8dcfa6fa48f9b41fbdf64ed25ee00c1df3012c7cdd9a62` |
-
 | `evidence/journey/2026-10-10/tcs-state.utf8.txt` | 11642 | `3f19135c7d8b29e87f9f96cfd3c3a5017657961cae174ebe59f9a9e50aaf596e` |
-
 | `evidence/journey/2026-10-10/version.txt` | 2 | `73475cb40a568e8da8a045ced110137e159f890ac4da883b6b17dc651b3a8049` |
-
-| `evidence/native/20261019/diag-declarations.json` | 2570 | `5f792191be4dfb05dba6cb929d20a9c5c2bc8d038f738dfb26e96b4543a455d1` |
-
-| `evidence/native/20261019/diag-elf.json` | 76998 | `1dd11ece14dd0799ce1584479df5204129838706681c737605b4abc9cd7386d3` |
-
-| `evidence/native/20261019/diag-manifest.xml` | 899 | `c380e7f9bde042996ca8c8d3adb96cf17707004352a58722b0c6bcbf8da0663c` |
-
-| `evidence/native/20261019/diag-methods.json` | 20258 | `b8ba053143c8faab70128034253302f2ce8188829f9d3b61276cf2e12d753fb2` |
-
-| `evidence/native/20261019/diag-process-log.txt` | 1316 | `85f128da743f82b409526bf306f8cf5b0d66960b1552f8e2bc1ddf7859881928` |
-
-| `evidence/native/20261019/diag-service.txt` | 782 | `4a6ceebfbbabe26a724f1c67d1854ac0cae7c265f4f1c72db4a748ab4114cbf1` |
-
-| `evidence/native/20261019/input-manifest.json` | 777 | `c78e73100d531fa02230bc3989410e0e1735d5abbcdfd0e7dc4f067ac94ac96c` |
-
-| `evidence/native/20261019/observations.json` | 4534 | `8a0235c5f5213edbb649a0be21b0acfbefb2dda95338cc49ef5fefc511f2ca80` |
-
-| `evidence/native/20261019/processes.txt` | 1805 | `7f4bc3032afda4b9039be1058bb7cd8b0c1de28b2336dbc1589422e194046cf1` |
-
-| `evidence/oemlock/20261019/caller-inventory.json` | 72077 | `89a8d7b25715b0a1c345eb40b5b30598032cdbea169ed0b5d86be1ada49d3abd` |
-
-| `evidence/oemlock/20261019/callers.json` | 21993 | `a203e3accdf3e1f98c7719d4641f605387ecde3d4af0f9f4449bcc44d1c7a8f3` |
-
-| `evidence/oemlock/20261019/component-excerpts.json` | 606 | `d1d80a3db19198c98d24ba6fce90e8ba05adc49c53db5282cf2ea9b4d3faa535` |
-
-| `evidence/oemlock/20261019/confirmation-methods.json` | 14782 | `704ff8f2e222252f1a4b1d42610b77dcc3c99924b6e17abde1b299d34dd80c3d` |
-
-| `evidence/oemlock/20261019/focused-methods.json` | 93588 | `28408d6219162e6343f40d92ce60e59725450e90a753ac1775e8d5acd9c8a3b9` |
-
-| `evidence/oemlock/20261019/manifest.json` | 446 | `cd477495a4c9621dc405180cdeee54c5b81f219ff8bb6c99ff1f2f49c9cf3b3f` |
-
-| `evidence/oemlock/20261019/permission-manifests.json` | 2785 | `97ad1bf931d82cb123ffc0ad9ad84182d83fc26dcfc2f3b0cbfa08415d7116bb` |
-
-| `evidence/oemlock/20261019/property-excerpts.json` | 461 | `b6ed01879fa0440a60ec4a7ad2d4a422458eae5e0e3851d4a41160a99f07b329` |
-
-| `evidence/perf/20261025/user-count-v010.json` | 872 | `eb211e48a179a261375e5bac31c990f742c0a2c05bd59ac1cf41644bb2e135c5` |
-
-| `evidence/perf/20261025/user-count-v010.log` | 1314 | `728963c35be03224b17d796377990a58efefd2311a2f350633fcbaa078ca35bc` |
-
-| `evidence/README.md` | 1714 | `ba8cdcc6de800681c73159b3ce65a1f07108ce147ffa3575e81b0dccc9888549` |
-
-| `evidence/restricted/adb/hand5g_debloat_audit.zip` | 376662 | `549042553411cc702019a378bc7a21d21f0129e10c0f6014b01a691b8b2bda8e` |
-
-| `evidence/restricted/adb/hand5g_final_audit.zip` | 419387 | `54ebd6a48c244e86dfea78061f723b5a86acb61d229e9082e9b9233babfa1a3e` |
-
-| `evidence/restricted/adb/phase3/hand5g_packages_all_phase3.txt` | 22482 | `8171f6e8db3f66121d7a9b69a9e226bf14eabacf7fc5c7577176f0756aa49613` |
-
-| `evidence/restricted/adb/phase3/hand5g_packages_installed_phase3.txt` | 17724 | `243e0de522382f3f7ab8e1c272231943507b6dbd240ed74d116c5281b3f84530` |
-
-| `evidence/restricted/bugreport/hand5g_bugreport.zip` | 5684665 | `7e662b108af7b1fa33113636ef86178e5e177ce6a1eb7c498fc12daadec159dc` |
-
-| `evidence/restricted/ota/hand5g_update_activity.txt` | 94710 | `7d69799a7b0c06240cb3d04e8cddf27a92d7d9bb5cc79c048b37d8ace3dccba1` |
-
-| `evidence/restricted/ota/hand5g_update_log.txt` | 283944 | `c100d7f7c32527f763b3d26dc30f8bd32d72f96e6bc9b83cca2bed20e844f33b` |
-
-| `evidence/restricted/README.md` | 1341 | `8f3475dbc29bf1007f38ce7f50ec6e2230f543fb6dd5d5f372a64f23b531a6ad` |
-
-| `evidence/static/20261018-220912/batch1-verified-analysis.json` | 466500 | `e4acc8a1d892ea3b787dd2354086b54fef02cb9ca1ade83e44f0da4ceaa5ff7b` |
-
-| `evidence/static/20261018-220912/batch2-verified-analysis.json` | 3255 | `203e6f8024fd18de77bed77b6896cb6d2ca7d43ed6331382252cd06f9bc66b87` |
-
-| `evidence/static/20261018-220912/manifest.csv` | 228336 | `be42fab84aaa08ed84b2e56f75a1079b26603099e908ecfda4e82b6af5133a7e` |
-
-| `evidence/static/20261018-220912/native-interface-crosscheck.json` | 12729 | `cf4a2f6dd6a50a847045f64a8888ef4f12326081f998354b67c83d9f8bf7cfe8` |
-
-| `evidence/static/20261018-222940/policy-audit.json` | 17532 | `a28c802a3a4de85b3983ea6c11b21854439e6d7fc73d7101cfa2a3a138a6b359` |
-
-| `evidence/supplement/20261024/analysis.json` | 354339 | `4231604d9e107552705418a7f0e70ab0306d386709255edb8441eea3ef47dc9a` |
-
-| `evidence/supplement/20261024/boot-diag-processes.txt` | 242 | `36a4d11b9fc4396b716fff1825140127c04c518e708ce8656ef77660456dd685` |
-
-| `evidence/supplement/20261024/commands.json` | 5344 | `7910eb6b1062678e5fc8a4275fd883d801a2fa563b680814aafe5703858d2154` |
-
-| `evidence/supplement/20261024/files.json` | 8602 | `df097b22965c44d7ca748d4f71e99381d9d59b035c72e4f2787eca4d25f92507` |
-
-| `evidence/supplement/20261024/otacerts.zip.b64` | 1517 | `88c343747f8167d96c3ea18278decb2f88013f2ef86ace61b2b764059eaa3b97` |
-
-| `evidence/supplement/20261024/README.md` | 1125 | `1ddec60ed466a1c76970ac794f5abc97faea491ba1b85863a2b8a31a7cd0e407` |
-
-| `evidence/supplement/20261024/validation.json` | 279 | `319d23fd7c6e7dfd90929f4d7e2eb72f630647ff67cc8a3cf709092465796047` |
-
-| `evidence/supplement/20261024/vintf/system/compatibility_matrix.1.xml` | 71560 | `143e9f222a6ad3e490f60e893ab7b633d5a75b9d0fc9047f3de111b890f0e29a` |
-
-| `evidence/supplement/20261024/vintf/system/compatibility_matrix.2.xml` | 73795 | `faf0b1129a81a1c2a35016303c22f236b3bd7903dfdc4f8934ecfb0af13acc16` |
-
-| `evidence/supplement/20261024/vintf/system/compatibility_matrix.3.xml` | 90414 | `a75a7574758bd10e9d309ca8307f55e8a2e2706fae7e55717b83a18f245bc271` |
-
-| `evidence/supplement/20261024/vintf/system/compatibility_matrix.4.xml` | 114285 | `f7a814503a69e86ee260bcb2e6d9ee611813c7e4b575f1f65221a85ef40439ff` |
-
-| `evidence/supplement/20261024/vintf/system/compatibility_matrix.5.xml` | 125617 | `fb5cad7004d0d4b828642efe7c0ee7fe17234eb19a812580a9101b3855fdeeb1` |
-
-| `evidence/supplement/20261024/vintf/system/compatibility_matrix.device.xml` | 31041 | `a05358f05b23feeb2d19c2c7bc96479745b19d3d76f2d02784c166c3fa8424c3` |
-
-| `evidence/supplement/20261024/vintf/system/compatibility_matrix.legacy.xml` | 71600 | `89413591f09556412ce508da4709bd58191660984d417c99e0ac2dac3f84293c` |
-
-| `evidence/supplement/20261024/vintf/system/manifest/android.frameworks.stats@1.0-service.xml` | 306 | `a651013edf8ac7d2804c53ba05e8eb27794d0dd5db66cc509c73351f9f2bab01` |
-
-| `evidence/supplement/20261024/vintf/system/manifest/android.hidl.allocator@1.0-service.xml` | 307 | `9e6fee7d22163cfdb0392e10b1dee1f0d7efb24d4f5c3b50adddc3368dc4f11e` |
-
-| `evidence/supplement/20261024/vintf/system/manifest/android.system.suspend@1.0-service.xml` | 312 | `8fa3da936a54184f2bf0652bbeb9c5d3c0c290bd508276f599e9bd4213846dd0` |
-
-| `evidence/supplement/20261024/vintf/system/manifest/manifest_android.frameworks.cameraservice.service@2.1.xml` | 330 | `ca19fd2335e749f78ea2982b497058a22b38ac0464a8944b7031255e2293b8e5` |
-
-| `evidence/supplement/20261024/vintf/system/manifest/manifest_media_c2_software.xml` | 317 | `5f1f54ae43e6a3a062b67dcd5f7df7aa76fce563127b7170ae2a47a5c1bf0ef0` |
-
-| `evidence/supplement/20261024/vintf/system/manifest.xml` | 4516 | `868dc65d800fe96436e4eb1002f0969d71c8d97364224a3f880b449eda3883a8` |
-
-| `evidence/supplement/20261024/vintf/system_ext/manifest.xml` | 179 | `94edfc634de5917060b00a2eec8abd09ee150fbacabf27d78972f9ccc120994b` |
-
-| `evidence/supplement/20261024/vintf/vendor/compatibility_matrix.xml` | 2528 | `5aa869415b923d1668b80845bfb3b821ff82c113a2b61a9063bc9c3d19629dfd` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.atrace@1.0-service.xml` | 323 | `49e4a804e77b653064e7cb8fc5dc6c6b4aeea2ae4a2a62dab0ff52e0c463ee01` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml` | 348 | `473cf370500637de575dc89fbac74e4942d969717a0a72cb5adaa3511bdba693` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.boot@1.1.xml` | 221 | `d42cd4d5e3448ebe865ca20824031d411c7ea9a0600949454959894444c74a90` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.cas@1.2-service.xml` | 323 | `9357fb5a7b17fe81638ec82f79d06007bb35c19016e676104fa55449b5f0f0d2` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.gnss@2.1-service-qti.xml` | 1779 | `b12c00daff67f15983eaf9952d0ded199b2868ad1b9fb512fcab5f6bf813773d` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.graphics.mapper-impl-qti-display.xml` | 2226 | `00105bbff83fa177fff8c10776678fddcf99179464d866bd688a1bf61ee563b4` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.health@2.1.xml` | 218 | `d79a8058bf0dd9d4cf7bf65f6ef2f47c3fd9452e641ebc746465d619aabb509c` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.lights-qti.xml` | 171 | `570ac710477a2e70c8c983e4eea18ddd398907af0502ac95557f4293e9f85cc9` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.neuralnetworks@1.3-service-qti.xml` | 460 | `1fe231b6b3fd8ec56d0d4063ec9e547be4248da930b9c471212ff9cc9f4afc99` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.sensors@2.0-multihal.xml` | 319 | `5915f6e142726b3b608379a2e03c2b23478c393b310b024ac7687f73458a630e` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.thermal@2.0-service.qti.xml` | 1844 | `963119de0310765a376a61ec01854f70c6daa91bff75f0d6eaedc6e4b7f2a8b3` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.usb@1.2-service.xml` | 1878 | `7f0bd8f15ad0f216869ae1de9c86893c67cd2ebbb6f8392bf0619afd755c5755` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.wifi.hostapd.xml` | 698 | `641f8d2f6a26b570b7ab7322d9e6cd5f3d51e0ea9ba829fda16569f90cfa3900` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.wifi@1.0-service.xml` | 313 | `5b785b5e6f63baab071ca757ec3e5bf0ee7a877186c17e2b36ce5bc63112756e` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/c2_manifest_vendor.xml` | 1926 | `f91b889f1dee3d7740862fae4632df0e9e553fea8ba11b23d6ae86f97e088f29` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/manifest.xml` | 618 | `44eb838887d1bb904a0270bb80592691e0dcb01cea920012e681eb62bfb55b47` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/manifest_android.hardware.drm@1.3-service.clearkey.xml` | 945 | `4b9a9214df27df7f546dcd7b27efac3803f8d172548671c8d94903ef1d804aef` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/manifest_android.hardware.drm@1.3-service.widevine.xml` | 945 | `61cee1f6a061cf5348ca82f5326bd09cedda6bf2eea016c9ad3374f2cd03df7a` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/power.xml` | 1687 | `541769636e0fe848700a472da66eddaffdfd00de06aab236827edbb334ca8bc3` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.journey.hardware.display@1.0.xml` | 329 | `34a6d640c0e4fd482674450687c1cd008f31e183f6ee68bef9c125bf3ff4d6ca` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.journey.hardware.fingerprint@1.0.xml` | 348 | `447d5edaa6fa443c9a0f4ca80b97bbf484c36148a32783c0bca088dab8894165` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.journey.hardware.warehouse@1.0.xml` | 341 | `6edeafe4efc83f4beafbb8d20ac9aeeb0253d2f88d941c875b79b690e05f1269` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.diag.hal.service.xml` | 477 | `e83f49d490b33fe0a47114f5b9fcf651f5b7844a1aa2ea6b26e47cda59fbd85c` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.gnss@4.0-service.xml` | 690 | `a2febcc396f453bdabfe60f8adc9b0bc89b110845b3bd4b0c582ce35054a5f4e` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.hardware.display.allocator-service.xml` | 2203 | `7a916b6ca645ff92e2f1df462ae44e8e7316ffe339d384cbfc352a8e395ae3f5` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.hardware.display.composer-service.xml` | 2953 | `944b74f6eba32f03cf63d5e3b956dc3f270bce4244b6babf441816c7e3b286b9` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.hardware.limits@1.0-service.xml` | 457 | `b7a7ec9cd9064450d650372f5c9a8f58ffe658190a613621c93fadbd69d63c70` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.hardware.servicetracker@1.2-service.xml` | 472 | `f57b12f5747dc5ba00186e1254dabebd071561c72ce3ae866cf8f9ce0ef901e0` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.hardware.vibrator.service.xml` | 1694 | `5cf94ad6bd7b78b2020874fd6fc74764447f2cd9fddb8ef5288eb13619d42aba` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.memory.pasrmanager@1.0-service.xml` | 464 | `417e8b42f9d20d9b286ad7affbeca917f556657d40fc681142d5152cab1dc7bf` |
-
-| `evidence/supplement/20261024/vintf/vendor/manifest.xml` | 24723 | `252588e887bd314664dfa704d46d6d9a77ebecb032e496c56a6ca4aac49e1210` |
-
-| `evidence/tee/hand5g_native_api_paths.txt` | 1174 | `ffe7521fd4cd0942b6a04c86b10a5c7bbd2b8d1b500ae179defdf4ce2db561f2` |
-
-| `evidence/tee/hand5g_tz_whitelist.txt` | 3148 | `56937f268c4363b7314dd00163e0283dfc587eb6a6a738b4c9542cc07de17a00` |
-
-| `evidence/web/2026-10-17/source-preservation.json` | 3539 | `7d1174bb3135de3ad633606eca1e00e6c0b7c40c8765fcb66004376c8a5c8fed` |
-
-| `evidence/web/2026-10-17/xda-4805241-pending.json` | 1287 | `7135c52ad29147733de276aaf99f2ce9ee46ddfbd717e41617cc212e4968fda9` |
-
-| `evidence/web/2026-10-17/xda-4805241-user-provided.txt` | 2308 | `31f9508f1db507e85b42a426b45aea6edc4a5fdbe23446f4b388a748b62ada08` |
-
-
-## 2026-10-25 符号恢复增量（手工补充）
-
-完整Image、符号表和分析ELF不在Git；结果与产物摘要如下，另见[专题](research/p780-kernel-symbol-recovery-20261025.md)。
-
-| 路径 | 字节 | SHA-256 |
-|---|---:|---|
-| `evidence/kernel/20261025-symbol-recovery/image-identity.json` | 807 | `a4f77850d1b0f562665c7d385210563de0cc46b05a0654840480bda543ca5d30` |
-| `evidence/kernel/20261025-symbol-recovery/verification.json` | 2381 | `8d64511e6b02f9ce026747005904f4c128244e0c764d772b54a4af391c99f87e` |
-| `evidence/kernel/20261025-symbol-recovery/elf-validation.json` | 663 | `da861d87537b01a53078f0e4e469e3525bf8e4390a2bcbf15133e52f5ae363c6` |
-| `evidence/kernel/20261025-symbol-recovery/tool-provenance.json` | 584 | `cdaf92d40f6a7d54e246618039524a88cac83acc263ca1b5a1a7e9c61535e9bc` |
-| `evidence/kernel/20261025-symbol-recovery/recovery-tool.log` | 5238 | `9a5dbfd48aa8aa436e6d14c63d9ad33f89cef2480167bb59c67cd3eb2417dff8` |
-| `evidence/kernel/20261025-symbol-recovery/readelf-header.txt` | 949 | `3ed6a2f40a925aca509a3f625d859274ac36114b8fad4b840e5de552edb8152c` |
-| `evidence/kernel/20261025-symbol-recovery/readelf-sections.txt` | 964 | `a86ff250a79fead7e83250122f7761d11517d2a9de78237b7282e38f20de7ef5` |
-
-其余产物及工具摘要见 `evidence/kernel/20261025-symbol-recovery/artifact-hashes.json`。
-
-## 2026-10-25 静态修复核对增量（不含于上方基础统计）
-
-| 路径 | 字节 | SHA-256 |
-|---|---:|---|
-| `evidence/kernel/20261025-static-patch-review/summary.json` | 1180 | `5168fc0404297b95df04fe9260e046f99c51498dd80c6988ce8b71a80fa13cb0` |
 | `evidence/kernel/20261025-static-patch-review/proxy-lock.txt` | 2159 | `ebda85c061a3ffcb2d563244ef157ca7c4498e0ae498f3eb34675764069ddc6b` |
 | `evidence/kernel/20261025-static-patch-review/remove-waiter.txt` | 7430 | `97dabbacbdf81aa2358a973fa7c5050f6c680588921b5f4bdee064f5da4ad9b6` |
+| `evidence/kernel/20261025-static-patch-review/summary.json` | 1180 | `5168fc0404297b95df04fe9260e046f99c51498dd80c6988ce8b71a80fa13cb0` |
+| `evidence/kernel/20261025-symbol-recovery/artifact-hashes.json` | 1805 | `555ebc80f9e4ff8fd54e2147b8703823860e6152dbe44bd23ff8cebf780c063c` |
+| `evidence/kernel/20261025-symbol-recovery/elf-validation.json` | 663 | `da861d87537b01a53078f0e4e469e3525bf8e4390a2bcbf15133e52f5ae363c6` |
+| `evidence/kernel/20261025-symbol-recovery/image-identity.json` | 807 | `a4f77850d1b0f562665c7d385210563de0cc46b05a0654840480bda543ca5d30` |
+| `evidence/kernel/20261025-symbol-recovery/recovery-tool.log` | 5238 | `9a5dbfd48aa8aa436e6d14c63d9ad33f89cef2480167bb59c67cd3eb2417dff8` |
+| `evidence/kernel/20261025-symbol-recovery/tool-provenance.json` | 584 | `cdaf92d40f6a7d54e246618039524a88cac83acc263ca1b5a1a7e9c61535e9bc` |
+| `evidence/kernel/20261025-symbol-recovery/verification.json` | 2381 | `8d64511e6b02f9ce026747005904f4c128244e0c764d772b54a4af391c99f87e` |
+| `evidence/native/20261019/diag-declarations.json` | 2570 | `5f792191be4dfb05dba6cb929d20a9c5c2bc8d038f738dfb26e96b4543a455d1` |
+| `evidence/native/20261019/diag-elf.json` | 76998 | `1dd11ece14dd0799ce1584479df5204129838706681c737605b4abc9cd7386d3` |
+| `evidence/native/20261019/diag-manifest.xml` | 899 | `c380e7f9bde042996ca8c8d3adb96cf17707004352a58722b0c6bcbf8da0663c` |
+| `evidence/native/20261019/diag-methods.json` | 20258 | `b8ba053143c8faab70128034253302f2ce8188829f9d3b61276cf2e12d753fb2` |
+| `evidence/native/20261019/diag-process-log.txt` | 1316 | `85f128da743f82b409526bf306f8cf5b0d66960b1552f8e2bc1ddf7859881928` |
+| `evidence/native/20261019/diag-service.txt` | 782 | `4a6ceebfbbabe26a724f1c67d1854ac0cae7c265f4f1c72db4a748ab4114cbf1` |
+| `evidence/native/20261019/input-manifest.json` | 777 | `c78e73100d531fa02230bc3989410e0e1735d5abbcdfd0e7dc4f067ac94ac96c` |
+| `evidence/native/20261019/observations.json` | 4534 | `8a0235c5f5213edbb649a0be21b0acfbefb2dda95338cc49ef5fefc511f2ca80` |
+| `evidence/native/20261019/processes.txt` | 1805 | `7f4bc3032afda4b9039be1058bb7cd8b0c1de28b2336dbc1589422e194046cf1` |
+| `evidence/oemlock/20261019/caller-inventory.json` | 72077 | `89a8d7b25715b0a1c345eb40b5b30598032cdbea169ed0b5d86be1ada49d3abd` |
+| `evidence/oemlock/20261019/callers.json` | 21993 | `a203e3accdf3e1f98c7719d4641f605387ecde3d4af0f9f4449bcc44d1c7a8f3` |
+| `evidence/oemlock/20261019/component-excerpts.json` | 606 | `d1d80a3db19198c98d24ba6fce90e8ba05adc49c53db5282cf2ea9b4d3faa535` |
+| `evidence/oemlock/20261019/confirmation-methods.json` | 14782 | `704ff8f2e222252f1a4b1d42610b77dcc3c99924b6e17abde1b299d34dd80c3d` |
+| `evidence/oemlock/20261019/focused-methods.json` | 93588 | `28408d6219162e6343f40d92ce60e59725450e90a753ac1775e8d5acd9c8a3b9` |
+| `evidence/oemlock/20261019/manifest.json` | 446 | `cd477495a4c9621dc405180cdeee54c5b81f219ff8bb6c99ff1f2f49c9cf3b3f` |
+| `evidence/oemlock/20261019/permission-manifests.json` | 2785 | `97ad1bf931d82cb123ffc0ad9ad84182d83fc26dcfc2f3b0cbfa08415d7116bb` |
+| `evidence/oemlock/20261019/property-excerpts.json` | 461 | `b6ed01879fa0440a60ec4a7ad2d4a422458eae5e0e3851d4a41160a99f07b329` |
+| `evidence/partitions/manifest-20261025.json` | 90718 | `3fde1eb367df36cbdd30cff949a845d783e9b0073a2b0ffd89e66a1718c80b6d` |
+| `evidence/perf/20261025/user-count-v010.json` | 872 | `eb211e48a179a261375e5bac31c990f742c0a2c05bd59ac1cf41644bb2e135c5` |
+| `evidence/perf/20261025/user-count-v010.log` | 1314 | `728963c35be03224b17d796377990a58efefd2311a2f350633fcbaa078ca35bc` |
+| `evidence/README.md` | 1714 | `ba8cdcc6de800681c73159b3ce65a1f07108ce147ffa3575e81b0dccc9888549` |
+| `evidence/restricted/adb/hand5g_debloat_audit.zip` | 376662 | `549042553411cc702019a378bc7a21d21f0129e10c0f6014b01a691b8b2bda8e` |
+| `evidence/restricted/adb/hand5g_final_audit.zip` | 419387 | `54ebd6a48c244e86dfea78061f723b5a86acb61d229e9082e9b9233babfa1a3e` |
+| `evidence/restricted/adb/phase3/hand5g_packages_all_phase3.txt` | 22482 | `8171f6e8db3f66121d7a9b69a9e226bf14eabacf7fc5c7577176f0756aa49613` |
+| `evidence/restricted/adb/phase3/hand5g_packages_installed_phase3.txt` | 17724 | `243e0de522382f3f7ab8e1c272231943507b6dbd240ed74d116c5281b3f84530` |
+| `evidence/restricted/bugreport/hand5g_bugreport.zip` | 5684665 | `7e662b108af7b1fa33113636ef86178e5e177ce6a1eb7c498fc12daadec159dc` |
+| `evidence/restricted/ota/hand5g_update_activity.txt` | 94710 | `7d69799a7b0c06240cb3d04e8cddf27a92d7d9bb5cc79c048b37d8ace3dccba1` |
+| `evidence/restricted/ota/hand5g_update_log.txt` | 283944 | `c100d7f7c32527f763b3d26dc30f8bd32d72f96e6bc9b83cca2bed20e844f33b` |
+| `evidence/restricted/README.md` | 1341 | `8f3475dbc29bf1007f38ce7f50ec6e2230f543fb6dd5d5f372a64f23b531a6ad` |
+| `evidence/static/20261018-220912/batch1-verified-analysis.json` | 466500 | `e4acc8a1d892ea3b787dd2354086b54fef02cb9ca1ade83e44f0da4ceaa5ff7b` |
+| `evidence/static/20261018-220912/batch2-verified-analysis.json` | 3255 | `203e6f8024fd18de77bed77b6896cb6d2ca7d43ed6331382252cd06f9bc66b87` |
+| `evidence/static/20261018-220912/manifest.csv` | 228336 | `be42fab84aaa08ed84b2e56f75a1079b26603099e908ecfda4e82b6af5133a7e` |
+| `evidence/static/20261018-220912/native-interface-crosscheck.json` | 12729 | `cf4a2f6dd6a50a847045f64a8888ef4f12326081f998354b67c83d9f8bf7cfe8` |
+| `evidence/static/20261018-222940/policy-audit.json` | 17532 | `a28c802a3a4de85b3983ea6c11b21854439e6d7fc73d7101cfa2a3a138a6b359` |
+| `evidence/supplement/20261024/analysis.json` | 354339 | `4231604d9e107552705418a7f0e70ab0306d386709255edb8441eea3ef47dc9a` |
+| `evidence/supplement/20261024/boot-diag-processes.txt` | 242 | `36a4d11b9fc4396b716fff1825140127c04c518e708ce8656ef77660456dd685` |
+| `evidence/supplement/20261024/commands.json` | 5344 | `7910eb6b1062678e5fc8a4275fd883d801a2fa563b680814aafe5703858d2154` |
+| `evidence/supplement/20261024/files.json` | 8602 | `df097b22965c44d7ca748d4f71e99381d9d59b035c72e4f2787eca4d25f92507` |
+| `evidence/supplement/20261024/otacerts.zip.b64` | 1517 | `88c343747f8167d96c3ea18278decb2f88013f2ef86ace61b2b764059eaa3b97` |
+| `evidence/supplement/20261024/README.md` | 1125 | `1ddec60ed466a1c76970ac794f5abc97faea491ba1b85863a2b8a31a7cd0e407` |
+| `evidence/supplement/20261024/validation.json` | 279 | `319d23fd7c6e7dfd90929f4d7e2eb72f630647ff67cc8a3cf709092465796047` |
+| `evidence/supplement/20261024/vintf/system/compatibility_matrix.1.xml` | 71560 | `143e9f222a6ad3e490f60e893ab7b633d5a75b9d0fc9047f3de111b890f0e29a` |
+| `evidence/supplement/20261024/vintf/system/compatibility_matrix.2.xml` | 73795 | `faf0b1129a81a1c2a35016303c22f236b3bd7903dfdc4f8934ecfb0af13acc16` |
+| `evidence/supplement/20261024/vintf/system/compatibility_matrix.3.xml` | 90414 | `a75a7574758bd10e9d309ca8307f55e8a2e2706fae7e55717b83a18f245bc271` |
+| `evidence/supplement/20261024/vintf/system/compatibility_matrix.4.xml` | 114285 | `f7a814503a69e86ee260bcb2e6d9ee611813c7e4b575f1f65221a85ef40439ff` |
+| `evidence/supplement/20261024/vintf/system/compatibility_matrix.5.xml` | 125617 | `fb5cad7004d0d4b828642efe7c0ee7fe17234eb19a812580a9101b3855fdeeb1` |
+| `evidence/supplement/20261024/vintf/system/compatibility_matrix.device.xml` | 31041 | `a05358f05b23feeb2d19c2c7bc96479745b19d3d76f2d02784c166c3fa8424c3` |
+| `evidence/supplement/20261024/vintf/system/compatibility_matrix.legacy.xml` | 71600 | `89413591f09556412ce508da4709bd58191660984d417c99e0ac2dac3f84293c` |
+| `evidence/supplement/20261024/vintf/system/manifest/android.frameworks.stats@1.0-service.xml` | 306 | `a651013edf8ac7d2804c53ba05e8eb27794d0dd5db66cc509c73351f9f2bab01` |
+| `evidence/supplement/20261024/vintf/system/manifest/android.hidl.allocator@1.0-service.xml` | 307 | `9e6fee7d22163cfdb0392e10b1dee1f0d7efb24d4f5c3b50adddc3368dc4f11e` |
+| `evidence/supplement/20261024/vintf/system/manifest/android.system.suspend@1.0-service.xml` | 312 | `8fa3da936a54184f2bf0652bbeb9c5d3c0c290bd508276f599e9bd4213846dd0` |
+| `evidence/supplement/20261024/vintf/system/manifest/manifest_android.frameworks.cameraservice.service@2.1.xml` | 330 | `ca19fd2335e749f78ea2982b497058a22b38ac0464a8944b7031255e2293b8e5` |
+| `evidence/supplement/20261024/vintf/system/manifest/manifest_media_c2_software.xml` | 317 | `5f1f54ae43e6a3a062b67dcd5f7df7aa76fce563127b7170ae2a47a5c1bf0ef0` |
+| `evidence/supplement/20261024/vintf/system/manifest.xml` | 4516 | `868dc65d800fe96436e4eb1002f0969d71c8d97364224a3f880b449eda3883a8` |
+| `evidence/supplement/20261024/vintf/system_ext/manifest.xml` | 179 | `94edfc634de5917060b00a2eec8abd09ee150fbacabf27d78972f9ccc120994b` |
+| `evidence/supplement/20261024/vintf/vendor/compatibility_matrix.xml` | 2528 | `5aa869415b923d1668b80845bfb3b821ff82c113a2b61a9063bc9c3d19629dfd` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.atrace@1.0-service.xml` | 323 | `49e4a804e77b653064e7cb8fc5dc6c6b4aeea2ae4a2a62dab0ff52e0c463ee01` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml` | 348 | `473cf370500637de575dc89fbac74e4942d969717a0a72cb5adaa3511bdba693` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.boot@1.1.xml` | 221 | `d42cd4d5e3448ebe865ca20824031d411c7ea9a0600949454959894444c74a90` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.cas@1.2-service.xml` | 323 | `9357fb5a7b17fe81638ec82f79d06007bb35c19016e676104fa55449b5f0f0d2` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.gnss@2.1-service-qti.xml` | 1779 | `b12c00daff67f15983eaf9952d0ded199b2868ad1b9fb512fcab5f6bf813773d` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.graphics.mapper-impl-qti-display.xml` | 2226 | `00105bbff83fa177fff8c10776678fddcf99179464d866bd688a1bf61ee563b4` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.health@2.1.xml` | 218 | `d79a8058bf0dd9d4cf7bf65f6ef2f47c3fd9452e641ebc746465d619aabb509c` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.lights-qti.xml` | 171 | `570ac710477a2e70c8c983e4eea18ddd398907af0502ac95557f4293e9f85cc9` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.neuralnetworks@1.3-service-qti.xml` | 460 | `1fe231b6b3fd8ec56d0d4063ec9e547be4248da930b9c471212ff9cc9f4afc99` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.sensors@2.0-multihal.xml` | 319 | `5915f6e142726b3b608379a2e03c2b23478c393b310b024ac7687f73458a630e` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.thermal@2.0-service.qti.xml` | 1844 | `963119de0310765a376a61ec01854f70c6daa91bff75f0d6eaedc6e4b7f2a8b3` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.usb@1.2-service.xml` | 1878 | `7f0bd8f15ad0f216869ae1de9c86893c67cd2ebbb6f8392bf0619afd755c5755` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.wifi.hostapd.xml` | 698 | `641f8d2f6a26b570b7ab7322d9e6cd5f3d51e0ea9ba829fda16569f90cfa3900` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/android.hardware.wifi@1.0-service.xml` | 313 | `5b785b5e6f63baab071ca757ec3e5bf0ee7a877186c17e2b36ce5bc63112756e` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/c2_manifest_vendor.xml` | 1926 | `f91b889f1dee3d7740862fae4632df0e9e553fea8ba11b23d6ae86f97e088f29` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/manifest.xml` | 618 | `44eb838887d1bb904a0270bb80592691e0dcb01cea920012e681eb62bfb55b47` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/manifest_android.hardware.drm@1.3-service.clearkey.xml` | 945 | `4b9a9214df27df7f546dcd7b27efac3803f8d172548671c8d94903ef1d804aef` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/manifest_android.hardware.drm@1.3-service.widevine.xml` | 945 | `61cee1f6a061cf5348ca82f5326bd09cedda6bf2eea016c9ad3374f2cd03df7a` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/power.xml` | 1687 | `541769636e0fe848700a472da66eddaffdfd00de06aab236827edbb334ca8bc3` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.journey.hardware.display@1.0.xml` | 329 | `34a6d640c0e4fd482674450687c1cd008f31e183f6ee68bef9c125bf3ff4d6ca` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.journey.hardware.fingerprint@1.0.xml` | 348 | `447d5edaa6fa443c9a0f4ca80b97bbf484c36148a32783c0bca088dab8894165` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.journey.hardware.warehouse@1.0.xml` | 341 | `6edeafe4efc83f4beafbb8d20ac9aeeb0253d2f88d941c875b79b690e05f1269` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.diag.hal.service.xml` | 477 | `e83f49d490b33fe0a47114f5b9fcf651f5b7844a1aa2ea6b26e47cda59fbd85c` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.gnss@4.0-service.xml` | 690 | `a2febcc396f453bdabfe60f8adc9b0bc89b110845b3bd4b0c582ce35054a5f4e` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.hardware.display.allocator-service.xml` | 2203 | `7a916b6ca645ff92e2f1df462ae44e8e7316ffe339d384cbfc352a8e395ae3f5` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.hardware.display.composer-service.xml` | 2953 | `944b74f6eba32f03cf63d5e3b956dc3f270bce4244b6babf441816c7e3b286b9` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.hardware.limits@1.0-service.xml` | 457 | `b7a7ec9cd9064450d650372f5c9a8f58ffe658190a613621c93fadbd69d63c70` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.hardware.servicetracker@1.2-service.xml` | 472 | `f57b12f5747dc5ba00186e1254dabebd071561c72ce3ae866cf8f9ce0ef901e0` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.hardware.vibrator.service.xml` | 1694 | `5cf94ad6bd7b78b2020874fd6fc74764447f2cd9fddb8ef5288eb13619d42aba` |
+| `evidence/supplement/20261024/vintf/vendor/manifest/vendor.qti.memory.pasrmanager@1.0-service.xml` | 464 | `417e8b42f9d20d9b286ad7affbeca917f556657d40fc681142d5152cab1dc7bf` |
+| `evidence/supplement/20261024/vintf/vendor/manifest.xml` | 24723 | `252588e887bd314664dfa704d46d6d9a77ebecb032e496c56a6ca4aac49e1210` |
+| `evidence/tee/hand5g_native_api_paths.txt` | 1174 | `ffe7521fd4cd0942b6a04c86b10a5c7bbd2b8d1b500ae179defdf4ce2db561f2` |
+| `evidence/tee/hand5g_tz_whitelist.txt` | 3148 | `56937f268c4363b7314dd00163e0283dfc587eb6a6a738b4c9542cc07de17a00` |
+| `evidence/web/2026-10-17/source-preservation.json` | 3539 | `7d1174bb3135de3ad633606eca1e00e6c0b7c40c8765fcb66004376c8a5c8fed` |
+| `evidence/web/2026-10-17/xda-4805241-pending.json` | 1287 | `7135c52ad29147733de276aaf99f2ce9ee46ddfbd717e41617cc212e4968fda9` |
+| `evidence/web/2026-10-17/xda-4805241-user-provided.txt` | 2308 | `31f9508f1db507e85b42a426b45aea6edc4a5fdbe23446f4b388a748b62ada08` |
