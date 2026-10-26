@@ -3,7 +3,7 @@
 > 由 `23-repo-rebuild/build_index.py` 于 2026-10-26 从 `evidence/` 实际文件生成。
 > 每项给出仓库内路径、字节数与 SHA-256；摘要说明见各专题报告。
 
-共 **360** 个文件，合计 **25.6 MB**。
+共 **362** 个文件，合计 **99.4 MB**。
 
 | 路径 | 字节 | SHA-256 |
 |---|---:|---|
@@ -35,7 +35,9 @@
 | `evidence/20261026/init/final-report-20261025.md` | 7377 | `fb02f5be6e75b8004f353b1da7ec2ae5743870b0365287cfcd6308c622b8336d` |
 | `evidence/20261026/init/init_status.txt` | 947 | `b3ceb04f176e25eb0307c2c3db148d55eb00ab978bde72d22cc923d679e71ce4` |
 | `evidence/20261026/init/README.md` | 110 | `542f40fa270b184720b37c9f4db43032d3cf93b75532692e9df10aed3122c77d` |
-| `evidence/20261026/kernel/README.md` | 379 | `ae192a0e2e25a36d03113483019d75d66b6bab11f1448c04987354900db47d40` |
+| `evidence/20261026/kernel/boot_b_full.img` | 51408896 | `877fd16220feb3488e6c4f8d6f5af4dc6ccd3670d2ae93f40e9301d3eeb1b825` |
+| `evidence/20261026/kernel/P780-kernel-symbol-recovery-20261025.zip` | 22370728 | `92baa993385105d68f75ee734229ffe8bbe60221c75b569d185ccc5fad826a83` |
+| `evidence/20261026/kernel/README.md` | 496 | `96b888f3ebce1531f0a30105c7b46d4fb29a94e0ef086df9a1766f44eeaf2183` |
 | `evidence/20261026/keys/testkey_rsa4096.pem` | 3243 | `6a224754880a57ab9cbd308267cd157d94cf05a1c8cb851aec4090e045d24121` |
 | `evidence/20261026/oem/fastboot-getvar-all.txt` | 16700 | `a4a133b8b79064142b7a71f0d80875b9cdaa28a4f3767e03174e282e615b0b13` |
 | `evidence/20261026/oem/README.md` | 61 | `860d6d6f2e4c81c884e90bb6ce166fdf1cb2577d6a16b743fd88b4348376d00a` |
@@ -57,7 +59,7 @@
 | `evidence/20261026/partitions/xbl_b.00.bin.strings.txt` | 211978 | `34c834ea8bb6d2b784c91d5016530a8645953111da51e82e6821ca0a1ef19d5a` |
 | `evidence/20261026/partitions/xbl_config_b.00.bin` | 131072 | `0ca31ef02bbcb606cb6276068527984af33c9f72ae17e90db91ba5b55b63626f` |
 | `evidence/20261026/partitions/xbl_config_b.00.bin.strings.txt` | 1825 | `eae34f571a59a0eb37b6f0a67ffecc2851b5c0912c6009506b67e931d25cf815` |
-| `evidence/20261026/README.md` | 483 | `b553e9af1ecdc259ae874f03b8335f3085bee8b2d2791e2db2f0c012c89b7920` |
+| `evidence/20261026/README.md` | 550 | `21998d76f10024b017a31c5f0682fcf6c202746439fb7df6abe962614054d43d` |
 | `evidence/20261026/vuln-surface/props_report.txt` | 33566 | `24a2de082cc62c7cb0da083660a8bf041c8c9a9292bfa9ef06eccc8f06c28886` |
 | `evidence/20261026/vuln-surface/README.md` | 78 | `a834ecfa4da20cfe02e2bc2900c62644cb3ba05a7f037334685f8713a385ce41` |
 | `evidence/actions/2026-10-10-clang11/android-clang-version.txt` | 320 | `a42d10597ccb74cece967cc278e982bfe8f45a4b4865e9eceae2bb6709b5d90b` |
