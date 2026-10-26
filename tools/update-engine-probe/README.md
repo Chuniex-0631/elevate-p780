@@ -87,10 +87,30 @@ Metadata hash signature matches value in Omaha response.
 - page cache 可能被回收：写完证书页后要**立刻**触发 update_engine，
   否则会回落到原始证书。重启设备即可恢复原始页。
 
+## 块写路径已实测（2026-10-27）
+
+`mkpayload_boot.py` 生成一个带 `partition=boot`、一条 `REPLACE`（4096 B）
+和完整 payload 签名的 payload。实测 update_engine：
+
+```
+PartitionInfo new boot sha256: xiIAVJPEy3Xz4I7aTMC/4XLixe7KZh7EkIxUkPw9aZQ= size: 4096
+Opening /dev/block/bootdevice/by-name/boot_a partition without O_DSYNC
+Applying 1 operations to partition "boot"
+Completed 1/1 operations (100%)
+FilesystemVerifierAction: Hashing partition 0 (boot) ... kSuccess
+PostinstallRunnerAction ... kSuccess
+finished last action PostinstallRunnerAction with code ErrorCode::kUpdatedButNotActive
+```
+
+`kUpdatedButNotActive` 是因为 headers 里设了 `SWITCH_SLOT_ON_REBOOT=0`；
+写路径本身已经完整成功（真正的块设备写 + 分区哈希校验）。
+
 ## 下一步
 
-- 生成带 `partitions` + `InstallOperation(REPLACE)` 的合法 payload（先写
-  `vbmeta_b` 这种可回滚的分区），再验证 update_engine 能否直接写块设备；
+- 用同一格式生成两个 partition 的 payload：`boot`（完整镜像）与 `vbmeta`
+  （testkey 重签、`--flags 2` 关闭 verity、去掉 boot 描述符）；
+- 先把目标槽 A 写成可启动的 rooted/permissive boot + 对应 vbmeta，
+  再设 `SWITCH_SLOT_ON_REBOOT=1`，重启进入 A；
 - 注意目标槽：当前 `ro.boot.slot_suffix=_b`，update_engine 默认 target A；
   基线失败已把 A 标成 unbootable，活动槽 B 不受影响。
 

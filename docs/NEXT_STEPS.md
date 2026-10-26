@@ -16,9 +16,13 @@
    - ✅ 最小 payload 已生成并通过本地签名校验，system_app + HTTP 触发成功；
    - ✅ 自建 APK 已把 1135 B `otacerts_ours.zip` 写进页缓存，update_engine 日志
      `Verified correct signature 1 out of 1 signatures` —— **签名门已绕过**；
-   - ⛔ 新阻塞：空分区 manifest 会在 `DeltaPerformer::Write` SIGSEGV；
-   - 下一步：生成带 `partitions` + `REPLACE` operation 的合法 payload，
-     先写可回滚的 `vbmeta_b`，确认 update_engine 能写块设备后再写 `boot_b`。
+   - ⛔ 原阻塞（空 manifest SIGSEGV）已由合法 partition/operation 解决；
+   - ✅ `partition=boot` + `REPLACE` payload 已让 update_engine 真正打开
+     `/dev/block/.../boot_a`、执行 `Applying 1 operations`、
+     `FilesystemVerifierAction kSuccess`；结束码 `kUpdatedButNotActive`
+     只因 `SWITCH_SLOT_ON_REBOOT=0`；
+   - 下一步：生成 rooted/permissive `boot` + testkey 重签 `vbmeta`（flags=2、
+     去掉 boot 描述符）的完整 payload，写入目标槽 A，再设 `SWITCH_SLOT_ON_REBOOT=1`。
 2. **EDL 只做询价/验证**：官方与商业渠道确认是否提供 TINNO/holi 签名 programmer；
    没有文件、没有真机写，就不算进展。
 3. **6931 恢复条件**（满足其一再上设备）：

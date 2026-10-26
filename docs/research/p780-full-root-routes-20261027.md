@@ -180,6 +180,25 @@ Metadata hash signature matches value in Omaha response.
 关键约束：update_engine 的 `PadRSASHA256Hash()` **只接受 RSA-2048 / RSA-4096**，
 RSA-1024 会在验签前失败；已改用 RSA-2048（证书 zip 947 B，可放进 1135 B）。
 
+### 4.2.3 块写路径完整成功
+
+`tools/update-engine-probe/mkpayload_boot.py` 生成 `partition=boot`、一条
+`REPLACE`（4096 B）、带完整 payload 签名的 payload。实测：
+
+```
+PartitionInfo new boot sha256: ... size: 4096
+Opening /dev/block/bootdevice/by-name/boot_a partition without O_DSYNC
+Applying 1 operations to partition "boot"
+Completed 1/1 operations (100%)
+FilesystemVerifierAction: Hashing partition 0 (boot) ... kSuccess
+PostinstallRunnerAction ... kSuccess
+finished last action PostinstallRunnerAction with code ErrorCode::kUpdatedButNotActive
+```
+
+`kUpdatedButNotActive` 只是因为 headers 设了 `SWITCH_SLOT_ON_REBOOT=0`；
+**真正的块设备写 + 分区哈希校验已经成功**。至此 update_engine 路线只剩
+"把 rooted boot / vbmeta 写进目标槽并切槽"这一步。
+
 ### 4.3 最小可行 payload
 
 - 目标分区：`boot`（slot b）；

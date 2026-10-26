@@ -76,6 +76,12 @@
 - **新阻塞**：空分区 manifest 会让 `DeltaPerformer::Write` SIGSEGV；需要带
   `partitions` + `REPLACE` operation 的合法 payload。另：page cache 会被回收，
   写完必须立刻触发 update。
+- **块写路径已完整打通**：`mkpayload_boot.py` 的 `partition=boot` + `REPLACE`
+  payload 被 update_engine 接受，
+  `Opening /dev/block/bootdevice/by-name/boot_a` → `Applying 1 operations` →
+  `Completed 1/1` → `FilesystemVerifierAction ... kSuccess`。
+  结束码 `kUpdatedButNotActive` 只因 `SWITCH_SLOT_ON_REBOOT=0`。
+  至此只剩"写入 rooted boot/vbmeta 并切槽"。
 - **下一步**：生成合法 partition/operation payload（先写可回滚的 `vbmeta_b`），
   6931 保持 fallback；信息层清单已基本收口。
 
