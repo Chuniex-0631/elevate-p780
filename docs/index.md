@@ -8,7 +8,7 @@
 | 文档 | 标题 | 备注 |
 |---|---|---|
 | [`CHANGELOG.md`](../CHANGELOG.md) | 变更记录 | - 实机进入 ABL 工厂菜单：Vol Up + Power 后有 START / Restart bootloader / Recovery mode / Power off / Boot to FFBM / Boot to QMMI，没 |
-| [`README.md`](../README.md) | 当前结论 | ﻿# Rakuten Hand 5G / TINNO P780 研究档案 |
+| [`README.md`](../README.md) | Rakuten Hand 5G / TINNO P780 研究档案 | 设备：Qualcomm 平台（holi / SD480），Android 11，内部固件 P780AE11.0RMNJP162，系统指纹末段 264:user/release-keys，内核 5.4.233-qgki-gea5245e94a |
 | [`SECURITY.md`](../SECURITY.md) | 私人设备研究资料的隐私与安全 | 本仓库记录用户本人持有的 Rakuten Hand 5G P780。2026-10-18 曾由 GitHub API 检测到 visibility=public；机主随后已改回 Private，经 GitHub API 再次确认。此前的公开 |
 
 ## docs 总览（9）
@@ -16,12 +16,12 @@
 | 文档 | 标题 | 备注 |
 |---|---|---|
 | [`ARCHITECTURE.md`](ARCHITECTURE.md) | 仓库结构与维护约定 | 1. 状态只有一个权威页：docs/STATUS.md。其他页面只写"本页范围"，不另立结论。 |
-| [`EVIDENCE_MANIFEST.md`](EVIDENCE_MANIFEST.md) | 证据清单 | 共 361 个文件，合计 29.3 MB。 |
+| [`EVIDENCE_MANIFEST.md`](EVIDENCE_MANIFEST.md) | 证据清单 | 共 360 个文件，合计 25.6 MB。 |
 | [`HISTORY.md`](HISTORY.md) | 研究时间线 | - 日期按报告日期，不杜撰精确小时；实机采集以每次 ro.boot/uptime/槽位快照为准。 |
 | [`NEXT_STEPS.md`](NEXT_STEPS.md) | 下一步计划 | CVE-2024-23373 在 NVD 中明确覆盖 SD480；P780 的 kgslmmuputgpuaddr 在 |
 | [`README.md`](README.md) | 文档导航 | - research/p780-abl-avb-gsi-20261026.md — ABL 工厂菜单、AVB/GSI、XBL EDL。 |
 | [`REPOSITORY_AUDIT.md`](REPOSITORY_AUDIT.md) | 2026-10-18 全库总结与整理验收 | 基准提交：cc92c49c397dd01e9aecc002a7ca60b63aea500a。完整递归树未截断，整理前289个文件；逐项树清单记录路径、大小、模式和Git blob SHA。当前研究仍Locked/未Root，DSU停止。 |
-| [`STATUS.md`](STATUS.md) | 设备与版本事实 | ﻿# 当前研究状态 |
+| [`STATUS.md`](STATUS.md) | 当前研究状态 | 1. DirtyFrag 的原语与"拿到 root"是两件事。原语已确认；root 受 SELinux 域策略限制，逐项否定见 |
 | [`index.md`](index.md) | 文档索引 |  ⚠️ 部分损坏 |
 | [`official-source-request-log.md`](official-source-request-log.md) | Rakuten Hand 5G / TINNO P780 官方源码请求联络 | - 收件方：Sales@tinno.com（TINNO 官网公开的海外销售邮箱，不是已验证的开源源码专用邮箱）。 |
 
@@ -43,8 +43,8 @@
 | [`ota-bugreport.md`](research/ota-bugreport.md) | P780 更新服务日志与 Android Bugreport 原始证据 | - hand5gupdateactivity.txt 是 Activity/系统状态记录，其中可见 SystemUpdate 相关组件名，但没有直接可复用的完整 OTA 文件。 |
 | [`ota-log-audit.md`](research/ota-log-audit.md) | P780 OTA 日志与 Journey 配置服务核对 | 日期：2026-10-10。只读取已归档材料，并对日志中的无鉴权公共配置地址执行 HTTP/HTTPS GET；没有连接、修改手机或重放设备鉴权请求。 |
 | [`p780-abl-avb-gsi-20261026.md`](research/p780-abl-avb-gsi-20261026.md) | AVB 链重审：根/系统链都是公开测试密钥（2026-10-26） | vbmetasystem 里有 system / product / systemext 的 hashtree 描述符； |
-| [`p780-afunix-cve-2024-26923-20261026.md`](research/p780-afunix-cve-2024-26923-20261026.md) | 1. 漏洞与修复 | ﻿# CVE-2024-26923：AFUNIX GC vs connect() 触发（2026-10-26） |
-| [`p780-artifact-scan-20261025.md`](research/p780-artifact-scan-20261025.md) | 1. 凭据与密钥 | ﻿# 全量系统文件扫描：密钥、凭据与有用信息（2026-10-26） |
+| [`p780-afunix-cve-2024-26923-20261026.md`](research/p780-afunix-cve-2024-26923-20261026.md) | CVE-2024-26923：AF_UNIX GC vs connect() 触发（2026-10-26） | - 漏洞：unixgc() 选候选时，如果候选里有 listening socket，GC 的两遍 |
+| [`p780-artifact-scan-20261025.md`](research/p780-artifact-scan-20261025.md) | 全量系统文件扫描：密钥、凭据与有用信息（2026-10-26） | 未发现：AWS key、GitHub ghp 类 token、Slack token、SSH 私钥、.pk8、.p12、.jks 私钥库。 |
 | [`p780-candidate-layout-20261025.md`](research/p780-candidate-layout-20261025.md) | 候选构建的结构布局与验证（2026-10-26） | 新增工作流 .github/workflows/p780-pahole.yml： |
 | [`p780-dirtyfrag-live-exploit-20261025.md`](research/p780-dirtyfrag-live-exploit-20261025.md) | P780 DirtyFrag 实机利用链（2026-10-26） | 设备基线（全部来自实机）： |
 | [`p780-dirtyfrag-tinno-5.4.61-source-audit-20261024.md`](research/p780-dirtyfrag-tinno-5.4.61-source-audit-20261024.md) | TINNO P780 Linux 5.4.61：DirtyFrag 相关 UDP sendpage / ESP 源码审计 | 日期：2026-10-24（Asia/Shanghai） |
@@ -69,9 +69,9 @@
 | [`p780-evidence-gap-audit-20261019.md`](research/p780-evidence-gap-audit-20261019.md) | GAP-01�����в��ԡ��ں�֤������ļ���ʵ��2026-10-19�� | ���ֲ��������ȱ�ڣ��ɹ�ȡ�������� SELinux policy ԭ�����ֻ��ں�������10��10���������ֽ�һ�£�journey.factory.rc ȷΪ���ֽ��ļ��� δ�õ��µ ⚠️ 部分损坏 |
 | [`p780-fstab-avb-20261018.md`](research/p780-fstab-avb-20261018.md) | P780 fstab AVB 挂载配置实机取证（2026-10-18） | 证据类型：用户通过普通 ADB shell 提供的两个文件文本（会话附件），已核对 5 行 AVB 挂载声明。并非原始 fstab 文件字节哈希或实际 Bootloader vbmeta.img 的签名描述符。 |
 | [`p780-ghostlock-5.4-20261026.md`](research/p780-ghostlock-5.4-20261026.md) | GhostLock 5.4.233 可行性评估（2026-10-26） | P780 5.4.233 removewaiter（0xffffffc010342cd8）反汇编： |
-| [`p780-ghostlock-bug-shape-20261025.md`](research/p780-ghostlock-bug-shape-20261025.md) | 环境 | ﻿# GhostLock 缺陷形态确认（2026-10-26） |
+| [`p780-ghostlock-bug-shape-20261025.md`](research/p780-ghostlock-bug-shape-20261025.md) | GhostLock 缺陷形态确认（2026-10-26） | - 内核 5.4.233-qgki-gea5245e94afe-dirty（2024-02-20 构建，早于 2026-04 的修复） |
 | [`p780-ghostlock-profile-draft-20261025.md`](research/p780-ghostlock-profile-draft-20261025.md) | P780 GhostLock profile 草案（5.4.233，静态部分） | hocon |
-| [`p780-init-capability-20261025.md`](research/p780-init-capability-20261025.md) | 1. 运行环境的实测数据 | ﻿# init 域能力盘点（2026-10-26） |
+| [`p780-init-capability-20261025.md`](research/p780-init-capability-20261025.md) | init 域能力盘点（2026-10-26） | 21-dirtyfrag-probe 的 libc++ sentry 钩子、门控 gettid()==1 && getuid()==0 && getpid()==1， |
 | [`p780-installd-root-shell-20261025.md`](research/p780-installd-root-shell-20261025.md) | P780 实机取得 uid 0 root shell（2026-10-26） |  |
 | [`p780-ipsec-preflight-live-and-localversion-20261024.md`](research/p780-ipsec-preflight-live-and-localversion-20261024.md) | P780 IPsec Preflight 实机结果与内核版本后缀来源核验 | 日期：2026-10-24（Asia/Shanghai） |
 | [`p780-ipsec-v0.2-api-cts-design-20261024.md`](research/p780-ipsec-v0.2-api-cts-design-20261024.md) | P780 IPsec diagnostics 0.2.0: Android 11 API/CTS basis and safety boundary | Date: 2026-10-24 (Asia/Shanghai) |
@@ -82,7 +82,7 @@
 | [`p780-native-interface-crosscheck-20261018.md`](research/p780-native-interface-crosscheck-20261018.md) | P780 native接口、JAR与SELinux交叉核对 | 2026-10-18，纯PC静态分析；没有运行手机二进制、Binder/HIDL请求、socket连接、属性修改或分区操作。 |
 | [`p780-native-live-endpoints-20261019.md`](research/p780-native-live-endpoints-20261019.md) | NATIVE-01：P780 运行端点与诊断 JNI 失败链（2026-10-19） | 结论：补齐了旧 native 矩阵缺失的诊断 Java 调用方和运行身份。QTIDiagServices 的启动日志显示 JNI 初始化因诊断 HIDL 连接失败而退出；这不是可用的 OEM 管理代理。Journey 两个 root 诊断进 |
 | [`p780-next-research-20261025.md`](research/p780-next-research-20261025.md) | 下一阶段研究选择（2026-10-26） | 这三条合起来，本质上是一个"以 init 身份只读取证"的通道——这正是过去所有卡在"没有镜像 / 没有内核符号"的工作所缺的东西。 |
-| [`p780-oem-unlock-final-20261025.md`](research/p780-oem-unlock-final-20261025.md) | 1. 设备侧状态 | ﻿# OEM Unlock 终结性判定（2026-10-26） |
+| [`p780-oem-unlock-final-20261025.md`](research/p780-oem-unlock-final-20261025.md) | OEM Unlock 终结性判定（2026-10-26） | sys.oemunlockallowed=0 说明"OEM unlocking"开关没开；但即便打开，也要 BL 实现解锁命令才行。 |
 | [`p780-oemlock-caller-boundary-20261019.md`](research/p780-oemlock-caller-boundary-20261019.md) | OEMLOCK-02：设置调用者与权限边界（2026-10-19） | 结论：getter/setter 的 customer 检查差异仍成立，但在本轮现有语料中没有发现普通应用/ADB shell可达的特权设置入口。该候选停止作为上机实验；未解锁、未Root、未改变手机状态。 |
 | [`p780-oemlock-first-results-20261019.md`](research/p780-oemlock-first-results-20261019.md) | P780 OEMLOCK-01 第一阶段实测结果（2026-10-19） | 状态：第一阶段已实测，第二阶段只读分支诊断待进行。没有解除解锁限制、Root或改变设备持久状态。 |
 | [`p780-oemlock-gate-probe-20261019.md`](research/p780-oemlock-gate-probe-20261019.md) | P780-OEMLOCK-01: OEM Unlock 灰色开关的限制来源 | 2026-10-19。状态：第一、第二阶段已实机执行；第三阶段进入现有 Settings APK 离线审计。不推断 Bootloader 解锁或 Root 已实现。 |
@@ -103,9 +103,9 @@
 | [`p780-static-patch-review-20261025.md`](research/p780-static-patch-review-20261025.md) | P780 静态修复核对与 Magic3 文章参考（2026-10-26） | 范围：对已核验Image做离线修复存在性分析；不生成设备适配载荷、不操作手机。 |
 | [`p780-supplement-20261024.md`](research/p780-supplement-20261024.md) | P780 补充情报整理：2026-10-24 | 新增价值集中在 VINTF分片与OTA验证证书，没有发现可确认的解锁、Root或固件写入通道。全程仅ADB读取与PC离线解析，没有设置属性、安装、DSU切换或重启。 |
 | [`p780-system-file-extraction-20261025.md`](research/p780-system-file-extraction-20261025.md) | 从 /system 提取整文件（2026-10-26） | 没有任何一个域同时具备"读块设备 + 写大空间"。用 init 域往外搬，/metadata 一次 |
-| [`p780-uring-cve-2023-6931-20261025.md`](research/p780-uring-cve-2023-6931-20261025.md) | 1. 选型方法 | ﻿# iouring CVE 选型：CVE-2023-52654 在本机成立（2026-10-26） |
+| [`p780-uring-cve-2023-6931-20261025.md`](research/p780-uring-cve-2023-6931-20261025.md) | io_uring CVE 选型：CVE-2023-52654 在本机成立（2026-10-26） | 1. 取 5.4.y stable 的 fs/iouring.c 提交历史（到 v5.4.280），只看 5.4.233（2023-12）之后的修复； |
 | [`p780-vendor-service-audit-20261025.md`](research/p780-vendor-service-audit-20261025.md) | 厂商预置服务审计（第一轮）：Journey 根服务与属性触发的 init 原语（2026-10-26） |  |
-| [`p780-vuln-surface-analysis-20261025.md`](research/p780-vuln-surface-analysis-20261025.md) | 1. 一句话结论 | ﻿# 新资产 × 已知漏洞：还有哪里有搞头（2026-10-26 评估） |
+| [`p780-vuln-surface-analysis-20261025.md`](research/p780-vuln-surface-analysis-20261025.md) | 新资产 × 已知漏洞：还有哪里有搞头（2026-10-26 评估） | 瓶颈已经不是 uid 0，而是 SELinux 域逃逸。 因此： |
 | [`public-p780ae-device-tree-audit-20261024.md`](research/public-p780ae-device-tree-audit-20261024.md) | 公开 P780AE 设备树候选审计（2026-10-24） | 2026-10-24 检索发现公开仓库 2by2-Project-Devices/androiddevicerakutenp780ae。仓库创建于 2026-10-14，默认分支 lineage-23.2；截至核验时只有该分支、无 Rele |
 | [`qas-tee-pfm.md`](research/qas-tee-pfm.md) | QAS → Mink → PFM → TZAccessService：已知事实索引 | 2026-10-04 对真实 P780 提取的应用、库与日志进行静态分析，详细原始报告已永久提交至： |
 | [`tee-system-apks.md`](research/tee-system-apks.md) | P780 TrustZone 白名单、JNI 访问记录及系统 APK 原件 | 本章节根据机主上传到 GitHub 的真实文件编写，并与 2026-10-04 QAS/Mink/PFM 分析 对照。静态内容与实时鉴权的成功与否必须分开看。 |
@@ -135,25 +135,25 @@
 | 文档 | 标题 | 备注 |
 |---|---|---|
 | [`README.md`](../tools/README.md) | 工具 | 历史脚本见 ../archive/scripts。 |
-| [`README.md`](../tools/abl/README.md) | (无标题) | ﻿# ABL / boot 解析 |
-| [`README.md`](../tools/afunix/README.md) | (无标题) | ﻿# CVE-2024-26923 触发 harness |
-| [`README.md`](../tools/artifact-scan/README.md) | (无标题) | ﻿# 49 号 artifact 扫描 |
+| [`README.md`](../tools/abl/README.md) | ABL / boot 解析 | - unpackboot.py：解析 Android boot image（v3/v4），提取 kernel/ramdisk；只读本地镜像。 |
+| [`README.md`](../tools/afunix/README.md) | CVE-2024-26923 触发 harness | - poc26923.c / poc26923：AFUNIX GC vs connect() 竞态触发，不是 exploit。 |
+| [`README.md`](../tools/artifact-scan/README.md) | 49 号 artifact 扫描 | - scansecrets.py：只读扫描静态样本中的敏感串；结果 evidence/20261026/artifact-scan/scan.json。 |
 | [`README.md`](../tools/dirtyfrag-probe/README.md) | DirtyFrag 探针工具（P780） | 本目录收录 2026-10-26 实机专题用到的全部离线工具与载荷源码，配套报告见 |
 | [`README.md`](../tools/dsu/README.md) | DSU read-only follow-up tools | Python standard-library tools for exported P780 files and the existing raw ext4 Android15 A image. No image download, mo |
 | [`README.md`](../tools/gaps/README.md) | Evidence gap tools | comparepolicyrecords.py and verifypolicycomparator.py are offline Python-standard-library tools. They read original PC p |
-| [`README.md`](../tools/gsi/README.md) | (无标题) | ﻿# 官方 GSI 下载/验签辅助 |
+| [`README.md`](../tools/gsi/README.md) | 官方 GSI 下载/验签辅助 | - downloadrgsi.py / downloadgmsrgsi.py：下载官方 R GSI；只联网，不写设备。 |
 | [`README.md`](../tools/ipsec-preflight-android/README.md) | P780 / Android 11 IPsec and UDP diagnostics (non-exploit) | Version: 0.3.0 |
 | [`README.md`](../tools/kernel-symbol-recovery/README.md) | P780 内核符号恢复与独立核验（2026-10-26） | 结果：恢复 173,205 个 kallsyms 符号；全部名称及静态地址通过独立解码核对。 |
-| [`README.md`](../tools/kgsl/README.md) | (无标题) | ﻿# kgsl 反汇编辅助 |
+| [`README.md`](../tools/kgsl/README.md) | kgsl 反汇编辅助 | - kdis.py：按符号名/地址从 kernel.symbolized.elf 反汇编。 |
 | [`README.md`](../tools/native/README.md) | P780 diagnostic offline audit | These tools read exported files on the PC. They do not connect to or execute code on the phone. |
 | [`README.md`](../tools/oemlock/README.md) | OEM Lock offline audit | Requires Python and androguard 4.1.4. Based on the repository's readperformancedex.py table reader. No device or network |
-| [`README.md`](../tools/partitions/README.md) | (无标题) | ﻿# init 域分区 dumper |
+| [`README.md`](../tools/partitions/README.md) | init 域分区 dumper | - dumppartition.py：通过 DirtyFrag init 域分块读取 block device，输出到 /metadata；会写设备。 |
 | [`README.md`](../tools/perf-permission/README.md) | P780 perf 最小权限探测 v0.1.0 | 目标：仅验证 Android ADB shell（UID 2000）能否创建、启用、读取并关闭自身线程的用户态 perf 软件计数事件。 |
 | [`README.md`](../tools/rom/README.md) | P780 ROM Release 离线核验 | 此目录只有 PC 本地离线工具，不连接 ADB、不访问手机、不刷写或解包系统镜像。Python 3.8+ 标准库可用。 |
 | [`README.md`](../tools/supplement/README.md) | P780 supplemental evidence tools | The fixed ADB collector exports selected VINTF directories, the public OTA certificate archive, and a small baseline/boo |
-| [`README.md`](../tools/uring/README.md) | (无标题) | ﻿# CVE-2023-6931 研究工具 |
-| [`DATA-CHAIN-20261026.md`](../tools/uring/analysis/DATA-CHAIN-20261026.md) | 0. 一句话 | ﻿# 6931 新数据链设计：fake skb 双写（2026-10-26，离线） |
-| [`README.md`](../tools/vuln-surface/README.md) | (无标题) | ﻿# 52 号攻击面解析 |
+| [`README.md`](../tools/uring/README.md) | CVE-2023-6931 研究工具 | - analysis/kdis.py、analysis/cfisocktable.py、analysis/DATA-CHAIN-20261026.md。 |
+| [`DATA-CHAIN-20261026.md`](../tools/uring/analysis/DATA-CHAIN-20261026.md) | 6931 新数据链设计：fake skb 双写（2026-10-26，离线） | 用 OOB 加原语把 victim netlinksock 的 skreceivequeue.next 指向上方相邻槽里 |
+| [`README.md`](../tools/vuln-surface/README.md) | 52 号攻击面解析 | - analyzeprops.py：property 扫描。 |
 
 ## archive（旧仓库）（6）
 

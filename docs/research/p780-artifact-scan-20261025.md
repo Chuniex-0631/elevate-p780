@@ -1,4 +1,4 @@
-﻿# 全量系统文件扫描：密钥、凭据与有用信息（2026-10-25）
+# 全量系统文件扫描：密钥、凭据与有用信息（2026-10-25）
 
 > 扫描范围：仓库里所有"从设备搞出来"的系统文件与提取产物（排除 SDK/toolchain/大压缩包）。
 > 工具：[`scan_secrets.py`](../../tools/artifact-scan/scan_secrets.py)；原始结果：[scan.json](../../evidence/20261026/artifact-scan/scan.json)。

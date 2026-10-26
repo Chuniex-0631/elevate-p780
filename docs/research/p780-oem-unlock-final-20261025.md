@@ -1,4 +1,4 @@
-﻿# OEM Unlock 终结性判定（2026-10-25）
+# OEM Unlock 终结性判定（2026-10-25）
 
 > 起因：49 号扫描发现 `ro.oem_unlock_supported=1`，与早期"`fastboot flashing unlock` 返回
 > `unknown command`"的结论矛盾。本轮把 fastboot 侧所有入口一次性试完，结论：**这条线关闭**。

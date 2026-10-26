@@ -1,4 +1,4 @@
-﻿# Rakuten Hand 5G / TINNO P780 研究档案
+# Rakuten Hand 5G / TINNO P780 研究档案
 
 > 更新：2026-10-26（Asia/Shanghai）。记录机主实机取证、离线样本分析与候选源码实验。
 > **Bootloader 仍为 Locked，未取得可用的 Root shell；没有已验证的锁定态永久分区写入通道。**
