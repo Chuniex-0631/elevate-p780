@@ -1,4 +1,4 @@
-﻿# Rakuten Hand 5G / TINNO P780 研究档案
+# Rakuten Hand 5G / TINNO P780 研究档案
 
 > 更新：2026-10-26（Asia/Shanghai）。记录机主实机取证、离线样本分析与候选源码实验。
 > **Bootloader 仍为 Locked；历史记录已取得临时 UID0 shell（SELinux installd 域、Enforcing），并已做成 Elevate；永久 Root、BL 解锁与完整 EDL 仍未证实。**
@@ -26,6 +26,7 @@
 
 ## 最新专题（2026-10-25 / 10-26）
 
+- [分区证据再提取](docs/research/p780-partition-reextract-20261026.md) — 本地丢失的 `48-init-capability` 分区集按原方法重取：`vendor_boot_a/b`、`dtbo_a` 与 45+45 个 first-stage `.ko`、22 个 dtb 全部与 manifest 哈希一致。
 - [ABL / EDL 离线复核](docs/research/p780-boot-edl-audit-20261026.md) — 真实注册表、FRP 读取、misc 字节比较、Root 状态纠正。
 - [Firehose 与商业读取筛查](docs/research/p780-firehose-screening-20261026.md) — 五份候选证书算法/来源与 UFS 边界。
 - **公开隐私提醒**：当前仓库公开，`evidence/restricted/` 没有访问隔离；原始材料尚未完成全面脱敏，见 [SECURITY.md](SECURITY.md)。

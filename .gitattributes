@@ -1,0 +1,6 @@
+# Evidence trees must round-trip byte-for-byte: their SHA-256 values are recorded
+# in evidence/partitions/manifest-20261025.json, so disable EOL conversion there.
+evidence/20261026/partitions/vendor_boot_a_ramdisk/** -text
+evidence/20261026/partitions/vendor_boot_b_ramdisk/** -text
+evidence/20261026/partitions/dtbo_a_entries/** -text
+*.ko -text

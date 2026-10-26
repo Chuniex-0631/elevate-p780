@@ -12,6 +12,7 @@
 | 2026-10-24 | IPsec / DirtyFrag v0.2 / v0.3 / supplement | UDP/ESP 回环 PASS；file-backed sendfile 回环 PASS；VINTF/OTA 证书补充；TINNO 5.4.61 源码审计。 |
 | 2026-10-25 | DirtyFrag 实机 / init / installd / perf / repo rebuild | ESP 页缓存写入确认；`libc++`/`libbase` 改写；init/installd 域代码执行；perf 无镜像采样；仓库重建。 |
 | 2026-10-26 | ABL 菜单 / GhostLock 5.4 / EDL / CVE-2024-23373 / 26923 | ABL 菜单无 Unlock、FFBM/QMMI fallback；GhostLock 七条车辆判负；EDL 无 TINNO 签名 loader；CVE-2024-23373 受影响但触发未解决；CVE-2024-26923 未触发。 |
+| 2026-10-26（补档） | 分区证据再提取 | 本地丢失的 `48-init-capability` 分区集按原方法重取：`vendor_boot_a/b`、`dtbo_a`、45+45 个 first-stage `.ko`、22 个 dtb 的 SHA-256 与 manifest 一致（ok=133、mismatch=0）。 |
 
 ## 说明
 

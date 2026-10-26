@@ -20,7 +20,7 @@
 | [archive/reports/P780_PFM_QAS_2026-10-04.md](../archive/reports/P780_PFM_QAS_2026-10-04.md) | Rakuten Hand 5G P780：QAS → Mink → PFM 研究检查点 |
 | [archive/reports/P780_TZAccess_2026-10-04.md](../archive/reports/P780_TZAccess_2026-10-04.md) | P780：TZAccessService 服务端 Java 授权链 |
 
-## docs（102）
+## docs（103）
 
 | 文档 | 标题 |
 |---|---|
@@ -102,6 +102,7 @@
 | [docs/research/p780-oemlock-gate-probe-20261019.md](../docs/research/p780-oemlock-gate-probe-20261019.md) | P780-OEMLOCK-01: OEM Unlock 灰色开关的限制来源 |
 | [docs/research/p780-oemlock-journey-gate-20261019.md](../docs/research/p780-oemlock-journey-gate-20261019.md) | OEMLOCK-01：Journey customer gate 离线定位（2026-10-19） |
 | [docs/research/p780-partition-content-extract-20261025.md](../docs/research/p780-partition-content-extract-20261025.md) | 系统分区内容整体提取（2026-10-25） |
+| [docs/research/p780-partition-reextract-20261026.md](../docs/research/p780-partition-reextract-20261026.md) | 分区证据再提取：vendor_boot_a/b、dtbo_a（2026-10-26） |
 | [docs/research/p780-perf-permission-probe-20261025.md](../docs/research/p780-perf-permission-probe-20261025.md) | P780 perf permission v0.1.0（2026-10-25） |
 | [docs/research/p780-perf-v010-live-result-20261025.md](../docs/research/p780-perf-v010-live-result-20261025.md) | P780 perf v0.1.0 实机结果（2026-10-25） |
 | [docs/research/p780-phase-3-closure-20261025.md](../docs/research/p780-phase-3-closure-20261025.md) | 阶段收尾：GhostLock 判负、域能力边界、只读榨取与解锁线关闭（2026-10-25） |

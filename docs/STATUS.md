@@ -1,4 +1,4 @@
-﻿# 当前研究状态
+# 当前研究状态
 
 > 2026-10-26 更新。本页是唯一权威状态页；其余页面的结论只在"本页范围"内有效。
 > 历史正文中因二次编码损坏的段落不再引用（见 `docs/index.md` 的"部分损坏"标记）。
@@ -50,7 +50,7 @@
 5. **CVE-2024-26923 仍未触发**：两轮 30s 未赢竞态；需要内核可见的 `BUG_ON` 判据和更细的时序调参。
 6. **不入仓的内容**：个人分区（`persist`/`modemst`/`fsg`/`fsc`）、第三方 exploit（`pipa/`）、
    47 号事故记录、1.6 GB GSI zip、1.9 GB system dump、NDK、`xbl_b.00.bin` 全文（API 401；strings/scan 已入仓）；`boot_b_full.img` 与 `P780-kernel-symbol-recovery-20261025.zip` 已入仓；其余只在 `docs/EVIDENCE_MANIFEST.md`
-   或对应 README 登记来源/哈希。
+   或对应 README 登记来源/哈希。`vendor_boot_a/b`、`dtbo_a` 及其解包内容已按 manifest 哈希复核并入仓（2026-10-26，见 [再提取记录](research/p780-partition-reextract-20261026.md)）。
 
 ## 本轮优先复核
 

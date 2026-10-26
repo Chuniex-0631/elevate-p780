@@ -249,6 +249,11 @@ ramdisk 内容（cpio.gz）：
     └── dtbo_a_entries/            # 22 个 .dtb
 ```
 
+> 2026-10-26 补记：该目录在本地整理时丢失。已按同一方法在同一台机上重新提取，
+> 产物放在 [`evidence/20261026/partitions/`](../../evidence/20261026/partitions/README.md)，
+> 与 manifest 的字节数/SHA-256 逐文件一致；过程与差异见
+> [分区证据再提取](p780-partition-reextract-20261026.md)。
+
 ### 12.5 踩过的坑
 
 - `/metadata` 满时 chunk 会被截断，但 stub 的 size 文件仍写"应读字节数"，容易误判为分区很小；
