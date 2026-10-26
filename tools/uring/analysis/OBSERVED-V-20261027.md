@@ -147,3 +147,47 @@ modeX=0xffffff8050fdd800 V=0xffffff8050fd8000 match=0
 
 这样把"V 必须等于预设槽"换成"以观测到的 X 为基准选 victim"，是 observed-V 的完整形态。
 
+## 9. 2026-10-27 实测：校准会改变 X
+
+`chain_reuse`（leader enabled，target 用 enable/disable 切换）：
+
+```
+[A] total=2976 hits=2 vals=1
+  X1[0]=0xffffff8050fdc000 cnt=2
+[*] calibrate count=1888
+[B] total=3003 hits=2 vals=1
+  X2[0]=0xffffff8031dea000 cnt=2
+[*] same=0
+```
+
+- 校准本身能精确到 1888（target enabled 后 reset + 触页）；
+- 但校准的 `mmap/madvise/缺页` 分配把 X 抢走了：phase A 与 phase B 的 X
+  不是同一个槽。
+
+所以"read0 → 校准 → read1"这个顺序不成立。校准必须发生在 read0 **之前**。
+
+### 9.1 修正设计：观测组 + 利用组，delta 固定
+
+用两个组把"观测"和"校准"解耦：
+
+- **G1（观测组）**：leader + 8446 个 DUMMY，无 delta；read0 只用来采样 X；
+- **G2（利用组）**：leader + 8446 个 sibling，sibling 280 = PAGE_FAULTS，
+  在 read0 **之前**就校准到固定 `delta = 0x760`（1888）。
+
+流程：
+
+1. 建 G1、G2；校准 G2（此时可以有分配，无所谓）；
+2. `read(G1)` 采样 x19 → X；read 返回时 kfree(X)，X 在 c->freelist 头；
+3. **紧接着** `read(G2)`：values 复用 X，OOB 写 `X + 0x8d0`（即 `S = X+0x800`
+   的 `sk_receive_queue`）为 `F = X + 0x1000 + 0x30`，delta 固定 0x760；
+4. 前提：`X+0x800` 是活跃 sock（victim），`X+0x1000` 是可释放/可填充的槽；
+5. read1 之后：close `X+0x1000` 的 sock，等 RCU；send dummy（占 X）→
+   send fake（占 X+0x1000）；`recv(victim)` 触发双写；
+6. target A：fake 的 `next = selinux_state - 8`、`prev = X`。
+
+这样两次 `read` 之间没有任何分配，X 不会被抢；代价是 G1、G2 共约 17k 个 perf fd
+（RLIMIT 32768 可容纳）。
+
+下一步实现这个双组版本；先只验证"G1 read 后 G2 read 的 X 相同"（把 G2 的 delta
+暂设为 0，仍安全）。
+
