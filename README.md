@@ -52,6 +52,7 @@
 
 ## 范围
 
-本仓库只做机主自有设备的只读取证、离线分析与可回滚的受控实验；不包含第三方利用载荷、不提供解锁/刷写服务、不针对他人设备。证据中已剔除个人分区（`persist`/`modemst`/`fsg`/`fsc`）与第三方 exploit 源码；大体积 GSI/system、51 MB boot 与 22 MB kernel symbol zip 只登记来源/哈希，或本地保留。
+本仓库只做机主自有设备的只读取证、离线分析与可回滚的受控实验；不包含第三方利用载荷、不提供解锁/刷写服务、不针对他人设备。证据中已剔除个人分区（`persist`/`modemst`/`fsg`/`fsc`）与第三方 exploit 源码；大体积 GSI/system 只登记来源与哈希；`boot_b_full.img`（51 MB）与 `P780-kernel-symbol-recovery-20261025.zip`（22 MB）已入 `evidence/20261026/kernel/`。
+
 
 
