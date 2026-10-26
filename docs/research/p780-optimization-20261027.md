@@ -194,3 +194,53 @@ settings put global window_animation_scale 1
 
 先执行 **L1**，重启观察一天；确认无影响后按“是否使用”逐项执行 **L2**。
 Felica、RCS、Play 商店、Gboard 这类有实际依赖的，默认不放入 L1。
+
+## 7. 首次执行记录（2026-10-27）
+
+已执行：
+
+- L1 中除 AOSP 可选外的全部项；
+- L2 的 com.google.android.apps.googleassistant、com.google.android.googlequicksearchbox、
+  jp.co.rakuten.mobile.rcs、com.ape.soundrecorder；
+- AOSP 可选（打印/书签/动态壁纸/Egg/Traceur/工作资料/伴侣设备）全部保留；
+- 动画 0.5x、limit_ad_tracking=1、pm trim-caches 4G；
+- 重启后：B 槽正常、Enforcing、默认桌面 com.android.launcher3、默认输入法 Gboard。
+
+共 24 个包被 pm disable-user --user 0：
+
+`
+com.google.android.apps.docs
+com.google.android.apps.docs.editors.docs
+com.google.android.apps.docs.editors.sheets
+com.google.android.apps.docs.editors.slides
+com.google.android.videos
+com.google.android.apps.youtube.music
+com.google.android.apps.wellbeing
+com.google.android.projection.gearhead
+com.google.android.apps.tachyon
+com.google.android.apps.restore
+com.google.android.onetimeinitializer
+com.google.android.partnersetup
+com.google.android.feedback
+com.google.mainline.telemetry
+com.rakuten.feed
+jp.co.rakuten.mobile.ecare
+com.tinno.hightlights
+com.rakuten.launcher3
+com.ape.factory
+com.ape.setupwizard
+com.google.android.apps.googleassistant
+com.google.android.googlequicksearchbox
+jp.co.rakuten.mobile.rcs
+com.ape.soundrecorder
+`
+
+保留：GMS/GSF/Play 商店/Gboard/YouTube/Maps/Gmail/Photos/Files/Chrome/Messages/
+电话/IMS/相机/Felica/紧急广播/launcher3。
+
+重启后 MemAvailable 约 **1.76 GB**（执行前约 1.58 GB）。
+GMS/YouTube/Play Store 仍是 RSS 大户；这是保留基础 Google 服务的代价。
+
+剩余：/data/local/tmp/p780-elevate-acq-20261026 与
+p780-elevate-backups-20261026 为 root 所有，shell 无法删除；需要 Elevate 的
+uid0 shell 或保留（约 224K）。
