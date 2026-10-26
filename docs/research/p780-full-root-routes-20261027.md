@@ -117,23 +117,45 @@ update_engine 在应用 payload 前会用 `otacerts.zip` 里的公钥验证 mani
 5. system_app 调 `update_engine_client --update --payload=http://127.0.0.1:PORT/payload ...`；
 6. update_engine 读到改过的证书，接受 payload，写 boot/vbmeta。
 
-### 4.2 必须确认的点
+### 4.2 必须确认的点（2026-10-27 已确认前三项）
 
-| 问题 | 验证方式 | 若否 |
+| 问题 | 结论 | 证据 |
 |---|---|---|
-| update_engine 是每次 apply 重新读 `otacerts.zip`，还是启动时缓存？ | 读 AOSP 11 `payload_consumer/payload_verifier.cc`；或设备上改页后看错误是否变化 | 改为 patch 代码页（`VerifySignature` 返回 true） |
-| payload 格式与签名数据范围 | AOSP `payload.proto` / `payload_generator`；用 Python 手工编码 REPLACE 操作 | 写生成器 |
-| update_engine 能否读 `http://127.0.0.1` | 策略 `netdomain` + 实测 `--update` 到本地 HTTP | 改用 `file://`（但受 SELinux 文件读限制） |
-| 写 boot_b 后 AVB 是否通过 | 用 testkey 重新生成 vbmeta_b（含新 boot hash），update_engine 可写 `vendor_custom_ab` | 只写 vbmeta 去掉 boot 描述符 |
-| slot | 当前 `ro.boot.slot_suffix=_b` | 写 boot_b/vbmeta_b |
+| update_engine 是每次 apply 重新读 `otacerts.zip`，还是启动时缓存？ | **每次 apply 重新读** | AOSP 11 `delta_performer.cc` 的 `CreatePayloadVerifier()` 在 metadata 解析时调用 `CreateInstanceFromZipPath(update_certificates_path_)`；真机 log 每次 update 都有 `Verifying using certificates: /system/etc/security/otacerts.zip` |
+| payload 格式与签名数据范围 | **已对齐**：`CrAU` + 大端 version/manifest_size u64 + 大端 sig_size u32；签名对象是 `header + manifest` | `tools/update-engine-probe/`，本地 `openssl` 验证通过 |
+| update_engine 能否读 `http://127.0.0.1` | **可以**：主机 `http.server` + `adb reverse`，log 显示 100% 下载 | 基线测试日志 |
+| 写 boot_b 后 AVB 是否通过 | 待验证：用 testkey 重新生成 vbmeta_b（含新 boot hash），update_engine 可写 `vendor_custom_ab` | — |
+| slot | 当前 `ro.boot.slot_suffix=_b` | 真机 |
+
+### 4.2.1 基线测试（未改证书）
+
+以 system_app 触发 `--update` 到本地 HTTP，payload 为 `tools/update-engine-probe`
+生成的最小 payload：
+
+```
+InstallPlan: new_update ... target_slot: A, url: http://127.0.0.1:8080/payload_empty.bin
+Completed 0/? operations, 166/166 bytes downloaded (100%)
+Verifying using certificates: /system/etc/security/otacerts.zip
+Failed to verify the signature with 1 keys.
+Manifest hash verification failed.
+ErrorCode::kDownloadMetadataSignatureMismatch (26)
+```
+
+这正是预期的"证书门"：payload 被完整下载、metadata 被解析，仅签名失败。
+因此把 `otacerts.zip` 的页缓存换成本目录生成的 `otacerts_ours.zip` 后，
+同一个 payload 应能通过 metadata 签名。
+
+副作用：update_engine 在失败前执行了 `Marking new slot as unbootable`（目标槽 A），
+当前活动槽仍是 `_b`，设备未重启。
 
 ### 4.3 最小可行 payload
 
 - 目标分区：`boot`（slot b）；
 - 操作：`REPLACE`，`dst_extents` 覆盖 boot 分区，数据为我们的 boot 镜像；
 - manifest 里 `new_partition_info.hash/size` 填新 boot；
-- 用我们的 RSA 私钥签 `manifest` 的 SHA-256；
-- `--headers` 提供 `FILE_HASH`/`FILE_SIZE`/`METADATA_HASH`/`METADATA_SIZE`（按 update_engine 要求）。
+- 用我们的 RSA 私钥签 `header + manifest` 的 SHA-256（不是只签 manifest）；
+- `--headers` 提供 `FILE_HASH`/`FILE_SIZE`/`METADATA_HASH`/`METADATA_SIZE`
+  （`METADATA_SIZE = 24 + manifest_size`，不含签名）。
 
 ### 4.4 风险
 
@@ -141,6 +163,25 @@ update_engine 在应用 payload 前会用 `otacerts.zip` 里的公钥验证 mani
 - EDL 无 loader，不能兜底；只能靠 recovery/fastboot（未解锁）或再次写回；
 - 因此**第一次只写 vbmeta 的 flags（disable verity）或只写一个已知可回滚的小页**，
   确认写入链路后再写完整 boot。
+
+## 4.4.1 当前唯一阻塞：通用页写入口
+
+证书页替换需要把 `otacerts_ours.zip`（1135 B）写到
+`/system/etc/security/otacerts.zip` 的 page cache。现有条件：
+
+- DirtyFrag 页写已在 `libc++.so` 上验证；
+- Elevate APK 里的 `MainActivity.writeBlock()` 是**通用的**
+  （任意路径/偏移/16 字节 desired），但只被固定的 `PatchData` 调用，
+  没有对外命令/Intent 接口；
+- `writeBlock()` 依赖 `runSysWriteProbe` JNI + `IpSecManager`，必须在 App 进程里跑；
+- 当前 PC 没有 Android build-tools/NDK，无法直接重打包一个带"写 otacerts"入口的 APK。
+
+可选解法（按成本排序）：
+
+1. 下载 Android build-tools + platform（约 100 MB），复用从 Elevate APK 里提取的
+   `libsendfile_probe.so`，打一个只调用 `writeBlock()` 的新 APK（新包名）；
+2. 找到系统内已有的、可被 shell 触发的通用页写接口；
+3. 改走路线 C（块页缓存直写），但需要 init/update_engine 域代码执行。
 
 ## 5. 路线 C：块页缓存直写（备选）
 

@@ -64,7 +64,14 @@
   返回服务错误而非权限拒绝）；update_engine 是唯一可写 boot **和** vbmeta 的可达域；
   OTA 证书是 RSA-2048 releasekey，不是 testkey。详见
   [`p780-full-root-routes-20261027.md`](research/p780-full-root-routes-20261027.md)。
-- **下一步**：优先做 update_engine 验签绕过的离线/低风险验证，6931 保持 fallback；
+- **update_engine 基线已打通**：确认它每次 apply 重读 `otacerts.zip`；最小 payload
+  已生成并通过本地签名校验；system_app + 本地 HTTP 触发成功，错误精确停在
+  `kDownloadMetadataSignatureMismatch`（证书门）。工具在
+  [`tools/update-engine-probe/`](../tools/update-engine-probe/)。
+- **当前唯一阻塞**：缺少通用 DirtyFrag 页写入口把 1135 B 的 `otacerts_ours.zip`
+  写进 `/system/etc/security/otacerts.zip` 页缓存；Elevate 的 `writeBlock()` 通用，
+  但无对外接口，重打包需要 Android build-tools/NDK。
+- **下一步**：优先解决页写入口（重打包小 APK 或找现成接口），6931 保持 fallback；
   信息层清单已基本收口。
 
 旧复核记录：[ABL / EDL 审计](research/p780-boot-edl-audit-20261026.md) 核实了 14 项注册循环、
