@@ -16,7 +16,7 @@
 | [`scan_journey_framework.py`](scan_journey_framework.py) | Journey 框架调用点扫描 | 否 |
 | [`read_performance_dex.py`](read_performance_dex.py) | 原始 DEX 读取 | 否 |
 | [`compare_journey_config.py`](compare_journey_config.py) | vendor XML 与 TCS dump 对比 | 否 |
-| [`abl/`](abl/README.md) | boot image 解析与 ABL 字符串扫描 | 否 |
+| [`abl/`](abl/README.md) | boot image 解析、ABL 控制流/注册表与 Firehose DER/UFS 离线筛查 | 否 |
 | [`afunix/`](afunix/README.md) | CVE-2024-26923 触发 harness | **是**（成功时可能 panic/reboot） |
 | [`kgsl/`](kgsl/README.md) | 内核 ELF 反汇编辅助 | 否 |
 | [`gsi/`](gsi/README.md) | 官方 GSI 下载/验签辅助 | 否（只联网） |

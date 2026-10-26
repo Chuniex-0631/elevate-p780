@@ -1,5 +1,7 @@
 # init 域能力盘点（2026-10-25）
 
+> 2026-10-26 审计更正：本页是特定 init 域载荷的历史能力记录，不等同 installd daemon 的能力边界。当前已有[临时 UID0 shell 成功记录](p780-root-daemon-20261025.md)；完整 root、BL 与 EDL 仍未证实。
+
 > **状态：已收尾**。能力边界、SELinux 结论、只读资产清单均已固化，
 > 集中版见 [final-report-20261025.md](../../evidence/20261026/init/final-report-20261025.md)；
 > 本篇保留全过程记录（§1–§22）。

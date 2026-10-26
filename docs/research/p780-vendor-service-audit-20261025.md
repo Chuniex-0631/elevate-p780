@@ -1,5 +1,7 @@
 # 厂商预置服务审计（第一轮）：Journey 根服务与属性触发的 init 原语（2026-10-25）
 
+> 2026-10-26 审计更正：字节复核更正：misc offset64 实际为 `recovery\ntest\n`，值从73起；不是 `recovery.test`。三份样本仅73–84改变，恢复样本全字节相等。固定字段写不等同任意 BCB command/分区写入，详见[本轮复核](p780-boot-edl-audit-20261026.md)。
+
 > 背景：在"已有 root 代码执行、但受 SELinux 域限制出不去"的瓶颈下，转向 TINNO/Journey
 > 预置服务，寻找新的域跳板或更高权限接口。本轮完成静态盘点与两次受控实机验证。
 > 结论先行：**diag socket 对 app/shell 不可达；但发现一条 shell → init 域的 misc 写原语。**

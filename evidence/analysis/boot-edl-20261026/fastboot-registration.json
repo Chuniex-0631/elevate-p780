@@ -1,0 +1,86 @@
+[
+  {
+    "table_rva": "0x4ae98",
+    "command": "oem enable-charger-screen",
+    "handler_rva": "0x31390",
+    "handler_in_executable_section": true
+  },
+  {
+    "table_rva": "0x4aea8",
+    "command": "oem disable-charger-screen",
+    "handler_rva": "0x313e8",
+    "handler_in_executable_section": true
+  },
+  {
+    "table_rva": "0x4aeb8",
+    "command": "oem off-mode-charge",
+    "handler_rva": "0x31440",
+    "handler_in_executable_section": true
+  },
+  {
+    "table_rva": "0x4aec8",
+    "command": "oem select-display-panel",
+    "handler_rva": "0x315b0",
+    "handler_in_executable_section": true
+  },
+  {
+    "table_rva": "0x4aed8",
+    "command": "oem device-info",
+    "handler_rva": "0x31934",
+    "handler_in_executable_section": true
+  },
+  {
+    "table_rva": "0x4aee8",
+    "command": "continue",
+    "handler_rva": "0x31a04",
+    "handler_in_executable_section": true
+  },
+  {
+    "table_rva": "0x4aef8",
+    "command": "reboot",
+    "handler_rva": "0x31ac4",
+    "handler_in_executable_section": true
+  },
+  {
+    "table_rva": "0x4af08",
+    "command": "reboot-recovery",
+    "handler_rva": "0x31b00",
+    "handler_in_executable_section": true
+  },
+  {
+    "table_rva": "0x4af18",
+    "command": "reboot-fastboot",
+    "handler_rva": "0x31b58",
+    "handler_in_executable_section": true
+  },
+  {
+    "table_rva": "0x4af28",
+    "command": "snapshot-update",
+    "handler_rva": "0x31bb0",
+    "handler_in_executable_section": true
+  },
+  {
+    "table_rva": "0x4af38",
+    "command": "reboot-bootloader",
+    "handler_rva": "0x31d10",
+    "handler_in_executable_section": true
+  },
+  {
+    "table_rva": "0x4af48",
+    "command": "getvar:",
+    "handler_rva": "0x31d54",
+    "handler_in_executable_section": true
+  },
+  {
+    "table_rva": "0x4af58",
+    "command": "download:",
+    "handler_rva": "0x32000",
+    "handler_in_executable_section": true
+  },
+  {
+    "table_rva": "0x4af68",
+    "command": "oem display-cmdline",
+    "handler_rva": "0x321ec",
+    "handler_in_executable_section": true
+  }
+]

@@ -1,5 +1,7 @@
 # 文档导航
 
+> 2026-10-26 优先顺序更新：先[ABL控制流复核](research/p780-boot-edl-audit-20261026.md)，再[Firehose/商业读取核对](research/p780-firehose-screening-20261026.md)，之后核对 UID0/Journey 边界与公开隐私。当前只做离线分析，不执行旧文档中的写分区建议。
+
 > 2026-10-26 更新。完整目录见 [`index.md`](index.md)（自动生成）；本页只给入口。
 
 | 入口 | 内容 |

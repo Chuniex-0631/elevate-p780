@@ -1,5 +1,7 @@
 # P780 实机取得 uid 0 root shell（2026-10-25）
 
+> 2026-10-26 审计更正：本页保留早期失败上下文；后续 [daemon](p780-root-daemon-20261025.md) 和 [Elevate](../../app/elevate/README.md) 已记录 UID0 / installd 域临时 sh 成功，不能以此页概括当前 Root 状态。
+
 > **结论：在 Bootloader 锁定、SELinux Enforcing 的零售机上，以 installd 域取得了
 > `uid=0` 的 `/system/bin/sh`，并能以 root 身份列出 `/data/data` 与 `/data/app` 全部目录。**
 > 这是本仓库第一次真正拿到 root 级别的代码执行，而不是"受限域内的任意系统调用"。

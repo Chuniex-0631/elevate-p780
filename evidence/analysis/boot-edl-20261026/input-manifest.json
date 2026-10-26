@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-26 Asia/Shanghai",
+  "base_commit": "60fe37381d4c2b7bf5152d1d8b36cf5ebbcbc3de",
+  "device_access": false,
+  "inputs": [
+    {
+      "path": "evidence/20261026/partitions/abl_b.00.bin",
+      "bytes": 1048576,
+      "sha256": "cf1487794d6e7288092e78f29590a72a74255213760da409c3fd72131c86680b"
+    },
+    {
+      "path": "evidence/20261026/abl/abl_lzma.bin",
+      "bytes": 434376,
+      "sha256": "8bca951a25f8bd19a38bca333843f7a982b589d738d6a518bbb934c5afd87437"
+    },
+    {
+      "path": "evidence/20261026/partitions/frp.00.bin",
+      "bytes": 524288,
+      "sha256": "3dcc7365caea79ba9ce361fc3025be814c443f288973e6a4eb9dc58942997b05"
+    },
+    {
+      "path": "evidence/20261026/partitions/misc.00.bin",
+      "bytes": 1048576,
+      "sha256": "277261eeac6e5594e5dcd609977b769fc1ac06b693cff9de29ad3af7eb6d1946"
+    },
+    {
+      "path": "evidence/20261026/partitions/misc_after.00.bin",
+      "bytes": 1048576,
+      "sha256": "ca88659ee2033c2564acdfa6e91a397c63a6cbe5ba5845524a99935bdba8c85f"
+    },
+    {
+      "path": "evidence/20261026/partitions/misc_restore.00.bin",
+      "bytes": 1048576,
+      "sha256": "277261eeac6e5594e5dcd609977b769fc1ac06b693cff9de29ad3af7eb6d1946"
+    }
+  ],
+  "loaders": [
+    {
+      "alias": "qualcomm.bin",
+      "url": "https://github.com/bkerler/Loaders/blob/6c416255056a178f54ccd7ee9b67d04a5bdfa8e6/qualcomm/factory/mannar/0016F0E100000000_d9357db88795b5a8_fhprg.bin",
+      "git_blob_sha1": "3ba922f50bfa16368a62c4d6a87aad7e58faba47",
+      "git_blob_verified": true,
+      "bytes": 698440,
+      "sha256": "0cb39acb5655224368bd56f221da139cc3a89c296d9fc7f670a6504e0848b14c"
+    },
+    {
+      "alias": "prog_firehose_lite.elf",
+      "url": "https://github.com/bkerler/Loaders/blob/6c416255056a178f54ccd7ee9b67d04a5bdfa8e6/qualcomm/factory/mannar/prog_firehose_lite.elf",
+      "git_blob_sha1": "234cfc953e87e353c68635f6dd19e5a5768cfd09",
+      "git_blob_verified": true,
+      "bytes": 698312,
+      "sha256": "1f36fc8d9e6ce81539954f361855c112885b89ee2d9255b46864c55121e84306"
+    },
+    {
+      "alias": "hisense.bin",
+      "url": "https://github.com/bkerler/Loaders/blob/6c416255056a178f54ccd7ee9b67d04a5bdfa8e6/hisense_agm/0016f0e100000000_d9357db88795b5a8_fhprg.bin",
+      "git_blob_sha1": "dabff42fe7c029d879385c94539d5a8f5641a697",
+      "git_blob_verified": true,
+      "bytes": 691584,
+      "sha256": "d3bb6801ef7ac5905b46c77540b7e89536ff0b58335db275fc93eb3e1b88ae93"
+    },
+    {
+      "alias": "hisense_0043.bin",
+      "url": "https://github.com/bkerler/Loaders/blob/6c416255056a178f54ccd7ee9b67d04a5bdfa8e6/hisense_agm/0016f0e100430000_4352b3bfeac440ca_fhprg.bin",
+      "git_blob_sha1": "0cc85d05dbbc5eaabc503f6eff21d8e986de4ad0",
+      "git_blob_verified": true,
+      "bytes": 691584,
+      "sha256": "231ba124138ce890386c97c33d31c73fc1c822ae1919072f0fa2bfd9695994ac"
+    },
+    {
+      "alias": "lenovo.bin",
+      "url": "https://github.com/bkerler/Loaders/blob/6c416255056a178f54ccd7ee9b67d04a5bdfa8e6/lenovo_motorola/0016f0e102e80000_a51a1c2e4a5ec0f8_fhprg.bin",
+      "git_blob_sha1": "1ae91783380defd2fade244bfb4173048b5a4c4b",
+      "git_blob_verified": true,
+      "bytes": 697928,
+      "sha256": "ef4caed51c6ca40754a66baff0760557169511e776cd1ce6803cf6a908599134"
+    }
+  ],
+  "misc": {
+    "changed_offsets": [
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84
+    ],
+    "restored_byte_identical": true
+  },
+  "dependencies": {
+    "capstone": "5.0.9",
+    "cryptography": "50.0.2"
+  },
+  "limitations": [
+    "No device reproduction; no complete Qualcomm image signature verification; no commercial tool execution."
+  ]
+}

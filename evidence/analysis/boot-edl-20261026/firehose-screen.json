@@ -1,0 +1,1598 @@
+[
+  {
+    "file": "qualcomm.bin",
+    "bytes": 698440,
+    "sha256": "0cb39acb5655224368bd56f221da139cc3a89c296d9fc7f670a6504e0848b14c",
+    "elf_magic": true,
+    "certificates": [
+      {
+        "offset": 5184,
+        "bytes": 603,
+        "subject": "L=San Diego,O=SecTools,CN=SecTools Test User,ST=California,C=US",
+        "issuer": "ST=California,O=SecTools,CN=Generated Test Attestation CA,L=San Diego,C=US",
+        "self_signature_verified": false,
+        "der_sha256": "716f56233ebe5cff396362639273662e840181208fd6acc016ede21f87cdbac1",
+        "der_sha384": "777f21392c64f1b4aef550a462fae0b27d29db3c76bfb0a09a4d72538088639a23073ee4fc6bc9540bc855d15710a428",
+        "spki_sha256": "a9e307c61aaaec576d68349ed25c7107c44a7149ff4f6fc797fc3569d7d8e84c"
+      },
+      {
+        "offset": 5787,
+        "bytes": 699,
+        "subject": "ST=California,O=SecTools,CN=Generated Test Attestation CA,L=San Diego,C=US",
+        "issuer": "ST=California,O=SecTools,L=San Diego,OU=General Use Test Key (for testing only),OU=CDMA Technologies,CN=Generated Test Root CA,C=US",
+        "self_signature_verified": false,
+        "der_sha256": "c0a692567dfbf1ef513cbcf7e22737494f724e830eb6372a675eb867339a17a7",
+        "der_sha384": "e30c713f6a5d41bcd784add341ecff9acf49e591ce87c575a9671abe1e0daf52a540052f99dee9ccadaa1982d7d44819",
+        "spki_sha256": "d754d8916bee9c71263fb78c9d0858cc6f2277262f8f701226196306ad65c4a4"
+      },
+      {
+        "offset": 6486,
+        "bytes": 734,
+        "subject": "ST=California,O=SecTools,L=San Diego,OU=General Use Test Key (for testing only),OU=CDMA Technologies,CN=Generated Test Root CA,C=US",
+        "issuer": "ST=California,O=SecTools,L=San Diego,OU=General Use Test Key (for testing only),OU=CDMA Technologies,CN=Generated Test Root CA,C=US",
+        "self_signature_verified": true,
+        "der_sha256": "959b8d0549ef41befabc24f51efe84fee366ac169ab04a0db30c799b324fd798",
+        "der_sha384": "d9357db88795b5a8afaebfd9ab08a569cc8e519f6c689723759f4e6915ca3466e98b5a3282678bdf63673d8517bb0c5b",
+        "spki_sha256": "9f581be593dc9110191ee23cff1c9e82f96ed54c42fbb7a7b91a22ad3608dcbb"
+      },
+      {
+        "offset": 551840,
+        "bytes": 625,
+        "subject": "CN=CASS - SBL3,O=QUALCOMM,L=San Diego,ST=CA,C=US",
+        "issuer": "CN=XBL Sec Attestation Root CA 4 Sub CA 1,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "self_signature_verified": false,
+        "der_sha256": "b548dd913e96b022d594b3042f35625aaa3752c218b71122e2e4bab064bdb93e",
+        "der_sha384": "3404024a6be2308510a87c29cbf61e8786a4297ffd288a8774563d9f3726c82c0423a389725b5eaf14b1fc26ef2a5ca0",
+        "spki_sha256": "5b431ca89074533bfdf41aa3e2cfffcf5b03b8499f56e9b3b74a16306d234e80"
+      },
+      {
+        "offset": 552465,
+        "bytes": 676,
+        "subject": "CN=XBL Sec Attestation Root CA 4 Sub CA 1,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "issuer": "CN=XBL Sec Attestation Root CA 4,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "self_signature_verified": false,
+        "der_sha256": "bcf9eb945d802b63fd0d1db3601726f2a083840527cc032348cc8084cefc379a",
+        "der_sha384": "f006b8df75d83ea8711f5dceae0129a0355e71413f01b410d85487d126b70ec6336d33f4cd015b455d44bd7775290368",
+        "spki_sha256": "fd5c4f9b16fe4983713e462a94705bfd1f4fa22b3922debca7207050eeb7c2cc"
+      },
+      {
+        "offset": 553141,
+        "bytes": 621,
+        "subject": "CN=XBL Sec Attestation Root CA 4,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "issuer": "CN=XBL Sec Attestation Root CA 4,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "self_signature_verified": true,
+        "der_sha256": "ca61aefc442ea7d010ce15642da8f66c0ebe2432adf47364c0ddb49aeff0c611",
+        "der_sha384": "e247429cfe5df29c77b681ee48aaf7c68cb30eeaa1feca7d6a11dd1d2982f1e1ed85a84d4548c54a167853ef266657a9",
+        "spki_sha256": "7d22c9f7c8eab0d45c45d13cd4aad583d537561375697c8089136662b8a2f04d"
+      }
+    ],
+    "storage_and_id_hints": [
+      {
+        "offset": 22548,
+        "text": "emmc"
+      },
+      {
+        "offset": 22896,
+        "text": "eMMC"
+      },
+      {
+        "offset": 24280,
+        "text": "MemoryName"
+      },
+      {
+        "offset": 27429,
+        "text": "Tried to configure %s but memoryname is ufs"
+      },
+      {
+        "offset": 27900,
+        "text": "Tried to configure %s but memoryname is emmc"
+      },
+      {
+        "offset": 32781,
+        "text": "eMMC Extended CSD Revision: 0x%x"
+      },
+      {
+        "offset": 32814,
+        "text": "eMMC Firmware Version: 0x%x"
+      },
+      {
+        "offset": 32842,
+        "text": "eMMC_RAW_DATA[%d:%d]%s"
+      },
+      {
+        "offset": 33719,
+        "text": "Device type ufs slot %d, partition %d, error %d"
+      },
+      {
+        "offset": 33767,
+        "text": "Failed to initialize (open whole lun) UFS Device slot %d partition %d"
+      },
+      {
+        "offset": 33837,
+        "text": "Failed to open the UFS Device slot %d partition %d"
+      },
+      {
+        "offset": 33888,
+        "text": "UFS Does not support bad block options %d"
+      },
+      {
+        "offset": 33930,
+        "text": "UFS Does not support get spare options %d"
+      },
+      {
+        "offset": 33972,
+        "text": "UFS Does not support ECC options %d"
+      },
+      {
+        "offset": 34008,
+        "text": "UFS Format whole LUN %s"
+      },
+      {
+        "offset": 34068,
+        "text": "ufs_open(%d, WLUN_DEV) failed for configure"
+      },
+      {
+        "offset": 34180,
+        "text": "UFS Get info raw size too small %d < %d"
+      },
+      {
+        "offset": 34220,
+        "text": "UFS fInitialized: 0x%x"
+      },
+      {
+        "offset": 34243,
+        "text": "UFS Current LUN Number: = 0x%x"
+      },
+      {
+        "offset": 34274,
+        "text": "UFS Total Active LU: 0x%x"
+      },
+      {
+        "offset": 34300,
+        "text": "UFS wManufacturerID: 0x%x"
+      },
+      {
+        "offset": 34326,
+        "text": "UFS Boot Partition Enabled: 0x%x"
+      },
+      {
+        "offset": 34359,
+        "text": "UFS Raw Device Capacity: = 0x%x"
+      },
+      {
+        "offset": 34391,
+        "text": "UFS Min Block Size: 0x%x"
+      },
+      {
+        "offset": 34416,
+        "text": "UFS Erase Block Size: 0x%x"
+      },
+      {
+        "offset": 34443,
+        "text": "UFS Allocation Unit Size: 0x%x"
+      },
+      {
+        "offset": 34474,
+        "text": "UFS RPMB ReadWrite Size: = 0x%x"
+      },
+      {
+        "offset": 34506,
+        "text": "UFS Number of Allocation Uint for This LU: 0x%x"
+      },
+      {
+        "offset": 34554,
+        "text": "UFS Logical Block Size: 0x%x"
+      },
+      {
+        "offset": 34583,
+        "text": "UFS Provisioning Type: 0x%x"
+      },
+      {
+        "offset": 34611,
+        "text": "UFS LU Write Protect: 0x%x"
+      },
+      {
+        "offset": 34638,
+        "text": "UFS Boot LUN ID: = 0x%x"
+      },
+      {
+        "offset": 34662,
+        "text": "UFS Memory Type: 0x%x"
+      },
+      {
+        "offset": 34684,
+        "text": "UFS LU Total Blocks: 0x%x"
+      },
+      {
+        "offset": 34710,
+        "text": "UFS Supported Memory Types: 0x%x"
+      },
+      {
+        "offset": 34743,
+        "text": "UFS dEnhanced1MaxNAllocU: 0x%x"
+      },
+      {
+        "offset": 34774,
+        "text": "UFS wEnhanced1CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 34804,
+        "text": "UFS dEnhanced2MaxNAllocU: = 0x%x"
+      },
+      {
+        "offset": 34837,
+        "text": "UFS wEnhanced2CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 34867,
+        "text": "UFS dEnhanced3MaxNAllocU: 0x%x"
+      },
+      {
+        "offset": 34898,
+        "text": "UFS wEnhanced3CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 34928,
+        "text": "UFS dEnhanced4MaxNAllocU: 0x%x"
+      },
+      {
+        "offset": 34959,
+        "text": "UFS wEnhanced4CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 34989,
+        "text": "UFS LUN Enable Bitmask: 0x%x"
+      },
+      {
+        "offset": 35018,
+        "text": "UFS Logical Block Count: 0x%x"
+      },
+      {
+        "offset": 35048,
+        "text": "UFS bConfigDescrLock: 0x%x"
+      },
+      {
+        "offset": 35075,
+        "text": "UFS iManufacturerName String Index: 0x%x"
+      },
+      {
+        "offset": 35116,
+        "text": "UFS iProductName String Index: 0x%x"
+      },
+      {
+        "offset": 35152,
+        "text": "UFS iSerialNumber String Index: 0x%x"
+      },
+      {
+        "offset": 35189,
+        "text": "UFS iOemID String Index: 0x%x"
+      },
+      {
+        "offset": 35219,
+        "text": "UFS Inquiry Command Output: %s "
+      },
+      {
+        "offset": 35251,
+        "text": "UFS Error %d (%d)"
+      },
+      {
+        "offset": 47377,
+        "text": "/core/storage/ufs"
+      },
+      {
+        "offset": 53881,
+        "text": "Unsupported UFS memory type %d slot %d"
+      },
+      {
+        "offset": 54259,
+        "text": "Unsupported UFS memory type %d"
+      },
+      {
+        "offset": 54487,
+        "text": "UFS INQUIRY ID: %s"
+      },
+      {
+        "offset": 54506,
+        "text": "UFS Boot LUN: %d"
+      },
+      {
+        "offset": 54523,
+        "text": "ufs_error_log: %x"
+      }
+    ],
+    "expected_pkhash_supplied": false,
+    "root_der_digest_match_offsets": [],
+    "signature_screen": "not_compared",
+    "ufs_compatibility": "unverified",
+    "device_acceptance": "not_tested",
+    "limitations": [
+      "DER scan does not bind certificates to a Qualcomm signing header or verify image signature.",
+      "A root may be absent, malformed, multi-root or use another hash scheme; no match is not a universal rejection.",
+      "Strings and file names do not prove storage initialization, LUN support, authorization or read capability."
+    ]
+  },
+  {
+    "file": "prog_firehose_lite.elf",
+    "bytes": 698312,
+    "sha256": "1f36fc8d9e6ce81539954f361855c112885b89ee2d9255b46864c55121e84306",
+    "elf_magic": true,
+    "certificates": [
+      {
+        "offset": 5184,
+        "bytes": 601,
+        "subject": "L=San Diego,O=SecTools,CN=SecTools Test User,ST=California,C=US",
+        "issuer": "ST=California,O=SecTools,CN=Generated Test Attestation CA,L=San Diego,C=US",
+        "self_signature_verified": false,
+        "der_sha256": "3488f799e04da31dde4a66dc158542326a496423d6bf3f80b6df26e3875fd808",
+        "der_sha384": "0a42fd59d63360c495810f23c4d152ed7fd3d943a4cc8bab0e580f311ab8789e88f57f7ead0db83f7c71312c87d950b7",
+        "spki_sha256": "921a5c1b97ce2f708b5c8aedda3c4774b2acbbb847fb197d7db98199d30ec4c2"
+      },
+      {
+        "offset": 5785,
+        "bytes": 699,
+        "subject": "ST=California,O=SecTools,CN=Generated Test Attestation CA,L=San Diego,C=US",
+        "issuer": "ST=California,O=SecTools,L=San Diego,OU=General Use Test Key (for testing only),OU=CDMA Technologies,CN=Generated Test Root CA,C=US",
+        "self_signature_verified": false,
+        "der_sha256": "c0a692567dfbf1ef513cbcf7e22737494f724e830eb6372a675eb867339a17a7",
+        "der_sha384": "e30c713f6a5d41bcd784add341ecff9acf49e591ce87c575a9671abe1e0daf52a540052f99dee9ccadaa1982d7d44819",
+        "spki_sha256": "d754d8916bee9c71263fb78c9d0858cc6f2277262f8f701226196306ad65c4a4"
+      },
+      {
+        "offset": 6484,
+        "bytes": 734,
+        "subject": "ST=California,O=SecTools,L=San Diego,OU=General Use Test Key (for testing only),OU=CDMA Technologies,CN=Generated Test Root CA,C=US",
+        "issuer": "ST=California,O=SecTools,L=San Diego,OU=General Use Test Key (for testing only),OU=CDMA Technologies,CN=Generated Test Root CA,C=US",
+        "self_signature_verified": true,
+        "der_sha256": "959b8d0549ef41befabc24f51efe84fee366ac169ab04a0db30c799b324fd798",
+        "der_sha384": "d9357db88795b5a8afaebfd9ab08a569cc8e519f6c689723759f4e6915ca3466e98b5a3282678bdf63673d8517bb0c5b",
+        "spki_sha256": "9f581be593dc9110191ee23cff1c9e82f96ed54c42fbb7a7b91a22ad3608dcbb"
+      },
+      {
+        "offset": 551712,
+        "bytes": 625,
+        "subject": "CN=CASS - SBL3,O=QUALCOMM,L=San Diego,ST=CA,C=US",
+        "issuer": "CN=XBL Sec Attestation Root CA 4 Sub CA 1,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "self_signature_verified": false,
+        "der_sha256": "b548dd913e96b022d594b3042f35625aaa3752c218b71122e2e4bab064bdb93e",
+        "der_sha384": "3404024a6be2308510a87c29cbf61e8786a4297ffd288a8774563d9f3726c82c0423a389725b5eaf14b1fc26ef2a5ca0",
+        "spki_sha256": "5b431ca89074533bfdf41aa3e2cfffcf5b03b8499f56e9b3b74a16306d234e80"
+      },
+      {
+        "offset": 552337,
+        "bytes": 676,
+        "subject": "CN=XBL Sec Attestation Root CA 4 Sub CA 1,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "issuer": "CN=XBL Sec Attestation Root CA 4,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "self_signature_verified": false,
+        "der_sha256": "bcf9eb945d802b63fd0d1db3601726f2a083840527cc032348cc8084cefc379a",
+        "der_sha384": "f006b8df75d83ea8711f5dceae0129a0355e71413f01b410d85487d126b70ec6336d33f4cd015b455d44bd7775290368",
+        "spki_sha256": "fd5c4f9b16fe4983713e462a94705bfd1f4fa22b3922debca7207050eeb7c2cc"
+      },
+      {
+        "offset": 553013,
+        "bytes": 621,
+        "subject": "CN=XBL Sec Attestation Root CA 4,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "issuer": "CN=XBL Sec Attestation Root CA 4,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "self_signature_verified": true,
+        "der_sha256": "ca61aefc442ea7d010ce15642da8f66c0ebe2432adf47364c0ddb49aeff0c611",
+        "der_sha384": "e247429cfe5df29c77b681ee48aaf7c68cb30eeaa1feca7d6a11dd1d2982f1e1ed85a84d4548c54a167853ef266657a9",
+        "spki_sha256": "7d22c9f7c8eab0d45c45d13cd4aad583d537561375697c8089136662b8a2f04d"
+      }
+    ],
+    "storage_and_id_hints": [
+      {
+        "offset": 22545,
+        "text": "emmc"
+      },
+      {
+        "offset": 22893,
+        "text": "eMMC"
+      },
+      {
+        "offset": 24277,
+        "text": "MemoryName"
+      },
+      {
+        "offset": 27426,
+        "text": "Tried to configure %s but memoryname is ufs"
+      },
+      {
+        "offset": 27897,
+        "text": "Tried to configure %s but memoryname is emmc"
+      },
+      {
+        "offset": 32773,
+        "text": "eMMC Extended CSD Revision: 0x%x"
+      },
+      {
+        "offset": 32806,
+        "text": "eMMC Firmware Version: 0x%x"
+      },
+      {
+        "offset": 32834,
+        "text": "eMMC_RAW_DATA[%d:%d]%s"
+      },
+      {
+        "offset": 33711,
+        "text": "Device type ufs slot %d, partition %d, error %d"
+      },
+      {
+        "offset": 33759,
+        "text": "Failed to initialize (open whole lun) UFS Device slot %d partition %d"
+      },
+      {
+        "offset": 33829,
+        "text": "Failed to open the UFS Device slot %d partition %d"
+      },
+      {
+        "offset": 33880,
+        "text": "UFS Does not support bad block options %d"
+      },
+      {
+        "offset": 33922,
+        "text": "UFS Does not support get spare options %d"
+      },
+      {
+        "offset": 33964,
+        "text": "UFS Does not support ECC options %d"
+      },
+      {
+        "offset": 34000,
+        "text": "UFS Format whole LUN %s"
+      },
+      {
+        "offset": 34060,
+        "text": "ufs_open(%d, WLUN_DEV) failed for configure"
+      },
+      {
+        "offset": 34172,
+        "text": "UFS Get info raw size too small %d < %d"
+      },
+      {
+        "offset": 34212,
+        "text": "UFS fInitialized: 0x%x"
+      },
+      {
+        "offset": 34235,
+        "text": "UFS Current LUN Number: = 0x%x"
+      },
+      {
+        "offset": 34266,
+        "text": "UFS Total Active LU: 0x%x"
+      },
+      {
+        "offset": 34292,
+        "text": "UFS wManufacturerID: 0x%x"
+      },
+      {
+        "offset": 34318,
+        "text": "UFS Boot Partition Enabled: 0x%x"
+      },
+      {
+        "offset": 34351,
+        "text": "UFS Raw Device Capacity: = 0x%x"
+      },
+      {
+        "offset": 34383,
+        "text": "UFS Min Block Size: 0x%x"
+      },
+      {
+        "offset": 34408,
+        "text": "UFS Erase Block Size: 0x%x"
+      },
+      {
+        "offset": 34435,
+        "text": "UFS Allocation Unit Size: 0x%x"
+      },
+      {
+        "offset": 34466,
+        "text": "UFS RPMB ReadWrite Size: = 0x%x"
+      },
+      {
+        "offset": 34498,
+        "text": "UFS Number of Allocation Uint for This LU: 0x%x"
+      },
+      {
+        "offset": 34546,
+        "text": "UFS Logical Block Size: 0x%x"
+      },
+      {
+        "offset": 34575,
+        "text": "UFS Provisioning Type: 0x%x"
+      },
+      {
+        "offset": 34603,
+        "text": "UFS LU Write Protect: 0x%x"
+      },
+      {
+        "offset": 34630,
+        "text": "UFS Boot LUN ID: = 0x%x"
+      },
+      {
+        "offset": 34654,
+        "text": "UFS Memory Type: 0x%x"
+      },
+      {
+        "offset": 34676,
+        "text": "UFS LU Total Blocks: 0x%x"
+      },
+      {
+        "offset": 34702,
+        "text": "UFS Supported Memory Types: 0x%x"
+      },
+      {
+        "offset": 34735,
+        "text": "UFS dEnhanced1MaxNAllocU: 0x%x"
+      },
+      {
+        "offset": 34766,
+        "text": "UFS wEnhanced1CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 34796,
+        "text": "UFS dEnhanced2MaxNAllocU: = 0x%x"
+      },
+      {
+        "offset": 34829,
+        "text": "UFS wEnhanced2CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 34859,
+        "text": "UFS dEnhanced3MaxNAllocU: 0x%x"
+      },
+      {
+        "offset": 34890,
+        "text": "UFS wEnhanced3CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 34920,
+        "text": "UFS dEnhanced4MaxNAllocU: 0x%x"
+      },
+      {
+        "offset": 34951,
+        "text": "UFS wEnhanced4CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 34981,
+        "text": "UFS LUN Enable Bitmask: 0x%x"
+      },
+      {
+        "offset": 35010,
+        "text": "UFS Logical Block Count: 0x%x"
+      },
+      {
+        "offset": 35040,
+        "text": "UFS bConfigDescrLock: 0x%x"
+      },
+      {
+        "offset": 35067,
+        "text": "UFS iManufacturerName String Index: 0x%x"
+      },
+      {
+        "offset": 35108,
+        "text": "UFS iProductName String Index: 0x%x"
+      },
+      {
+        "offset": 35144,
+        "text": "UFS iSerialNumber String Index: 0x%x"
+      },
+      {
+        "offset": 35181,
+        "text": "UFS iOemID String Index: 0x%x"
+      },
+      {
+        "offset": 35211,
+        "text": "UFS Inquiry Command Output: %s "
+      },
+      {
+        "offset": 35243,
+        "text": "UFS Error %d (%d)"
+      },
+      {
+        "offset": 50553,
+        "text": "/core/storage/ufs"
+      },
+      {
+        "offset": 57057,
+        "text": "Unsupported UFS memory type %d slot %d"
+      },
+      {
+        "offset": 57435,
+        "text": "Unsupported UFS memory type %d"
+      },
+      {
+        "offset": 57663,
+        "text": "UFS INQUIRY ID: %s"
+      },
+      {
+        "offset": 57682,
+        "text": "UFS Boot LUN: %d"
+      },
+      {
+        "offset": 57699,
+        "text": "ufs_error_log: %x"
+      }
+    ],
+    "expected_pkhash_supplied": false,
+    "root_der_digest_match_offsets": [],
+    "signature_screen": "not_compared",
+    "ufs_compatibility": "unverified",
+    "device_acceptance": "not_tested",
+    "limitations": [
+      "DER scan does not bind certificates to a Qualcomm signing header or verify image signature.",
+      "A root may be absent, malformed, multi-root or use another hash scheme; no match is not a universal rejection.",
+      "Strings and file names do not prove storage initialization, LUN support, authorization or read capability."
+    ]
+  },
+  {
+    "file": "hisense.bin",
+    "bytes": 691584,
+    "sha256": "d3bb6801ef7ac5905b46c77540b7e89536ff0b58335db275fc93eb3e1b88ae93",
+    "elf_magic": true,
+    "certificates": [
+      {
+        "offset": 5184,
+        "bytes": 602,
+        "subject": "L=San Diego,O=SecTools,CN=SecTools Test User,ST=California,C=US",
+        "issuer": "ST=California,O=SecTools,CN=Generated Test Attestation CA,L=San Diego,C=US",
+        "self_signature_verified": false,
+        "der_sha256": "455c607a0d4c16d1c88b38e6ff1f986515f066d5b2d0926137c1d9708d67875c",
+        "der_sha384": "5c72b2c8a4472be81a7595466f65ba13c75e8119e9baff6383b8fc7f03908afc1ab77f82254c7e2777f1b5983583eba0",
+        "spki_sha256": "4c4f425b51c47d54b7be38b1a56b75b903873b1d6367735d0db419ee56645091"
+      },
+      {
+        "offset": 5786,
+        "bytes": 699,
+        "subject": "ST=California,O=SecTools,CN=Generated Test Attestation CA,L=San Diego,C=US",
+        "issuer": "ST=California,O=SecTools,L=San Diego,OU=General Use Test Key (for testing only),OU=CDMA Technologies,CN=Generated Test Root CA,C=US",
+        "self_signature_verified": false,
+        "der_sha256": "c0a692567dfbf1ef513cbcf7e22737494f724e830eb6372a675eb867339a17a7",
+        "der_sha384": "e30c713f6a5d41bcd784add341ecff9acf49e591ce87c575a9671abe1e0daf52a540052f99dee9ccadaa1982d7d44819",
+        "spki_sha256": "d754d8916bee9c71263fb78c9d0858cc6f2277262f8f701226196306ad65c4a4"
+      },
+      {
+        "offset": 6485,
+        "bytes": 734,
+        "subject": "ST=California,O=SecTools,L=San Diego,OU=General Use Test Key (for testing only),OU=CDMA Technologies,CN=Generated Test Root CA,C=US",
+        "issuer": "ST=California,O=SecTools,L=San Diego,OU=General Use Test Key (for testing only),OU=CDMA Technologies,CN=Generated Test Root CA,C=US",
+        "self_signature_verified": true,
+        "der_sha256": "959b8d0549ef41befabc24f51efe84fee366ac169ab04a0db30c799b324fd798",
+        "der_sha384": "d9357db88795b5a8afaebfd9ab08a569cc8e519f6c689723759f4e6915ca3466e98b5a3282678bdf63673d8517bb0c5b",
+        "spki_sha256": "9f581be593dc9110191ee23cff1c9e82f96ed54c42fbb7a7b91a22ad3608dcbb"
+      },
+      {
+        "offset": 544984,
+        "bytes": 624,
+        "subject": "CN=CASS - SBL3,O=QUALCOMM,L=San Diego,ST=CA,C=US",
+        "issuer": "CN=XBL Sec Attestation Root CA 4 Sub CA 1,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "self_signature_verified": false,
+        "der_sha256": "a4d08de4cb2f51af1a4cb536f21542f161dca1501533f64072bd0521f4290549",
+        "der_sha384": "25d9790867df89388ee199edc5f91abdfb7b66fb5c16433d4abcdc9e286670c4e0dda1e6fc9196f09844ff67de996135",
+        "spki_sha256": "051c114a008f2d2b3d44dcd11771ebc95d3164164cd7b5fc77d08d1677aabc2e"
+      },
+      {
+        "offset": 545608,
+        "bytes": 676,
+        "subject": "CN=XBL Sec Attestation Root CA 4 Sub CA 1,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "issuer": "CN=XBL Sec Attestation Root CA 4,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "self_signature_verified": false,
+        "der_sha256": "bcf9eb945d802b63fd0d1db3601726f2a083840527cc032348cc8084cefc379a",
+        "der_sha384": "f006b8df75d83ea8711f5dceae0129a0355e71413f01b410d85487d126b70ec6336d33f4cd015b455d44bd7775290368",
+        "spki_sha256": "fd5c4f9b16fe4983713e462a94705bfd1f4fa22b3922debca7207050eeb7c2cc"
+      },
+      {
+        "offset": 546284,
+        "bytes": 621,
+        "subject": "CN=XBL Sec Attestation Root CA 4,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "issuer": "CN=XBL Sec Attestation Root CA 4,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "self_signature_verified": true,
+        "der_sha256": "ca61aefc442ea7d010ce15642da8f66c0ebe2432adf47364c0ddb49aeff0c611",
+        "der_sha384": "e247429cfe5df29c77b681ee48aaf7c68cb30eeaa1feca7d6a11dd1d2982f1e1ed85a84d4548c54a167853ef266657a9",
+        "spki_sha256": "7d22c9f7c8eab0d45c45d13cd4aad583d537561375697c8089136662b8a2f04d"
+      }
+    ],
+    "storage_and_id_hints": [
+      {
+        "offset": 23037,
+        "text": "emmc"
+      },
+      {
+        "offset": 23385,
+        "text": "eMMC"
+      },
+      {
+        "offset": 24769,
+        "text": "MemoryName"
+      },
+      {
+        "offset": 26296,
+        "text": "Device UFS Version: 0x%x"
+      },
+      {
+        "offset": 28389,
+        "text": "Tried to configure %s but memoryname is ufs"
+      },
+      {
+        "offset": 28860,
+        "text": "Tried to configure %s but memoryname is emmc"
+      },
+      {
+        "offset": 33741,
+        "text": "eMMC Extended CSD Revision: 0x%x"
+      },
+      {
+        "offset": 33774,
+        "text": "eMMC Firmware Version: 0x%x"
+      },
+      {
+        "offset": 33802,
+        "text": "eMMC_RAW_DATA[%d:%d]%s"
+      },
+      {
+        "offset": 34679,
+        "text": "Device type ufs slot %d, partition %d, error %d"
+      },
+      {
+        "offset": 34727,
+        "text": "Failed to initialize (open whole lun) UFS Device slot %d partition %d"
+      },
+      {
+        "offset": 34797,
+        "text": "Failed to open the UFS Device slot %d partition %d"
+      },
+      {
+        "offset": 34848,
+        "text": "UFS Does not support bad block options %d"
+      },
+      {
+        "offset": 34890,
+        "text": "UFS Does not support get spare options %d"
+      },
+      {
+        "offset": 34932,
+        "text": "UFS Does not support ECC options %d"
+      },
+      {
+        "offset": 34968,
+        "text": "UFS Format whole LUN %s"
+      },
+      {
+        "offset": 35028,
+        "text": "ufs_open(%d, WLUN_DEV) failed for configure"
+      },
+      {
+        "offset": 35140,
+        "text": "UFS Get info raw size too small %d < %d"
+      },
+      {
+        "offset": 35180,
+        "text": "UFS fInitialized: 0x%x"
+      },
+      {
+        "offset": 35203,
+        "text": "UFS Current LUN Number: = 0x%x"
+      },
+      {
+        "offset": 35234,
+        "text": "UFS Total Active LU: 0x%x"
+      },
+      {
+        "offset": 35260,
+        "text": "UFS wManufacturerID: 0x%x"
+      },
+      {
+        "offset": 35286,
+        "text": "UFS Boot Partition Enabled: 0x%x"
+      },
+      {
+        "offset": 35319,
+        "text": "UFS Raw Device Capacity: = 0x%x"
+      },
+      {
+        "offset": 35351,
+        "text": "UFS Min Block Size: 0x%x"
+      },
+      {
+        "offset": 35376,
+        "text": "UFS Erase Block Size: 0x%x"
+      },
+      {
+        "offset": 35403,
+        "text": "UFS Allocation Unit Size: 0x%x"
+      },
+      {
+        "offset": 35434,
+        "text": "UFS RPMB ReadWrite Size: = 0x%x"
+      },
+      {
+        "offset": 35466,
+        "text": "UFS Number of Allocation Uint for This LU: 0x%x"
+      },
+      {
+        "offset": 35514,
+        "text": "UFS Logical Block Size: 0x%x"
+      },
+      {
+        "offset": 35543,
+        "text": "UFS Provisioning Type: 0x%x"
+      },
+      {
+        "offset": 35571,
+        "text": "UFS LU Write Protect: 0x%x"
+      },
+      {
+        "offset": 35598,
+        "text": "UFS Boot LUN ID: = 0x%x"
+      },
+      {
+        "offset": 35622,
+        "text": "UFS Memory Type: 0x%x"
+      },
+      {
+        "offset": 35644,
+        "text": "UFS LU Total Blocks: 0x%x"
+      },
+      {
+        "offset": 35670,
+        "text": "UFS Supported Memory Types: 0x%x"
+      },
+      {
+        "offset": 35703,
+        "text": "UFS dEnhanced1MaxNAllocU: 0x%x"
+      },
+      {
+        "offset": 35734,
+        "text": "UFS wEnhanced1CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 35764,
+        "text": "UFS dEnhanced2MaxNAllocU: = 0x%x"
+      },
+      {
+        "offset": 35797,
+        "text": "UFS wEnhanced2CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 35827,
+        "text": "UFS dEnhanced3MaxNAllocU: 0x%x"
+      },
+      {
+        "offset": 35858,
+        "text": "UFS wEnhanced3CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 35888,
+        "text": "UFS dEnhanced4MaxNAllocU: 0x%x"
+      },
+      {
+        "offset": 35919,
+        "text": "UFS wEnhanced4CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 35949,
+        "text": "UFS LUN Enable Bitmask: 0x%x"
+      },
+      {
+        "offset": 35978,
+        "text": "UFS Logical Block Count: 0x%x"
+      },
+      {
+        "offset": 36008,
+        "text": "UFS bConfigDescrLock: 0x%x"
+      },
+      {
+        "offset": 36035,
+        "text": "UFS iManufacturerName String Index: 0x%x"
+      },
+      {
+        "offset": 36076,
+        "text": "UFS iProductName String Index: 0x%x"
+      },
+      {
+        "offset": 36112,
+        "text": "UFS iSerialNumber String Index: 0x%x"
+      },
+      {
+        "offset": 36149,
+        "text": "UFS iOemID String Index: 0x%x"
+      },
+      {
+        "offset": 36179,
+        "text": "UFS Inquiry Command Output: %s "
+      },
+      {
+        "offset": 36211,
+        "text": "UFS Error %d (%d)"
+      },
+      {
+        "offset": 48460,
+        "text": "/core/storage/ufs"
+      },
+      {
+        "offset": 54935,
+        "text": "Unsupported UFS memory type %d slot %d"
+      },
+      {
+        "offset": 55313,
+        "text": "Unsupported UFS memory type %d"
+      },
+      {
+        "offset": 55541,
+        "text": "UFS INQUIRY ID: %s"
+      },
+      {
+        "offset": 55560,
+        "text": "ufs_scsi_process_sense err=%d"
+      },
+      {
+        "offset": 55590,
+        "text": "UFS Boot LUN: %d"
+      },
+      {
+        "offset": 55607,
+        "text": "ufs_error_log: %x"
+      }
+    ],
+    "expected_pkhash_supplied": false,
+    "root_der_digest_match_offsets": [],
+    "signature_screen": "not_compared",
+    "ufs_compatibility": "unverified",
+    "device_acceptance": "not_tested",
+    "limitations": [
+      "DER scan does not bind certificates to a Qualcomm signing header or verify image signature.",
+      "A root may be absent, malformed, multi-root or use another hash scheme; no match is not a universal rejection.",
+      "Strings and file names do not prove storage initialization, LUN support, authorization or read capability."
+    ]
+  },
+  {
+    "file": "hisense_0043.bin",
+    "bytes": 691584,
+    "sha256": "231ba124138ce890386c97c33d31c73fc1c822ae1919072f0fa2bfd9695994ac",
+    "elf_magic": true,
+    "certificates": [
+      {
+        "offset": 5184,
+        "bytes": 608,
+        "subject": "L=San Diego,O=SecTools,CN=SecTools Test User,ST=California,C=US",
+        "issuer": "CN=Hisense Attestation CA,O=Hisense,OU=Mobile Technologies,L=QD,ST=SD,C=CN",
+        "self_signature_verified": false,
+        "der_sha256": "55bc40bd65f90949ccc474ce13391fdc93a3ecf49eb2f50b8ca8e28a7c59ebba",
+        "der_sha384": "4afd937ffccb59a3bd995dfd99bfbf173fc26fe8f5f6224b262a2a0f51095fcf6e0d2b1acc19ab6afbc7813ca43a9391",
+        "spki_sha256": "ffaf5ef164cdf842967c067128c99927f9c39c365a27ec610a71ec156e3caaa7"
+      },
+      {
+        "offset": 5792,
+        "bytes": 659,
+        "subject": "CN=Hisense Attestation CA,O=Hisense,OU=Mobile Technologies,L=QD,ST=SD,C=CN",
+        "issuer": "CN=Hisense Root CA 1,O=Hisense,OU=Mobile Technologies,OU=Hisense Key,L=QD,ST=SD,C=CN",
+        "self_signature_verified": false,
+        "der_sha256": "1c750f9bed5720e3b1610fc2a13906f89c9191c1e3d7f741bc7ba527aebf3e74",
+        "der_sha384": "a4a827a024b6ce4d6a9810c883f7faa4bb732e75c323f270bac2fca2306c45f63e079db08c11c5a9f0601e8deae84d7d",
+        "spki_sha256": "7994dadd75e14764ceb54c534d23a546caed45f36ba9ecc9885caa1791432b7c"
+      },
+      {
+        "offset": 6451,
+        "bytes": 641,
+        "subject": "CN=Hisense Root CA 1,O=Hisense,OU=Mobile Technologies,OU=Hisense Key,L=QD,ST=SD,C=CN",
+        "issuer": "CN=Hisense Root CA 1,O=Hisense,OU=Mobile Technologies,OU=Hisense Key,L=QD,ST=SD,C=CN",
+        "self_signature_verified": true,
+        "der_sha256": "d4c3c969c783d8c74cf6171d0bfbb55fe8b6ab19e41bbc087a2ccb7357354987",
+        "der_sha384": "4352b3bfeac440cab3fc0a181be897f57ceed6cfe7729d61752add407fa6e1bee86fe4a27eaed96a83f9972f707af1d8",
+        "spki_sha256": "c42809ce134854d40a6c6c259eded3619f834f53bcb8ad6db87031a255768ce1"
+      },
+      {
+        "offset": 544984,
+        "bytes": 624,
+        "subject": "CN=CASS - SBL3,O=QUALCOMM,L=San Diego,ST=CA,C=US",
+        "issuer": "CN=XBL Sec Attestation Root CA 4 Sub CA 1,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "self_signature_verified": false,
+        "der_sha256": "a4d08de4cb2f51af1a4cb536f21542f161dca1501533f64072bd0521f4290549",
+        "der_sha384": "25d9790867df89388ee199edc5f91abdfb7b66fb5c16433d4abcdc9e286670c4e0dda1e6fc9196f09844ff67de996135",
+        "spki_sha256": "051c114a008f2d2b3d44dcd11771ebc95d3164164cd7b5fc77d08d1677aabc2e"
+      },
+      {
+        "offset": 545608,
+        "bytes": 676,
+        "subject": "CN=XBL Sec Attestation Root CA 4 Sub CA 1,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "issuer": "CN=XBL Sec Attestation Root CA 4,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "self_signature_verified": false,
+        "der_sha256": "bcf9eb945d802b63fd0d1db3601726f2a083840527cc032348cc8084cefc379a",
+        "der_sha384": "f006b8df75d83ea8711f5dceae0129a0355e71413f01b410d85487d126b70ec6336d33f4cd015b455d44bd7775290368",
+        "spki_sha256": "fd5c4f9b16fe4983713e462a94705bfd1f4fa22b3922debca7207050eeb7c2cc"
+      },
+      {
+        "offset": 546284,
+        "bytes": 621,
+        "subject": "CN=XBL Sec Attestation Root CA 4,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "issuer": "CN=XBL Sec Attestation Root CA 4,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "self_signature_verified": true,
+        "der_sha256": "ca61aefc442ea7d010ce15642da8f66c0ebe2432adf47364c0ddb49aeff0c611",
+        "der_sha384": "e247429cfe5df29c77b681ee48aaf7c68cb30eeaa1feca7d6a11dd1d2982f1e1ed85a84d4548c54a167853ef266657a9",
+        "spki_sha256": "7d22c9f7c8eab0d45c45d13cd4aad583d537561375697c8089136662b8a2f04d"
+      }
+    ],
+    "storage_and_id_hints": [
+      {
+        "offset": 23037,
+        "text": "emmc"
+      },
+      {
+        "offset": 23385,
+        "text": "eMMC"
+      },
+      {
+        "offset": 24769,
+        "text": "MemoryName"
+      },
+      {
+        "offset": 26296,
+        "text": "Device UFS Version: 0x%x"
+      },
+      {
+        "offset": 28389,
+        "text": "Tried to configure %s but memoryname is ufs"
+      },
+      {
+        "offset": 28860,
+        "text": "Tried to configure %s but memoryname is emmc"
+      },
+      {
+        "offset": 33741,
+        "text": "eMMC Extended CSD Revision: 0x%x"
+      },
+      {
+        "offset": 33774,
+        "text": "eMMC Firmware Version: 0x%x"
+      },
+      {
+        "offset": 33802,
+        "text": "eMMC_RAW_DATA[%d:%d]%s"
+      },
+      {
+        "offset": 34679,
+        "text": "Device type ufs slot %d, partition %d, error %d"
+      },
+      {
+        "offset": 34727,
+        "text": "Failed to initialize (open whole lun) UFS Device slot %d partition %d"
+      },
+      {
+        "offset": 34797,
+        "text": "Failed to open the UFS Device slot %d partition %d"
+      },
+      {
+        "offset": 34848,
+        "text": "UFS Does not support bad block options %d"
+      },
+      {
+        "offset": 34890,
+        "text": "UFS Does not support get spare options %d"
+      },
+      {
+        "offset": 34932,
+        "text": "UFS Does not support ECC options %d"
+      },
+      {
+        "offset": 34968,
+        "text": "UFS Format whole LUN %s"
+      },
+      {
+        "offset": 35028,
+        "text": "ufs_open(%d, WLUN_DEV) failed for configure"
+      },
+      {
+        "offset": 35140,
+        "text": "UFS Get info raw size too small %d < %d"
+      },
+      {
+        "offset": 35180,
+        "text": "UFS fInitialized: 0x%x"
+      },
+      {
+        "offset": 35203,
+        "text": "UFS Current LUN Number: = 0x%x"
+      },
+      {
+        "offset": 35234,
+        "text": "UFS Total Active LU: 0x%x"
+      },
+      {
+        "offset": 35260,
+        "text": "UFS wManufacturerID: 0x%x"
+      },
+      {
+        "offset": 35286,
+        "text": "UFS Boot Partition Enabled: 0x%x"
+      },
+      {
+        "offset": 35319,
+        "text": "UFS Raw Device Capacity: = 0x%x"
+      },
+      {
+        "offset": 35351,
+        "text": "UFS Min Block Size: 0x%x"
+      },
+      {
+        "offset": 35376,
+        "text": "UFS Erase Block Size: 0x%x"
+      },
+      {
+        "offset": 35403,
+        "text": "UFS Allocation Unit Size: 0x%x"
+      },
+      {
+        "offset": 35434,
+        "text": "UFS RPMB ReadWrite Size: = 0x%x"
+      },
+      {
+        "offset": 35466,
+        "text": "UFS Number of Allocation Uint for This LU: 0x%x"
+      },
+      {
+        "offset": 35514,
+        "text": "UFS Logical Block Size: 0x%x"
+      },
+      {
+        "offset": 35543,
+        "text": "UFS Provisioning Type: 0x%x"
+      },
+      {
+        "offset": 35571,
+        "text": "UFS LU Write Protect: 0x%x"
+      },
+      {
+        "offset": 35598,
+        "text": "UFS Boot LUN ID: = 0x%x"
+      },
+      {
+        "offset": 35622,
+        "text": "UFS Memory Type: 0x%x"
+      },
+      {
+        "offset": 35644,
+        "text": "UFS LU Total Blocks: 0x%x"
+      },
+      {
+        "offset": 35670,
+        "text": "UFS Supported Memory Types: 0x%x"
+      },
+      {
+        "offset": 35703,
+        "text": "UFS dEnhanced1MaxNAllocU: 0x%x"
+      },
+      {
+        "offset": 35734,
+        "text": "UFS wEnhanced1CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 35764,
+        "text": "UFS dEnhanced2MaxNAllocU: = 0x%x"
+      },
+      {
+        "offset": 35797,
+        "text": "UFS wEnhanced2CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 35827,
+        "text": "UFS dEnhanced3MaxNAllocU: 0x%x"
+      },
+      {
+        "offset": 35858,
+        "text": "UFS wEnhanced3CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 35888,
+        "text": "UFS dEnhanced4MaxNAllocU: 0x%x"
+      },
+      {
+        "offset": 35919,
+        "text": "UFS wEnhanced4CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 35949,
+        "text": "UFS LUN Enable Bitmask: 0x%x"
+      },
+      {
+        "offset": 35978,
+        "text": "UFS Logical Block Count: 0x%x"
+      },
+      {
+        "offset": 36008,
+        "text": "UFS bConfigDescrLock: 0x%x"
+      },
+      {
+        "offset": 36035,
+        "text": "UFS iManufacturerName String Index: 0x%x"
+      },
+      {
+        "offset": 36076,
+        "text": "UFS iProductName String Index: 0x%x"
+      },
+      {
+        "offset": 36112,
+        "text": "UFS iSerialNumber String Index: 0x%x"
+      },
+      {
+        "offset": 36149,
+        "text": "UFS iOemID String Index: 0x%x"
+      },
+      {
+        "offset": 36179,
+        "text": "UFS Inquiry Command Output: %s "
+      },
+      {
+        "offset": 36211,
+        "text": "UFS Error %d (%d)"
+      },
+      {
+        "offset": 48460,
+        "text": "/core/storage/ufs"
+      },
+      {
+        "offset": 54935,
+        "text": "Unsupported UFS memory type %d slot %d"
+      },
+      {
+        "offset": 55313,
+        "text": "Unsupported UFS memory type %d"
+      },
+      {
+        "offset": 55541,
+        "text": "UFS INQUIRY ID: %s"
+      },
+      {
+        "offset": 55560,
+        "text": "ufs_scsi_process_sense err=%d"
+      },
+      {
+        "offset": 55590,
+        "text": "UFS Boot LUN: %d"
+      },
+      {
+        "offset": 55607,
+        "text": "ufs_error_log: %x"
+      }
+    ],
+    "expected_pkhash_supplied": false,
+    "root_der_digest_match_offsets": [],
+    "signature_screen": "not_compared",
+    "ufs_compatibility": "unverified",
+    "device_acceptance": "not_tested",
+    "limitations": [
+      "DER scan does not bind certificates to a Qualcomm signing header or verify image signature.",
+      "A root may be absent, malformed, multi-root or use another hash scheme; no match is not a universal rejection.",
+      "Strings and file names do not prove storage initialization, LUN support, authorization or read capability."
+    ]
+  },
+  {
+    "file": "lenovo.bin",
+    "bytes": 697928,
+    "sha256": "ef4caed51c6ca40754a66baff0760557169511e776cd1ce6803cf6a908599134",
+    "elf_magic": true,
+    "certificates": [
+      {
+        "offset": 5336,
+        "bytes": 1237,
+        "subject": "CN=Motorola Attestation 722-1-9,OU=01 000000000000001F SW_ID,OU=02 0016F0E102E80000 HW_ID,OU=03 0000000000000002 DEBUG,OU=04 02E8 OEM_ID,OU=05 00004000 SW_SIZE,OU=06 0000 MODEL_ID,OU=07 0001 SHA256,OU=08 0000000000000556 APP_ID,O=Motorola Inc",
+        "issuer": "CN=Motorola Attestation CA 722-1,OU=Motorola PKI,O=Motorola Inc",
+        "self_signature_verified": false,
+        "der_sha256": "be97856dc1d5751d774cde58c782ec44127b2481cbc6faba3cdb09ed94d9d790",
+        "der_sha384": "feac5db1972226cbb0e145e69a2ec455eb7775fde257a54e3be6180dcc6aa0637b9fb0eca2ca2fa96172d1a1660f260e",
+        "spki_sha256": "f92c449b3a9cb2022f6780e0a26c0f0e9c47062c7004b9a69d33197104ad0579"
+      },
+      {
+        "offset": 6573,
+        "bytes": 983,
+        "subject": "CN=Motorola Attestation CA 722-1,OU=Motorola PKI,O=Motorola Inc",
+        "issuer": "CN=Root CA 722,OU=Motorola PKI,O=Motorola Inc",
+        "self_signature_verified": false,
+        "der_sha256": "b88d6ac7b5dbbbc21f61dd5d0400a77321c97c458d539d35332a4a55b6b4b437",
+        "der_sha384": "dac388080d62a2c4cdae78997e1650d3f4d3e3c99228d27ff7c263371972af332abac5fc81fac12debcc3d7fe56de1cc",
+        "spki_sha256": "b3e73f4e4e7530ab2be157a85c2f0e2b977e0e9a9755bf0484c05253bdbdcd4b"
+      },
+      {
+        "offset": 7556,
+        "bytes": 965,
+        "subject": "CN=Root CA 722,OU=Motorola PKI,O=Motorola Inc",
+        "issuer": "CN=Root CA 722,OU=Motorola PKI,O=Motorola Inc",
+        "self_signature_verified": true,
+        "der_sha256": "a51a1c2e4a5ec0f8040ebaf95a78122b104a0e3b675af5ec00c49e5d266ef6bc",
+        "der_sha384": "6e8d4870d9e89104a79568c1285e4672c5df7a52fe0b67fa554da8da910fa1ef168a258cdcb3e5dbc745899eee327a90",
+        "spki_sha256": "4a563ceec4bc25ee7dd2c3201e61843a09c1e6cfc4b276265c6dcc9aec85ec3a"
+      },
+      {
+        "offset": 551328,
+        "bytes": 625,
+        "subject": "CN=CASS - SBL3,O=QUALCOMM,L=San Diego,ST=CA,C=US",
+        "issuer": "CN=XBL Sec Attestation Root CA 4 Sub CA 1,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "self_signature_verified": false,
+        "der_sha256": "b548dd913e96b022d594b3042f35625aaa3752c218b71122e2e4bab064bdb93e",
+        "der_sha384": "3404024a6be2308510a87c29cbf61e8786a4297ffd288a8774563d9f3726c82c0423a389725b5eaf14b1fc26ef2a5ca0",
+        "spki_sha256": "5b431ca89074533bfdf41aa3e2cfffcf5b03b8499f56e9b3b74a16306d234e80"
+      },
+      {
+        "offset": 551953,
+        "bytes": 676,
+        "subject": "CN=XBL Sec Attestation Root CA 4 Sub CA 1,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "issuer": "CN=XBL Sec Attestation Root CA 4,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "self_signature_verified": false,
+        "der_sha256": "bcf9eb945d802b63fd0d1db3601726f2a083840527cc032348cc8084cefc379a",
+        "der_sha384": "f006b8df75d83ea8711f5dceae0129a0355e71413f01b410d85487d126b70ec6336d33f4cd015b455d44bd7775290368",
+        "spki_sha256": "fd5c4f9b16fe4983713e462a94705bfd1f4fa22b3922debca7207050eeb7c2cc"
+      },
+      {
+        "offset": 552629,
+        "bytes": 621,
+        "subject": "CN=XBL Sec Attestation Root CA 4,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "issuer": "CN=XBL Sec Attestation Root CA 4,OU=Qualcomm Cryptographic Operations,O=Qualcomm Technologies\\, Inc.",
+        "self_signature_verified": true,
+        "der_sha256": "ca61aefc442ea7d010ce15642da8f66c0ebe2432adf47364c0ddb49aeff0c611",
+        "der_sha384": "e247429cfe5df29c77b681ee48aaf7c68cb30eeaa1feca7d6a11dd1d2982f1e1ed85a84d4548c54a167853ef266657a9",
+        "spki_sha256": "7d22c9f7c8eab0d45c45d13cd4aad583d537561375697c8089136662b8a2f04d"
+      }
+    ],
+    "storage_and_id_hints": [
+      {
+        "offset": 5640,
+        "text": "06 0000 MODEL_ID1"
+      },
+      {
+        "offset": 5697,
+        "text": "04 02E8 OEM_ID1\"0 "
+      },
+      {
+        "offset": 5758,
+        "text": "02 0016F0E102E80000 HW_ID1\"0 "
+      },
+      {
+        "offset": 5794,
+        "text": "01 000000000000001F SW_ID1%0#"
+      },
+      {
+        "offset": 27793,
+        "text": "emmc"
+      },
+      {
+        "offset": 28198,
+        "text": "eMMC"
+      },
+      {
+        "offset": 29828,
+        "text": "MemoryName"
+      },
+      {
+        "offset": 32951,
+        "text": "Setting UFS provisioning strategy to %d"
+      },
+      {
+        "offset": 33050,
+        "text": "Tried to configure %s but memoryname is ufs"
+      },
+      {
+        "offset": 33590,
+        "text": "Tried to configure %s but memoryname is emmc"
+      },
+      {
+        "offset": 39133,
+        "text": "eMMC Extended CSD Revision: 0x%x"
+      },
+      {
+        "offset": 39166,
+        "text": "eMMC Firmware Version: 0x%x"
+      },
+      {
+        "offset": 39194,
+        "text": "eMMC_RAW_DATA[%d:%d]%s"
+      },
+      {
+        "offset": 40071,
+        "text": "Device type ufs slot %d, partition %d, error %d"
+      },
+      {
+        "offset": 40119,
+        "text": "Failed to initialize (open whole lun) UFS Device slot %d partition %d"
+      },
+      {
+        "offset": 40189,
+        "text": "Failed to open the UFS Device slot %d partition %d"
+      },
+      {
+        "offset": 40240,
+        "text": "UFS Does not support bad block options %d"
+      },
+      {
+        "offset": 40282,
+        "text": "UFS Does not support get spare options %d"
+      },
+      {
+        "offset": 40324,
+        "text": "UFS Does not support ECC options %d"
+      },
+      {
+        "offset": 40360,
+        "text": "UFS Format whole LUN %s"
+      },
+      {
+        "offset": 40420,
+        "text": "ufs_open(%d, WLUN_DEV) failed for configure"
+      },
+      {
+        "offset": 40532,
+        "text": "UFS Get info raw size too small %d < %d"
+      },
+      {
+        "offset": 40572,
+        "text": "UFS fInitialized: 0x%x"
+      },
+      {
+        "offset": 40595,
+        "text": "UFS Current LUN Number: = 0x%x"
+      },
+      {
+        "offset": 40626,
+        "text": "UFS Total Active LU: 0x%x"
+      },
+      {
+        "offset": 40652,
+        "text": "UFS wManufacturerID: 0x%x"
+      },
+      {
+        "offset": 40678,
+        "text": "UFS Boot Partition Enabled: 0x%x"
+      },
+      {
+        "offset": 40711,
+        "text": "UFS Raw Device Capacity: = 0x%x"
+      },
+      {
+        "offset": 40743,
+        "text": "UFS Min Block Size: 0x%x"
+      },
+      {
+        "offset": 40768,
+        "text": "UFS Erase Block Size: 0x%x"
+      },
+      {
+        "offset": 40795,
+        "text": "UFS Allocation Unit Size: 0x%x"
+      },
+      {
+        "offset": 40826,
+        "text": "UFS RPMB ReadWrite Size: = 0x%x"
+      },
+      {
+        "offset": 40858,
+        "text": "UFS Number of Allocation Uint for This LU: 0x%x"
+      },
+      {
+        "offset": 40906,
+        "text": "UFS Logical Block Size: 0x%x"
+      },
+      {
+        "offset": 40935,
+        "text": "UFS Provisioning Type: 0x%x"
+      },
+      {
+        "offset": 40963,
+        "text": "UFS LU Write Protect: 0x%x"
+      },
+      {
+        "offset": 40990,
+        "text": "UFS Boot LUN ID: = 0x%x"
+      },
+      {
+        "offset": 41014,
+        "text": "UFS Memory Type: 0x%x"
+      },
+      {
+        "offset": 41036,
+        "text": "UFS LU Total Blocks: 0x%x"
+      },
+      {
+        "offset": 41062,
+        "text": "UFS Supported Memory Types: 0x%x"
+      },
+      {
+        "offset": 41095,
+        "text": "UFS dEnhanced1MaxNAllocU: 0x%x"
+      },
+      {
+        "offset": 41126,
+        "text": "UFS wEnhanced1CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 41156,
+        "text": "UFS dEnhanced2MaxNAllocU: = 0x%x"
+      },
+      {
+        "offset": 41189,
+        "text": "UFS wEnhanced2CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 41219,
+        "text": "UFS dEnhanced3MaxNAllocU: 0x%x"
+      },
+      {
+        "offset": 41250,
+        "text": "UFS wEnhanced3CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 41280,
+        "text": "UFS dEnhanced4MaxNAllocU: 0x%x"
+      },
+      {
+        "offset": 41311,
+        "text": "UFS wEnhanced4CapAdjFac: 0x%x"
+      },
+      {
+        "offset": 41341,
+        "text": "UFS LUN Enable Bitmask: 0x%x"
+      },
+      {
+        "offset": 41370,
+        "text": "UFS Logical Block Count: 0x%x"
+      },
+      {
+        "offset": 41400,
+        "text": "UFS bConfigDescrLock: 0x%x"
+      },
+      {
+        "offset": 41427,
+        "text": "UFS iManufacturerName String Index: 0x%x"
+      },
+      {
+        "offset": 41468,
+        "text": "UFS iProductName String Index: 0x%x"
+      },
+      {
+        "offset": 41504,
+        "text": "UFS iSerialNumber String Index: 0x%x"
+      },
+      {
+        "offset": 41541,
+        "text": "UFS iOemID String Index: 0x%x"
+      },
+      {
+        "offset": 41571,
+        "text": "UFS Inquiry Command Output: %s "
+      },
+      {
+        "offset": 41603,
+        "text": "UFS Error %d (%d)"
+      },
+      {
+        "offset": 52403,
+        "text": "/core/storage/ufs"
+      },
+      {
+        "offset": 58624,
+        "text": "Unsupported UFS memory type %d slot %d"
+      },
+      {
+        "offset": 59002,
+        "text": "Unsupported UFS memory type %d"
+      },
+      {
+        "offset": 59230,
+        "text": "UFS INQUIRY ID: %s"
+      },
+      {
+        "offset": 59249,
+        "text": "UFS Boot LUN: %d"
+      },
+      {
+        "offset": 59266,
+        "text": "ufs_error_log: %x"
+      }
+    ],
+    "expected_pkhash_supplied": false,
+    "root_der_digest_match_offsets": [],
+    "signature_screen": "not_compared",
+    "ufs_compatibility": "unverified",
+    "device_acceptance": "not_tested",
+    "limitations": [
+      "DER scan does not bind certificates to a Qualcomm signing header or verify image signature.",
+      "A root may be absent, malformed, multi-root or use another hash scheme; no match is not a universal rejection.",
+      "Strings and file names do not prove storage initialization, LUN support, authorization or read capability."
+    ]
+  }
+]

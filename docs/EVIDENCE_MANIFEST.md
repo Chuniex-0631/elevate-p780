@@ -1,9 +1,9 @@
 # 证据清单
 
-> 由 `23-repo-rebuild/build_index.py` 于 2026-10-26 从 `evidence/` 实际文件生成。
+> 由 `tools/build_research_index.py` 从实际文件生成（2026-10-26）。
 > 每项给出仓库内路径、字节数与 SHA-256；摘要说明见各专题报告。
 
-共 **362** 个文件，合计 **99.4 MB**。
+共 **371** 个文件，合计 **94.8 MiB**。
 
 | 路径 | 字节 | SHA-256 |
 |---|---:|---|
@@ -37,7 +37,7 @@
 | `evidence/20261026/init/README.md` | 110 | `542f40fa270b184720b37c9f4db43032d3cf93b75532692e9df10aed3122c77d` |
 | `evidence/20261026/kernel/boot_b_full.img` | 51408896 | `877fd16220feb3488e6c4f8d6f5af4dc6ccd3670d2ae93f40e9301d3eeb1b825` |
 | `evidence/20261026/kernel/P780-kernel-symbol-recovery-20261025.zip` | 22370728 | `92baa993385105d68f75ee734229ffe8bbe60221c75b569d185ccc5fad826a83` |
-| `evidence/20261026/kernel/README.md` | 496 | `96b888f3ebce1531f0a30105c7b46d4fb29a94e0ef086df9a1766f44eeaf2183` |
+| `evidence/20261026/kernel/README.md` | 521 | `d06d23595ec484ecf8e862636aaad6a5c4576b5bd0894c8cb46e08b771418e20` |
 | `evidence/20261026/keys/testkey_rsa4096.pem` | 3243 | `6a224754880a57ab9cbd308267cd157d94cf05a1c8cb851aec4090e045d24121` |
 | `evidence/20261026/oem/fastboot-getvar-all.txt` | 16700 | `a4a133b8b79064142b7a71f0d80875b9cdaa28a4f3767e03174e282e615b0b13` |
 | `evidence/20261026/oem/README.md` | 61 | `860d6d6f2e4c81c884e90bb6ce166fdf1cb2577d6a16b743fd88b4348376d00a` |
@@ -222,6 +222,13 @@
 | `evidence/actions/2026-10-10-layout-audit/source-audit/missing-config-references.md` | 17400 | `168c4a5dbfbbbcdb2410cdf93c827cf9c437730571635a2daf10819ae5b4f62a` |
 | `evidence/actions/2026-10-10-layout-audit/source-audit/provenance.json` | 1129 | `c7ffb14177493438e9e06cd8a7897e6e6b26c9c1a36c29c2e064e6457e8353d6` |
 | `evidence/analysis/2026-10-10-ota-log-audit.json` | 3827 | `ccb3368d28071b83f14b49ef34345c27e749a4e62d16daa4105cac314bef9146` |
+| `evidence/analysis/boot-edl-20261026/fastboot-dispatch-disassembly.txt` | 1130 | `25bfd261e774347d6d458ba366ae66a6b498aba6d2b38bdff2ca0a9008fcf7a3` |
+| `evidence/analysis/boot-edl-20261026/fastboot-registration.json` | 2101 | `79169c0831a113a3b045b36d2e3ded8a0ce1c1316fba082990842ef5db8d8821` |
+| `evidence/analysis/boot-edl-20261026/firehose-screen.json` | 51861 | `19706a80678b49ffe96af22fcefe10c9215a3bc0c8fd7e67f86e3fb5a1c7b44a` |
+| `evidence/analysis/boot-edl-20261026/frp-registration-disassembly.txt` | 4495 | `b34b62d27ab5da23b277c50aaa346e0ca0b663e6ad657a7694d52abcacfd4b32` |
+| `evidence/analysis/boot-edl-20261026/input-manifest.json` | 3793 | `4418f4ab7fbbc781bcdc1cb4f407ad8b1569a4ca175aa718a1dacc9e11b7ad19` |
+| `evidence/analysis/boot-edl-20261026/README.md` | 1067 | `d3748022dfc9d6c6e73e46f1375df6b2c409c28c1ad9952d46fa2104f385ea8b` |
+| `evidence/analysis/boot-edl-20261026/register-helper-disassembly.txt` | 829 | `75ad1350d26e9f2200f75046d92a157811faf3ff766db7f5e4d0a3f589362d1d` |
 | `evidence/analysis/repository-inventory-20261018.json` | 70079 | `df6e92ace857443dc068cecfaa80e491e102a2f338625ad0f5281bd7be996ce1` |
 | `evidence/analysis/repository-review-20261018.json` | 2632 | `97bc9eaa669a4d15169041e425663cb7c89cfab4c9dc501075f37e8a99ff2494` |
 | `evidence/analysis/repository-structure-20261011.json` | 33409 | `de5d9f6aefceb2241eb45140829f2e6ec39f42d0d6340d1183f3de5b75502d79` |
@@ -274,6 +281,8 @@
 | `evidence/kernel/20261025-symbol-recovery/artifact-hashes.json` | 1805 | `555ebc80f9e4ff8fd54e2147b8703823860e6152dbe44bd23ff8cebf780c063c` |
 | `evidence/kernel/20261025-symbol-recovery/elf-validation.json` | 663 | `da861d87537b01a53078f0e4e469e3525bf8e4390a2bcbf15133e52f5ae363c6` |
 | `evidence/kernel/20261025-symbol-recovery/image-identity.json` | 807 | `a4f77850d1b0f562665c7d385210563de0cc46b05a0654840480bda543ca5d30` |
+| `evidence/kernel/20261025-symbol-recovery/readelf-header.txt` | 949 | `3ed6a2f40a925aca509a3f625d859274ac36114b8fad4b840e5de552edb8152c` |
+| `evidence/kernel/20261025-symbol-recovery/readelf-sections.txt` | 964 | `a86ff250a79fead7e83250122f7761d11517d2a9de78237b7282e38f20de7ef5` |
 | `evidence/kernel/20261025-symbol-recovery/recovery-tool.log` | 5238 | `9a5dbfd48aa8aa436e6d14c63d9ad33f89cef2480167bb59c67cd3eb2417dff8` |
 | `evidence/kernel/20261025-symbol-recovery/tool-provenance.json` | 584 | `cdaf92d40f6a7d54e246618039524a88cac83acc263ca1b5a1a7e9c61535e9bc` |
 | `evidence/kernel/20261025-symbol-recovery/verification.json` | 2381 | `8d64511e6b02f9ce026747005904f4c128244e0c764d772b54a4af391c99f87e` |
