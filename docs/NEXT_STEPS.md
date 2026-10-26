@@ -11,9 +11,10 @@
 
 ## 2026-10-27 当前优先
 
-1. **信息层收尾**：整理已有分区/模块/配置（`evidence/20261026/partitions`、
-   `docs/rom/file-manifest.txt`）与各 shell 的读取边界，形成可交付清单；
-   不再为单个文件烧设备。
+1. **update_engine 验签绕过（完整 root 主线）**：
+   - 离线确认 `payload_verifier` 是否每次 apply 重读 `otacerts.zip`，以及 payload 格式；
+   - 设备低风险验证：只改 `otacerts.zip` 页缓存，调 `--verify`/`--update` 看错误是否变化；
+   - 生效后再生成 boot payload，先写可回滚的 `vbmeta_b`，再写 `boot_b`。
 2. **EDL 只做询价/验证**：官方与商业渠道确认是否提供 TINNO/holi 签名 programmer；
    没有文件、没有真机写，就不算进展。
 3. **6931 恢复条件**（满足其一再上设备）：
@@ -21,6 +22,10 @@
    - 双组规模能压到不卡死且采样可统计；或
    - 换一个不依赖 values 放置的内核写原语。
    未满足前保持暂停，避免再次卡死/panic。
+
+路线对比与详细步骤见
+[`p780-full-root-routes-20261027.md`](research/p780-full-root-routes-20261027.md)。
+信息层清单已收口（`p780-info-layer-20261027.md`）。
 
 以下 2026-10-26 的优先级 1/2/3 转为**暂停**，保留原触发条件。
 

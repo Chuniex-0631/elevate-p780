@@ -20,7 +20,7 @@
 | [archive/reports/P780_PFM_QAS_2026-10-04.md](../archive/reports/P780_PFM_QAS_2026-10-04.md) | Rakuten Hand 5G P780：QAS → Mink → PFM 研究检查点 |
 | [archive/reports/P780_TZAccess_2026-10-04.md](../archive/reports/P780_TZAccess_2026-10-04.md) | P780：TZAccessService 服务端 Java 授权链 |
 
-## docs（106）
+## docs（107）
 
 | 文档 | 标题 |
 |---|---|
@@ -83,6 +83,7 @@
 | [docs/research/p780-evidence-gap-audit-20261019.md](../docs/research/p780-evidence-gap-audit-20261019.md) | GAP-01�����в��ԡ��ں�֤������ļ���ʵ��2026-10-19��（部分损坏） |
 | [docs/research/p780-firehose-screening-20261026.md](../docs/research/p780-firehose-screening-20261026.md) | Firehose 候选与商业 EDL 读取核对（2026-10-26） |
 | [docs/research/p780-fstab-avb-20261018.md](../docs/research/p780-fstab-avb-20261018.md) | P780 fstab AVB 挂载配置实机取证（2026-10-18） |
+| [docs/research/p780-full-root-routes-20261027.md](../docs/research/p780-full-root-routes-20261027.md) | 完整 root 路线复审（2026-10-27） |
 | [docs/research/p780-ghostlock-5.4-20261026.md](../docs/research/p780-ghostlock-5.4-20261026.md) | GhostLock 5.4.233 可行性评估（2026-10-26） |
 | [docs/research/p780-ghostlock-bug-shape-20261025.md](../docs/research/p780-ghostlock-bug-shape-20261025.md) | GhostLock 缺陷形态确认（2026-10-25） |
 | [docs/research/p780-ghostlock-profile-draft-20261025.md](../docs/research/p780-ghostlock-profile-draft-20261025.md) | P780 GhostLock profile 草案（5.4.233，静态部分） |

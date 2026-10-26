@@ -10,6 +10,7 @@
 - 进程因卡死重启两次；无 OOB 写盘，设备恢复。`boot_id` 记录在对应报告。
 - EDL：复查公开仓库仍无 TINNO/holi 签名 loader；同 SoC 样本使用不同 OEM key。
 - 新增 [`docs/research/p780-info-layer-20261027.md`](docs/research/p780-info-layer-20261027.md)：已有分区/模块/配置清单与各执行域读取边界；`STATUS.md`、`NEXT_STEPS.md` 同步更新。
+- **完整 root 路线复审**（[p780-full-root-routes-20261027.md](docs/research/p780-full-root-routes-20261027.md)）：实测 system_app 可直接调用 update_engine；策略确认 update_engine 是唯一可写 boot + vbmeta 的可达域；OTA 证书为 RSA-2048 releasekey（非 testkey）；Linux 5.4 块设备 page cache 支持 splice + writepage + fsync。当前主线改为 update_engine 验签绕过（先离线确认证书加载时机与 payload 格式），6931 降为 fallback。
 
 ## 2026-10-26 — 离线审计更正与可复跑筛查
 

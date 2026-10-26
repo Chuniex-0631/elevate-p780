@@ -3,7 +3,7 @@
 > 由 `tools/build_research_index.py` 从实际文件生成（2026-10-26）。
 > 每项给出仓库内路径、字节数与 SHA-256；摘要说明见各专题报告。
 
-共 **677** 个文件，合计 **130.6 MiB**。
+共 **679** 个文件，合计 **130.6 MiB**。
 
 | 路径 | 字节 | SHA-256 |
 |---|---:|---|
@@ -189,6 +189,8 @@
 | `evidence/20261026/README.md` | 550 | `21998d76f10024b017a31c5f0682fcf6c202746439fb7df6abe962614054d43d` |
 | `evidence/20261026/vuln-surface/props_report.txt` | 33566 | `24a2de082cc62c7cb0da083660a8bf041c8c9a9292bfa9ef06eccc8f06c28886` |
 | `evidence/20261026/vuln-surface/README.md` | 78 | `a834ecfa4da20cfe02e2bc2900c62644cb3ba05a7f037334685f8713a385ce41` |
+| `evidence/20261027/otacerts/fingerprint.txt` | 620 | `86e3f8efcd28b2c3d2cc8b229e605c7cb4d640694a538bc22dbb02fd8248cf4f` |
+| `evidence/20261027/otacerts/releasekey.x509.pem` | 1399 | `d579d848e96d31f50d7e0efcaf1691cfd4fdb5305150ef5c32623fc3c93bde55` |
 | `evidence/20261027/vendor-config/audio_effects.xml` | 7774 | `a6483eaeeed2d7e354d1c2baa10c1ea6224febf015b9c9b899841273f51a0703` |
 | `evidence/20261027/vendor-config/audio_platform_info.xml` | 55301 | `b47b069a0e9b3be1bb1a1f4de3e99d5c8108977df6f107813d8c189ed6946106` |
 | `evidence/20261027/vendor-config/audio_platform_info_intcodec.xml` | 41419 | `4effb1f0d893ebcf88ac3b92ff4258dca80b32f8cb2a4646e830d9645899e61b` |

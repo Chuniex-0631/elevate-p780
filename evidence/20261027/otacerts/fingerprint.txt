@@ -1,0 +1,14 @@
+OTA certificate facts (2026-10-27, from /system/etc/security/otacerts.zip)
+
+File: releasekey.x509.pem (only certificate in the zip)
+Key: RSA-2048, e=65537
+SHA-256 of modulus n:
+  7b3732945c278e7004a148793a2449c270ceb29b15a3afcbc44676837c0ee44f
+
+Comparison with the AOSP/AVB testkey private key in this repository
+(evidence/20261026/keys/testkey_rsa4096.pem):
+  testkey: RSA-4096, SHA-256(n) = 36949b827927c883836897ab67eb01360795186cb81faca37ef7de583a1b65b1
+  MATCH: false
+
+Conclusion: the OTA payload signature key is not the testkey; testkey can sign
+vbmeta/boot for AVB, but cannot sign an update_engine OTA payload.

@@ -60,8 +60,12 @@
   但"两次 read 之间不能有分配"与校准冲突；双组 8446 规模会卡死，小观察组采样为 0。
   详见 [`OBSERVED-V-20261027.md`](../tools/uring/analysis/OBSERVED-V-20261027.md)。
 - **EDL 无新候选**：公开仓库仍无 TINNO/holi 签名 loader；同 SoC 样本使用不同 OEM key。
-- **下一步转信息层收尾**：整理已有分区/模块/配置与各 shell 的读取边界，形成可交付清单；
-  6931 保持"原语已备、待后续"。
+- **完整 root 路线复审**（新）：`system_app` 可直接调用 update_engine（实测 `--cancel`
+  返回服务错误而非权限拒绝）；update_engine 是唯一可写 boot **和** vbmeta 的可达域；
+  OTA 证书是 RSA-2048 releasekey，不是 testkey。详见
+  [`p780-full-root-routes-20261027.md`](research/p780-full-root-routes-20261027.md)。
+- **下一步**：优先做 update_engine 验签绕过的离线/低风险验证，6931 保持 fallback；
+  信息层清单已基本收口。
 
 旧复核记录：[ABL / EDL 审计](research/p780-boot-edl-audit-20261026.md) 核实了 14 项注册循环、
 FRP 缓冲区末字节读取与 misc 恢复样本相等。FRP 位到菜单隐藏的完整链未闭合。
