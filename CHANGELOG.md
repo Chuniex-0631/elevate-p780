@@ -3,6 +3,14 @@
 > 2026-10-26 更新：本页只保留可被仓库文件或 Actions 证据支持的里程碑。
 > 早期逐条日志（含编码损坏段落）不再重排，原始内容保留在 git 历史中。
 
+## 2026-10-26 — 离线审计更正与可复跑筛查
+
+- 原件解压逐字节核验，恢复 ABL 的 14 项 fastboot 注册表与分派链；FRP 缓冲区末位读取成立，菜单隐藏因果未闭合。
+- 五份 Firehose 候选固定来源、Git blob 与 SHA-256，区分 SHA-256/SHA-384/SPKI；UFS 字符串不视为兼容。
+- Chimera 精确 P780 页面仅列 Get Info，商业 EDL 分区读取仍未证实；没有设备操作。
+- 更正 README/STATUS 为“临时 installd UID0 shell 已有成功记录”；补充公开仓库隐私警示与 misc 换行/偏移字节复核。
+- 旧条目中的“retail 无工厂镜像、FRP 门控为 0、公开渠道绝无 loader”作为历史推论保留，由新审计报告更正。
+
 ## 2026-10-26 — ABL 菜单 / GhostLock 5.4 / EDL / kgsl
 
 - 实机进入 ABL 工厂菜单：`Vol Up + Power` 后有 START / Restart bootloader / Recovery mode / Power off / **Boot to FFBM** / **Boot to QMMI**，**没有 Unlock**；FFBM/QMMI 均重启回 Android，确认 retail 无对应工厂镜像，FRP 门控为 0。
