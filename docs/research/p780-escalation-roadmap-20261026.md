@@ -266,7 +266,28 @@ DSU/GSI、无 loader 的 EDL 盲试、以及任何"先上设备再想原语"的�
 已 404，若还要重建 Elevate APK 需改用 sdkmanager 或换版本；内核 PoC 准备用 zig
 （`aarch64-linux-musl` 静态）编译，不依赖 NDK。
 
-## 8. 参考
+## 8. 2026-10-26 深夜：CVE-2025-38352 首次触发实验（负结果）
+
+把公开 PoC（longwasu/CVE-2025-38352-PoC）移植到本机后跑了 1,101 次：
+
+| 项目 | 结果 |
+|---|---|
+| 编译 | zig `aarch64-linux-musl` 静态，1,109,688 B；musl 下 `struct sigevent._tid` 需按内核 UAPI 的 offset 16 手写 |
+| 单次 | 正常退出，`uptime`/`boot_id` 不变 |
+| 100 次默认 10 ms | 正常退出，无 panic |
+| 1,000 次、timer 1–20 ms 扫描 | 正常退出，`boot_id` 仍为 `2eba953a-…` |
+
+**为什么 0 命中（静态判断）**：PoC 用的是 `CLOCK_THREAD_CPUTIME_ID`，而 timer 线程创建完
+timer 后立刻 `SYS_exit`；线程的 `sum_exec_runtime` 在退出后不再增长，10 ms 的 CPU-time
+timer 很可能根本没有到期，自然没有 `handle_posix_cpu_timers` 的竞态窗口。公开复现是在
+QEMU + GDB 里用断点把四个 vCPU 精确停在 `exit_notify`/`wait4`/`timer_delete`/
+`handle_posix_cpu_timers`，不是单进程自然跑出来的。
+
+**结论**：触发"未命中"不等于"漏洞不存在"——源码与二进制都已确认修复缺失；缺的是一个
+适合真机的时序 harness。下一步应改成"进程 CPU 时钟 + 忙等消耗 + 多 racer 并发 + 可调
+delete 延迟"，而不是继续加大同一 PoC 的循环次数。
+
+## 9. 参考
 
 - 仓库内：[STATUS](../STATUS.md)、[NEXT_STEPS](../NEXT_STEPS.md)、
   [ABL/EDL 复核](p780-boot-edl-audit-20261026.md)、[Firehose 筛查](p780-firehose-screening-20261026.md)、
