@@ -234,7 +234,39 @@ DSU/GSI、无 loader 的 EDL 盲试、以及任何"先上设备再想原语"的�
 - 以上都是 N-day/自研研究，不针对他人设备；公开的 exploit 代码只作为方法论参考，
   不直接运行未适配的载荷。
 
-## 7. 参考
+## 7. 2026-10-26 晚实测补记
+
+当晚按上面的顺序做了三件不写分区的事，结果修正了路线图里的两处判断：
+
+1. **Zygote CVE-2024-31317 在本机可用**（`--check-vuln`：`VULNERABLE (pre-12)`）。
+   - 用 `platform:targetSdkVersion=30:complete` 作为 `--seinfo` 对 `com.android.settings`
+     注入成功，拿到 `uid=1000(system) context=u:r:system_app:s0` 的 bind shell；
+   - 工具默认的 `default:targetSdkVersion=…` 对系统应用会触发
+     `selinux_android_setcontext(...) failed`，Zygote 直接 abort；**系统应用必须显式给
+     `platform`**，这是本次唯一改动的参数；
+   - system_app 的边界比预期窄：`/data/system`、`/data/misc`、`/data/local/tmp`、
+     `/data/data` 全部 `Permission denied`，目前只确认 `/data/tombstones` 可读。
+     它能读的是目标应用自己的数据目录（本次 settings 的目录为空），所以它的定位仍是
+     "按 App 导出私有数据"，不是通用文件读取。
+2. **`update_engine_client` 从 shell 调用被 SELinux 拒绝**
+   （`Status(-129, EX_TRANSACTION_FAILED)`），路线 E 的"shell 触发 update_engine"不成立；
+   要触发只能借 system_server/系统权限的调用者，成本更高。
+3. **`/vendor` 不是独立分区**：挂载点是 `/dev/block/dm-9`，734 MiB（`/vendor/lib/modules`
+   在同一个 ext4 里）。整段 dump 约 92 个 8 MiB chunk，代价过高；更合理的是文件级提取
+   （crash_dump 域可读 `vendor_file`，但写通道只有 tombstone 追加）。
+4. **CVE-2025-38352 的修复状态已离线确认**：
+   - Linux 5.4.233 的 `run_posix_cpu_timers()` 没有 `if (tsk->exit_state) return;`；
+     5.4.295 才加入（本次直接 diff 了两版源码）；
+   - 本机 `kernel.symbolized.elf` 里 `run_posix_cpu_timers`（`0xffffffc0103832a4`）
+     入口直接进入 `fastpath_timer_check` 的内联序列（`[x19,#0x7d8/0x7f0/0x808]`），
+     同样没有 `exit_state` 检查 —— 与 5.4.233 源码一致，**修复不存在**。
+   - 结论从"按构建日期推断"升级为"源码 + 二进制双重确认；可达性仍待触发实验"。
+
+工具链方面：JDK 17 与 platform-30 已重新下载（`work/toolchain`），build-tools 的旧直链
+已 404，若还要重建 Elevate APK 需改用 sdkmanager 或换版本；内核 PoC 准备用 zig
+（`aarch64-linux-musl` 静态）编译，不依赖 NDK。
+
+## 8. 参考
 
 - 仓库内：[STATUS](../STATUS.md)、[NEXT_STEPS](../NEXT_STEPS.md)、
   [ABL/EDL 复核](p780-boot-edl-audit-20261026.md)、[Firehose 筛查](p780-firehose-screening-20261026.md)、
