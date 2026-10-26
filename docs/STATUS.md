@@ -118,6 +118,13 @@
   `misc_block_device`；但设备上没有 `/vendor/bin/vendor_misc_writer`，
   只有 bootctl HAL。能 `find hal_bootctl_hwservice` 的域只有
   `update_engine`、`update_verifier`、`vold`（`hal_bootctl_client`）。
+- **postinstall 也是 no-op**：`RUN_POST_INSTALL=1` 时
+  `PostinstallRunnerAction` 只打印 `All post-install commands succeeded`，
+  没有执行任何子进程；本地 update_engine_client 的 install plan 没有
+  postinstall 路径，无法借此进入 update_engine 域。
+- **刷机路线的实际结论**：update_engine 能写块、能过验签，但**不能切槽**；
+  没有 v1.0 bootctl、没有可写的 misc 接口、没有 EDL loader。
+  “刷机 → permissive boot → 完整 root”目前被 slot 切换卡死，而不是被写入能力卡死。
 - **OTA 情报收集**：A=263、B=264；`/data/ota_package` 与 `/data/misc/update_engine`
   对 shell/system_app 均拒绝；`/system/etc`、`/vendor/etc`、props 中没有 OTA URL；
   没有 OTA/FOTA/SystemUpdate 应用；Rakuten 官方页只给操作说明。详见

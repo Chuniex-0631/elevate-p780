@@ -36,6 +36,9 @@
      （见 [`p780-ota-recon-20261027.md`](research/p780-ota-recon-20261027.md)）。
    - **下一步**：要么提供/触发 v1.0 bootctl（或在允许域内调用 v1.1），
      要么找到能写 misc 的 vold/init 路径；否则此路线无解。
+   - 已排除：`RUN_POST_INSTALL=1` 只打印成功、不执行子进程；vold 的公开
+     binder 接口没有 slot/misc 方法；shell/system_app 都不能 find
+     `hal_bootctl_hwservice`。
 3. **EDL 只做询价/验证**：官方与商业渠道确认是否提供 TINNO/holi 签名 programmer；
    没有文件、没有真机写，就不算进展。
 
