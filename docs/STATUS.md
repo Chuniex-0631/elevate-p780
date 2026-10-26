@@ -81,7 +81,18 @@
   `Opening /dev/block/bootdevice/by-name/boot_a` → `Applying 1 operations` →
   `Completed 1/1` → `FilesystemVerifierAction ... kSuccess`。
   结束码 `kUpdatedButNotActive` 只因 `SWITCH_SLOT_ON_REBOOT=0`。
-  至此只剩"写入 rooted boot/vbmeta 并切槽"。
+- **A 槽启动仍失败**：原厂 `vbmeta_a.00.bin` 的 boot 描述符对应 build **263**，
+  当前 B 是 **264**；A/B boot 镜像不同。已用原厂 vbmeta_a 只替换 boot 描述符
+  并重签（`avbtool verify_image` 通过），以及尝试 B 的 vbmeta/boot，A 仍回到 B。
+  随后 update_engine 拒绝写 `misc`（`kInstallDeviceOpenError`），fastboot 无
+  `set_active`/`flash`/`erase`，`bootctl` 不可用 —— **slot 元数据无法清除**。
+- **OTA 情报收集**：A=263、B=264；`/data/ota_package` 与 `/data/misc/update_engine`
+  对 shell/system_app 均拒绝；`/system/etc`、`/vendor/etc`、props 中没有 OTA URL；
+  没有 OTA/FOTA/SystemUpdate 应用；Rakuten 官方页只给操作说明。详见
+  [`p780-ota-recon-20261027.md`](research/p780-ota-recon-20261027.md)。
+  **OTA 包路线不可行**。
+- **主线切回 6931 target A（selinux_state）**：不依赖 A 槽启动，成功后用现有
+  uid0 shell 即完整 root。update_engine 的块写/验签绕过保留为已备能力。
 - **下一步**：生成合法 partition/operation payload（先写可回滚的 `vbmeta_b`），
   6931 保持 fallback；信息层清单已基本收口。
 

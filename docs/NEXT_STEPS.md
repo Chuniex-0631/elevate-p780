@@ -11,18 +11,22 @@
 
 ## 2026-10-27 当前优先
 
-1. **update_engine 验签绕过（完整 root 主线）**：
-   - ✅ 离线确认 `payload_verifier` 每次 apply 重读 `otacerts.zip`；
-   - ✅ 最小 payload 已生成并通过本地签名校验，system_app + HTTP 触发成功；
-   - ✅ 自建 APK 已把 1135 B `otacerts_ours.zip` 写进页缓存，update_engine 日志
-     `Verified correct signature 1 out of 1 signatures` —— **签名门已绕过**；
-   - ⛔ 原阻塞（空 manifest SIGSEGV）已由合法 partition/operation 解决；
-   - ✅ `partition=boot` + `REPLACE` payload 已让 update_engine 真正打开
-     `/dev/block/.../boot_a`、执行 `Applying 1 operations`、
-     `FilesystemVerifierAction kSuccess`；结束码 `kUpdatedButNotActive`
-     只因 `SWITCH_SLOT_ON_REBOOT=0`；
-   - 下一步：生成 rooted/permissive `boot` + testkey 重签 `vbmeta`（flags=2、
-     去掉 boot 描述符）的完整 payload，写入目标槽 A，再设 `SWITCH_SLOT_ON_REBOOT=1`。
+1. **6931 target A（selinux_state）——完整 root 主线**：
+   - 不依赖 A 槽启动；成功后 permissive + 现有 installd uid0 shell 即完整 root；
+   - 已有：KASLR/sock/cred 泄漏、perf 组 u16 回绕、delta 校准、`x19` 观测；
+   - 待解决：`values` 槽位（V）的确定性放置；observed-V 双组方案在真机卡死过，
+     需要更小的观察组/同步释放载体；
+   - 现成记录：[`OBSERVED-V-20261027.md`](../tools/uring/analysis/OBSERVED-V-20261027.md)。
+2. **update_engine 路线（暂停，能力已备）**：
+   - ✅ 验签绕过、任意块写都已实测；
+   - ⛔ A 槽 slot 元数据（unbootable/retry）无法清除：fastboot 无 set_active/flash，
+     `misc` 不被 update_engine 接受，`bootctl` 不可用；
+   - A=build 263、B=264，A 的 boot 镜像缺失；OTA 包无法获取
+     （见 [`p780-ota-recon-20261027.md`](research/p780-ota-recon-20261027.md)）。
+3. **EDL 只做询价/验证**：官方与商业渠道确认是否提供 TINNO/holi 签名 programmer；
+   没有文件、没有真机写，就不算进展。
+
+以下 2026-10-26 的优先级 1/2/3 转为**暂停**，保留原触发条件。
 2. **EDL 只做询价/验证**：官方与商业渠道确认是否提供 TINNO/holi 签名 programmer；
    没有文件、没有真机写，就不算进展。
 3. **6931 恢复条件**（满足其一再上设备）：
