@@ -114,3 +114,36 @@
 
 建议第一次实现只做 **步骤 1–5**（read0 + 采样 + X 判定），不接 payload；
 确认"X==V"能稳定出现后，再加 read1 和 target A。
+
+## 8. 2026-10-27 实测：X 已经能观测，但 X != V
+
+`chain_read0` 原型（只做 read0，delta=0）：
+
+- 单次 read0 采样太少（1–5 个），几乎不可能落在 `__perf_read_group_add` 循环里；
+- 改成 **2000 次 read0** 连续采样后：
+
+```
+read0=2048 first=8447
+total=1491 hits=14 vals=2
+  X[0]=0xffffff8050fdd800 cnt=7
+  X[1]=0xffffff803406d800 cnt=7
+modeX=0xffffff8050fdd800 V=0xffffff8050fd8000 match=0
+```
+
+- 采样点正确：`x19` 就是 `values`；
+- 但 X 是 **V 上方 0x5800（slot 11）**，不是我们选的 slot0；
+- 两个 slab 的 X 都落在 **slot 11**，说明 freelist 头就在那一槽。
+
+### 8.1 设计修正：不再要求 X==V，按 X 选 victim
+
+既然 X 可观测，就不必强求 X==V：
+
+1. read0 采样得到稳定的 X；
+2. 找 **S = X + 0x800** 的活跃 sock（同 slab、相邻槽）；如果泄漏列表里没有，换一轮；
+3. 选 `f > S` 的活跃 sock 作为 fake 槽，free(f)，等 RCU；
+4. 下标仍然是 `(S+0xd0-X)/8 = 0x8d0/8 = 282` → **sibling 280 不变**；
+5. 校准 delta = `(f_slot + P_ALIGN) - (S + 0xd0)`，然后 read1；
+6. read1 的 `values` 会复用 X（read0 刚 kfree 的 freelist 头），OOB 正好落在 S+0xd0。
+
+这样把"V 必须等于预设槽"换成"以观测到的 X 为基准选 victim"，是 observed-V 的完整形态。
+
