@@ -1,0 +1,12 @@
+# must be last one for the default setting
+#on property:ro.boot.carrier=*
+#   setprop ro.com.google.clientidbase android-motorola
+#   setprop ro.com.google.clientidbase.ms android-motorola-rev2
+#   setprop ro.com.google.clientidbase.am android-motorola
+
+
+#daming.cao,factory version default charaing
+on property:ro.boot.journey.factory=1
+   write /proc/tinno_demomode_charge/enable 1
+   write /proc/tinno_demomode_charge/chg_max_soc 80
+   write /proc/tinno_demomode_charge/chg_min_soc 30

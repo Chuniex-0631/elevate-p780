@@ -20,7 +20,7 @@
 | [archive/reports/P780_PFM_QAS_2026-10-04.md](../archive/reports/P780_PFM_QAS_2026-10-04.md) | Rakuten Hand 5G P780：QAS → Mink → PFM 研究检查点 |
 | [archive/reports/P780_TZAccess_2026-10-04.md](../archive/reports/P780_TZAccess_2026-10-04.md) | P780：TZAccessService 服务端 Java 授权链 |
 
-## docs（105）
+## docs（106）
 
 | 文档 | 标题 |
 |---|---|
@@ -121,6 +121,7 @@
 | [docs/research/p780-supplement-20261024.md](../docs/research/p780-supplement-20261024.md) | P780 补充情报整理：2026-10-24 |
 | [docs/research/p780-system-file-extraction-20261025.md](../docs/research/p780-system-file-extraction-20261025.md) | 从 /system 提取整文件（2026-10-25） |
 | [docs/research/p780-uring-cve-2023-6931-20261025.md](../docs/research/p780-uring-cve-2023-6931-20261025.md) | io_uring CVE 选型：CVE-2023-52654 在本机成立（2026-10-25） |
+| [docs/research/p780-vendor-config-20261027.md](../docs/research/p780-vendor-config-20261027.md) | /vendor 配置解析：块写域、SELinux 与 VINTF（2026-10-27） |
 | [docs/research/p780-vendor-service-audit-20261025.md](../docs/research/p780-vendor-service-audit-20261025.md) | 厂商预置服务审计（第一轮）：Journey 根服务与属性触发的 init 原语（2026-10-25） |
 | [docs/research/p780-vuln-surface-analysis-20261025.md](../docs/research/p780-vuln-surface-analysis-20261025.md) | 新资产 × 已知漏洞：还有哪里有搞头（2026-10-25 评估） |
 | [docs/research/public-p780ae-device-tree-audit-20261024.md](../docs/research/public-p780ae-device-tree-audit-20261024.md) | 公开 P780AE 设备树候选审计（2026-10-24） |

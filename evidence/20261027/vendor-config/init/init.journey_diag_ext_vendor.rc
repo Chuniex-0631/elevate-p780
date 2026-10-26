@@ -1,0 +1,34 @@
+service journey_diag_ext_vendor /vendor/bin/journey_diag_ext_vendor
+    user root
+    group vendor_qti_diag root readproc system radio vendor_rfs_shared sdcard_rw media_rw sdcard_r shell drmrpc bluetooth
+    disabled
+
+on property:persist.vendor.diag.journey.enabled=1
+    start journey_diag_ext_vendor
+
+on property:persist.vendor.diag.journey.enabled=0
+    stop journey_diag_ext_vendor
+
+on property:sys.journey.vendor.restorecon=*
+    restorecon_recursive ${sys.journey.vendor.restorecon}
+
+on property:sys.boot_completed=*
+    setprop vendor.sys.boot_completed ${sys.boot_completed}
+
+on property:odm.journey.diag.write_misc=*
+    write_misc ${odm.journey.diag.write_misc}
+
+on post-fs
+    # from init.qcom.rc, bt addr may use this folder
+    mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
+    restorecon_recursive /mnt/vendor/persist/bluetooth
+
+    # we need read FP_report
+    chmod 0770 /mnt/vendor/persist/misc/FTM_APP
+    chmod 0660 /mnt/vendor/persist/misc/FTM_APP/FP_report
+    chmod 0660 /mnt/vendor/persist/misc/FTM_APP/FtmApk_Check_Tag
+
+on property:odm.journey.diag.factory.reset=1
+    #exec_background u:r:shell:s0 system shell -- /system/bin/sh -c "dumpsys recovery factory_reset"
+    write_misc --wipe_data
+    setprop sys.powerctl reboot,recovery

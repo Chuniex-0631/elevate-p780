@@ -1,0 +1,5 @@
+on property:journey.ssr.restart_level=*
+    setprop persist.vendor.ssr.restart_level ${journey.ssr.restart_level}
+
+on property:journey.ssr.enable_ramdumps=*
+    setprop persist.vendor.ssr.enable_ramdumps ${journey.ssr.enable_ramdumps}
