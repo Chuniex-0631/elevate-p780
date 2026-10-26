@@ -101,6 +101,15 @@
 - **完整 root 结论（2026-10-27）**：在现有可达接口下，刷机路线卡在 v1.0 bootctl，
   6931 路线卡在 values 槽位不可控；PIPA 的函数指针链又受本机 CFI 限制。
   **暂停完整 root 尝试**，保留已实现的 uid0 shell（Elevate）作为部分 root。
+- **JVN#47427200 / AVB testkey（2026-10-14）**：JPCERT/CC 与 IPA 确认 Rakuten
+  Mini/Hand/Hand 5G/BIG s 的 AVB 使用 AOSP 测试键，全部停止支持且不会修复。
+  这只确认了 bootloader AVB 的 testkey，不提供新的写入/切槽路径。
+- **DSU 路线也被证伪**：P780 boot ramdisk 的 `first_stage_ramdisk/avb/` 只带
+  `q-gsi` / `r-gsi` / `s-gsi` 三个 GSI 公钥；官方 Developer GSI
+  `aosp_arm64-exp-RP1A.200720.009` 的 AVB 公钥是 `1ffb1af7…`，而 `r-gsi` 是
+  `501ff342…`，不匹配。AOSP 的 `developer_gsi_keys.mk` 说明公开 Developer GSI
+  用的是 `*-developer-gsi` 键，本机没有。用 testkey 重签也不能过 DSU。
+  **DSU 需要 r-gsi 私钥签名的 release GSI，公开不可得。**
 - **新攻击面：FastRPC（2026-10-27 晚）**：`/dev/adsprpc-smd` 为 `crw-rw-r--`，
   shell 可 O_RDONLY 打开，未知 ioctl 返回 `ENOTTY`（已进入驱动）。
   内核 2024-02 / SPL 2024-02，而 CVE-2024-43047（ITW map collision UAF）与
