@@ -170,7 +170,7 @@
 | [ghostlock/M1.md](../ghostlock/M1.md) | M1：PI 链构造探针 |
 | [ghostlock/README.md](../ghostlock/README.md) | GhostLock 移植骨架（2026-10-25） |
 
-## tools（21）
+## tools（22）
 
 | 文档 | 标题 |
 |---|---|
@@ -193,6 +193,7 @@
 | [tools/rom/README.md](../tools/rom/README.md) | P780 ROM Release 离线核验 |
 | [tools/supplement/README.md](../tools/supplement/README.md) | P780 supplemental evidence tools |
 | [tools/uring/analysis/DATA-CHAIN-20261026.md](../tools/uring/analysis/DATA-CHAIN-20261026.md) | 6931 新数据链设计：fake skb 双写（2026-10-26，离线） |
+| [tools/uring/analysis/OBSERVED-V-20261027.md](../tools/uring/analysis/OBSERVED-V-20261027.md) | 6931 observed-V 设计：先看 values 地址，再做 OOB（2026-10-27，离线） |
 | [tools/uring/README.md](../tools/uring/README.md) | CVE-2023-6931 研究工具 |
 | [tools/vuln-surface/README.md](../tools/vuln-surface/README.md) | 52 号攻击面解析 |
 
