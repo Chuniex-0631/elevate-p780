@@ -1,5 +1,10 @@
 # 下一步计划
 
+> 2026-10-26 晚：先读[提权与刷机路线图](research/p780-escalation-roadmap-20261026.md)。
+> 结论是"块写 > 解锁"：AVB 用 AOSP testkey，拿到 boot 分区写通道即可刷入自签 boot/vbmeta；
+> BL 解锁在本机 ABL 上大概率死路。下面优先级 1/2 仍有效，但新增的
+> CVE-2025-38352（5.4 确认受影响）与 `update_engine`/`hal_bootctl` 块写域应并行评估。
+
 > 2026-10-26 优先顺序更新：先[ABL控制流复核](research/p780-boot-edl-audit-20261026.md)，再[Firehose/商业读取核对](research/p780-firehose-screening-20261026.md)，之后核对 UID0/Journey 边界与公开隐私。当前只做离线分析，不执行旧文档中的写分区建议。
 
 > 2026-10-26 更新。每项都写明"要什么证据"与"什么情况下停止"，避免把推断当结论。

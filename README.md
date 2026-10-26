@@ -26,6 +26,7 @@
 
 ## 最新专题（2026-10-25 / 10-26）
 
+- [提权与刷机路线图](docs/research/p780-escalation-roadmap-20261026.md) — 把"提权 / 更多文件 / BL 解锁 / EDL / 刷机"拆层；结合 2026 临时 root 生态给出七条路线、优先级与停止条件。核心判断：AVB 是 testkey，拿到 boot 块写即可刷机，不必等 BL 解锁。
 - [分区证据再提取](docs/research/p780-partition-reextract-20261026.md) — 本地丢失的 `48-init-capability` 分区集按原方法重取：`vendor_boot_a/b`、`dtbo_a` 与 45+45 个 first-stage `.ko`、22 个 dtb 全部与 manifest 哈希一致。
 - [ABL / EDL 离线复核](docs/research/p780-boot-edl-audit-20261026.md) — 真实注册表、FRP 读取、misc 字节比较、Root 状态纠正。
 - [Firehose 与商业读取筛查](docs/research/p780-firehose-screening-20261026.md) — 五份候选证书算法/来源与 UFS 边界。
