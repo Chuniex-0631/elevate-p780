@@ -1,17 +1,17 @@
 # 完整 root 路线复审（2026-10-27）
 
 > 目标：拿到**完整 root**（permissive 或内核级读写），而不只是受限 uid0 shell。
-> 本文只做路线评估与离线证据；所有结论标注可验证来源。
+> 2026-10-28 更正：本页包含历史路线评估及后续实机日志摘录，并非全程离线。当前设备实验已暂停，见 [STATUS](../STATUS.md)。下文步骤、优先级与早期阻塞不作为当前执行计划。
 
 ## 0. 判定标准
 
 | 级别 | 判定 |
 |---|---|
-| A. 完整 root | SELinux permissive，或内核任意读写；能读写任意分区/文件 |
-| B. 刷机能力 | 能写 boot + vbmeta，重启后 AVB 通过 |
+| A. 运行时权限扩大 | permissive 或内核读写须逐项实测；不能概括任意文件/分区可读写，也不代表跨重启保持 |
+| B. 刷写启动链 | 目标 boot/vbmeta 写入与读回、切槽、设备端 AVB、修改后镜像启动分别验证；永久 Root 另验跨重启保持 |
 | C. 受限 root | uid0 但仍在 `installd`/`shell` 域，不能写 boot |
 
-现有 Elevate 是 **C**；6931 target A 可以到 **A/B**；EDL 是另一条 **B**。
+现有 Elevate 只记录 **C** 的临时能力；6931 和 EDL 是待验证候选，尚未取得 A/B 的闭合证据。
 
 ## 1. 现有能力（已验证）
 
@@ -37,7 +37,7 @@ update_engine_client --cancel
 这不是权限拒绝，而是**服务真的被调用到了**。也就是说：
 **system_app 可以启动 update_engine 的 `--update`/`--verify` 流程。**
 
-### 2.2 update_engine 是唯一"可达 + 能写 boot 和 vbmeta"的域
+### 2.2 update_engine 的可达性与静态块写权限
 
 - 写 boot：`update_engine_common boot_block_device ... write`（L9893）；
 - 写 super/system/misc：L9894–L9919；
@@ -46,7 +46,7 @@ update_engine_client --cancel
 - `hal_bootctl` 能写 boot，但 vbmeta 只有 getattr（L3615），无法完成 AVB 重签；
 - `vendor_install_recovery` 能写 recovery，但域不可达（脚本缺失）。
 
-结论：**update_engine 是唯一能"改 boot 并同步改 vbmeta"的服务**。
+结论：在本轮已检查的服务中，update_engine 同时有相关类型写权限及可达调用者；静态 allow 不证明任意目标可写，也不排除其它未检查服务。
 
 ### 2.3 OTA 证书不是 testkey
 
@@ -96,11 +96,11 @@ dirty 页会通过 `block_write_full_page` 写回块设备**，不需要 write �
 
 | 路线 | 到完整 root 的距离 | 主要门槛 | 风险 | 评价 |
 |---|---|---|---|---|
-| **A. update_engine 验签绕过 + HTTP payload** | 一步：写 boot/vbmeta | 证书加载时机 / payload 格式 / 可能需 patch 代码页 | 中（写 boot 失败会 AVB 红灯，但可再刷） | **最高优先级** |
+| **A. update_engine 验签绕过 + HTTP payload** | 写入、切槽与启动各待验证 | 证书加载时机 / payload 格式 / 可能需 patch 代码页 | 未验证可靠恢复通道，不能保证可再刷 | **最高优先级** |
 | **B. 6931 target A → permissive** | 一次 OOB 写 selinux_state | V 放置未解（已两次 panic） | 高（panic） | 保留为 fallback |
-| **C. DirtyFrag 块页缓存直写 boot/vbmeta** | 一步：从可读块设备的域执行 | 需要 init/update_engine/hal_bootctl 域代码执行 | 中高 | 与 A 互补，代码执行是难点 |
+| **C. DirtyFrag 块页缓存直写 boot/vbmeta** | 域执行、实际回写与启动各待验证 | 需要 init/update_engine/hal_bootctl 域代码执行 | 中高 | 与 A 互补，代码执行是难点 |
 | **D. patch boot-write 服务代码页** | 同 A/C | 可执行页 patch + icache/触发 | 中 | 并入 A/C |
-| **E. EDL 签名 loader** | 直接读写分区 | 无公开 TINNO/holi loader | 低（不碰设备） | 只做询价 |
+| **E. EDL 签名 loader** | 设备接受及存储读写待验证 | 截至该轮未获可验证匹配样本 | 低（不碰设备） | 只做询价 |
 | **F. 38352 / 26923 / kgsl 内核漏洞** | 内核任意读写 | 触发/CFI/时序全部未解 | 高 | 暂不投入 |
 
 ## 4. 路线 A：update_engine 验签绕过（推荐先做）
@@ -196,8 +196,7 @@ finished last action PostinstallRunnerAction with code ErrorCode::kUpdatedButNot
 ```
 
 `kUpdatedButNotActive` 只是因为 headers 设了 `SWITCH_SLOT_ON_REBOOT=0`；
-**真正的块设备写 + 分区哈希校验已经成功**。至此 update_engine 路线只剩
-"把 rooted boot / vbmeta 写进目标槽并切槽"这一步。
+**该日志摘录记录 boot_a 的 4096 B 写入与对应校验成功**；不是任意分区/偏移写入或完整镜像启动证明。后续 STATUS 记录切槽未实现、A 从未 active，故未形成刷写启动或永久 Root 链。
 
 ### 4.3 最小可行 payload
 
@@ -210,12 +209,11 @@ finished last action PostinstallRunnerAction with code ErrorCode::kUpdatedButNot
 
 ### 4.4 风险
 
-- 写坏 boot_b 只影响 B 槽；A 槽仍在，但设备默认从 B 启动，可能无法开机；
-- EDL 无 loader，不能兜底；只能靠 recovery/fastboot（未解锁）或再次写回；
-- 因此**第一次只写 vbmeta 的 flags（disable verity）或只写一个已知可回滚的小页**，
-  确认写入链路后再写完整 boot。
+- 写坏目标 boot 可能无法开机；不能据 A/B 槽存在保证另一槽可启动或可恢复；
+- 没有经验证的 EDL programmer；recovery/fastboot 或再次写回均未被证明为可靠恢复方案，不承诺可救回；
+- 历史曾建议先改 vbmeta flags 或小页；但恢复通道未闭合，不能承诺可回滚。该建议已暂停，不作为当前执行指令。
 
-## 4.4.1 当前唯一阻塞：通用页写入口
+## 4.4.1 早期阻塞：通用页写入口（后续已制作 APK；不是当前唯一阻塞）
 
 证书页替换需要把 `otacerts_ours.zip`（1135 B）写到
 `/system/etc/security/otacerts.zip` 的 page cache。现有条件：
@@ -248,13 +246,13 @@ finished last action PostinstallRunnerAction with code ErrorCode::kUpdatedButNot
 `init` 能读 boot 但不能写 boot（策略只给 misc write），但**页缓存回写不走 SELinux**，
 所以"只读 open + 页缓存写"原则上可行——这正是本路线的基础。
 
-## 6. 建议顺序
+## 6. 历史建议顺序（已暂停，以 NEXT_STEPS 为准）
 
 1. **离线**：确认 update_engine 证书加载时机与 payload 格式（AOSP 11 源码），
    写一个最小 payload 生成器；
 2. **设备（低风险）**：只改 `otacerts.zip` 页缓存，调 `--verify`/`--update`，
    观察错误是否从"签名失败"变成"payload 格式/分区错误"——这能证明证书页生效；
-3. 若证书页生效：生成 boot payload，先写 **vbmeta_b**（可回滚），再写 boot_b；
+3. 若证书页生效：生成 boot payload、先写 vbmeta_b 再写 boot_b 是旧设想；未验证可靠回滚，不作为当前计划；
 4. 若证书页不生效：patch update_engine 代码页（`VerifySignature`），或转路线 C；
 5. 6931 保持 fallback，不再优先烧设备。
 

@@ -1,10 +1,12 @@
 # P780 实机取得 uid 0 root shell（2026-10-25）
 
-> 2026-10-26 审计更正：本页保留早期失败上下文；后续 [daemon](p780-root-daemon-20261025.md) 和 [Elevate](../../app/elevate/README.md) 已记录 UID0 / installd 域临时 sh 成功，不能以此页概括当前 Root 状态。
+> 2026-10-28 文档复核：只更正解释与证据范围，未新增设备实测；当前状态以 [STATUS](../STATUS.md) 为准，历史候选步骤不作为当前执行计划。
+
+> 2026-10-26 审计更正：本页保留分阶段实验（含成功输出、失败上下文与后续写入记录）；后续 [daemon](p780-root-daemon-20261025.md) 和 [Elevate](../../app/elevate/README.md) 已记录 UID0 / installd 域临时 sh 成功，不能以此页概括当前 Root 状态。
 
 > **结论：在 Bootloader 锁定、SELinux Enforcing 的零售机上，以 installd 域取得了
 > `uid=0` 的 `/system/bin/sh`，并能以 root 身份列出 `/data/data` 与 `/data/app` 全部目录。**
-> 这是本仓库第一次真正拿到 root 级别的代码执行，而不是"受限域内的任意系统调用"。
+> 该记录证明临时 installd 域 UID0 shell 成功；域策略仍有效，不代表完整能力或永久 Root。
 
 ## 1. 结果
 
@@ -75,14 +77,14 @@ adb shell am start -n top.dcmqht.p780ipsec/.MainActivity -e probe unpatch
   glob、重定向、`read` 内建足以读写文件）。
 - **不是持久 root**：重启后页缓存恢复，需重新打补丁。
 - **触发依赖安装动作**：每次都要一次 `adb install`（或任何 installd 日志路径）。
-- **本轮未关闭 SELinux、未修改任何分区、未刷写**；设备 uptime 连续，回滚后库字节与原始一致。
+- **该阶段未关闭 SELinux、未执行块分区刷写**；userdata 测试文件与后续 APK 追加实验另见 §8–9；设备 uptime 连续，回滚后库字节与原始一致。
 
 ## 6. 为什么这一步重要
 
 此前所有"root"尝试都停在"受限域内的任意系统调用"：init 域不能 exec、不能写 `/data`。
-现在第一次拿到 `uid=0` 的 shell 与对 `/data/data` 的读取能力，意味着：
+已记录 `uid=0` shell、目录枚举和部分路径写入；后续能力须逐项验证：
 
-- 可以读取任意应用的私有数据（含可能存在的凭证/配置）；
+- 已枚举应用目录；不能据此推出任意应用文件可读，不应以读取或公开私人数据证明权限；
 - 可以把文件写进 `/data/app` 等 installd 管辖区域（后续可用于 APK 注入类实验）；
 - 为"从 installd 域跳到更高权限域"提供了落脚点（例如修改某个系统应用的 APK 数据）。
 
@@ -140,7 +142,7 @@ echo hello > /data/dalvik-cache/p780_write_test
   所以**无法用 shell 直接做二进制拷贝**；
 - 但载荷本身（我们注入的机器码）以 root 身份运行，可以直接用 syscall 做 read/write 循环复制，
   已在 dump 载荷里验证过这种模式可行；
-- 因此"APK 替换 / dalvik-cache 注入"在能力上可达，**但需要把复制逻辑写进载荷**，而不是靠 shell 命令。
+- 普通文件写入与 syscall 复制能力不等于 APK 替换或 dalvik-cache 注入成功；签名、一致性校验与跨重启执行仍须另验。
 
 ### 8.4 遗留
 

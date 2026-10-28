@@ -1,5 +1,7 @@
 # 厂商预置服务审计（第一轮）：Journey 根服务与属性触发的 init 原语（2026-10-25）
 
+> 2026-10-28 文档复核：只更正解释与证据范围，未新增设备实测；当前状态以 [STATUS](../STATUS.md) 为准，历史候选步骤不作为当前执行计划。
+
 > 2026-10-26 审计更正：字节复核更正：misc offset64 实际为 `recovery\ntest\n`，值从73起；不是 `recovery.test`。三份样本仅73–84改变，恢复样本全字节相等。固定字段写不等同任意 BCB command/分区写入，详见[本轮复核](p780-boot-edl-audit-20261026.md)。
 
 > 背景：在"已有 root 代码执行、但受 SELinux 域限制出不去"的瓶颈下，转向 TINNO/Journey
@@ -11,7 +13,7 @@
 | 发现 | 级别 | 状态 |
 |---|---|---|
 | `journey_diag_ext_system` / `_vendor` 以 **uid 0** 常驻运行；system 侧有 `/dev/socket/diag_ext_socket`（SOCK_SEQPACKET，权限 0666） | 高关注 | 已确认运行 |
-| **`sys.journey.diag.write_misc` shell 可写**，init 收到后把值写进 **misc 分区**（固定偏移 72，保留 `recovery.` 前缀） | **新原语** | 已实机验证、已还原 |
+| **`sys.journey.diag.write_misc` shell 可写**，init 收到后把值写进 **misc 分区**（样本值从十进制 73 起，保留 `recovery\n` 前缀） | **新原语** | 已实机验证、已还原 |
 | `sys.journey.restorecon` → init 执行 `restorecon_recursive <属性值>` | 待评估 | shell 可写已确认 |
 | `sys.journey.diag.wallpaper.theme` → init 向固定文件写任意内容 | 低 | 静态可见 |
 | `odm.journey.diag.factory.reset=1` → `write_misc --wipe_data` + 重启进 recovery | 危险 | 未测试（odm 属性 shell 不可写） |
@@ -95,23 +97,23 @@ on property:sys.journey.diag.wallpaper.theme=*
 ### 4.2 实机验证（misc 分区前后对比）
 
 ```
-原始 misc offset 64 起:   recovery.test
+原始 misc offset 64 起:   recovery\ntest\n
 setprop ...write_misc P780WMARK01
-写入后:                  recovery.P780WMARK01
+写入后:                  recovery\nP780WMARK01\n
 setprop ...write_misc test
-恢复后:                  recovery.test   （与原始 dump 逐字节一致，diff = 0）
+恢复后:                  recovery\ntest\n   （与原始 dump 逐字节一致，diff = 0）
 ```
 
-- 写入位置固定：offset 64 的 `recovery.` 前缀保留，值写在 offset 72 之后；
+- 样本 offset 64–71 是 recovery，72 是换行；值从 73 起，差异仅 73–84；0–63 的 command/status 未变；
 - `journey_diag_ext_vendor.rc` 里存在 `write_misc --wipe_data` + `setprop sys.powerctl reboot,recovery`，
-  说明该字段是 Bootloader/Recovery 读取的 boot-mode 命令通道；
-- 即：**未提权的 shell 就能改写 misc 里的 boot-mode 标记**。
+  这仅为另一条静态动作记录，不能证明普通文本写入控制相同 BCB/启动语义；
+- 即：**未提权 shell 可触发 misc 固定文本字段写入；启动模式是否受其控制未证实**。
 
 ### 4.3 影响与边界
 
 - 不等同 root：misc 是 1 MiB 标记分区，写的是文本标记；
-- 若 Bootloader 认可某个 `recovery.<mode>`（工厂/FTM 等），可能切换启动模式——潜在新面，但有效 mode 列表未知；
-- 错误值理论上可能导致下次启动进 recovery/工厂模式；`recovery.test` 是原值，已验证可精确还原。
+- 未建立该字段到 Bootloader/Recovery 启动选择的完整消费链，不将其称作可控 boot-mode 接口；
+- 本次恢复样本与原件相等，仅证明该次还原，不保证任意未来写入可恢复。
 
 ## 5. 第二原语候选：`sys.journey.restorecon`
 
@@ -119,7 +121,7 @@ setprop ...write_misc test
 `restorecon` 只能按 `file_contexts` 赋默认标签，不能指定目标类型；需要找"可控路径 → 特权标签"的映射才能利用，
 目前希望不大，先记录。
 
-## 6. 下一步
+## 6. 历史候选（当前暂停，见 ../NEXT_STEPS.md）
 
 | 任务 | 方法 | 停止条件 |
 |---|---|---|
@@ -130,5 +132,5 @@ setprop ...write_misc test
 
 ## 7. 边界
 
-- 本轮只做属性写入与分区 dump，misc 已还原（diff=0），无持久化改动；
+- 本轮只做属性写入与分区 dump，misc 恢复样本与原件相等（diff=0）；不等于整个设备没有文件残留；
 - 设备保持 `Enforcing`、libc++ 未打补丁。

@@ -10,8 +10,10 @@
 
 本仓库不是固件来源仓库，不应把 `evidence/apk` 中的实机 APK 当成推荐下载、安装或投产文件。TEE 采集中的 `Permission denied` 属于历史证据，不构成提升权限建议。
 
-**当前公开；历史与附件可能已被外部访问。目录名 restricted 不提供访问隔离。** 建议机主先限制仓库可见性，再对整个提交历史、所有 refs 和二进制附件开展隐私审核；仅删除 main 的文件无法清除历史。后续若拟公开分享，应创建单独审计和脱敏完成的仓库或发布包。
+**2026-10-26 记录为公开；历史与附件可能已被外部访问。目录名 restricted 不提供访问隔离。** 建议机主先限制仓库可见性，再对整个提交历史、所有 refs 和二进制附件开展隐私审核；仅删除 main 的文件无法清除历史。后续若拟公开分享，应创建单独审计和脱敏完成的仓库或发布包。
 
-研究成果包含历史临时 UID0 shell 成功记录（installd 域、Enforcing），未证实 bootloader 解锁或完整 EDL。
+研究成果包含历史临时 UID0 shell 成功记录（installd 域、Enforcing，重启后需重新触发）；永久 Root、Bootloader 解锁、完整 EDL 及可靠刷写启动链均未证实。历史 misc 固定字段写入与后续 boot_a 有限块写记录不代表任意分区可写。公开证据应使用脱敏输出、样本身份和哈希，不以读取私人数据来证明权限。
 
-本轮只做风险路径盘点，没有声称全库脱敏完成，也没有改可见性、删除原件或重写历史。优先复核 `evidence/restricted/bugreport/hand5g_bugreport.zip`、`evidence/restricted/adb/*.zip`、OTA日志，以及 `evidence/20261026/partitions/` 的 FRP/misc/devinfo 原件；这些原件可能包含设备状态或身份信息。不要在公开 issue 贴出发现的秘密。处理应覆盖所有 refs、附件、release、缓存和副本；.gitignore 或删除 main 文件不能消除既有历史。
+2026-10-26 审计只做风险路径盘点，没有声称全库脱敏完成，也没有改可见性、删除原件或重写历史。优先复核 `evidence/restricted/bugreport/hand5g_bugreport.zip`、`evidence/restricted/adb/*.zip`、OTA日志，以及 `evidence/20261026/partitions/` 的 FRP/misc/devinfo 原件；这些原件可能包含设备状态或身份信息。不要在公开 issue 贴出发现的秘密。处理应覆盖所有 refs、附件、release、缓存和副本；.gitignore 或删除 main 文件不能消除既有历史。
+
+> 2026-10-28：仅整理证据措辞，未重新核验或更改仓库可见性，未完成全历史隐私审核。

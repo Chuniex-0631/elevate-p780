@@ -2,6 +2,7 @@
 
 > 由 `tools/build_research_index.py` 生成（2026-10-26），含全部目录 Markdown。
 > 当前结论优先阅读 STATUS 与最新审计专题；历史报告保留阶段性假设。
+> 2026-10-28 文档整理：同步新增两份历史快照；证据文件未变化，EVIDENCE_MANIFEST 不重算。
 
 ## app（1）
 
@@ -20,11 +21,13 @@
 | [archive/reports/P780_PFM_QAS_2026-10-04.md](../archive/reports/P780_PFM_QAS_2026-10-04.md) | Rakuten Hand 5G P780：QAS → Mink → PFM 研究检查点 |
 | [archive/reports/P780_TZAccess_2026-10-04.md](../archive/reports/P780_TZAccess_2026-10-04.md) | P780：TZAccessService 服务端 Java 授权链 |
 
-## docs（110）
+## docs（112）
 
 | 文档 | 标题 |
 |---|---|
 | [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md) | 仓库结构与维护约定 |
+| [docs/archive/NEXT_STEPS-before-status-review-20261028.md](../docs/archive/NEXT_STEPS-before-status-review-20261028.md) | 下一步计划（2026-10-28 整理前历史快照） |
+| [docs/archive/STATUS-before-status-review-20261028.md](../docs/archive/STATUS-before-status-review-20261028.md) | 当前研究状态（2026-10-28 整理前历史快照） |
 | [docs/archive/20261010-archive-review.md](../docs/archive/20261010-archive-review.md) | Rakuten Hand 5G / P780：2026-10-10 阶段归档验收 |
 | [docs/archive/20261010-import-dedup.md](../docs/archive/20261010-import-dedup.md) | 2026-10-10 新增实体机资料接收、比对与去重报告 |
 | [docs/archive/dsu-index-20261018.md](../docs/archive/dsu-index-20261018.md) | DSU历史专题索引 |

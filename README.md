@@ -1,6 +1,6 @@
 # Rakuten Hand 5G / TINNO P780 研究档案
 
-> 更新：2026-10-26（Asia/Shanghai）。记录机主实机取证、离线样本分析与候选源码实验。
+> 更新：2026-10-28（Asia/Shanghai，文档复核；未新增设备实测）。记录机主实机取证、离线样本分析与候选源码实验。
 > **Bootloader 仍为 Locked；历史记录已取得临时 UID0 shell（SELinux installd 域、Enforcing），并已做成 Elevate；永久 Root、BL 解锁与完整 EDL 仍未证实。**
 
 设备：Qualcomm 平台（holi / SD480），Android 11，内部固件 `P780AE_11.0_RMN_JP_162`，系统指纹末段 `264:user/release-keys`，内核 `5.4.233-qgki-gea5245e94afe-dirty`（Clang 11.0.2，2024-02-20 构建），SPL **2024-02-01**，`ro.debuggable=0`，SELinux Enforcing。
@@ -10,27 +10,28 @@
 | 方向 | 已取得的证据 | 当前状态 |
 |---|---|---|
 | DirtyFrag / CVE-2026-43284 | 公开 IPsec API 建 SA + `splice` 钉页 + 内核原地解密；有效 ESP 报文被接受并覆盖文件页；可写只读系统库页缓存 | **原语已实机确认** |
-| 代码执行 | 改写 `libc++.so` / `libbase.so` 代码页，在 **init 域**与 **installd 域**（均 uid 0）执行任意系统调用；全程可回滚 | **成立** |
+| 代码执行 | 改写 `libc++.so` / `libbase.so` 代码页，在 **init 域**与 **installd 域**（均 uid 0）执行载荷中的系统调用，操作仍受域策略限制；历史补丁有恢复记录 | **成立** |
 | Root shell | 后续 daemon / Elevate 记录 `uid=0`、`u:r:installd:s0`；早期 exec 失败不代表最终状态 | **已记录临时受限 shell**；非永久 root |
+| 有限分区写入 | 历史 misc 固定字段样本复核；后续专题记载 update_engine 对 boot_a 的 4096 B 操作及对应校验成功 | 不等于任意块写、可切槽、可启动或永久 Root；详见 STATUS |
 | AVB 测试根密钥 | 本机 TEE 证书公钥摘要匹配 AOSP 默认 RSA4096 AVB 测试公钥；vbmeta digest 同时吻合 | 公钥身份已核验；不等于可写入或解锁 |
 | DSU / GSI | A/B 槽离线验签通过；B 已安装并尝试启动，最终回原厂；恢复出厂后原生 Loader 也由机主报告回退 | **路线已停止** |
 | OEM Unlock 灰化 | Journey gate：`OemLockService` 读 `ro.boot.journey.customer=1` 后返回 false；296 份去壳 APK/JAR 中仅 6 个直接调用点 | 静态根因已定位；无普通调用者入口 |
 | Fastboot / EDL | unlock 系列全 `unknown command`；QDL v2.8 通到 Sahara v2（HWID `0016f0e100000780`，PKHash `c19a5029…`） | 未取得 Firehose；未取得经完整签名与 UFS 核验的 programmer |
 | ABL 工厂菜单 | 关机后 Vol Up + Power 菜单：START / Restart bootloader / Recovery mode / Power off / **Boot to FFBM** / **Boot to QMMI**；**无 Unlock**；FFBM/QMMI 均回 Android | 历史选择后回 Android；FRP→菜单因果与无工厂镜像均未证实 |
 | GhostLock 5.4 | 5.4.233 `remove_waiter` 漏洞确认；pselect/mcast/tcp/sigreturn/process_vm/bpf 公开车辆在 P780 帧/结构上全部判负；AArch64 Path B data-only 可用但无完整车辆 | **无可用车辆**；公开车辆不能直接移植 |
-| EDL programmer | SD480/Holi；Sahara v2 可达；五份候选根 `d9357db8…`/`4352b3bf…`/`a51a1c2e…` 均不匹配 `c19a5029…`；本轮未找到可验证匹配的 loader | **缺签名 loader** |
+| EDL programmer | SD480/Holi；Sahara v2 可达；五份候选的已扫描根 DER SHA-256/SHA-384 未见目标摘要前缀；截至该轮检索未获得可验证匹配样本 | **programmer、设备接受及 UFS 未完成验证** |
 | CVE-2024-23373 | NVD 明确含 Snapdragon 480 5G；`kgsl_mmu_put_gpuaddr` 的 unmap 失败→释放 DMA/anon 页模式成立；但 P780 kgsl 无 VBO、无 sparse，GPUAF 的 VBO 触发不适用 | **待触发**；缺非 VBO 的 `iommu_unmap < size` 路径 |
 | CVE-2024-26923 | 5.4.233 < 5.4.275；`unix_gc` 未修复；触发 PoC 两轮 30s 未赢 | **未触发** |
 
 结论以 [`docs/STATUS.md`](docs/STATUS.md) 为准；任务与停止条件见 [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md)。
 
-## 最新专题（2026-10-25 / 10-26）
+## 专题与历史记录
 
-- [提权与刷机路线图](docs/research/p780-escalation-roadmap-20261026.md) — 把"提权 / 更多文件 / BL 解锁 / EDL / 刷机"拆层；结合 2026 临时 root 生态给出七条路线、优先级与停止条件。核心判断：AVB 是 testkey，拿到 boot 块写即可刷机，不必等 BL 解锁。
+- [提权与刷机路线图](docs/research/p780-escalation-roadmap-20261026.md) — 把"提权 / 更多文件 / BL 解锁 / EDL / 刷机"拆层；结合 2026 临时 root 生态给出七条路线、优先级与停止条件。历史候选路线；testkey 不提供写入、切槽或启动能力，当前实验已暂停，以 STATUS 为准。
 - [分区证据再提取](docs/research/p780-partition-reextract-20261026.md) — 本地丢失的 `48-init-capability` 分区集按原方法重取：`vendor_boot_a/b`、`dtbo_a` 与 45+45 个 first-stage `.ko`、22 个 dtb 全部与 manifest 哈希一致。
 - [ABL / EDL 离线复核](docs/research/p780-boot-edl-audit-20261026.md) — 真实注册表、FRP 读取、misc 字节比较、Root 状态纠正。
 - [Firehose 与商业读取筛查](docs/research/p780-firehose-screening-20261026.md) — 五份候选证书算法/来源与 UFS 边界。
-- **公开隐私提醒**：当前仓库公开，`evidence/restricted/` 没有访问隔离；原始材料尚未完成全面脱敏，见 [SECURITY.md](SECURITY.md)。
+- **公开隐私提醒**：2026-10-26 文档记录仓库公开，`evidence/restricted/` 没有访问隔离；原始材料尚未完成全面脱敏，见 [SECURITY.md](SECURITY.md)。
 
 - [`docs/research/p780-abl-avb-gsi-20261026.md`](docs/research/p780-abl-avb-gsi-20261026.md) — ABL 工厂菜单实测、AVB/GSI 信任链、XBL EDL 复核。
 - [`docs/research/p780-ghostlock-5.4-20261026.md`](docs/research/p780-ghostlock-5.4-20261026.md) — GhostLock 5.4.233 漏洞确认、AArch64 Path B、七条车辆的判负记录。

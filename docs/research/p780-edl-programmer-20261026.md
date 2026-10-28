@@ -1,9 +1,10 @@
 # EDL programmer 公开渠道搜索结论（2026-10-26）
 
+> 2026-10-28 文档复核：只更正解释与证据范围，未新增设备实测；当前状态以 [STATUS](../STATUS.md) 为准，历史候选步骤不作为当前执行计划。
+
 > 2026-10-26 审计更正：本页为旧搜索记录，绝对化结论由[新筛查报告](p780-firehose-screening-20261026.md)更正：未找到≠不存在；摘要混有 SHA-384/SHA-256；Mannar 工具标签不直接否决 MSM_ID；商业 P780 EDL 读取未证实。受限临时 Root 已有后续成功记录。RPMB、可持久写入等未经本轮设备验证。
 
-> 结论：**P780 的签名 Firehose programmer 不在公开渠道。** EDL 可达，但没有匹配
-> OEM key 的 loader，读/写/刷机都做不了。这不是“再多搜几个仓库”能解决的问题。
+> 结论：**截至本轮检索未获得可验证匹配的 P780 programmer。** Sahara 可达；完整 EDL 读写与刷写启动链未证实，不能据检索未命中断言公开样本不存在。
 
 ## 1. 设备身份（已确认）
 
@@ -17,21 +18,20 @@
 
 | 来源 | 结果 |
 |---|---|
-| `bkerler/Loaders` `qualcomm/factory` | 只有 `mannar`（SM6375），**无 holi**；A/B/C 根 `d9357db8…` |
+| `bkerler/Loaders` `qualcomm/factory` | 历史按目录名检索未获 holi 样本；Mannar 不直接否决 MSM_ID；根算法详见新筛查 |
 | `leefshitz2/Qualcomm_Loaders` `480-特殊` | 只有 `OPPO480.elf` + `Sign.bin`/`Digest.bin`，OPPO OEM key，不是 TINNO |
 | `Iqinix/Qualcomm-firehoses` | 顶层按 OEM 分（Honor/Huawei/Infinix/…/ZTE），**无 TINNO/Rakuten** |
 | GitHub 文件搜索 | 无 `0016F0E100000780` 或 `c19a5029` 命名的 loader |
 | XDA 4805241 原帖 | 同一台 P780，确认 EDL 可达、OTA testkey 被拒，**无 loader/固件** |
 | Rakuten / TINNO 官方 | 只有更新通知，无固件/服务工具 |
-| 五份候选 A–E | 平台/根都不匹配（Mannar/Qualcomm/Hisense/Lenovo；根 `d9357db8…`/`4352b3bf…`/`a51a1c2e…`） |
+| 五份候选 A–E | 已扫描根摘要未见目标前缀；Mannar 标签不足以否决平台，完整兼容性未验证（见新筛查报告） |
 
 ## 3. 为什么难
 
-- programmer 必须由 **TINNO 的 OEM key**（PKHash `c19a5029`）签名，PBL 才认；
-- 同 SoC 的 OPPO/其它 OEM loader 签的是各自 OEM key，不能通用；
+- programmer 须按本机信任链验证；完整 PKHash、签名头、根数组与算法尚须核对，不由厂商名推断唯一可接受根；
+- 同 SoC 或 OEM 标签不能证明可通用；须按具体文件签名与设备条件核验；
 - P780 是 TINNO 的 **Holi** 机型，公开仓库里没有对应 holi 签名包；
-- 即使拿到 EDL，BL 锁状态还在 **RPMB**，EDL 也未必能直接解锁；但可以用
-  **公开 testkey** 刷 `boot`/`vbmeta` 得到持久 root。
+- 本机 BL 状态是否存于 RPMB 未经验证；Sahara 或 loader 可用也不代表能解锁。AVB testkey 不提供写入或启动能力，不能据此宣称持久 Root。
 
 ## 4. 剩余选项
 
@@ -41,7 +41,7 @@
    需要新的写通道；
 3. **等待固件/loader 泄露**：无时间表。
 
-公开材料能做的到此为止。**没有可复现的免费 EDL/root/BL 路径。**
+截至该轮，未形成经验证的完整 EDL、永久 Root 或 BL 解锁链；临时受限 UID0 shell 已有成功记录，不能用本页否定。
 
 ## 5. 来源
 

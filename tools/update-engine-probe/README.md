@@ -1,7 +1,7 @@
 # update_engine payload probe
 
 离线生成并验证一个最小 update_engine full payload，用于评估"证书页替换 + system_app
-触发"路线。**不包含在设备上写 boot/vbmeta 的代码。**
+触发"路线。包含 payload 生成器及历史设备触发命令；运行更新可能写入非活动槽或改变槽状态，不应称为纯离线工具。当前设备实验暂停，见 [STATUS](../../docs/STATUS.md)。
 
 ## 组件
 
@@ -103,20 +103,20 @@ finished last action PostinstallRunnerAction with code ErrorCode::kUpdatedButNot
 ```
 
 `kUpdatedButNotActive` 是因为 headers 里设了 `SWITCH_SLOT_ON_REBOOT=0`；
-写路径本身已经完整成功（真正的块设备写 + 分区哈希校验）。
+该次记录支持 boot_a 的 4096 B 操作及对应校验；不代表任意块写、完整镜像启动或永久 Root。后续 STATUS 记录 SWITCH_SLOT_ON_REBOOT=1 也未实现切槽。
 
-## 下一步
+## 历史下一步（已暂停，不作为当前执行指令）
 
 - 用同一格式生成两个 partition 的 payload：`boot`（完整镜像）与 `vbmeta`
   （testkey 重签、`--flags 2` 关闭 verity、去掉 boot 描述符）；
 - 先把目标槽 A 写成可启动的 rooted/permissive boot + 对应 vbmeta，
   再设 `SWITCH_SLOT_ON_REBOOT=1`，重启进入 A；
 - 注意目标槽：当前 `ro.boot.slot_suffix=_b`，update_engine 默认 target A；
-  基线失败已把 A 标成 unbootable，活动槽 B 不受影响。
+  基线失败已把 A 标成 unbootable，不能由此保证其它状态均不受影响；后续未切槽结论见 STATUS。
 
 ## 边界
 
-- 本目录不包含 boot/vbmeta 写入逻辑；
+- 本目录生成可被 update_engine 应用的 payload，并保存触发命令；不得描述为无设备写入副作用；
 - `ota_key.pem` 仅是测试密钥，不能用于真实 OTA；
 - 设备上的 update_engine 可能已把目标槽标记为 unbootable（基线测试副作用），
   当前活动槽仍是 `_b`。

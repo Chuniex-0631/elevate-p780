@@ -4,18 +4,17 @@
 > 2026 年公开的临时 root 生态，给出优先级、最小验证实验与停止条件。
 > 只针对机主自有设备；不写分区、不加载模块、不改 SELinux 状态之前，都要先有离线证据。
 
-## 0. 结论先行
+> 2026-10-28 更正：本页保留历史路线评估；当前设备实验暂停，见 [STATUS](../STATUS.md) 与 [NEXT_STEPS](../NEXT_STEPS.md)。旧优先级不是当前计划。
+
+## 0. 历史路线与证据边界
 
 1. **不要再把"解锁 BL"当作刷机的前提**。本机 ABL 的 14 个 fastboot 命令里没有
    `flashing unlock` / `oem unlock`（[ABL 复核](p780-boot-edl-audit-20261026.md)），
    而 AVB 根信任是 **AOSP testkey**（[JVN#47427200](https://jvn.jp/en/jp/JVN47427200/)、
    [CVE-2026-107153](https://www.cve.org/CVERecord?id=CVE-2026-107153)，仓库也已逐位核对）。
-   testkey 的私钥是公开的 AOSP 测试密钥，意味着**只要能写 boot 分区，就能刷入自签的
-   boot + vbmeta 并通过 AVB**；顶层 vbmeta 还可以带 `disable-verification` 标志，
-   让 system/vendor 的 dm-verity/AVB 一起失效。
+   testkey 私钥公开只说明可以构造离线签名候选；仍须分别验证 boot/vbmeta 配套写入、回滚条件、切槽、设备端 AVB 接受与实际启动。不能由 boot 可写推出可刷写启动。
 2. 因此真正的瓶颈是 **"任意块写"或"内核 root"**，不是 fastboot 的解锁命令。
-   拿到块写之后：`dd` 写 `boot_b` + 自签 `vbmeta_b` → 重启 → 持久 root；
-   BL 仍然是 locked，`fastboot flash` 仍然会被拒，但设备已经按我们的镜像启动。
+   块写原语不等于完整刷写链；修改后镜像启动、跨重启权限保持尚未证实。BL 已记录为 Locked，不能写成设备已经按修改镜像启动。
 3. 当前最接近"块写"的三条路：
    - **内核 LPE**（仓库里的 CVE-2023-6931 数据链、新的 CVE-2025-38352）；
    - **页缓存 → 内核模块**（DFRoot 思路；本机 `CONFIG_MODULE_SIG` 未开，是少见的有利条件）；
@@ -38,7 +37,7 @@
 | 内核硬化 | `CFI_CLANG=y`、`SHADOW_CALL_STACK=y`、`ARM64_PTR_AUTH=y`、`INIT_ON_ALLOC=y`、`SLAB_FREELIST_RANDOM/HARDENED=y`、`KASAN=n` | 控制流劫持基本被 CFI 掐死，只剩 data-only |
 | 攻击面开关 | `IO_URING=y`、`KPROBES=y`、`FUSER`/`ASHMEM`/`ION`/`KGSL` 在；`USER_NS=n`、`NF_TABLES=n`、`VSOCKETS=n`、`DEBUG_FS=n` | 排除 userns / nftables / vsock 一大票公开链；io_uring、perf、kgsl 仍是主面 |
 | perf | `perf_event_paranoid=-1`（实测） | shell 无 seccomp，可建 perf 组；仓库已实测 u16 回绕 |
-| 块写域（SELinux 实测） | `update_engine`：boot/system/super/misc/xbl/uefi；`hal_bootctl`：boot/xbl/gpt/misc/root；`vold`：misc/userdata/dm；`init`：misc/metadata/loop/dm | 找到这些域之一的代码执行 = 直接刷 boot |
+| 块写域（SELinux 实测） | `update_engine`：boot/system/super/misc/xbl/uefi；`hal_bootctl`：boot/xbl/gpt/misc/root；`vold`：misc/userdata/dm；`init`：misc/metadata/loop/dm | 静态 allow 只说明类型权限；域可达性、目标路径与实际写入须分别验证 |
 | 模块加载域 | 只有 `ueventd`/`vendor_modprobe`/`vendor_init` 可 `module_load` `vendor_file`；`init`/`installd` 都没有 `sys_module` | 模块路线必须先解决"谁加载、加载谁" |
 | 供应商文件 | `untrusted_app` **完全不能读** `/vendor`；`crash_dump` 可读 `vendor_file`；`vendor_qti_init_shell` 可写 `mnt_vendor_file` | 页缓存改 `/vendor` 必须换域 |
 | ABL | 14 条命令；无 unlock、无 `oem ramdump`；有 `download:`/`getvar:` | 公开的 Qualcomm "oem ramdump 栈溢出" 在本机不适用 |
@@ -182,18 +181,18 @@ Snapdragon 8 Gen 5 的 `efisp`/GBL 无签名校验）见
   没有内存破坏证据就不上真机（ABL 崩溃可能变砖）。
 - **停止条件**：14 个 handler 都没有长度/边界问题，或需要物理拆机/写保护才能利用。
 
-### 3.7 G：EDL 签名 loader（刷机/救砖的"保险"）
+### 3.7 G：EDL 签名 loader（待验证候选）
 
-- **现状**：EDL 可达，但 PBL 只接受 OEM 根 `c19a5029…` 签名的 Firehose；
-  公开五份候选都不匹配（[Firehose 筛查](p780-firehose-screening-20261026.md)）。
+- **现状**：Sahara 可达；完整本机 PKHash、签名头/根数组、平台授权仍须核对；
+  五份已扫描候选证书摘要未见目标前缀（[Firehose 筛查](p780-firehose-screening-20261026.md)）。
 - **可做**：继续在 TINNO/OPPO/Rakuten 系固件、维修论坛、付费工具样本里找
   **同 PKHash** 的 `prog_firehose_*.elf`；关注 `P780AE_11.0_RMN_JP_162` 的 OTA/工厂包。
-- **价值**：一旦有了 loader，即使刷坏也能救回；也能在 EDL 下直接读写分区（不再依赖内核）。
+- **价值**：取得 loader 后仍须验证设备接受、授权、UFS/LUN 与读取，再单独验证写入；不能承诺救砖。
 - **停止条件**：检索不到匹配根，或不值得为单台设备付费。
 
 ---
 
-## 4. 立即可做（信息层，低风险）
+## 4. 历史候选任务（不作为当前设备执行计划）
 
 1. **继续用 init 8 MiB dumper**：`/vendor`（含 49 个 DLKM `.ko`）、`/data/misc`、
    `/data/tombstones`、`/data/system` 里可读的部分；每块仍落 `/metadata/cur.bin`，拉走即回滚。
@@ -204,11 +203,11 @@ Snapdragon 8 Gen 5 的 `efisp`/GBL 无签名校验）见
    就能把分区直接 dump 到 `/sdcard`（不再受 8 MiB 限制）；先测 `sm` 命令能否让 vold 记日志。
 4. **确认 testkey 私钥可用**：从 AOSP `build/target/product/security/testkey.pk8` 取私钥，
    离线生成一份 `vbmeta_b` + 修改过的 `boot_b`，用 `avbtool verify_image` 自检；
-   等块写通道到位即可直接刷。
+   离线校验不能替代设备端接受、切槽与启动验证；当前不执行写入。
 
 ---
 
-## 5. 推荐顺序（按投入产出）
+## 5. 历史推荐顺序（已由当前暂停结论替代）
 
 | 周 | 工作 | 产出 |
 |---|---|---|

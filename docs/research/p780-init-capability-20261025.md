@@ -1,5 +1,7 @@
 # init 域能力盘点（2026-10-25）
 
+> 2026-10-28 文档复核：只更正解释与证据范围，未新增设备实测；当前状态以 [STATUS](../STATUS.md) 为准，历史候选步骤不作为当前执行计划。
+
 > 2026-10-26 审计更正：本页是特定 init 域载荷的历史能力记录，不等同 installd daemon 的能力边界。当前已有[临时 UID0 shell 成功记录](p780-root-daemon-20261025.md)；完整 root、BL 与 EDL 仍未证实。
 
 > **状态：已收尾**。能力边界、SELinux 结论、只读资产清单均已固化，
@@ -50,12 +52,12 @@ Seccomp:	0                 <-- 没有 seccomp 过滤
 
 | 权限 | 结论 |
 |---|---|
-| 写 `selinuxfs` 文件 | **允许** → 理论上可以把 `/sys/fs/selinux/enforce` 写成 `0`（进入 Permissive） |
+| 写 `selinuxfs` 文件 | 仅静态 file 权限；不能推出可 setenforce。§11 实测专用 security:setenforce 检查拒绝 |
 | 读 `system_data_file` | 允许读（`/data/system` 一类） |
 | `/data/local/tmp`（`shell_data_file`） | 目录可 create，但**文件只有 getattr**，不能读写已有文件 |
 | 挂载点 | 只对 `rootfs` 有 `mounton`，没有对 `debugfs`/`tracefs` 的挂载许可（permissive 下另说） |
 
-## 3. 由此得到的路线
+## 3. 早期路线假设（已被 §11 否定，不作为执行建议）
 
 1. **Permissive 开关**：init 载荷写 `enforce=0` → SELinux 进入 Permissive（重启自动恢复 Enforcing，
    不落盘）。Permissive 下：
@@ -71,7 +73,7 @@ Seccomp:	0                 <-- 没有 seccomp 过滤
 
 - 写 `enforce=0` 是**运行时状态，不持久**：重启即回到 Enforcing；
 - 若 Permissive 期间出现异常，长按电源重启即可；
-- 所有操作仍不写任何分区，DirtyFrag 补丁可 `-e probe unpatch` 回滚。
+- 该阶段代码页修改针对页缓存；输出文件等可能写入 userdata/metadata。补丁恢复不等于所有文件残留均已清理。
 
 ## 5. 下一步（待确认）
 
@@ -282,10 +284,10 @@ int.from_bytes(vbmeta_a_key_modulus) == int.from_bytes(aosp_testkey_modulus)  # 
 
 含义：
 
-- **AVB 校验本身不再是障碍**：任何用 testkey 签名的 image 都能通过 vbmeta 校验；
+- **已核验的是该层公钥身份**：不证明任意 testkey image 会被设备端接受；描述符、回滚条件、镜像布局与其它信任链仍须核对；
 - **真正的障碍仍是 bootloader 锁定**：`fastboot flashing unlock` 返回 `unknown command`（见 09 号专题），
-  没有解锁就没有写分区的通道；
-- 如果将来出现任意分区写通道（EDL/漏洞），"签名"这关已经天然通过——不需要再折腾 AVB 绕过。
+  历史常规 fastboot 写入未取得；BL 锁定不等于其它受限写入原语不存在；
+- 即使将来取得受控写入，也须分别验证 boot/vbmeta 配套、设备端 AVB 接受、切槽与启动；离线密钥匹配不能替代这些证据。
 
 `vbmeta_system` 用的是 2048-bit key、两个槽一致；本仓库没有对应的 PEM，暂不能确认它是否也是
 AOSP 的 `testkey_rsa2048.pem`，但"两槽同钥 + 测试构建特征"已经很明显。
