@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "scope": "offline_saved_files_only",
+  "inputs": [
+    {
+      "path": "evidence/20261027/vendor-config/init/android.hardware.boot@1.1-service.rc",
+      "local_sha256": "1ab43ff7f2db127a3e8df5e6f300034e6fe19f93b1b072132c4ab54e03d5d6e8",
+      "source_git_blob_sha": "83fa9d02129abbdb3d2b83304e8396c5d6225946"
+    },
+    {
+      "path": "evidence/20261027/vendor-config/vintf/manifest/android.hardware.boot@1.1.xml",
+      "local_sha256": "d42cd4d5e3448ebe865ca20824031d411c7ea9a0600949454959894444c74a90",
+      "source_git_blob_sha": "83d5d2e8de50d46cf15b84ed0277a3bec6fd2c75"
+    },
+    {
+      "path": "evidence/20261027/vendor-config/selinux/plat_pub_versioned.cil",
+      "local_sha256": "a079bd29307fd92f386d4f2a1b6410e48206c02975fd88d13a90d04ea698417c",
+      "source_git_blob_sha": "45a8dafbd24256117bd68904b25c2d38994b7be9"
+    },
+    {
+      "path": "evidence/20261027/vendor-config/selinux/vendor_sepolicy.cil",
+      "local_sha256": "b020aad9676079d0fe5ce585401a3a8fb6bb6e15cf0c9cb4e65673f86128835d",
+      "source_git_blob_sha": "a315ddbc99555046bc2aa762d2f45485992977d2"
+    },
+    {
+      "path": "evidence/20261026/oem/fastboot-getvar-all.txt",
+      "local_sha256": "fdfb74e59266dbd2267260eb16a24a3009a3b03f041c050b931aa318aee9d842",
+      "source_git_blob_sha": "0bcc9a6d2ff0fd230dc20e8a07e09836c72464fa"
+    },
+    {
+      "path": "evidence/20261026/abl/abl_lzma.bin.strings.txt",
+      "local_sha256": "45479b3b090a14b725a045d7950fca18463fdf63a3b3feb780a172732510d699",
+      "source_git_blob_sha": "270c81fb386f03db4e03b18ad2f2ae90993c4fec"
+    },
+    {
+      "path": "tools/update-engine-probe/mkpayload_boot.py",
+      "local_sha256": "5ac2fbd19daedd2edc42529ce2f1de46270fb32011485892f09eb5cc96fae683",
+      "source_git_blob_sha": "bf9e8480473dd53e4afe95ed313f0d0ad118cf3d"
+    }
+  ],
+  "missing": [],
+  "rc_interfaces": [
+    {
+      "line": 2,
+      "text": "interface android.hardware.boot@1.0::IBootControl default"
+    },
+    {
+      "line": 3,
+      "text": "interface android.hardware.boot@1.1::IBootControl default"
+    }
+  ],
+  "manifest_fqnames": [
+    "@1.1::IBootControl/default"
+  ],
+  "policy_client_rules": [
+    {
+      "line": 223,
+      "text": "(typeattributeset hal_bootctl_client (update_engine_30_0 update_verifier_30_0 vold_30_0))"
+    },
+    {
+      "line": 6545,
+      "text": "(allow hal_bootctl_client hal_bootctl_server (binder (call transfer)))"
+    },
+    {
+      "line": 6547,
+      "text": "(allow hal_bootctl_client hal_bootctl_server (fd (use)))"
+    },
+    {
+      "line": 6549,
+      "text": "(allow hal_bootctl_client hal_bootctl_server (binder (transfer)))"
+    },
+    {
+      "line": 6551,
+      "text": "(allow hal_bootctl_client hal_bootctl_hwservice_30_0 (hwservice_manager (find)))"
+    }
+  ],
+  "server_storage_rules": [
+    {
+      "line": 2577,
+      "text": "(allow hal_bootctl_default misc_block_device_30_0 (blk_file (ioctl read write getattr lock append map open watch watch_reads)))"
+    },
+    {
+      "line": 3606,
+      "text": "(allow hal_bootctl vendor_gpt_block_device (blk_file (ioctl read write getattr lock append map open watch watch_reads)))"
+    },
+    {
+      "line": 3617,
+      "text": "(allow hal_bootctl_server misc_block_device_30_0 (blk_file (ioctl read write getattr lock append map open watch watch_reads)))"
+    },
+    {
+      "line": 3618,
+      "text": "(allow hal_bootctl vendor_sg_device (chr_file (ioctl read write getattr lock append map open watch watch_reads)))"
+    },
+    {
+      "line": 3619,
+      "text": "(allow hal_bootctl vendor_bsg_device (chr_file (ioctl read write getattr lock append map open watch watch_reads)))"
+    }
+  ],
+  "historical_fastboot_slots": [
+    {
+      "line": 177,
+      "text": "(bootloader) current-slot:b"
+    },
+    {
+      "line": 179,
+      "text": "(bootloader) slot-retry-count:b:6"
+    },
+    {
+      "line": 180,
+      "text": "(bootloader) slot-unbootable:b:no"
+    },
+    {
+      "line": 181,
+      "text": "(bootloader) slot-successful:b:yes"
+    },
+    {
+      "line": 182,
+      "text": "(bootloader) slot-retry-count:a:6"
+    },
+    {
+      "line": 183,
+      "text": "(bootloader) slot-unbootable:a:no"
+    },
+    {
+      "line": 184,
+      "text": "(bootloader) slot-successful:a:yes"
+    },
+    {
+      "line": 185,
+      "text": "(bootloader) slot-count:2"
+    }
+  ],
+  "abl_string_leads": [
+    {
+      "line": 1503,
+      "text": "Updating GPT partition"
+    },
+    {
+      "line": 1508,
+      "text": "Slot suffix %s Part Attr 0x%lx"
+    },
+    {
+      "line": 1510,
+      "text": "SetActiveSlot: input parameter invalid"
+    },
+    {
+      "line": 1511,
+      "text": "SetActiveSlot"
+    },
+    {
+      "line": 1512,
+      "text": "SetActiveSlot: No boot partition entry for slot %s"
+    },
+    {
+      "line": 1513,
+      "text": "SetActiveSlot: %s already active slot"
+    },
+    {
+      "line": 1526,
+      "text": "FindBootableSlot: input parameter invalid"
+    },
+    {
+      "line": 1527,
+      "text": "FindBootableSlot"
+    },
+    {
+      "line": 1528,
+      "text": "FindBootableSlot: No boot partition entry for slot %s"
+    },
+    {
+      "line": 1531,
+      "text": "A/B retry count NOT decremented"
+    }
+  ],
+  "probe_source_leads": [
+    {
+      "line": 52,
+      "text": "block = 4096"
+    },
+    {
+      "line": 53,
+      "text": "data = b\"\\xAA\" * block"
+    },
+    {
+      "line": 54,
+      "text": "extent = fv(1, 0) + fv(2, 1)"
+    },
+    {
+      "line": 58,
+      "text": "part = fb(1, b\"boot\") + fb(7, pinfo) + fb(8, op)"
+    }
+  ],
+  "verdicts": {
+    "runtime_hal_registration": "unverified",
+    "gpt_storage_on_p780": "candidate_not_binary_verified",
+    "slot_switch": "undetermined",
+    "permanent_root": "unverified"
+  },
+  "limitations": [
+    "Static config is not runtime registration or a HAL return value",
+    "ABL strings do not establish reachable control flow or GPT layout",
+    "Fastboot snapshot predates the later update experiments",
+    "Local text hashes are not asserted to be original device-byte hashes"
+  ],
+  "repository_baseline": "94c9112644f40a5a1895f8a5ae075e2e4f4a7c1b",
+  "input_view": "GitHub connector UTF-8 views; hashes are local-view hashes"
+}

@@ -2,7 +2,7 @@
 
 > 由 `tools/build_research_index.py` 生成（2026-10-26），含全部目录 Markdown。
 > 当前结论优先阅读 STATUS 与最新审计专题；历史报告保留阶段性假设。
-> 2026-10-28 文档整理：同步新增两份历史快照；证据文件未变化，EVIDENCE_MANIFEST 不重算。
+> 2026-10-28 文档整理：同步新增两份历史快照；该轮证据文件未变化；后续启动链复核新增衍生 JSON，清单已增量登记。
 
 ## app（1）
 
@@ -21,7 +21,7 @@
 | [archive/reports/P780_PFM_QAS_2026-10-04.md](../archive/reports/P780_PFM_QAS_2026-10-04.md) | Rakuten Hand 5G P780：QAS → Mink → PFM 研究检查点 |
 | [archive/reports/P780_TZAccess_2026-10-04.md](../archive/reports/P780_TZAccess_2026-10-04.md) | P780：TZAccessService 服务端 Java 授权链 |
 
-## docs（112）
+## docs（113）
 
 | 文档 | 标题 |
 |---|---|
@@ -60,6 +60,7 @@
 | [docs/research/p780-abl-avb-gsi-20261026.md](../docs/research/p780-abl-avb-gsi-20261026.md) | AVB 链重审：根/系统链都是公开测试密钥（2026-10-26） |
 | [docs/research/p780-afunix-cve-2024-26923-20261026.md](../docs/research/p780-afunix-cve-2024-26923-20261026.md) | CVE-2024-26923：AF_UNIX GC vs connect() 触发（2026-10-26） |
 | [docs/research/p780-artifact-scan-20261025.md](../docs/research/p780-artifact-scan-20261025.md) | 全量系统文件扫描：密钥、凭据与有用信息（2026-10-25） |
+| [docs/research/p780-boot-chain-review-20261028.md](../docs/research/p780-boot-chain-review-20261028.md) | P780 启动链复核：Boot HAL、GPT 与切槽证据（2026-10-28） |
 | [docs/research/p780-boot-edl-audit-20261026.md](../docs/research/p780-boot-edl-audit-20261026.md) | P780 ABL / EDL 只读复核（2026-10-26） |
 | [docs/research/p780-candidate-layout-20261025.md](../docs/research/p780-candidate-layout-20261025.md) | 候选构建的结构布局与验证（2026-10-25） |
 | [docs/research/p780-dirtyfrag-live-exploit-20261025.md](../docs/research/p780-dirtyfrag-live-exploit-20261025.md) | P780 DirtyFrag 实机利用链（2026-10-25） |
@@ -179,13 +180,14 @@
 | [ghostlock/M1.md](../ghostlock/M1.md) | M1：PI 链构造探针 |
 | [ghostlock/README.md](../ghostlock/README.md) | GhostLock 移植骨架（2026-10-25） |
 
-## tools（24）
+## tools（25）
 
 | 文档 | 标题 |
 |---|---|
 | [tools/abl/README.md](../tools/abl/README.md) | ABL / boot 解析 |
 | [tools/afunix/README.md](../tools/afunix/README.md) | CVE-2024-26923 触发 harness |
 | [tools/artifact-scan/README.md](../tools/artifact-scan/README.md) | 49 号 artifact 扫描 |
+| [tools/boot-chain-audit/README.md](../tools/boot-chain-audit/README.md) | 启动链离线复核 |
 | [tools/dirtyfrag-probe/README.md](../tools/dirtyfrag-probe/README.md) | DirtyFrag 探针工具（P780） |
 | [tools/dsu/README.md](../tools/dsu/README.md) | DSU read-only follow-up tools |
 | [tools/gaps/README.md](../tools/gaps/README.md) | Evidence gap tools |

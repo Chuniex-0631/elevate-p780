@@ -27,6 +27,8 @@
 
 ## 专题与历史记录
 
+- [启动链复核：Boot HAL、GPT 与切槽证据](docs/research/p780-boot-chain-review-20261028.md) — 本机 RC 双版本声明；GPT 属性后端线索；切槽成败仍待核验，设备写入暂停。
+
 - [提权与刷机路线图](docs/research/p780-escalation-roadmap-20261026.md) — 把"提权 / 更多文件 / BL 解锁 / EDL / 刷机"拆层；结合 2026 临时 root 生态给出七条路线、优先级与停止条件。历史候选路线；testkey 不提供写入、切槽或启动能力，当前实验已暂停，以 STATUS 为准。
 - [分区证据再提取](docs/research/p780-partition-reextract-20261026.md) — 本地丢失的 `48-init-capability` 分区集按原方法重取：`vendor_boot_a/b`、`dtbo_a` 与 45+45 个 first-stage `.ko`、22 个 dtb 全部与 manifest 哈希一致。
 - [ABL / EDL 离线复核](docs/research/p780-boot-edl-audit-20261026.md) — 真实注册表、FRP 读取、misc 字节比较、Root 状态纠正。

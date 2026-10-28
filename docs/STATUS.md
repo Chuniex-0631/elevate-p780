@@ -16,10 +16,14 @@
 | AVB | 本机保存公钥与 AOSP 测试公钥的身份核验及离线验签记录 | 不提供写入通道，不证明设备端接受修改后镜像 |
 | misc 固定字段写入 | Journey builtin 历史样本仅十进制 73–84 改变；恢复样本与原件相等 | 仅证明固定文本字段写入，不证明 BCB command、slot 元数据或任意偏移可写 |
 | update_engine 有限块写 | 后续专题记载 boot_a 的一条 4096 B REPLACE 操作完成、对应哈希校验成功 | 仓库记录支持该次有限写入；不称“任意块写”，不证明任意分区/偏移可写 |
-| 切槽与修改后启动 | 后续记录未见 SetActiveBootSlot，bootctl v1.0 获取失败；一直从 B 槽运行 | 未证实 A 槽被设为 active；不能据回 B 判定修改后的 A 镜像已接受启动验证 |
+| 切槽与修改后启动 | 历史摘录未见 SetActiveBootSlot，shell bootctl 获取失败；本轮确认 RC 双版本声明，update_engine 有静态客户端权限 | 切槽成败待定；没有成功日志或重启后回 B 均不能排除曾 active 后回退 |
 | 永久 Root | 尚无跨重启自动恢复权限且成功启动的闭合证据 | 未证实；运行时权限扩大也须另验持久性 |
 
 后续实验文档报告 B 槽 stock、SELinux Enforcing。本页不将历史现场描述冒充 2026-10-28 的实时设备检查。
+
+## 启动链新发现（2026-10-28）
+
+本机 Boot HAL RC 同时声明 1.0/1.1，平台版本化策略给 update_engine boot HAL 客户端权限；“仅有 1.1 导致切槽必然失败”不成立为已证实原因。ABL 保存字符串含 GPT/Part Attr 线索，结合 Qualcomm 上游，应优先定位 GPT 属性后端；不是本机布局已确认。现有 4096 B 探针源码使用 0xAA 测试块，不能用它验证正常启动。详见 [启动链复核](research/p780-boot-chain-review-20261028.md) 和 [离线工具](../tools/boot-chain-audit/README.md)。
 
 ## 设备与版本事实
 
@@ -43,7 +47,7 @@
 
 | 路线 | 已记录阻塞 | 当前决定 |
 |---|---|---|
-| update_engine | 记录了 metadata 验签通过及有限 boot_a 写入；所需切槽未实现，misc 请求失败 | 暂停；不称可靠刷写或永久 Root |
+| update_engine | 记录了 metadata 验签通过及有限 boot_a 写入；切槽成败/原因待复核，misc 请求失败不定位槽元数据 | 优先离线复核 HAL/GPT；设备写入仍暂停 |
 | CVE-2023-6931 | 泄漏、回绕及校准有记录；values 放置不稳定，曾卡死/重启；函数指针链受 CFI 限制 | 暂停 heap groom；原语不等于完整提权 |
 | KGSL | 无 VBO/sparse，公开 VBO 触发不适用；非 VBO 短 unmap 触发未闭合 | 暂停；不将“公开触发不适用”写成所有可能路径已证伪 |
 | FastRPC | map 前置条件有记录；已测 handle 不可用，未到 put_args 触发点；async 能力检查阻断另一候选 | 当前已测接口未形成触发链 |

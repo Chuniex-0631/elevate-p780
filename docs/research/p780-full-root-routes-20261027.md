@@ -3,6 +3,8 @@
 > 目标：拿到**完整 root**（permissive 或内核级读写），而不只是受限 uid0 shell。
 > 2026-10-28 更正：本页包含历史路线评估及后续实机日志摘录，并非全程离线。当前设备实验已暂停，见 [STATUS](../STATUS.md)。下文步骤、优先级与早期阻塞不作为当前执行计划。
 
+> 2026-10-28 启动链复核：本机 RC 同时声明 Boot HAL 1.0/1.1；未见成功日志不能判切槽 no-op。GPT 属性是优先存储后端候选，尚未完成本机二进制/样本核验。见 [新复核](p780-boot-chain-review-20261028.md)。
+
 ## 0. 判定标准
 
 | 级别 | 判定 |
@@ -196,7 +198,7 @@ finished last action PostinstallRunnerAction with code ErrorCode::kUpdatedButNot
 ```
 
 `kUpdatedButNotActive` 只是因为 headers 设了 `SWITCH_SLOT_ON_REBOOT=0`；
-**该日志摘录记录 boot_a 的 4096 B 写入与对应校验成功**；不是任意分区/偏移写入或完整镜像启动证明。后续 STATUS 记录切槽未实现、A 从未 active，故未形成刷写启动或永久 Root 链。
+**该日志摘录记录 boot_a 的 4096 B 写入与对应校验成功**；不是任意分区/偏移写入或完整镜像启动证明。历史“切槽未实现、A 从未 active”的原因判定已由 10-28 复核撤回到未知；尚无闭合证据区分未切槽与启动回退，也未形成永久 Root 链。
 
 ### 4.3 最小可行 payload
 

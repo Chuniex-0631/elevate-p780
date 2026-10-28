@@ -3,7 +3,9 @@
 > 数据来源：`evidence/20261027/vendor-config/`（62+117 个文件，全部由 shell 只读拉取）。
 > 本文只做离线解析；行号对应当前入仓文件。
 
-## 1. 结论先行
+> 2026-10-28 启动链复核：本机 RC 同时声明 Boot HAL 1.0/1.1；未见成功日志不能判切槽 no-op。GPT 属性是优先存储后端候选，尚未完成本机二进制/样本核验。见 [新复核](p780-boot-chain-review-20261028.md)。
+
+## 1. 历史结论与后续更正
 
 1. **没有任何"可直接触达"的 boot 块写域**。能写 `boot_block_device` 的只有
    `update_engine_common` 和 `hal_bootctl`，前者受 OTA 签名门控，后者只暴露 slot 管理 API。
@@ -19,7 +21,7 @@
 
 | 域 | 可写块设备 | 关键限制 |
 |---|---|---|
-| `update_engine_common` | boot、system、misc、super、xbl、uefi、modem、ssd、recovery、vendor_custom_ab（L5544–L5549、L9893–L9921） | 只能走 update_engine 的 OTA API；payload 用 release key 签名，自制镜像过不了 |
+| `update_engine_common` | boot、system、misc、super、xbl、uefi、modem、ssd、recovery、vendor_custom_ab（L5544–L5549、L9893–L9921） | 静态类型权限；后续已有 metadata 验签通过及 boot_a 有限写入摘录，非任意块写 |
 | `hal_bootctl` | misc、root、boot、gpt、xbl（L3604–L3623） | 只有 boot_control HAL 的 slot 接口（setActiveBootSlot / markBootSuccessful 等），没有"写任意镜像"的方法 |
 | `vold` | userdata、metadata、misc（L10317、L10460、L10485） | 不碰 boot；misc 只用于 boot 命令 |
 | `init` | misc（write）、metadata、swap；以及块设备 relabel（L7642–L7909） | 不能写 boot；relabel 不等于写数据 |
@@ -85,11 +87,10 @@
 
 ## 6. 对刷机路线的影响
 
-- **target A（selinux_state → permissive）仍是唯一现实的"解锁写权限"路径**：
-  一旦 permissive，现有 installd uid0 shell 就能 `dd` boot/vbmeta（testkey 已确认）；
-- update_engine / hal_bootctl 两条"合法块写"路径都被 API/签名门控，不能直接利用；
+- 旧建议的内核 permissive 路线已暂停，不能称唯一现实路径；运行时权限扩大、目标分区写入、镜像启动与跨重启保持须分别验证；
+- update_engine 已有后续有限写入记录；Boot HAL 的实际调用与 GPT 存储后端仍待复核，不能以旧签名门结论关闭整条路线；
 - recovery 写路径是死配置，不能作为绕行；
-- 商业 EDL（有签名 loader）是另一条独立路径，但公开渠道仍无 TINNO/holi loader。
+- 商业 EDL（有签名 loader）是另一条独立路径，但截至该轮未获可验证匹配 programmer。
 
 ## 7. 保留的负结论
 

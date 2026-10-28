@@ -2,8 +2,9 @@
 
 > 由 `tools/build_research_index.py` 从实际文件生成（2026-10-26）。
 > 每项给出仓库内路径、字节数与 SHA-256；摘要说明见各专题报告。
+> 2026-10-28：仅增量登记本轮启动链 JSON，旧项未重哈希。旧 679 个路径与基线 Git 树一致，但 271 项登记字节数与树中 blob 大小不同，待独立核验；旧值保留，不把本清单当作本轮全库字节完整性认证。
 
-共 **679** 个文件，合计 **130.6 MiB**。
+共 **680** 个登记文件；历史登记总量约 **130.6 MiB**，本轮新增 6199 B；旧总量未全量重算。
 
 | 路径 | 字节 | SHA-256 |
 |---|---:|---|
@@ -686,3 +687,4 @@
 | `evidence/web/2026-10-17/source-preservation.json` | 3619 | `aac19f2bccb302294f6b9e19f8df2be9248782ae869542353981eaa7b1c37be1` |
 | `evidence/web/2026-10-17/xda-4805241-pending.json` | 1307 | `b2a709306d0a178a6d9b3a97efcf887e7474340eae8414882ab5539cb5f38960` |
 | `evidence/web/2026-10-17/xda-4805241-user-provided.txt` | 2352 | `e4d1e996ff6fa0ac2ccd319af9e53f21342f83c9f497dc3f4f80dad29b92cea5` |
+| `evidence/analysis/boot-chain-20261028/report.json` | 6199 | `cf14cd26f9617e799fc75b6cea9eb3520f976fedfa6d8a4026a73ba7ad16eebe` |
