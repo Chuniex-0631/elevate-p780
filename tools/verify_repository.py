@@ -6,7 +6,6 @@ import hashlib
 import io
 import json
 from pathlib import Path
-import pathlib
 import re
 import subprocess
 import urllib.parse
@@ -62,7 +61,8 @@ def check_evidence(root):
             raise ValueError('Evidence integrity mismatch: z.testzip() is None')
         for e in manifest['entries']:
             archive_path = e['path'].replace('\\', '/')
-            b = z.read(archive_path)
+            archive_names = {name.replace('\\', '/'): name for name in z.namelist()}
+            b = z.read(archive_names[archive_path])
             if not (len(b) == e['bytes'] and hashlib.sha256(b).hexdigest() == e['sha256']):
                 raise ValueError("Evidence integrity mismatch: len(b) == e['bytes'] and hashlib.sha256(b).hexdigest() == e['sha256']")
             name = e['path'].replace('\\', '/').split('/')[-1]
