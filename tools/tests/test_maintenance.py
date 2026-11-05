@@ -58,10 +58,13 @@ class MaintenanceTests(unittest.TestCase):
             (root / 'evidence/local.bin').write_bytes(b'ignored')
             (root / 'README.md').write_text('# Hello | title', encoding='utf-8')
             (root / 'local.md').write_text('# Ignore', encoding='utf-8')
-            names = b'README.md\0evidence/data.bin\0'
+            (root / 'Z.md').write_text('# Uppercase', encoding='utf-8')
+            (root / 'a.md').write_text('# Lowercase', encoding='utf-8')
+            names = b'a.md\0Z.md\0README.md\0evidence/data.bin\0'
             with patch.object(index.subprocess, 'check_output', return_value=names):
                 first = index.render(root)
                 self.assertEqual(first, index.render(root))
+                self.assertLess(first['docs/index.md'].index('[Z.md]'), first['docs/index.md'].index('[a.md]'))
                 self.assertNotIn('local.bin', first['docs/EVIDENCE_MANIFEST.md'])
                 self.assertNotIn('local.md', first['docs/index.md'])
                 self.assertIn('Hello \\| title', first['docs/index.md'])
