@@ -120,13 +120,13 @@ jobs:
         run: |
           set -euo pipefail
           cp out/.config reports/post-compile.config
-          python3 tools/summarize_config.py \
+          python3 tools/kernel-config/summarize_config.py \
             reports/original.config reports/resolved.config \
             reports/post-compile.config reports
           python3 - <<'PY' | tee reports/specific-changes.txt
           import json, runpy
           p=json.load(open('reports/config-changes.json'))
-          parse=runpy.run_path('tools/summarize_config.py')['read_config']
+          parse=runpy.run_path('tools/kernel-config/summarize_config.py')['read_config']
           old=parse('reports/original.config')
           new=parse('reports/resolved.config')
           b=p['original_to_resolved']

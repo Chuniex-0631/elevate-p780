@@ -1,9 +1,9 @@
-﻿# GhostLock 移植骨架（2026-10-25）
+# GhostLock 移植骨架（2026-10-25）
 
 > 目标：在本机（5.4.233-qgki）打通 CVE-2026-43499，从应用域拿到内核写，
 > 最终 `commit_creds(&init_cred)` 得到完整 root。
 > 静态证据已确认缺陷形态与释放点，见
-> [`p780-ghostlock-bug-shape-20261025.md`](../docs/research/p780-ghostlock-bug-shape-20261025.md)。
+> [`p780-ghostlock-bug-shape-20261025.md`](../../docs/research/p780-ghostlock-bug-shape-20261025.md)。
 
 ## 已知条件
 

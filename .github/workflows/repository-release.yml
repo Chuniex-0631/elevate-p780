@@ -1,0 +1,68 @@
+name: Publish repository release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+jobs:
+  validate:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.11', '3.13']
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m unittest discover -s tools/tests -v
+      - run: python -m unittest discover -s tools/boot-chain-audit -p "test_*.py" -v
+      - run: python -O tools/verify_repository.py
+      - run: python tools/build_research_index.py --check
+  publish:
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Package tagged source and retained APK
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          python - <<'PY'
+          import hashlib, os, pathlib, shutil, subprocess
+          root = pathlib.Path('.')
+          tag = os.environ['RELEASE_TAG']
+          version = (root/'VERSION').read_text(encoding='utf-8-sig').strip()
+          if tag != 'v'+version:
+              raise SystemExit('Tag and VERSION do not match')
+          notes = root/'docs/releases'/f'{tag}.md'
+          if not notes.is_file():
+              raise SystemExit('Release notes are missing')
+          out = root/'reports/release'
+          out.mkdir(parents=True, exist_ok=True)
+          archive = out/f'elevate-p780-{tag}.zip'
+          subprocess.run(['git', 'archive', '--format=zip', f'--prefix=elevate-p780-{tag}/', '-o', str(archive), 'HEAD'], check=True)
+          shutil.copyfile(root/'release/Elevate-1.0.apk', out/'Elevate-1.0.apk')
+          subprocess.run(['python', '-O', 'tools/verify_repository.py', '--output', str(out/'repository.json')], check=True)
+          lines = []
+          for path in sorted(out.iterdir()):
+              with path.open('rb') as stream:
+                  digest = hashlib.file_digest(stream, 'sha256').hexdigest()
+              lines.append(f'{digest}  {path.name}')
+          (out/'SHA256SUMS').write_text('\n'.join(lines)+'\n', encoding='utf-8')
+          PY
+      - name: Publish latest version
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "$RELEASE_TAG" reports/release/* --verify-tag --latest --title "P780 Research $RELEASE_TAG" --notes-file "docs/releases/$RELEASE_TAG.md"

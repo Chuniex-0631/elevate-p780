@@ -77,14 +77,14 @@ jobs:
       - name: Extract source-derived structure measurements
         run: |
           set -euo pipefail
-          python3 tools/derive_candidate_layout.py --out out --probe tools/p780-layout-probe.c \
+          python3 tools/kernel-config/derive_candidate_layout.py --out out --probe tools/kernel-config/p780-layout-probe.c \
             --reports reports --source-commit "$(cat reports/source-commit.txt)"
       - name: Record configuration drift
         if: always()
         run: |
           if test -f reports/resolved.config; then
             cp out/.config reports/post-prepare.config
-            python3 tools/summarize_config.py reports/original.config reports/resolved.config \
+            python3 tools/kernel-config/summarize_config.py reports/original.config reports/resolved.config \
               reports/post-prepare.config reports
           fi
       - uses: actions/upload-artifact@v4
@@ -114,7 +114,7 @@ jobs:
         run: |
           set -euo pipefail
           root=evidence/actions/2026-10-10-layout-audit
-          python3 tools/compare_candidate_layouts.py "$root/runs/$GITHUB_RUN_ID" "$RUN_URL"
+          python3 tools/kernel-config/compare_candidate_layouts.py "$root/runs/$GITHUB_RUN_ID" "$RUN_URL"
           echo "$GITHUB_RUN_ID" > "$root/LATEST.txt"
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'

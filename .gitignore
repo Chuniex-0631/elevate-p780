@@ -12,3 +12,6 @@ release/*.patched
 *.pyc
 __pycache__/
 .DS_Store
+
+# Local maintenance reports
+/reports/

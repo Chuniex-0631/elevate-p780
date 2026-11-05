@@ -4,3 +4,6 @@ evidence/20261026/partitions/vendor_boot_a_ramdisk/** -text
 evidence/20261026/partitions/vendor_boot_b_ramdisk/** -text
 evidence/20261026/partitions/dtbo_a_entries/** -text
 *.ko -text
+
+# All original evidence must retain committed bytes on Windows and Linux.
+evidence/** -text
