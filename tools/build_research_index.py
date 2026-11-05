@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def render(root=ROOT):
     names = subprocess.check_output(['git', 'ls-files', '-z'], cwd=root).decode('utf-8')
-    paths = sorted(root / name for name in names.split('\0') if name)
+    paths = [root / name for name in sorted(name for name in names.split('\0') if name)]
     evidence = [p for p in paths if p.relative_to(root).parts[0] == 'evidence']
     total = sum(p.stat().st_size for p in evidence)
     lines = ['# 证据清单', '', '> 由 `tools/build_research_index.py` 从 Git 跟踪文件生成。',

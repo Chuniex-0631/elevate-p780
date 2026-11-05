@@ -3,6 +3,15 @@
 > 由 `tools/build_research_index.py` 从 Git 跟踪文件生成。
 > 当前结论优先阅读 STATUS 与最新专题；历史报告保留阶段性假设。
 
+## 根目录（4）
+
+| 文档 | 标题 |
+|---|---|
+| [CHANGELOG.md](../CHANGELOG.md) | 变更记录 |
+| [CONTRIBUTING.md](../CONTRIBUTING.md) | 贡献与维护 |
+| [README.md](../README.md) | Rakuten Hand 5G · P780 研究档案 |
+| [SECURITY.md](../SECURITY.md) | 私人设备研究资料的隐私与安全 |
+
 ## app（1）
 
 | 文档 | 标题 |
@@ -13,45 +22,37 @@
 
 | 文档 | 标题 |
 |---|---|
-| [archive/device/P780_loaded_module_names.md](../archive/device/P780_loaded_module_names.md) | P780 2026-10-10 实机模块观察（按原文件保留名称） |
 | [archive/README.md](../archive/README.md) | 旧研究成果归档 |
+| [archive/device/P780_loaded_module_names.md](../archive/device/P780_loaded_module_names.md) | P780 2026-10-10 实机模块观察（按原文件保留名称） |
 | [archive/reports/P780_GhostLock_source_audit_2026-10-10.md](../archive/reports/P780_GhostLock_source_audit_2026-10-10.md) | Rakuten Hand 5G (P780) / GhostLock 源码核对报告 |
 | [archive/reports/P780_MinkNative_2026-10-04.md](../archive/reports/P780_MinkNative_2026-10-04.md) | P780：Mink 原生层与 PFM 运行证据 |
 | [archive/reports/P780_PFM_QAS_2026-10-04.md](../archive/reports/P780_PFM_QAS_2026-10-04.md) | Rakuten Hand 5G P780：QAS → Mink → PFM 研究检查点 |
 | [archive/reports/P780_TZAccess_2026-10-04.md](../archive/reports/P780_TZAccess_2026-10-04.md) | P780：TZAccessService 服务端 Java 授权链 |
-
-## 根目录（4）
-
-| 文档 | 标题 |
-|---|---|
-| [CHANGELOG.md](../CHANGELOG.md) | 变更记录 |
-| [CONTRIBUTING.md](../CONTRIBUTING.md) | 贡献与维护 |
-| [README.md](../README.md) | Rakuten Hand 5G · P780 研究档案 |
-| [SECURITY.md](../SECURITY.md) | 私人设备研究资料的隐私与安全 |
 
 ## docs（118）
 
 | 文档 | 标题 |
 |---|---|
 | [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md) | 仓库结构与维护约定 |
+| [docs/EVIDENCE_MANIFEST.md](../docs/EVIDENCE_MANIFEST.md) | 证据清单 |
+| [docs/HISTORY.md](../docs/HISTORY.md) | 研究时间线 |
+| [docs/NEXT_STEPS.md](../docs/NEXT_STEPS.md) | 下一步计划 |
+| [docs/README.md](../docs/README.md) | 文档导航 |
+| [docs/REPOSITORY_AUDIT.md](../docs/REPOSITORY_AUDIT.md) | 2026-10-18 全库总结与整理验收 |
+| [docs/STATUS.md](../docs/STATUS.md) | 当前研究状态 |
 | [docs/archive/20261010-archive-review.md](../docs/archive/20261010-archive-review.md) | Rakuten Hand 5G / P780：2026-10-10 阶段归档验收 |
 | [docs/archive/20261010-import-dedup.md](../docs/archive/20261010-import-dedup.md) | 2026-10-10 新增实体机资料接收、比对与去重报告 |
+| [docs/archive/NEXT_STEPS-before-status-review-20261028.md](../docs/archive/NEXT_STEPS-before-status-review-20261028.md) | 下一步计划 |
+| [docs/archive/STATUS-before-status-review-20261028.md](../docs/archive/STATUS-before-status-review-20261028.md) | 当前研究状态 |
 | [docs/archive/dsu-index-20261018.md](../docs/archive/dsu-index-20261018.md) | DSU历史专题索引 |
 | [docs/archive/evidence-ledger-before-consolidation-20261018.md](../docs/archive/evidence-ledger-before-consolidation-20261018.md) | P780 已定位研究文件总清单 |
 | [docs/archive/ghostlock-package-versions.md](../docs/archive/ghostlock-package-versions.md) | GhostLock P780 离线研究包：v0.1—v0.4 |
 | [docs/archive/next-steps-before-dsu-20261018.md](../docs/archive/next-steps-before-dsu-20261018.md) | 历史研究计划快照（2026-10-18 DSU 研究之前） |
-| [docs/archive/NEXT_STEPS-before-status-review-20261028.md](../docs/archive/NEXT_STEPS-before-status-review-20261028.md) | 下一步计划 |
 | [docs/archive/repository-audit-20261011.md](../docs/archive/repository-audit-20261011.md) | 2026-10-11 全库结构整理验收 |
-| [docs/archive/STATUS-before-status-review-20261028.md](../docs/archive/STATUS-before-status-review-20261028.md) | 当前研究状态 |
-| [docs/EVIDENCE_MANIFEST.md](../docs/EVIDENCE_MANIFEST.md) | 证据清单 |
-| [docs/HISTORY.md](../docs/HISTORY.md) | 研究时间线 |
-| [docs/NEXT_STEPS.md](../docs/NEXT_STEPS.md) | 下一步计划 |
 | [docs/official-source-request-log.md](../docs/official-source-request-log.md) | Rakuten Hand 5G / TINNO P780 官方源码请求联络 |
-| [docs/README.md](../docs/README.md) | 文档导航 |
 | [docs/reference/archive-protocol.md](../docs/reference/archive-protocol.md) | P780 证据归档规范 |
 | [docs/reference/evidence-integrity.md](../docs/reference/evidence-integrity.md) | P780 核心证据完整性校验（2026-10-10） |
 | [docs/reference/sources.md](../docs/reference/sources.md) | 来源、引用和可重复性 |
-| [docs/REPOSITORY_AUDIT.md](../docs/REPOSITORY_AUDIT.md) | 2026-10-18 全库总结与整理验收 |
 | [docs/research/apps-and-debloat.md](../docs/research/apps-and-debloat.md) | P780 ADB 应用清理与设备维护实验（历史） |
 | [docs/research/avb-attestation-alternative-20261018.md](../docs/research/avb-attestation-alternative-20261018.md) | P780 AVB 研究：无需原厂镜像的硬件证明替代路径（2026-10-18） |
 | [docs/research/avb-attestation-confirmed-20261018.md](../docs/research/avb-attestation-confirmed-20261018.md) | P780 AVB 硬件证明与 AOSP 默认测试公钥匹配（2026-10-18） |
@@ -150,24 +151,24 @@
 | [docs/research/tee-system-apks.md](../docs/research/tee-system-apks.md) | P780 TrustZone 白名单、JNI 访问记录及系统 APK 原件 |
 | [docs/rom/AUDIT-20261025.md](../docs/rom/AUDIT-20261025.md) | P780 ROM Release 元数据与清单审计（2026-10-25） |
 | [docs/rom/README.md](../docs/rom/README.md) | P780 ROM 内容提取包 |
-| [docs/STATUS.md](../docs/STATUS.md) | 当前研究状态 |
 
 ## evidence（29）
 
 | 文档 | 标题 |
 |---|---|
+| [evidence/20261026/README.md](../evidence/20261026/README.md) | 2026-10-26 证据 |
 | [evidence/20261026/abl/README.md](../evidence/20261026/abl/README.md) | ABL / XBL |
 | [evidence/20261026/afunix/README.md](../evidence/20261026/afunix/README.md) | CVE-2024-26923 触发 |
 | [evidence/20261026/artifact-scan/README.md](../evidence/20261026/artifact-scan/README.md) | 49 号 artifact 扫描 |
 | [evidence/20261026/ghostlock/README.md](../evidence/20261026/ghostlock/README.md) | GhostLock 5.4 反汇编 |
 | [evidence/20261026/gsi/README.md](../evidence/20261026/gsi/README.md) | GSI 验签 |
-| [evidence/20261026/init/final-report-20261025.md](../evidence/20261026/init/final-report-20261025.md) | init 域能力与只读榨取：收尾报告（2026-10-25） |
 | [evidence/20261026/init/README.md](../evidence/20261026/init/README.md) | init 域 |
+| [evidence/20261026/init/final-report-20261025.md](../evidence/20261026/init/final-report-20261025.md) | init 域能力与只读榨取：收尾报告（2026-10-25） |
 | [evidence/20261026/kernel/README.md](../evidence/20261026/kernel/README.md) | 内核 / boot |
 | [evidence/20261026/oem/README.md](../evidence/20261026/oem/README.md) | OEM unlock final |
 | [evidence/20261026/partitions/README.md](../evidence/20261026/partitions/README.md) | 分区快照 |
-| [evidence/20261026/README.md](../evidence/20261026/README.md) | 2026-10-26 证据 |
 | [evidence/20261026/vuln-surface/README.md](../evidence/20261026/vuln-surface/README.md) | 52 号攻击面 |
+| [evidence/README.md](../evidence/README.md) | 证据目录 |
 | [evidence/actions/2026-10-10-clang11/config-summary.md](../evidence/actions/2026-10-10-clang11/config-summary.md) | P780 kernel config audit |
 | [evidence/actions/2026-10-10-clang14/config-summary.md](../evidence/actions/2026-10-10-clang14/config-summary.md) | P780 kernel config audit |
 | [evidence/actions/2026-10-10-config-delta/critical-delta.md](../evidence/actions/2026-10-10-config-delta/critical-delta.md) | P780 source-vs-device configuration drift |
@@ -182,7 +183,6 @@
 | [evidence/actions/2026-10-10-layout-audit/runs/38060518994/layout-comparison.md](../evidence/actions/2026-10-10-layout-audit/runs/38060518994/layout-comparison.md) | Candidate source layout comparison |
 | [evidence/actions/2026-10-10-layout-audit/source-audit/missing-config-references.md](../evidence/actions/2026-10-10-layout-audit/source-audit/missing-config-references.md) | Removed symbols: actual source references |
 | [evidence/analysis/boot-edl-20261026/README.md](../evidence/analysis/boot-edl-20261026/README.md) | 2026-10-26 离线复核产物 |
-| [evidence/README.md](../evidence/README.md) | 证据目录 |
 | [evidence/restricted/README.md](../evidence/restricted/README.md) | 未脱敏的 P780 实机材料（需谨慎访问） |
 | [evidence/supplement/20261024/README.md](../evidence/supplement/20261024/README.md) | P780 supplemental acquisition, 2026-10-24 |
 
@@ -198,6 +198,7 @@
 | 文档 | 标题 |
 |---|---|
 | [tools/20261105/README.md](../tools/20261105/README.md) | 2026-11-05 设备实测工具说明 |
+| [tools/README.md](../tools/README.md) | 工具 |
 | [tools/abl/README.md](../tools/abl/README.md) | ABL / boot 解析 |
 | [tools/afunix/README.md](../tools/afunix/README.md) | CVE-2024-26923 触发 harness |
 | [tools/artifact-scan/README.md](../tools/artifact-scan/README.md) | 49 号 artifact 扫描 |
@@ -214,13 +215,12 @@
 | [tools/oemlock/README.md](../tools/oemlock/README.md) | OEM Lock offline audit |
 | [tools/partitions/README.md](../tools/partitions/README.md) | init 域分区 dumper |
 | [tools/perf-permission/README.md](../tools/perf-permission/README.md) | P780 perf 最小权限探测 v0.1.0 |
-| [tools/README.md](../tools/README.md) | 工具 |
 | [tools/rom/README.md](../tools/rom/README.md) | P780 ROM Release 离线核验 |
 | [tools/supplement/README.md](../tools/supplement/README.md) | P780 supplemental evidence tools |
-| [tools/update-engine-probe/app/README.md](../tools/update-engine-probe/app/README.md) | otacerts 页写 App（源码） |
 | [tools/update-engine-probe/README.md](../tools/update-engine-probe/README.md) | update_engine payload probe |
+| [tools/update-engine-probe/app/README.md](../tools/update-engine-probe/app/README.md) | otacerts 页写 App（源码） |
+| [tools/uring/README.md](../tools/uring/README.md) | CVE-2023-6931 研究工具 |
 | [tools/uring/analysis/DATA-CHAIN-20261026.md](../tools/uring/analysis/DATA-CHAIN-20261026.md) | 6931 新数据链设计：fake skb 双写（2026-10-26，离线） |
 | [tools/uring/analysis/OBSERVED-V-20261027.md](../tools/uring/analysis/OBSERVED-V-20261027.md) | 6931 observed-V 设计：先看 values 地址，再做 OOB（2026-10-27，离线） |
-| [tools/uring/README.md](../tools/uring/README.md) | CVE-2023-6931 研究工具 |
 | [tools/vuln-surface/README.md](../tools/vuln-surface/README.md) | 52 号攻击面解析 |
 
