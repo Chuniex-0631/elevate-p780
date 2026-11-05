@@ -1,8 +1,7 @@
 # 文档索引
 
-> 由 `tools/build_research_index.py` 生成（2026-10-26），含全部目录 Markdown。
-> 当前结论优先阅读 STATUS 与最新审计专题；历史报告保留阶段性假设。
-> 2026-10-28 文档整理：同步新增两份历史快照；该轮证据文件未变化；后续启动链复核新增衍生 JSON，清单已增量登记。
+> 由 `tools/build_research_index.py` 从 Git 跟踪文件生成。
+> 当前结论优先阅读 STATUS 与最新专题；历史报告保留阶段性假设。
 
 ## app（1）
 
@@ -21,20 +20,29 @@
 | [archive/reports/P780_PFM_QAS_2026-10-04.md](../archive/reports/P780_PFM_QAS_2026-10-04.md) | Rakuten Hand 5G P780：QAS → Mink → PFM 研究检查点 |
 | [archive/reports/P780_TZAccess_2026-10-04.md](../archive/reports/P780_TZAccess_2026-10-04.md) | P780：TZAccessService 服务端 Java 授权链 |
 
-## docs（113）
+## 根目录（4）
+
+| 文档 | 标题 |
+|---|---|
+| [CHANGELOG.md](../CHANGELOG.md) | 变更记录 |
+| [CONTRIBUTING.md](../CONTRIBUTING.md) | 贡献与维护 |
+| [README.md](../README.md) | Rakuten Hand 5G · P780 研究档案 |
+| [SECURITY.md](../SECURITY.md) | 私人设备研究资料的隐私与安全 |
+
+## docs（118）
 
 | 文档 | 标题 |
 |---|---|
 | [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md) | 仓库结构与维护约定 |
-| [docs/archive/NEXT_STEPS-before-status-review-20261028.md](../docs/archive/NEXT_STEPS-before-status-review-20261028.md) | 下一步计划（2026-10-28 整理前历史快照） |
-| [docs/archive/STATUS-before-status-review-20261028.md](../docs/archive/STATUS-before-status-review-20261028.md) | 当前研究状态（2026-10-28 整理前历史快照） |
 | [docs/archive/20261010-archive-review.md](../docs/archive/20261010-archive-review.md) | Rakuten Hand 5G / P780：2026-10-10 阶段归档验收 |
 | [docs/archive/20261010-import-dedup.md](../docs/archive/20261010-import-dedup.md) | 2026-10-10 新增实体机资料接收、比对与去重报告 |
 | [docs/archive/dsu-index-20261018.md](../docs/archive/dsu-index-20261018.md) | DSU历史专题索引 |
 | [docs/archive/evidence-ledger-before-consolidation-20261018.md](../docs/archive/evidence-ledger-before-consolidation-20261018.md) | P780 已定位研究文件总清单 |
 | [docs/archive/ghostlock-package-versions.md](../docs/archive/ghostlock-package-versions.md) | GhostLock P780 离线研究包：v0.1—v0.4 |
 | [docs/archive/next-steps-before-dsu-20261018.md](../docs/archive/next-steps-before-dsu-20261018.md) | 历史研究计划快照（2026-10-18 DSU 研究之前） |
+| [docs/archive/NEXT_STEPS-before-status-review-20261028.md](../docs/archive/NEXT_STEPS-before-status-review-20261028.md) | 下一步计划 |
 | [docs/archive/repository-audit-20261011.md](../docs/archive/repository-audit-20261011.md) | 2026-10-11 全库结构整理验收 |
+| [docs/archive/STATUS-before-status-review-20261028.md](../docs/archive/STATUS-before-status-review-20261028.md) | 当前研究状态 |
 | [docs/EVIDENCE_MANIFEST.md](../docs/EVIDENCE_MANIFEST.md) | 证据清单 |
 | [docs/HISTORY.md](../docs/HISTORY.md) | 研究时间线 |
 | [docs/NEXT_STEPS.md](../docs/NEXT_STEPS.md) | 下一步计划 |
@@ -57,7 +65,9 @@
 | [docs/research/journey-config.md](../docs/research/journey-config.md) | P780 JourneyConfigService 实机 JAR 审计 |
 | [docs/research/ota-bugreport.md](../docs/research/ota-bugreport.md) | P780 更新服务日志与 Android Bugreport 原始证据 |
 | [docs/research/ota-log-audit.md](../docs/research/ota-log-audit.md) | P780 OTA 日志与 Journey 配置服务核对 |
+| [docs/research/p780-20261105-summary.md](../docs/research/p780-20261105-summary.md) | P780 设备实测总结：A 槽写入与切槽失败（2026-11-05） |
 | [docs/research/p780-abl-avb-gsi-20261026.md](../docs/research/p780-abl-avb-gsi-20261026.md) | AVB 链重审：根/系统链都是公开测试密钥（2026-10-26） |
+| [docs/research/p780-active-slot-write-20261105.md](../docs/research/p780-active-slot-write-20261105.md) | 新突破口：不要再写 A 槽，先解决“写哪个槽 + 怎么激活” |
 | [docs/research/p780-afunix-cve-2024-26923-20261026.md](../docs/research/p780-afunix-cve-2024-26923-20261026.md) | CVE-2024-26923：AF_UNIX GC vs connect() 触发（2026-10-26） |
 | [docs/research/p780-artifact-scan-20261025.md](../docs/research/p780-artifact-scan-20261025.md) | 全量系统文件扫描：密钥、凭据与有用信息（2026-10-25） |
 | [docs/research/p780-boot-chain-review-20261028.md](../docs/research/p780-boot-chain-review-20261028.md) | P780 启动链复核：Boot HAL、GPT 与切槽证据（2026-10-28） |
@@ -94,6 +104,7 @@
 | [docs/research/p780-ghostlock-profile-draft-20261025.md](../docs/research/p780-ghostlock-profile-draft-20261025.md) | P780 GhostLock profile 草案（5.4.233，静态部分） |
 | [docs/research/p780-info-layer-20261027.md](../docs/research/p780-info-layer-20261027.md) | 信息层收尾清单（2026-10-27） |
 | [docs/research/p780-init-capability-20261025.md](../docs/research/p780-init-capability-20261025.md) | init 域能力盘点（2026-10-25） |
+| [docs/research/p780-init-dump-and-boot-a-20261105.md](../docs/research/p780-init-dump-and-boot-a-20261105.md) | init 域 dump 与 boot_a 结果（2026-11-05） |
 | [docs/research/p780-installd-root-shell-20261025.md](../docs/research/p780-installd-root-shell-20261025.md) | P780 实机取得 uid 0 root shell（2026-10-25） |
 | [docs/research/p780-ipsec-preflight-live-and-localversion-20261024.md](../docs/research/p780-ipsec-preflight-live-and-localversion-20261024.md) | P780 IPsec Preflight 实机结果与内核版本后缀来源核验 |
 | [docs/research/p780-ipsec-v0.2-api-cts-design-20261024.md](../docs/research/p780-ipsec-v0.2-api-cts-design-20261024.md) | P780 IPsec diagnostics 0.2.0: Android 11 API/CTS basis and safety boundary |
@@ -121,6 +132,8 @@
 | [docs/research/p780-qdl-qud-sahara-20261019.md](../docs/research/p780-qdl-qud-sahara-20261019.md) | P780 EDL / QDL QUD 通信突破与 Mannar Loader 待测（2026-10-19） |
 | [docs/research/p780-rom-kernel-system-triage-20261025.md](../docs/research/p780-rom-kernel-system-triage-20261025.md) | P780 ROM、内核与权限分层复核（2026-10-25） |
 | [docs/research/p780-root-daemon-20261025.md](../docs/research/p780-root-daemon-20261025.md) | Root 守护进程载荷（2026-10-25） |
+| [docs/research/p780-slot-switch-gpt-20261105.md](../docs/research/p780-slot-switch-gpt-20261105.md) | A 槽写入成功与切槽失败：GPT 层分析（2026-11-05） |
+| [docs/research/p780-slot-switch-misc-gpt-20261105.md](../docs/research/p780-slot-switch-misc-gpt-20261105.md) | 切槽路线 A：misc bootloader_control 实测与结论（2026-11-05） |
 | [docs/research/p780-source-availability-followup-20261024.md](../docs/research/p780-source-availability-followup-20261024.md) | P780 _162 原厂内核源码与固件工件可得性复核 |
 | [docs/research/p780-static-batch1-analysis-20261018.md](../docs/research/p780-static-batch1-analysis-20261018.md) | P780 静态样本 batch1 原件验证与交叉分析（2026-10-18） |
 | [docs/research/p780-static-batch2-analysis-20261018.md](../docs/research/p780-static-batch2-analysis-20261018.md) | P780 system/lib64 第二批静态分析（2026-10-18） |
@@ -180,10 +193,11 @@
 | [ghostlock/M1.md](../ghostlock/M1.md) | M1：PI 链构造探针 |
 | [ghostlock/README.md](../ghostlock/README.md) | GhostLock 移植骨架（2026-10-25） |
 
-## tools（25）
+## tools（26）
 
 | 文档 | 标题 |
 |---|---|
+| [tools/20261105/README.md](../tools/20261105/README.md) | 2026-11-05 设备实测工具说明 |
 | [tools/abl/README.md](../tools/abl/README.md) | ABL / boot 解析 |
 | [tools/afunix/README.md](../tools/afunix/README.md) | CVE-2024-26923 触发 harness |
 | [tools/artifact-scan/README.md](../tools/artifact-scan/README.md) | 49 号 artifact 扫描 |
@@ -209,12 +223,4 @@
 | [tools/uring/analysis/OBSERVED-V-20261027.md](../tools/uring/analysis/OBSERVED-V-20261027.md) | 6931 observed-V 设计：先看 values 地址，再做 OOB（2026-10-27，离线） |
 | [tools/uring/README.md](../tools/uring/README.md) | CVE-2023-6931 研究工具 |
 | [tools/vuln-surface/README.md](../tools/vuln-surface/README.md) | 52 号攻击面解析 |
-
-## 根目录（3）
-
-| 文档 | 标题 |
-|---|---|
-| [CHANGELOG.md](../CHANGELOG.md) | 变更记录 |
-| [README.md](../README.md) | Rakuten Hand 5G / TINNO P780 研究档案 |
-| [SECURITY.md](../SECURITY.md) | 私人设备研究资料的隐私与安全 |
 

@@ -34,3 +34,13 @@
 - 任何会改动设备的工具都要写回滚方法与最坏后果。
 - 工具输出若被引用为证据，必须归档到 `evidence/` 并在清单中登记。
 - 第三方 exploit 源码（如 `pipa/`）不入仓；`uring/` 只保留自己的分析/触发代码。
+
+## 仓库维护
+
+需要 Python 3.11+ 与 Git，无额外 Python 依赖，不连接设备：
+
+- `python tools/verify_repository.py`：检查跟踪文件的语法、JSON、本地链接及历史证据身份。
+- `python tools/build_research_index.py`：生成文档索引和全部已跟踪证据的哈希清单；`--check` 只验证是否最新。
+- `python -m unittest discover -s tools/tests -v`：运行维护回归测试。
+
+新增文件先 `git add`，再生成索引；完整流程见[贡献指南](../CONTRIBUTING.md)。

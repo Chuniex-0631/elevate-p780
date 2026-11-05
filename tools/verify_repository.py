@@ -1,41 +1,121 @@
-"""Verify tracked repository links, Python syntax and retained evidence identities.
-Offline only; output is an optional report, not a device operation.
-"""
-import argparse,ast,base64,hashlib,io,json,pathlib,posixpath,re,subprocess,urllib.parse,zipfile
-p=argparse.ArgumentParser();p.add_argument('--output',type=pathlib.Path);a=p.parse_args()
-paths=subprocess.check_output(['git','ls-files','-z']).decode().split('\0');paths=[x for x in paths if x]
-missing=[];count=0;md_count=0;py_count=0;json_count=0
-for name in paths:
- f=pathlib.Path(name)
- if name.endswith('.py'):ast.parse(f.read_text(encoding='utf-8-sig'),filename=name);py_count+=1
- if name.endswith('.json'):json.loads(f.read_text(encoding='utf-8-sig'));json_count+=1
- if not name.endswith('.md'):continue
- md_count+=1
- for v in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)',f.read_text(encoding='utf-8-sig')):
-  u=v.strip().split()[0].strip('<>')
-  if u.startswith(('#','http://','https://','mailto:','data:')):continue
-  target=pathlib.Path(posixpath.normpath(str(f.parent/urllib.parse.unquote(u.split('#')[0].split('?')[0]))));count+=1
-  if not target.exists():missing.append({'source':name,'target':str(target)})
-assert not missing,missing
-j=pathlib.Path('evidence/journey/2026-10-10');manifest=json.loads((j/'input-manifest.json').read_text(encoding='utf-8-sig'));raw=base64.b64decode((j/'p780-journey-config.zip.b64').read_bytes())
-assert len(raw)==manifest['zip']['bytes'] and hashlib.sha256(raw).hexdigest()==manifest['zip']['sha256']
-with zipfile.ZipFile(io.BytesIO(raw)) as z:
- assert z.testzip() is None
- for e in manifest['entries']:
-  archive_path=e['path'].replace('\\','/')
-  b=z.read(archive_path);assert len(b)==e['bytes'] and hashlib.sha256(b).hexdigest()==e['sha256']
-  name=e['path'].replace('\\','/').split('/')[-1]
-  if name in ('config.xml','version.txt'):assert (j/name).read_bytes()==b
-  if name=='tcs-state.txt':assert (j/'tcs-state.utf8.txt').read_text(encoding='utf-8-sig')==b.decode('utf-16').replace('\r\n','\n')
-dex=pathlib.Path('evidence/framework/2026-10-10')
-config=json.loads((dex/'journey-bytecode.json').read_text(encoding='utf-8-sig'))['methods']
-performance=json.loads((dex/'performance-decision-methods.json').read_text(encoding='utf-8-sig'))
-for x in config:assert hashlib.sha256(bytes.fromhex(x['instructions_hex'])).hexdigest()==x['sha256']
-for x in performance:assert hashlib.sha256(bytes.fromhex(x['original_insns_hex'])).hexdigest()==x['original_insns_sha256']
-structure=pathlib.Path('evidence/analysis/repository-structure-20261011.json')
-if structure.exists():
- for e in json.loads(structure.read_text(encoding='utf-8-sig'))['preserved_moves']:
-  actual=subprocess.check_output(['git','hash-object',e['to']]).decode().strip();assert actual==e['blob_sha'],e['to']
-r={'tracked_files':len(paths),'markdown_files':md_count,'relative_path_links':count,'missing_path_links':missing,'python_syntax_files':py_count,'valid_json_files':json_count,'journey_original_zip_crc_sha_and_views':'passed','config_method_instruction_hashes':len(config),'performance_decision_instruction_hashes':len(performance),'preserved_move_blobs':'passed','limitations':['Path links only, not Markdown heading anchors or public URL availability.','No verification of Root, exploitation, runtime policy switches, or unavailable original JAR bytes.']}
-if a.output:a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-print(json.dumps(r,ensure_ascii=False,indent=2))
+"""Offline repository checks. Importing this module performs no checks or writes."""
+import argparse
+import ast
+import base64
+import hashlib
+import io
+import json
+from pathlib import Path
+import pathlib
+import re
+import subprocess
+import urllib.parse
+import zipfile
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def tracked_paths(root):
+    raw = subprocess.check_output(['git', 'ls-files', '-z'], cwd=root)
+    return [p for p in raw.decode('utf-8').split('\0') if p]
+
+
+def check_sources(root, paths):
+    missing = []
+    counts = dict(markdown_files=0, relative_path_links=0,
+                  python_syntax_files=0, valid_json_files=0)
+    for name in paths:
+        path = root / name
+        if path.suffix == '.py':
+            ast.parse(path.read_text(encoding='utf-8-sig'), filename=name)
+            counts['python_syntax_files'] += 1
+        elif path.suffix == '.json':
+            json.loads(path.read_text(encoding='utf-8-sig'))
+            counts['valid_json_files'] += 1
+        elif path.suffix == '.md':
+            counts['markdown_files'] += 1
+            for value in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)', path.read_text(encoding='utf-8-sig')):
+                value = value.strip()
+                if not value:
+                    continue
+                url = value[1:value.index('>')] if value.startswith('<') and '>' in value else value.split()[0]
+                parsed = urllib.parse.urlsplit(url)
+                if parsed.scheme or parsed.netloc or not parsed.path:
+                    continue
+                target = path.parent / urllib.parse.unquote(parsed.path)
+                counts['relative_path_links'] += 1
+                if not target.exists():
+                    missing.append(dict(source=name, target=parsed.path))
+    if missing:
+        raise ValueError('Missing local links: ' + json.dumps(missing, ensure_ascii=False))
+    return dict(counts, missing_path_links=missing)
+
+
+def check_evidence(root):
+    j = root.joinpath('evidence/journey/2026-10-10')
+    manifest = json.loads((j / 'input-manifest.json').read_text(encoding='utf-8-sig'))
+    raw = base64.b64decode((j / 'p780-journey-config.zip.b64').read_bytes())
+    if not (len(raw) == manifest['zip']['bytes'] and hashlib.sha256(raw).hexdigest() == manifest['zip']['sha256']):
+        raise ValueError("Evidence integrity mismatch: len(raw) == manifest['zip']['bytes'] and hashlib.sha256(raw).hexdigest() == manifest['zip']['sha256']")
+    with zipfile.ZipFile(io.BytesIO(raw)) as z:
+        if not z.testzip() is None:
+            raise ValueError('Evidence integrity mismatch: z.testzip() is None')
+        for e in manifest['entries']:
+            archive_path = e['path'].replace('\\', '/')
+            b = z.read(archive_path)
+            if not (len(b) == e['bytes'] and hashlib.sha256(b).hexdigest() == e['sha256']):
+                raise ValueError("Evidence integrity mismatch: len(b) == e['bytes'] and hashlib.sha256(b).hexdigest() == e['sha256']")
+            name = e['path'].replace('\\', '/').split('/')[-1]
+            if name in ('config.xml', 'version.txt'):
+                if not (j / name).read_bytes() == b:
+                    raise ValueError('Evidence integrity mismatch: (j / name).read_bytes() == b')
+            if name == 'tcs-state.txt':
+                if not (j / 'tcs-state.utf8.txt').read_text(encoding='utf-8-sig') == b.decode('utf-16').replace('\r\n', '\n'):
+                    raise ValueError("Evidence integrity mismatch: (j / 'tcs-state.utf8.txt').read_text(encoding='utf-8-sig') == b.decode('utf-16').replace('\\r\\n', '\\n')")
+    dex = root.joinpath('evidence/framework/2026-10-10')
+    config = json.loads((dex / 'journey-bytecode.json').read_text(encoding='utf-8-sig'))['methods']
+    performance = json.loads((dex / 'performance-decision-methods.json').read_text(encoding='utf-8-sig'))
+    for x in config:
+        if not hashlib.sha256(bytes.fromhex(x['instructions_hex'])).hexdigest() == x['sha256']:
+            raise ValueError("Evidence integrity mismatch: hashlib.sha256(bytes.fromhex(x['instructions_hex'])).hexdigest() == x['sha256']")
+    for x in performance:
+        if not hashlib.sha256(bytes.fromhex(x['original_insns_hex'])).hexdigest() == x['original_insns_sha256']:
+            raise ValueError("Evidence integrity mismatch: hashlib.sha256(bytes.fromhex(x['original_insns_hex'])).hexdigest() == x['original_insns_sha256']")
+    structure = root.joinpath('evidence/analysis/repository-structure-20261011.json')
+    if structure.exists():
+        for e in json.loads(structure.read_text(encoding='utf-8-sig'))['preserved_moves']:
+            actual = subprocess.check_output(['git', 'hash-object', e['to']], cwd=root).decode().strip()
+            if not actual == e['blob_sha']:
+                raise ValueError(e['to'])
+
+    return dict(journey_original_zip_crc_sha_and_views='passed',
+                config_method_instruction_hashes=len(config),
+                performance_decision_instruction_hashes=len(performance),
+                preserved_move_blobs='passed')
+
+
+def verify(root=ROOT):
+    paths = tracked_paths(root)
+    return dict(tracked_files=len(paths), **check_sources(root, paths),
+                **check_evidence(root), limitations=[
+                    'Path links only, not Markdown heading anchors or public URL availability.',
+                    'No verification of Root, exploitation, runtime policy switches, or unavailable original JAR bytes.'])
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output', type=Path, help='Optional JSON report; relative to current directory')
+    args = parser.parse_args()
+    try:
+        report = verify()
+    except (ValueError, OSError, SyntaxError, KeyError, zipfile.BadZipFile, subprocess.CalledProcessError) as error:
+        parser.exit(1, f'Verification failed: {error}\n')
+    rendered = json.dumps(report, ensure_ascii=False, indent=2) + '\n'
+    if args.output:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(rendered, encoding='utf-8')
+    print(rendered, end='')
+
+
+if __name__ == '__main__':
+    main()

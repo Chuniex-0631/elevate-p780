@@ -1,0 +1,35 @@
+name: Repository maintenance
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: maintenance-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.11', '3.13']
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m unittest discover -s tools/tests -v
+      - run: python -m unittest discover -s tools/boot-chain-audit -p "test_*.py" -v
+      - run: python -O tools/verify_repository.py --output reports/repository.json
+      - run: python tools/build_research_index.py --check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: maintenance-${{ matrix.os }}-${{ matrix.python }}
+          path: reports/
+          if-no-files-found: ignore
