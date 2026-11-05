@@ -1,0 +1,14 @@
+# 测试密钥与可再生产物，不入库
+tools/update-engine-probe/ota_key.pem
+tools/update-engine-probe/ota_cert.pem
+tools/update-engine-probe/metadata.bin
+tools/update-engine-probe/otacerts_ours.zip
+tools/update-engine-probe/payload_empty.bin
+tools/update-engine-probe/payload_bootblock.bin
+
+# 本地重签的 APK
+release/*.patched
+
+*.pyc
+__pycache__/
+.DS_Store

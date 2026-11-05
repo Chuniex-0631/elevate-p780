@@ -1,7 +1,7 @@
 # 当前研究状态
 
 > 2026-10-28 文档复核（Asia/Shanghai）。本页为唯一权威状态页。
-> 本轮仅核对仓库保存记录，未连接设备、未新增设备实测。历史快照见 [整理前状态页](archive/STATUS-before-status-review-20261028.md)。
+> 如果只看 2026-10-28 的记录，本轮仅核对仓库保存记录、未连接设备；2026-11-05 有新一轮设备实测，见下。历史快照见 [整理前状态页](archive/STATUS-before-status-review-20261028.md)。
 
 ## 当前结论
 
@@ -24,6 +24,22 @@
 ## 启动链新发现（2026-10-28）
 
 本机 Boot HAL RC 同时声明 1.0/1.1，平台版本化策略给 update_engine boot HAL 客户端权限；“仅有 1.1 导致切槽必然失败”不成立为已证实原因。ABL 保存字符串含 GPT/Part Attr 线索，结合 Qualcomm 上游，应优先定位 GPT 属性后端；不是本机布局已确认。现有 4096 B 探针源码使用 0xAA 测试块，不能用它验证正常启动。详见 [启动链复核](research/p780-boot-chain-review-20261028.md) 和 [离线工具](../tools/boot-chain-audit/README.md)。
+
+## 2026-11-05 设备实测（A 槽写入与切槽）
+
+> 本轮连接设备（adb `b940328a`），已完成 A 槽写入，未完成切槽；设备当前正常从 B 槽启动。
+> 完整记录、日志摘录与产物哈希见 [总结](research/p780-20261105-summary.md)。
+
+| 项目 | 本轮结果 | 边界 |
+|---|---|---|
+| system_app shell | CVE-2024-31317 手工复刻成功 | 仅本机 SPL 2024-02；未形成通用工具 |
+| OTA 验签绕过 | otacerts 页替换 + 自签 RSA-2048，日志 `Verified correct signature` | 页缓存，重启恢复；不是永久改证书 |
+| A 槽写入 | 52.8 MB payload，boot/vendor_boot/vbmeta `3/3`、`kSuccess` | 写入的是 stock B 内核，不是 root 镜像 |
+| 切槽 | `target_slot: A`，重启仍 `_b` | `SetActiveBootSlot` 未改 GPT；未启动 A 槽 |
+| GPT | 4K 扇区；boot_a priority 2，boot_b priority 15 | 只读解析，未修改 GPT |
+| misc | init 写入 `bootloader_control`（fd=23，CRC 正确），重启仍 B | 不能证明 misc 在任何情况下都不是判据 |
+| GPT 写权限 | init `/dev/block/sde` open 返回 -13 EACCES；hal_bootctl 独占 | 未取得 hal_bootctl 代码执行 |
+| libc++ `_Znwm` hook | 仅“重放 prologue”稳定；带栈/syscall 的变体均重启 | 全局 hook 不可行，不证明 HAL 域不可进入 |
 
 ## 设备与版本事实
 
