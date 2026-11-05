@@ -12,10 +12,11 @@
 | [README.md](../README.md) | Rakuten Hand 5G · P780 研究档案 |
 | [SECURITY.md](../SECURITY.md) | 私人设备研究资料的隐私与安全 |
 
-## app（1）
+## app（2）
 
 | 文档 | 标题 |
 |---|---|
+| [app/README.md](../app/README.md) | 应用源码 |
 | [app/elevate/README.md](../app/elevate/README.md) | Elevate：P780 临时 root 控制台 |
 
 ## archive（6）
@@ -29,7 +30,7 @@
 | [archive/reports/P780_PFM_QAS_2026-10-04.md](../archive/reports/P780_PFM_QAS_2026-10-04.md) | Rakuten Hand 5G P780：QAS → Mink → PFM 研究检查点 |
 | [archive/reports/P780_TZAccess_2026-10-04.md](../archive/reports/P780_TZAccess_2026-10-04.md) | P780：TZAccessService 服务端 Java 授权链 |
 
-## docs（118）
+## docs（120）
 
 | 文档 | 标题 |
 |---|---|
@@ -38,6 +39,7 @@
 | [docs/HISTORY.md](../docs/HISTORY.md) | 研究时间线 |
 | [docs/NEXT_STEPS.md](../docs/NEXT_STEPS.md) | 下一步计划 |
 | [docs/README.md](../docs/README.md) | 文档导航 |
+| [docs/RELEASING.md](../docs/RELEASING.md) | 版本发布 |
 | [docs/REPOSITORY_AUDIT.md](../docs/REPOSITORY_AUDIT.md) | 2026-10-18 全库总结与整理验收 |
 | [docs/STATUS.md](../docs/STATUS.md) | 当前研究状态 |
 | [docs/archive/20261010-archive-review.md](../docs/archive/20261010-archive-review.md) | Rakuten Hand 5G / P780：2026-10-10 阶段归档验收 |
@@ -53,6 +55,7 @@
 | [docs/reference/archive-protocol.md](../docs/reference/archive-protocol.md) | P780 证据归档规范 |
 | [docs/reference/evidence-integrity.md](../docs/reference/evidence-integrity.md) | P780 核心证据完整性校验（2026-10-10） |
 | [docs/reference/sources.md](../docs/reference/sources.md) | 来源、引用和可重复性 |
+| [docs/releases/v1.1.0.md](../docs/releases/v1.1.0.md) | v1.1.0 — 仓库结构整理版 |
 | [docs/research/apps-and-debloat.md](../docs/research/apps-and-debloat.md) | P780 ADB 应用清理与设备维护实验（历史） |
 | [docs/research/avb-attestation-alternative-20261018.md](../docs/research/avb-attestation-alternative-20261018.md) | P780 AVB 研究：无需原厂镜像的硬件证明替代路径（2026-10-18） |
 | [docs/research/avb-attestation-confirmed-20261018.md](../docs/research/avb-attestation-confirmed-20261018.md) | P780 AVB 硬件证明与 AOSP 默认测试公钥匹配（2026-10-18） |
@@ -186,19 +189,18 @@
 | [evidence/restricted/README.md](../evidence/restricted/README.md) | 未脱敏的 P780 实机材料（需谨慎访问） |
 | [evidence/supplement/20261024/README.md](../evidence/supplement/20261024/README.md) | P780 supplemental acquisition, 2026-10-24 |
 
-## ghostlock（2）
+## release（1）
 
 | 文档 | 标题 |
 |---|---|
-| [ghostlock/M1.md](../ghostlock/M1.md) | M1：PI 链构造探针 |
-| [ghostlock/README.md](../ghostlock/README.md) | GhostLock 移植骨架（2026-10-25） |
+| [release/README.md](../release/README.md) | 已保存的应用产物 |
 
-## tools（26）
+## tools（32）
 
 | 文档 | 标题 |
 |---|---|
 | [tools/20261105/README.md](../tools/20261105/README.md) | 2026-11-05 设备实测工具说明 |
-| [tools/README.md](../tools/README.md) | 工具 |
+| [tools/README.md](../tools/README.md) | 工具目录 |
 | [tools/abl/README.md](../tools/abl/README.md) | ABL / boot 解析 |
 | [tools/afunix/README.md](../tools/afunix/README.md) | CVE-2024-26923 触发 harness |
 | [tools/artifact-scan/README.md](../tools/artifact-scan/README.md) | 49 号 artifact 扫描 |
@@ -206,9 +208,13 @@
 | [tools/dirtyfrag-probe/README.md](../tools/dirtyfrag-probe/README.md) | DirtyFrag 探针工具（P780） |
 | [tools/dsu/README.md](../tools/dsu/README.md) | DSU read-only follow-up tools |
 | [tools/gaps/README.md](../tools/gaps/README.md) | Evidence gap tools |
+| [tools/ghostlock/M1.md](../tools/ghostlock/M1.md) | M1：PI 链构造探针 |
+| [tools/ghostlock/README.md](../tools/ghostlock/README.md) | GhostLock 移植骨架（2026-10-25） |
 | [tools/gsi/README.md](../tools/gsi/README.md) | 官方 GSI 下载/验签辅助 |
 | [tools/ipsec-preflight-android/README.md](../tools/ipsec-preflight-android/README.md) | P780 / Android 11 IPsec and UDP diagnostics (non-exploit) |
+| [tools/journey/README.md](../tools/journey/README.md) | Journey 离线分析 |
 | [tools/kallsyms/README.md](../tools/kallsyms/README.md) | kallsyms 提取 |
+| [tools/kernel-config/README.md](../tools/kernel-config/README.md) | 内核配置与候选结构 |
 | [tools/kernel-symbol-recovery/README.md](../tools/kernel-symbol-recovery/README.md) | P780 内核符号恢复与独立核验（2026-10-25） |
 | [tools/kgsl/README.md](../tools/kgsl/README.md) | kgsl 反汇编辅助 |
 | [tools/native/README.md](../tools/native/README.md) | P780 diagnostic offline audit |
@@ -216,7 +222,9 @@
 | [tools/partitions/README.md](../tools/partitions/README.md) | init 域分区 dumper |
 | [tools/perf-permission/README.md](../tools/perf-permission/README.md) | P780 perf 最小权限探测 v0.1.0 |
 | [tools/rom/README.md](../tools/rom/README.md) | P780 ROM Release 离线核验 |
+| [tools/root-daemon/README.md](../tools/root-daemon/README.md) | 历史 root daemon 汇编 |
 | [tools/supplement/README.md](../tools/supplement/README.md) | P780 supplemental evidence tools |
+| [tools/tests/README.md](../tools/tests/README.md) | 维护测试 |
 | [tools/update-engine-probe/README.md](../tools/update-engine-probe/README.md) | update_engine payload probe |
 | [tools/update-engine-probe/app/README.md](../tools/update-engine-probe/app/README.md) | otacerts 页写 App（源码） |
 | [tools/uring/README.md](../tools/uring/README.md) | CVE-2023-6931 研究工具 |

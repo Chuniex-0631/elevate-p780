@@ -1,46 +1,75 @@
-# 工具
+# 工具目录
 
-> 2026-10-26 更新。每个工具目录自带 README，写明用途、依赖、运行方式与边界。
+> v1.1.0：按职责整理。下表覆盖全部工具子目录；旧的根目录 Python 脚本仅作为兼容入口。
 
-| 工具 | 用途 | 是否改动设备 |
+仓库维护仅需 Python 3.11+ 与 Git；研究工具依赖、输入输出和恢复边界见各目录 README。运行前确认“设备影响”列。
+
+## 维护入口
+
+```sh
+python tools/verify_repository.py
+python tools/build_research_index.py --check
+python -m unittest discover -s tools/tests -v
+```
+
+新增文件先 `git add`，再运行 `python tools/build_research_index.py`。完整流程见[贡献指南](../CONTRIBUTING.md)。
+
+## 维护与索引
+
+| 工具 | 用途 | 设备影响 |
 |---|---|---|
-| [`dirtyfrag-probe/`](dirtyfrag-probe/README.md) | DirtyFrag 探针：ESP 页缓存写入、系统库改写、钩子桩、离线分析脚本 | **是**（仅页缓存，可回滚） |
-| [`p780-avb-readonly.ps1`](p780-avb-readonly.ps1) | 只读 AVB 信息采集 | 否 |
-| [`native/`](native/README.md) | APK DEX / JNI ELF / CFI 的历史取证结果 | 否 |
-| [`gaps/`](gaps/README.md) | ADB 只读取证缺口与 policy 记录 | 否 |
-| [`dsu/`](dsu/README.md) | DSU 固定只读快照与 GSI VINTF 提取 | 否（不尝试安装） |
-| [`verify_repository.py`](verify_repository.py) | 仓库结构、Markdown 链接与证据一致性校验 | 否 |
-| [`summarize_config.py`](summarize_config.py) / [`audit_missing_config.py`](audit_missing_config.py) | 内核 config 差异与缺失项分析 | 否 |
-| [`derive_candidate_layout.py`](derive_candidate_layout.py) / [`p780-layout-probe.c`](p780-layout-probe.c) | 候选源码结构测量 | 否 |
-| [`compare_candidate_layouts.py`](compare_candidate_layouts.py) | 候选布局对比 | 否 |
-| [`scan_journey_framework.py`](scan_journey_framework.py) | Journey 框架调用点扫描 | 否 |
-| [`read_performance_dex.py`](read_performance_dex.py) | 原始 DEX 读取 | 否 |
-| [`compare_journey_config.py`](compare_journey_config.py) | vendor XML 与 TCS dump 对比 | 否 |
-| [`boot-chain-audit/`](boot-chain-audit/README.md) | 保存配置、槽状态与更新日志的离线证据提取；不判定切槽成功 | 否（仅本地普通文件） |
-| [`abl/`](abl/README.md) | boot image 解析、ABL 控制流/注册表与 Firehose DER/UFS 离线筛查 | 否 |
-| [`afunix/`](afunix/README.md) | CVE-2024-26923 触发 harness | **是**（成功时可能 panic/reboot） |
-| [`kgsl/`](kgsl/README.md) | 内核 ELF 反汇编辅助 | 否 |
-| [`gsi/`](gsi/README.md) | 官方 GSI 下载/验签辅助 | 否（只联网） |
-| [`partitions/`](partitions/README.md) | init 域分区 dumper | **是**（写 `/metadata`） |
-| [`uring/`](uring/README.md) | CVE-2023-6931 研究工具 | **是**（触发会改内核状态） |
-| [`artifact-scan/`](artifact-scan/README.md) | 静态样本敏感串扫描 | 否 |
-| [`vuln-surface/`](vuln-surface/README.md) | property/kprobe/uring 输出解析 | 否 |
+| [tests/](tests/README.md) | 维护回归测试 | 离线 |
+| [kernel-config/](kernel-config/README.md) | 内核配置与候选结构测量 | 离线 |
+| [journey/](journey/README.md) | Journey XML / DEX 分析 | 离线 |
 
-历史脚本见 [`../archive/scripts`](../archive/scripts)。
+## 启动链与镜像
 
-## 约定
+| 工具 | 用途 | 设备影响 |
+|---|---|---|
+| [abl/](abl/README.md) | ABL 与 Firehose 离线审计 | 离线 |
+| [boot-chain-audit/](boot-chain-audit/README.md) | Boot HAL、GPT、更新日志审计 | 离线 |
+| [dsu/](dsu/README.md) | DSU 只读快照与 VINTF 提取 | 只读设备/离线 |
+| [gsi/](gsi/README.md) | 官方 GSI 下载与验签 | 联网/离线 |
+| [rom/](rom/README.md) | ROM 发布产物核验 | 离线 |
+| [partitions/](partitions/README.md) | 分区提取和清单核验 | 会写设备 |
 
-- **只读工具**与**会改动设备状态**的工具必须在上表标注。
-- 任何会改动设备的工具都要写回滚方法与最坏后果。
-- 工具输出若被引用为证据，必须归档到 `evidence/` 并在清单中登记。
-- 第三方 exploit 源码（如 `pipa/`）不入仓；`uring/` 只保留自己的分析/触发代码。
+## 内核研究
 
-## 仓库维护
+| 工具 | 用途 | 设备影响 |
+|---|---|---|
+| [ghostlock/](ghostlock/README.md) | 历史 PI 链研究骨架 | 实验/改变设备 |
+| [afunix/](afunix/README.md) | AF_UNIX 历史触发实验 | 实验/可能重启 |
+| [kgsl/](kgsl/README.md) | KGSL 离线反汇编 | 离线 |
+| [uring/](uring/README.md) | io_uring 历史研究 | 实验/改变内核状态 |
+| [kallsyms/](kallsyms/README.md) | 符号提取 | 离线 |
+| [kernel-symbol-recovery/](kernel-symbol-recovery/README.md) | 符号恢复与验证 | 离线 |
+| [vuln-surface/](vuln-surface/README.md) | 保存的攻击面输出分析 | 离线 |
 
-需要 Python 3.11+ 与 Git，无额外 Python 依赖，不连接设备：
+## 框架与取证
 
-- `python tools/verify_repository.py`：检查跟踪文件的语法、JSON、本地链接及历史证据身份。
-- `python tools/build_research_index.py`：生成文档索引和全部已跟踪证据的哈希清单；`--check` 只验证是否最新。
-- `python -m unittest discover -s tools/tests -v`：运行维护回归测试。
+| 工具 | 用途 | 设备影响 |
+|---|---|---|
+| [oemlock/](oemlock/README.md) | OEM lock 框架审计 | 离线 |
+| [native/](native/README.md) | DEX / JNI / ELF 审计 | 离线 |
+| [artifact-scan/](artifact-scan/README.md) | 静态样本敏感串扫描 | 离线 |
+| [gaps/](gaps/README.md) | 补充只读取证与策略比较 | 只读设备/离线 |
+| [supplement/](supplement/README.md) | 历史补充采集和分析 | 只读设备/离线 |
 
-新增文件先 `git add`，再生成索引；完整流程见[贡献指南](../CONTRIBUTING.md)。
+## 受控设备实验
+
+| 工具 | 用途 | 设备影响 |
+|---|---|---|
+| [dirtyfrag-probe/](dirtyfrag-probe/README.md) | 历史页缓存改写探针 | 会改设备 |
+| [ipsec-preflight-android/](ipsec-preflight-android/README.md) | IPsec 预检 Android 项目 | 设备预检 |
+| [perf-permission/](perf-permission/README.md) | 最小 perf 权限探测 | 设备计数器实验 |
+| [root-daemon/](root-daemon/README.md) | 历史 daemon 汇编材料 | 实验/改变设备 |
+| [update-engine-probe/](update-engine-probe/README.md) | 历史 OTA payload 实验 | 会写分区 |
+| [20261105/](20261105/README.md) | 2026-11-05 实验方法记录 | 历史实验说明 |
+
+## 保留的兼容入口
+
+`summarize_config.py`、`audit_missing_config.py`、`derive_candidate_layout.py`、`compare_candidate_layouts.py` 转发至 `kernel-config/`；三个 Journey 脚本转发至 `journey/`。新文档和工作流使用归类后的路径。`p780-layout-probe.c` 保留兼容 include。
+
+独立只读采集入口：[p780-avb-readonly.ps1](p780-avb-readonly.ps1)。
+
+迁移表见 [structure-migration.json](../docs/reference/structure-migration.json)。历史脚本另存 [archive/scripts](../archive/scripts/)，不会由维护检查执行。

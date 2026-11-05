@@ -2,6 +2,8 @@
 
 设备取证、启动链分析与离线工具的可追溯研究库。
 
+当前仓库版本：**v1.1.0** · [发布说明](docs/releases/v1.1.0.md) · [目录结构](docs/ARCHITECTURE.md) · [发布与产物校验](docs/RELEASING.md)
+
 > **状态入口：[当前研究状态](docs/STATUS.md)**。已记录临时、受 SELinux 限制的 UID0 shell；永久 Root、Bootloader 解锁与完整 EDL 均未证实。
 > 本次仓库重构日期：2026-11-05。未连接设备，未新增设备实验结论。
 

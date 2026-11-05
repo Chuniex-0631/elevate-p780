@@ -33,7 +33,7 @@ jobs:
           python3 - <<'PY' | tee reports/critical-delta.txt
           import json,runpy
           j=json.load(open('previous/config-changes.json'))
-          parse=runpy.run_path('tools/summarize_config.py')['read_config']
+          parse=runpy.run_path('tools/kernel-config/summarize_config.py')['read_config']
           a=parse('previous/original.config')
           b=parse('previous/resolved.config')
           d=j['original_to_resolved']

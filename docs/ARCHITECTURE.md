@@ -51,3 +51,31 @@
 原始证据全目录禁用换行转换，以保持 Windows / Linux 的摘要一致。维护 CI 独立于设备实验及历史内核构建；不自动运行探针或连接设备。
 
 本次重建清单补录 10 个已跟踪文件；271 个既有条目的历史清单摘要与当前 Git 保存字节不符，已按保存字节重新计算。原始证据文件无 Git 差异。此操作更正清单基线，不证明历史设备采集时的字节身份；复核旧摘要时应同时查看 Git 历史中的旧清单。
+
+## v1.1.0 完整目录分工
+
+```text
+app/                    应用源码与历史构建说明
+release/                已有应用产物（APK 仍为 1.0）
+docs/
+  research/             专题报告
+  reference/            来源、方法与结构迁移表
+  archive/              阶段性文档快照
+  rom/                  ROM 来源与核验说明
+  releases/             按版本记录的发布说明
+evidence/               原始材料；路径与字节保持不变
+archive/                迁移前研究、历史工具与脚本
+tools/
+  kernel-config/        内核配置与候选结构工具
+  journey/              Journey 框架分析
+  ghostlock/            从根目录归入的历史研究骨架
+  tests/                维护与结构回归测试
+  <专题目录>/           完整分类见 tools/README.md 与 catalog.json
+.github/workflows/      维护检查、历史实验构建与标签发布
+```
+
+每个工具子目录必须在 `tools/catalog.json` 登记并包含 README；结构测试检查覆盖率，防止新工具再次散落。原根目录 Python 工具保留兼容转发，规范代码只保存在分类目录中。活动工作流已使用规范路径。历史材料和证据中的命令仍保留原貌。
+
+`docs/reference/structure-migration.json` 记录迁移前后路径及迁移前 Git 内容 SHA-256；代码迁移按 Git 字节校验，Markdown 只修复相对链接。原始证据与 `archive/` 未搬迁或改写。`ghostlock/` 不再位于仓库根目录，其研究材料统一归入工具层。
+
+仓库版本由 VERSION 管理，发布流程见 [RELEASING](RELEASING.md)。本地 reports、构建缓存与凭据不属于源码包。

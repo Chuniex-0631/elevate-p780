@@ -1,0 +1,164 @@
+[
+  {
+    "path": "tools/tests",
+    "category": "维护与索引",
+    "purpose": "维护回归测试",
+    "mode": "离线"
+  },
+  {
+    "path": "tools/kernel-config",
+    "category": "维护与索引",
+    "purpose": "内核配置与候选结构测量",
+    "mode": "离线"
+  },
+  {
+    "path": "tools/journey",
+    "category": "维护与索引",
+    "purpose": "Journey XML / DEX 分析",
+    "mode": "离线"
+  },
+  {
+    "path": "tools/abl",
+    "category": "启动链与镜像",
+    "purpose": "ABL 与 Firehose 离线审计",
+    "mode": "离线"
+  },
+  {
+    "path": "tools/boot-chain-audit",
+    "category": "启动链与镜像",
+    "purpose": "Boot HAL、GPT、更新日志审计",
+    "mode": "离线"
+  },
+  {
+    "path": "tools/dsu",
+    "category": "启动链与镜像",
+    "purpose": "DSU 只读快照与 VINTF 提取",
+    "mode": "只读设备/离线"
+  },
+  {
+    "path": "tools/gsi",
+    "category": "启动链与镜像",
+    "purpose": "官方 GSI 下载与验签",
+    "mode": "联网/离线"
+  },
+  {
+    "path": "tools/rom",
+    "category": "启动链与镜像",
+    "purpose": "ROM 发布产物核验",
+    "mode": "离线"
+  },
+  {
+    "path": "tools/partitions",
+    "category": "启动链与镜像",
+    "purpose": "分区提取和清单核验",
+    "mode": "会写设备"
+  },
+  {
+    "path": "tools/ghostlock",
+    "category": "内核研究",
+    "purpose": "历史 PI 链研究骨架",
+    "mode": "实验/改变设备"
+  },
+  {
+    "path": "tools/afunix",
+    "category": "内核研究",
+    "purpose": "AF_UNIX 历史触发实验",
+    "mode": "实验/可能重启"
+  },
+  {
+    "path": "tools/kgsl",
+    "category": "内核研究",
+    "purpose": "KGSL 离线反汇编",
+    "mode": "离线"
+  },
+  {
+    "path": "tools/uring",
+    "category": "内核研究",
+    "purpose": "io_uring 历史研究",
+    "mode": "实验/改变内核状态"
+  },
+  {
+    "path": "tools/kallsyms",
+    "category": "内核研究",
+    "purpose": "符号提取",
+    "mode": "离线"
+  },
+  {
+    "path": "tools/kernel-symbol-recovery",
+    "category": "内核研究",
+    "purpose": "符号恢复与验证",
+    "mode": "离线"
+  },
+  {
+    "path": "tools/vuln-surface",
+    "category": "内核研究",
+    "purpose": "保存的攻击面输出分析",
+    "mode": "离线"
+  },
+  {
+    "path": "tools/oemlock",
+    "category": "框架与取证",
+    "purpose": "OEM lock 框架审计",
+    "mode": "离线"
+  },
+  {
+    "path": "tools/native",
+    "category": "框架与取证",
+    "purpose": "DEX / JNI / ELF 审计",
+    "mode": "离线"
+  },
+  {
+    "path": "tools/artifact-scan",
+    "category": "框架与取证",
+    "purpose": "静态样本敏感串扫描",
+    "mode": "离线"
+  },
+  {
+    "path": "tools/gaps",
+    "category": "框架与取证",
+    "purpose": "补充只读取证与策略比较",
+    "mode": "只读设备/离线"
+  },
+  {
+    "path": "tools/supplement",
+    "category": "框架与取证",
+    "purpose": "历史补充采集和分析",
+    "mode": "只读设备/离线"
+  },
+  {
+    "path": "tools/dirtyfrag-probe",
+    "category": "受控设备实验",
+    "purpose": "历史页缓存改写探针",
+    "mode": "会改设备"
+  },
+  {
+    "path": "tools/ipsec-preflight-android",
+    "category": "受控设备实验",
+    "purpose": "IPsec 预检 Android 项目",
+    "mode": "设备预检"
+  },
+  {
+    "path": "tools/perf-permission",
+    "category": "受控设备实验",
+    "purpose": "最小 perf 权限探测",
+    "mode": "设备计数器实验"
+  },
+  {
+    "path": "tools/root-daemon",
+    "category": "受控设备实验",
+    "purpose": "历史 daemon 汇编材料",
+    "mode": "实验/改变设备"
+  },
+  {
+    "path": "tools/update-engine-probe",
+    "category": "受控设备实验",
+    "purpose": "历史 OTA payload 实验",
+    "mode": "会写分区"
+  },
+  {
+    "path": "tools/20261105",
+    "category": "受控设备实验",
+    "purpose": "2026-11-05 实验方法记录",
+    "mode": "历史实验说明"
+  }
+]

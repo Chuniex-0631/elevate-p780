@@ -103,7 +103,7 @@ jobs:
         run: |
           set -euo pipefail
           cp out/.config reports/post-compile.config
-          python3 tools/summarize_config.py \
+          python3 tools/kernel-config/summarize_config.py \
             reports/original.config \
             reports/resolved.config \
             reports/post-compile.config \

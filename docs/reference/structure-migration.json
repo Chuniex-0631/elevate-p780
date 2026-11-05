@@ -1,0 +1,65 @@
+{
+  "version": "1.1.0",
+  "moves": [
+    {
+      "from": "tools/summarize_config.py",
+      "to": "tools/kernel-config/summarize_config.py",
+      "sha256": "ae5f1afa153f538fd28281368ed26834793cfce15ace8042b62458a569d315f7"
+    },
+    {
+      "from": "tools/audit_missing_config.py",
+      "to": "tools/kernel-config/audit_missing_config.py",
+      "sha256": "03e5be1076b2be1e0855cbd7c257a4d4d025157feaebc491c0468a79d062b6e2"
+    },
+    {
+      "from": "tools/derive_candidate_layout.py",
+      "to": "tools/kernel-config/derive_candidate_layout.py",
+      "sha256": "5d9205bf3cc9560d4855457f5b3f3b4978228ae6146219a963958ad0a8b29e32"
+    },
+    {
+      "from": "tools/compare_candidate_layouts.py",
+      "to": "tools/kernel-config/compare_candidate_layouts.py",
+      "sha256": "5d505ddd8fc44d1ea00907ef424e5a9e1fc141f8032003bf42fe8a883713fce3"
+    },
+    {
+      "from": "tools/p780-layout-probe.c",
+      "to": "tools/kernel-config/p780-layout-probe.c",
+      "sha256": "2cb6628e1f41a456f712c8ecffa07973788a65d1adefd45f98846941dd63a4d4"
+    },
+    {
+      "from": "tools/scan_journey_framework.py",
+      "to": "tools/journey/scan_journey_framework.py",
+      "sha256": "37965005b9098970466ab4a036019ff7d0b69e28e5dae1a103d648ee8bca94a9"
+    },
+    {
+      "from": "tools/read_performance_dex.py",
+      "to": "tools/journey/read_performance_dex.py",
+      "sha256": "16d7faeeddc783cc120462acef0fae61f98671aef939f5b2f337298ce054e9f7"
+    },
+    {
+      "from": "tools/compare_journey_config.py",
+      "to": "tools/journey/compare_journey_config.py",
+      "sha256": "00faa11c559a76118adea7a37a5984eb3c5d2ac1b3246723ed3bcd2885f6a82e"
+    },
+    {
+      "from": "ghostlock/README.md",
+      "to": "tools/ghostlock/README.md",
+      "sha256": "33f1a633e803599fef76e958d89db649ac47f81004ee8b83946dc6dc2d1de676"
+    },
+    {
+      "from": "ghostlock/M1.md",
+      "to": "tools/ghostlock/M1.md",
+      "sha256": "549fdcc0a6b799af14fac44a3b41b3dde13576aec63ab00c227fbcc21ffbf097"
+    },
+    {
+      "from": "ghostlock/m1_pi_chain.c",
+      "to": "tools/ghostlock/m1_pi_chain.c",
+      "sha256": "20121af1afa0ceaa32026efa5559e74988c125d5a129e5f46ed5db94f159a06d"
+    }
+  ],
+  "notes": [
+    "SHA-256 is the pre-move Git blob content hash.",
+    "Relocated Markdown may change relative links; code bytes are preserved in Git.",
+    "Evidence and historical archive paths are unchanged."
+  ]
+}

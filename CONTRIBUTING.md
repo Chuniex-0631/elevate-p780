@@ -36,3 +36,9 @@ python -m unittest discover -s tools/boot-chain-audit -p "test_*.py" -v
 - 不移动或重命名原始材料以美化目录，避免破坏引用链。
 - 每个工具目录提供 README，说明依赖、输入输出、是否改变设备、恢复方式和已知限制。
 - 新增或调整工具时，更新 `tools/README.md`。更改研究结论必须有对应证据，不以代码改动代替验证。
+
+## 结构与发布约定
+
+新增工具放到明确的主题目录，登记 `tools/catalog.json`，并提供 README；不要继续新增散落的工具根目录脚本。内核配置工具使用 `tools/kernel-config/`，Journey 使用 `tools/journey/`。原路径兼容入口留作历史调用。
+
+修改目录后更新迁移表并运行同一套维护测试，其中结构测试验证全部工具目录、迁移代码身份和旧入口兼容性。版本号以 VERSION 为准；发布步骤、源码包和 APK 版本区分见 [发布流程](docs/RELEASING.md)。
